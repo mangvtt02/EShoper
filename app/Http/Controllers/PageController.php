@@ -476,7 +476,7 @@ class PageController extends Controller
             $reset->status = 1;
             $reset->save();
 
-        return redirect()->to('http://localhost/BroadWay/Account/info');
+        return redirect()->to('http://localhost/Graduation-Project/Account/info');
 
     }
 
@@ -526,7 +526,7 @@ class PageController extends Controller
                 ]);
                 $order = Order::create([
                     'id_customer' => $customers->id,
-                    'total' => $total + 20000,
+                    'total' => $total + 10000,
                     'note' => $note,
                     'payment' => $method,
                     'status' => 0,
@@ -606,8 +606,10 @@ class PageController extends Controller
                 $orderInfo = "Thanh toán qua MoMo";
                 $amount = $total;
                 $orderId = time() . "";
-                $redirectUrl = "http://localhost/BroadWay/check_out/payment-success";
-                $ipnUrl = "http://localhost/BroadWay/check_out/payment-success";
+                $redirectUrl = "http://localhost/Graduation-Project/check_out/payment-success";
+                $ipnUrl = "http://localhost/Graduation-Project/check_out/payment-success";
+                //$redirectUrl = "http://localhost/BroadWay/check_out/payment-success";
+                //$ipnUrl = "http://localhost/BroadWay/check_out/payment-success";
 
                     $amount = $total;
 
