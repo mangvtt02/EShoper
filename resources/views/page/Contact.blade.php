@@ -162,7 +162,7 @@
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <div class="form-item">
-                                                                        <input type="button" id="contactFormSubmit" value="Gửi" class="_btn">
+                                                                        <input type="submit" id="contactFormSubmit" value="Gửi" class="_btn">
                                                                     </div>
                                                                 </div>
                                                             </div>

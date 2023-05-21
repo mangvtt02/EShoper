@@ -1,6 +1,6 @@
 @extends('admin/index')
 @section('mainContent')
-<b><i>Các iên hệ đã nhận</i></b>
+<b><i>Các liên hệ đã nhận</i></b>
 <hr>
 <div class="container">
     <div class="row table-responsive">

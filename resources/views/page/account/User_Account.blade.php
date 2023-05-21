@@ -100,6 +100,7 @@
 													</tr>
 												</thead>
 												<tbody>
+                          
                         @foreach($order as $or)
                         
                           @if($or->customers->email === $email_customer->email)
