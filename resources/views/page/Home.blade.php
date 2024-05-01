@@ -67,7 +67,7 @@
                 <section class="home-product-layout">
                     <div class="container">
                         <div class="row">
-                            <div class="banner-product-title not-animated" data-animate="fadeInUp" data-delay="200" style="background-image:  url(assets/images/product/{{$tp->banner_type}});">
+                            <div class="banner-product-title not-animated" data-animate="fadeInUp" data-delay="200" style="background-image:  url(assets/images/product/{{$tp->banner_type}}); border-radius: 50px;">
                                 <div class="title-content">
                                 <h2>{{$tp->name}}</h2>
                                 </div>
@@ -92,29 +92,10 @@
                                             <div class="row-left">
                                             <a href="{{route('page.Product_detail',[$item->id])}}" class="hoverBorder container_item">
                                                     <div class="hoverBorderWrapper">
-                                                    <img src="assets/images/product/{{$item->image}}" class="img-responsive front" alt="{{$item->image}}">
+                                                    <img src="assets/images/product/{{$item->image}}" class="img-responsive front" style="border-radius: 25px; border: 1px solid #000" alt="{{$item->image}}">
                                                         <div class="mask"></div>
                                                     </div>
                                                 </a>
-                                                <div class="hover-mask">
-                                                    <div class="group-mask">
-                                                        <div class="inner-mask">
-                                                            
-                                                            <div class="effect-ajax-cart">
-                                                                <input type="hidden" name="quantity" value="1">
-                                                            <button class="_btn select-option"  title="Thêm vào giỏ hàng" @if (!Auth::guard('emp')->check())
-                                                            onclick="btn_click();"
-                                                            @endif ><span style="font-weight: bold;" class="cs-icon icon-plus"></span><a @if (Auth::guard('emp')->check())
-                                                            href="{{route('page.Add_cart',[$item->id])}}"
-                                                            @else
-                                                            href="{{route('page.Get_Login')}}" 
-                                                            @endif>Giỏ hàng</a> </button>
-                                                            </div>
-                                                        </div>
-                                                        <!--inner-mask-->
-                                                    </div>
-                                                    <!--Group mask-->
-                                                </div>
                                                 <div class="product-label">
                                                     @if ($item->discount != 0)
                             

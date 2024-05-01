@@ -1,6 +1,6 @@
 @extends('admin/index')
 @section('mainContent')
-<b><i>Giới thiệu</i></b>
+<h1><b style="width: 100%; display: block; text-align: center;">Danh sách tiêu đề giới thiệu</b></h1>
 <hr>
 <div class="container">
   <div class="row">

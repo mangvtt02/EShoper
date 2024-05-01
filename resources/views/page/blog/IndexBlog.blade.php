@@ -15,11 +15,11 @@
                             <div class="breadcrumb-group">
                                 <h1 class="hidden">Blogs</h1>
                                 <div class="breadcrumb clearfix">
-                                <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title"><i class="fa fa-home"></i></span></a>
+                                <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title">Trang chủ</span></a>
                                     </span>
                                     <span class="arrow-space"></span>
                                     <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
-                                    <a href="{{route('page.Blog')}}" title="Blogs" itemprop="url"><span itemprop="title">Blog</span></a>
+                                    <a href="{{route('page.Blog')}}" title="Blogs" itemprop="url"><span itemprop="title">Tin Tức</span></a>
                                     </span>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                         
                                         <div class="sidebar-block blogs-recent">
                                             <h3 class="sidebar-title">
-                                                <span class="text">Bài đăng gần đây</span>
+                                                <span class="text">Tin tức mới nhất</span>
                                                 <span class="cs-icon icon-minus"></span>
                                             </h3>
                                             <div class="sidebar-content recent-article">

@@ -45,11 +45,11 @@
         
       <option value="1" @if ( $type_product->new == 1)
         selected
-      @endif>Đồ ăn</option>
+      @endif>Winter</option>
 
       <option value="2"@if ( $type_product->new == 2)
         selected
-        @endif>Đồ uống</option>
+        @endif>Summer</option>
 
       </select>
     </div>

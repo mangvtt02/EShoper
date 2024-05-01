@@ -272,13 +272,13 @@ class PageController extends Controller
             $price = $request->price;
             switch ($price) {
                 case 1:
-                    $products->where('unit_price', '<', 50000);
+                    $products->where('unit_price', '<', 500000);
                     break;
                 case 2:
-                    $products->whereBetween('unit_price', [50000, 100000]);
+                    $products->whereBetween('unit_price', [500000, 1000000]);
                     break;
                 case 3:
-                    $products->where('unit_price', '>', 100000);
+                    $products->where('unit_price', '>', 1000000);
                     break;
             }
         }
@@ -306,11 +306,11 @@ class PageController extends Controller
     public function Add_cart($id, cart $cart, Request $request)
     {
         $pr = Product::find($id);
-        $cart->add($pr);
-        $cart->update_carts($id, $request->quantity);
+        $cart->add($pr, $request->quantity); // Thêm sản phẩm vào giỏ hàng với số lượng được chỉ định
         $url = $_SERVER['HTTP_REFERER'];
         return redirect($url);
     }
+
     public function Delete_cart($id, cart $cart)
     {
         $pr = Product::find($id);
@@ -384,6 +384,7 @@ class PageController extends Controller
             }
         }
     }
+    
     public function Update_Password()
     {
         return view('login/Update_Password');
@@ -427,7 +428,7 @@ class PageController extends Controller
         ], [
             'name.required' => 'Bạn chưa nhập Họ và tên',
             'name.min' => 'Họ và tên tối thiểu 3 ký tự',
-            'name.max' => 'Họ và tên tối đa 15 ký tự',
+            'name.max' => 'Họ và tên tối đa 15 ký tự', 
 
             'email.required' => 'Bạn chưa nhập email',
             'email.unique' => 'Email đã tồn tại',
@@ -538,6 +539,9 @@ class PageController extends Controller
                     $quantity = $request['quantity_' . $items->id];
                     $product = Product::find($items->id);
                     $total_price = ($product->unit_price - ($product->unit_price * $product->discount) / 100);
+                    // Cập nhật storage_quantity
+                    $product->storage_quantity -= $quantity;
+                    $product->save();
 
                     if ($id_topping != 0) {
                         $topping = Topping::find($id_topping);
@@ -663,6 +667,9 @@ class PageController extends Controller
                     $quantity = $request['quantity_' . $items->id];
                     $product = Product::find($items->id);
                     $total_price = ($product->unit_price - ($product->unit_price * $product->discount) / 100);
+                        // Cập nhật storage_quantity
+                    $product->storage_quantity -= $quantity;
+                    $product->save();
 
                     if ($id_topping != 0) {
                         $topping = Topping::find($id_topping);

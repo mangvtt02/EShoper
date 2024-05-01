@@ -13,7 +13,7 @@ class ProductController extends Controller
         return view('admin/product/ListProduct');
     }
     public function data_product(){
-        $product = Product::join('type_product', 'product.id_type', '=', 'type_product.id')->select(['product.updated_at','product.created_at','product.status','product.number_star','product.id','product.description','product.total_rating','product.image', 'product.name', 'type_product.name as name_tp', 'product.unit_price', 'product.discount', 'product.unit']);
+        $product = Product::join('type_product', 'product.id_type', '=', 'type_product.id')->select(['product.updated_at','product.created_at','product.status','product.number_star','product.id','product.description','product.total_rating','product.image', 'product.name', 'type_product.name as name_tp',  'product.storage_quantity', 'product.unit_price', 'product.discount', 'product.unit']);
         return Datatables::of($product)
         ->addColumn('action', function ($product) {
             $button = '<button type="button" class="btn btn-primary p-3" data-toggle="modal" data-target="#exampleModal_'.$product->id.'">
@@ -37,6 +37,10 @@ class ProductController extends Controller
                       <tr >
                         <th scope="col" >Tổng đánh giá</th>
                         <td>'.$product->total_rating.'</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Hàng trong kho</th>
+                        <td>'.$product->storage_quantity.'</td>
                       </tr>
                       <tr>
                         <th scope="col" >Tổng số sao</th>
@@ -95,7 +99,7 @@ class ProductController extends Controller
         $this->validate($request,[
             'image'=>'required',
             'name'=>'required|min:3|unique:product,name',
-            
+            'storage_quantity'=>'required|min:0',
             'unit_price'=>'required|min:0',
             'discount'=>'required|min:0',
             'unit'=>'required',
@@ -104,6 +108,8 @@ class ProductController extends Controller
             'image.required'=>'Bạn chưa chọn ảnh sản phẩm!',
             'name.required'=>'Bạn chưa nhập tên sản phẩm!',
             'name.min'=>'Tiêu đề tối thiểu 3 ký tự!',
+            'storage_quantity.required'=>'Bạn chưa nhập số lượng hàng!',
+            'storage_quantity.min'=>'Số lượng hàng không được < 0',
             'name.unique'=>'Tên sản phẩm đã tồn tại!',
             
             'unit_price.required'=>"Bạn chưa giá hiệ tại!",
@@ -135,6 +141,7 @@ class ProductController extends Controller
         $product->id_type = $request->type_product;
         $product->description = $request->description;
         $product->unit_price = $request->unit_price;
+        $product->storage_quantity = $request->storage_quantity;
         $product->discount = $request->discount;
         $product->unit = $request->unit;
         $product->total_rating = 0;
@@ -168,7 +175,7 @@ class ProductController extends Controller
             'image.required'=>'Bạn chưa chọn ảnh sản phẩm!',
             'name.required'=>'Bạn chưa nhập tên sản phẩm!',
             'name.min'=>'Tiêu đề tối thiểu 3 ký tự!',
-           
+            'storage_quantity.min'=>'Số lượng hàng không được < 0',
             'unit_price.required'=>"Bạn chưa giá hiệ tại!",
             'unit_price.min'=>"Giá hiện tại tối thiểu bằng 0!",
             'discount.required'=>'Bạn chưa nhập phần trăm khuyến mại!',
@@ -201,6 +208,7 @@ class ProductController extends Controller
         $product->id_type = $request->type_product;
         $product->description = $request->description;
         $product->unit_price = $request->unit_price;
+        $product->storage_quantity = $request->storage_quantity;
         $product->discount = $request->discount;
         $product->unit = $request->unit;
         

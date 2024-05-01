@@ -2,7 +2,7 @@
 @section('mainContent')
 
 
-<b><i>Cập nhật blogs</i></b>
+<h1 class="text-center"><strong>Cập nhật tin tức</strong></h1>
 <hr>
 <div class="container">
   {{-- errors --}}
@@ -59,7 +59,7 @@
       </div>
       <div class="form-group row">
           <div class="col-sm-10">
-              <button type="submit" class="btn btn-primary">Cập nhật blogs</button>
+              <button type="submit" class="btn btn-primary">Cập nhật</button>
             </div>
             <div class="col-sm-2">
               <a href="{{route('admin.list_blog')}}" class="btn btn-primary">Quay lại</a>

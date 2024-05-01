@@ -24,14 +24,14 @@
 <form action="{{route('admin.post_edit_topping',[$topping->id])}}" method="POST" enctype="multipart/form-data">
   @csrf
   <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Tên topping</label>
+    <label for="name" class="col-sm-2 col-form-label">Màu sắc</label>
     <div class="col-sm-10">
     <input type="text" class="form-control" id="name" name="name" value="{{$topping->name}}">
     </div>
   </div>
   
   <div class="form-group row">
-    <label for="price" class="col-sm-2 col-form-label">Giá topping</label>
+    <label for="price" class="col-sm-2 col-form-label">Giá thay đổi</label>
     <div class="col-sm-10">
         <input type="number" class="form-control" id="price" name="price" value="{{$topping->price}}">
      </div>

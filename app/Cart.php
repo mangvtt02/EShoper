@@ -1,72 +1,143 @@
 <?php
-    
-    namespace App;
-    class Cart{
-        //$items lưu trữ các thông tin sản phẩm
-         
-        public $items;
 
-        public function __construct()
-        {
-            $this->items = session('cart'); //_trước khi qua hàm add sẽ qua hàm này, và items có dữ liệu rồi
-        }
-        //ham thêm sản phẩm 
-        public function add($data,$quantity=1){
-            
-            if(isset($this->items[$data['id']])){
-                $this->items[$data['id']]['quantity'] += 1;
-            }
-            else{
-                $this->items[$data['id']] = $data;
-                $this->items[$data['id']]['quantity'] = $quantity;
-            }
-            
-            //Session trong laravel
-            session([
-                'cart'=>$this->items //add thêm thôi
-            ]);
-        }
-        // hàm xóa sản phẩm trong giỏ hàng
-        public function delete_cart($id){
-            if($this->items[$id]){
-                unset($this->items[$id]);
-                session(['cart'=>$this->items]);
-                return true;
-            }else{
-                return false;
-            }
-        }
-        // hàm update số lượng trong giỏ hàng
-        public function update_carts($id,$quantity){
-            $quantity = is_numeric($quantity) ? $quantity : 1;
-            $quantity = $quantity > 0 ? ceil($quantity) : 1;
-            if(isset($this->items[$id])){
-                $this->items[$id]['quantity'] = $quantity;
-                session(['cart' => $this->items]);
+namespace App;
+use Illuminate\Database\Eloquent\Model;
+
+class Cart extends Model
+{
+    public $items;
+
+    public function __construct()
+    {
+        // Khởi tạo giỏ hàng từ session
+        $this->items = session('cart');
+    }
+
+    public function add($data, $quantity = 1)
+    {
+        // Kiểm tra sản phẩm đã tồn tại trong giỏ hàng chưa
+        if (isset($this->items[$data['id']])) {
+            // Lấy số lượng hiện tại của sản phẩm trong giỏ hàng
+            $currentQuantity = $this->items[$data['id']]['quantity'];
+    
+            // Tính tổng số lượng mới sau khi thêm vào giỏ hàng
+            $newQuantity = $currentQuantity + $quantity;
+    
+            // Kiểm tra xem số lượng mới có lớn hơn lượng hàng trong kho không
+            if ($newQuantity > $data['storage_quantity']) {
+                // Nếu lớn hơn, trả về thông báo
+                return 'Sản phẩm tạm hết hàng.';
+            } else {
+                // Nếu không, cập nhật số lượng trong giỏ hàng
+                $this->items[$data['id']]['quantity'] = $newQuantity;
                 
+                // Cập nhật số lượng trong kho
+                $product = Product::find($data['id']);
+                $product->storage_quantity -= $quantity; // Trừ đi số lượng nhập vào từ storage_quantity
+                $product->save();
+            }
+        } else {
+            // Nếu sản phẩm chưa có trong giỏ hàng, thêm vào giỏ hàng
+            if ($quantity > $data['storage_quantity']) {
+                // Kiểm tra số lượng mới với lượng hàng trong kho
+                return 'Sản phẩm tạm hết hàng.';
+            }
+            $this->items[$data['id']] = $data;
+            $this->items[$data['id']]['quantity'] = $quantity;
+            
+            // Cập nhật số lượng trong kho
+            $product = Product::find($data['id']);
+            $product->storage_quantity -= $quantity; // Trừ đi số lượng nhập vào từ storage_quantity
+            $product->save();
+        }
+        
+        // Lưu giỏ hàng vào session
+        session(['cart' => $this->items]);
+    }    
+
+    public function delete_cart($id)
+    {
+        // Kiểm tra sản phẩm có tồn tại trong giỏ hàng không
+        if (isset($this->items[$id])) {
+            // Lấy số lượng sản phẩm được xóa
+            $quantityDeleted = $this->items[$id]['quantity'];
+            // Nếu tồn tại, trả lại số lượng sản phẩm vào storage_quantity và xóa sản phẩm khỏi giỏ hàng
+            $this->items[$id]['storage_quantity'] += $quantityDeleted;
+            unset($this->items[$id]);
+            // Cập nhật giỏ hàng trong session
+            session(['cart' => $this->items]);
+            // Cập nhật storage_quantity vào session
+            session(['storage_quantity' => isset($this->items[$id]['storage_quantity']) ? $this->items[$id]['storage_quantity'] : 0]);
+
+            // Trả lại số lượng sản phẩm vào kho
+            $product = Product::find($id);
+            $product->storage_quantity += $quantityDeleted;
+            $product->save();
+
+            return true;
+        } else {
+            // Nếu không tồn tại, trả về false
+            return false;
+        }
+    }
+
+    // Cập nhật số lượng sản phẩm trong giỏ hàng
+    public function update_carts($id, $quantity)
+    {
+        // Kiểm tra số lượng mới có hợp lệ không
+        $quantity = is_numeric($quantity) ? $quantity : 1;
+        $quantity = $quantity > 0 ? ceil($quantity) : 1;
+        
+        // Kiểm tra sản phẩm có tồn tại trong giỏ hàng không
+        if (isset($this->items[$id])) {
+            // Lấy số lượng sản phẩm trước khi cập nhật
+            $oldQuantity = $this->items[$id]['quantity'];
+            // Kiểm tra lượng hàng trong kho, nếu không đủ, trả về thông báo
+            if ($quantity > $this->items[$id]['storage_quantity'] + $oldQuantity) {
+                return 'Sản phẩm tạm hết hàng.';
+            }
+            // Nếu đủ, cập nhật số lượng sản phẩm và lưu vào session
+            $this->items[$id]['quantity'] = $quantity;
+            // Cập nhật lại storage_quantity
+            $this->items[$id]['storage_quantity'] += ($oldQuantity - $quantity);
+            session(['cart' => $this->items]);
+        }
+    }
+
+    // Xóa toàn bộ giỏ hàng
+    public function clear_cart()
+{
+    // Kiểm tra nếu giỏ hàng không rỗng
+    if (!empty($this->items)) {
+        // Duyệt qua từng sản phẩm trong giỏ hàng
+        foreach ($this->items as $id => $item) {
+            // Trả lại số lượng sản phẩm vào storage_quantity
+            $product = Product::find($id);
+            if ($product) {
+                $product->storage_quantity += $item['quantity'];
+                $product->save();
             }
         }
-        // hàm xóa toàn bộ giỏ hàng
-        public function clear_cart(){
-            session(['cart'=>[]]);
-        }
+    }
 
-        //Hàm tính tổng tiền tất cả sản phẩm trong giỏ hàng
+    // Xóa toàn bộ sản phẩm trong giỏ hàng và cập nhật session
+    session(['cart' => []]);
+}
 
-        public function total(){
-            $tong = 0;
 
-            if (count($this->items)){
-                foreach($this->items as $item){
-                    $tong += ($item['quantity']*($item['unit_price']-($item['unit_price']*$item['discount'])/100));   
-                }
+    // Tính tổng tiền của các sản phẩm trong giỏ hàng
+    public function total()
+    {
+        $total = 0;
+
+        // Duyệt qua từng sản phẩm trong giỏ hàng và tính tổng tiền
+        if (count($this->items)) {
+            foreach ($this->items as $item) {
+                $total += ($item['quantity'] * ($item['unit_price'] - ($item['unit_price'] * $item['discount']) / 100));
             }
-                return $tong;
         }
-
-       
         
-    }       
-        
-    
+        return $total;
+    }
+}
 ?>

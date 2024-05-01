@@ -1,6 +1,6 @@
 @extends('admin/index')
 @section('mainContent')
-<b><i>Danh sách loại sản phẩm</i></b>
+<h1><b style="width: 100%; display: block; text-align: center;">Danh sách danh mục sản phẩm</b></h1>
 <hr>
 <div class="container">
   <div class="row">

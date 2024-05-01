@@ -1,6 +1,6 @@
 @extends('admin/index')
 @section('mainContent')
-<b><i>Danh sách sản phẩm</i></b>
+<h1><b style="width: 100%; display: block; text-align: center;">Danh sách sản phẩm</b></h1>
 <hr>
 
 <div class="container">
@@ -20,10 +20,10 @@
           <th scope="col">Tên sản phẩm</th>
           <th scope="col" >Loại sản phẩm</th>
           <th scope="col" >Giá hiện tại</th>
-          <th scope="col" >Khuyến mại ( % )</th>
+          <th scope="col" >Hàng<br> <br> trong kho</th>
+          <th scope="col" >Khuyến mại <br> <br> ( % )</th>
           <th scope="col" >Đơn vị</th>
           <th scope="col" >Thao tác</th>
-        
         </tr>
       </thead>
       <tbody>
@@ -42,6 +42,7 @@
                 { data: 'name', name: 'product.name' },
                 { data: 'name_tp', name: 'type_product.name' },
                 { data: 'unit_price', name: 'product.unit_price' },
+                { data: 'storage_quantity', name: 'product.storage_quantity' },
                 { data: 'discount', name: 'product.discount' },
                 { data: 'unit', name: 'product.unit',orderable: false, searchable: false },
                 { data: 'action', name: 'action',orderable: false, searchable: false },

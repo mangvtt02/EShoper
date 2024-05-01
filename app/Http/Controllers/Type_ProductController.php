@@ -53,10 +53,10 @@ class Type_ProductController extends Controller
         })
         ->editColumn('new', function ($type_product) {
             if ($type_product->new == 1) {
-                $new = 'Đồ ăn';
+                $new = 'Winter';
             }
             else{
-                $new = 'Đồ uống';
+                $new = 'Summer';
             }
             return $new;
         })

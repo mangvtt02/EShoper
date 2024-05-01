@@ -21,7 +21,7 @@
 								<div class="breadcrumb-group">
 									<h1 class="hidden">Tài khoản của tôi</h1>
 									<div class="breadcrumb clearfix">
-										<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title"><i class="fa fa-home"></i></span></a>
+										<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title">Trang chủ</span></a>
 										</span>
 										<span class="arrow-space"></span>
 										<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
@@ -60,24 +60,19 @@
 													<span class="title">Điện thoại:</span>
 													<a class="content" href="tel:{{$user->SDT}}">{{$user->SDT}}</a>
 												</div>
-											</div>
-										</div>
-										<div class="account-link col-sm-6">
-											<h3 class="link-title">Tài khoản của tôi</h3>
-											<div class="link-content">
-												<ul class="link-list">
-													<li class="item">
+                        <div class="item logout-item" style="font-weight: bold; border: solid 1px #000; padding: 10px; width: 108px; border-radius: 10px;">
+                        <style>
+                           .logout-item:hover {
+                            background: #000;
+                           }
+                          .logout-item:hover > a {
+                            color: #ffffff !important;
+                          }
+                        </style>
 														<a href="{{route('page.Logout')}}" @if(is_countable($cart->items) && count($cart->items)>0)
 																	onclick="return confirm('Khi đăng xuất các sản phẩm trong giỏ hàng sẽ bị mất?')"
-																@endif >Đăng xuất</a>
-													</li>
-													<!-- <li class="item">
-														<a href="addresses.html">Modify your address book entries</a>
-													</li> -->
-													<!-- <li class="item">
-														<a href="wish-list.html">Modify your wishlist</a>
-													</li> -->
-												</ul>
+																@endif >ĐĂNG XUẤT</a>
+                        </div>
 											</div>
 										</div>
 										<div class="account-banner col-sm-6">

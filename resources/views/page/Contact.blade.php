@@ -14,7 +14,7 @@
                             <div class="breadcrumb-group">
                                 <h1 class="hidden">Contact</h1>
                                 <div class="breadcrumb clearfix">
-                                    <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title"><i class="fa fa-home"></i></span></a>
+                                    <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title">Trang chủ</span></a>
                                     </span>
                                     <span class="arrow-space"></span>
                                     <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
@@ -136,8 +136,8 @@
                                                     <div class="page_title form_title">
                                                         <h2 class="title">Liên hệ với chúng tôi</h2>
                                                         <br>
-                                                        <p>SĐT: +84 (09) 65 814 299<br>
-                                                        Email: tranbinhtrong937@gmail.com</p>
+                                                        <p>SĐT: +84 (09) xx xxx xxx<br>
+                                                        Email: exampleemail123@gmail.com</p>
                                                     </div>
                                                     
                                                     <div class="form_content">

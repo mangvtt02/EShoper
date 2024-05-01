@@ -1,10 +1,13 @@
 @extends('admin/index')
 @section('mainContent')
 
-<h1 class="text-center"><strong ><i>Liệt kê đơn hàng</i></strong></h1>
+<script src="
+https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js
+"></script>
+<h1 class="text-center"><strong>Liệt kê đơn hàng</strong></h1>
 <hr>
 <div class="container">
-    <div class="row table-responsive">
+    <div class="row table-responsive" style="height: 470px">
       <table class="table table-bordered " >
         
           <thead>
@@ -51,16 +54,13 @@
                       <div class="modal-dialog modal-md" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Chi tiết đơn hàng</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
+                            <h1 class="modal-title" style="margin: auto; width:100%" id="exampleModalLabel">Chi tiết đơn hàng</h5>
                           </div>
                           <div class="modal-body">
                             <div class="row">
                               <p>Địa chỉ giao hàng: &nbsp;<b>{{$or->customers->address}}</b></p>
-                              <p>Phương thức thanh toán: &nbsp;<b>{{$or->payment}}</b></p>
-                              <p>Điện thoại: &nbsp;<b>{{$or->customers->phone_nb}}</b></p>
+                              <p>Phương thức thanh toán: &nbsp;<b>{{$or->payment}}</b></p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                              <p>Số điện thoại: &nbsp;<b>{{$or->customers->phone_nb}}</b></p>
                             </div>
                             <div class="row">
                               <p>Phí ship: &nbsp;<b>{{number_format(20000)}}đ</b></p>
@@ -104,14 +104,6 @@
                       <b class="btn btn-success">Đã duyệt</b>
                     @endif
                   </td>
-                  <td>
-                      <a @if ($or->status == 1)
-                        href="{{route('admin.delete_order',[$or->id])}}" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
-                      @endif >
-                          <i class="mdi mdi-delete-variant"></i>
-                          Xóa
-                      </a>
-                  </td>
               </tr>
               @endforeach
           </tbody>
@@ -123,5 +115,42 @@
         </ul>
       </nav>
 </div>
- @endsection
 
+<canvas id="revenueChart" width="800" height="400"></canvas>
+<script>
+    var ctx = document.getElementById('revenueChart').getContext('2d');
+    var months = ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'];
+    var revenueData = Array(12).fill(0); // Tạo mảng 12 phần tử với giá trị ban đầu là 0
+    
+    // Tính tổng doanh thu cho từng tháng
+    @foreach ($order as $or)
+        var orderMonth = new Date("{{$or->created_at}}").getMonth();
+        var orderYear = new Date("{{$or->created_at}}").getFullYear();
+        revenueData[orderMonth] += parseInt("{{$or->total}}");
+    @endforeach
+    
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: months,
+            datasets: [{
+                label: 'Doanh thu theo tháng',
+                data: revenueData,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+@endsection

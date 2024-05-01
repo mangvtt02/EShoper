@@ -1,11 +1,11 @@
 @extends('admin/index')
 @section('mainContent')
-<b><i>Danh sách topping</i></b>
+<h1><b style="width: 100%; display: block; text-align: center;">Danh sách màu sắc</b></h1>
 <hr>
 <div class="container">
   <div class="row">
     <a  class="btn btn-primary btn-lg btn-block " href="{{route('admin.insert_topping')}}">
-      <b class="mdi mdi-plus">Thêm Topping</b>
+      <b class="mdi mdi-plus">Thêm màu</b>
     </a>
   </div>
   <br><br>
@@ -15,8 +15,8 @@
       <thead>
         <tr class="text-center">
           <th scope="col">ID</th>
-          <th scope="col">Tên topping</th>
-          <th scope="col">Giá topping</th>
+          <th scope="col">Màu sắc</th>
+          <th scope="col">Giá thay đổi</th>
           <th scope="col" >Trạng thái</th>
           <th scope="col" >Thao tác</th>
         

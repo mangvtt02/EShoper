@@ -23,7 +23,7 @@
     <script src="assets/javascripts/jquery.dataTables.min.js" defer></script>
     <style>
       .active_star{
-          color: #ffc03f !important;
+          color: #8b8b89 !important;
         }
     </style>
 <!-- CKeditor -->
@@ -137,25 +137,6 @@
                 <span class="menu-title">Quản lý đơn hàng</span>
               </a>
             </li>
-            <li class="nav-item @if (Request::segment(1) === 'admin' && (Request::segment(2)=== 'blog' ||Request::segment(2)=== 'comment_blogs'))
-                active
-              @endif">
-
-              <div class="collapse" id="resources-dropdown1">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link @if (Request::segment(1) === 'admin' && Request::segment(2) === 'blog')
-                    active
-                @endif" href="{{route('admin.list_blog')}}">Blog</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link @if (Request::segment(1) === 'admin' && Request::segment(2) === 'comment_blogs')
-                    active
-                @endif"  href="{{route('admin.list_cmt')}}">Bình luận</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
             <li class="nav-item @if (Request::segment(1) === 'admin' && (Request::segment(2)=== 'product' ||Request::segment(2)=== 'type_product' ||Request::segment(2)=== 'product_review'))
                 active
               @endif">
@@ -197,12 +178,59 @@
                   <li class="nav-item">
                     <a class="nav-link @if (Request::segment(1) === 'admin' && Request::segment(2) === 'size')
                     active
-                @endif" href="{{route('admin.list_size')}}">Danh sách size</a>
+                @endif" href="{{route('admin.list_size')}}">Quản lý size</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link @if (Request::segment(1) === 'admin' && Request::segment(2) === 'topping')
                     active
-                @endif" href="{{route('admin.list_topping')}}">Danh sách topping</a>
+                @endif" href="{{route('admin.list_topping')}}">Quản lý màu sắc</a>
+                  </li>
+                 
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item @if (Request::segment(1) === 'admin' && (Request::segment(2)=== 'blog' ||Request::segment(2)=== 'comment_blogs'))
+                active
+              @endif">
+              <a class="nav-link" data-toggle="collapse" href="#resources-dropdown1" aria-expanded="false" aria-controls="resources-dropdown1">
+                <i class="menu-icon mdi mdi-newspaper"></i>
+                  <span class="menu-title">Quản lý tin tức</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="resources-dropdown1">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link @if (Request::segment(1) === 'admin' && Request::segment(2) === 'blog')
+                    active
+                @endif" href="{{route('admin.list_blog')}}">Tin tức</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link @if (Request::segment(1) === 'admin' && Request::segment(2) === 'comment_blogs')
+                    active
+                @endif"  href="{{route('admin.list_cmt')}}">Bình luận</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item @if (Request::segment(1) === 'admin' && (Request::segment(2)=== 'about' ||Request::segment(2)=== 'our_team'))
+            active
+          @endif">
+              <a class="nav-link" data-toggle="collapse" href="#resources-dropdownsss" aria-expanded="false" aria-controls="resources-dropdownsss">
+                <i class="menu-icon mdi mdi-arrange-send-to-back"></i>
+                <span class="menu-title">Quản lý giới thiệu</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="resources-dropdownsss">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link @if (Request::segment(1) === 'admin' && Request::segment(2) === 'about')
+                    active
+                @endif" href="{{route('admin.list_about')}}">Thông tin giới thiệu</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link @if (Request::segment(1) === 'admin' && Request::segment(2) === 'our_team')
+                    active
+                @endif" href="{{route('admin.list_our_team')}}">Đội ngũ</a>
                   </li>
                  
                 </ul>
@@ -216,7 +244,14 @@
                 <span class="menu-title">Phản hồi liên hệ</span>
               </a>
             </li>
-            
+            <li class="nav-item @if (Request::segment(1) === 'admin' && Request::segment(2) === 'banner')
+            active
+        @endif">
+              <a class="nav-link " href="{{route('admin.list_banner')}}">
+                <i class="menu-icon mdi mdi-drawing-box"></i>
+                <span class="menu-title">Quản lý banner</span>
+              </a>
+            </li>
             <li class="nav-item @if (Request::segment(1) === 'admin' && Request::segment(2) === 'contact_info')
             active
         @endif">
@@ -236,7 +271,7 @@
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
             <div class="container-fluid clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2023. All rights reserved.</span>
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2024. All rights reserved.</span>
               </span>
             </div>
           </footer>

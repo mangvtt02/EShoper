@@ -1,7 +1,8 @@
 @extends('admin/index')
 @section('mainContent')
 <!-- CSS -->
-<b><i>Danh sách banner</i></b>
+<h1><b style="width: 100%; display: block; text-align: center;">Danh sách banner</b></h1>
+
 <hr>
 <div class="container">
   <div class="row">

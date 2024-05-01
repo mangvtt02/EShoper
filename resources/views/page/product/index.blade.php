@@ -94,9 +94,9 @@
                                                 </h3>
                                                 <div class="sidebar-content">
                                                     <ul class="filter-content ">
-                                                    <li data-handle="under-100"><a href="{{request()->fullUrlWithQuery(['price'=>1])}}" title="Sản phẩm dưới 50.000"><span class="fe-checkbox"></span> Dưới 50.000</a></li>
-                                                        <li data-handle="100-200"><a href="{{request()->fullUrlWithQuery(['price'=>2])}}" title="Sản phẩm từ 50.000 - 100.000"><span class="fe-checkbox"></span> 50.000 - 100.000</a></li>
-                                                        <li data-handle="above-200"><a href="{{request()->fullUrlWithQuery(['price'=>3])}}" title="Sản phẩm trên 100.000"><span class="fe-checkbox"></span>Trên 100.000 </a></li>
+                                                    <li data-handle="under-100"><a href="{{request()->fullUrlWithQuery(['price'=>1])}}" title="Sản phẩm dưới 500.000"><span class="fe-checkbox"></span> Dưới 500.000</a></li>
+                                                        <li data-handle="100-200"><a href="{{request()->fullUrlWithQuery(['price'=>2])}}" title="Sản phẩm từ 500.000 - 1.000.000"><span class="fe-checkbox"></span> 500.000 - 1.000.000</a></li>
+                                                        <li data-handle="above-200"><a href="{{request()->fullUrlWithQuery(['price'=>3])}}" title="Sản phẩm trên 1.000.000"><span class="fe-checkbox"></span>Trên 1.000.000 </a></li>
                                                     </ul>
                                                 </div>
                                             </div>

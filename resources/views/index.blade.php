@@ -9,7 +9,7 @@
 	<meta name="theme-color" content="#7796A8">
 	<meta name="description" content="" />
 	<title>
-	The Broadway
+	EShoper
 	</title>
 	<base href="{{asset('public')}}/">
 	<link href="assets/stylesheets/font1.css" rel="stylesheet">
@@ -17,10 +17,12 @@
 	<link href="assets/stylesheets/font3.css" rel="stylesheet">
 	<style>
 		.active_star{
-				color: #ffc03f !important;
+				color: #8b8b89 !important;
 			}
 	</style>
-	<link rel="shortcut icon" href="/public/assetsAdmin/images/logo.png" />
+	<link rel="shortcut icon" href="assetsAdmin/images/logo.png" />
+	<link rel="shortcut icon" href="assetsAdmin/images/logo-felix.jpg" />
+
 
 	<link href="maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">  
     <link href="maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
@@ -62,7 +64,7 @@
 @yield('body')
 
 	<!--Header-->
-	<header id="top" class="header clearfix" style="background-color: #8B4202 !important">
+	<header id="top" class="header clearfix" style="background-color: #000000 !important">
 		<div  id="shopify-section-theme-header" class="shopify-section">
 			<div data-section-id="theme-header" data-section-type="header-section">
 				<section class="main-header">
@@ -71,13 +73,13 @@
 							<div class="row">
 								<div class="main-header-inner">
 									<div class="nav-logo">
-                                    <a href="{{route('page.Home')}}"><img style="width: 50%; height: 50%; margin-top:10px; border-radius: 10px" src="assets/images/logo.png" alt="" title="Fast Food"></a>
+                                    <a href="{{route('page.Home')}}"><img style="width: 70%; height: 70%; margin-top:10px; border-radius: 10px" src="assets/images/logo.png" alt="" title="Fast Food"></a>
 										<h1 style="display:none"><a href="{{route('page.Home')}}">Fast Food</a></h1>
 									</div>
 									<div class="nav-top">
 										<div class="nav-menu">
 											<ul class="navigation-links ">
-												<li style="margin-left: 100px;" class="nav-item dropdown navigation {{Request::segment(1) ? '' : 'active'}}">
+												<li class="nav-item dropdown navigation {{Request::segment(1) ? '' : 'active'}}">
 													<a href="{{route('page.Home')}}" >
 														<span>Trang chủ</span>
 													</a>
@@ -92,7 +94,7 @@
 												@endforeach
 												">
 													<a href="javascript:void(0);" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
-														<span>Đồ ăn</span>
+														<span>Winter</span>
 														<i class="fa fa-angle-down"></i>
 														<i class="sub-dropdown1  visible-sm visible-md visible-lg"></i>
 														<i class="sub-dropdown visible-sm visible-md visible-lg"></i>
@@ -125,7 +127,7 @@
 													@endforeach
 												">
 													<a href="javascript:void(0);" class="dropdown-toggle dropdown-link" data-toggle="dropdown">
-														<span>Đồ uống</span>
+														<span>Summer</span>
 														<i class="fa fa-angle-down"></i>
 														<i class="sub-dropdown1  visible-sm visible-md visible-lg"></i>
 														<i class="sub-dropdown visible-sm visible-md visible-lg"></i>
@@ -151,6 +153,17 @@
 														<span>Liên hệ</span>
 													</a>
 												</li>
+												<li class="nav-item {{Request::segment(1) === 'about' ? 'active' : ''}}">
+													<a href="{{route('page.About')}}">
+														<span>Giới Thiệu</span>
+													</a>
+												</li>
+												<li class="nav-item {{Request::segment(1) === 'blog' ? 'active' : ''}}">
+													<a href="{{route('page.Blog')}}">
+														<span>Tin Tức</span>
+													</a>
+												</li>
+												
 											</ul>
 										</div>
 										<div class="nav-icon">
@@ -226,10 +239,15 @@
 													<div class="m_dropdown-login dropdown-menu login-content">
 														<div class="clearfix ml-3">
 															@if (!Auth::guard('emp')->check())
-																	<a class=" btn bg-success" href="{{route('page.Get_Login')}}">Đăng nhập</a>	
-																	<a class="btn bg-success" href="{{route('page.Get_Register')}}">Đăng ký</a>	
+																	<a class="btn-custom-ss btn" style="background: #fff; border-radius: 10px;" href="{{route('page.Get_Login')}}">Đăng nhập</a>	
+																	<a class="btn-custom-ss btn" style="background: #fff; border-radius: 10px;" href="{{route('page.Get_Register')}}">Đăng ký</a>	
 															@endif
-															
+															<style>
+																.btn-custom-ss:hover {
+																	background-color: #000 !important;
+																	color: #fff;
+																}
+															</style>
 																
 															
 															<!-- <ul class="wish-compare-content"> -->
@@ -237,7 +255,7 @@
 															
 															@if (Auth::guard('emp')->check())
 															<li class="avata-item">
-																	<img src="assets/images/user/{{$user->image}}" alt="profile image" style="padding-bottom: 10px">
+																	<img src="assets/images/user/{{$user->image}}" alt="profile image" style="padding-bottom: 10px; width: 70px; height: 70px; border-radius: 999px">
 																	<p class="user-name">{{$user->name}}</p>
 															</li>
 															<li class="link-item">
@@ -413,7 +431,7 @@
 															</li>
 															<li class="nav-item navigation navigation_mobile ">
 																<a href="javascript:void(0);" class="menu-mobile-link">
-																	Đồ ăn
+																	Winter
 																</a>
 																<a href="javascript:void(0)" class="arrow_sub arrow">
 																	<i class="arrow-plus"></i>
@@ -431,7 +449,7 @@
 															</li>
 															<li class="nav-item navigation navigation_mobile">
 																<a href="javascript:void(0);" class="menu-mobile-link">
-																	Đồ uống
+																	Summer
 																</a>
 																<a href="javascript:void(0)" class="arrow_sub arrow">
 																	<i class="arrow-plus"></i>
@@ -452,16 +470,16 @@
 																	<span>Liên hệ</span>
 																</a>
 															</li>
-															<!-- <li class="nav-item">
+															<li class="nav-item">
 																<a href="{{route('page.About')}}">
 																	<span>Giới Thiệu</span>
 																</a>
 															</li>
 															<li class="nav-item">
 																<a href="{{route('page.Blog')}}">
-																	<span>Blog</span>
+																	<span>Tin tức</span>
 																</a>
-															</li> -->
+															</li>
 														</ul>
 													</div>
 												</div>
@@ -530,16 +548,13 @@
 	<!-- Footer -->
 	<footer class="footer">
 		<div id="shopify-section-theme-footer" class="shopify-section">
-			<section class="footer-information-block clearfix" style="background-image:  url(assets/images/bg_footer.png);">
+			<section class="footer-information-block clearfix" style="background-image:  url(assets/images/bg_footer.jpg);">
 				<div class="container">
 					<div class="row">
 						<div class="footer-information-inner">
 							<div class="footer-information-content">
 								<div class="information-item col-sm-4 not-animated" data-animate="fadeInUp" data-delay="100">
 									<div class="about-content">
-										<div class="logo-footer">
-											<img src="assets/images/logo.png" style="border-radius: 0 0 20px 20px;"/>
-										</div>
 										@foreach ($contact_info as $item)
 											
 										<div class="about-contact">
@@ -571,11 +586,11 @@
 									<h5 class="footer-title"> VĂN PHÒNG ĐẠI DIỆN</h5>
 									<div class="social-content">
 										<ul>
-											Công ty Cổ phần The Broad Way of Fast Food <br>  Nguyên Xá, Minh Khai, Bắc Từ Liêm, <br> Thành phố Hà Nội
+											Công ty thời trang EShoper <br>  Nguyên Xá, Minh Khai, Bắc Từ Liêm, <br> Thành phố Hà Nội
 											<br>
-											SĐT: +84 (09) 65 814 299 
+											SĐT: +84 (09) xx xxx xxx 
 											<br>
-											Email: tranbinhtrong937@gmail.com
+											Email: exampleemail123@gmail.com
 										</ul>
 									</div>
 								</div>
@@ -584,10 +599,10 @@
 					</div>
 				</div>
 			</section>
-			<section class="copy-right clearfix" style="background-color: #8B4202 !important">
+			<section class="copy-right clearfix" style="background-color: #1a1816 !important">
 				<div class="copy-right-wrapper">
 					<div class="copy-right-inner">
-					<div class="footer_copyright">Copyright &copy; 2023 <a href="{{route('page.Home')}}" title="">The Broadway of Fast Food</a></div>
+					<div class="footer_copyright">Copyright &copy; 2024 <a href="{{route('page.Home')}}" title="">ESHOPER</a></div>
 					</div>
 				</div>
 			</section>

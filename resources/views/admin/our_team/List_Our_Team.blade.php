@@ -1,6 +1,6 @@
 @extends('admin/index')
 @section('mainContent')
-<b><i>Đội Ngũ</i></b>
+<h1><b style="width: 100%; display: block; text-align: center;">Danh sách đội ngũ</b></h1>
 <hr>
 <div class="container">
   <div class="row">

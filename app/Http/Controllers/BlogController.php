@@ -36,7 +36,7 @@ class BlogController extends Controller
                       </tr>
                       <tr>
                         <th scope="col" >Trạng thái</th>
-                        <td >'.$blog->content.'</td>
+                        <td style="max-width: 200px; max-height: 100px; overflow: hidden; text-overflow: ellipsis;">'.$blog->content.'</td>
                       </tr>
                       <tr>
                         <th scope="col">Ngày tạo</th>

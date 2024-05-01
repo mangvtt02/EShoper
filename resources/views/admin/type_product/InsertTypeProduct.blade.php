@@ -40,8 +40,8 @@
     <label for="new" class="col-sm-2 col-form-label">Phân loại</label>
     <div class="col-sm-10">
       <select id="new" class="form-control" name="new">
-        <option value="1">Đồ ăn</option>
-        <option value="2">Đồ uống</option>
+        <option value="1">Winter</option>
+        <option value="2">Summer</option>
       </select>
     </div>
   </div>

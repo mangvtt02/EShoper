@@ -13,7 +13,7 @@ use PDF;
 class AdminController extends Controller
 {
     public function index(){
-        $order = Order::orderBy('id','DESC')->paginate(6);
+        $order = Order::orderBy('id','DESC')->paginate(1000);
         return view('admin/order/ListOrder',compact('order'));
     }
     
@@ -42,19 +42,19 @@ class AdminController extends Controller
         </style>
         <body>
        
-            <h1 style = "color:red;"><center>The Broadway FAST FOOD</center></h1>
+            <h1 style = "color:red;"><center>Hoá đơn EShoper</center></h1>
             <h1><center>Hóa đơn</center></h1>
-            <i>Mã đơn hàng: </i><b>'.$order->customers->id.'</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <i>Ngày tạo: </i><b>'.date_format($order->created_at,"d-m-Y").'</b><br>
-            <i>Tên khách hàng: </i><b>'.$order->customers->name.'</b>
+            <u>Mã đơn hàng: </u><b>'.$order->customers->id.'</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <u>Ngày tạo: </u><b>'.date_format($order->created_at,"d-m-Y").'</b><br>
+            <u>Tên khách hàng: </u><b>'.$order->customers->name.'</b>
 
             <p>Thông tin sản phẩm đặt mua: </p>
            
-                <table border="1" cellspacing="0">
+                <table border="1" cellspacing="0" style="width:100%">
                 <tr>
                     <th>Sản phẩm</th>
                     <th>Size</th>
-                    <th>Topping</th>
+                    <th>Màu</th>
                     <th>Số lượng</th>
                     <th>Giá bán</th>
                 </tr>
@@ -62,16 +62,16 @@ class AdminController extends Controller
                
                 foreach ($order->order_detail as $or) {
                     $output .= '<tr>
-                                    <td>'.$or->product->name.'</td>
-                                    <td>'.$or->size->name.'</td>';
+                                    <td align = "center">'.$or->product->name.'</td>
+                                    <td align = "center">'.$or->size->name.'</td>';
                     if ($or->topping != null) {
-                        $output .= '<td>'.$or->topping->name.'</td>';
+                        $output .= '<td align = "center">'.$or->topping->name.'</td>';
                     }
                     else{
-                        $output .= '<td>null</td>';
+                        $output .= '<td align = "center">null</td>';
                     }
-                    $output .= '<td>'.$or->quantity.'</td>
-                                <td>'.number_format($or->price).'đ</td>
+                    $output .= '<td align = "center">'.$or->quantity.'</td>
+                                <td align = "center">'.number_format($or->price).'đ</td>
                                 </tr>';
                 }
                 $output .= '<tr>
@@ -85,7 +85,7 @@ class AdminController extends Controller
                 
                 </table>
                 ';
-        $output .= '<br><b>Ghi chú: </b><i>'.$order->note.'</i>';
+        $output .= '<br><b>Ghi chú: </b><u>'.$order->note.'</u>';
         $output .= '</body>
         </html>';
         return $output;

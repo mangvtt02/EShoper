@@ -13,7 +13,7 @@
 								<div class="breadcrumb-group">
 									<h1 class="hidden">Sản phẩm</h1>
 									<div class="breadcrumb clearfix">
-                                    <span ><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title"><i class="fa fa-home"></i></span></a>
+                                    <span ><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title">Trang chủ</span></a>
 										</span>
 										<span class="arrow-space"></span>
 										<span >
@@ -146,11 +146,11 @@
                 @endphp
             @endif 
                 <div class="product-item col-sm-4" >
-                    <div class="product product-circle" >
+                    <div class="product product-circle" style="border-radius: unset">
                         <div class="row-left" >
                             <a href="{{route('page.Product_detail',[$pr->id])}}" class="hoverBorder container_item" >
                                 <div class="hoverBorderWrapper" >
-                                    <img src="assets/images/product/{{$pr->image}}" style="width: 200px;height: 200px;" class="img-responsive front" alt="{{$pr->image}}">
+                                    <img src="assets/images/product/{{$pr->image}}" style="width: 200px;" class="img-responsive front" alt="{{$pr->image}}">
                                 </div>
                             </a>
                             <div class="product-label">
@@ -171,7 +171,7 @@
                                         
                                             <div class="effect-ajax-cart">
                                                 <input type="hidden" name="quantity" value="1">
-                                            <button class="_btn select-option"  title="Thêm vào giỏ hàng" @if (!Auth::guard('emp')->check())
+                                            <button style="display: none" class="_btn select-option"  title="Thêm vào giỏ hàng" @if (!Auth::guard('emp')->check())
                                             onclick="btn_click();"
                                             @endif ><span style="font-weight: bold;" class="cs-icon icon-plus"></span><a @if (Auth::guard('emp')->check())
                                             href="{{route('page.Add_cart',[$pr->id])}}"
@@ -196,7 +196,7 @@
                                     </span>
                                     <span class="spr-badge-caption">{{$pr->total_rating}} đánh giá</span>	
                                 </div>
-                            <div class="product-title"><a class="title-5" href="{{route('page.Product_detail',[$pr->id])}}">{{$pr->name}}</a></div>
+                            <div class="product-title" style="height: 100px"><a class="title-5" href="{{route('page.Product_detail',[$pr->id])}}">{{$pr->name}}</a></div>
                                 <div class="product-price">
                                     @if ($pr->discount != 0)
                                     <span class="price_sale"><span class="money" data-currency-usd="{{number_format($pr->unit_price -($pr->unit_price * $pr->discount / 100)) }}" data-currency="VND">{{number_format($pr->unit_price -($pr->unit_price * $pr->discount / 100)) }}đ</span></span>
@@ -239,7 +239,7 @@
                                     <div class="group-actionbutton">
                                         <div class="effect-ajax-cart">
                                             <input type="hidden" name="quantity" value="1">
-                                        <button class="_btn select-option"  title="Thêm vào giỏ hàng" @if (!Auth::guard('emp')->check())
+                                        <button style="display: none" class="_btn select-option"  title="Thêm vào giỏ hàng" @if (!Auth::guard('emp')->check())
                                         onclick="btn_click();"
                                         @endif ><span style="font-weight: bold;" class="cs-icon icon-plus"></span><a @if (Auth::guard('emp')->check())
                                         href="{{route('page.Add_cart',[$pr->id])}}"

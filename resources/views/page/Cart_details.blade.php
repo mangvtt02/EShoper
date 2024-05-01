@@ -15,7 +15,7 @@
                             <div class="breadcrumb-group">
                                 <h1 class="hidden">Giỏ hàng của bạn</h1>
                                 <div class="breadcrumb clearfix">
-                                <span ><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title"><i class="fa fa-home"></i></span></a>
+                                <span ><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title">Trang chủ</i></span></a>
                                     </span>
                                     <span class="arrow-space"></span>
                                     <span >
@@ -44,7 +44,7 @@
                                                     <tr>
                                                         <th class="image" colspan="2">Sản phẩm</th>
                                                         <th class="price">Size</th> 
-                                                        <th class="qty">Topping</th>
+                                                        <th class="qty">Màu sắc</th>
                                                         <th class="price">Giá</th>
                                                         <th class="qty">Số lượng</th>
                                                         <th class="total">Tổng tiền</th>
@@ -89,14 +89,14 @@
                                                             </span>
                                                         </td>
                                                         <td >
-                                                            @if ($items['type_product']['new'] != 1)
+                                                            @if ($items['type_product']['new'])
                                                            
                                                                 <div class="product-options " >
                                                                     
                                                                     <div class="product-type">
                                                                         <div class="select clearfix">
                                                                             <select class="tp" id="topping_{{$items['id']}}" name="topping_{{$items['id']}}" onchange="typeProductChange({{$items['id']}})">
-                                                                                <option value="0">--- Chọn topping ---</option>
+                                                                                <option value="0">Chọn Màu</option>
                                                                                 @foreach ($topping as $tp)
                                                                                     <option value="{{$tp->id}}">{{$tp->name}}</option>
                                                                                 @endforeach
@@ -191,7 +191,7 @@
                                                         <div class="checkout-content">
                                                             <div class="buttons clearfix">
                                                                 <!-- <input type="submit" id="checkout"  class="_btn" name="checkout" value="Đặt hàng"> -->
-                                                                <input type="submit" id="checkout"  class="_btn" name="redirect" value="Thanh toán">
+                                                                <input type="submit" id="checkout"  class="_btn" name="redirect" value="Thanh toán" onclick="return validateForm()">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -210,7 +210,20 @@
     </main>
 </div>
 
-<script type="text/javascript">
+<script>
+    function validateForm() {
+        var selectElements = document.querySelectorAll('.tp');
+        for (var i = 0; i < selectElements.length; i++) {
+            var selectedValue = selectElements[i].value;
+            if (selectedValue === '0') {
+                alert('Vui lòng chọn màu');
+                return false;
+            }
+        }
+        return true;
+    }
+</script>
+<!-- <script type="text/javascript">
 
     function typeProductChange(productID){
         
@@ -242,5 +255,5 @@
         }
     }
     
-</script>
+</script> -->
 @endsection

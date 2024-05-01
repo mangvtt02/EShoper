@@ -1,6 +1,6 @@
 @extends('admin/index')
 @section('mainContent')
-<b><i>Danh sách size</i></b>
+<h1><b style="width: 100%; display: block; text-align: center;">Danh sách size</b></h1>
 <hr>
 <div class="container">
   <div class="row">
@@ -16,7 +16,7 @@
         <tr class="text-center">
           <th scope="col">ID</th>
           <th scope="col">Tên size</th>
-          <th scope="col">Phần trăm tăng ( so với giá sản phẩm )</th>
+          <th scope="col">Độ to (%)</th>
           <th scope="col" >Trạng thái</th>
           <th scope="col">Thao tác</th>
         

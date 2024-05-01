@@ -16,7 +16,7 @@
                             <div class="breadcrumb-group">
                                 <h1 class="hidden">Giới thiệu</h1>
                                 <div class="breadcrumb clearfix">
-                                    <span itemscope="" ><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title"><i class="fa fa-home"></i></span></a>
+                                    <span itemscope="" ><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title">Trang chủ</i></span></a>
                                     </span>
                                     <span class="arrow-space"></span>
                                     <span itemscope="" >
@@ -39,10 +39,6 @@
                                     <div class="introduction_layout">
                                         <div class="introduction_inner">
                                             <div class="page_title">
-                                                <h2 class="title">
-                                                    <span class="first">Giới thiệu</span>
-                                                    <span class="last">về Nom Nom</span>
-                                                </h2>
                                                 @foreach ($about as $item)
                                                     <p class="caption">{!!$item->title!!}</p>
                                                 @endforeach
@@ -50,7 +46,8 @@
                                             </div>
                                             @foreach ($about as $item)
                                                 <div class="introduction_content">
-                                                <img src="assets/images/about/{{$item->image}}" alt="{{$item->image}}">
+                                                <img src="assets\images\1121.jpg">
+                                                <img  style="display: none" src="assets/images/about/{{$item->image}}" alt="{{$item->image}}">
                                                     <div class="introduction_description">
                                                         {!!$item->content!!}
                                                     </div>
@@ -61,8 +58,7 @@
                                     <div class="team_layout">
                                         <div class="page_title">
                                             <h2 class="title">
-                                                <span class="first">Our</span>
-                                                <span class="last"> Nom Nom Team</span>
+                                                <span class="first">ABOUT US</span>
                                             </h2>
                                         </div>
                                         <div class="team_inner">

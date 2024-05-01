@@ -14,7 +14,7 @@
                             <div class="breadcrumb-group">
                                 <h1 class="hidden">Hóa đơn</h1>
                                 <div class="breadcrumb clearfix">
-                                <span ><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title"><i class="fa fa-home"></i></span></a>
+                                <span ><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title">Trang chủ</i></span></a>
                                     </span>
                                     <span class="arrow-space"></span>
                                     <span >
@@ -66,50 +66,31 @@
                                                 <tr>
                                                     <th>Sản phẩm</th>
                                                     <th>Size</th>
-                                                    <th>Topping</th>
+                                                    <th>Màu sắc</th>
                                                     <th>Giá</th>
                                                     <th class="center">Số lượng</th>
                                                     <th class="total">Tổng tiền</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <tbody>
                                                 @foreach ($or->order_detail as $tp)
                                                 @php
-                                                    $price = 0;
-                                                    $price_tp = 0;
-                                                    $price_s = 0;
-                                                    
                                                     $price = $tp->product->unit_price - ($tp->product->unit_price*$tp->product->discount)/100;
-                                                    if($tp->id_topping != 0){
-                                                        $price_tp = $tp->quantity*($price+$tp->topping->price+($tp->size->percent*$price)/100);
-                                                    }
-                                                    else{
-                                                        $price_s = $tp->quantity*($price+($tp->size->percent*$price)/100);
-                                                        
-                                                    }
+                                                    $total_price = $tp->quantity * $price;
                                                 @endphp 
                                                 <tr id="10324769618" class="odd">
                                                     <td class="td-product">{{$tp->product->name}}</td>
-                                                        
-                                                        <td class="sku note">{{$tp->size->name}}</td>
-                                                        
-                                                        @if ($tp->id_topping)
-                                                            <td class="sku note">{{$tp->topping->name}}</td>
-                                                        @else
-                                                            <td class="sku note">null</td>
-                                                        @endif
-                                                        <td class="quantity ">{{number_format($price_s)}}đ</td>
-                                                        <td class="total"><span class="money" >{{$tp->quantity}}</span></td>
-                                                        @if($tp->id_topping)
-                                                            <td class="total"><span class="money">{{number_format($price_tp)}}đ</span></td>
-                                                        @else
-                                                            <td class="total"><span class="money">{{number_format($price_s)}}đ</span></td>
-                                                        @endif
+                                                    <td class="sku note">{{$tp->size->name}}</td>
+                                                    <td class="sku note">{{$tp->topping->name}}</td>
+                                                    <td class="quantity">{{number_format($price)}}đ</td>
+                                                    <td class="total"><span class="money">{{$tp->quantity}}</span></td>
+                                                    <td class="total"><span class="money">{{number_format($total_price)}}đ</span></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
                                             <tfoot>
-                                                <tr class="order_summary note">
+                                            <tr class="order_summary note">
                                                     <td class="td-label" colspan="5">Thành tiền:</td>
                                                     <td class="subtotal"><span class="money" >{{number_format($or->total-20000)}}đ</span></td>
                                                 </tr>

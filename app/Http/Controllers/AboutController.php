@@ -79,7 +79,6 @@ class AboutController extends Controller
             while(file_exists("public/assets/images/product/".$image)){
                 $image = Str::random(4)."_".$name;
             }
-            
             if($about->image == '' ){
                 $file_img->move("public/assets/images/about",$image);
             }

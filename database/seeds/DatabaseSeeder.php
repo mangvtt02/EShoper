@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         DB::table('users')->insert([
-            'name'=>'Hà Minh Phương',
+            'name'=>'Vũ Thị Tuyết Măng',
             'email'=>'mp753114@gmail.com',
             'gender'=>'nam',
             'token'=>'1',

@@ -16,7 +16,7 @@
         border-radius: 5px;
     }
     .list_star .rating_active{
-        color: #ffc03f !important;
+        color: #8b8b89 !important;
     }
     
 </style>
@@ -31,7 +31,7 @@
 <div class="breadcrumb-group">
 <h1 class="hidden">Thông tin chi tiết</h1>
 <div class="breadcrumb clearfix">
-<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title"><i class="fa fa-home"></i></span></a>
+<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title">Trang chủ</span></a>
 </span>
 <span class="arrow-space"></span>
 <span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
@@ -100,28 +100,6 @@
                     <div class="show-image-load show-load-detail" style="display: none;">
                         <div class="show-image-load-inner">
                             <i class="fa fa-spinner fa-pulse fa-2x"></i>
-                        </div>
-                    </div>
-                    <div class="slider-3itemsc vertical-image-content">
-                        <div class="image-vertical image active">
-                            <a href="assets/images/product/{{$pr_detail->image}}" class="cloud-zoom-gallery">
-                                <img src="assets/images/product/{{$pr_detail->image}}" alt="Extra Crispy">
-                            </a>
-                        </div>
-                        <div class="image-vertical image">
-                            <a href="assets/images/product/{{$pr_detail->image}}" class="cloud-zoom-gallery">
-                                <img src="assets/images/product/{{$pr_detail->image}}" alt="Extra Crispy">
-                            </a>
-                        </div>
-                        <div class="image-vertical image">
-                            <a href="assets/images/product/{{$pr_detail->image}}" class="cloud-zoom-gallery">
-                                <img src="assets/images/product/{{$pr_detail->image}}" alt="Extra Crispy">
-                            </a>
-                        </div>
-                        <div class="image-vertical image">
-                            <a href="assets/images/product/{{$pr_detail->image}}" class="cloud-zoom-gallery">
-                                <img src="assets/images/product/{{$pr_detail->image}}" alt="Extra Crispy">
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -354,7 +332,7 @@
     </div>
     <div id="tabs-information" class="col-md-12 tabs-information">
         <div class="col-md-12 tabs-title">
-            <ul class="nav nav-tabs tabs-left sideways">
+            <ul class="nav nav-tabs tabs-left sidewas">
                 <li class="active"><a href="#desc" data-toggle="tab">Mô tả</a></li>
                 <li><a href="#review" data-toggle="tab">Đánh giá</a></li>
                 

@@ -17,7 +17,7 @@
 							<div class="breadcrumb-group">
 								<h1 class="hidden">Trang tìm kiếm blogs</h1>
 								<div class="breadcrumb clearfix">
-								<span ><a href="{{route('page.Home')}}" title="Trang chủ" itemprop="url"><span itemprop="title"><i class="fa fa-home"></i></span></a>
+								<span ><a href="{{route('page.Home')}}" title="Trang chủ" itemprop="url"><span itemprop="title">Trang chủ</span></a>
 									</span>
 									<span class="arrow-space"></span>
 									<span >
@@ -72,7 +72,7 @@
                                                                     
                                                                     <div class="effect-ajax-cart">
                                                                         <input type="hidden" name="quantity" value="1">
-                                                                    <button class="_btn select-option"  title="Thêm vào giỏ hàng" @if (!Auth::guard('emp')->check())
+                                                                    <button style="display: none" class="_btn select-option"  title="Thêm vào giỏ hàng" @if (!Auth::guard('emp')->check())
                                                                     onclick="btn_click();"
                                                                     @endif ><span style="font-weight: bold;" class="cs-icon icon-plus"></span><a @if (Auth::guard('emp')->check())
                                                                     href="{{route('page.Add_cart',[$s->id])}}"

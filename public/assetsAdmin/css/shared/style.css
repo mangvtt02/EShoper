@@ -608,7 +608,7 @@ pre {
       max-width: 960px; } }
   @media (min-width: 1200px) {
     .container {
-      max-width: 1140px; } }
+      max-width: 1400px; } }
 
 .container-fluid {
   width: 100%;
@@ -5566,7 +5566,7 @@ a.close.disabled {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 500px;
+    max-width: 1400px;
     margin: 30px auto; }
   .modal-dialog-scrollable {
     max-height: calc(100% - 60px); }

@@ -1,6 +1,6 @@
 @extends('admin/index')
 @section('mainContent')
-<b><i>Danh sách đánh giá</i></b>
+<h1><b style="width: 100%; display: block; text-align: center;">Danh sách đánh giá về sản phẩm</b></h1>
 <hr>
 <div class="container">
 <div class="row table-responsive">

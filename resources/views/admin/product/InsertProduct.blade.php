@@ -66,6 +66,12 @@
     </div>
   </div>
   <div class="form-group row">
+    <label for="storage_quantity" class="col-sm-2 col-form-label">Số lượng hàng trong kho</label>
+    <div class="col-sm-10">
+    <input type="number" class="form-control" id="storage_quantity" name="storage_quantity">
+    </div>
+  </div>
+  <div class="form-group row">
     <label for="discount" class="col-sm-2 col-form-label">Phần trăm khuyến mại</label>
     <div class="col-sm-10">
       <input type="number" class="form-control" id="discount" name="discount" >

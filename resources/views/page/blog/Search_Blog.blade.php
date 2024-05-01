@@ -17,7 +17,7 @@
 							<div class="breadcrumb-group">
 								<h1 class="hidden">Trang tìm kiếm blogs</h1>
 								<div class="breadcrumb clearfix">
-								<span ><a href="{{route('page.Home')}}" title="Trang chủ" itemprop="url"><span itemprop="title"><i class="fa fa-home"></i></span></a>
+								<span ><a href="{{route('page.Home')}}" title="Trang chủ" itemprop="url"><span itemprop="title">Trang chủ</span></a>
 									</span>
 									<span class="arrow-space"></span>
 									<span >

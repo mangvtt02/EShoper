@@ -14,7 +14,7 @@
 								<div class="breadcrumb-group">
 									<h1 class="hidden">Super Deal</h1>
 									<div class="breadcrumb clearfix">
-										<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="index-2.html" title="Fast Food" itemprop="url"><span itemprop="title"><i class="fa fa-home"></i></span></a>
+										<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="index-2.html" title="Fast Food" itemprop="url"><span itemprop="title">Trang chủ</span></a>
 										</span>
 										<span class="arrow-space"></span>
 										<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
