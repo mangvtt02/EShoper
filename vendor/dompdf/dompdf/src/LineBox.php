@@ -7,12 +7,17 @@
  */
 namespace Dompdf;
 
+<<<<<<< HEAD
 use Dompdf\FrameDecorator\AbstractFrameDecorator;
 use Dompdf\FrameDecorator\Block;
 use Dompdf\FrameDecorator\ListBullet;
 use Dompdf\FrameDecorator\Page;
 use Dompdf\FrameReflower\Text as TextFrameReflower;
 use Dompdf\Positioner\Inline as InlinePositioner;
+=======
+use Dompdf\FrameDecorator\Block;
+use Dompdf\FrameDecorator\Page;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * The line box class
@@ -31,17 +36,25 @@ class LineBox
     protected $_block_frame;
 
     /**
+<<<<<<< HEAD
      * @var AbstractFrameDecorator[]
+=======
+     * @var Frame[]
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $_frames = [];
 
     /**
+<<<<<<< HEAD
      * @var ListBullet[]
      */
     protected $list_markers = [];
 
     /**
      * @var int
+=======
+     * @var integer
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public $wc = 0;
 
@@ -71,7 +84,11 @@ class LineBox
     public $right = 0.0;
 
     /**
+<<<<<<< HEAD
      * @var AbstractFrameDecorator
+=======
+     * @var Frame
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public $tallest_frame = null;
 
@@ -86,6 +103,7 @@ class LineBox
     public $br = false;
 
     /**
+<<<<<<< HEAD
      * Whether the line box contains any inline-positioned frames.
      *
      * @var bool
@@ -93,6 +111,8 @@ class LineBox
     public $inline = false;
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Class constructor
      *
      * @param Block $frame the Block containing this line
@@ -155,6 +175,12 @@ class LineBox
         return $childs;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     *
+     */
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function get_float_offsets()
     {
         static $anti_infinite_loop = 10000; // FIXME smelly hack
@@ -256,7 +282,11 @@ class LineBox
     }
 
     /**
+<<<<<<< HEAD
      * @return AbstractFrameDecorator[]
+=======
+     * @return Frame[]
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     function &get_frames()
     {
@@ -264,11 +294,16 @@ class LineBox
     }
 
     /**
+<<<<<<< HEAD
      * @param AbstractFrameDecorator $frame
+=======
+     * @param Frame $frame
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function add_frame(Frame $frame)
     {
         $this->_frames[] = $frame;
+<<<<<<< HEAD
 
         if ($frame->get_positioner() instanceof InlinePositioner) {
             $this->inline = true;
@@ -370,6 +405,8 @@ class LineBox
             $reflower->trim_trailing_ws();
             $this->recalculate_width();
         }
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -379,10 +416,17 @@ class LineBox
      */
     public function recalculate_width()
     {
+<<<<<<< HEAD
         $width = 0.0;
 
         foreach ($this->_frames as $frame) {
             $width += $frame->get_margin_width();
+=======
+        $width = 0;
+
+        foreach ($this->get_frames() as $frame) {
+            $width += $frame->calculate_auto_width();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this->w = $width;
@@ -402,6 +446,13 @@ class LineBox
 
         return $s;
     }
+<<<<<<< HEAD
+=======
+    /*function __get($prop) {
+      if (!isset($this->{"_$prop"})) return;
+      return $this->{"_$prop"};
+    }*/
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }
 
 /*

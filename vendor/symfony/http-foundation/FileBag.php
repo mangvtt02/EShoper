@@ -21,7 +21,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class FileBag extends ParameterBag
 {
+<<<<<<< HEAD
     private const FILE_KEYS = ['error', 'name', 'size', 'tmp_name', 'type'];
+=======
+    private static $fileKeys = ['error', 'name', 'size', 'tmp_name', 'type'];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @param array|UploadedFile[] $parameters An array of HTTP files
@@ -75,6 +79,7 @@ class FileBag extends ParameterBag
             return $file;
         }
 
+<<<<<<< HEAD
         $file = $this->fixPhpFilesArray($file);
         $keys = array_keys($file);
         sort($keys);
@@ -89,6 +94,24 @@ class FileBag extends ParameterBag
             $file = array_map(function ($v) { return $v instanceof UploadedFile || \is_array($v) ? $this->convertFileInformation($v) : $v; }, $file);
             if (array_keys($keys) === $keys) {
                 $file = array_filter($file);
+=======
+        if (\is_array($file)) {
+            $file = $this->fixPhpFilesArray($file);
+            $keys = array_keys($file);
+            sort($keys);
+
+            if ($keys == self::$fileKeys) {
+                if (\UPLOAD_ERR_NO_FILE == $file['error']) {
+                    $file = null;
+                } else {
+                    $file = new UploadedFile($file['tmp_name'], $file['name'], $file['type'], $file['error'], false);
+                }
+            } else {
+                $file = array_map([$this, 'convertFileInformation'], $file);
+                if (array_keys($keys) === $keys) {
+                    $file = array_filter($file);
+                }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
 
@@ -113,17 +136,28 @@ class FileBag extends ParameterBag
      */
     protected function fixPhpFilesArray($data)
     {
+<<<<<<< HEAD
         // Remove extra key added by PHP 8.1.
         unset($data['full_path']);
         $keys = array_keys($data);
         sort($keys);
 
         if (self::FILE_KEYS != $keys || !isset($data['name']) || !\is_array($data['name'])) {
+=======
+        $keys = array_keys($data);
+        sort($keys);
+
+        if (self::$fileKeys != $keys || !isset($data['name']) || !\is_array($data['name'])) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $data;
         }
 
         $files = $data;
+<<<<<<< HEAD
         foreach (self::FILE_KEYS as $k) {
+=======
+        foreach (self::$fileKeys as $k) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             unset($files[$k]);
         }
 

@@ -18,10 +18,17 @@ namespace Symfony\Component\VarDumper\Cloner;
  */
 class Cursor
 {
+<<<<<<< HEAD
     public const HASH_INDEXED = Stub::ARRAY_INDEXED;
     public const HASH_ASSOC = Stub::ARRAY_ASSOC;
     public const HASH_OBJECT = Stub::TYPE_OBJECT;
     public const HASH_RESOURCE = Stub::TYPE_RESOURCE;
+=======
+    const HASH_INDEXED = Stub::ARRAY_INDEXED;
+    const HASH_ASSOC = Stub::ARRAY_ASSOC;
+    const HASH_OBJECT = Stub::TYPE_OBJECT;
+    const HASH_RESOURCE = Stub::TYPE_RESOURCE;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     public $depth = 0;
     public $refIndex = 0;

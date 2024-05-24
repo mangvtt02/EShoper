@@ -41,7 +41,12 @@ class PsrLogMessageProcessor implements ProcessorInterface
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * @param  array $record
+     * @return array
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __invoke(array $record): array
     {
@@ -66,12 +71,19 @@ class PsrLogMessageProcessor implements ProcessorInterface
                 } else {
                     $replacements[$placeholder] = $val->format($this->dateFormat ?: static::SIMPLE_DATE);
                 }
+<<<<<<< HEAD
             } elseif ($val instanceof \UnitEnum) {
                 $replacements[$placeholder] = $val instanceof \BackedEnum ? $val->value : $val->name;
             } elseif (is_object($val)) {
                 $replacements[$placeholder] = '[object '.Utils::getClass($val).']';
             } elseif (is_array($val)) {
                 $replacements[$placeholder] = 'array'.Utils::jsonEncode($val, null, true);
+=======
+            } elseif (is_object($val)) {
+                $replacements[$placeholder] = '[object '.Utils::getClass($val).']';
+            } elseif (is_array($val)) {
+                $replacements[$placeholder] = 'array'.@json_encode($val);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             } else {
                 $replacements[$placeholder] = '['.gettype($val).']';
             }

@@ -8,7 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 namespace Carbon\Traits;
 
 use Carbon\Carbon;
@@ -65,7 +68,11 @@ trait IntervalStep
         $carbonDate = $dateTime instanceof CarbonInterface ? $dateTime : $this->resolveCarbon($dateTime);
 
         if ($this->step) {
+<<<<<<< HEAD
             return $carbonDate->setDateTimeFrom(($this->step)($carbonDate->avoidMutation(), $negated));
+=======
+            return $carbonDate->setDateTimeFrom(($this->step)($carbonDate->copy(), $negated));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if ($negated) {

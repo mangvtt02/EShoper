@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
 use function get_class;
 use function is_array;
 use function is_object;
@@ -17,6 +18,10 @@ use function sprintf;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\Comparator\ComparisonFailure;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
+=======
+use PHPUnit\Framework\ExpectationFailedException;
+use SebastianBergmann\Comparator\ComparisonFailure;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Constraint that asserts that one value is identical to another.
@@ -32,6 +37,14 @@ use SebastianBergmann\RecursionContext\InvalidArgumentException;
 final class IsIdentical extends Constraint
 {
     /**
+<<<<<<< HEAD
+=======
+     * @var float
+     */
+    private const EPSILON = 0.0000000001;
+
+    /**
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @var mixed
      */
     private $value;
@@ -42,7 +55,11 @@ final class IsIdentical extends Constraint
     }
 
     /**
+<<<<<<< HEAD
      * Evaluates the constraint for parameter $other.
+=======
+     * Evaluates the constraint for parameter $other
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -52,11 +69,25 @@ final class IsIdentical extends Constraint
      * failure.
      *
      * @throws ExpectationFailedException
+<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
     {
         $success = $this->value === $other;
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
+    public function evaluate($other, string $description = '', bool $returnResult = false)
+    {
+        if (\is_float($this->value) && \is_float($other) &&
+            !\is_infinite($this->value) && !\is_infinite($other) &&
+            !\is_nan($this->value) && !\is_nan($other)) {
+            $success = \abs($this->value - $other) < self::EPSILON;
+        } else {
+            $success = $this->value === $other;
+        }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($returnResult) {
             return $success;
@@ -66,17 +97,30 @@ final class IsIdentical extends Constraint
             $f = null;
 
             // if both values are strings, make sure a diff is generated
+<<<<<<< HEAD
             if (is_string($this->value) && is_string($other)) {
                 $f = new ComparisonFailure(
                     $this->value,
                     $other,
                     sprintf("'%s'", $this->value),
                     sprintf("'%s'", $other)
+=======
+            if (\is_string($this->value) && \is_string($other)) {
+                $f = new ComparisonFailure(
+                    $this->value,
+                    $other,
+                    \sprintf("'%s'", $this->value),
+                    \sprintf("'%s'", $other)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 );
             }
 
             // if both values are array, make sure a diff is generated
+<<<<<<< HEAD
             if (is_array($this->value) && is_array($other)) {
+=======
+            if (\is_array($this->value) && \is_array($other)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $f = new ComparisonFailure(
                     $this->value,
                     $other,
@@ -92,6 +136,7 @@ final class IsIdentical extends Constraint
     /**
      * Returns a string representation of the constraint.
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     public function toString(): string
@@ -99,19 +144,33 @@ final class IsIdentical extends Constraint
         if (is_object($this->value)) {
             return 'is identical to an object of class "' .
                 get_class($this->value) . '"';
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
+    public function toString(): string
+    {
+        if (\is_object($this->value)) {
+            return 'is identical to an object of class "' .
+                \get_class($this->value) . '"';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return 'is identical to ' . $this->exporter()->export($this->value);
     }
 
     /**
+<<<<<<< HEAD
      * Returns the description of the failure.
+=======
+     * Returns the description of the failure
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
      *
      * @param mixed $other evaluated value or object
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     protected function failureDescription($other): string
@@ -125,6 +184,21 @@ final class IsIdentical extends Constraint
         }
 
         if (is_array($this->value) && is_array($other)) {
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
+    protected function failureDescription($other): string
+    {
+        if (\is_object($this->value) && \is_object($other)) {
+            return 'two variables reference the same object';
+        }
+
+        if (\is_string($this->value) && \is_string($other)) {
+            return 'two strings are identical';
+        }
+
+        if (\is_array($this->value) && \is_array($other)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return 'two arrays are identical';
         }
 

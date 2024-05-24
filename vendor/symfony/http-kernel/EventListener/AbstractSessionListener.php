@@ -37,7 +37,11 @@ use Symfony\Component\HttpKernel\KernelEvents;
  */
 abstract class AbstractSessionListener implements EventSubscriberInterface
 {
+<<<<<<< HEAD
     public const NO_AUTO_CACHE_CONTROL_HEADER = 'Symfony-Session-NoAutoCacheControl';
+=======
+    const NO_AUTO_CACHE_CONTROL_HEADER = 'Symfony-Session-NoAutoCacheControl';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     protected $container;
     private $sessionUsageStack = [];
@@ -53,6 +57,7 @@ abstract class AbstractSessionListener implements EventSubscriberInterface
             return;
         }
 
+<<<<<<< HEAD
         $request = $event->getRequest();
         if (!$request->hasSession()) {
             $sess = null;
@@ -60,6 +65,19 @@ abstract class AbstractSessionListener implements EventSubscriberInterface
         }
 
         $session = $this->container && $this->container->has('initialized_session') ? $this->container->get('initialized_session') : null;
+=======
+        $session = null;
+        $request = $event->getRequest();
+        if ($request->hasSession()) {
+            // no-op
+        } elseif (method_exists($request, 'setSessionFactory')) {
+            $request->setSessionFactory(function () { return $this->getSession(); });
+        } elseif ($session = $this->getSession()) {
+            $request->setSession($session);
+        }
+
+        $session = $session ?? ($this->container && $this->container->has('initialized_session') ? $this->container->get('initialized_session') : null);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->sessionUsageStack[] = $session instanceof Session ? $session->getUsageIndex() : 0;
     }
 
@@ -74,7 +92,11 @@ abstract class AbstractSessionListener implements EventSubscriberInterface
         // Always remove the internal header if present
         $response->headers->remove(self::NO_AUTO_CACHE_CONTROL_HEADER);
 
+<<<<<<< HEAD
         if (!$session = $this->container && $this->container->has('initialized_session') ? $this->container->get('initialized_session') : ($event->getRequest()->hasSession() ? $event->getRequest()->getSession() : null)) {
+=======
+        if (!$session = $this->container && $this->container->has('initialized_session') ? $this->container->get('initialized_session') : $event->getRequest()->getSession()) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return;
         }
 

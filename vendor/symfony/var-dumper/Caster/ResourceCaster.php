@@ -48,7 +48,11 @@ class ResourceCaster
     public static function castStream($stream, array $a, Stub $stub, $isNested)
     {
         $a = stream_get_meta_data($stream) + static::castStreamContext($stream, $a, $stub, $isNested);
+<<<<<<< HEAD
         if ($a['uri'] ?? false) {
+=======
+        if (isset($a['uri'])) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $a['uri'] = new LinkStub($a['uri']);
         }
 

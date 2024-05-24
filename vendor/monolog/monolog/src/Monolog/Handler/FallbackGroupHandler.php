@@ -13,6 +13,7 @@ namespace Monolog\Handler;
 
 use Throwable;
 
+<<<<<<< HEAD
 /**
  * Forwards records to at most one handler
  *
@@ -26,11 +27,20 @@ class FallbackGroupHandler extends GroupHandler
 {
     /**
      * {@inheritDoc}
+=======
+class FallbackGroupHandler extends GroupHandler
+{
+    /**
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function handle(array $record): bool
     {
         if ($this->processors) {
+<<<<<<< HEAD
             /** @var Record $record */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $record = $this->processRecord($record);
         }
         foreach ($this->handlers as $handler) {
@@ -46,7 +56,11 @@ class FallbackGroupHandler extends GroupHandler
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function handleBatch(array $records): void
     {
@@ -55,7 +69,10 @@ class FallbackGroupHandler extends GroupHandler
             foreach ($records as $record) {
                 $processed[] = $this->processRecord($record);
             }
+<<<<<<< HEAD
             /** @var Record[] $records */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $records = $processed;
         }
 

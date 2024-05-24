@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @mixin \Yajra\DataTables\DataTables
+<<<<<<< HEAD
  *
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @method static \Yajra\DataTables\EloquentDatatable eloquent($builder)
  * @method static \Yajra\DataTables\QueryDataTable query($builder)
  * @method static \Yajra\DataTables\CollectionDataTable collection($collection)

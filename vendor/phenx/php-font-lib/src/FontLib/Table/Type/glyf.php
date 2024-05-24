@@ -1,7 +1,11 @@
 <?php
 /**
  * @package php-font-lib
+<<<<<<< HEAD
  * @link    https://github.com/dompdf/php-font-lib
+=======
+ * @link    https://github.com/PhenX/php-font-lib
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
@@ -48,7 +52,11 @@ class glyf extends Table {
     return array_unique(array_merge($gids, $glyphIDs));
   }
 
+<<<<<<< HEAD
   public function toHTML($n = 500) {
+=======
+  public function toHTML() {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     $max  = 160;
     $font = $this->getFont();
 
@@ -74,6 +82,11 @@ class glyf extends Table {
       $height = round($height / $ratio);
     }
 
+<<<<<<< HEAD
+=======
+    $n = 500;
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     $s = "<h3>" . "Only the first $n simple glyphs are shown (" . count($this->data) . " total)
     <div class='glyph-view simple'>Simple glyph</div>
     <div class='glyph-view composite'>Composite glyph</div>
@@ -109,11 +122,14 @@ class glyf extends Table {
       $name = isset($names[$g]) ? $names[$g] : sprintf("uni%04x", $char);
       $char = $char ? "&#{$glyphIndexArray[$g]};" : "";
 
+<<<<<<< HEAD
       if ($char === "" && empty($shape["SVGContours"])) {
         $n++;
         continue;
       }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
       $s .= "<div class='glyph-view $type' id='glyph-$g'>
               <span class='glyph-id'>$g</span>
               <span class='char'>$char</span>
@@ -146,6 +162,7 @@ class glyf extends Table {
     $length = 0;
     foreach ($subset as $gid) {
       $loca[] = $length;
+<<<<<<< HEAD
 
       $bytes = $data[$gid]->encode();
 
@@ -156,6 +173,9 @@ class glyf extends Table {
         $font->write(str_pad("", $pad, "\0"), $pad);
       }
       $length += $bytes + $pad;
+=======
+      $length += $data[$gid]->encode();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     $loca[]                             = $length; // dummy loca

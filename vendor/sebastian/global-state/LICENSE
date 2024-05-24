@@ -1,6 +1,10 @@
 sebastian/global-state
 
+<<<<<<< HEAD
 Copyright (c) 2001-2022, Sebastian Bergmann <sebastian@phpunit.de>.
+=======
+Copyright (c) 2001-2019, Sebastian Bergmann <sebastian@phpunit.de>.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

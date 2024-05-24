@@ -40,7 +40,11 @@ class HelpCommand extends Command
                 new InputOption('format', null, InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt'),
                 new InputOption('raw', null, InputOption::VALUE_NONE, 'To output raw command help'),
             ])
+<<<<<<< HEAD
             ->setDescription('Display help for a command')
+=======
+            ->setDescription('Displays help for a command')
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ->setHelp(<<<'EOF'
 The <info>%command.name%</info> command displays help for a given command:
 

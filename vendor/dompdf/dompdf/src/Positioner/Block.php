@@ -16,8 +16,12 @@ use Dompdf\FrameDecorator\AbstractFrameDecorator;
  * @access  private
  * @package dompdf
  */
+<<<<<<< HEAD
 class Block extends AbstractPositioner
 {
+=======
+class Block extends AbstractPositioner {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     function position(AbstractFrameDecorator $frame)
     {
@@ -32,12 +36,30 @@ class Block extends AbstractPositioner
                 $p->add_line(true);
             }
             $y = $p->get_current_line_box()->y;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } else {
             $y = $cb["y"];
         }
 
         $x = $cb["x"];
 
+<<<<<<< HEAD
+=======
+        // Relative positionning
+        if ($style->position === "relative") {
+            $top = (float)$style->length_in_pt($style->top, $cb["h"]);
+            //$right =  (float)$style->length_in_pt($style->right,  $cb["w"]);
+            //$bottom = (float)$style->length_in_pt($style->bottom, $cb["h"]);
+            $left = (float)$style->length_in_pt($style->left, $cb["w"]);
+
+            $x += $left;
+            $y += $top;
+        }
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $frame->set_position($x, $y);
     }
 }

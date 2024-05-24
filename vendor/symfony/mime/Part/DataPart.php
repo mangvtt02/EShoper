@@ -20,9 +20,12 @@ use Symfony\Component\Mime\MimeTypes;
  */
 class DataPart extends TextPart
 {
+<<<<<<< HEAD
     /** @internal */
     protected $_parent;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private static $mimeTypes;
 
     private $filename;
@@ -33,6 +36,7 @@ class DataPart extends TextPart
     /**
      * @param resource|string $body
      */
+<<<<<<< HEAD
     public function __construct($body, ?string $filename = null, ?string $contentType = null, ?string $encoding = null)
     {
         unset($this->_parent);
@@ -53,6 +57,26 @@ class DataPart extends TextPart
 
     public static function fromPath(string $path, ?string $name = null, ?string $contentType = null): self
     {
+=======
+    public function __construct($body, string $filename = null, string $contentType = null, string $encoding = null)
+    {
+        if (null === $contentType) {
+            $contentType = 'application/octet-stream';
+        }
+        list($this->mediaType, $subtype) = explode('/', $contentType);
+
+        parent::__construct($body, null, $subtype, $encoding);
+
+        $this->filename = $filename;
+        $this->setName($filename);
+        $this->setDisposition('attachment');
+    }
+
+    public static function fromPath(string $path, string $name = null, string $contentType = null): self
+    {
+        // FIXME: if file is not readable, exception?
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (null === $contentType) {
             $ext = strtolower(substr($path, strrpos($path, '.') + 1));
             if (null === self::$mimeTypes) {
@@ -61,13 +85,18 @@ class DataPart extends TextPart
             $contentType = self::$mimeTypes->getMimeTypes($ext)[0] ?? 'application/octet-stream';
         }
 
+<<<<<<< HEAD
         if ((is_file($path) && !is_readable($path)) || is_dir($path)) {
+=======
+        if (false === is_readable($path)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new InvalidArgumentException(sprintf('Path "%s" is not readable.', $path));
         }
 
         if (false === $handle = @fopen($path, 'r', false)) {
             throw new InvalidArgumentException(sprintf('Unable to open path "%s".', $path));
         }
+<<<<<<< HEAD
 
         if (!is_file($path)) {
             $cache = fopen('php://temp', 'r+');
@@ -75,6 +104,8 @@ class DataPart extends TextPart
             $handle = $cache;
         }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $p = new self($handle, $name ?: basename($path), $contentType);
         $p->handle = $handle;
 
@@ -167,6 +198,7 @@ class DataPart extends TextPart
         $r->setValue($this, $this->_headers);
         unset($this->_headers);
 
+<<<<<<< HEAD
         if (!\is_array($this->_parent)) {
             throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
         }
@@ -174,6 +206,9 @@ class DataPart extends TextPart
             if (null !== $this->_parent[$name] && !\is_string($this->_parent[$name])) {
                 throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
             }
+=======
+        foreach (['body', 'charset', 'subtype', 'disposition', 'name', 'encoding'] as $name) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $r = new \ReflectionProperty(TextPart::class, $name);
             $r->setAccessible(true);
             $r->setValue($this, $this->_parent[$name]);

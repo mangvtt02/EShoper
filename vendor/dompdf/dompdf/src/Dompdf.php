@@ -17,6 +17,10 @@ use Dompdf\Frame\FrameTree;
 use HTML5_Tokenizer;
 use HTML5_TreeBuilder;
 use Dompdf\Image\Cache;
+<<<<<<< HEAD
+=======
+use Dompdf\Renderer\ListBullet;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Dompdf\Css\Stylesheet;
 use Dompdf\Helpers;
 
@@ -153,7 +157,26 @@ class Dompdf
      *
      * @var string
      */
+<<<<<<< HEAD
     private $protocol = "";
+=======
+    private $protocol;
+
+    /**
+     * HTTP context created with stream_context_create()
+     * Will be used for file_get_contents
+     *
+     * @var resource
+     */
+    private $httpContext;
+
+    /**
+     * Timestamp of the script start time
+     *
+     * @var int
+     */
+    private $startTime = null;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * The system's locale
@@ -205,7 +228,11 @@ class Dompdf
     *
     * @var array
     */
+<<<<<<< HEAD
     private $allowedProtocols = ["", "file://", "http://", "https://"];
+=======
+    private $allowedProtocols = [null, "", "file://", "http://", "https://"];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
     * Local file extension whitelist
@@ -273,7 +300,11 @@ class Dompdf
 
         $versionFile = realpath(__DIR__ . '/../VERSION');
         if (file_exists($versionFile) && ($version = trim(file_get_contents($versionFile))) !== false && $version !== '$Format:<%h>$') {
+<<<<<<< HEAD
             $this->version = sprintf('dompdf %s', $version);
+=======
+          $this->version = sprintf('dompdf %s', $version);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $this->setPhpConfig();
@@ -299,8 +330,15 @@ class Dompdf
             setlocale(LC_NUMERIC, "C");
         }
 
+<<<<<<< HEAD
         $this->pcreJit = @ini_get('pcre.jit');
         @ini_set('pcre.jit', '0');
+=======
+        if (version_compare(PHP_VERSION, '7.0.0') >= 0) {
+            $this->pcreJit = @ini_get('pcre.jit');
+            @ini_set('pcre.jit', '0');
+        }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $this->mbstringEncoding = mb_internal_encoding();
         mb_internal_encoding('UTF-8');
@@ -311,17 +349,29 @@ class Dompdf
      */
     private function restorePhpConfig()
     {
+<<<<<<< HEAD
         if ($this->systemLocale !== null) {
+=======
+        if (!empty($this->systemLocale)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             setlocale(LC_NUMERIC, $this->systemLocale);
             $this->systemLocale = null;
         }
 
+<<<<<<< HEAD
         if ($this->pcreJit !== null) {
+=======
+        if (!empty($this->pcreJit)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             @ini_set('pcre.jit', $this->pcreJit);
             $this->pcreJit = null;
         }
 
+<<<<<<< HEAD
         if ($this->mbstringEncoding !== null) {
+=======
+        if (!empty($this->mbstringEncoding)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             mb_internal_encoding($this->mbstringEncoding);
             $this->mbstringEncoding = null;
         }
@@ -356,6 +406,7 @@ class Dompdf
         
         $uri = Helpers::build_url($this->protocol, $this->baseHost, $this->basePath, $file);
 
+<<<<<<< HEAD
         if (!in_array($protocol, $this->allowedProtocols, true)) {
             throw new Exception("Permission denied on $file. The communication protocol is not supported.");
         }
@@ -365,11 +416,26 @@ class Dompdf
         }
 
         if ($protocol === "" || $protocol === "file://") {
+=======
+        if ( !in_array($protocol, $this->allowedProtocols) ) {
+            throw new Exception("Permission denied on $file. The communication protocol is not supported.");
+        }
+
+        if (!$this->options->isRemoteEnabled() && ($protocol != "" && $protocol !== "file://")) {
+            throw new Exception("Remote file requested, but remote file download is disabled.");
+        }
+
+        if ($protocol == "" || $protocol === "file://") {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $realfile = realpath($uri);
 
             $chroot = $this->options->getChroot();
             $chrootValid = false;
+<<<<<<< HEAD
             foreach ($chroot as $chrootPath) {
+=======
+            foreach($chroot as $chrootPath) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $chrootPath = realpath($chrootPath);
                 if ($chrootPath !== false && strpos($realfile, $chrootPath) === 0) {
                     $chrootValid = true;
@@ -392,8 +458,13 @@ class Dompdf
             $uri = $realfile;
         }
 
+<<<<<<< HEAD
         [$contents, $http_response_header] = Helpers::getFileContent($uri, $this->options->getHttpContext());
         if ($contents === null) {
+=======
+        [$contents, $http_response_header] = Helpers::getFileContent($uri, $this->httpContext);
+        if (empty($contents)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new Exception("File '$file' not found.");
         }
 
@@ -734,7 +805,11 @@ class Dompdf
                 touch($logOutputFile);
             }
 
+<<<<<<< HEAD
             $startTime = microtime(true);
+=======
+            $this->startTime = microtime(true);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if (is_writable($logOutputFile)) {
                 ob_start();
             }
@@ -820,9 +895,13 @@ class Dompdf
         $root->reflow();
 
         // Clean up cached images
+<<<<<<< HEAD
         if (!$this->options->getDebugKeepTemp()) {
             Cache::clear($this->options->getDebugPng());
         }
+=======
+        Cache::clear();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         global $_dompdf_warnings, $_dompdf_show_warnings;
         if ($_dompdf_show_warnings && isset($_dompdf_warnings)) {
@@ -839,7 +918,11 @@ class Dompdf
         }
 
         if ($logOutputFile && is_writable($logOutputFile)) {
+<<<<<<< HEAD
             $this->writeLog($logOutputFile, $startTime);
+=======
+            $this->write_log();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ob_end_clean();
         }
 
@@ -860,6 +943,7 @@ class Dompdf
     /**
      * Writes the output buffer in the log file
      *
+<<<<<<< HEAD
      * @param string $logOutputFile
      * @param float $startTime
      */
@@ -868,6 +952,20 @@ class Dompdf
         $frames = Frame::$ID_COUNTER;
         $memory = memory_get_peak_usage(true) / 1024;
         $time = (microtime(true) - $startTime) * 1000;
+=======
+     * @return void
+     */
+    private function write_log()
+    {
+        $log_output_file = $this->getOptions()->getLogOutputFile();
+        if (!$log_output_file || !is_writable($log_output_file)) {
+            return;
+        }
+
+        $frames = Frame::$ID_COUNTER;
+        $memory = memory_get_peak_usage(true) / 1024;
+        $time = (microtime(true) - $this->startTime) * 1000;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $out = sprintf(
             "<span style='color: #000' title='Frames'>%6d</span>" .
@@ -880,7 +978,11 @@ class Dompdf
         $out .= ob_get_contents();
         ob_clean();
 
+<<<<<<< HEAD
         file_put_contents($logOutputFile, $out);
+=======
+        file_put_contents($log_output_file, $out);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -1091,7 +1193,11 @@ class Dompdf
      * @param string $protocol
      * @return $this
      */
+<<<<<<< HEAD
     public function setProtocol(string $protocol)
+=======
+    public function setProtocol($protocol)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->protocol = $protocol;
         return $this;
@@ -1131,7 +1237,11 @@ class Dompdf
      * @param string $baseHost
      * @return $this
      */
+<<<<<<< HEAD
     public function setBaseHost(string $baseHost)
+=======
+    public function setBaseHost($baseHost)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->baseHost = $baseHost;
         return $this;
@@ -1173,7 +1283,11 @@ class Dompdf
      * @param string $basePath
      * @return $this
      */
+<<<<<<< HEAD
     public function setBasePath(string $basePath)
+=======
+    public function setBasePath($basePath)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->basePath = $basePath;
         return $this;
@@ -1236,12 +1350,20 @@ class Dompdf
     /**
      * Sets the HTTP context
      *
+<<<<<<< HEAD
      * @param resource|array $httpContext
+=======
+     * @param resource $httpContext
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return $this
      */
     public function setHttpContext($httpContext)
     {
+<<<<<<< HEAD
         $this->options->setHttpContext($httpContext);
+=======
+        $this->httpContext = $httpContext;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this;
     }
 
@@ -1261,7 +1383,11 @@ class Dompdf
      */
     public function getHttpContext()
     {
+<<<<<<< HEAD
         return $this->options->getHttpContext();
+=======
+        return $this->httpContext;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -1355,11 +1481,14 @@ class Dompdf
      */
     public function setOptions(Options $options)
     {
+<<<<<<< HEAD
         // For backwards compatibility
         if ($this->options && $this->options->getHttpContext() && !$options->getHttpContext()) {
             $options->setHttpContext($this->options->getHttpContext());
         }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->options = $options;
         $fontMetrics = $this->getFontMetrics();
         if (isset($fontMetrics)) {
@@ -1406,6 +1535,7 @@ class Dompdf
 
     /**
      * Sets callbacks for events like rendering of pages and elements.
+<<<<<<< HEAD
      *
      * The callbacks array should contain arrays with `event` set to a callback
      * event name and `f` set to a function or any other callable.
@@ -1422,16 +1552,33 @@ class Dompdf
      * "frame" => Frame]`).
      *
      * @param array $callbacks The set of callbacks to set
+=======
+     * The callbacks array contains arrays with 'event' set to 'begin_page',
+     * 'end_page', 'begin_frame', or 'end_frame' and 'f' set to a function or
+     * object plus method to be called.
+     *
+     * The function 'f' must take an array as argument, which contains info
+     * about the event.
+     *
+     * @param array $callbacks the set of callbacks to set
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setCallbacks($callbacks)
     {
         if (is_array($callbacks)) {
             $this->callbacks = [];
             foreach ($callbacks as $c) {
+<<<<<<< HEAD
                 if (is_array($c) && isset($c["event"]) && isset($c["f"])) {
                     $event = $c["event"];
                     $f = $c["f"];
                     if (is_string($event) && is_callable($f)) {
+=======
+                if (is_array($c) && isset($c['event']) && isset($c['f'])) {
+                    $event = $c['event'];
+                    $f = $c['f'];
+                    if (is_callable($f) && is_string($event)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         $this->callbacks[$event][] = $f;
                     }
                 }
@@ -1489,11 +1636,20 @@ class Dompdf
      */
     function __get($prop)
     {
+<<<<<<< HEAD
         switch ($prop) {
             case 'version':
                 return $this->version;
             default:
                 throw new Exception('Invalid property: ' . $prop);
+=======
+        switch ($prop)
+        {
+            case 'version' :
+                return $this->version;
+            default:
+                throw new Exception( 'Invalid property: ' . $prop );
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 }

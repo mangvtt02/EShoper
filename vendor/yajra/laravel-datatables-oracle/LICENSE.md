@@ -1,6 +1,10 @@
 (The MIT License)
 
+<<<<<<< HEAD
 Copyright (c) 2013-2021 Arjay Angeles <aqangeles@gmail.com>
+=======
+Copyright (c) 2013-2020 Arjay Angeles <aqangeles@gmail.com>
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

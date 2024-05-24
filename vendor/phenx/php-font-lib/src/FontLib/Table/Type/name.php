@@ -1,7 +1,11 @@
 <?php
 /**
  * @package php-font-lib
+<<<<<<< HEAD
  * @link    https://github.com/dompdf/php-font-lib
+=======
+ * @link    https://github.com/PhenX/php-font-lib
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
@@ -150,6 +154,7 @@ class name extends Table {
       $records[] = $record;
     }
 
+<<<<<<< HEAD
     $system_encodings = mb_list_encodings();
     $system_encodings = array_change_key_case(array_fill_keys($system_encodings, true), CASE_UPPER);
     
@@ -193,6 +198,13 @@ class name extends Table {
       if (strpos($record->string, "\0") !== false) {
         $record->string = str_replace("\0", "", $record->string);
       }
+=======
+    $names = array();
+    foreach ($records as $record) {
+      $font->seek($tableOffset + $data["stringOffset"] + $record->offset);
+      $s                      = $font->read($record->length);
+      $record->string         = Font::UTF16ToUTF8($s);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
       $names[$record->nameID] = $record;
     }
 
@@ -206,14 +218,22 @@ class name extends Table {
 
     /** @var nameRecord[] $records */
     $records       = $this->data["records"];
+<<<<<<< HEAD
     $count_records = \count($records);
 
     $this->data["count"]        = $count_records;
     $this->data["stringOffset"] = 6 + ($count_records * 12); // 6 => uint16 * 3, 12 => sizeof self::$record_format
+=======
+    $count_records = count($records);
+
+    $this->data["count"]        = $count_records;
+    $this->data["stringOffset"] = 6 + $count_records * 12; // 6 => uint16 * 3, 12 => sizeof self::$record_format
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     $length = $font->pack(self::$header_format, $this->data);
 
     $offset = 0;
+<<<<<<< HEAD
 
     /** @var nameRecord[] $records_to_encode */
     $records_to_encode = array();
@@ -233,6 +253,16 @@ class name extends Table {
     }
 
     foreach ($records_to_encode as $record) {
+=======
+    foreach ($records as $record) {
+      $record->length = mb_strlen($record->getUTF16(), "8bit");
+      $record->offset = $offset;
+      $offset += $record->length;
+      $length += $font->pack(nameRecord::$format, (array)$record);
+    }
+
+    foreach ($records as $record) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
       $str = $record->getUTF16();
       $length += $font->write($str, mb_strlen($str, "8bit"));
     }

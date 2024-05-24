@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -74,10 +78,14 @@ class Docblock
     public function __construct(\Reflector $reflector)
     {
         $this->reflector = $reflector;
+<<<<<<< HEAD
 
         if ($reflector instanceof \ReflectionClass || $reflector instanceof \ReflectionClassConstant || $reflector instanceof \ReflectionFunctionAbstract || $reflector instanceof \ReflectionProperty) {
             $this->setComment($reflector->getDocComment());
         }
+=======
+        $this->setComment($reflector->getDocComment());
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -85,10 +93,17 @@ class Docblock
      *
      * @param string $comment The docblock
      */
+<<<<<<< HEAD
     protected function setComment(string $comment)
     {
         $this->desc = '';
         $this->tags = [];
+=======
+    protected function setComment($comment)
+    {
+        $this->desc    = '';
+        $this->tags    = [];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->comment = $comment;
 
         $this->parseComment($comment);
@@ -101,7 +116,11 @@ class Docblock
      *
      * @return int Prefix length
      */
+<<<<<<< HEAD
     protected static function prefixLength(array $lines): int
+=======
+    protected static function prefixLength(array $lines)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // find only lines with interesting things
         $lines = \array_filter($lines, function ($line) {
@@ -112,7 +131,11 @@ class Docblock
         \sort($lines);
 
         $first = \reset($lines);
+<<<<<<< HEAD
         $last = \end($lines);
+=======
+        $last  = \end($lines);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         // Special case for single-line comments
         if (\count($lines) === 1) {
@@ -135,7 +158,11 @@ class Docblock
      *
      * @param string $comment The docblock
      */
+<<<<<<< HEAD
     protected function parseComment(string $comment)
+=======
+    protected function parseComment($comment)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // Strip the opening and closing tags of the docblock
         $comment = \substr($comment, 3, -2);
@@ -172,7 +199,11 @@ class Docblock
                 $this->desc = $body;
             } else {
                 // This block is tagged
+<<<<<<< HEAD
                 $tag = \substr(self::strTag($body), 1);
+=======
+                $tag  = \substr(self::strTag($body), 1);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $body = \ltrim(\substr($body, \strlen($tag) + 2));
 
                 if (isset(self::$vectors[$tag])) {
@@ -201,8 +232,15 @@ class Docblock
      * Whether or not a docblock contains a given @tag.
      *
      * @param string $tag The name of the @tag to check for
+<<<<<<< HEAD
      */
     public function hasTag(string $tag): bool
+=======
+     *
+     * @return bool
+     */
+    public function hasTag($tag)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return \is_array($this->tags) && \array_key_exists($tag, $this->tags);
     }
@@ -212,9 +250,15 @@ class Docblock
      *
      * @param string $tag
      *
+<<<<<<< HEAD
      * @return array|null
      */
     public function tag(string $tag): ?array
+=======
+     * @return array
+     */
+    public function tag($tag)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->hasTag($tag) ? $this->tags[$tag] : null;
     }
@@ -223,8 +267,15 @@ class Docblock
      * Whether or not a string begins with a @tag.
      *
      * @param string $str
+<<<<<<< HEAD
      */
     public static function isTagged(string $str): bool
+=======
+     *
+     * @return bool
+     */
+    public static function isTagged($str)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return isset($str[1]) && $str[0] === '@' && !\preg_match('/[^A-Za-z]/', $str[1]);
     }
@@ -236,7 +287,11 @@ class Docblock
      *
      * @return string|null
      */
+<<<<<<< HEAD
     public static function strTag(string $str)
+=======
+    public static function strTag($str)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (\preg_match('/^@[a-z0-9_]+/', $str, $matches)) {
             return $matches[0];

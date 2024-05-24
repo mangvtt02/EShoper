@@ -44,7 +44,11 @@ class Swift_CharacterReaderFactory_SimpleCharacterReaderFactory implements Swift
 
     public function init()
     {
+<<<<<<< HEAD
         if (\count(self::$map) > 0) {
+=======
+        if (count(self::$map) > 0) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return;
         }
 
@@ -103,11 +107,19 @@ class Swift_CharacterReaderFactory_SimpleCharacterReaderFactory implements Swift
      */
     public function getReaderFor($charset)
     {
+<<<<<<< HEAD
         $charset = strtolower(trim($charset ?? ''));
         foreach (self::$map as $pattern => $spec) {
             $re = '/^'.$pattern.'$/D';
             if (preg_match($re, $charset)) {
                 if (!\array_key_exists($pattern, self::$loaded)) {
+=======
+        $charset = strtolower(trim($charset));
+        foreach (self::$map as $pattern => $spec) {
+            $re = '/^'.$pattern.'$/D';
+            if (preg_match($re, $charset)) {
+                if (!array_key_exists($pattern, self::$loaded)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $reflector = new ReflectionClass($spec['class']);
                     if ($reflector->getConstructor()) {
                         $reader = $reflector->newInstanceArgs($spec['constructor']);

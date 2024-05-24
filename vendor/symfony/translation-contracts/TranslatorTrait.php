@@ -32,8 +32,11 @@ trait TranslatorTrait
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      *
      * @return string
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getLocale()
     {
@@ -43,7 +46,11 @@ trait TranslatorTrait
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function trans(?string $id, array $parameters = [], ?string $domain = null, ?string $locale = null): string
+=======
+    public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null): string
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (null === $id || '' === $id) {
             return '';
@@ -138,11 +145,17 @@ EOF;
      * which is subject to the new BSD license (http://framework.zend.com/license/new-bsd).
      * Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
      */
+<<<<<<< HEAD
     private function getPluralizationRule(float $number, string $locale): int
     {
         $number = abs($number);
 
         switch ('pt_BR' !== $locale && 'en_US_POSIX' !== $locale && \strlen($locale) > 3 ? substr($locale, 0, strrpos($locale, '_')) : $locale) {
+=======
+    private function getPluralizationRule(int $number, string $locale): int
+    {
+        switch ('pt_BR' !== $locale && \strlen($locale) > 3 ? substr($locale, 0, strrpos($locale, '_')) : $locale) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             case 'af':
             case 'bn':
             case 'bg':
@@ -151,7 +164,10 @@ EOF;
             case 'de':
             case 'el':
             case 'en':
+<<<<<<< HEAD
             case 'en_US_POSIX':
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             case 'eo':
             case 'es':
             case 'et':
@@ -210,7 +226,11 @@ EOF;
             case 'pt_BR':
             case 'ti':
             case 'wa':
+<<<<<<< HEAD
                 return ($number < 2) ? 0 : 1;
+=======
+                return ((0 == $number) || (1 == $number)) ? 0 : 1;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             case 'be':
             case 'bs':

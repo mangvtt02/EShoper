@@ -108,6 +108,7 @@ class ArrayInput extends Input
         $params = [];
         foreach ($this->parameters as $param => $val) {
             if ($param && \is_string($param) && '-' === $param[0]) {
+<<<<<<< HEAD
                 $glue = ('-' === $param[1]) ? '=' : ' ';
                 if (\is_array($val)) {
                     foreach ($val as $v) {
@@ -115,6 +116,14 @@ class ArrayInput extends Input
                     }
                 } else {
                     $params[] = $param.('' != $val ? $glue.$this->escapeToken($val) : '');
+=======
+                if (\is_array($val)) {
+                    foreach ($val as $v) {
+                        $params[] = $param.('' != $v ? '='.$this->escapeToken($v) : '');
+                    }
+                } else {
+                    $params[] = $param.('' != $val ? '='.$this->escapeToken($val) : '');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
             } else {
                 $params[] = \is_array($val) ? implode(' ', array_map([$this, 'escapeToken'], $val)) : $this->escapeToken($val);
@@ -133,9 +142,15 @@ class ArrayInput extends Input
             if ('--' === $key) {
                 return;
             }
+<<<<<<< HEAD
             if (str_starts_with($key, '--')) {
                 $this->addLongOption(substr($key, 2), $value);
             } elseif (str_starts_with($key, '-')) {
+=======
+            if (0 === strpos($key, '--')) {
+                $this->addLongOption(substr($key, 2), $value);
+            } elseif (0 === strpos($key, '-')) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $this->addShortOption(substr($key, 1), $value);
             } else {
                 $this->addArgument($key, $value);

@@ -54,7 +54,11 @@ class AnnotationDirectoryLoader extends AnnotationFileLoader
         });
 
         foreach ($files as $file) {
+<<<<<<< HEAD
             if (!$file->isFile() || !str_ends_with($file->getFilename(), '.php')) {
+=======
+            if (!$file->isFile() || '.php' !== substr($file->getFilename(), -4)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 continue;
             }
 

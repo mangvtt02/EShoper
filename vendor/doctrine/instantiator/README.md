@@ -3,7 +3,12 @@
 This library provides a way of avoiding usage of constructors when instantiating PHP classes.
 
 [![Build Status](https://travis-ci.org/doctrine/instantiator.svg?branch=master)](https://travis-ci.org/doctrine/instantiator)
+<<<<<<< HEAD
 [![Code Coverage](https://codecov.io/gh/doctrine/instantiator/branch/master/graph/badge.svg)](https://codecov.io/gh/doctrine/instantiator/branch/master)
+=======
+[![Code Coverage](https://scrutinizer-ci.com/g/doctrine/instantiator/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/doctrine/instantiator/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/doctrine/instantiator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/doctrine/instantiator/?branch=master)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 [![Dependency Status](https://www.versioneye.com/package/php--doctrine--instantiator/badge.svg)](https://www.versioneye.com/package/php--doctrine--instantiator)
 
 [![Latest Stable Version](https://poser.pugx.org/doctrine/instantiator/v/stable.png)](https://packagist.org/packages/doctrine/instantiator)
@@ -14,7 +19,11 @@ This library provides a way of avoiding usage of constructors when instantiating
 The suggested installation method is via [composer](https://getcomposer.org/):
 
 ```sh
+<<<<<<< HEAD
 composer require doctrine/instantiator
+=======
+php composer.phar require "doctrine/instantiator:~1.0.3"
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ```
 
 ## Usage

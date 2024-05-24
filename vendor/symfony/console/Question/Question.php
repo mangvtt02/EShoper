@@ -32,8 +32,13 @@ class Question
     private $trimmable = true;
 
     /**
+<<<<<<< HEAD
      * @param string                     $question The question to ask to the user
      * @param string|bool|int|float|null $default  The default answer to return if the user enters nothing
+=======
+     * @param string $question The question to ask to the user
+     * @param mixed  $default  The default answer to return if the user enters nothing
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct(string $question, $default = null)
     {
@@ -54,7 +59,11 @@ class Question
     /**
      * Returns the default answer.
      *
+<<<<<<< HEAD
      * @return string|bool|int|float|null
+=======
+     * @return mixed
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getDefault()
     {

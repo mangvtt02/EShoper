@@ -9,6 +9,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 if (!version_compare(PHP_VERSION, PHP_VERSION, '=')) {
     fwrite(
         STDERR,
@@ -24,11 +25,17 @@ if (!version_compare(PHP_VERSION, PHP_VERSION, '=')) {
     die(1);
 }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 if (version_compare('7.2.0', PHP_VERSION, '>')) {
     fwrite(
         STDERR,
         sprintf(
+<<<<<<< HEAD
             'This version of PHPUnit requires PHP >= 7.2.' . PHP_EOL .
+=======
+            'This version of PHPUnit is supported on PHP 7.2, PHP 7.3, and PHP 7.4.' . PHP_EOL .
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'You are using PHP %s (%s).' . PHP_EOL,
             PHP_VERSION,
             PHP_BINARY
@@ -38,6 +45,7 @@ if (version_compare('7.2.0', PHP_VERSION, '>')) {
     die(1);
 }
 
+<<<<<<< HEAD
 foreach (['dom', 'json', 'libxml', 'mbstring', 'tokenizer', 'xml', 'xmlwriter'] as $extension) {
     if (extension_loaded($extension)) {
         continue;
@@ -54,10 +62,13 @@ foreach (['dom', 'json', 'libxml', 'mbstring', 'tokenizer', 'xml', 'xmlwriter'] 
     die(1);
 }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 if (!ini_get('date.timezone')) {
     ini_set('date.timezone', 'UTC');
 }
 
+<<<<<<< HEAD
 if (isset($GLOBALS['_composer_autoload_path'])) {
     define('PHPUNIT_COMPOSER_INSTALL', $GLOBALS['_composer_autoload_path']);
 
@@ -74,6 +85,18 @@ if (isset($GLOBALS['_composer_autoload_path'])) {
     unset($file);
 }
 
+=======
+foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
+    if (file_exists($file)) {
+        define('PHPUNIT_COMPOSER_INSTALL', $file);
+
+        break;
+    }
+}
+
+unset($file);
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 if (!defined('PHPUNIT_COMPOSER_INSTALL')) {
     fwrite(
         STDERR,

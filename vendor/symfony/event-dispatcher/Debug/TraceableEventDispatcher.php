@@ -75,7 +75,11 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
     {
         if (isset($this->wrappedListeners[$eventName])) {
             foreach ($this->wrappedListeners[$eventName] as $index => $wrappedListener) {
+<<<<<<< HEAD
                 if ($wrappedListener->getWrappedListener() === $listener || ($listener instanceof \Closure && $wrappedListener->getWrappedListener() == $listener)) {
+=======
+                if ($wrappedListener->getWrappedListener() === $listener) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $listener = $wrappedListener;
                     unset($this->wrappedListeners[$eventName][$index]);
                     break;
@@ -110,8 +114,13 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
         // we might have wrapped listeners for the event (if called while dispatching)
         // in that case get the priority by wrapper
         if (isset($this->wrappedListeners[$eventName])) {
+<<<<<<< HEAD
             foreach ($this->wrappedListeners[$eventName] as $wrappedListener) {
                 if ($wrappedListener->getWrappedListener() === $listener || ($listener instanceof \Closure && $wrappedListener->getWrappedListener() == $listener)) {
+=======
+            foreach ($this->wrappedListeners[$eventName] as $index => $wrappedListener) {
+                if ($wrappedListener->getWrappedListener() === $listener) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     return $this->dispatcher->getListenerPriority($eventName, $wrappedListener);
                 }
             }
@@ -133,7 +142,11 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
      *
      * @param string|null $eventName
      */
+<<<<<<< HEAD
     public function dispatch($event/* , string $eventName = null */)
+=======
+    public function dispatch($event/*, string $eventName = null*/)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (null === $this->callStack) {
             $this->callStack = new \SplObjectStorage();
@@ -196,7 +209,11 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
         $hash = 1 <= \func_num_args() && null !== ($request = func_get_arg(0)) ? spl_object_hash($request) : null;
         $called = [];
         foreach ($this->callStack as $listener) {
+<<<<<<< HEAD
             [$eventName, $requestHash] = $this->callStack->getInfo();
+=======
+            list($eventName, $requestHash) = $this->callStack->getInfo();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if (null === $hash || $hash === $requestHash) {
                 $called[] = $listener->getInfo($eventName);
             }
@@ -228,7 +245,11 @@ class TraceableEventDispatcher implements TraceableEventDispatcherInterface
 
         if (null !== $this->callStack) {
             foreach ($this->callStack as $calledListener) {
+<<<<<<< HEAD
                 [, $requestHash] = $this->callStack->getInfo();
+=======
+                list(, $requestHash) = $this->callStack->getInfo();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                 if (null === $hash || $hash === $requestHash) {
                     $calledListeners[] = $calledListener->getWrappedListener();

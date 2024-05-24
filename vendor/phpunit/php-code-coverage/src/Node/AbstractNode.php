@@ -41,7 +41,11 @@ abstract class AbstractNode implements \Countable
      */
     private $id;
 
+<<<<<<< HEAD
     public function __construct(string $name, ?self $parent = null)
+=======
+    public function __construct(string $name, self $parent = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (\substr($name, -1) == \DIRECTORY_SEPARATOR) {
             $name = \substr($name, 0, -1);

@@ -23,7 +23,11 @@
     "issues": "https://github.com/phar-io/version/issues"
   },
   "require": {
+<<<<<<< HEAD
     "php": "^7.2 || ^8.0"
+=======
+    "php": "^5.6 || ^7.0"
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   },
   "autoload": {
     "classmap": [

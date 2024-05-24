@@ -312,4 +312,8 @@ class FrameTree
 
         return $frame_id;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

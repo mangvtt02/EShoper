@@ -21,7 +21,11 @@ trait ForwardsCalls
     {
         try {
             return $object->{$method}(...$parameters);
+<<<<<<< HEAD
         } catch (Error|BadMethodCallException $e) {
+=======
+        } catch (Error | BadMethodCallException $e) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $pattern = '~^Call to undefined method (?P<class>[^:]+)::(?P<method>[^\(]+)\(\)$~';
 
             if (! preg_match($pattern, $e->getMessage(), $matches)) {

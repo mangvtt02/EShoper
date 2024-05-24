@@ -9,6 +9,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 use Carbon\CarbonInterface;
 
 /**
@@ -20,6 +21,8 @@ use Carbon\CarbonInterface;
  * file that was distributed with this source code.
  */
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /*
  * Authors:
  * - Philippe Vaucher
@@ -42,6 +45,7 @@ use Carbon\CarbonInterface;
  * - zakse
  * - Janis Eglitis (janiseglitis)
  * - Guntars
+<<<<<<< HEAD
  * - Juris Sudmalis
  */
 $daysOfWeek = ['svētdiena', 'pirmdiena', 'otrdiena', 'trešdiena', 'ceturtdiena', 'piektdiena', 'sestdiena'];
@@ -105,6 +109,38 @@ return [
     'a_second' => '{1}sekunde|0 sekunžu|:count sekunde|:count sekundes',
 
     'after' => ':time vēlāk',
+=======
+ */
+return [
+    'year' => '0 gadiem|:count gads|:count gadiem',
+    'y' => '0 gadiem|:count gads|:count gadiem',
+    'a_year' => '{1}gads|0 gadiem|:count gads|:count gadiem',
+    'month' => '0 mēnešiem|:count mēneša|:count mēnešiem',
+    'm' => ':count mēn.',
+    'a_month' => '{1}mēneša|0 mēnešiem|:count mēneša|:count mēnešiem',
+    'week' => '0 nedēļām|:count nedēļas|:count nedēļām',
+    'w' => ':count ned.',
+    'a_week' => '{1}nedēļas|0 nedēļām|:count nedēļas|:count nedēļām',
+    'day' => '0 dienām|:count dienas|:count dienām',
+    'd' => '0 dienām|:count dienas|:count dienām',
+    'a_day' => '{1}dienas|0 dienām|:count dienas|:count dienām',
+    'hour' => '0 stundām|:count stundas|:count stundām',
+    'h' => ':count st.',
+    'a_hour' => '{1}stundas|0 stundām|:count stundas|:count stundām',
+    'minute' => '0 minūtēm|:count minūtes|:count minūtēm',
+    'min' => ':count min.',
+    'a_minute' => '{1}minūtes|0 minūtēm|:count minūtes|:count minūtēm',
+    'second' => '0 sekundēm|:count sekundes|:count sekundēm',
+    's' => ':count sek.',
+    'a_second' => '{1}dažas sekundes|0 sekundēm|:count sekundes|:count sekundēm',
+
+    'ago' => 'pirms :time',
+    'from_now' => 'pēc :time',
+
+    'after' => ':time vēlāk',
+    'before' => ':time pirms',
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     'year_after' => '0 gadus|:count gadu|:count gadus',
     'a_year_after' => '{1}gadu|0 gadus|:count gadu|:count gadus',
     'month_after' => '0 mēnešus|:count mēnesi|:count mēnešus',
@@ -120,7 +156,10 @@ return [
     'second_after' => '0 sekundes|:count sekundi|:count sekundes',
     'a_second_after' => '{1}sekundi|0 sekundes|:count sekundi|:count sekundes',
 
+<<<<<<< HEAD
     'before' => ':time agrāk',
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     'year_before' => '0 gadus|:count gadu|:count gadus',
     'a_year_before' => '{1}gadu|0 gadus|:count gadu|:count gadus',
     'month_before' => '0 mēnešus|:count mēnesi|:count mēnešus',
@@ -139,6 +178,7 @@ return [
     'first_day_of_week' => 1,
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' un '],
+<<<<<<< HEAD
 
     'diff_now' => 'tagad',
     'diff_today' => 'šodien',
@@ -147,6 +187,11 @@ return [
     'diff_tomorrow' => 'rīt',
     'diff_after_tomorrow' => 'parīt',
 
+=======
+    'diff_now' => 'tagad',
+    'diff_yesterday' => 'vakar',
+    'diff_tomorrow' => 'rīt',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     'formats' => [
         'LT' => 'HH:mm',
         'LTS' => 'HH:mm:ss',
@@ -155,6 +200,7 @@ return [
         'LLL' => 'DD.MM.YYYY., HH:mm',
         'LLLL' => 'YYYY. [gada] D. MMMM, HH:mm',
     ],
+<<<<<<< HEAD
 
     'calendar' => [
         'sameDay' => '[šodien] [plkst.] LT',
@@ -179,5 +225,12 @@ return [
     'months' => ['janvāris', 'februāris', 'marts', 'aprīlis', 'maijs', 'jūnijs', 'jūlijs', 'augusts', 'septembris', 'oktobris', 'novembris', 'decembris'],
     'months_standalone' => ['janvārī', 'februārī', 'martā', 'aprīlī', 'maijā', 'jūnijā', 'jūlijā', 'augustā', 'septembrī', 'oktobrī', 'novembrī', 'decembrī'],
     'months_short' => ['janv.', 'febr.', 'martā', 'apr.', 'maijā', 'jūn.', 'jūl.', 'aug.', 'sept.', 'okt.', 'nov.', 'dec.'],
+=======
+    'weekdays' => ['svētdiena', 'pirmdiena', 'otrdiena', 'trešdiena', 'ceturtdiena', 'piektdiena', 'sestdiena'],
+    'weekdays_short' => ['Sv.', 'P.', 'O.', 'T.', 'C.', 'Pk.', 'S.'],
+    'weekdays_min' => ['Sv.', 'P.', 'O.', 'T.', 'C.', 'Pk.', 'S.'],
+    'months' => ['janvārī', 'februārī', 'martā', 'aprīlī', 'maijā', 'jūnijā', 'jūlijā', 'augustā', 'septembrī', 'oktobrī', 'novembrī', 'decembrī'],
+    'months_short' => ['Janv', 'Feb', 'Mar', 'Apr', 'Mai', 'Jūn', 'Jūl', 'Aug', 'Sept', 'Okt', 'Nov', 'Dec'],
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     'meridiem' => ['priekšpusdiena', 'pēcpusdiena'],
 ];

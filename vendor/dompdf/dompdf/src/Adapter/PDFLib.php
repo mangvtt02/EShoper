@@ -1306,7 +1306,11 @@ class PDFLib implements Canvas
         } else {
             list($proto, $host, $path, $file) = Helpers::explode_url($url);
 
+<<<<<<< HEAD
             if ($proto === "" || $proto === "file://") {
+=======
+            if ($proto == "" || $proto === "file://") {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 return; // Local links are not allowed
             }
             $url = Helpers::build_url($proto, $host, $path, $file);
@@ -1321,8 +1325,13 @@ class PDFLib implements Canvas
      * @param string $text
      * @param string $font
      * @param float  $size
+<<<<<<< HEAD
      * @param float  $word_spacing
      * @param float  $letter_spacing
+=======
+     * @param int    $word_spacing
+     * @param int    $letter_spacing
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return mixed
      */
     public function get_text_width($text, $font, $size, $word_spacing = 0, $letter_spacing = 0)
@@ -1335,7 +1344,11 @@ class PDFLib implements Canvas
 
         if ($letter_spacing) {
             $num_chars = mb_strlen($text);
+<<<<<<< HEAD
             $delta += $num_chars * $letter_spacing;
+=======
+            $delta += ($num_chars - $num_spaces) * $letter_spacing;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this->_pdf->stringwidth($text, $fh, $size) + $delta;
@@ -1400,6 +1413,7 @@ class PDFLib implements Canvas
     //........................................................................
 
     /**
+<<<<<<< HEAD
      * Processes a callback or script on every page
      *
      * The callback function receives the four parameters `$pageNumber`,
@@ -1423,6 +1437,22 @@ class PDFLib implements Canvas
             $_t = "script";
             $this->_page_text[] = compact("_t", "code");
         }
+=======
+     * Processes a script on every page
+     *
+     * The variables $pdf, $PAGE_NUM, and $PAGE_COUNT are available.
+     *
+     * This function can be used to add page numbers to all pages
+     * after the first one, for example.
+     *
+     * @param string $code the script code
+     * @param string $type the language type for script
+     */
+    public function page_script($code, $type = "text/php")
+    {
+        $_t = "script";
+        $this->_page_text[] = compact("_t", "code", "type");
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -1463,20 +1493,31 @@ class PDFLib implements Canvas
                         $this->text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);
                         break;
 
+<<<<<<< HEAD
                     case "callback":
                         $fontMetrics = $this->get_dompdf()->getFontMetrics();
                         $callback($p, $this->_page_count, $this, $fontMetrics);
                         break;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     case "script":
                         if (!$eval) {
                             $eval = new PHPEvaluator($this);
                         }
+<<<<<<< HEAD
                         $eval->evaluate($code, ["PAGE_NUM" => $p, "PAGE_COUNT" => $this->_page_count]);
                         break;
 
                     case "line":
                         $this->line($x1, $y1, $x2, $y2, $color, $width, $style);
+=======
+                        $eval->evaluate($code, ['PAGE_NUM' => $p, 'PAGE_COUNT' => $this->_page_count]);
+                        break;
+
+                    case 'line':
+                        $this->line( $x1, $y1, $x2, $y2, $color, $width, $style );
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         break;
 
                 }

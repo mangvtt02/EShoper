@@ -12,7 +12,11 @@ namespace PHPUnit\Framework\MockObject\Builder;
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
+<<<<<<< HEAD
 interface ParametersMatch extends Match_
+=======
+//interface ParametersMatch extends Match
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 {
     /**
      * Sets the parameters to match for, each parameter to this function will
@@ -31,7 +35,11 @@ interface ParametersMatch extends Match_
      *
      * @return ParametersMatch
      */
+<<<<<<< HEAD
     public function with(...$arguments);
+=======
+    //public function with(...$arguments);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Sets a rule which allows any kind of parameters.
@@ -44,5 +52,9 @@ interface ParametersMatch extends Match_
      *
      * @return ParametersMatch
      */
+<<<<<<< HEAD
     public function withAnyParameters();
+=======
+    //public function withAnyParameters();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

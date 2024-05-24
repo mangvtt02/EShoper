@@ -20,12 +20,18 @@ return array_replace_recursive(require __DIR__.'/en.php', [
     'months' => ['Jannuaar', 'Feberwaar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
     'months_short' => ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
     'weekdays' => ['Sünndag', 'Maandag', 'Dingsdag', 'Middeweek', 'Dunnersdag', 'Freedag', 'Sünnavend'],
+<<<<<<< HEAD
     'weekdays_short' => ['Sdag', 'Maan', 'Ding', 'Midd', 'Dunn', 'Free', 'Svd.'],
     'weekdays_min' => ['Sd', 'Ma', 'Di', 'Mi', 'Du', 'Fr', 'Sa'],
+=======
+    'weekdays_short' => ['Sdag', 'Maan', 'Ding', 'Migg', 'Dunn', 'Free', 'Svd.'],
+    'weekdays_min' => ['Sdag', 'Maan', 'Ding', 'Migg', 'Dunn', 'Free', 'Svd.'],
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     'first_day_of_week' => 1,
     'day_of_first_week_of_year' => 4,
 
     'year' => ':count Johr',
+<<<<<<< HEAD
     'y' => ':countJ',
     'a_year' => '{1}een Johr|:count Johr',
 
@@ -57,4 +63,32 @@ return array_replace_recursive(require __DIR__.'/en.php', [
     'from_now' => 'in :time',
     'before' => ':time vörher',
     'after' => ':time later',
+=======
+    'y' => ':count Johr',
+    'a_year' => ':count Johr',
+
+    'month' => ':count Maand',
+    'm' => ':count Maand',
+    'a_month' => ':count Maand',
+
+    'week' => ':count Week',
+    'w' => ':count Week',
+    'a_week' => ':count Week',
+
+    'day' => ':count Dag',
+    'd' => ':count Dag',
+    'a_day' => ':count Dag',
+
+    'hour' => ':count Stünn',
+    'h' => ':count Stünn',
+    'a_hour' => ':count Stünn',
+
+    'minute' => ':count Minuut',
+    'min' => ':count Minuut',
+    'a_minute' => ':count Minuut',
+
+    'second' => ':count sekunn',
+    's' => ':count sekunn',
+    'a_second' => ':count sekunn',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ]);

@@ -50,7 +50,11 @@ class TranslationDataCollector extends DataCollector implements LateDataCollecto
      *
      * @param \Throwable|null $exception
      */
+<<<<<<< HEAD
     public function collect(Request $request, Response $response/* , \Throwable $exception = null */)
+=======
+    public function collect(Request $request, Response $response/*, \Throwable $exception = null*/)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->data['locale'] = $this->translator->getLocale();
         $this->data['fallback_locales'] = $this->translator->getFallbackLocales();
@@ -69,7 +73,11 @@ class TranslationDataCollector extends DataCollector implements LateDataCollecto
      */
     public function getMessages()
     {
+<<<<<<< HEAD
         return $this->data['messages'] ?? [];
+=======
+        return isset($this->data['messages']) ? $this->data['messages'] : [];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -77,7 +85,11 @@ class TranslationDataCollector extends DataCollector implements LateDataCollecto
      */
     public function getCountMissings()
     {
+<<<<<<< HEAD
         return $this->data[DataCollectorTranslator::MESSAGE_MISSING] ?? 0;
+=======
+        return isset($this->data[DataCollectorTranslator::MESSAGE_MISSING]) ? $this->data[DataCollectorTranslator::MESSAGE_MISSING] : 0;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -85,7 +97,11 @@ class TranslationDataCollector extends DataCollector implements LateDataCollecto
      */
     public function getCountFallbacks()
     {
+<<<<<<< HEAD
         return $this->data[DataCollectorTranslator::MESSAGE_EQUALS_FALLBACK] ?? 0;
+=======
+        return isset($this->data[DataCollectorTranslator::MESSAGE_EQUALS_FALLBACK]) ? $this->data[DataCollectorTranslator::MESSAGE_EQUALS_FALLBACK] : 0;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -93,7 +109,11 @@ class TranslationDataCollector extends DataCollector implements LateDataCollecto
      */
     public function getCountDefines()
     {
+<<<<<<< HEAD
         return $this->data[DataCollectorTranslator::MESSAGE_DEFINED] ?? 0;
+=======
+        return isset($this->data[DataCollectorTranslator::MESSAGE_DEFINED]) ? $this->data[DataCollectorTranslator::MESSAGE_DEFINED] : 0;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function getLocale()

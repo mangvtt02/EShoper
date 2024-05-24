@@ -15,7 +15,10 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\ErrorHandler\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+<<<<<<< HEAD
 use Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 
 /**
@@ -41,9 +44,14 @@ class HtmlErrorRenderer implements ErrorRendererInterface
     private $logger;
 
     /**
+<<<<<<< HEAD
      * @param bool|callable                 $debug          The debugging mode as a boolean or a callable that should return it
      * @param string|FileLinkFormatter|null $fileLinkFormat
      * @param bool|callable                 $outputBuffer   The output buffer as a string or a callable that should return it
+=======
+     * @param bool|callable $debug        The debugging mode as a boolean or a callable that should return it
+     * @param bool|callable $outputBuffer The output buffer as a string or a callable that should return it
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct($debug = false, string $charset = null, $fileLinkFormat = null, string $projectDir = null, $outputBuffer = '', LoggerInterface $logger = null)
     {
@@ -56,8 +64,13 @@ class HtmlErrorRenderer implements ErrorRendererInterface
         }
 
         $this->debug = $debug;
+<<<<<<< HEAD
         $this->charset = $charset ?: (\ini_get('default_charset') ?: 'UTF-8');
         $this->fileLinkFormat = $fileLinkFormat ?: (\ini_get('xdebug.file_link_format') ?: get_cfg_var('xdebug.file_link_format'));
+=======
+        $this->charset = $charset ?: (ini_get('default_charset') ?: 'UTF-8');
+        $this->fileLinkFormat = $fileLinkFormat ?: (ini_get('xdebug.file_link_format') ?: get_cfg_var('xdebug.file_link_format'));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->projectDir = $projectDir;
         $this->outputBuffer = $outputBuffer;
         $this->logger = $logger;
@@ -319,7 +332,11 @@ class HtmlErrorRenderer implements ErrorRendererInterface
         if ($context && false !== strpos($message, '{')) {
             $replacements = [];
             foreach ($context as $key => $val) {
+<<<<<<< HEAD
                 if (\is_scalar($val)) {
+=======
+                if (is_scalar($val)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $replacements['{'.$key.'}'] = $val;
                 }
             }

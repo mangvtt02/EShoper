@@ -2,6 +2,10 @@
 
 namespace Facade\FlareClient\Context;
 
+<<<<<<< HEAD
+=======
+use BadMethodCallException;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -72,7 +76,11 @@ class RequestContext implements ContextInterface
     {
         try {
             $session = $this->request->getSession();
+<<<<<<< HEAD
         } catch (\Exception $exception) {
+=======
+        } catch (BadMethodCallException $exception) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $session = [];
         }
 

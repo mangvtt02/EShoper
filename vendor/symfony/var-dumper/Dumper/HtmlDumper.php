@@ -81,7 +81,11 @@ class HtmlDumper extends CliDumper
     {
         AbstractDumper::__construct($output, $charset, $flags);
         $this->dumpId = 'sf-dump-'.mt_rand();
+<<<<<<< HEAD
         $this->displayOptions['fileLinkFormat'] = \ini_get('xdebug.file_link_format') ?: get_cfg_var('xdebug.file_link_format');
+=======
+        $this->displayOptions['fileLinkFormat'] = ini_get('xdebug.file_link_format') ?: get_cfg_var('xdebug.file_link_format');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->styles = static::$themes['dark'] ?? self::$themes['dark'];
     }
 
@@ -153,7 +157,11 @@ class HtmlDumper extends CliDumper
      */
     protected function getDumpHeader()
     {
+<<<<<<< HEAD
         $this->headerIsDumped = $this->outputStream ?? $this->lineDumper;
+=======
+        $this->headerIsDumped = null !== $this->outputStream ? $this->outputStream : $this->lineDumper;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if (null !== $this->dumpHeader) {
             return $this->dumpHeader;
@@ -371,7 +379,11 @@ return function (root, x) {
         if (/\bsf-dump-toggle\b/.test(a.className)) {
             e.preventDefault();
             if (!toggle(a, isCtrlKey(e))) {
+<<<<<<< HEAD
                 var r = doc.getElementById(a.getAttribute('href').slice(1)),
+=======
+                var r = doc.getElementById(a.getAttribute('href').substr(1)),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     s = r.previousSibling,
                     f = r.parentNode,
                     t = a.parentNode;
@@ -438,7 +450,11 @@ return function (root, x) {
                 toggle(a);
             }
         } else if (/\bsf-dump-ref\b/.test(elt.className) && (a = elt.getAttribute('href'))) {
+<<<<<<< HEAD
             a = a.slice(1);
+=======
+            a = a.substr(1);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             elt.className += ' '+a;
 
             if (/[\[{]$/.test(elt.previousSibling.nodeValue)) {
@@ -882,7 +898,11 @@ EOHTML
         }
 
         if ('const' === $style && isset($attr['value'])) {
+<<<<<<< HEAD
             $style .= sprintf(' title="%s"', esc(\is_scalar($attr['value']) ? $attr['value'] : json_encode($attr['value'])));
+=======
+            $style .= sprintf(' title="%s"', esc(is_scalar($attr['value']) ? $attr['value'] : json_encode($attr['value'])));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } elseif ('public' === $style) {
             $style .= sprintf(' title="%s"', empty($attr['dynamic']) ? 'Public property' : 'Runtime added dynamic property');
         } elseif ('str' === $style && 1 < $attr['length']) {
@@ -936,13 +956,21 @@ EOHTML
                     $s .= '">';
                 }
 
+<<<<<<< HEAD
                 $s .= $map[$c[$i]] ?? sprintf('\x%02X', \ord($c[$i]));
+=======
+                $s .= isset($map[$c[$i]]) ? $map[$c[$i]] : sprintf('\x%02X', \ord($c[$i]));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             } while (isset($c[++$i]));
 
             return $s.'</span>';
         }, $v).'</span>';
 
+<<<<<<< HEAD
         if (isset($attr['file']) && $href = $this->getSourceLink($attr['file'], $attr['line'] ?? 0)) {
+=======
+        if (isset($attr['file']) && $href = $this->getSourceLink($attr['file'], isset($attr['line']) ? $attr['line'] : 0)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $attr['href'] = $href;
         }
         if (isset($attr['href'])) {
@@ -964,7 +992,11 @@ EOHTML
         if (-1 === $this->lastDepth) {
             $this->line = sprintf($this->dumpPrefix, $this->dumpId, $this->indentPad).$this->line;
         }
+<<<<<<< HEAD
         if ($this->headerIsDumped !== ($this->outputStream ?? $this->lineDumper)) {
+=======
+        if ($this->headerIsDumped !== (null !== $this->outputStream ? $this->outputStream : $this->lineDumper)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->line = $this->getDumpHeader().$this->line;
         }
 
@@ -978,7 +1010,11 @@ EOHTML
         }
         $this->lastDepth = $depth;
 
+<<<<<<< HEAD
         $this->line = mb_encode_numericentity($this->line, [0x80, 0x10FFFF, 0, 0x1FFFFF], 'UTF-8');
+=======
+        $this->line = mb_convert_encoding($this->line, 'HTML-ENTITIES', 'UTF-8');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if (-1 === $depth) {
             AbstractDumper::dumpLine(0);
@@ -998,7 +1034,11 @@ EOHTML
     }
 }
 
+<<<<<<< HEAD
 function esc(string $str)
+=======
+function esc($str)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 {
     return htmlspecialchars($str, \ENT_QUOTES, 'UTF-8');
 }

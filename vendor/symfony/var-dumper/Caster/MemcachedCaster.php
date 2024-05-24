@@ -71,7 +71,11 @@ class MemcachedCaster
 
         $optionConstants = [];
         foreach ($reflectedMemcached->getConstants() as $constantKey => $value) {
+<<<<<<< HEAD
             if (str_starts_with($constantKey, 'OPT_')) {
+=======
+            if (0 === strpos($constantKey, 'OPT_')) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $optionConstants[$constantKey] = $value;
             }
         }

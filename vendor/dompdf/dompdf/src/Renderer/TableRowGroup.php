@@ -26,6 +26,7 @@ class TableRowGroup extends Block
 
         $this->_set_opacity($frame->get_opacity($style->opacity));
 
+<<<<<<< HEAD
         $border_box = $frame->get_border_box();
 
         $this->_render_border($frame, $border_box);
@@ -37,5 +38,27 @@ class TableRowGroup extends Block
         }
 
         $this->debugBlockLayout($frame, "red");
+=======
+        $this->_render_border($frame);
+        $this->_render_outline($frame);
+
+        if ($this->_dompdf->getOptions()->getDebugLayout() && $this->_dompdf->getOptions()->getDebugLayoutBlocks()) {
+            $this->_debug_layout($frame->get_border_box(), "red");
+            if ($this->_dompdf->getOptions()->getDebugLayoutPaddingBox()) {
+                $this->_debug_layout($frame->get_padding_box(), "red", [0.5, 0.5]);
+            }
+        }
+
+        if ($this->_dompdf->getOptions()->getDebugLayout() && $this->_dompdf->getOptions()->getDebugLayoutLines() && $frame->get_decorator()) {
+            foreach ($frame->get_decorator()->get_line_boxes() as $line) {
+                $frame->_debug_layout([$line->x, $line->y, $line->w, $line->h], "orange");
+            }
+        }
+
+        $id = $frame->get_node()->getAttribute("id");
+        if (strlen($id) > 0)  {
+            $this->_canvas->add_named_dest($id);
+        }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

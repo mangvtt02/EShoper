@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 /*
  * This file is part of the Symfony package.
  *
@@ -17,4 +18,12 @@ if (\PHP_VERSION_ID < 80000) {
          */
         public function __toString();
     }
+=======
+interface Stringable
+{
+    /**
+     * @return string
+     */
+    public function __toString();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

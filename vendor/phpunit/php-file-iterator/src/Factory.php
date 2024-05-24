@@ -68,6 +68,7 @@ class Factory
 
     protected function getPathsAfterResolvingWildcards(array $paths): array
     {
+<<<<<<< HEAD
         $_paths = [[]];
 
         foreach ($paths as $path) {
@@ -79,5 +80,18 @@ class Factory
         }
 
         return \array_filter(\array_merge(...$_paths));
+=======
+        $_paths = [];
+
+        foreach ($paths as $path) {
+            if ($locals = \glob($path, GLOB_ONLYDIR)) {
+                $_paths = \array_merge($_paths, \array_map('\realpath', $locals));
+            } else {
+                $_paths[] = \realpath($path);
+            }
+        }
+
+        return \array_filter($_paths);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

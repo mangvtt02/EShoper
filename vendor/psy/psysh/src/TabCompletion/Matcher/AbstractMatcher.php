@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -31,7 +35,10 @@ abstract class AbstractMatcher
     const T_CLONE = 'T_CLONE';
     const T_NS_SEPARATOR = 'T_NS_SEPARATOR';
     const T_STRING = 'T_STRING';
+<<<<<<< HEAD
     const T_NAME_QUALIFIED = 'T_NAME_QUALIFIED';
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     const T_WHITESPACE = 'T_WHITESPACE';
     const T_AND_EQUAL = 'T_AND_EQUAL';
     const T_BOOLEAN_AND = 'T_BOOLEAN_AND';
@@ -48,9 +55,15 @@ abstract class AbstractMatcher
      *
      * @param array $tokens Tokenized readline input
      *
+<<<<<<< HEAD
      * @return false
      */
     public function hasMatched(array $tokens): bool
+=======
+     * @return bool
+     */
+    public function hasMatched(array $tokens)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return false;
     }
@@ -59,8 +72,15 @@ abstract class AbstractMatcher
      * Get current readline input word.
      *
      * @param array $tokens Tokenized readline input (see token_get_all)
+<<<<<<< HEAD
      */
     protected function getInput(array $tokens): string
+=======
+     *
+     * @return string
+     */
+    protected function getInput(array $tokens)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $var = '';
         $firstToken = \array_pop($tokens);
@@ -75,19 +95,34 @@ abstract class AbstractMatcher
      * Get current namespace and class (if any) from readline input.
      *
      * @param array $tokens Tokenized readline input (see token_get_all)
+<<<<<<< HEAD
      */
     protected function getNamespaceAndClass(array $tokens): string
     {
         $class = '';
         while (self::hasToken(
             [self::T_NS_SEPARATOR, self::T_STRING, self::T_NAME_QUALIFIED],
+=======
+     *
+     * @return string
+     */
+    protected function getNamespaceAndClass($tokens)
+    {
+        $class = '';
+        while (self::hasToken(
+            [self::T_NS_SEPARATOR, self::T_STRING],
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $token = \array_pop($tokens)
         )) {
             if (self::needCompleteClass($token)) {
                 continue;
             }
 
+<<<<<<< HEAD
             $class = $token[1].$class;
+=======
+            $class = $token[1] . $class;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $class;
@@ -101,15 +136,26 @@ abstract class AbstractMatcher
      *
      * @return array The matches resulting from the query
      */
+<<<<<<< HEAD
     abstract public function getMatches(array $tokens, array $info = []): array;
+=======
+    abstract public function getMatches(array $tokens, array $info = []);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Check whether $word starts with $prefix.
      *
      * @param string $prefix
      * @param string $word
+<<<<<<< HEAD
      */
     public static function startsWith(string $prefix, string $word): bool
+=======
+     *
+     * @return bool
+     */
+    public static function startsWith($prefix, $word)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return \preg_match(\sprintf('#^%s#', $prefix), $word);
     }
@@ -119,8 +165,15 @@ abstract class AbstractMatcher
      *
      * @param mixed  $token  A PHP token (see token_get_all)
      * @param string $syntax A syntax pattern (default: variable pattern)
+<<<<<<< HEAD
      */
     public static function hasSyntax($token, string $syntax = self::VAR_SYNTAX): bool
+=======
+     *
+     * @return bool
+     */
+    public static function hasSyntax($token, $syntax = self::VAR_SYNTAX)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!\is_array($token)) {
             return false;
@@ -136,8 +189,15 @@ abstract class AbstractMatcher
      *
      * @param mixed  $token A PHP token (see token_get_all)
      * @param string $which A PHP token type
+<<<<<<< HEAD
      */
     public static function tokenIs($token, string $which): bool
+=======
+     *
+     * @return bool
+     */
+    public static function tokenIs($token, $which)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!\is_array($token)) {
             return false;
@@ -150,8 +210,15 @@ abstract class AbstractMatcher
      * Check whether $token is an operator.
      *
      * @param mixed $token A PHP token (see token_get_all)
+<<<<<<< HEAD
      */
     public static function isOperator($token): bool
+=======
+     *
+     * @return bool
+     */
+    public static function isOperator($token)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!\is_string($token)) {
             return false;
@@ -160,7 +227,11 @@ abstract class AbstractMatcher
         return \strpos(self::MISC_OPERATORS, $token) !== false;
     }
 
+<<<<<<< HEAD
     public static function needCompleteClass($token): bool
+=======
+    public static function needCompleteClass($token)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return \in_array($token[1], ['doc', 'ls', 'show']);
     }
@@ -170,8 +241,15 @@ abstract class AbstractMatcher
      *
      * @param array $coll  A list of token types
      * @param mixed $token A PHP token (see token_get_all)
+<<<<<<< HEAD
      */
     public static function hasToken(array $coll, $token): bool
+=======
+     *
+     * @return bool
+     */
+    public static function hasToken(array $coll, $token)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!\is_array($token)) {
             return false;

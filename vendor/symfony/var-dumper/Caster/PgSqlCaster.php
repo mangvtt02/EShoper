@@ -22,7 +22,11 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  */
 class PgSqlCaster
 {
+<<<<<<< HEAD
     private const PARAM_CODES = [
+=======
+    private static $paramCodes = [
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'server_encoding',
         'client_encoding',
         'is_superuser',
@@ -35,7 +39,11 @@ class PgSqlCaster
         'standard_conforming_strings',
     ];
 
+<<<<<<< HEAD
     private const TRANSACTION_STATUS = [
+=======
+    private static $transactionStatus = [
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         \PGSQL_TRANSACTION_IDLE => 'PGSQL_TRANSACTION_IDLE',
         \PGSQL_TRANSACTION_ACTIVE => 'PGSQL_TRANSACTION_ACTIVE',
         \PGSQL_TRANSACTION_INTRANS => 'PGSQL_TRANSACTION_INTRANS',
@@ -43,7 +51,11 @@ class PgSqlCaster
         \PGSQL_TRANSACTION_UNKNOWN => 'PGSQL_TRANSACTION_UNKNOWN',
     ];
 
+<<<<<<< HEAD
     private const RESULT_STATUS = [
+=======
+    private static $resultStatus = [
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         \PGSQL_EMPTY_QUERY => 'PGSQL_EMPTY_QUERY',
         \PGSQL_COMMAND_OK => 'PGSQL_COMMAND_OK',
         \PGSQL_TUPLES_OK => 'PGSQL_TUPLES_OK',
@@ -54,7 +66,11 @@ class PgSqlCaster
         \PGSQL_FATAL_ERROR => 'PGSQL_FATAL_ERROR',
     ];
 
+<<<<<<< HEAD
     private const DIAG_CODES = [
+=======
+    private static $diagCodes = [
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'severity' => \PGSQL_DIAG_SEVERITY,
         'sqlstate' => \PGSQL_DIAG_SQLSTATE,
         'message' => \PGSQL_DIAG_MESSAGE_PRIMARY,
@@ -83,8 +99,13 @@ class PgSqlCaster
         $a['busy'] = pg_connection_busy($link);
 
         $a['transaction'] = pg_transaction_status($link);
+<<<<<<< HEAD
         if (isset(self::TRANSACTION_STATUS[$a['transaction']])) {
             $a['transaction'] = new ConstStub(self::TRANSACTION_STATUS[$a['transaction']], $a['transaction']);
+=======
+        if (isset(self::$transactionStatus[$a['transaction']])) {
+            $a['transaction'] = new ConstStub(self::$transactionStatus[$a['transaction']], $a['transaction']);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $a['pid'] = pg_get_pid($link);
@@ -96,7 +117,11 @@ class PgSqlCaster
         $a['options'] = pg_options($link);
         $a['version'] = pg_version($link);
 
+<<<<<<< HEAD
         foreach (self::PARAM_CODES as $v) {
+=======
+        foreach (self::$paramCodes as $v) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if (false !== $s = pg_parameter_status($link, $v)) {
                 $a['param'][$v] = $s;
             }
@@ -112,13 +137,22 @@ class PgSqlCaster
     {
         $a['num rows'] = pg_num_rows($result);
         $a['status'] = pg_result_status($result);
+<<<<<<< HEAD
         if (isset(self::RESULT_STATUS[$a['status']])) {
             $a['status'] = new ConstStub(self::RESULT_STATUS[$a['status']], $a['status']);
+=======
+        if (isset(self::$resultStatus[$a['status']])) {
+            $a['status'] = new ConstStub(self::$resultStatus[$a['status']], $a['status']);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
         $a['command-completion tag'] = pg_result_status($result, \PGSQL_STATUS_STRING);
 
         if (-1 === $a['num rows']) {
+<<<<<<< HEAD
             foreach (self::DIAG_CODES as $k => $v) {
+=======
+            foreach (self::$diagCodes as $k => $v) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $a['error'][$k] = pg_result_error_field($result, $v);
             }
         }

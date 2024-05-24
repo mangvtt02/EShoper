@@ -23,9 +23,15 @@ use Symfony\Component\Routing\RouteCollection;
  */
 class TraceableUrlMatcher extends UrlMatcher
 {
+<<<<<<< HEAD
     public const ROUTE_DOES_NOT_MATCH = 0;
     public const ROUTE_ALMOST_MATCHES = 1;
     public const ROUTE_MATCHES = 2;
+=======
+    const ROUTE_DOES_NOT_MATCH = 0;
+    const ROUTE_ALMOST_MATCHES = 1;
+    const ROUTE_MATCHES = 2;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     protected $traces;
 
@@ -65,7 +71,11 @@ class TraceableUrlMatcher extends UrlMatcher
             $requiredMethods = $route->getMethods();
 
             // check the static prefix of the URL first. Only use the more expensive preg_match when it matches
+<<<<<<< HEAD
             if ('' !== $staticPrefix && !str_starts_with($trimmedPathinfo, $staticPrefix)) {
+=======
+            if ('' !== $staticPrefix && 0 !== strpos($trimmedPathinfo, $staticPrefix)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $this->addTrace(sprintf('Path "%s" does not match', $route->getPath()), self::ROUTE_DOES_NOT_MATCH, $name, $route);
                 continue;
             }
@@ -146,7 +156,11 @@ class TraceableUrlMatcher extends UrlMatcher
 
             $this->addTrace('Route matches!', self::ROUTE_MATCHES, $name, $route);
 
+<<<<<<< HEAD
             return $this->getAttributes($route, $name, array_replace($matches, $hostMatches, $status[1] ?? []));
+=======
+            return $this->getAttributes($route, $name, array_replace($matches, $hostMatches, isset($status[1]) ? $status[1] : []));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return [];

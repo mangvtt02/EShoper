@@ -37,10 +37,13 @@ class IpUtils
      */
     public static function checkIp($requestIp, $ips)
     {
+<<<<<<< HEAD
         if (null === $requestIp) {
             return false;
         }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (!\is_array($ips)) {
             $ips = [$ips];
         }
@@ -76,8 +79,13 @@ class IpUtils
             return self::$checkedIps[$cacheKey] = false;
         }
 
+<<<<<<< HEAD
         if (str_contains($ip, '/')) {
             [$address, $netmask] = explode('/', $ip, 2);
+=======
+        if (false !== strpos($ip, '/')) {
+            list($address, $netmask) = explode('/', $ip, 2);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if ('0' === $netmask) {
                 return self::$checkedIps[$cacheKey] = filter_var($address, \FILTER_VALIDATE_IP, \FILTER_FLAG_IPV4);
@@ -124,6 +132,7 @@ class IpUtils
             throw new \RuntimeException('Unable to check Ipv6. Check that PHP was not compiled with option "disable-ipv6".');
         }
 
+<<<<<<< HEAD
         // Check to see if we were given a IP4 $requestIp or $ip by mistake
         if (str_contains($requestIp, '.') || str_contains($ip, '.')) {
             return self::$checkedIps[$cacheKey] = false;
@@ -135,6 +144,10 @@ class IpUtils
 
         if (str_contains($ip, '/')) {
             [$address, $netmask] = explode('/', $ip, 2);
+=======
+        if (false !== strpos($ip, '/')) {
+            list($address, $netmask) = explode('/', $ip, 2);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if ('0' === $netmask) {
                 return (bool) unpack('n*', @inet_pton($address));
@@ -158,7 +171,11 @@ class IpUtils
         for ($i = 1, $ceil = ceil($netmask / 16); $i <= $ceil; ++$i) {
             $left = $netmask - 16 * ($i - 1);
             $left = ($left <= 16) ? $left : 16;
+<<<<<<< HEAD
             $mask = ~(0xFFFF >> $left) & 0xFFFF;
+=======
+            $mask = ~(0xffff >> $left) & 0xffff;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if (($bytesAddr[$i] & $mask) != ($bytesTest[$i] & $mask)) {
                 return self::$checkedIps[$cacheKey] = false;
             }

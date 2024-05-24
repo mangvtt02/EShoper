@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,7 +25,11 @@ class GlobalVariableEnumerator extends Enumerator
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     protected function listItems(InputInterface $input, ?\Reflector $reflector = null, $target = null): array
+=======
+    protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // only list globals when no Reflector is present.
         if ($reflector !== null || $target !== null) {
@@ -49,7 +57,11 @@ class GlobalVariableEnumerator extends Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
     protected function getGlobals(): array
+=======
+    protected function getGlobals()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         global $GLOBALS;
 
@@ -71,14 +83,22 @@ class GlobalVariableEnumerator extends Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
     protected function prepareGlobals(array $globals): array
+=======
+    protected function prepareGlobals($globals)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // My kingdom for a generator.
         $ret = [];
 
         foreach ($globals as $name => $value) {
             if ($this->showItem($name)) {
+<<<<<<< HEAD
                 $fname = '$'.$name;
+=======
+                $fname = '$' . $name;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $ret[$fname] = [
                     'name'  => $fname,
                     'style' => self::IS_GLOBAL,

@@ -35,9 +35,12 @@
  * - Vladislav UnsealedOne
  * - dima-bzz
  */
+<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 $transformDiff = function ($input) {
     return strtr($input, [
         'неделя' => 'неделю',
@@ -82,11 +85,19 @@ return [
     },
     'diff_now' => 'только что',
     'diff_today' => 'Сегодня,',
+<<<<<<< HEAD
     'diff_today_regexp' => 'Сегодня,?(?:\\s+в)?',
     'diff_yesterday' => 'вчера',
     'diff_yesterday_regexp' => 'Вчера,?(?:\\s+в)?',
     'diff_tomorrow' => 'завтра',
     'diff_tomorrow_regexp' => 'Завтра,?(?:\\s+в)?',
+=======
+    'diff_today_regexp' => 'Сегодня,(?:\\s+в)?',
+    'diff_yesterday' => 'вчера',
+    'diff_yesterday_regexp' => 'Вчера,(?:\\s+в)?',
+    'diff_tomorrow' => 'завтра',
+    'diff_tomorrow_regexp' => 'Завтра,(?:\\s+в)?',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     'diff_before_yesterday' => 'позавчера',
     'diff_after_tomorrow' => 'послезавтра',
     'formats' => [
@@ -100,7 +111,11 @@ return [
     'calendar' => [
         'sameDay' => '[Сегодня, в] LT',
         'nextDay' => '[Завтра, в] LT',
+<<<<<<< HEAD
         'nextWeek' => function (CarbonInterface $current, CarbonInterface $other) {
+=======
+        'nextWeek' => function (\Carbon\CarbonInterface $current, \Carbon\CarbonInterface $other) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if ($current->week !== $other->week) {
                 switch ($current->dayOfWeek) {
                     case 0:
@@ -123,7 +138,11 @@ return [
             return '[В] dddd, [в] LT';
         },
         'lastDay' => '[Вчера, в] LT',
+<<<<<<< HEAD
         'lastWeek' => function (CarbonInterface $current, CarbonInterface $other) {
+=======
+        'lastWeek' => function (\Carbon\CarbonInterface $current, \Carbon\CarbonInterface $other) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if ($current->week !== $other->week) {
                 switch ($current->dayOfWeek) {
                     case 0:

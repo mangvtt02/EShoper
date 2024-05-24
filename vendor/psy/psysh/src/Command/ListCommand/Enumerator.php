@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -23,6 +27,7 @@ use Symfony\Component\Console\Input\InputInterface;
 abstract class Enumerator
 {
     // Output styles
+<<<<<<< HEAD
     const IS_PUBLIC = 'public';
     const IS_PROTECTED = 'protected';
     const IS_PRIVATE = 'private';
@@ -30,6 +35,15 @@ abstract class Enumerator
     const IS_CONSTANT = 'const';
     const IS_CLASS = 'class';
     const IS_FUNCTION = 'function';
+=======
+    const IS_PUBLIC    = 'public';
+    const IS_PROTECTED = 'protected';
+    const IS_PRIVATE   = 'private';
+    const IS_GLOBAL    = 'global';
+    const IS_CONSTANT  = 'const';
+    const IS_CLASS     = 'class';
+    const IS_FUNCTION  = 'function';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     private $filter;
     private $presenter;
@@ -54,7 +68,11 @@ abstract class Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
     public function enumerate(InputInterface $input, ?\Reflector $reflector = null, $target = null): array
+=======
+    public function enumerate(InputInterface $input, \Reflector $reflector = null, $target = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->filter->bind($input);
 
@@ -82,7 +100,11 @@ abstract class Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
     abstract protected function listItems(InputInterface $input, ?\Reflector $reflector = null, $target = null): array;
+=======
+    abstract protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     protected function showItem($name)
     {

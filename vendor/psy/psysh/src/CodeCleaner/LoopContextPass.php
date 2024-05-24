@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -32,8 +36,11 @@ class LoopContextPass extends CodeCleanerPass
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      *
      * @return Node[]|null Array of nodes
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function beforeTraverse(array $nodes)
     {
@@ -47,8 +54,11 @@ class LoopContextPass extends CodeCleanerPass
      * @throws FatalErrorException if the node is a break or continue and has an argument less than 1
      *
      * @param Node $node
+<<<<<<< HEAD
      *
      * @return int|Node|null Replacement node (or special return value)
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function enterNode(Node $node)
     {
@@ -67,24 +77,42 @@ class LoopContextPass extends CodeCleanerPass
 
                 if ($this->loopDepth === 0) {
                     $msg = \sprintf("'%s' not in the 'loop' or 'switch' context", $operator);
+<<<<<<< HEAD
                     throw new FatalErrorException($msg, 0, \E_ERROR, null, $node->getStartLine());
                 }
 
                 // @todo Rename to Int_ and Float_ once we drop support for PHP-Parser 4.x
+=======
+                    throw new FatalErrorException($msg, 0, E_ERROR, null, $node->getLine());
+                }
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 if ($node->num instanceof LNumber || $node->num instanceof DNumber) {
                     $num = $node->num->value;
                     if ($node->num instanceof DNumber || $num < 1) {
                         $msg = \sprintf("'%s' operator accepts only positive numbers", $operator);
+<<<<<<< HEAD
                         throw new FatalErrorException($msg, 0, \E_ERROR, null, $node->getStartLine());
+=======
+                        throw new FatalErrorException($msg, 0, E_ERROR, null, $node->getLine());
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     }
 
                     if ($num > $this->loopDepth) {
                         $msg = \sprintf("Cannot '%s' %d levels", $operator, $num);
+<<<<<<< HEAD
                         throw new FatalErrorException($msg, 0, \E_ERROR, null, $node->getStartLine());
                     }
                 } elseif ($node->num) {
                     $msg = \sprintf("'%s' operator with non-constant operand is no longer supported", $operator);
                     throw new FatalErrorException($msg, 0, \E_ERROR, null, $node->getStartLine());
+=======
+                        throw new FatalErrorException($msg, 0, E_ERROR, null, $node->getLine());
+                    }
+                } elseif ($node->num) {
+                    $msg = \sprintf("'%s' operator with non-constant operand is no longer supported", $operator);
+                    throw new FatalErrorException($msg, 0, E_ERROR, null, $node->getLine());
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
                 break;
         }
@@ -92,8 +120,11 @@ class LoopContextPass extends CodeCleanerPass
 
     /**
      * @param Node $node
+<<<<<<< HEAD
      *
      * @return int|Node|Node[]|null Replacement node (or special return value)
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function leaveNode(Node $node)
     {

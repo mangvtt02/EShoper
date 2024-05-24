@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,6 +18,10 @@ namespace Psy\Command;
 use PhpParser\NodeTraverser;
 use PhpParser\PrettyPrinter\Standard as Printer;
 use Psy\Input\CodeArgument;
+<<<<<<< HEAD
+=======
+use Psy\ParserFactory;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Psy\Readline\Readline;
 use Psy\Sudo\SudoVisitor;
 use Symfony\Component\Console\Input\InputInterface;
@@ -34,9 +42,15 @@ class SudoCommand extends Command
      */
     public function __construct($name = null)
     {
+<<<<<<< HEAD
         $this->parser = new CodeArgumentParser();
 
         // @todo Pass visitor directly to once we drop support for PHP-Parser 4.x
+=======
+        $parserFactory = new ParserFactory();
+        $this->parser = $parserFactory->createParser();
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->traverser = new NodeTraverser();
         $this->traverser->addVisitor(new SudoVisitor());
 
@@ -94,10 +108,15 @@ HELP
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      *
      * @return int 0 if everything went fine, or an exit code
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
+=======
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $code = $input->getArgument('code');
 
@@ -110,7 +129,15 @@ HELP
             $code = $history[\count($history) - 2];
         }
 
+<<<<<<< HEAD
         $nodes = $this->traverser->traverse($this->parser->parse($code));
+=======
+        if (\strpos($code, '<?') === false) {
+            $code = '<?php ' . $code;
+        }
+
+        $nodes = $this->traverser->traverse($this->parse($code));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $sudoCode = $this->printer->prettyPrint($nodes);
         $shell = $this->getApplication();
@@ -118,4 +145,28 @@ HELP
 
         return 0;
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Lex and parse a string of code into statements.
+     *
+     * @param string $code
+     *
+     * @return array Statements
+     */
+    private function parse($code)
+    {
+        try {
+            return $this->parser->parse($code);
+        } catch (\PhpParser\Error $e) {
+            if (\strpos($e->getMessage(), 'unexpected EOF') === false) {
+                throw $e;
+            }
+
+            // If we got an unexpected EOF, let's try it again with a semicolon.
+            return $this->parser->parse($code . ';');
+        }
+    }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

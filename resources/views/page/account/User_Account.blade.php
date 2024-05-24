@@ -70,7 +70,11 @@
                           }
                         </style>
 														<a href="{{route('page.Logout')}}" @if(is_countable($cart->items) && count($cart->items)>0)
+<<<<<<< HEAD
 																	onclick="return confirm('Bạn đã chắc chưa')"
+=======
+																	onclick="return confirm('Khi đăng xuất các sản phẩm trong giỏ hàng sẽ bị mất?')"
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 																@endif >ĐĂNG XUẤT</a>
                         </div>
 											</div>

@@ -54,6 +54,7 @@ class ApplicationTester
      */
     public function run(array $input, $options = [])
     {
+<<<<<<< HEAD
         $prevShellVerbosity = getenv('SHELL_VERBOSITY');
 
         try {
@@ -86,5 +87,19 @@ class ApplicationTester
                 $_SERVER['SHELL_VERBOSITY'] = $prevShellVerbosity;
             }
         }
+=======
+        $this->input = new ArrayInput($input);
+        if (isset($options['interactive'])) {
+            $this->input->setInteractive($options['interactive']);
+        }
+
+        if ($this->inputs) {
+            $this->input->setStream(self::createStream($this->inputs));
+        }
+
+        $this->initOutput($options);
+
+        return $this->statusCode = $this->application->run($this->input, $this->output);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

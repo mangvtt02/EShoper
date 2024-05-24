@@ -30,6 +30,7 @@ use Symfony\Contracts\Translation\TranslatorTrait;
  */
 class TranslatorTest extends TestCase
 {
+<<<<<<< HEAD
     private $defaultLocale;
 
     protected function setUp(): void
@@ -46,6 +47,8 @@ class TranslatorTest extends TestCase
     /**
      * @return TranslatorInterface
      */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function getTranslator()
     {
         return new class() implements TranslatorInterface {
@@ -69,17 +72,25 @@ class TranslatorTest extends TestCase
     public function testTransChoiceWithExplicitLocale($expected, $id, $number)
     {
         $translator = $this->getTranslator();
+<<<<<<< HEAD
+=======
+        $translator->setLocale('en');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $this->assertEquals($expected, $translator->trans($id, ['%count%' => $number]));
     }
 
     /**
+<<<<<<< HEAD
      * @requires extension intl
      *
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @dataProvider getTransChoiceTests
      */
     public function testTransChoiceWithDefaultLocale($expected, $id, $number)
     {
+<<<<<<< HEAD
         $translator = $this->getTranslator();
 
         $this->assertEquals($expected, $translator->trans($id, ['%count%' => $number]));
@@ -92,6 +103,11 @@ class TranslatorTest extends TestCase
     {
         $translator = $this->getTranslator();
         $translator->setLocale('en_US_POSIX');
+=======
+        \Locale::setDefault('en');
+
+        $translator = $this->getTranslator();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $this->assertEquals($expected, $translator->trans($id, ['%count%' => $number]));
     }
@@ -99,6 +115,10 @@ class TranslatorTest extends TestCase
     public function testGetSetLocale()
     {
         $translator = $this->getTranslator();
+<<<<<<< HEAD
+=======
+        $translator->setLocale('en');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $this->assertEquals('en', $translator->getLocale());
     }
@@ -117,7 +137,11 @@ class TranslatorTest extends TestCase
         $this->assertEquals('en', $translator->getLocale());
     }
 
+<<<<<<< HEAD
     public static function getTransTests()
+=======
+    public function getTransTests()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return [
             ['Symfony is great!', 'Symfony is great!', []],
@@ -125,7 +149,11 @@ class TranslatorTest extends TestCase
         ];
     }
 
+<<<<<<< HEAD
     public static function getTransChoiceTests()
+=======
+    public function getTransChoiceTests()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return [
             ['There are no apples', '{0} There are no apples|{1} There is one apple|]1,Inf] There are %count% apples', 0],
@@ -140,7 +168,11 @@ class TranslatorTest extends TestCase
     }
 
     /**
+<<<<<<< HEAD
      * @dataProvider getInterval
+=======
+     * @dataProvider getInternal
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function testInterval($expected, $number, $interval)
     {
@@ -149,7 +181,11 @@ class TranslatorTest extends TestCase
         $this->assertEquals($expected, $translator->trans($interval.' foo|[1,Inf[ bar', ['%count%' => $number]));
     }
 
+<<<<<<< HEAD
     public static function getInterval()
+=======
+    public function getInternal()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return [
             ['foo', 3, '{1,2, 3 ,4}'],
@@ -167,11 +203,19 @@ class TranslatorTest extends TestCase
     /**
      * @dataProvider getChooseTests
      */
+<<<<<<< HEAD
     public function testChoose($expected, $id, $number, $locale = null)
     {
         $translator = $this->getTranslator();
 
         $this->assertEquals($expected, $translator->trans($id, ['%count%' => $number], null, $locale));
+=======
+    public function testChoose($expected, $id, $number)
+    {
+        $translator = $this->getTranslator();
+
+        $this->assertEquals($expected, $translator->trans($id, ['%count%' => $number]));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function testReturnMessageIfExactlyOneStandardRuleIsGiven()
@@ -186,13 +230,21 @@ class TranslatorTest extends TestCase
      */
     public function testThrowExceptionIfMatchingMessageCannotBeFound($id, $number)
     {
+<<<<<<< HEAD
         $this->expectException(\InvalidArgumentException::class);
+=======
+        $this->expectException('InvalidArgumentException');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $translator = $this->getTranslator();
 
         $translator->trans($id, ['%count%' => $number]);
     }
 
+<<<<<<< HEAD
     public static function getNonMatchingMessages()
+=======
+    public function getNonMatchingMessages()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return [
             ['{0} There are no apples|{1} There is one apple', 2],
@@ -202,7 +254,11 @@ class TranslatorTest extends TestCase
         ];
     }
 
+<<<<<<< HEAD
     public static function getChooseTests()
+=======
+    public function getChooseTests()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return [
             ['There are no apples', '{0} There are no apples|{1} There is one apple|]1,Inf] There are %count% apples', 0],
@@ -258,13 +314,21 @@ class TranslatorTest extends TestCase
             new-line in it. Selector = 0.|{1}This is a text with a
             new-line in it. Selector = 1.|[1,Inf]This is a text with a
             new-line in it. Selector > 1.', 5],
+<<<<<<< HEAD
             // with double-quotes and id split across lines
+=======
+            // with double-quotes and id split accros lines
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ['This is a text with a
             new-line in it. Selector = 1.', '{0}This is a text with a
             new-line in it. Selector = 0.|{1}This is a text with a
             new-line in it. Selector = 1.|[1,Inf]This is a text with a
             new-line in it. Selector > 1.', 1],
+<<<<<<< HEAD
             // with single-quotes and id split across lines
+=======
+            // with single-quotes and id split accros lines
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ['This is a text with a
             new-line in it. Selector > 1.', '{0}This is a text with a
             new-line in it. Selector = 0.|{1}This is a text with a
@@ -272,14 +336,21 @@ class TranslatorTest extends TestCase
             new-line in it. Selector > 1.', 5],
             // with single-quotes and \n in text
             ['This is a text with a\nnew-line in it. Selector = 0.', '{0}This is a text with a\nnew-line in it. Selector = 0.|{1}This is a text with a\nnew-line in it. Selector = 1.|[1,Inf]This is a text with a\nnew-line in it. Selector > 1.', 0],
+<<<<<<< HEAD
             // with double-quotes and id split across lines
             ["This is a text with a\nnew-line in it. Selector = 1.", "{0}This is a text with a\nnew-line in it. Selector = 0.|{1}This is a text with a\nnew-line in it. Selector = 1.|[1,Inf]This is a text with a\nnew-line in it. Selector > 1.", 1],
             // escape pipe
+=======
+            // with double-quotes and id split accros lines
+            ["This is a text with a\nnew-line in it. Selector = 1.", "{0}This is a text with a\nnew-line in it. Selector = 0.|{1}This is a text with a\nnew-line in it. Selector = 1.|[1,Inf]This is a text with a\nnew-line in it. Selector > 1.", 1],
+            // esacape pipe
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ['This is a text with | in it. Selector = 0.', '{0}This is a text with || in it. Selector = 0.|{1}This is a text with || in it. Selector = 1.', 0],
             // Empty plural set (2 plural forms) from a .PO file
             ['', '|', 1],
             // Empty plural set (3 plural forms) from a .PO file
             ['', '||', 1],
+<<<<<<< HEAD
 
             // Floating values
             ['1.5 liters', '%count% liter|%count% liters', 1.5],
@@ -292,6 +363,8 @@ class TranslatorTest extends TestCase
             ['-1.5 degré', '%count% degré|%count% degrés', -1.5, 'fr'],
             ['-2 degrees', '%count% degree|%count% degrees', -2],
             ['-2 degrés', '%count% degré|%count% degrés', -2],
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         ];
     }
 
@@ -320,11 +393,19 @@ class TranslatorTest extends TestCase
      *
      * @return array
      */
+<<<<<<< HEAD
     public static function successLangcodes()
     {
         return [
             ['1', ['ay', 'bo', 'cgg', 'dz', 'id', 'ja', 'jbo', 'ka', 'kk', 'km', 'ko', 'ky']],
             ['2', ['nl', 'fr', 'en', 'de', 'de_GE', 'hy', 'hy_AM', 'en_US_POSIX']],
+=======
+    public function successLangcodes()
+    {
+        return [
+            ['1', ['ay', 'bo', 'cgg', 'dz', 'id', 'ja', 'jbo', 'ka', 'kk', 'km', 'ko', 'ky']],
+            ['2', ['nl', 'fr', 'en', 'de', 'de_GE', 'hy', 'hy_AM']],
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ['3', ['be', 'bs', 'cs', 'hr']],
             ['4', ['cy', 'mt', 'sl']],
             ['6', ['ar']],
@@ -339,7 +420,11 @@ class TranslatorTest extends TestCase
      *
      * @return array with nplural together with langcodes
      */
+<<<<<<< HEAD
     public static function failingLangcodes()
+=======
+    public function failingLangcodes()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return [
             ['1', ['fa']],
@@ -362,7 +447,11 @@ class TranslatorTest extends TestCase
         foreach ($matrix as $langCode => $data) {
             $indexes = array_flip($data);
             if ($expectSuccess) {
+<<<<<<< HEAD
                 $this->assertCount($nplural, $indexes, "Langcode '$langCode' has '$nplural' plural forms.");
+=======
+                $this->assertEquals($nplural, \count($indexes), "Langcode '$langCode' has '$nplural' plural forms.");
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             } else {
                 $this->assertNotEquals((int) $nplural, \count($indexes), "Langcode '$langCode' has '$nplural' plural forms.");
             }

@@ -7,14 +7,20 @@ use Dompdf\Frame;
 /**
  * Linked-list Iterator
  *
+<<<<<<< HEAD
  * Returns children in order and allows for the list to change during iteration,
  * provided the changes occur to or after the current element.
+=======
+ * Returns children in order and allows for list to change during iteration,
+ * provided the changes occur to or after the current element
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * @access private
  * @package dompdf
  */
 class FrameListIterator implements Iterator
 {
+<<<<<<< HEAD
     /**
      * @var Frame
      */
@@ -29,17 +35,34 @@ class FrameListIterator implements Iterator
      * @var Frame|null
      */
     protected $prev;
+=======
+
+    /**
+     * @var Frame
+     */
+    protected $_parent;
+
+    /**
+     * @var Frame
+     */
+    protected $_cur;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var int
      */
+<<<<<<< HEAD
     protected $num;
+=======
+    protected $_num;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @param Frame $frame
      */
     public function __construct(Frame $frame)
     {
+<<<<<<< HEAD
         $this->parent = $frame;
         $this->rewind();
     }
@@ -49,19 +72,40 @@ class FrameListIterator implements Iterator
         $this->cur = $this->parent->get_first_child();
         $this->prev = null;
         $this->num = 0;
+=======
+        $this->_parent = $frame;
+        $this->_cur = $frame->get_first_child();
+        $this->_num = 0;
+    }
+
+    /**
+     *
+     */
+    public function rewind()
+    {
+        $this->_cur = $this->_parent->get_first_child();
+        $this->_num = 0;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * @return bool
      */
+<<<<<<< HEAD
     public function valid(): bool
     {
         return $this->cur !== null;
+=======
+    public function valid()
+    {
+        return isset($this->_cur); // && ($this->_cur->get_prev_sibling() === $this->_prev);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * @return int
      */
+<<<<<<< HEAD
     public function key(): int
     {
         return $this->num;
@@ -94,3 +138,33 @@ class FrameListIterator implements Iterator
         }
     }
 }
+=======
+    public function key()
+    {
+        return $this->_num;
+    }
+
+    /**
+     * @return Frame
+     */
+    public function current()
+    {
+        return $this->_cur;
+    }
+
+    /**
+     * @return Frame
+     */
+    public function next()
+    {
+        $ret = $this->_cur;
+        if (!$ret) {
+            return null;
+        }
+
+        $this->_cur = $this->_cur->get_next_sibling();
+        $this->_num++;
+        return $ret;
+    }
+}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

@@ -15,6 +15,7 @@ use PhpParser\Node\Expr;
  *
  * @internal
  */
+<<<<<<< HEAD
 class PrintableNewAnonClassNode extends Expr {
     /** @var Node\AttributeGroup[] PHP attribute groups */
     public array $attrGroups;
@@ -39,33 +40,70 @@ class PrintableNewAnonClassNode extends Expr {
      */
     public function __construct(
         array $attrGroups, int $flags, array $args, ?Node\Name $extends, array $implements,
+=======
+class PrintableNewAnonClassNode extends Expr
+{
+    /** @var Node\AttributeGroup[] PHP attribute groups */
+    public $attrGroups;
+    /** @var Node\Arg[] Arguments */
+    public $args;
+    /** @var null|Node\Name Name of extended class */
+    public $extends;
+    /** @var Node\Name[] Names of implemented interfaces */
+    public $implements;
+    /** @var Node\Stmt[] Statements */
+    public $stmts;
+
+    public function __construct(
+        array $attrGroups, array $args, Node\Name $extends = null, array $implements,
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         array $stmts, array $attributes
     ) {
         parent::__construct($attributes);
         $this->attrGroups = $attrGroups;
+<<<<<<< HEAD
         $this->flags = $flags;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->args = $args;
         $this->extends = $extends;
         $this->implements = $implements;
         $this->stmts = $stmts;
     }
 
+<<<<<<< HEAD
     public static function fromNewNode(Expr\New_ $newNode): self {
+=======
+    public static function fromNewNode(Expr\New_ $newNode) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $class = $newNode->class;
         assert($class instanceof Node\Stmt\Class_);
         // We don't assert that $class->name is null here, to allow consumers to assign unique names
         // to anonymous classes for their own purposes. We simplify ignore the name here.
         return new self(
+<<<<<<< HEAD
             $class->attrGroups, $class->flags, $newNode->args, $class->extends, $class->implements,
+=======
+            $class->attrGroups, $newNode->args, $class->extends, $class->implements,
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $class->stmts, $newNode->getAttributes()
         );
     }
 
+<<<<<<< HEAD
     public function getType(): string {
         return 'Expr_PrintableNewAnonClass';
     }
 
     public function getSubNodeNames(): array {
         return ['attrGroups', 'flags', 'args', 'extends', 'implements', 'stmts'];
+=======
+    public function getType() : string {
+        return 'Expr_PrintableNewAnonClass';
+    }
+
+    public function getSubNodeNames() : array {
+        return ['attrGroups', 'args', 'extends', 'implements', 'stmts'];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

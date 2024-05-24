@@ -28,7 +28,11 @@ class FrameList implements IteratorAggregate
     /**
      * @return FrameListIterator
      */
+<<<<<<< HEAD
     function getIterator(): FrameListIterator
+=======
+    function getIterator()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return new FrameListIterator($this->_frame);
     }

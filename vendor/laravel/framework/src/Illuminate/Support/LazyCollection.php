@@ -1140,7 +1140,11 @@ class LazyCollection implements Enumerable
      * e.g. new LazyCollection([1, 2, 3])->zip([4, 5, 6]);
      *      => [[1, 4], [2, 5], [3, 6]]
      *
+<<<<<<< HEAD
      * @param  mixed  ...$items
+=======
+     * @param  mixed ...$items
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return static
      */
     public function zip($items)

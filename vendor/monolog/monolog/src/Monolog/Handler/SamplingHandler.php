@@ -26,17 +26,24 @@ use Monolog\Formatter\FormatterInterface;
  *
  * @author Bryan Davis <bd808@wikimedia.org>
  * @author Kunal Mehta <legoktm@gmail.com>
+<<<<<<< HEAD
  *
  * @phpstan-import-type Record from \Monolog\Logger
  * @phpstan-import-type Level from \Monolog\Logger
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 class SamplingHandler extends AbstractHandler implements ProcessableHandlerInterface, FormattableHandlerInterface
 {
     use ProcessableHandlerTrait;
 
     /**
+<<<<<<< HEAD
      * @var HandlerInterface|callable
      * @phpstan-var HandlerInterface|callable(Record|array{level: Level}|null, HandlerInterface): HandlerInterface
+=======
+     * @var callable|HandlerInterface $handler
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $handler;
 
@@ -46,7 +53,11 @@ class SamplingHandler extends AbstractHandler implements ProcessableHandlerInter
     protected $factor;
 
     /**
+<<<<<<< HEAD
      * @psalm-param HandlerInterface|callable(Record|array{level: Level}|null, HandlerInterface): HandlerInterface $handler
+=======
+     * @psalm-param HandlerInterface|callable(array, HandlerInterface): HandlerInterface $handler
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @param callable|HandlerInterface $handler Handler or factory callable($record|null, $samplingHandler).
      * @param int                       $factor  Sample factor (e.g. 10 means every ~10th record is sampled)
@@ -71,7 +82,10 @@ class SamplingHandler extends AbstractHandler implements ProcessableHandlerInter
     {
         if ($this->isHandling($record) && mt_rand(1, $this->factor) === 1) {
             if ($this->processors) {
+<<<<<<< HEAD
                 /** @var Record $record */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $record = $this->processRecord($record);
             }
 
@@ -86,11 +100,17 @@ class SamplingHandler extends AbstractHandler implements ProcessableHandlerInter
      *
      * If the handler was provided as a factory callable, this will trigger the handler's instantiation.
      *
+<<<<<<< HEAD
      * @phpstan-param Record|array{level: Level}|null $record
      *
      * @return HandlerInterface
      */
     public function getHandler(?array $record = null)
+=======
+     * @return HandlerInterface
+     */
+    public function getHandler(array $record = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!$this->handler instanceof HandlerInterface) {
             $this->handler = ($this->handler)($record, $this);
@@ -103,6 +123,7 @@ class SamplingHandler extends AbstractHandler implements ProcessableHandlerInter
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
      */
     public function setFormatter(FormatterInterface $formatter): HandlerInterface
@@ -128,5 +149,22 @@ class SamplingHandler extends AbstractHandler implements ProcessableHandlerInter
         }
 
         throw new \UnexpectedValueException('The nested handler of type '.get_class($handler).' does not support formatters.');
+=======
+     * {@inheritdoc}
+     */
+    public function setFormatter(FormatterInterface $formatter): HandlerInterface
+    {
+        $this->getHandler()->setFormatter($formatter);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFormatter(): FormatterInterface
+    {
+        return $this->getHandler()->getFormatter();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

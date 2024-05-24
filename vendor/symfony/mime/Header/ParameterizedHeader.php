@@ -23,7 +23,11 @@ final class ParameterizedHeader extends UnstructuredHeader
      *
      * @var string
      */
+<<<<<<< HEAD
     public const TOKEN_REGEX = '(?:[\x21\x23-\x27\x2A\x2B\x2D\x2E\x30-\x39\x41-\x5A\x5E-\x7E]+)';
+=======
+    const TOKEN_REGEX = '(?:[\x21\x23-\x27\x2A\x2B\x2D\x2E\x30-\x39\x41-\x5A\x5E-\x7E]+)';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     private $encoder;
     private $parameters = [];
@@ -85,7 +89,11 @@ final class ParameterizedHeader extends UnstructuredHeader
      * This doesn't need to be overridden in theory, but it is for implementation
      * reasons to prevent potential breakage of attributes.
      */
+<<<<<<< HEAD
     protected function toTokens(?string $string = null): array
+=======
+    protected function toTokens(string $string = null): array
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $tokens = parent::toTokens(parent::getBodyAsString());
 
@@ -102,7 +110,11 @@ final class ParameterizedHeader extends UnstructuredHeader
     }
 
     /**
+<<<<<<< HEAD
      * Render an RFC 2047 compliant header parameter from the $name and $value.
+=======
+     * Render a RFC 2047 compliant header parameter from the $name and $value.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private function createParameter(string $name, string $value): string
     {
@@ -123,6 +135,7 @@ final class ParameterizedHeader extends UnstructuredHeader
                 $maxValueLength = $this->getMaxLineLength() - \strlen($name.'*N*="";') - 1;
                 $firstLineOffset = \strlen($this->getCharset()."'".$this->getLanguage()."'");
             }
+<<<<<<< HEAD
 
             if (\in_array($name, ['name', 'filename'], true) && 'form-data' === $this->getValue() && 'content-disposition' === strtolower($this->getName()) && preg_match('//u', $value)) {
                 // WHATWG HTML living standard 4.10.21.8 2 specifies:
@@ -139,6 +152,8 @@ final class ParameterizedHeader extends UnstructuredHeader
 
                 $value = $origValue;
             }
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         // Encode if we need to
@@ -174,7 +189,11 @@ final class ParameterizedHeader extends UnstructuredHeader
      */
     private function getEndOfParameterValue(string $value, bool $encoded = false, bool $firstLine = false): string
     {
+<<<<<<< HEAD
         $forceHttpQuoting = 'form-data' === $this->getValue() && 'content-disposition' === strtolower($this->getName());
+=======
+        $forceHttpQuoting = 'content-disposition' === strtolower($this->getName()) && 'form-data' === $this->getValue();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($forceHttpQuoting || !preg_match('/^'.self::TOKEN_REGEX.'$/D', $value)) {
             $value = '"'.$value.'"';
         }

@@ -2,6 +2,7 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+<<<<<<< HEAD
 ## [2.0.6] - 2024-03-01
 
 * No code changes, only updated `.gitattributes` to not export non-essential files.
@@ -28,23 +29,37 @@ All notable changes to this project will be documented in this file. This projec
 
 * Changed PHP version constraint in `composer.json` from `^7.1` to `>=7.1`
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ## [2.0.2] - 2018-09-13
 
 ### Fixed
 
+<<<<<<< HEAD
 * [#48](https://github.com/sebastianbergmann/php-file-iterator/issues/48): Excluding an array that contains false ends up excluding the current working directory
+=======
+* Fixed [#48](https://github.com/sebastianbergmann/php-file-iterator/issues/48): Excluding an array that contains false ends up excluding the current working directory
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [2.0.1] - 2018-06-11
 
 ### Fixed
 
+<<<<<<< HEAD
 * [#46](https://github.com/sebastianbergmann/php-file-iterator/issues/46): Regression with hidden parent directory
+=======
+* Fixed [#46](https://github.com/sebastianbergmann/php-file-iterator/issues/46): Regression with hidden parent directory
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [2.0.0] - 2018-05-28
 
 ### Fixed
 
+<<<<<<< HEAD
 * [#30](https://github.com/sebastianbergmann/php-file-iterator/issues/30): Exclude is not considered if it is a parent of the base path
+=======
+* Fixed [#30](https://github.com/sebastianbergmann/php-file-iterator/issues/30): Exclude is not considered if it is a parent of the base path
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ### Changed
 
@@ -58,19 +73,31 @@ All notable changes to this project will be documented in this file. This projec
 
 ### Fixed
 
+<<<<<<< HEAD
 * [#37](https://github.com/sebastianbergmann/php-file-iterator/issues/37): Regression caused by fix for [#30](https://github.com/sebastianbergmann/php-file-iterator/issues/30)
+=======
+* Fixed [#37](https://github.com/sebastianbergmann/php-file-iterator/issues/37): Regression caused by fix for [#30](https://github.com/sebastianbergmann/php-file-iterator/issues/30)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [1.4.4] - 2017-11-27
 
 ### Fixed
 
+<<<<<<< HEAD
 * [#30](https://github.com/sebastianbergmann/php-file-iterator/issues/30): Exclude is not considered if it is a parent of the base path
+=======
+* Fixed [#30](https://github.com/sebastianbergmann/php-file-iterator/issues/30): Exclude is not considered if it is a parent of the base path
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [1.4.3] - 2017-11-25
 
 ### Fixed
 
+<<<<<<< HEAD
 * [#34](https://github.com/sebastianbergmann/php-file-iterator/issues/34): Factory should use canonical directory names
+=======
+* Fixed [#34](https://github.com/sebastianbergmann/php-file-iterator/issues/34): Factory should use canonical directory names
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [1.4.2] - 2016-11-26
 
@@ -86,6 +113,7 @@ No changes
 
 * [Added support for wildcards (glob) in exclude](https://github.com/sebastianbergmann/php-file-iterator/pull/23)
 
+<<<<<<< HEAD
 [2.0.6]: https://github.com/sebastianbergmann/php-file-iterator/compare/2.0.5...2.0.6
 [2.0.5]: https://github.com/sebastianbergmann/php-file-iterator/compare/2.0.4...2.0.5
 [2.0.4]: https://github.com/sebastianbergmann/php-file-iterator/compare/2.0.3...2.0.4
@@ -93,6 +121,11 @@ No changes
 [2.0.2]: https://github.com/sebastianbergmann/php-file-iterator/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/sebastianbergmann/php-file-iterator/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/sebastianbergmann/php-file-iterator/compare/1.4...2.0.0
+=======
+[2.0.2]: https://github.com/sebastianbergmann/php-file-iterator/compare/2.0.1...2.0.2
+[2.0.1]: https://github.com/sebastianbergmann/php-file-iterator/compare/2.0.0...2.0.1
+[2.0.0]: https://github.com/sebastianbergmann/php-file-iterator/compare/1.4...master
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 [1.4.5]: https://github.com/sebastianbergmann/php-file-iterator/compare/1.4.4...1.4.5
 [1.4.4]: https://github.com/sebastianbergmann/php-file-iterator/compare/1.4.3...1.4.4
 [1.4.3]: https://github.com/sebastianbergmann/php-file-iterator/compare/1.4.2...1.4.3

@@ -18,6 +18,7 @@ use Dompdf\Frame;
  */
 class ListBullet extends AbstractFrameDecorator
 {
+<<<<<<< HEAD
     /**
      * Bullet diameter as fraction of font size.
      */
@@ -52,6 +53,15 @@ class ListBullet extends AbstractFrameDecorator
     /**
      * @deprecated
      */
+=======
+
+    const BULLET_PADDING = 1; // Distance from bullet to text in pt
+    // As fraction of font size (including descent). See also DECO_THICKNESS.
+    const BULLET_THICKNESS = 0.04; // Thickness of bullet outline. Screen: 0.08, print: better less, e.g. 0.04
+    const BULLET_DESCENT = 0.3; //descent of font below baseline. Todo: Guessed for now.
+    const BULLET_SIZE = 0.35; // bullet diameter. For now 0.5 of font_size without descent.
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     static $BULLET_TYPES = ["disc", "circle", "square"];
 
     /**
@@ -65,15 +75,22 @@ class ListBullet extends AbstractFrameDecorator
     }
 
     /**
+<<<<<<< HEAD
      * Get the width of the bullet symbol.
      *
      * @return float
      */
     public function get_width(): float
+=======
+     * @return float|int
+     */
+    function get_margin_width()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $style = $this->_frame->get_style();
 
         if ($style->list_style_type === "none") {
+<<<<<<< HEAD
             return 0.0;
         }
 
@@ -86,10 +103,25 @@ class ListBullet extends AbstractFrameDecorator
      * @return float
      */
     public function get_height(): float
+=======
+            return 0;
+        }
+
+        return $style->font_size * self::BULLET_SIZE + 2 * self::BULLET_PADDING;
+    }
+
+    /**
+     * hits only on "inset" lists items, to increase height of box
+     *
+     * @return float|int
+     */
+    function get_margin_height()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $style = $this->_frame->get_style();
 
         if ($style->list_style_type === "none") {
+<<<<<<< HEAD
             return 0.0;
         }
 
@@ -131,4 +163,29 @@ class ListBullet extends AbstractFrameDecorator
 
         return ($style->line_height / ($size > 0 ? $size : 1)) * $fontHeight;
     }
+=======
+            return 0;
+        }
+
+        return $style->font_size * self::BULLET_SIZE + 2 * self::BULLET_PADDING;
+    }
+
+    /**
+     * @return float|int
+     */
+    function get_width()
+    {
+        return $this->get_margin_width();
+    }
+
+    /**
+     * @return float|int
+     */
+    function get_height()
+    {
+        return $this->get_margin_height();
+    }
+
+    //........................................................................
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

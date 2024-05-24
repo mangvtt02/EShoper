@@ -3,7 +3,10 @@
 namespace Illuminate\Routing;
 
 use Illuminate\Support\Arr;
+<<<<<<< HEAD
 use Illuminate\Support\Reflector;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Illuminate\Support\Str;
 use LogicException;
 use UnexpectedValueException;
@@ -29,7 +32,11 @@ class RouteAction
         // If the action is already a Closure instance, we will just set that instance
         // as the "uses" property, because there is nothing else we need to do when
         // it is available. Otherwise we will need to find it in the action list.
+<<<<<<< HEAD
         if (Reflector::isCallable($action, true)) {
+=======
+        if (is_callable($action, true)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return ! is_array($action) ? ['uses' => $action] : [
                 'uses' => $action[0].'@'.$action[1],
                 'controller' => $action[0].'@'.$action[1],
@@ -74,7 +81,11 @@ class RouteAction
     protected static function findCallable(array $action)
     {
         return Arr::first($action, function ($value, $key) {
+<<<<<<< HEAD
             return Reflector::isCallable($value) && is_numeric($key);
+=======
+            return is_callable($value) && is_numeric($key);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         });
     }
 

@@ -24,11 +24,14 @@ namespace Illuminate\Support\Facades;
  * @method static int transactionLevel()
  * @method static array pretend(\Closure $callback)
  * @method static void listen(\Closure $callback)
+<<<<<<< HEAD
  * @method static void enableQueryLog()
  * @method static void disableQueryLog()
  * @method static bool logging()
  * @method static array getQueryLog()
  * @method static void flushQueryLog()
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * @see \Illuminate\Database\DatabaseManager
  * @see \Illuminate\Database\Connection

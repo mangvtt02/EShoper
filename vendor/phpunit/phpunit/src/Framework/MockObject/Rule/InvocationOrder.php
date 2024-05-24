@@ -9,7 +9,10 @@
  */
 namespace PHPUnit\Framework\MockObject\Rule;
 
+<<<<<<< HEAD
 use function count;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\MockObject\Invocation as BaseInvocation;
 use PHPUnit\Framework\MockObject\Verifiable;
 use PHPUnit\Framework\SelfDescribing;
@@ -26,12 +29,20 @@ abstract class InvocationOrder implements SelfDescribing, Verifiable
 
     public function getInvocationCount(): int
     {
+<<<<<<< HEAD
         return count($this->invocations);
+=======
+        return \count($this->invocations);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function hasBeenInvoked(): bool
     {
+<<<<<<< HEAD
         return count($this->invocations) > 0;
+=======
+        return \count($this->invocations) > 0;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     final public function invoked(BaseInvocation $invocation)

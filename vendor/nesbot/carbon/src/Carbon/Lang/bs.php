@@ -18,9 +18,12 @@
  * - Serhan Apaydın
  * - JD Isaacks
  */
+<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 return [
     'year' => ':count godina|:count godine|:count godina',
     'y' => ':count godina|:count godine|:count godina',
@@ -58,7 +61,11 @@ return [
     'calendar' => [
         'sameDay' => '[danas u] LT',
         'nextDay' => '[sutra u] LT',
+<<<<<<< HEAD
         'nextWeek' => function (CarbonInterface $current) {
+=======
+        'nextWeek' => function (\Carbon\CarbonInterface $current) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             switch ($current->dayOfWeek) {
                 case 0:
                     return '[u] [nedjelju] [u] LT';
@@ -71,7 +78,11 @@ return [
             }
         },
         'lastDay' => '[jučer u] LT',
+<<<<<<< HEAD
         'lastWeek' => function (CarbonInterface $current) {
+=======
+        'lastWeek' => function (\Carbon\CarbonInterface $current) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             switch ($current->dayOfWeek) {
                 case 0:
                 case 3:

@@ -22,7 +22,11 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  */
 class AmqpCaster
 {
+<<<<<<< HEAD
     private const FLAGS = [
+=======
+    private static $flags = [
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         \AMQP_DURABLE => 'AMQP_DURABLE',
         \AMQP_PASSIVE => 'AMQP_PASSIVE',
         \AMQP_EXCLUSIVE => 'AMQP_EXCLUSIVE',
@@ -39,7 +43,11 @@ class AmqpCaster
         \AMQP_REQUEUE => 'AMQP_REQUEUE',
     ];
 
+<<<<<<< HEAD
     private const EXCHANGE_TYPES = [
+=======
+    private static $exchangeTypes = [
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         \AMQP_EX_TYPE_DIRECT => 'AMQP_EX_TYPE_DIRECT',
         \AMQP_EX_TYPE_FANOUT => 'AMQP_EX_TYPE_FANOUT',
         \AMQP_EX_TYPE_TOPIC => 'AMQP_EX_TYPE_TOPIC',
@@ -133,7 +141,11 @@ class AmqpCaster
             $prefix.'flags' => self::extractFlags($c->getFlags()),
         ];
 
+<<<<<<< HEAD
         $type = isset(self::EXCHANGE_TYPES[$c->getType()]) ? new ConstStub(self::EXCHANGE_TYPES[$c->getType()], $c->getType()) : $c->getType();
+=======
+        $type = isset(self::$exchangeTypes[$c->getType()]) ? new ConstStub(self::$exchangeTypes[$c->getType()], $c->getType()) : $c->getType();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         // Recent version of the extension already expose private properties
         if (isset($a["\x00AMQPExchange\x00name"])) {
@@ -197,7 +209,11 @@ class AmqpCaster
     {
         $flagsArray = [];
 
+<<<<<<< HEAD
         foreach (self::FLAGS as $value => $name) {
+=======
+        foreach (self::$flags as $value => $name) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if ($flags & $value) {
                 $flagsArray[] = $name;
             }

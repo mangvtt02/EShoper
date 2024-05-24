@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Runner;
 
+<<<<<<< HEAD
 use function is_dir;
 use function is_file;
 use PHPUnit\Framework\Exception;
@@ -16,6 +17,11 @@ use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestSuite;
 use ReflectionClass;
 use ReflectionException;
+=======
+use PHPUnit\Framework\Exception;
+use PHPUnit\Framework\Test;
+use PHPUnit\Framework\TestSuite;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use SebastianBergmann\FileIterator\Facade as FileIteratorFacade;
 
 /**
@@ -26,17 +32,29 @@ abstract class BaseTestRunner
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_UNKNOWN = -1;
+=======
+    public const STATUS_UNKNOWN    = -1;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_PASSED = 0;
+=======
+    public const STATUS_PASSED     = 0;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_SKIPPED = 1;
+=======
+    public const STATUS_SKIPPED    = 1;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var int
@@ -46,27 +64,47 @@ abstract class BaseTestRunner
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_FAILURE = 3;
+=======
+    public const STATUS_FAILURE    = 3;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_ERROR = 4;
+=======
+    public const STATUS_ERROR      = 4;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_RISKY = 5;
+=======
+    public const STATUS_RISKY      = 5;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var int
      */
+<<<<<<< HEAD
     public const STATUS_WARNING = 6;
+=======
+    public const STATUS_WARNING    = 6;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var string
      */
+<<<<<<< HEAD
     public const SUITE_METHODNAME = 'suite';
+=======
+    public const SUITE_METHODNAME  = 'suite';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Returns the loader to be used.
@@ -87,7 +125,11 @@ abstract class BaseTestRunner
      */
     public function getTest(string $suiteClassName, string $suiteClassFile = '', $suffixes = ''): ?Test
     {
+<<<<<<< HEAD
         if (empty($suiteClassFile) && is_dir($suiteClassName) && !is_file($suiteClassName . '.php')) {
+=======
+        if (empty($suiteClassFile) && \is_dir($suiteClassName) && !\is_file($suiteClassName . '.php')) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             /** @var string[] $files */
             $files = (new FileIteratorFacade)->getFilesAsArray(
                 $suiteClassName,
@@ -123,7 +165,11 @@ abstract class BaseTestRunner
             }
 
             $test = $suiteMethod->invoke(null, $testClass->getName());
+<<<<<<< HEAD
         } catch (ReflectionException $e) {
+=======
+        } catch (\ReflectionException $e) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             try {
                 $test = new TestSuite($testClass);
             } catch (Exception $e) {
@@ -140,7 +186,11 @@ abstract class BaseTestRunner
     /**
      * Returns the loaded ReflectionClass for a suite name.
      */
+<<<<<<< HEAD
     protected function loadSuiteClass(string $suiteClassName, string $suiteClassFile = ''): ReflectionClass
+=======
+    protected function loadSuiteClass(string $suiteClassName, string $suiteClassFile = ''): \ReflectionClass
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->getLoader()->load($suiteClassName, $suiteClassFile);
     }

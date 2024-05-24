@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
+<<<<<<< HEAD
 use function array_diff;
 use function array_merge;
 use function sprintf;
@@ -16,6 +17,9 @@ use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;
+=======
+use PHPUnit\Framework\TestCase;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @psalm-template MockedType
@@ -141,7 +145,11 @@ final class MockBuilder
     /**
      * Creates a mock object for an abstract class using a fluent interface.
      *
+<<<<<<< HEAD
      * @throws Exception
+=======
+     * @throws \PHPUnit\Framework\Exception
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @throws RuntimeException
      *
      * @psalm-return MockObject&MockedType
@@ -167,7 +175,11 @@ final class MockBuilder
     /**
      * Creates a mock object for a trait using a fluent interface.
      *
+<<<<<<< HEAD
      * @throws Exception
+=======
+     * @throws \PHPUnit\Framework\Exception
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @throws RuntimeException
      *
      * @psalm-return MockObject&MockedType
@@ -202,14 +214,22 @@ final class MockBuilder
         if ($methods === null) {
             $this->methods = $methods;
         } else {
+<<<<<<< HEAD
             $this->methods = array_merge($this->methods ?? [], $methods);
+=======
+            $this->methods = \array_merge($this->methods ?? [], $methods);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this;
     }
 
     /**
+<<<<<<< HEAD
      * Specifies the subset of methods to mock, requiring each to exist in the class.
+=======
+     * Specifies the subset of methods to mock, requiring each to exist in the class
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @param string[] $methods
      *
@@ -226,12 +246,21 @@ final class MockBuilder
         }
 
         try {
+<<<<<<< HEAD
             $reflector = new ReflectionClass($this->type);
             // @codeCoverageIgnoreStart
         } catch (ReflectionException $e) {
             throw new RuntimeException(
                 $e->getMessage(),
                 $e->getCode(),
+=======
+            $reflector = new \ReflectionClass($this->type);
+            // @codeCoverageIgnoreStart
+        } catch (\ReflectionException $e) {
+            throw new RuntimeException(
+                $e->getMessage(),
+                (int) $e->getCode(),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $e
             );
         }
@@ -240,7 +269,11 @@ final class MockBuilder
         foreach ($methods as $method) {
             if (!$reflector->hasMethod($method)) {
                 throw new RuntimeException(
+<<<<<<< HEAD
                     sprintf(
+=======
+                    \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         'Trying to set mock method "%s" with onlyMethods, but it does not exist in class "%s". Use addMethods() for methods that don\'t exist in the class.',
                         $method,
                         $this->type
@@ -249,13 +282,21 @@ final class MockBuilder
             }
         }
 
+<<<<<<< HEAD
         $this->methods = array_merge($this->methods ?? [], $methods);
+=======
+        $this->methods = \array_merge($this->methods ?? [], $methods);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $this;
     }
 
     /**
+<<<<<<< HEAD
      * Specifies methods that don't exist in the class which you want to mock.
+=======
+     * Specifies methods that don't exist in the class which you want to mock
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @param string[] $methods
      *
@@ -272,12 +313,21 @@ final class MockBuilder
         }
 
         try {
+<<<<<<< HEAD
             $reflector = new ReflectionClass($this->type);
             // @codeCoverageIgnoreStart
         } catch (ReflectionException $e) {
             throw new RuntimeException(
                 $e->getMessage(),
                 $e->getCode(),
+=======
+            $reflector = new \ReflectionClass($this->type);
+            // @codeCoverageIgnoreStart
+        } catch (\ReflectionException $e) {
+            throw new RuntimeException(
+                $e->getMessage(),
+                (int) $e->getCode(),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $e
             );
         }
@@ -286,7 +336,11 @@ final class MockBuilder
         foreach ($methods as $method) {
             if ($reflector->hasMethod($method)) {
                 throw new RuntimeException(
+<<<<<<< HEAD
                     sprintf(
+=======
+                    \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         'Trying to set mock method "%s" with addMethods(), but it exists in class "%s". Use onlyMethods() for methods that exist in the class.',
                         $method,
                         $this->type
@@ -295,7 +349,11 @@ final class MockBuilder
             }
         }
 
+<<<<<<< HEAD
         $this->methods = array_merge($this->methods ?? [], $methods);
+=======
+        $this->methods = \array_merge($this->methods ?? [], $methods);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $this;
     }
@@ -306,7 +364,11 @@ final class MockBuilder
     public function setMethodsExcept(array $methods = []): self
     {
         return $this->setMethods(
+<<<<<<< HEAD
             array_diff(
+=======
+            \array_diff(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $this->generator->getClassMethods($this->type),
                 $methods
             )

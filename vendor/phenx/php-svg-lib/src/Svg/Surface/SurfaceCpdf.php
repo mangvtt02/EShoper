@@ -2,7 +2,11 @@
 /**
  * @package php-svg-lib
  * @link    http://github.com/PhenX/php-svg-lib
+<<<<<<< HEAD
  * @author  Fabien Ménager <fabien.menager@gmail.com>
+=======
+ * @author  Fabien M�nager <fabien.menager@gmail.com>
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @license GNU LGPLv3+ http://www.gnu.org/copyleft/lesser.html
  */
 
@@ -15,7 +19,11 @@ class SurfaceCpdf implements SurfaceInterface
 {
     const DEBUG = false;
 
+<<<<<<< HEAD
     /** @var \Svg\Surface\CPdf */
+=======
+    /** @var \CPdf\CPdf */
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private $canvas;
 
     private $width;
@@ -33,7 +41,11 @@ class SurfaceCpdf implements SurfaceInterface
         $h = $dimensions["height"];
 
         if (!$canvas) {
+<<<<<<< HEAD
             $canvas = new \Svg\Surface\CPdf(array(0, 0, $w, $h));
+=======
+            $canvas = new \CPdf\CPdf(array(0, 0, $w, $h));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $refl = new \ReflectionClass($canvas);
             $canvas->fontcache = realpath(dirname($refl->getFileName()) . "/../../fonts/")."/";
         }
@@ -173,7 +185,11 @@ class SurfaceCpdf implements SurfaceInterface
             $data = file_get_contents($image);
         }
 
+<<<<<<< HEAD
         $image = tempnam(sys_get_temp_dir(), "svg");
+=======
+        $image = tempnam("", "svg");
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         file_put_contents($image, $data);
 
         $img = $this->image($image, $sx, $sy, $sw, $sh, "normal");
@@ -415,6 +431,7 @@ class SurfaceCpdf implements SurfaceInterface
             $dashArray = preg_split('/\s*,\s*/', $style->strokeDasharray);
         }
 
+<<<<<<< HEAD
 
         $phase=0;
         if ($style->strokeDashoffset) {
@@ -422,12 +439,18 @@ class SurfaceCpdf implements SurfaceInterface
         }
 
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $canvas->setLineStyle(
             $style->strokeWidth,
             $style->strokeLinecap,
             $style->strokeLinejoin,
+<<<<<<< HEAD
             $dashArray,
             $phase
+=======
+            $dashArray
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         );
 
         $this->setFont($style->fontFamily, $style->fontStyle, $style->fontWeight);

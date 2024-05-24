@@ -15,29 +15,58 @@ namespace PHPUnit\Framework;
 final class WarningTestCase extends TestCase
 {
     /**
+<<<<<<< HEAD
      * @var ?bool
+=======
+     * @var bool
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $backupGlobals = false;
 
     /**
+<<<<<<< HEAD
      * @var ?bool
+=======
+     * @var bool
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $backupStaticAttributes = false;
 
     /**
+<<<<<<< HEAD
      * @var ?bool
+=======
+     * @var bool
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $runTestInSeparateProcess = false;
 
     /**
+<<<<<<< HEAD
+=======
+     * @var bool
+     */
+    protected $useErrorHandler = false;
+
+    /**
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @var string
      */
     private $message;
 
+<<<<<<< HEAD
     public function __construct(string $message = '')
     {
         $this->message = $message;
 
+=======
+    /**
+     * @param string $message
+     */
+    public function __construct($message = '')
+    {
+        $this->message = $message;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         parent::__construct('Warning');
     }
 

@@ -48,9 +48,17 @@ class DynamoDbHandler extends AbstractProcessingHandler
      */
     protected $marshaler;
 
+<<<<<<< HEAD
     public function __construct(DynamoDbClient $client, string $table, $level = Logger::DEBUG, bool $bubble = true)
     {
         /** @phpstan-ignore-next-line */
+=======
+    /**
+     * @param int|string $level
+     */
+    public function __construct(DynamoDbClient $client, string $table, $level = Logger::DEBUG, bool $bubble = true)
+    {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (defined('Aws\Sdk::VERSION') && version_compare(Sdk::VERSION, '3.0', '>=')) {
             $this->version = 3;
             $this->marshaler = new Marshaler;
@@ -65,7 +73,11 @@ class DynamoDbHandler extends AbstractProcessingHandler
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function write(array $record): void
     {
@@ -73,7 +85,10 @@ class DynamoDbHandler extends AbstractProcessingHandler
         if ($this->version === 3) {
             $formatted = $this->marshaler->marshalItem($filtered);
         } else {
+<<<<<<< HEAD
             /** @phpstan-ignore-next-line */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $formatted = $this->client->formatAttributes($filtered);
         }
 
@@ -83,10 +98,13 @@ class DynamoDbHandler extends AbstractProcessingHandler
         ]);
     }
 
+<<<<<<< HEAD
     /**
      * @param  mixed[] $record
      * @return mixed[]
      */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     protected function filterEmptyFields(array $record): array
     {
         return array_filter($record, function ($value) {
@@ -95,7 +113,11 @@ class DynamoDbHandler extends AbstractProcessingHandler
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function getDefaultFormatter(): FormatterInterface
     {

@@ -47,7 +47,11 @@ abstract class FileLoader extends ArrayLoader
 
         $catalogue = parent::load($messages, $locale, $domain);
 
+<<<<<<< HEAD
         if (class_exists(FileResource::class)) {
+=======
+        if (class_exists('Symfony\Component\Config\Resource\FileResource')) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $catalogue->addResource(new FileResource($resource));
         }
 

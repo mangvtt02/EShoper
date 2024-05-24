@@ -9,9 +9,12 @@
  */
 namespace PHPUnit\Framework;
 
+<<<<<<< HEAD
 use function array_keys;
 use function get_class;
 use function spl_object_hash;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Util\Filter;
 use Throwable;
 
@@ -76,17 +79,29 @@ final class ExceptionWrapper extends Exception
         $this->className = $className;
     }
 
+<<<<<<< HEAD
     public function setOriginalException(Throwable $t): void
     {
         $this->originalException($t);
 
         $this->className = get_class($t);
+=======
+    public function setOriginalException(\Throwable $t): void
+    {
+        $this->originalException($t);
+
+        $this->className = \get_class($t);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->file      = $t->getFile();
         $this->line      = $t->getLine();
 
         $this->serializableTrace = $t->getTrace();
 
+<<<<<<< HEAD
         foreach (array_keys($this->serializableTrace) as $key) {
+=======
+        foreach (\array_keys($this->serializableTrace) as $key) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             unset($this->serializableTrace[$key]['args']);
         }
 
@@ -103,6 +118,7 @@ final class ExceptionWrapper extends Exception
     /**
      * Method to contain static originalException to exclude it from stacktrace to prevent the stacktrace contents,
      * which can be quite big, from being garbage-collected, thus blocking memory until shutdown.
+<<<<<<< HEAD
      * Approach works both for var_dump() and var_export() and print_r().
      */
     private function originalException(?Throwable $exceptionToStore = null): ?Throwable
@@ -110,6 +126,15 @@ final class ExceptionWrapper extends Exception
         static $originalExceptions;
 
         $instanceId = spl_object_hash($this);
+=======
+     * Approach works both for var_dump() and var_export() and print_r()
+     */
+    private function originalException(Throwable $exceptionToStore = null): ?Throwable
+    {
+        static $originalExceptions;
+
+        $instanceId = \spl_object_hash($this);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($exceptionToStore) {
             $originalExceptions[$instanceId] = $exceptionToStore;

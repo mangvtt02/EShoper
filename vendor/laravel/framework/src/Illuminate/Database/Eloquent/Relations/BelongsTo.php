@@ -52,6 +52,10 @@ class BelongsTo extends Relation
      * @param  string  $foreignKey
      * @param  string  $ownerKey
      * @param  string  $relationName
+<<<<<<< HEAD
+=======
+     *
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return void
      */
     public function __construct(Builder $query, Model $child, $foreignKey, $ownerKey, $relationName)

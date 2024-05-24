@@ -448,6 +448,7 @@ This is actually identical to using ``atLeast()->times($min)->atMost()->times($m
 but is provided as a shorthand. It may be followed by a ``times()`` call with no
 parameter to preserve the APIs natural language readability.
 
+<<<<<<< HEAD
 Multiple Calls with Different Expectations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -476,6 +477,8 @@ also works if we expect multiple calls to different methods.
         ->with('other')
         ->andReturn($value_other);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 Expectation Declaration Utilities
 ---------------------------------
 

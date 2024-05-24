@@ -16,7 +16,10 @@ use Monolog\Handler\FingersCrossed\ActivationStrategyInterface;
 use Monolog\Logger;
 use Monolog\ResettableInterface;
 use Monolog\Formatter\FormatterInterface;
+<<<<<<< HEAD
 use Psr\Log\LogLevel;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Buffers all records until a certain level is reached
@@ -33,15 +36,19 @@ use Psr\Log\LogLevel;
  * Monolog\Handler\FingersCrossed\ namespace.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
+<<<<<<< HEAD
  *
  * @phpstan-import-type Record from \Monolog\Logger
  * @phpstan-import-type Level from \Monolog\Logger
  * @phpstan-import-type LevelName from \Monolog\Logger
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 class FingersCrossedHandler extends Handler implements ProcessableHandlerInterface, ResettableInterface, FormattableHandlerInterface
 {
     use ProcessableHandlerTrait;
 
+<<<<<<< HEAD
     /**
      * @var callable|HandlerInterface
      * @phpstan-var callable(?Record, HandlerInterface): HandlerInterface|HandlerInterface
@@ -67,6 +74,19 @@ class FingersCrossedHandler extends Handler implements ProcessableHandlerInterfa
 
     /**
      * @psalm-param HandlerInterface|callable(?Record, HandlerInterface): HandlerInterface $handler
+=======
+    protected $handler;
+    protected $activationStrategy;
+    protected $buffering = true;
+    protected $bufferSize;
+    protected $buffer = [];
+    protected $stopBuffering;
+    protected $passthruLevel;
+    protected $bubble;
+
+    /**
+     * @psalm-param HandlerInterface|callable(?array, FingersCrossedHandler): HandlerInterface $handler
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @param callable|HandlerInterface              $handler            Handler or factory callable($record|null, $fingersCrossedHandler).
      * @param int|string|ActivationStrategyInterface $activationStrategy Strategy which determines when this handler takes action, or a level name/value at which the handler is activated
@@ -74,9 +94,12 @@ class FingersCrossedHandler extends Handler implements ProcessableHandlerInterfa
      * @param bool                                   $bubble             Whether the messages that are handled can bubble up the stack or not
      * @param bool                                   $stopBuffering      Whether the handler should stop buffering after being triggered (default true)
      * @param int|string                             $passthruLevel      Minimum level to always flush to handler on close, even if strategy not triggered
+<<<<<<< HEAD
      *
      * @phpstan-param Level|LevelName|LogLevel::* $passthruLevel
      * @phpstan-param Level|LevelName|LogLevel::*|ActivationStrategyInterface $activationStrategy
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct($handler, $activationStrategy = null, int $bufferSize = 0, bool $bubble = true, bool $stopBuffering = true, $passthruLevel = null)
     {
@@ -105,7 +128,11 @@ class FingersCrossedHandler extends Handler implements ProcessableHandlerInterfa
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function isHandling(array $record): bool
     {
@@ -126,12 +153,19 @@ class FingersCrossedHandler extends Handler implements ProcessableHandlerInterfa
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function handle(array $record): bool
     {
         if ($this->processors) {
+<<<<<<< HEAD
             /** @var Record $record */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $record = $this->processRecord($record);
         }
 
@@ -151,13 +185,21 @@ class FingersCrossedHandler extends Handler implements ProcessableHandlerInterfa
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function close(): void
     {
         $this->flushBuffer();
 
+<<<<<<< HEAD
         $this->getHandler()->close();
+=======
+        $this->handler->close();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function reset()
@@ -193,7 +235,11 @@ class FingersCrossedHandler extends Handler implements ProcessableHandlerInterfa
                 return $record['level'] >= $level;
             });
             if (count($this->buffer) > 0) {
+<<<<<<< HEAD
                 $this->getHandler(end($this->buffer))->handleBatch($this->buffer);
+=======
+                $this->getHandler(end($this->buffer) ?: null)->handleBatch($this->buffer);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
 
@@ -207,10 +253,15 @@ class FingersCrossedHandler extends Handler implements ProcessableHandlerInterfa
      * If the handler was provided as a factory callable, this will trigger the handler's instantiation.
      *
      * @return HandlerInterface
+<<<<<<< HEAD
      *
      * @phpstan-param Record $record
      */
     public function getHandler(?array $record = null)
+=======
+     */
+    public function getHandler(array $record = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!$this->handler instanceof HandlerInterface) {
             $this->handler = ($this->handler)($record, $this);
@@ -223,6 +274,7 @@ class FingersCrossedHandler extends Handler implements ProcessableHandlerInterfa
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
      */
     public function setFormatter(FormatterInterface $formatter): HandlerInterface
@@ -248,5 +300,22 @@ class FingersCrossedHandler extends Handler implements ProcessableHandlerInterfa
         }
 
         throw new \UnexpectedValueException('The nested handler of type '.get_class($handler).' does not support formatters.');
+=======
+     * {@inheritdoc}
+     */
+    public function setFormatter(FormatterInterface $formatter): HandlerInterface
+    {
+        $this->getHandler()->setFormatter($formatter);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFormatter(): FormatterInterface
+    {
+        return $this->getHandler()->getFormatter();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

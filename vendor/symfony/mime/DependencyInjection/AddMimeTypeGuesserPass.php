@@ -27,10 +27,13 @@ class AddMimeTypeGuesserPass implements CompilerPassInterface
 
     public function __construct(string $mimeTypesService = 'mime_types', string $mimeTypeGuesserTag = 'mime.mime_type_guesser')
     {
+<<<<<<< HEAD
         if (0 < \func_num_args()) {
             trigger_deprecation('symfony/mime', '5.3', 'Configuring "%s" is deprecated.', __CLASS__);
         }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->mimeTypesService = $mimeTypesService;
         $this->mimeTypeGuesserTag = $mimeTypeGuesserTag;
     }

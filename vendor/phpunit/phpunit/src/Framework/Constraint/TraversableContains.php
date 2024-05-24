@@ -9,12 +9,15 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
 use function is_array;
 use function is_object;
 use function is_string;
 use function sprintf;
 use function strpos;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use SplObjectStorage;
 
 /**
@@ -50,11 +53,19 @@ final class TraversableContains extends Constraint
     /**
      * Returns a string representation of the constraint.
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     public function toString(): string
     {
         if (is_string($this->value) && strpos($this->value, "\n") !== false) {
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
+    public function toString(): string
+    {
+        if (\is_string($this->value) && \strpos($this->value, "\n") !== false) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return 'contains "' . $this->value . '"';
         }
 
@@ -73,7 +84,11 @@ final class TraversableContains extends Constraint
             return $other->contains($this->value);
         }
 
+<<<<<<< HEAD
         if (is_object($this->value)) {
+=======
+        if (\is_object($this->value)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             foreach ($other as $element) {
                 if ($this->checkForObjectIdentity && $element === $this->value) {
                     return true;
@@ -101,13 +116,18 @@ final class TraversableContains extends Constraint
     }
 
     /**
+<<<<<<< HEAD
      * Returns the description of the failure.
+=======
+     * Returns the description of the failure
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
      *
      * @param mixed $other evaluated value or object
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     protected function failureDescription($other): string
@@ -115,6 +135,15 @@ final class TraversableContains extends Constraint
         return sprintf(
             '%s %s',
             is_array($other) ? 'an array' : 'a traversable',
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
+    protected function failureDescription($other): string
+    {
+        return \sprintf(
+            '%s %s',
+            \is_array($other) ? 'an array' : 'a traversable',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->toString()
         );
     }

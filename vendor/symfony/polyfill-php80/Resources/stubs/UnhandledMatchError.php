@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 /*
  * This file is part of the Symfony package.
  *
@@ -13,4 +14,8 @@ if (\PHP_VERSION_ID < 80000) {
     class UnhandledMatchError extends Error
     {
     }
+=======
+class UnhandledMatchError extends Error
+{
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

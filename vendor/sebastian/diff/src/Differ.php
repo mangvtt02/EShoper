@@ -64,7 +64,11 @@ final class Differ
      *
      * @return string
      */
+<<<<<<< HEAD
     public function diff($from, $to, ?LongestCommonSubsequenceCalculator $lcs = null): string
+=======
+    public function diff($from, $to, LongestCommonSubsequenceCalculator $lcs = null): string
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $diff = $this->diffToArray(
             $this->normalizeDiffInput($from),
@@ -92,7 +96,11 @@ final class Differ
      *
      * @return array
      */
+<<<<<<< HEAD
     public function diffToArray($from, $to, ?LongestCommonSubsequenceCalculator $lcs = null): array
+=======
+    public function diffToArray($from, $to, LongestCommonSubsequenceCalculator $lcs = null): array
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (\is_string($from)) {
             $from = $this->splitStringByLines($from);

@@ -53,6 +53,10 @@ final class ConsoleErrorEvent extends ConsoleEvent
 
     public function getExitCode(): int
     {
+<<<<<<< HEAD
         return $this->exitCode ?? (\is_int($this->error->getCode()) && 0 !== $this->error->getCode() ? $this->error->getCode() : 1);
+=======
+        return null !== $this->exitCode ? $this->exitCode : (\is_int($this->error->getCode()) && 0 !== $this->error->getCode() ? $this->error->getCode() : 1);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

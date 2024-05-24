@@ -9,7 +9,10 @@
 namespace Dompdf\Css;
 
 use Dompdf\Frame;
+<<<<<<< HEAD
 use Dompdf\Helpers;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Translates HTML 4.0 attributes into CSS rules
@@ -34,10 +37,17 @@ class AttributeTranslator
                 'right' => 'float: right;'
             ],
             'border' => 'border: %0.2Fpx solid;',
+<<<<<<< HEAD
             'height' => '_set_px_height',
             'hspace' => 'padding-left: %1$0.2Fpx; padding-right: %1$0.2Fpx;',
             'vspace' => 'padding-top: %1$0.2Fpx; padding-bottom: %1$0.2Fpx;',
             'width' => '_set_px_width',
+=======
+            'height' => 'height: %spx;',
+            'hspace' => 'padding-left: %1$0.2Fpx; padding-right: %1$0.2Fpx;',
+            'vspace' => 'padding-top: %1$0.2Fpx; padding-bottom: %1$0.2Fpx;',
+            'width' => 'width: %spx;',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         ],
         'table' => [
             'align' => [
@@ -46,9 +56,15 @@ class AttributeTranslator
                 'right' => 'margin-left: auto; margin-right: 0;'
             ],
             'bgcolor' => 'background-color: %s;',
+<<<<<<< HEAD
             'border' => '_set_table_border',
             'cellpadding' => '_set_table_cellpadding', //'border-spacing: %0.2F; border-collapse: separate;',
             'cellspacing' => '_set_table_cellspacing',
+=======
+            'border' => '!set_table_border',
+            'cellpadding' => '!set_table_cellpadding', //'border-spacing: %0.2F; border-collapse: separate;',
+            'cellspacing' => '!set_table_cellspacing',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'frame' => [
                 'void' => 'border-style: none;',
                 'above' => 'border-top-style: solid;',
@@ -60,6 +76,7 @@ class AttributeTranslator
                 'box' => 'border-style: solid;',
                 'border' => 'border-style: solid;'
             ],
+<<<<<<< HEAD
             'rules' => '_set_table_rules',
             'width' => 'width: %s;',
         ],
@@ -67,6 +84,15 @@ class AttributeTranslator
             'align' => '_set_hr_align', // Need to grab width to set 'left' & 'right' correctly
             'noshade' => 'border-style: solid;',
             'size' => '_set_hr_size', //'border-width: %0.2F px;',
+=======
+            'rules' => '!set_table_rules',
+            'width' => 'width: %s;',
+        ],
+        'hr' => [
+            'align' => '!set_hr_align', // Need to grab width to set 'left' & 'right' correctly
+            'noshade' => 'border-style: solid;',
+            'size' => '!set_hr_size', //'border-width: %0.2F px;',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'width' => 'width: %s;',
         ],
         'div' => [
@@ -92,7 +118,11 @@ class AttributeTranslator
         ],
         //TODO: translate more form element attributes
         'input' => [
+<<<<<<< HEAD
             'size' => '_set_input_width'
+=======
+            'size' => '!set_input_width'
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         ],
         'p' => [
             'align' => 'text-align: %s;',
@@ -106,30 +136,49 @@ class AttributeTranslator
 //      'valign' => '',
 //    ),
         'tbody' => [
+<<<<<<< HEAD
             'align' => '_set_table_row_align',
             'valign' => '_set_table_row_valign',
         ],
         'td' => [
             'align' => 'text-align: %s;',
             'bgcolor' => '_set_background_color',
+=======
+            'align' => '!set_table_row_align',
+            'valign' => '!set_table_row_valign',
+        ],
+        'td' => [
+            'align' => 'text-align: %s;',
+            'bgcolor' => '!set_background_color',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'height' => 'height: %s;',
             'nowrap' => 'white-space: nowrap;',
             'valign' => 'vertical-align: %s;',
             'width' => 'width: %s;',
         ],
         'tfoot' => [
+<<<<<<< HEAD
             'align' => '_set_table_row_align',
             'valign' => '_set_table_row_valign',
         ],
         'th' => [
             'align' => 'text-align: %s;',
             'bgcolor' => '_set_background_color',
+=======
+            'align' => '!set_table_row_align',
+            'valign' => '!set_table_row_valign',
+        ],
+        'th' => [
+            'align' => 'text-align: %s;',
+            'bgcolor' => '!set_background_color',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'height' => 'height: %s;',
             'nowrap' => 'white-space: nowrap;',
             'valign' => 'vertical-align: %s;',
             'width' => 'width: %s;',
         ],
         'thead' => [
+<<<<<<< HEAD
             'align' => '_set_table_row_align',
             'valign' => '_set_table_row_valign',
         ],
@@ -143,11 +192,27 @@ class AttributeTranslator
             'bgcolor' => '_set_background_color',
             'link' => '_set_body_link',
             'text' => '_set_color',
+=======
+            'align' => '!set_table_row_align',
+            'valign' => '!set_table_row_valign',
+        ],
+        'tr' => [
+            'align' => '!set_table_row_align',
+            'bgcolor' => '!set_table_row_bgcolor',
+            'valign' => '!set_table_row_valign',
+        ],
+        'body' => [
+            'background' => 'background-image: url(%s);',
+            'bgcolor' => '!set_background_color',
+            'link' => '!set_body_link',
+            'text' => '!set_color',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         ],
         'br' => [
             'clear' => 'clear: %s;',
         ],
         'basefont' => [
+<<<<<<< HEAD
             'color' => '_set_color',
             'face' => 'font-family: %s;',
             'size' => '_set_basefont_size',
@@ -156,6 +221,16 @@ class AttributeTranslator
             'color' => '_set_color',
             'face' => 'font-family: %s;',
             'size' => '_set_font_size',
+=======
+            'color' => '!set_color',
+            'face' => 'font-family: %s;',
+            'size' => '!set_basefont_size',
+        ],
+        'font' => [
+            'color' => '!set_color',
+            'face' => 'font-family: %s;',
+            'size' => '!set_font_size',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         ],
         'dir' => [
             'compact' => 'margin: 0.5em 0;',
@@ -261,8 +336,16 @@ class AttributeTranslator
      */
     protected static function _resolve_target(\DOMNode $node, $target, $value)
     {
+<<<<<<< HEAD
         if ($target[0] === "_") {
             return self::$target($node, $value);
+=======
+        if ($target[0] === "!") {
+            // Function call
+            $func = "_" . mb_substr($target, 1);
+
+            return self::$func($node, $value);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $value ? sprintf($target, $value) : "";
@@ -349,6 +432,7 @@ class AttributeTranslator
         return "background-color: $value;";
     }
 
+<<<<<<< HEAD
     protected static function _set_px_width(\DOMElement $node, string $value): string
     {
         $v = trim($value);
@@ -379,6 +463,8 @@ class AttributeTranslator
         return "";
     }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     /**
      * @param \DOMElement $node
      * @param string $value
@@ -404,7 +490,23 @@ class AttributeTranslator
      */
     protected static function _set_table_border(\DOMElement $node, $value)
     {
+<<<<<<< HEAD
         return "border-width: $value" . "px;";
+=======
+        $cell_list = self::get_cell_list($node);
+
+        foreach ($cell_list as $cell) {
+            $style = rtrim($cell->getAttribute(self::$_style_attr));
+            $style .= "; border-width: " . ($value > 0 ? 1 : 0) . "pt; border-style: inset;";
+            $style = ltrim($style, ";");
+            $cell->setAttribute(self::$_style_attr, $style);
+        }
+
+        $style = rtrim($node->getAttribute(self::$_style_attr), ";");
+        $style .= "; border-width: $value" . "px; ";
+
+        return ltrim($style, "; ");
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**

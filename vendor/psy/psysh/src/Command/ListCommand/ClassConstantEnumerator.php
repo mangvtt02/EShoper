@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,6 +15,10 @@
 
 namespace Psy\Command\ListCommand;
 
+<<<<<<< HEAD
+=======
+use Psy\Reflection\ReflectionClassConstant;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Symfony\Component\Console\Input\InputInterface;
 
 /**
@@ -21,7 +29,11 @@ class ClassConstantEnumerator extends Enumerator
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     protected function listItems(InputInterface $input, ?\Reflector $reflector = null, $target = null): array
+=======
+    protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // only list constants when a Reflector is present.
         if ($reflector === null) {
@@ -55,18 +67,31 @@ class ClassConstantEnumerator extends Enumerator
     /**
      * Get defined constants for the given class or object Reflector.
      *
+<<<<<<< HEAD
      * @param \ReflectionClass $reflector
      * @param bool             $noInherit Exclude inherited constants
      *
      * @return array
      */
     protected function getConstants(\ReflectionClass $reflector, bool $noInherit = false): array
+=======
+     * @param \Reflector $reflector
+     * @param bool       $noInherit Exclude inherited constants
+     *
+     * @return array
+     */
+    protected function getConstants(\Reflector $reflector, $noInherit = false)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $className = $reflector->getName();
 
         $constants = [];
         foreach ($reflector->getConstants() as $name => $constant) {
+<<<<<<< HEAD
             $constReflector = new \ReflectionClassConstant($reflector->name, $name);
+=======
+            $constReflector = ReflectionClassConstant::create($reflector->name, $name);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if ($noInherit && $constReflector->getDeclaringClass()->getName() !== $className) {
                 continue;
@@ -75,7 +100,11 @@ class ClassConstantEnumerator extends Enumerator
             $constants[$name] = $constReflector;
         }
 
+<<<<<<< HEAD
         \ksort($constants, \SORT_NATURAL | \SORT_FLAG_CASE);
+=======
+        \ksort($constants, SORT_NATURAL | SORT_FLAG_CASE);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $constants;
     }
@@ -87,7 +116,11 @@ class ClassConstantEnumerator extends Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
     protected function prepareConstants(array $constants): array
+=======
+    protected function prepareConstants(array $constants)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // My kingdom for a generator.
         $ret = [];
@@ -109,8 +142,15 @@ class ClassConstantEnumerator extends Enumerator
      * Get a label for the particular kind of "class" represented.
      *
      * @param \ReflectionClass $reflector
+<<<<<<< HEAD
      */
     protected function getKindLabel(\ReflectionClass $reflector): string
+=======
+     *
+     * @return string
+     */
+    protected function getKindLabel(\ReflectionClass $reflector)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if ($reflector->isInterface()) {
             return 'Interface Constants';

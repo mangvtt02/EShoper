@@ -30,11 +30,14 @@ class Cache
     protected static $_cache = [];
 
     /**
+<<<<<<< HEAD
      * @var array
      */
     protected static $tempImages = [];
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * The url to the "broken image" used when images can't be loaded
      *
      * @var string
@@ -70,12 +73,19 @@ class Cache
         $parsed_url = Helpers::explode_url($url);
         $message = null;
 
+<<<<<<< HEAD
         $remote = ($protocol && $protocol !== "file://") || ($parsed_url['protocol'] !== "");
+=======
+        $remote = ($protocol && $protocol !== "file://") || ($parsed_url['protocol'] != "");
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $data_uri = strpos($parsed_url['protocol'], "data:") === 0;
         $full_url = null;
         $enable_remote = $dompdf->getOptions()->getIsRemoteEnabled();
+<<<<<<< HEAD
         $tempfile = false;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         try {
 
@@ -98,8 +108,12 @@ class Cache
                     if (($resolved_url = @tempnam($tmp_dir, "ca_dompdf_img_")) === false) {
                         throw new ImageException("Unable to create temporary image in " . $tmp_dir, E_WARNING);
                     }
+<<<<<<< HEAD
                     $tempfile = $resolved_url;
                     $image = null;
+=======
+                    $image = "";
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                     if ($data_uri) {
                         if ($parsed_data_uri = Helpers::parse_data_uri($url)) {
@@ -110,7 +124,11 @@ class Cache
                     }
 
                     // Image not found or invalid
+<<<<<<< HEAD
                     if ($image === null) {
+=======
+                    if (empty($image)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         $msg = ($data_uri ? "Data-URI could not be parsed" : "Image not found");
                         throw new ImageException($msg, E_WARNING);
                     } // Image found, put in cache and process
@@ -129,14 +147,22 @@ class Cache
             else {
                 $resolved_url = Helpers::build_url($protocol, $host, $base_path, $url);
 
+<<<<<<< HEAD
                 if ($protocol === "" || $protocol === "file://") {
+=======
+                if ($protocol == "" || $protocol === "file://") {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $realfile = realpath($resolved_url);
         
                     $rootDir = realpath($dompdf->getOptions()->getRootDir());
                     if (strpos($realfile, $rootDir) !== 0) {
                         $chroot = $dompdf->getOptions()->getChroot();
                         $chrootValid = false;
+<<<<<<< HEAD
                         foreach ($chroot as $chrootPath) {
+=======
+                        foreach($chroot as $chrootPath) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                             $chrootPath = realpath($chrootPath);
                             if ($chrootPath !== false && strpos($realfile, $chrootPath) === 0) {
                                 $chrootValid = true;
@@ -164,7 +190,11 @@ class Cache
                 list($width, $height, $type) = Helpers::dompdf_getimagesize($resolved_url, $dompdf->getHttpContext());
 
                 // Known image type
+<<<<<<< HEAD
                 if ($width && $height && in_array($type, ["gif", "png", "jpeg", "bmp", "svg","webp"], true)) {
+=======
+                if ($width && $height && in_array($type, ["gif", "png", "jpeg", "bmp", "svg"])) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     //Don't put replacement image into cache - otherwise it will be deleted on cache cleanup.
                     //Only execute on successful caching of remote image.
                     if ($enable_remote && $remote || $data_uri) {
@@ -176,9 +206,12 @@ class Cache
                 }
             }
         } catch (ImageException $e) {
+<<<<<<< HEAD
             if ($tempfile) {
                 unlink($tempfile);
             }
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $resolved_url = self::$broken_image;
             $type = "png";
             $message = self::$error_message;
@@ -190,6 +223,7 @@ class Cache
     }
 
     /**
+<<<<<<< HEAD
      * Register a temp file for the given original image file.
      *
      * @param string $filePath The path of the original image.
@@ -222,16 +256,32 @@ class Cache
      */
     static function clear(bool $debugPng = false)
     {
+=======
+     * Unlink all cached images (i.e. temporary images either downloaded
+     * or converted) except for the bundled "broken image"
+     */
+    static function clear()
+    {
+        if (empty(self::$_cache) || self::$_dompdf->getOptions()->getDebugKeepTemp()) {
+            return;
+        }
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         foreach (self::$_cache as $file) {
             if ($file === self::$broken_image) {
                 continue;
             }
+<<<<<<< HEAD
             if ($debugPng) {
+=======
+            if (self::$_dompdf->getOptions()->getDebugPng()) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 print "[clear unlink $file]";
             }
             unlink($file);
         }
 
+<<<<<<< HEAD
         foreach (self::$tempImages as $versions) {
             foreach ($versions as $file) {
                 if ($file === self::$broken_image) {
@@ -248,6 +298,9 @@ class Cache
 
         self::$_cache = [];
         self::$tempImages = [];
+=======
+        self::$_cache = [];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     static function detect_type($file, $context = null)
@@ -265,4 +318,8 @@ class Cache
 
 if (file_exists(realpath(__DIR__ . "/../../lib/res/broken_image.svg"))) {
     Cache::$broken_image = realpath(__DIR__ . "/../../lib/res/broken_image.svg");
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

@@ -284,8 +284,11 @@ trait AsPivot
      */
     protected function newQueryForCollectionRestoration(array $ids)
     {
+<<<<<<< HEAD
         $ids = array_values($ids);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (! Str::contains($ids[0], ':')) {
             return parent::newQueryForRestoration($ids);
         }

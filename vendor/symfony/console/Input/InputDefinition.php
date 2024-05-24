@@ -185,7 +185,13 @@ class InputDefinition
     }
 
     /**
+<<<<<<< HEAD
      * @return array<string|bool|int|float|array|null>
+=======
+     * Gets the default values.
+     *
+     * @return array An array of default values
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getArgumentDefaults()
     {
@@ -314,7 +320,13 @@ class InputDefinition
     }
 
     /**
+<<<<<<< HEAD
      * @return array<string|bool|int|float|array|null>
+=======
+     * Gets an array of default values.
+     *
+     * @return array An array of all default values
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getOptionDefaults()
     {

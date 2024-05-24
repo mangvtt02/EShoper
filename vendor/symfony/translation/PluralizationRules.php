@@ -25,15 +25,24 @@ class PluralizationRules
     /**
      * Returns the plural position to use for the given locale and number.
      *
+<<<<<<< HEAD
      * @param float  $number The number
+=======
+     * @param int    $number The number
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param string $locale The locale
      *
      * @return int The plural position
      */
+<<<<<<< HEAD
     public static function get($number, $locale/* , bool $triggerDeprecation = true */)
     {
         $number = abs($number);
 
+=======
+    public static function get($number, $locale/*, bool $triggerDeprecation = true*/)
+    {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (3 > \func_num_args() || func_get_arg(2)) {
             @trigger_error(sprintf('The "%s" class is deprecated since Symfony 4.2.', __CLASS__), \E_USER_DEPRECATED);
         }
@@ -43,7 +52,11 @@ class PluralizationRules
             $locale = 'xbr';
         }
 
+<<<<<<< HEAD
         if ('en_US_POSIX' !== $locale && \strlen($locale) > 3) {
+=======
+        if (\strlen($locale) > 3) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $locale = substr($locale, 0, -\strlen(strrchr($locale, '_')));
         }
 
@@ -88,7 +101,10 @@ class PluralizationRules
             case 'de':
             case 'el':
             case 'en':
+<<<<<<< HEAD
             case 'en_US_POSIX':
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             case 'eo':
             case 'es':
             case 'et':
@@ -147,7 +163,11 @@ class PluralizationRules
             case 'xbr':
             case 'ti':
             case 'wa':
+<<<<<<< HEAD
                 return ($number < 2) ? 0 : 1;
+=======
+                return ((0 == $number) || (1 == $number)) ? 0 : 1;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             case 'be':
             case 'bs':

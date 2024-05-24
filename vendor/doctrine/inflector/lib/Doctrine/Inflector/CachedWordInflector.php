@@ -17,7 +17,11 @@ class CachedWordInflector implements WordInflector
         $this->wordInflector = $wordInflector;
     }
 
+<<<<<<< HEAD
     public function inflect(string $word): string
+=======
+    public function inflect(string $word) : string
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->cache[$word] ?? $this->cache[$word] = $this->wordInflector->inflect($word);
     }

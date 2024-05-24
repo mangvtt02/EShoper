@@ -8,7 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 namespace Carbon\Traits;
 
 use Carbon\CarbonInterface;
@@ -52,7 +55,11 @@ trait Rounding
             'millisecond' => [1000, 'microsecond'],
         ];
         $normalizedUnit = static::singularUnit($unit);
+<<<<<<< HEAD
         $ranges = array_merge(static::getRangesByUnit($this->daysInMonth), [
+=======
+        $ranges = array_merge(static::getRangesByUnit(), [
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             // @call roundUnit
             'microsecond' => [0, 999999],
         ]);
@@ -76,15 +83,23 @@ trait Rounding
         $found = false;
         $fraction = 0;
         $arguments = null;
+<<<<<<< HEAD
         $initialValue = null;
         $factor = $this->year < 0 ? -1 : 1;
         $changes = [];
         $minimumInc = null;
+=======
+        $factor = $this->year < 0 ? -1 : 1;
+        $changes = [];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         foreach ($ranges as $unit => [$minimum, $maximum]) {
             if ($normalizedUnit === $unit) {
                 $arguments = [$this->$unit, $minimum];
+<<<<<<< HEAD
                 $initialValue = $this->$unit;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $fraction = $precision - floor($precision);
                 $found = true;
 
@@ -95,6 +110,7 @@ trait Rounding
                 $delta = $maximum + 1 - $minimum;
                 $factor /= $delta;
                 $fraction *= $delta;
+<<<<<<< HEAD
                 $inc = ($this->$unit - $minimum) * $factor;
 
                 if ($inc !== 0.0) {
@@ -115,6 +131,10 @@ trait Rounding
                 $changes[$unit] = round(
                     $minimum + ($fraction ? $fraction * $function(($this->$unit - $minimum) / $fraction) : 0)
                 );
+=======
+                $arguments[0] += $this->$unit * $factor;
+                $changes[$unit] = round($minimum + ($fraction ? $fraction * call_user_func($function, ($this->$unit - $minimum) / $fraction) : 0));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                 // Cannot use modulo as it lose double precision
                 while ($changes[$unit] >= $delta) {
@@ -126,16 +146,25 @@ trait Rounding
         }
 
         [$value, $minimum] = $arguments;
+<<<<<<< HEAD
         $normalizedValue = floor($function(($value - $minimum) / $precision) * $precision + $minimum);
 
         /** @var CarbonInterface $result */
         $result = $this;
+=======
+        /** @var CarbonInterface $result */
+        $result = $this->$normalizedUnit(floor(call_user_func($function, ($value - $minimum) / $precision) * $precision + $minimum));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         foreach ($changes as $unit => $value) {
             $result = $result->$unit($value);
         }
 
+<<<<<<< HEAD
         return $result->$normalizedUnit($normalizedValue);
+=======
+        return $result;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -210,10 +239,14 @@ trait Rounding
      */
     public function roundWeek($weekStartsAt = null)
     {
+<<<<<<< HEAD
         return $this->closest(
             $this->avoidMutation()->floorWeek($weekStartsAt),
             $this->avoidMutation()->ceilWeek($weekStartsAt)
         );
+=======
+        return $this->closest($this->copy()->floorWeek($weekStartsAt), $this->copy()->ceilWeek($weekStartsAt));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -238,7 +271,11 @@ trait Rounding
     public function ceilWeek($weekStartsAt = null)
     {
         if ($this->isMutable()) {
+<<<<<<< HEAD
             $startOfWeek = $this->avoidMutation()->startOfWeek($weekStartsAt);
+=======
+            $startOfWeek = $this->copy()->startOfWeek($weekStartsAt);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             return $startOfWeek != $this ?
                 $this->startOfWeek($weekStartsAt)->addWeek() :
@@ -249,6 +286,10 @@ trait Rounding
 
         return $startOfWeek != $this ?
             $startOfWeek->addWeek() :
+<<<<<<< HEAD
             $this->avoidMutation();
+=======
+            $this->copy();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

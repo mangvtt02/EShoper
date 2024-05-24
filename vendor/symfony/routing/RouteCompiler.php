@@ -19,14 +19,22 @@ namespace Symfony\Component\Routing;
  */
 class RouteCompiler implements RouteCompilerInterface
 {
+<<<<<<< HEAD
     public const REGEX_DELIMITER = '#';
+=======
+    const REGEX_DELIMITER = '#';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * This string defines the characters that are automatically considered separators in front of
      * optional placeholders (with default and no static text following). Such a single separator
      * can be left out together with the optional placeholder from matching and generating URLs.
      */
+<<<<<<< HEAD
     public const SEPARATORS = '/,;.:-_~+*=@|';
+=======
+    const SEPARATORS = '/,;.:-_~+*=@|';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * The maximum supported length of a PCRE subpattern name
@@ -34,7 +42,11 @@ class RouteCompiler implements RouteCompilerInterface
      *
      * @internal
      */
+<<<<<<< HEAD
     public const VARIABLE_MAXIMUM_LENGTH = 32;
+=======
+    const VARIABLE_MAXIMUM_LENGTH = 32;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * {@inheritdoc}
@@ -135,7 +147,11 @@ class RouteCompiler implements RouteCompilerInterface
             } else {
                 $precedingChar = substr($precedingText, -1);
             }
+<<<<<<< HEAD
             $isSeparator = '' !== $precedingChar && str_contains(static::SEPARATORS, $precedingChar);
+=======
+            $isSeparator = '' !== $precedingChar && false !== strpos(static::SEPARATORS, $precedingChar);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             // A PCRE subpattern name must start with a non-digit. Also a PHP variable cannot start with a digit so the
             // variable would not be usable as a Controller action argument.
@@ -152,7 +168,11 @@ class RouteCompiler implements RouteCompilerInterface
 
             if ($isSeparator && $precedingText !== $precedingChar) {
                 $tokens[] = ['text', substr($precedingText, 0, -\strlen($precedingChar))];
+<<<<<<< HEAD
             } elseif (!$isSeparator && '' !== $precedingText) {
+=======
+            } elseif (!$isSeparator && \strlen($precedingText) > 0) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $tokens[] = ['text', $precedingText];
             }
 
@@ -280,7 +300,11 @@ class RouteCompiler implements RouteCompilerInterface
             preg_match('/^./u', $pattern, $pattern);
         }
 
+<<<<<<< HEAD
         return str_contains(static::SEPARATORS, $pattern[0]) ? $pattern[0] : '';
+=======
+        return false !== strpos(static::SEPARATORS, $pattern[0]) ? $pattern[0] : '';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**

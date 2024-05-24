@@ -154,6 +154,7 @@ class Renderer extends AbstractRenderer
 
         // Starts the overflow: hidden box
         if ($style->overflow === "hidden") {
+<<<<<<< HEAD
             $padding_box = $frame->get_padding_box();
             [$x, $y, $w, $h] = $padding_box;
             $style = $frame->get_style();
@@ -164,13 +165,29 @@ class Renderer extends AbstractRenderer
                 $this->_canvas->clipping_roundrectangle($x, $y, $w, $h, $tl, $tr, $br, $bl);
             } else {
                 $this->_canvas->clipping_rectangle($x, $y, $w, $h);
+=======
+            list($x, $y, $w, $h) = $frame->get_padding_box();
+
+            // get border radii
+            $style = $frame->get_style();
+            list($tl, $tr, $br, $bl) = $style->get_computed_border_radius($w, $h);
+
+            if ($tl + $tr + $br + $bl > 0) {
+                $this->_canvas->clipping_roundrectangle($x, $y, (float)$w, (float)$h, $tl, $tr, $br, $bl);
+            } else {
+                $this->_canvas->clipping_rectangle($x, $y, (float)$w, (float)$h);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
 
         $stack = [];
 
         foreach ($frame->get_children() as $child) {
+<<<<<<< HEAD
             // < 0 : negative z-index
+=======
+            // < 0 : nagative z-index
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             // = 0 : no z-index, no stacking context
             // = 1 : stacking context without z-index
             // > 1 : z-index
@@ -212,15 +229,23 @@ class Renderer extends AbstractRenderer
      * Check for callbacks that need to be performed when a given event
      * gets triggered on a frame
      *
+<<<<<<< HEAD
      * @param string $event The type of event
      * @param Frame  $frame The frame that event is triggered on
      */
     protected function _check_callbacks(string $event, Frame $frame): void
+=======
+     * @param string $event the type of event
+     * @param Frame $frame  the frame that event is triggered on
+     */
+    protected function _check_callbacks($event, $frame)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!isset($this->_callbacks)) {
             $this->_callbacks = $this->_dompdf->getCallbacks();
         }
 
+<<<<<<< HEAD
         if (isset($this->_callbacks[$event])) {
             $fs = $this->_callbacks[$event];
             $info = [
@@ -230,6 +255,20 @@ class Renderer extends AbstractRenderer
 
             foreach ($fs as $f) {
                 $f($info);
+=======
+        if (is_array($this->_callbacks) && isset($this->_callbacks[$event])) {
+            $info = [0 => $this->_canvas, "canvas" => $this->_canvas,
+                1 => $frame, "frame" => $frame];
+            $fs = $this->_callbacks[$event];
+            foreach ($fs as $f) {
+                if (is_callable($f)) {
+                    if (is_array($f)) {
+                        $f[0]->{$f[1]}($info);
+                    } else {
+                        $f($info);
+                    }
+                }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
     }

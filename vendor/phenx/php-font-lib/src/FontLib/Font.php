@@ -1,7 +1,11 @@
 <?php
 /**
  * @package php-font-lib
+<<<<<<< HEAD
  * @link    https://github.com/dompdf/php-font-lib
+=======
+ * @link    https://github.com/PhenX/php-font-lib
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
@@ -28,7 +32,11 @@ class Font {
           throw new FontNotFoundException($file);
       }
 
+<<<<<<< HEAD
     $header = file_get_contents($file, false, null, 0, 4);
+=======
+    $header = file_get_contents($file, false, null, null, 4);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     $class  = null;
 
     switch ($header) {

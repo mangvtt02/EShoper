@@ -9,8 +9,11 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
 use function is_nan;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * Constraint that accepts nan.
  */
@@ -32,6 +35,10 @@ final class IsNan extends Constraint
      */
     protected function matches($other): bool
     {
+<<<<<<< HEAD
         return is_nan($other);
+=======
+        return \is_nan($other);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

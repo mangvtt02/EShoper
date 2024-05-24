@@ -2,6 +2,7 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
 ## [1.1.5] - 2024-03-01
 
 * No code changes, only updated `.gitattributes` to not export non-essential files.
@@ -12,6 +13,8 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Changed PHP version constraint in `composer.json` from `^7.2` to `>=7.2`
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ## [1.1.3] - 2019-07-02
 
 ### Fixed
@@ -41,8 +44,11 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Initial release based on [code contributed by Michel Hartmann to PHPUnit](https://github.com/sebastianbergmann/phpunit/pull/3673)
 
+<<<<<<< HEAD
 [1.1.5]: https://github.com/sebastianbergmann/type/compare/1.1.4...1.1.5
 [1.1.4]: https://github.com/sebastianbergmann/type/compare/1.1.3...1.1.4
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 [1.1.3]: https://github.com/sebastianbergmann/type/compare/1.1.2...1.1.3
 [1.1.2]: https://github.com/sebastianbergmann/type/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/sebastianbergmann/type/compare/1.1.0...1.1.1

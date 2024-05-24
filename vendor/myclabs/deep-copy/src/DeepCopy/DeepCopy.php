@@ -7,7 +7,10 @@ use DateInterval;
 use DateTimeInterface;
 use DateTimeZone;
 use DeepCopy\Exception\CloneException;
+<<<<<<< HEAD
 use DeepCopy\Filter\ChainableFilter;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use DeepCopy\Filter\Filter;
 use DeepCopy\Matcher\Matcher;
 use DeepCopy\Reflection\ReflectionHelper;
@@ -141,11 +144,14 @@ class DeepCopy
             return $var;
         }
 
+<<<<<<< HEAD
         // Enum
         if (PHP_VERSION_ID >= 80100 && enum_exists(get_class($var))) {
             return $var;
         }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         // Object
         return $this->copyObject($var);
     }
@@ -240,10 +246,13 @@ class DeepCopy
                     }
                 );
 
+<<<<<<< HEAD
                 if ($filter instanceof ChainableFilter) {
                     continue;
                 }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 // If a filter matches, we stop processing this property
                 return;
             }

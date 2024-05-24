@@ -31,7 +31,11 @@ final class UrlHelper
 
     public function getAbsoluteUrl(string $path): string
     {
+<<<<<<< HEAD
         if (str_contains($path, '://') || '//' === substr($path, 0, 2)) {
+=======
+        if (false !== strpos($path, '://') || '//' === substr($path, 0, 2)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $path;
         }
 
@@ -60,7 +64,11 @@ final class UrlHelper
 
     public function getRelativePath(string $path): string
     {
+<<<<<<< HEAD
         if (str_contains($path, '://') || '//' === substr($path, 0, 2)) {
+=======
+        if (false !== strpos($path, '://') || '//' === substr($path, 0, 2)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $path;
         }
 

@@ -111,6 +111,10 @@ final class Terminators
 
         if (is_string($rule)) {
             $match->type = $rule;
+<<<<<<< HEAD
+=======
+            $match->extra = array($this->mode->illegal, $this->mode->terminator_end);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } else {
             $match->type = "begin";
             $match->rule = $rule;

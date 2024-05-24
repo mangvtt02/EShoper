@@ -23,9 +23,12 @@
  * - Sebastian Thierer
  * - Claudson Martins (claudsonm)
  */
+<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 return [
     'year' => ':count ano|:count anos',
     'a_year' => 'um ano|:count anos',
@@ -84,7 +87,11 @@ return [
         'nextDay' => '[Amanhã às] LT',
         'nextWeek' => 'dddd [às] LT',
         'lastDay' => '[Ontem às] LT',
+<<<<<<< HEAD
         'lastWeek' => function (CarbonInterface $date) {
+=======
+        'lastWeek' => function (\Carbon\CarbonInterface $date) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             switch ($date->dayOfWeek) {
                 case 0:
                 case 6:
@@ -104,6 +111,7 @@ return [
     'first_day_of_week' => 1,
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' e '],
+<<<<<<< HEAD
     'ordinal_words' => [
         'of' => 'de',
         'first' => 'primeira',
@@ -113,4 +121,6 @@ return [
         'fifth' => 'quinta',
         'last' => 'última',
     ],
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ];

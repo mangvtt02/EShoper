@@ -29,7 +29,11 @@ class JsonResponse extends Response
 
     // Encode <, >, ', &, and " characters in the JSON, making it also safe to be embedded into HTML.
     // 15 === JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT
+<<<<<<< HEAD
     public const DEFAULT_ENCODING_OPTIONS = 15;
+=======
+    const DEFAULT_ENCODING_OPTIONS = 15;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     protected $encodingOptions = self::DEFAULT_ENCODING_OPTIONS;
 
@@ -43,10 +47,13 @@ class JsonResponse extends Response
     {
         parent::__construct('', $status, $headers);
 
+<<<<<<< HEAD
         if ($json && !\is_string($data) && !is_numeric($data) && !\is_callable([$data, '__toString'])) {
             throw new \TypeError(sprintf('"%s": If $json is set to true, argument $data must be a string or object implementing __toString(), "%s" given.', __METHOD__, get_debug_type($data)));
         }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (null === $data) {
             $data = new \ArrayObject();
         }
@@ -81,6 +88,7 @@ class JsonResponse extends Response
      *     return JsonResponse::fromJsonString('{"key": "value"}')
      *         ->setSharedMaxAge(300);
      *
+<<<<<<< HEAD
      * @param string $data    The JSON response string
      * @param int    $status  The response status code
      * @param array  $headers An array of response headers
@@ -88,6 +96,15 @@ class JsonResponse extends Response
      * @return static
      */
     public static function fromJsonString($data, $status = 200, $headers = [])
+=======
+     * @param string|null $data    The JSON response string
+     * @param int         $status  The response status code
+     * @param array       $headers An array of response headers
+     *
+     * @return static
+     */
+    public static function fromJsonString($data = null, $status = 200, $headers = [])
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return new static($data, $status, $headers, true);
     }
@@ -133,6 +150,11 @@ class JsonResponse extends Response
      * @param string $json
      *
      * @return $this
+<<<<<<< HEAD
+=======
+     *
+     * @throws \InvalidArgumentException
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setJson($json)
     {
@@ -155,7 +177,11 @@ class JsonResponse extends Response
         try {
             $data = json_encode($data, $this->encodingOptions);
         } catch (\Exception $e) {
+<<<<<<< HEAD
             if ('Exception' === \get_class($e) && str_starts_with($e->getMessage(), 'Failed calling ')) {
+=======
+            if ('Exception' === \get_class($e) && 0 === strpos($e->getMessage(), 'Failed calling ')) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 throw $e->getPrevious() ?: $e;
             }
             throw $e;

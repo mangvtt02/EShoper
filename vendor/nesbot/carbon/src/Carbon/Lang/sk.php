@@ -31,6 +31,7 @@
  * - jofi
  * - Jakub ADAMEC
  * - Marek Adamický
+<<<<<<< HEAD
  * - AlterwebStudio
  */
 
@@ -114,6 +115,35 @@ return [
     'minute_before' => ':count minútu|:count minúty|:count minút',
     'second_before' => ':count sekundu|:count sekundy|:count sekúnd',
 
+=======
+ */
+return [
+    'year' => 'rok|:count roky|:count rokov',
+    'y' => ':count r',
+    'month' => 'mesiac|:count mesiace|:count mesiacov',
+    'm' => ':count m',
+    'week' => 'týždeň|:count týždne|:count týždňov',
+    'w' => ':count t',
+    'day' => 'deň|:count dni|:count dní',
+    'd' => ':count d',
+    'hour' => 'hodinu|:count hodiny|:count hodín',
+    'h' => ':count h',
+    'minute' => 'minútu|:count minúty|:count minút',
+    'min' => ':count min',
+    'second' => 'sekundu|:count sekundy|:count sekúnd',
+    's' => ':count s',
+    'ago' => 'pred :time',
+    'from_now' => 'za :time',
+    'after' => 'o :time neskôr',
+    'before' => ':time predtým',
+    'year_ago' => 'rokom|:count rokmi|:count rokmi',
+    'month_ago' => 'mesiacom|:count mesiacmi|:count mesiacmi',
+    'week_ago' => 'týždňom|:count týždňami|:count týždňami',
+    'day_ago' => 'dňom|:count dňami|:count dňami',
+    'hour_ago' => 'hodinou|:count hodinami|:count hodinami',
+    'minute_ago' => 'minútou|:count minútami|:count minútami',
+    'second_ago' => 'sekundou|:count sekundami|:count sekundami',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     'first_day_of_week' => 1,
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' a '],
@@ -128,6 +158,7 @@ return [
         'LLL' => 'D. M. HH:mm',
         'LLLL' => 'dddd D. MMMM YYYY HH:mm',
     ],
+<<<<<<< HEAD
     'calendar' => [
         'sameDay' => '[dnes o] LT',
         'nextDay' => '[zajtra o] LT',
@@ -148,6 +179,10 @@ return [
     ],
     'weekdays' => ['nedeľa', 'pondelok', 'utorok', 'streda', 'štvrtok', 'piatok', 'sobota'],
     'weekdays_short' => ['ned', 'pon', 'uto', 'str', 'štv', 'pia', 'sob'],
+=======
+    'weekdays' => ['nedeľa', 'pondelok', 'utorok', 'streda', 'štvrtok', 'piatok', 'sobota'],
+    'weekdays_short' => ['ne', 'po', 'ut', 'st', 'št', 'pi', 'so'],
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     'weekdays_min' => ['ne', 'po', 'ut', 'st', 'št', 'pi', 'so'],
     'months' => ['január', 'február', 'marec', 'apríl', 'máj', 'jún', 'júl', 'august', 'september', 'október', 'november', 'december'],
     'months_short' => ['jan', 'feb', 'mar', 'apr', 'máj', 'jún', 'júl', 'aug', 'sep', 'okt', 'nov', 'dec'],

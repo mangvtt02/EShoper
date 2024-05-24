@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -15,7 +19,10 @@ use PhpParser\Node;
 use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\StaticCall;
+<<<<<<< HEAD
 use PhpParser\Node\VariadicPlaceholder;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Psy\Exception\FatalErrorException;
 
 /**
@@ -35,8 +42,11 @@ class CallTimePassByReferencePass extends CodeCleanerPass
      * @throws FatalErrorException if the user used call-time pass-by-reference
      *
      * @param Node $node
+<<<<<<< HEAD
      *
      * @return int|Node|null Replacement node (or special return value)
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function enterNode(Node $node)
     {
@@ -45,12 +55,17 @@ class CallTimePassByReferencePass extends CodeCleanerPass
         }
 
         foreach ($node->args as $arg) {
+<<<<<<< HEAD
             if ($arg instanceof VariadicPlaceholder) {
                 continue;
             }
 
             if ($arg->byRef) {
                 throw new FatalErrorException(self::EXCEPTION_MESSAGE, 0, \E_ERROR, null, $node->getStartLine());
+=======
+            if ($arg->byRef) {
+                throw new FatalErrorException(self::EXCEPTION_MESSAGE, 0, E_ERROR, null, $node->getLine());
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
     }

@@ -14,7 +14,11 @@ class Config
     /**
      * Config constructor.
      *
+<<<<<<< HEAD
      * @param  \Illuminate\Contracts\Config\Repository  $repository
+=======
+     * @param \Illuminate\Contracts\Config\Repository $repository
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct(Repository $repository)
     {
@@ -64,8 +68,13 @@ class Config
     /**
      * Get the specified configuration value.
      *
+<<<<<<< HEAD
      * @param  string  $key
      * @param  mixed  $default
+=======
+     * @param string $key
+     * @param mixed  $default
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return mixed
      */
     public function get($key, $default = null)
@@ -76,8 +85,13 @@ class Config
     /**
      * Set a given configuration value.
      *
+<<<<<<< HEAD
      * @param  array|string  $key
      * @param  mixed  $value
+=======
+     * @param  array|string $key
+     * @param  mixed        $value
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return void
      */
     public function set($key, $value = null)

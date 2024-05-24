@@ -2,13 +2,22 @@
 
 namespace PhpParser\Node\Name;
 
+<<<<<<< HEAD
 class Relative extends \PhpParser\Node\Name {
+=======
+class Relative extends \PhpParser\Node\Name
+{
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     /**
      * Checks whether the name is unqualified. (E.g. Name)
      *
      * @return bool Whether the name is unqualified
      */
+<<<<<<< HEAD
     public function isUnqualified(): bool {
+=======
+    public function isUnqualified() : bool {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return false;
     }
 
@@ -17,7 +26,11 @@ class Relative extends \PhpParser\Node\Name {
      *
      * @return bool Whether the name is qualified
      */
+<<<<<<< HEAD
     public function isQualified(): bool {
+=======
+    public function isQualified() : bool {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return false;
     }
 
@@ -26,7 +39,11 @@ class Relative extends \PhpParser\Node\Name {
      *
      * @return bool Whether the name is fully qualified
      */
+<<<<<<< HEAD
     public function isFullyQualified(): bool {
+=======
+    public function isFullyQualified() : bool {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return false;
     }
 
@@ -35,6 +52,7 @@ class Relative extends \PhpParser\Node\Name {
      *
      * @return bool Whether the name is relative
      */
+<<<<<<< HEAD
     public function isRelative(): bool {
         return true;
     }
@@ -44,6 +62,17 @@ class Relative extends \PhpParser\Node\Name {
     }
 
     public function getType(): string {
+=======
+    public function isRelative() : bool {
+        return true;
+    }
+
+    public function toCodeString() : string {
+        return 'namespace\\' . $this->toString();
+    }
+    
+    public function getType() : string {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return 'Name_Relative';
     }
 }

@@ -17,6 +17,7 @@ use Monolog\Utils;
 /**
  * Logs to Cube.
  *
+<<<<<<< HEAD
  * @link https://github.com/square/cube/wiki
  * @author Wan Chen <kami@kamisama.me>
  * @deprecated Since 2.8.0 and 3.2.0, Cube appears abandoned and thus we will drop this handler in Monolog 4
@@ -34,6 +35,18 @@ class CubeHandler extends AbstractProcessingHandler
     /** @var int */
     private $port;
     /** @var string[] */
+=======
+ * @link http://square.github.com/cube/
+ * @author Wan Chen <kami@kamisama.me>
+ */
+class CubeHandler extends AbstractProcessingHandler
+{
+    private $udpConnection;
+    private $httpConnection;
+    private $scheme;
+    private $host;
+    private $port;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private $acceptedSchemes = ['http', 'udp'];
 
     /**
@@ -47,7 +60,11 @@ class CubeHandler extends AbstractProcessingHandler
     {
         $urlInfo = parse_url($url);
 
+<<<<<<< HEAD
         if ($urlInfo === false || !isset($urlInfo['scheme'], $urlInfo['host'], $urlInfo['port'])) {
+=======
+        if (!isset($urlInfo['scheme'], $urlInfo['host'], $urlInfo['port'])) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new \UnexpectedValueException('URL "'.$url.'" is not valid');
         }
 
@@ -60,7 +77,11 @@ class CubeHandler extends AbstractProcessingHandler
 
         $this->scheme = $urlInfo['scheme'];
         $this->host = $urlInfo['host'];
+<<<<<<< HEAD
         $this->port = (int) $urlInfo['port'];
+=======
+        $this->port = $urlInfo['port'];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         parent::__construct($level, $bubble);
     }
@@ -77,12 +98,20 @@ class CubeHandler extends AbstractProcessingHandler
             throw new MissingExtensionException('The sockets extension is required to use udp URLs with the CubeHandler');
         }
 
+<<<<<<< HEAD
         $udpConnection = socket_create(AF_INET, SOCK_DGRAM, 0);
         if (false === $udpConnection) {
             throw new \LogicException('Unable to create a socket');
         }
 
         $this->udpConnection = $udpConnection;
+=======
+        $this->udpConnection = socket_create(AF_INET, SOCK_DGRAM, 0);
+        if (!$this->udpConnection) {
+            throw new \LogicException('Unable to create a socket');
+        }
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (!socket_connect($this->udpConnection, $this->host, $this->port)) {
             throw new \LogicException('Unable to connect to the socket at ' . $this->host . ':' . $this->port);
         }
@@ -100,18 +129,31 @@ class CubeHandler extends AbstractProcessingHandler
             throw new MissingExtensionException('The curl extension is required to use http URLs with the CubeHandler');
         }
 
+<<<<<<< HEAD
         $httpConnection = curl_init('http://'.$this->host.':'.$this->port.'/1.0/event/put');
         if (false === $httpConnection) {
             throw new \LogicException('Unable to connect to ' . $this->host . ':' . $this->port);
         }
 
         $this->httpConnection = $httpConnection;
+=======
+        $this->httpConnection = curl_init('http://'.$this->host.':'.$this->port.'/1.0/event/put');
+
+        if (!$this->httpConnection) {
+            throw new \LogicException('Unable to connect to ' . $this->host . ':' . $this->port);
+        }
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         curl_setopt($this->httpConnection, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($this->httpConnection, CURLOPT_RETURNTRANSFER, true);
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function write(array $record): void
     {
@@ -152,10 +194,13 @@ class CubeHandler extends AbstractProcessingHandler
             $this->connectHttp();
         }
 
+<<<<<<< HEAD
         if (null === $this->httpConnection) {
             throw new \LogicException('No connection could be established');
         }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         curl_setopt($this->httpConnection, CURLOPT_POSTFIELDS, '['.$data.']');
         curl_setopt($this->httpConnection, CURLOPT_HTTPHEADER, [
             'Content-Type: application/json',

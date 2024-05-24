@@ -28,12 +28,15 @@ abstract class HttpClientTestCase extends TestCase
         TestHttpServer::start();
     }
 
+<<<<<<< HEAD
     public static function tearDownAfterClass(): void
     {
         TestHttpServer::stop(8067);
         TestHttpServer::stop(8077);
     }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     abstract protected function getHttpClient(string $testCase): HttpClientInterface;
 
     public function testGetRequest()
@@ -337,16 +340,23 @@ abstract class HttpClientTestCase extends TestCase
         $this->assertSame('', $response->getContent(false));
     }
 
+<<<<<<< HEAD
     /**
      * @testWith [[]]
      *           [["Content-Length: 7"]]
      */
     public function testRedirects(array $headers = [])
+=======
+    public function testRedirects()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $client = $this->getHttpClient(__FUNCTION__);
         $response = $client->request('POST', 'http://localhost:8057/301', [
             'auth_basic' => 'foo:bar',
+<<<<<<< HEAD
             'headers' => $headers,
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'body' => function () {
                 yield 'foo=bar';
             },
@@ -846,6 +856,7 @@ abstract class HttpClientTestCase extends TestCase
         }
     }
 
+<<<<<<< HEAD
     public function testTimeoutOnInitialize()
     {
         $p1 = TestHttpServer::start(8067);
@@ -911,6 +922,8 @@ abstract class HttpClientTestCase extends TestCase
         }
     }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function testDestruct()
     {
         $client = $this->getHttpClient(__FUNCTION__);
@@ -965,6 +978,7 @@ abstract class HttpClientTestCase extends TestCase
 
         $body = $response->toArray();
         $this->assertSame('Basic Zm9vOmI9YXI=', $body['HTTP_PROXY_AUTHORIZATION']);
+<<<<<<< HEAD
 
         $_SERVER['http_proxy'] = 'http://localhost:8057';
         try {
@@ -983,6 +997,8 @@ abstract class HttpClientTestCase extends TestCase
         $body = $response->toArray();
         $this->assertSame('localhost:8057', $body['HTTP_HOST']);
         $this->assertMatchesRegularExpression('#^http://(localhost|127\.0\.0\.1):8057/$#', $body['REQUEST_URI']);
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function testNoProxy()
@@ -1132,6 +1148,7 @@ abstract class HttpClientTestCase extends TestCase
 
         $this->assertLessThan(10, $duration);
     }
+<<<<<<< HEAD
 
     public function testWithOptions()
     {
@@ -1148,4 +1165,6 @@ abstract class HttpClientTestCase extends TestCase
         $response = $client2->request('GET', '/');
         $this->assertSame(200, $response->getStatusCode());
     }
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

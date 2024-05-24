@@ -24,11 +24,19 @@ use Symfony\Component\Mime\Part\TextPart;
  */
 class Email extends Message
 {
+<<<<<<< HEAD
     public const PRIORITY_HIGHEST = 1;
     public const PRIORITY_HIGH = 2;
     public const PRIORITY_NORMAL = 3;
     public const PRIORITY_LOW = 4;
     public const PRIORITY_LOWEST = 5;
+=======
+    const PRIORITY_HIGHEST = 1;
+    const PRIORITY_HIGH = 2;
+    const PRIORITY_NORMAL = 3;
+    const PRIORITY_LOW = 4;
+    const PRIORITY_LOWEST = 5;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     private const PRIORITY_MAP = [
         self::PRIORITY_HIGHEST => 'Highest',
@@ -43,10 +51,13 @@ class Email extends Message
     private $html;
     private $htmlCharset;
     private $attachments = [];
+<<<<<<< HEAD
     /**
      * @var AbstractPart|null
      */
     private $cachedBody; // Used to avoid wrong body hash in DKIM signatures with multiple parts (e.g. HTML + TEXT) due to multiple boundaries.
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @return $this
@@ -121,10 +132,13 @@ class Email extends Message
      */
     public function from(...$addresses)
     {
+<<<<<<< HEAD
         if (!$addresses) {
             throw new LogicException('"from()" must be called with at least one address.');
         }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->setListAddressHeaderBody('From', $addresses);
     }
 
@@ -274,23 +288,34 @@ class Email extends Message
      */
     public function getPriority(): int
     {
+<<<<<<< HEAD
         [$priority] = sscanf($this->getHeaders()->getHeaderBody('X-Priority') ?? '', '%[1-5]');
+=======
+        list($priority) = sscanf($this->getHeaders()->getHeaderBody('X-Priority'), '%[1-5]');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $priority ?? 3;
     }
 
     /**
+<<<<<<< HEAD
      * @param resource|string|null $body
+=======
+     * @param resource|string $body
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return $this
      */
     public function text($body, string $charset = 'utf-8')
     {
+<<<<<<< HEAD
         if (null !== $body && !\is_string($body) && !\is_resource($body)) {
             throw new \TypeError(sprintf('The body must be a string, a resource or null (got "%s").', get_debug_type($body)));
         }
 
         $this->cachedBody = null;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->text = $body;
         $this->textCharset = $charset;
 
@@ -317,11 +342,14 @@ class Email extends Message
      */
     public function html($body, string $charset = 'utf-8')
     {
+<<<<<<< HEAD
         if (null !== $body && !\is_string($body) && !\is_resource($body)) {
             throw new \TypeError(sprintf('The body must be a string, a resource or null (got "%s").', get_debug_type($body)));
         }
 
         $this->cachedBody = null;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->html = $body;
         $this->htmlCharset = $charset;
 
@@ -346,6 +374,7 @@ class Email extends Message
      *
      * @return $this
      */
+<<<<<<< HEAD
     public function attach($body, ?string $name = null, ?string $contentType = null)
     {
         if (!\is_string($body) && !\is_resource($body)) {
@@ -353,6 +382,10 @@ class Email extends Message
         }
 
         $this->cachedBody = null;
+=======
+    public function attach($body, string $name = null, string $contentType = null)
+    {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->attachments[] = ['body' => $body, 'name' => $name, 'content-type' => $contentType, 'inline' => false];
 
         return $this;
@@ -361,9 +394,14 @@ class Email extends Message
     /**
      * @return $this
      */
+<<<<<<< HEAD
     public function attachFromPath(string $path, ?string $name = null, ?string $contentType = null)
     {
         $this->cachedBody = null;
+=======
+    public function attachFromPath(string $path, string $name = null, string $contentType = null)
+    {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->attachments[] = ['path' => $path, 'name' => $name, 'content-type' => $contentType, 'inline' => false];
 
         return $this;
@@ -374,6 +412,7 @@ class Email extends Message
      *
      * @return $this
      */
+<<<<<<< HEAD
     public function embed($body, ?string $name = null, ?string $contentType = null)
     {
         if (!\is_string($body) && !\is_resource($body)) {
@@ -381,6 +420,10 @@ class Email extends Message
         }
 
         $this->cachedBody = null;
+=======
+    public function embed($body, string $name = null, string $contentType = null)
+    {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->attachments[] = ['body' => $body, 'name' => $name, 'content-type' => $contentType, 'inline' => true];
 
         return $this;
@@ -389,9 +432,14 @@ class Email extends Message
     /**
      * @return $this
      */
+<<<<<<< HEAD
     public function embedFromPath(string $path, ?string $name = null, ?string $contentType = null)
     {
         $this->cachedBody = null;
+=======
+    public function embedFromPath(string $path, string $name = null, string $contentType = null)
+    {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->attachments[] = ['path' => $path, 'name' => $name, 'content-type' => $contentType, 'inline' => true];
 
         return $this;
@@ -402,14 +450,21 @@ class Email extends Message
      */
     public function attachPart(DataPart $part)
     {
+<<<<<<< HEAD
         $this->cachedBody = null;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->attachments[] = ['part' => $part];
 
         return $this;
     }
 
     /**
+<<<<<<< HEAD
      * @return array|DataPart[]
+=======
+     * @return DataPart[]
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getAttachments(): array
     {
@@ -461,6 +516,7 @@ class Email extends Message
      */
     private function generateBody(): AbstractPart
     {
+<<<<<<< HEAD
         if (null !== $this->cachedBody) {
             return $this->cachedBody;
         }
@@ -468,6 +524,11 @@ class Email extends Message
         $this->ensureValidity();
 
         [$htmlPart, $otherParts, $relatedParts] = $this->prepareParts();
+=======
+        $this->ensureValidity();
+
+        [$htmlPart, $attachmentParts, $inlineParts] = $this->prepareParts();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $part = null === $this->text ? null : new TextPart($this->text, $this->textCharset);
         if (null !== $htmlPart) {
@@ -478,6 +539,7 @@ class Email extends Message
             }
         }
 
+<<<<<<< HEAD
         if ($relatedParts) {
             $part = new RelatedPart($part, ...$relatedParts);
         }
@@ -491,6 +553,21 @@ class Email extends Message
         }
 
         return $this->cachedBody = $part;
+=======
+        if ($inlineParts) {
+            $part = new RelatedPart($part, ...$inlineParts);
+        }
+
+        if ($attachmentParts) {
+            if ($part) {
+                $part = new MixedPart($part, ...$attachmentParts);
+            } else {
+                $part = new MixedPart(...$attachmentParts);
+            }
+        }
+
+        return $part;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     private function prepareParts(): ?array
@@ -498,6 +575,7 @@ class Email extends Message
         $names = [];
         $htmlPart = null;
         $html = $this->html;
+<<<<<<< HEAD
         if (null !== $html) {
             $htmlPart = new TextPart($html, $this->htmlCharset, 'html');
             $html = $htmlPart->getBody();
@@ -538,12 +616,43 @@ class Email extends Message
             } else {
                 $otherParts[] = $part;
             }
+=======
+        if (null !== $this->html) {
+            $htmlPart = new TextPart($html, $this->htmlCharset, 'html');
+            $html = $htmlPart->getBody();
+            preg_match_all('(<img\s+[^>]*src\s*=\s*(?:([\'"])cid:([^"]+)\\1|cid:([^>\s]+)))i', $html, $names);
+            $names = array_filter(array_unique(array_merge($names[2], $names[3])));
+        }
+
+        $attachmentParts = $inlineParts = [];
+        foreach ($this->attachments as $attachment) {
+            foreach ($names as $name) {
+                if (isset($attachment['part'])) {
+                    continue;
+                }
+                if ($name !== $attachment['name']) {
+                    continue;
+                }
+                if (isset($inlineParts[$name])) {
+                    continue 2;
+                }
+                $attachment['inline'] = true;
+                $inlineParts[$name] = $part = $this->createDataPart($attachment);
+                $html = str_replace('cid:'.$name, 'cid:'.$part->getContentId(), $html);
+                continue 2;
+            }
+            $attachmentParts[] = $this->createDataPart($attachment);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
         if (null !== $htmlPart) {
             $htmlPart = new TextPart($html, $this->htmlCharset, 'html');
         }
 
+<<<<<<< HEAD
         return [$htmlPart, $otherParts, array_values($relatedParts)];
+=======
+        return [$htmlPart, $attachmentParts, array_values($inlineParts)];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     private function createDataPart(array $attachment): DataPart
@@ -584,9 +693,12 @@ class Email extends Message
         return $this;
     }
 
+<<<<<<< HEAD
     /**
      * @return $this
      */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private function setListAddressHeaderBody(string $name, array $addresses)
     {
         $addresses = Address::createArray($addresses);

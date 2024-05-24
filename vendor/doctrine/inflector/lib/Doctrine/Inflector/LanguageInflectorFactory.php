@@ -15,7 +15,11 @@ interface LanguageInflectorFactory
      *
      * @return $this
      */
+<<<<<<< HEAD
     public function withSingularRules(?Ruleset $singularRules, bool $reset = false): self;
+=======
+    public function withSingularRules(?Ruleset $singularRules, bool $reset = false) : self;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Applies custom rules for pluralisation
@@ -24,10 +28,18 @@ interface LanguageInflectorFactory
      *
      * @return $this
      */
+<<<<<<< HEAD
     public function withPluralRules(?Ruleset $pluralRules, bool $reset = false): self;
+=======
+    public function withPluralRules(?Ruleset $pluralRules, bool $reset = false) : self;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Builds the inflector instance with all applicable rules
      */
+<<<<<<< HEAD
     public function build(): Inflector;
+=======
+    public function build() : Inflector;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

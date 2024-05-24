@@ -8,8 +8,15 @@ use Doctrine\Inflector\Rules\Pattern;
 
 final class Uninflected
 {
+<<<<<<< HEAD
     /** @return Pattern[] */
     public static function getSingular(): iterable
+=======
+    /**
+     * @return Pattern[]
+     */
+    public static function getSingular() : iterable
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         yield from self::getDefault();
 
@@ -28,8 +35,15 @@ final class Uninflected
         yield new Pattern('utopia');
     }
 
+<<<<<<< HEAD
     /** @return Pattern[] */
     public static function getPlural(): iterable
+=======
+    /**
+     * @return Pattern[]
+     */
+    public static function getPlural() : iterable
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         yield from self::getDefault();
 
@@ -39,8 +53,15 @@ final class Uninflected
         yield new Pattern('media');
     }
 
+<<<<<<< HEAD
     /** @return Pattern[] */
     private static function getDefault(): iterable
+=======
+    /**
+     * @return Pattern[]
+     */
+    private static function getDefault() : iterable
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         yield new Pattern('\w+media');
         yield new Pattern('advice');
@@ -58,7 +79,10 @@ final class Uninflected
         yield new Pattern('butter');
         yield new Pattern('cantus');
         yield new Pattern('carp');
+<<<<<<< HEAD
         yield new Pattern('cattle');
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         yield new Pattern('chassis');
         yield new Pattern('clippers');
         yield new Pattern('clothing');
@@ -106,7 +130,10 @@ final class Uninflected
         yield new Pattern('jackanapes');
         yield new Pattern('jeans');
         yield new Pattern('jedi');
+<<<<<<< HEAD
         yield new Pattern('kin');
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         yield new Pattern('kiplingese');
         yield new Pattern('knowledge');
         yield new Pattern('kongoese');

@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Util\PHP;
 
+<<<<<<< HEAD
 use const DIRECTORY_SEPARATOR;
 use const PHP_SAPI;
 use function array_keys;
@@ -28,6 +29,8 @@ use function substr;
 use function trim;
 use function unlink;
 use function unserialize;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use __PHP_Incomplete_Class;
 use ErrorException;
 use PHPUnit\Framework\AssertionFailedError;
@@ -38,7 +41,10 @@ use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestFailure;
 use PHPUnit\Framework\TestResult;
 use SebastianBergmann\Environment\Runtime;
+<<<<<<< HEAD
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -77,7 +83,11 @@ abstract class AbstractPhpProcess
 
     public static function factory(): self
     {
+<<<<<<< HEAD
         if (DIRECTORY_SEPARATOR === '\\') {
+=======
+        if (\DIRECTORY_SEPARATOR === '\\') {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return new WindowsPhpProcess;
         }
 
@@ -108,7 +118,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Sets the input string to be sent via STDIN.
+=======
+     * Sets the input string to be sent via STDIN
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setStdin(string $stdin): void
     {
@@ -116,7 +130,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Returns the input string to be sent via STDIN.
+=======
+     * Returns the input string to be sent via STDIN
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getStdin(): string
     {
@@ -124,7 +142,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Sets the string of arguments to pass to the php job.
+=======
+     * Sets the string of arguments to pass to the php job
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setArgs(string $args): void
     {
@@ -132,7 +154,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Returns the string of arguments to pass to the php job.
+=======
+     * Returns the string of arguments to pass to the php job
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getArgs(): string
     {
@@ -140,7 +166,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Sets the array of environment variables to start the child process with.
+=======
+     * Sets the array of environment variables to start the child process with
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @param array<string, string> $env
      */
@@ -150,7 +180,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Returns the array of environment variables to start the child process with.
+=======
+     * Returns the array of environment variables to start the child process with
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getEnv(): array
     {
@@ -158,7 +192,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Sets the amount of seconds to wait before timing out.
+=======
+     * Sets the amount of seconds to wait before timing out
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setTimeout(int $timeout): void
     {
@@ -166,7 +204,11 @@ abstract class AbstractPhpProcess
     }
 
     /**
+<<<<<<< HEAD
      * Returns the amount of seconds to wait before timing out.
+=======
+     * Returns the amount of seconds to wait before timing out
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getTimeout(): int
     {
@@ -176,6 +218,7 @@ abstract class AbstractPhpProcess
     /**
      * Runs a single test in a separate PHP process.
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     public function runTestJob(string $job, Test $test, TestResult $result, string $processResultFile): void
@@ -190,11 +233,24 @@ abstract class AbstractPhpProcess
 
             @unlink($processResultFile);
         }
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
+    public function runTestJob(string $job, Test $test, TestResult $result): void
+    {
+        $result->startTest($test);
+
+        $_result = $this->runJob($job);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $this->processChildResult(
             $test,
             $result,
+<<<<<<< HEAD
             $processResult,
+=======
+            $_result['stdout'],
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $_result['stderr']
         );
     }
@@ -202,11 +258,16 @@ abstract class AbstractPhpProcess
     /**
      * Returns the command based into the configurations.
      */
+<<<<<<< HEAD
     public function getCommand(array $settings, ?string $file = null): string
+=======
+    public function getCommand(array $settings, string $file = null): string
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $command = $this->runtime->getBinary();
 
         if ($this->runtime->hasPCOV()) {
+<<<<<<< HEAD
             $settings = array_merge(
                 $settings,
                 $this->runtime->getCurrentSettings(
@@ -218,13 +279,30 @@ abstract class AbstractPhpProcess
                 $settings,
                 $this->runtime->getCurrentSettings(
                     array_keys(ini_get_all('xdebug'))
+=======
+            $settings = \array_merge(
+                $settings,
+                $this->runtime->getCurrentSettings(
+                    \array_keys(\ini_get_all('pcov'))
+                )
+            );
+        } elseif ($this->runtime->hasXdebug()) {
+            $settings = \array_merge(
+                $settings,
+                $this->runtime->getCurrentSettings(
+                    \array_keys(\ini_get_all('xdebug'))
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 )
             );
         }
 
         $command .= $this->settingsToParameters($settings);
 
+<<<<<<< HEAD
         if (PHP_SAPI === 'phpdbg') {
+=======
+        if (\PHP_SAPI === 'phpdbg') {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $command .= ' -qrr';
 
             if (!$file) {
@@ -233,7 +311,11 @@ abstract class AbstractPhpProcess
         }
 
         if ($file) {
+<<<<<<< HEAD
             $command .= ' ' . escapeshellarg($file);
+=======
+            $command .= ' ' . \escapeshellarg($file);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if ($this->args) {
@@ -260,7 +342,11 @@ abstract class AbstractPhpProcess
         $buffer = '';
 
         foreach ($settings as $setting) {
+<<<<<<< HEAD
             $buffer .= ' -d ' . escapeshellarg($setting);
+=======
+            $buffer .= ' -d ' . \escapeshellarg($setting);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $buffer;
@@ -269,7 +355,11 @@ abstract class AbstractPhpProcess
     /**
      * Processes the TestResult object from an isolated process.
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private function processChildResult(Test $test, TestResult $result, string $stdout, string $stderr): void
     {
@@ -278,6 +368,7 @@ abstract class AbstractPhpProcess
         if (!empty($stderr)) {
             $result->addError(
                 $test,
+<<<<<<< HEAD
                 new Exception(trim($stderr)),
                 $time
             );
@@ -288,17 +379,37 @@ abstract class AbstractPhpProcess
                  */
                 static function ($errno, $errstr, $errfile, $errline): void
                 {
+=======
+                new Exception(\trim($stderr)),
+                $time
+            );
+        } else {
+            \set_error_handler(
+                /**
+                 * @throws ErrorException
+                 */
+                static function ($errno, $errstr, $errfile, $errline): void {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     throw new ErrorException($errstr, $errno, $errno, $errfile, $errline);
                 }
             );
 
             try {
+<<<<<<< HEAD
                 if (strpos($stdout, "#!/usr/bin/env php\n") === 0) {
                     $stdout = substr($stdout, 19);
                 }
 
                 $childResult = unserialize(str_replace("#!/usr/bin/env php\n", '', $stdout));
                 restore_error_handler();
+=======
+                if (\strpos($stdout, "#!/usr/bin/env php\n") === 0) {
+                    $stdout = \substr($stdout, 19);
+                }
+
+                $childResult = \unserialize(\str_replace("#!/usr/bin/env php\n", '', $stdout));
+                \restore_error_handler();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                 if ($childResult === false) {
                     $result->addFailure(
@@ -308,12 +419,20 @@ abstract class AbstractPhpProcess
                     );
                 }
             } catch (ErrorException $e) {
+<<<<<<< HEAD
                 restore_error_handler();
+=======
+                \restore_error_handler();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $childResult = false;
 
                 $result->addError(
                     $test,
+<<<<<<< HEAD
                     new Exception(trim($stdout), 0, $e),
+=======
+                    new Exception(\trim($stdout), 0, $e),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $time
                 );
             }
@@ -329,7 +448,11 @@ abstract class AbstractPhpProcess
                 $test->addToAssertionCount($childResult['numAssertions']);
 
                 $childResult = $childResult['result'];
+<<<<<<< HEAD
                 assert($childResult instanceof TestResult);
+=======
+                \assert($childResult instanceof  TestResult);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                 if ($result->getCollectCodeCoverageInformation()) {
                     $result->getCodeCoverage()->merge(
@@ -405,12 +528,20 @@ abstract class AbstractPhpProcess
             $exceptionArray = [];
 
             foreach ((array) $exception as $key => $value) {
+<<<<<<< HEAD
                 $key                  = substr($key, strrpos($key, "\0") + 1);
+=======
+                $key                  = \substr($key, \strrpos($key, "\0") + 1);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $exceptionArray[$key] = $value;
             }
 
             $exception = new SyntheticError(
+<<<<<<< HEAD
                 sprintf(
+=======
+                \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     '%s: %s',
                     $exceptionArray['_PHP_Incomplete_Class_Name'],
                     $exceptionArray['message']

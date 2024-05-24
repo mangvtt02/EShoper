@@ -261,7 +261,11 @@ class Swift_Mime_Headers_MailboxHeader extends Swift_Mime_Headers_AbstractHeader
         $actualMailboxes = [];
 
         foreach ($mailboxes as $key => $value) {
+<<<<<<< HEAD
             if (\is_string($key)) {
+=======
+            if (is_string($key)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 //key is email addr
                 $address = $key;
                 $name = $value;
@@ -347,12 +351,22 @@ class Swift_Mime_Headers_MailboxHeader extends Swift_Mime_Headers_AbstractHeader
      *
      * @param string $address
      *
+<<<<<<< HEAD
      * @throws Swift_RfcComplianceException if invalid
+=======
+     * @throws Swift_RfcComplianceException If invalid.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private function assertValidAddress($address)
     {
         if (!$this->emailValidator->isValid($address, new RFCValidation())) {
+<<<<<<< HEAD
             throw new Swift_RfcComplianceException('Address in mailbox given ['.$address.'] does not comply with RFC 2822, 3.6.2.');
+=======
+            throw new Swift_RfcComplianceException(
+                'Address in mailbox given ['.$address.'] does not comply with RFC 2822, 3.6.2.'
+            );
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 }

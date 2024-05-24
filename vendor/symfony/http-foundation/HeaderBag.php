@@ -62,7 +62,11 @@ class HeaderBag implements \IteratorAggregate, \Countable
      *
      * @return array An array of headers
      */
+<<<<<<< HEAD
     public function all(/* string $key = null */)
+=======
+    public function all(/*string $key = null*/)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (1 <= \func_num_args() && null !== $key = func_get_arg(0)) {
             return $this->headers[strtr($key, self::UPPER, self::LOWER)] ?? [];
@@ -133,9 +137,15 @@ class HeaderBag implements \IteratorAggregate, \Countable
     /**
      * Sets a header by name.
      *
+<<<<<<< HEAD
      * @param string               $key     The key
      * @param string|string[]|null $values  The value or an array of values
      * @param bool                 $replace Whether to replace the actual value or not (true by default)
+=======
+     * @param string          $key     The key
+     * @param string|string[] $values  The value or an array of values
+     * @param bool            $replace Whether to replace the actual value or not (true by default)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function set($key, $values, $replace = true)
     {
@@ -228,8 +238,13 @@ class HeaderBag implements \IteratorAggregate, \Countable
     /**
      * Adds a custom Cache-Control directive.
      *
+<<<<<<< HEAD
      * @param string      $key   The Cache-Control directive name
      * @param bool|string $value The Cache-Control directive value
+=======
+     * @param string $key   The Cache-Control directive name
+     * @param mixed  $value The Cache-Control directive value
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function addCacheControlDirective($key, $value = true)
     {
@@ -255,11 +270,19 @@ class HeaderBag implements \IteratorAggregate, \Countable
      *
      * @param string $key The directive name
      *
+<<<<<<< HEAD
      * @return bool|string|null The directive value if defined, null otherwise
      */
     public function getCacheControlDirective($key)
     {
         return $this->cacheControl[$key] ?? null;
+=======
+     * @return mixed|null The directive value if defined, null otherwise
+     */
+    public function getCacheControlDirective($key)
+    {
+        return \array_key_exists($key, $this->cacheControl) ? $this->cacheControl[$key] : null;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -279,7 +302,10 @@ class HeaderBag implements \IteratorAggregate, \Countable
      *
      * @return \ArrayIterator An \ArrayIterator instance
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function getIterator()
     {
         return new \ArrayIterator($this->headers);
@@ -290,7 +316,10 @@ class HeaderBag implements \IteratorAggregate, \Countable
      *
      * @return int The number of headers
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function count()
     {
         return \count($this->headers);

@@ -106,11 +106,19 @@ abstract class Input implements InputInterface, StreamableInputInterface
      */
     public function getArgument($name)
     {
+<<<<<<< HEAD
         if (!$this->definition->hasArgument((string) $name)) {
             throw new InvalidArgumentException(sprintf('The "%s" argument does not exist.', $name));
         }
 
         return $this->arguments[$name] ?? $this->definition->getArgument($name)->getDefault();
+=======
+        if (!$this->definition->hasArgument($name)) {
+            throw new InvalidArgumentException(sprintf('The "%s" argument does not exist.', $name));
+        }
+
+        return isset($this->arguments[$name]) ? $this->arguments[$name] : $this->definition->getArgument($name)->getDefault();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -118,7 +126,11 @@ abstract class Input implements InputInterface, StreamableInputInterface
      */
     public function setArgument($name, $value)
     {
+<<<<<<< HEAD
         if (!$this->definition->hasArgument((string) $name)) {
+=======
+        if (!$this->definition->hasArgument($name)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new InvalidArgumentException(sprintf('The "%s" argument does not exist.', $name));
         }
 
@@ -130,7 +142,11 @@ abstract class Input implements InputInterface, StreamableInputInterface
      */
     public function hasArgument($name)
     {
+<<<<<<< HEAD
         return $this->definition->hasArgument((string) $name);
+=======
+        return $this->definition->hasArgument($name);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**

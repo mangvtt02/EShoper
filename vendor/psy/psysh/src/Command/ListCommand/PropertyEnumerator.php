@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,7 +25,11 @@ class PropertyEnumerator extends Enumerator
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     protected function listItems(InputInterface $input, ?\Reflector $reflector = null, $target = null): array
+=======
+    protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // only list properties when a Reflector is present.
 
@@ -39,8 +47,13 @@ class PropertyEnumerator extends Enumerator
             return [];
         }
 
+<<<<<<< HEAD
         $showAll = $input->getOption('all');
         $noInherit = $input->getOption('no-inherit');
+=======
+        $showAll    = $input->getOption('all');
+        $noInherit  = $input->getOption('no-inherit');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $properties = $this->prepareProperties($this->getProperties($showAll, $reflector, $noInherit), $target);
 
         if (empty($properties)) {
@@ -56,6 +69,7 @@ class PropertyEnumerator extends Enumerator
     /**
      * Get defined properties for the given class or object Reflector.
      *
+<<<<<<< HEAD
      * @param bool             $showAll   Include private and protected properties
      * @param \ReflectionClass $reflector
      * @param bool             $noInherit Exclude inherited properties
@@ -63,6 +77,15 @@ class PropertyEnumerator extends Enumerator
      * @return array
      */
     protected function getProperties(bool $showAll, \ReflectionClass $reflector, bool $noInherit = false): array
+=======
+     * @param bool       $showAll   Include private and protected properties
+     * @param \Reflector $reflector
+     * @param bool       $noInherit Exclude inherited properties
+     *
+     * @return array
+     */
+    protected function getProperties($showAll, \Reflector $reflector, $noInherit = false)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $className = $reflector->getName();
 
@@ -77,7 +100,11 @@ class PropertyEnumerator extends Enumerator
             }
         }
 
+<<<<<<< HEAD
         \ksort($properties, \SORT_NATURAL | \SORT_FLAG_CASE);
+=======
+        \ksort($properties, SORT_NATURAL | SORT_FLAG_CASE);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $properties;
     }
@@ -89,14 +116,22 @@ class PropertyEnumerator extends Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
     protected function prepareProperties(array $properties, $target = null): array
+=======
+    protected function prepareProperties(array $properties, $target = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // My kingdom for a generator.
         $ret = [];
 
         foreach ($properties as $name => $property) {
             if ($this->showItem($name)) {
+<<<<<<< HEAD
                 $fname = '$'.$name;
+=======
+                $fname = '$' . $name;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $ret[$fname] = [
                     'name'  => $fname,
                     'style' => $this->getVisibilityStyle($property),
@@ -112,8 +147,15 @@ class PropertyEnumerator extends Enumerator
      * Get a label for the particular kind of "class" represented.
      *
      * @param \ReflectionClass $reflector
+<<<<<<< HEAD
      */
     protected function getKindLabel(\ReflectionClass $reflector): string
+=======
+     *
+     * @return string
+     */
+    protected function getKindLabel(\ReflectionClass $reflector)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (\method_exists($reflector, 'isTrait') && $reflector->isTrait()) {
             return 'Trait Properties';
@@ -126,8 +168,15 @@ class PropertyEnumerator extends Enumerator
      * Get output style for the given property's visibility.
      *
      * @param \ReflectionProperty $property
+<<<<<<< HEAD
      */
     private function getVisibilityStyle(\ReflectionProperty $property): string
+=======
+     *
+     * @return string
+     */
+    private function getVisibilityStyle(\ReflectionProperty $property)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if ($property->isPublic()) {
             return self::IS_PUBLIC;
@@ -143,6 +192,7 @@ class PropertyEnumerator extends Enumerator
      *
      * @param \ReflectionProperty $property
      * @param mixed               $target
+<<<<<<< HEAD
      */
     protected function presentValue(\ReflectionProperty $property, $target): string
     {
@@ -150,6 +200,13 @@ class PropertyEnumerator extends Enumerator
             return '';
         }
 
+=======
+     *
+     * @return string
+     */
+    protected function presentValue(\ReflectionProperty $property, $target)
+    {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         // If $target is a class or trait (try to) get the default
         // value for the property.
         if (!\is_object($target)) {
@@ -159,9 +216,15 @@ class PropertyEnumerator extends Enumerator
                 if (\array_key_exists($property->name, $props)) {
                     $suffix = $property->isStatic() ? '' : ' <aside>(default)</aside>';
 
+<<<<<<< HEAD
                     return $this->presentRef($props[$property->name]).$suffix;
                 }
             } catch (\Throwable $e) {
+=======
+                    return $this->presentRef($props[$property->name]) . $suffix;
+                }
+            } catch (\Exception $e) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 // Well, we gave it a shot.
             }
 

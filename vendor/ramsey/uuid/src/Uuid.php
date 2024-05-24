@@ -22,7 +22,10 @@ use Ramsey\Uuid\Codec\CodecInterface;
 use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use Ramsey\Uuid\Exception\UnsupportedOperationException;
+<<<<<<< HEAD
 use ReturnTypeWillChange;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Represents a universally unique identifier (UUID), according to RFC 4122.
@@ -213,7 +216,10 @@ class Uuid implements UuidInterface
      * @return string
      * @link http://php.net/manual/en/class.jsonserializable.php
      */
+<<<<<<< HEAD
     #[ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function jsonSerialize()
     {
         return $this->toString();
@@ -226,13 +232,17 @@ class Uuid implements UuidInterface
      * @return string
      * @link http://php.net/manual/en/class.serializable.php
      */
+<<<<<<< HEAD
     #[ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function serialize()
     {
         return $this->toString();
     }
 
     /**
+<<<<<<< HEAD
      * @return array{string: string}
      */
     #[ReturnTypeWillChange]
@@ -242,13 +252,18 @@ class Uuid implements UuidInterface
     }
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Re-constructs the object from its serialized form.
      *
      * @param string $serialized
      * @link http://php.net/manual/en/class.serializable.php
      * @throws InvalidUuidStringException
      */
+<<<<<<< HEAD
     #[ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function unserialize($serialized)
     {
         $uuid = self::fromString($serialized);
@@ -257,6 +272,7 @@ class Uuid implements UuidInterface
         $this->fields = $uuid->fields;
     }
 
+<<<<<<< HEAD
     /**
      * @param array{string: string} $serialized
      * @return void
@@ -274,6 +290,8 @@ class Uuid implements UuidInterface
         $this->unserialize($serialized['string']);
     }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function compareTo(UuidInterface $other)
     {
         if ($this->getMostSignificantBitsHex() < $other->getMostSignificantBitsHex()) {

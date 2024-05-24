@@ -2,8 +2,11 @@
 
 namespace Illuminate\Validation\Rules;
 
+<<<<<<< HEAD
 use InvalidArgumentException;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 class RequiredIf
 {
     /**
@@ -21,11 +24,15 @@ class RequiredIf
      */
     public function __construct($condition)
     {
+<<<<<<< HEAD
         if (! is_string($condition)) {
             $this->condition = $condition;
         } else {
             throw new InvalidArgumentException('The provided condition must be a callable or boolean.');
         }
+=======
+        $this->condition = $condition;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**

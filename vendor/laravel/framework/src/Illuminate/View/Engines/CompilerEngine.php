@@ -2,9 +2,15 @@
 
 namespace Illuminate\View\Engines;
 
+<<<<<<< HEAD
 use Exception;
 use Illuminate\View\Compilers\CompilerInterface;
 use Illuminate\View\ViewException;
+=======
+use ErrorException;
+use Exception;
+use Illuminate\View\Compilers\CompilerInterface;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 class CompilerEngine extends PhpEngine
 {
@@ -74,7 +80,11 @@ class CompilerEngine extends PhpEngine
      */
     protected function handleViewException(Exception $e, $obLevel)
     {
+<<<<<<< HEAD
         $e = new ViewException($this->getMessage($e), 0, 1, $e->getFile(), $e->getLine(), $e);
+=======
+        $e = new ErrorException($this->getMessage($e), 0, 1, $e->getFile(), $e->getLine(), $e);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         parent::handleViewException($e, $obLevel);
     }

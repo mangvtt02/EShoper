@@ -15,7 +15,10 @@ namespace Monolog\Formatter;
  * formats the record to be used in the FlowdockHandler
  *
  * @author Dominik Liebler <liebler.dominik@gmail.com>
+<<<<<<< HEAD
  * @deprecated Since 2.9.0 and 3.3.0, Flowdock was shutdown we will thus drop this handler in Monolog 4
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 class FlowdockFormatter implements FormatterInterface
 {
@@ -36,9 +39,13 @@ class FlowdockFormatter implements FormatterInterface
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
      *
      * @return mixed[]
+=======
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function format(array $record): array
     {
@@ -72,9 +79,13 @@ class FlowdockFormatter implements FormatterInterface
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
      *
      * @return mixed[][]
+=======
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function formatBatch(array $records): array
     {

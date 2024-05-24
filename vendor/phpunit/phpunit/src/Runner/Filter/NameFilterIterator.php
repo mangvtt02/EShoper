@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Runner\Filter;
 
+<<<<<<< HEAD
 use function end;
 use function implode;
 use function preg_match;
@@ -22,6 +23,13 @@ use PHPUnit\Util\Test;
 use RecursiveFilterIterator;
 use RecursiveIterator;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
+=======
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\Framework\WarningTestCase;
+use PHPUnit\Util\RegularExpression;
+use RecursiveFilterIterator;
+use RecursiveIterator;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -44,7 +52,11 @@ final class NameFilterIterator extends RecursiveFilterIterator
     private $filterMax;
 
     /**
+<<<<<<< HEAD
      * @throws Exception
+=======
+     * @throws \Exception
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct(RecursiveIterator $iterator, string $filter)
     {
@@ -54,7 +66,11 @@ final class NameFilterIterator extends RecursiveFilterIterator
     }
 
     /**
+<<<<<<< HEAD
      * @throws InvalidArgumentException
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function accept(): bool
     {
@@ -64,20 +80,35 @@ final class NameFilterIterator extends RecursiveFilterIterator
             return true;
         }
 
+<<<<<<< HEAD
         $tmp = Test::describe($test);
+=======
+        $tmp = \PHPUnit\Util\Test::describe($test);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($test instanceof WarningTestCase) {
             $name = $test->getMessage();
         } elseif ($tmp[0] !== '') {
+<<<<<<< HEAD
             $name = implode('::', $tmp);
+=======
+            $name = \implode('::', $tmp);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } else {
             $name = $tmp[1];
         }
 
+<<<<<<< HEAD
         $accepted = @preg_match($this->filter, $name, $matches);
 
         if ($accepted && isset($this->filterMax)) {
             $set      = end($matches);
+=======
+        $accepted = @\preg_match($this->filter, $name, $matches);
+
+        if ($accepted && isset($this->filterMax)) {
+            $set      = \end($matches);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $accepted = $set >= $this->filterMin && $set <= $this->filterMax;
         }
 
@@ -85,7 +116,11 @@ final class NameFilterIterator extends RecursiveFilterIterator
     }
 
     /**
+<<<<<<< HEAD
      * @throws Exception
+=======
+     * @throws \Exception
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private function setFilter(string $filter): void
     {
@@ -93,9 +128,15 @@ final class NameFilterIterator extends RecursiveFilterIterator
             // Handles:
             //  * testAssertEqualsSucceeds#4
             //  * testAssertEqualsSucceeds#4-8
+<<<<<<< HEAD
             if (preg_match('/^(.*?)#(\d+)(?:-(\d+))?$/', $filter, $matches)) {
                 if (isset($matches[3]) && $matches[2] < $matches[3]) {
                     $filter = sprintf(
+=======
+            if (\preg_match('/^(.*?)#(\d+)(?:-(\d+))?$/', $filter, $matches)) {
+                if (isset($matches[3]) && $matches[2] < $matches[3]) {
+                    $filter = \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         '%s.*with data set #(\d+)$',
                         $matches[1]
                     );
@@ -103,7 +144,11 @@ final class NameFilterIterator extends RecursiveFilterIterator
                     $this->filterMin = (int) $matches[2];
                     $this->filterMax = (int) $matches[3];
                 } else {
+<<<<<<< HEAD
                     $filter = sprintf(
+=======
+                    $filter = \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         '%s.*with data set #%s$',
                         $matches[1],
                         $matches[2]
@@ -112,8 +157,13 @@ final class NameFilterIterator extends RecursiveFilterIterator
             } // Handles:
             //  * testDetermineJsonError@JSON_ERROR_NONE
             //  * testDetermineJsonError@JSON.*
+<<<<<<< HEAD
             elseif (preg_match('/^(.*?)@(.+)$/', $filter, $matches)) {
                 $filter = sprintf(
+=======
+            elseif (\preg_match('/^(.*?)@(.+)$/', $filter, $matches)) {
+                $filter = \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     '%s.*with data set "%s"$',
                     $matches[1],
                     $matches[2]
@@ -122,6 +172,7 @@ final class NameFilterIterator extends RecursiveFilterIterator
 
             // Escape delimiters in regular expression. Do NOT use preg_quote,
             // to keep magic characters.
+<<<<<<< HEAD
             $filter = sprintf(
                 '/%s/i',
                 str_replace(
@@ -130,6 +181,13 @@ final class NameFilterIterator extends RecursiveFilterIterator
                     $filter
                 )
             );
+=======
+            $filter = \sprintf('/%s/i', \str_replace(
+                '/',
+                '\\/',
+                $filter
+            ));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $this->filter = $filter;

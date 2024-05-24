@@ -22,17 +22,29 @@ class Ruleset
         $this->irregular   = $irregular;
     }
 
+<<<<<<< HEAD
     public function getRegular(): Transformations
+=======
+    public function getRegular() : Transformations
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->regular;
     }
 
+<<<<<<< HEAD
     public function getUninflected(): Patterns
+=======
+    public function getUninflected() : Patterns
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->uninflected;
     }
 
+<<<<<<< HEAD
     public function getIrregular(): Substitutions
+=======
+    public function getIrregular() : Substitutions
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->irregular;
     }

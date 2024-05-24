@@ -18,8 +18,13 @@ interface Swift_AddressEncoder
     /**
      * Encodes an email address.
      *
+<<<<<<< HEAD
      * @throws Swift_AddressEncoderException if the email cannot be represented in
      *                                       the encoding implemented by this class
+=======
+     * @throws Swift_AddressEncoderException If the email cannot be represented in
+     *                                       the encoding implemented by this class.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function encodeString(string $address): string;
 }

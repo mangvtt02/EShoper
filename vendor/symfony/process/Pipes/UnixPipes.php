@@ -35,6 +35,7 @@ class UnixPipes extends AbstractPipes
         parent::__construct($input);
     }
 
+<<<<<<< HEAD
     /**
      * @return array
      */
@@ -48,6 +49,8 @@ class UnixPipes extends AbstractPipes
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __destruct()
     {
         $this->close();

@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Util\Log;
 
+<<<<<<< HEAD
 use function class_exists;
 use function get_class;
 use function method_exists;
@@ -16,6 +17,8 @@ use function sprintf;
 use function str_replace;
 use DOMDocument;
 use DOMElement;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\ExceptionWrapper;
 use PHPUnit\Framework\SelfDescribing;
@@ -28,9 +31,12 @@ use PHPUnit\Util\Exception;
 use PHPUnit\Util\Filter;
 use PHPUnit\Util\Printer;
 use PHPUnit\Util\Xml;
+<<<<<<< HEAD
 use ReflectionClass;
 use ReflectionException;
 use Throwable;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -38,12 +44,20 @@ use Throwable;
 final class JUnit extends Printer implements TestListener
 {
     /**
+<<<<<<< HEAD
      * @var DOMDocument
+=======
+     * @var \DOMDocument
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private $document;
 
     /**
+<<<<<<< HEAD
      * @var DOMElement
+=======
+     * @var \DOMElement
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private $root;
 
@@ -53,7 +67,11 @@ final class JUnit extends Printer implements TestListener
     private $reportRiskyTests = false;
 
     /**
+<<<<<<< HEAD
      * @var DOMElement[]
+=======
+     * @var \DOMElement[]
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private $testSuites = [];
 
@@ -98,7 +116,11 @@ final class JUnit extends Printer implements TestListener
     private $testSuiteLevel = 0;
 
     /**
+<<<<<<< HEAD
      * @var DOMElement
+=======
+     * @var \DOMElement
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private $currentTestCase;
 
@@ -107,7 +129,11 @@ final class JUnit extends Printer implements TestListener
      */
     public function __construct($out = null, bool $reportRiskyTests = false)
     {
+<<<<<<< HEAD
         $this->document               = new DOMDocument('1.0', 'UTF-8');
+=======
+        $this->document               = new \DOMDocument('1.0', 'UTF-8');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->document->formatOutput = true;
 
         $this->root = $this->document->createElement('testsuites');
@@ -131,7 +157,11 @@ final class JUnit extends Printer implements TestListener
     /**
      * An error occurred.
      */
+<<<<<<< HEAD
     public function addError(Test $test, Throwable $t, float $time): void
+=======
+    public function addError(Test $test, \Throwable $t, float $time): void
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->doAddFault($test, $t, $time, 'error');
         $this->testSuiteErrors[$this->testSuiteLevel]++;
@@ -158,7 +188,11 @@ final class JUnit extends Printer implements TestListener
     /**
      * Incomplete test.
      */
+<<<<<<< HEAD
     public function addIncompleteTest(Test $test, Throwable $t, float $time): void
+=======
+    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->doAddSkipped();
     }
@@ -166,7 +200,11 @@ final class JUnit extends Printer implements TestListener
     /**
      * Risky test.
      */
+<<<<<<< HEAD
     public function addRiskyTest(Test $test, Throwable $t, float $time): void
+=======
+    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!$this->reportRiskyTests || $this->currentTestCase === null) {
             return;
@@ -180,7 +218,11 @@ final class JUnit extends Printer implements TestListener
             )
         );
 
+<<<<<<< HEAD
         $error->setAttribute('type', get_class($t));
+=======
+        $error->setAttribute('type', \get_class($t));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $this->currentTestCase->appendChild($error);
 
@@ -190,7 +232,11 @@ final class JUnit extends Printer implements TestListener
     /**
      * Skipped test.
      */
+<<<<<<< HEAD
     public function addSkippedTest(Test $test, Throwable $t, float $time): void
+=======
+    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->doAddSkipped();
     }
@@ -203,12 +249,21 @@ final class JUnit extends Printer implements TestListener
         $testSuite = $this->document->createElement('testsuite');
         $testSuite->setAttribute('name', $suite->getName());
 
+<<<<<<< HEAD
         if (class_exists($suite->getName(), false)) {
             try {
                 $class = new ReflectionClass($suite->getName());
 
                 $testSuite->setAttribute('file', $class->getFileName());
             } catch (ReflectionException $e) {
+=======
+        if (\class_exists($suite->getName(), false)) {
+            try {
+                $class = new \ReflectionClass($suite->getName());
+
+                $testSuite->setAttribute('file', $class->getFileName());
+            } catch (\ReflectionException $e) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
 
@@ -266,7 +321,11 @@ final class JUnit extends Printer implements TestListener
 
         $this->testSuites[$this->testSuiteLevel]->setAttribute(
             'time',
+<<<<<<< HEAD
             sprintf('%F', $this->testSuiteTimes[$this->testSuiteLevel])
+=======
+            \sprintf('%F', $this->testSuiteTimes[$this->testSuiteLevel])
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         );
 
         if ($this->testSuiteLevel > 1) {
@@ -289,7 +348,11 @@ final class JUnit extends Printer implements TestListener
     {
         $usesDataprovider = false;
 
+<<<<<<< HEAD
         if (method_exists($test, 'usesDataProvider')) {
+=======
+        if (\method_exists($test, 'usesDataProvider')) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $usesDataprovider = $test->usesDataProvider();
         }
 
@@ -297,12 +360,21 @@ final class JUnit extends Printer implements TestListener
         $testCase->setAttribute('name', $test->getName());
 
         try {
+<<<<<<< HEAD
             $class = new ReflectionClass($test);
             // @codeCoverageIgnoreStart
         } catch (ReflectionException $e) {
             throw new Exception(
                 $e->getMessage(),
                 $e->getCode(),
+=======
+            $class = new \ReflectionClass($test);
+            // @codeCoverageIgnoreStart
+        } catch (\ReflectionException $e) {
+            throw new Exception(
+                $e->getMessage(),
+                (int) $e->getCode(),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $e
             );
         }
@@ -314,17 +386,28 @@ final class JUnit extends Printer implements TestListener
             try {
                 $method = $class->getMethod($methodName);
                 // @codeCoverageIgnoreStart
+<<<<<<< HEAD
             } catch (ReflectionException $e) {
                 throw new Exception(
                     $e->getMessage(),
                     $e->getCode(),
+=======
+            } catch (\ReflectionException $e) {
+                throw new Exception(
+                    $e->getMessage(),
+                    (int) $e->getCode(),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $e
                 );
             }
             // @codeCoverageIgnoreEnd
 
             $testCase->setAttribute('class', $class->getName());
+<<<<<<< HEAD
             $testCase->setAttribute('classname', str_replace('\\', '.', $class->getName()));
+=======
+            $testCase->setAttribute('classname', \str_replace('\\', '.', $class->getName()));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $testCase->setAttribute('file', $class->getFileName());
             $testCase->setAttribute('line', (string) $method->getStartLine());
         }
@@ -339,7 +422,11 @@ final class JUnit extends Printer implements TestListener
     {
         $numAssertions = 0;
 
+<<<<<<< HEAD
         if (method_exists($test, 'getNumAssertions')) {
+=======
+        if (\method_exists($test, 'getNumAssertions')) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $numAssertions = $test->getNumAssertions();
         }
 
@@ -352,7 +439,11 @@ final class JUnit extends Printer implements TestListener
 
         $this->currentTestCase->setAttribute(
             'time',
+<<<<<<< HEAD
             sprintf('%F', $time)
+=======
+            \sprintf('%F', $time)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         );
 
         $this->testSuites[$this->testSuiteLevel]->appendChild(
@@ -364,7 +455,11 @@ final class JUnit extends Printer implements TestListener
 
         $testOutput = '';
 
+<<<<<<< HEAD
         if (method_exists($test, 'hasOutput') && method_exists($test, 'getActualOutput')) {
+=======
+        if (\method_exists($test, 'hasOutput') && \method_exists($test, 'getActualOutput')) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $testOutput = $test->hasOutput() ? $test->getActualOutput() : '';
         }
 
@@ -388,7 +483,11 @@ final class JUnit extends Printer implements TestListener
         return $this->document->saveXML();
     }
 
+<<<<<<< HEAD
     private function doAddFault(Test $test, Throwable $t, float $time, $type): void
+=======
+    private function doAddFault(Test $test, \Throwable $t, float $time, $type): void
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if ($this->currentTestCase === null) {
             return;
@@ -411,7 +510,11 @@ final class JUnit extends Printer implements TestListener
         if ($t instanceof ExceptionWrapper) {
             $fault->setAttribute('type', $t->getClassName());
         } else {
+<<<<<<< HEAD
             $fault->setAttribute('type', get_class($t));
+=======
+            $fault->setAttribute('type', \get_class($t));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $this->currentTestCase->appendChild($fault);

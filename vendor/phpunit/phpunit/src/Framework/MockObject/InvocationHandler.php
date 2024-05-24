@@ -9,13 +9,19 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
+<<<<<<< HEAD
 use function sprintf;
 use function strtolower;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Exception;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
+<<<<<<< HEAD
 use Throwable;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -43,7 +49,11 @@ final class InvocationHandler
     private $returnValueGeneration;
 
     /**
+<<<<<<< HEAD
      * @var Throwable
+=======
+     * @var \Throwable
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private $deferredError;
 
@@ -146,14 +156,22 @@ final class InvocationHandler
 
         if (!$this->returnValueGeneration) {
             $exception = new ExpectationFailedException(
+<<<<<<< HEAD
                 sprintf(
+=======
+                \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     'Return value inference disabled and no expectation set up for %s::%s()',
                     $invocation->getClassName(),
                     $invocation->getMethodName()
                 )
             );
 
+<<<<<<< HEAD
             if (strtolower($invocation->getMethodName()) === '__tostring') {
+=======
+            if (\strtolower($invocation->getMethodName()) === '__tostring') {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $this->deferredError = $exception;
 
                 return '';
@@ -177,7 +195,11 @@ final class InvocationHandler
     }
 
     /**
+<<<<<<< HEAD
      * @throws ExpectationFailedException
+=======
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function verify(): void
     {

@@ -26,7 +26,11 @@ class FatalThrowableError extends FatalErrorException
 
     public function __construct(\Throwable $e)
     {
+<<<<<<< HEAD
         $this->originalClassName = \get_class($e);
+=======
+        $this->originalClassName = get_debug_type($e);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($e instanceof \ParseError) {
             $severity = \E_PARSE;

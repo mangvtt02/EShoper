@@ -18,6 +18,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 
 /**
+<<<<<<< HEAD
+=======
+ * LogDataCollector.
+ *
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @final since Symfony 4.4
@@ -44,7 +49,11 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
      *
      * @param \Throwable|null $exception
      */
+<<<<<<< HEAD
     public function collect(Request $request, Response $response/* , \Throwable $exception = null */)
+=======
+    public function collect(Request $request, Response $response/*, \Throwable $exception = null*/)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->currentRequest = $this->requestStack && $this->requestStack->getMasterRequest() !== $request ? $request : null;
     }
@@ -79,32 +88,56 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
 
     public function getLogs()
     {
+<<<<<<< HEAD
         return $this->data['logs'] ?? [];
+=======
+        return isset($this->data['logs']) ? $this->data['logs'] : [];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function getPriorities()
     {
+<<<<<<< HEAD
         return $this->data['priorities'] ?? [];
+=======
+        return isset($this->data['priorities']) ? $this->data['priorities'] : [];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function countErrors()
     {
+<<<<<<< HEAD
         return $this->data['error_count'] ?? 0;
+=======
+        return isset($this->data['error_count']) ? $this->data['error_count'] : 0;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function countDeprecations()
     {
+<<<<<<< HEAD
         return $this->data['deprecation_count'] ?? 0;
+=======
+        return isset($this->data['deprecation_count']) ? $this->data['deprecation_count'] : 0;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function countWarnings()
     {
+<<<<<<< HEAD
         return $this->data['warning_count'] ?? 0;
+=======
+        return isset($this->data['warning_count']) ? $this->data['warning_count'] : 0;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function countScreams()
     {
+<<<<<<< HEAD
         return $this->data['scream_count'] ?? 0;
+=======
+        return isset($this->data['scream_count']) ? $this->data['scream_count'] : 0;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function getCompilerLogs()

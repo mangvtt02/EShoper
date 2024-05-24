@@ -8,6 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 
 return array_replace_recursive(require __DIR__.'/en.php', [
     'first_day_of_week' => 1,
@@ -19,4 +20,8 @@ return array_replace_recursive(require __DIR__.'/en.php', [
         'LLL' => 'D MMMM YYYY HH:mm',
         'LLLL' => 'dddd D MMMM YYYY HH:mm',
     ],
+=======
+return array_replace_recursive(require __DIR__.'/en.php', [
+    'first_day_of_week' => 1,
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ]);

@@ -11,6 +11,11 @@
 
 namespace Symfony\Contracts\Service\Attribute;
 
+<<<<<<< HEAD
+=======
+use Attribute;
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * A required dependency.
  *
@@ -19,7 +24,11 @@ namespace Symfony\Contracts\Service\Attribute;
  *
  * @author Alexander M. Turek <me@derrabus.de>
  */
+<<<<<<< HEAD
 #[\Attribute(\Attribute::TARGET_METHOD | \Attribute::TARGET_PROPERTY)]
+=======
+#[Attribute(Attribute::TARGET_METHOD | Attribute::TARGET_PROPERTY)]
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 final class Required
 {
 }

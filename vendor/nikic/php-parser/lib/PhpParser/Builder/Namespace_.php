@@ -7,10 +7,17 @@ use PhpParser\BuilderHelpers;
 use PhpParser\Node;
 use PhpParser\Node\Stmt;
 
+<<<<<<< HEAD
 class Namespace_ extends Declaration {
     private ?Node\Name $name;
     /** @var Stmt[] */
     private array $stmts = [];
+=======
+class Namespace_ extends Declaration
+{
+    private $name;
+    private $stmts = [];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Creates a namespace builder.
@@ -37,9 +44,15 @@ class Namespace_ extends Declaration {
     /**
      * Returns the built node.
      *
+<<<<<<< HEAD
      * @return Stmt\Namespace_ The built node
      */
     public function getNode(): Node {
+=======
+     * @return Node The built node
+     */
+    public function getNode() : Node {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return new Stmt\Namespace_($this->name, $this->stmts, $this->attributes);
     }
 }

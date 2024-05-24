@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php declare(strict_types = 1);
 /*
  * This file is part of PharIo\Manifest.
@@ -18,6 +19,33 @@ use function sprintf;
 
 class ManifestDocumentMapper {
     public function map(ManifestDocument $document): Manifest {
+=======
+<?php
+/*
+ * This file is part of PharIo\Manifest.
+ *
+ * (c) Arne Blankerts <arne@blankerts.de>, Sebastian Heuer <sebastian@phpeople.de>, Sebastian Bergmann <sebastian@phpunit.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace PharIo\Manifest;
+
+use PharIo\Version\Version;
+use PharIo\Version\Exception as VersionException;
+use PharIo\Version\VersionConstraintParser;
+
+class ManifestDocumentMapper {
+    /**
+     * @param ManifestDocument $document
+     *
+     * @returns Manifest
+     *
+     * @throws ManifestDocumentMapperException
+     */
+    public function map(ManifestDocument $document) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         try {
             $contains          = $document->getContainsElement();
             $type              = $this->mapType($contains);
@@ -33,12 +61,30 @@ class ManifestDocumentMapper {
                 $requirements,
                 $bundledComponents
             );
+<<<<<<< HEAD
         } catch (Throwable $e) {
             throw new ManifestDocumentMapperException($e->getMessage(), (int)$e->getCode(), $e);
         }
     }
 
     private function mapType(ContainsElement $contains): Type {
+=======
+        } catch (VersionException $e) {
+            throw new ManifestDocumentMapperException($e->getMessage(), $e->getCode(), $e);
+        } catch (Exception $e) {
+            throw new ManifestDocumentMapperException($e->getMessage(), $e->getCode(), $e);
+        }
+    }
+
+    /**
+     * @param ContainsElement $contains
+     *
+     * @return Type
+     *
+     * @throws ManifestDocumentMapperException
+     */
+    private function mapType(ContainsElement $contains) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         switch ($contains->getType()) {
             case 'application':
                 return Type::application();
@@ -53,6 +99,7 @@ class ManifestDocumentMapper {
         );
     }
 
+<<<<<<< HEAD
     private function mapCopyright(CopyrightElement $copyright): CopyrightInformation {
         $authors = new AuthorCollection();
 
@@ -61,6 +108,24 @@ class ManifestDocumentMapper {
                 new Author(
                     $authorElement->getName(),
                     $authorElement->hasEMail() ? new Email($authorElement->getEmail()) : null
+=======
+    /**
+     * @param CopyrightElement $copyright
+     *
+     * @return CopyrightInformation
+     *
+     * @throws InvalidUrlException
+     * @throws InvalidEmailException
+     */
+    private function mapCopyright(CopyrightElement $copyright) {
+        $authors = new AuthorCollection();
+
+        foreach($copyright->getAuthorElements() as $authorElement) {
+            $authors->add(
+                new Author(
+                    $authorElement->getName(),
+                    new Email($authorElement->getEmail())
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 )
             );
         }
@@ -77,7 +142,18 @@ class ManifestDocumentMapper {
         );
     }
 
+<<<<<<< HEAD
     private function mapRequirements(RequiresElement $requires): RequirementCollection {
+=======
+    /**
+     * @param RequiresElement $requires
+     *
+     * @return RequirementCollection
+     *
+     * @throws ManifestDocumentMapperException
+     */
+    private function mapRequirements(RequiresElement $requires) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $collection = new RequirementCollection();
         $phpElement = $requires->getPHPElement();
         $parser     = new VersionConstraintParser;
@@ -87,7 +163,11 @@ class ManifestDocumentMapper {
         } catch (VersionException $e) {
             throw new ManifestDocumentMapperException(
                 sprintf('Unsupported version constraint - %s', $e->getMessage()),
+<<<<<<< HEAD
                 (int)$e->getCode(),
+=======
+                $e->getCode(),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $e
             );
         }
@@ -102,7 +182,11 @@ class ManifestDocumentMapper {
             return $collection;
         }
 
+<<<<<<< HEAD
         foreach ($phpElement->getExtElements() as $extElement) {
+=======
+        foreach($phpElement->getExtElements() as $extElement) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $collection->add(
                 new PhpExtensionRequirement($extElement->getName())
             );
@@ -111,14 +195,27 @@ class ManifestDocumentMapper {
         return $collection;
     }
 
+<<<<<<< HEAD
     private function mapBundledComponents(ManifestDocument $document): BundledComponentCollection {
+=======
+    /**
+     * @param ManifestDocument $document
+     *
+     * @return BundledComponentCollection
+     */
+    private function mapBundledComponents(ManifestDocument $document) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $collection = new BundledComponentCollection();
 
         if (!$document->hasBundlesElement()) {
             return $collection;
         }
 
+<<<<<<< HEAD
         foreach ($document->getBundlesElement()->getComponentElements() as $componentElement) {
+=======
+        foreach($document->getBundlesElement()->getComponentElements() as $componentElement) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $collection->add(
                 new BundledComponent(
                     $componentElement->getName(),
@@ -132,9 +229,23 @@ class ManifestDocumentMapper {
         return $collection;
     }
 
+<<<<<<< HEAD
     private function mapExtension(ExtensionElement $extension): Extension {
         try {
             $versionConstraint = (new VersionConstraintParser)->parse($extension->getCompatible());
+=======
+    /**
+     * @param ExtensionElement $extension
+     *
+     * @return Extension
+     *
+     * @throws ManifestDocumentMapperException
+     */
+    private function mapExtension(ExtensionElement $extension) {
+        try {
+            $parser            = new VersionConstraintParser;
+            $versionConstraint = $parser->parse($extension->getCompatible());
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             return Type::extension(
                 new ApplicationName($extension->getFor()),
@@ -143,7 +254,11 @@ class ManifestDocumentMapper {
         } catch (VersionException $e) {
             throw new ManifestDocumentMapperException(
                 sprintf('Unsupported version constraint - %s', $e->getMessage()),
+<<<<<<< HEAD
                 (int)$e->getCode(),
+=======
+                $e->getCode(),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $e
             );
         }

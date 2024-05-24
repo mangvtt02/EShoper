@@ -18,11 +18,19 @@ namespace Symfony\Component\HttpFoundation;
  */
 class ResponseHeaderBag extends HeaderBag
 {
+<<<<<<< HEAD
     public const COOKIES_FLAT = 'flat';
     public const COOKIES_ARRAY = 'array';
 
     public const DISPOSITION_ATTACHMENT = 'attachment';
     public const DISPOSITION_INLINE = 'inline';
+=======
+    const COOKIES_FLAT = 'flat';
+    const COOKIES_ARRAY = 'array';
+
+    const DISPOSITION_ATTACHMENT = 'attachment';
+    const DISPOSITION_INLINE = 'inline';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     protected $computedCacheControl = [];
     protected $cookies = [];
@@ -90,7 +98,11 @@ class ResponseHeaderBag extends HeaderBag
      *
      * @param string|null $key The name of the headers to return or null to get them all
      */
+<<<<<<< HEAD
     public function all(/* string $key = null */)
+=======
+    public function all(/*string $key = null*/)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $headers = parent::all();
 
@@ -176,7 +188,11 @@ class ResponseHeaderBag extends HeaderBag
      */
     public function getCacheControlDirective($key)
     {
+<<<<<<< HEAD
         return $this->computedCacheControl[$key] ?? null;
+=======
+        return \array_key_exists($key, $this->computedCacheControl) ? $this->computedCacheControl[$key] : null;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function setCookie(Cookie $cookie)
@@ -254,7 +270,11 @@ class ResponseHeaderBag extends HeaderBag
      * @param bool   $httpOnly
      * @param string $sameSite
      */
+<<<<<<< HEAD
     public function clearCookie($name, $path = '/', $domain = null, $secure = false, $httpOnly = true/* , $sameSite = null */)
+=======
+    public function clearCookie($name, $path = '/', $domain = null, $secure = false, $httpOnly = true/*, $sameSite = null*/)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $sameSite = \func_num_args() > 5 ? func_get_arg(5) : null;
 

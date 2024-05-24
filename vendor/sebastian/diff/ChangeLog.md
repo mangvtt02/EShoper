@@ -2,6 +2,7 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
 ## [3.0.6] - 2023-03-02
 
 ### Changed
@@ -25,6 +26,8 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Changed PHP version constraint in `composer.json` from `^7.1` to `>=7.1`
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ## [3.0.2] - 2019-02-04
 
 ### Changed
@@ -69,10 +72,13 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * This component is no longer supported on PHP 5.6
 
+<<<<<<< HEAD
 [3.0.6]: https://github.com/sebastianbergmann/diff/compare/3.0.5...3.0.6
 [3.0.5]: https://github.com/sebastianbergmann/diff/compare/3.0.4...3.0.5
 [3.0.4]: https://github.com/sebastianbergmann/diff/compare/3.0.3...3.0.4
 [3.0.3]: https://github.com/sebastianbergmann/diff/compare/3.0.2...3.0.3
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 [3.0.2]: https://github.com/sebastianbergmann/diff/compare/3.0.1...3.0.2
 [3.0.1]: https://github.com/sebastianbergmann/diff/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/sebastianbergmann/diff/compare/2.0...3.0.0

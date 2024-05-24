@@ -74,7 +74,11 @@ class Restorer
             foreach ($staticAttributes as $name => $value) {
                 $reflector = new \ReflectionProperty($className, $name);
                 $reflector->setAccessible(true);
+<<<<<<< HEAD
                 $reflector->setValue(null, $value);
+=======
+                $reflector->setValue($value);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
 
@@ -98,7 +102,11 @@ class Restorer
                 }
 
                 $attribute->setAccessible(true);
+<<<<<<< HEAD
                 $attribute->setValue(null, $defaults[$name]);
+=======
+                $attribute->setValue($defaults[$name]);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
     }

@@ -17,7 +17,11 @@
 	<link href="assets/stylesheets/font3.css" rel="stylesheet">
 	<style>
 		.active_star{
+<<<<<<< HEAD
 				color: #f3d24a !important;
+=======
+				color: #8b8b89 !important;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 			}
 	</style>
 	<link rel="shortcut icon" href="assetsAdmin/images/logo.png" />
@@ -275,7 +279,11 @@
 																	<path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/>
 																  </svg>
 																<a href="{{route('page.Logout')}}" @if(is_countable($cart->items) && count($cart->items)>0)
+<<<<<<< HEAD
 																	onclick="return confirm('Bạn đã chắc chưa')"
+=======
+																	onclick="return confirm('Khi đăng xuất các sản phẩm trong giỏ hàng sẽ bị mất?')"
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 																@endif >Đăng xuất</a>
 															</li>
 															@endif
@@ -405,7 +413,11 @@
 																		<path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/>
 																	  </svg>
 																	<a href="{{route('page.Logout')}}" @if(is_countable($cart->items) && count($cart->items)>0)
+<<<<<<< HEAD
 																		onclick="return confirm('Bạn đã chắc chưa')"
+=======
+																		onclick="return confirm('Khi đăng xuất các sản phẩm trong giỏ hàng sẽ bị mất?')"
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 																	@endif >Đăng xuất</a>
 																</li>
 																	@endif

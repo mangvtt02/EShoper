@@ -49,7 +49,11 @@ class DateCaster
 
     public static function castInterval(\DateInterval $interval, array $a, Stub $stub, $isNested, $filter)
     {
+<<<<<<< HEAD
         $now = new \DateTimeImmutable('@0', new \DateTimeZone('UTC'));
+=======
+        $now = new \DateTimeImmutable();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $numberOfSeconds = $now->add($interval)->getTimestamp() - $now->getTimestamp();
         $title = number_format($numberOfSeconds, 0, '.', ' ').'s';
 
@@ -63,8 +67,12 @@ class DateCaster
         $format = '%R ';
 
         if (0 === $i->y && 0 === $i->m && ($i->h >= 24 || $i->i >= 60 || $i->s >= 60)) {
+<<<<<<< HEAD
             $d = new \DateTimeImmutable('@0', new \DateTimeZone('UTC'));
             $i = $d->diff($d->add($i)); // recalculate carry over points
+=======
+            $i = date_diff($d = new \DateTime(), date_add(clone $d, $i)); // recalculate carry over points
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $format .= 0 < $i->days ? '%ad ' : '';
         } else {
             $format .= ($i->y ? '%yy ' : '').($i->m ? '%mm ' : '').($i->d ? '%dd ' : '');
@@ -93,7 +101,11 @@ class DateCaster
         if (\PHP_VERSION_ID >= 70107) { // see https://bugs.php.net/74639
             foreach (clone $p as $i => $d) {
                 if (self::PERIOD_LIMIT === $i) {
+<<<<<<< HEAD
                     $now = new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
+=======
+                    $now = new \DateTimeImmutable();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $dates[] = sprintf('%s more', ($end = $p->getEndDate())
                         ? ceil(($end->format('U.u') - $d->format('U.u')) / ((int) $now->add($p->getDateInterval())->format('U.u') - (int) $now->format('U.u')))
                         : $p->recurrences - $i
@@ -105,11 +117,19 @@ class DateCaster
         }
 
         $period = sprintf(
+<<<<<<< HEAD
             'every %s, from %s%s %s',
             self::formatInterval($p->getDateInterval()),
             $p->include_start_date ? '[' : ']',
             self::formatDateTime($p->getStartDate()),
             ($end = $p->getEndDate()) ? 'to '.self::formatDateTime($end).(\PHP_VERSION_ID >= 80200 && $p->include_end_date ? ']' : '[') : 'recurring '.$p->recurrences.' time/s'
+=======
+            'every %s, from %s (%s) %s',
+            self::formatInterval($p->getDateInterval()),
+            self::formatDateTime($p->getStartDate()),
+            $p->include_start_date ? 'included' : 'excluded',
+            ($end = $p->getEndDate()) ? 'to '.self::formatDateTime($end) : 'recurring '.$p->recurrences.' time/s'
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         );
 
         $p = [Caster::PREFIX_VIRTUAL.'period' => new ConstStub($period, implode("\n", $dates))];

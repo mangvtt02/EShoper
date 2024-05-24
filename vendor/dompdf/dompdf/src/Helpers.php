@@ -37,7 +37,11 @@ class Helpers
         return null;
     }
 
+<<<<<<< HEAD
     /**
+=======
+      /**
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * builds a full url given a protocol, hostname, base path and url
      *
      * @param string $protocol
@@ -57,7 +61,11 @@ class Helpers
     public static function build_url($protocol, $host, $base_path, $url)
     {
         $protocol = mb_strtolower($protocol);
+<<<<<<< HEAD
         if ($url === "") {
+=======
+        if (strlen($url) == 0) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             //return $protocol . $host . rtrim($base_path, "/\\") . "/";
             return $protocol . $host . $base_path;
         }
@@ -74,11 +82,19 @@ class Helpers
         }
 
         $ret = "";
+<<<<<<< HEAD
         if ($protocol !== "file://") {
             $ret = $protocol;
         }
 
         if (!in_array(mb_strtolower($protocol), ["http://", "https://", "ftp://", "ftps://"], true)) {
+=======
+        if ($protocol != "file://") {
+            $ret = $protocol;
+        }
+
+        if (!in_array(mb_strtolower($protocol), ["http://", "https://", "ftp://", "ftps://"])) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             //On Windows local file, an abs path can begin also with a '\' or a drive letter and colon
             //drive: followed by a relative path would be a drive specific default folder.
             //not known in php app code, treat as abs path
@@ -122,7 +138,11 @@ class Helpers
         // partially reproduced from https://stackoverflow.com/a/1243431/264628
         /* replace '//' or '/./' or '/foo/../' with '/' */
         $re = array('#(/\.?/)#', '#/(?!\.\.)[^/]+/\.\./#');
+<<<<<<< HEAD
         for ($n=1; $n>0; $path=preg_replace($re, '/', $path, -1, $n)) {}
+=======
+        for($n=1; $n>0; $path=preg_replace($re, '/', $path, -1, $n)) {}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $ret = "$scheme$user$pass$host$port$path$query$fragment";
 
@@ -157,6 +177,7 @@ class Helpers
     }
 
     /**
+<<<<<<< HEAD
      * Converts decimal numbers to roman numerals.
      *
      * As numbers larger than 3999 (and smaller than 1) cannot be represented in
@@ -165,11 +186,20 @@ class Helpers
      * See https://en.wikipedia.org/wiki/Roman_numerals#Standard_form
      *
      * @param int|string $num
+=======
+     * Converts decimal numbers to roman numerals
+     *
+     * @param int $num
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @throws Exception
      * @return string
      */
+<<<<<<< HEAD
     public static function dec2roman($num): string
+=======
+    public static function dec2roman($num)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
 
         static $ones = ["", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix"];
@@ -181,8 +211,13 @@ class Helpers
             throw new Exception("dec2roman() requires a numeric argument.");
         }
 
+<<<<<<< HEAD
         if ($num >= 4000 || $num <= 0) {
             return (string) $num;
+=======
+        if ($num > 4000 || $num < 0) {
+            return "(out of range)";
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $num = strrev((string)$num);
@@ -209,6 +244,7 @@ class Helpers
     }
 
     /**
+<<<<<<< HEAD
      * Restrict a length to the given range.
      *
      * If min > max, the result is min.
@@ -234,6 +270,17 @@ class Helpers
     public static function is_percent($value): bool
     {
         return is_string($value) && false !== mb_strpos($value, "%");
+=======
+     * Determines whether $value is a percentage or not
+     *
+     * @param float $value
+     *
+     * @return bool
+     */
+    public static function is_percent($value)
+    {
+        return false !== mb_strpos($value, "%");
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -296,7 +343,11 @@ class Helpers
      * http://msdn.microsoft.com/library/default.asp?url=/library/en-us/gdi/bitmaps_6x0u.asp
      *
      * @param string $str Data to decode
+<<<<<<< HEAD
      * @param int $width Image width
+=======
+     * @param integer $width Image width
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return string
      */
@@ -349,7 +400,11 @@ class Helpers
      * see http://msdn.microsoft.com/library/default.asp?url=/library/en-us/gdi/bitmaps_6x0u.asp
      *
      * @param string $str Data to decode
+<<<<<<< HEAD
      * @param int $width Image width
+=======
+     * @param integer $width Image width
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return string
      */
@@ -635,8 +690,12 @@ class Helpers
      *
      * @param string $filename
      * @param resource $context
+<<<<<<< HEAD
      * @return array An array of three elements: width and height as
      *         `float|int`, and image type as `string|null`.
+=======
+     * @return array The same format as getimagesize($filename)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public static function dompdf_getimagesize($filename, $context = null)
     {
@@ -654,6 +713,7 @@ class Helpers
             IMAGETYPE_GIF  => "gif",
             IMAGETYPE_BMP  => "bmp",
             IMAGETYPE_PNG  => "png",
+<<<<<<< HEAD
             IMAGETYPE_WEBP => "webp",
         ];
 
@@ -676,11 +736,38 @@ class Helpers
                     $width = (float) $width;
                     $height = (float) $height;
                     $type = "svg";
+=======
+        ];
+
+        $type = isset($types[$type]) ? $types[$type] : null;
+
+        if ($width == null || $height == null) {
+            [$data, $headers] = Helpers::getFileContent($filename, $context);
+
+            if (!empty($data)) {
+                if (substr($data, 0, 2) === "BM") {
+                    $meta = unpack('vtype/Vfilesize/Vreserved/Voffset/Vheadersize/Vwidth/Vheight', $data);
+                    $width = (int)$meta['width'];
+                    $height = (int)$meta['height'];
+                    $type = "bmp";
+                } else {
+                    if (strpos($data, "<svg") !== false) {
+                        $doc = new \Svg\Document();
+                        $doc->loadFile($filename);
+
+                        [$width, $height] = $doc->getDimensions();
+                        $type = "svg";
+                    }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
             }
         }
 
+<<<<<<< HEAD
         return $cache[$filename] = [$width ?? 0, $height ?? 0, $type];
+=======
+        return $cache[$filename] = [$width, $height, $type];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -877,8 +964,13 @@ class Helpers
     {
         $content = null;
         $headers = null;
+<<<<<<< HEAD
         [$protocol] = Helpers::explode_url($uri);
         $is_local_path = ($protocol === "" || $protocol === "file://");
+=======
+        [$proto, $host, $path, $file] = Helpers::explode_url($uri);
+        $is_local_path = ($proto == '' || $proto === 'file://');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         set_error_handler([self::class, 'record_warnings']);
 
@@ -888,9 +980,15 @@ class Helpers
                     $uri = Helpers::encodeURI($uri);
                 }
                 if (isset($maxlen)) {
+<<<<<<< HEAD
                     $result = file_get_contents($uri, false, $context, $offset, $maxlen);
                 } else {
                     $result = file_get_contents($uri, false, $context, $offset);
+=======
+                    $result = file_get_contents($uri, null, $context, $offset, $maxlen);
+                } else {
+                    $result = file_get_contents($uri, null, $context, $offset);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
                 if ($result !== false) {
                     $content = $result;
@@ -931,12 +1029,16 @@ class Helpers
         return [$content, $headers];
     }
 
+<<<<<<< HEAD
     /**
      * @param string $str
      * @return string
      */
     public static function mb_ucwords(string $str): string
     {
+=======
+    public static function mb_ucwords($str) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $max_len = mb_strlen($str);
         if ($max_len === 1) {
             return mb_strtoupper($str);
@@ -962,6 +1064,7 @@ class Helpers
 
         return $str;
     }
+<<<<<<< HEAD
 
     /**
      * Check whether two lengths should be considered equal, accounting for
@@ -1025,4 +1128,6 @@ class Helpers
     {
         return $a >= $b || self::lengthEqual($a, $b);
     }
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

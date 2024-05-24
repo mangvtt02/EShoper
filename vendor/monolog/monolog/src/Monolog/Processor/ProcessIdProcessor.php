@@ -18,9 +18,12 @@ namespace Monolog\Processor;
  */
 class ProcessIdProcessor implements ProcessorInterface
 {
+<<<<<<< HEAD
     /**
      * {@inheritDoc}
      */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __invoke(array $record): array
     {
         $record['extra']['process_id'] = getmypid();

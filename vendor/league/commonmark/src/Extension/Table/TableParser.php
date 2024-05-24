@@ -39,12 +39,20 @@ final class TableParser implements BlockParserInterface, EnvironmentAwareInterfa
         }
 
         $lines = $container->getStrings();
+<<<<<<< HEAD
         if (count($lines) === 0) {
             return false;
         }
 
         $lastLine = \array_pop($lines);
         if (\strpos($lastLine, '|') === false) {
+=======
+        if (count($lines) !== 1) {
+            return false;
+        }
+
+        if (\strpos($lines[0], '|') === false) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return false;
         }
 
@@ -58,7 +66,11 @@ final class TableParser implements BlockParserInterface, EnvironmentAwareInterfa
             return false;
         }
 
+<<<<<<< HEAD
         $head = $this->parseRow(trim((string) $lastLine), $columns, TableCell::TYPE_HEAD);
+=======
+        $head = $this->parseRow(trim((string) array_pop($lines)), $columns, TableCell::TYPE_HEAD);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (null === $head) {
             $cursor->restoreState($oldState);
 

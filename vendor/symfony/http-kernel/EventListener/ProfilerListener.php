@@ -12,10 +12,15 @@
 namespace Symfony\Component\HttpKernel\EventListener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+<<<<<<< HEAD
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestMatcherInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Session;
+=======
+use Symfony\Component\HttpFoundation\RequestMatcherInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\Event\PostResponseEvent;
@@ -89,6 +94,7 @@ class ProfilerListener implements EventSubscriberInterface
             return;
         }
 
+<<<<<<< HEAD
         $session = method_exists(Request::class, 'getPreferredFormat') && $request->hasPreviousSession() && $request->hasSession() ? $request->getSession() : null;
 
         if ($session instanceof Session) {
@@ -104,6 +110,10 @@ class ProfilerListener implements EventSubscriberInterface
             if ($session instanceof Session) {
                 $usageIndexReference = $usageIndexValue;
             }
+=======
+        if (!$profile = $this->profiler->collect($request, $event->getResponse(), $exception)) {
+            return;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $this->profiles[$request] = $profile;

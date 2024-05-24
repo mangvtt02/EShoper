@@ -38,7 +38,11 @@ class TimeDataCollector extends DataCollector implements LateDataCollectorInterf
      *
      * @param \Throwable|null $exception
      */
+<<<<<<< HEAD
     public function collect(Request $request, Response $response/* , \Throwable $exception = null */)
+=======
+    public function collect(Request $request, Response $response/*, \Throwable $exception = null*/)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (null !== $this->kernel) {
             $startTime = $this->kernel->getStartTime();
@@ -47,7 +51,11 @@ class TimeDataCollector extends DataCollector implements LateDataCollectorInterf
         }
 
         $this->data = [
+<<<<<<< HEAD
             'token' => $request->attributes->get('_stopwatch_token'),
+=======
+            'token' => $response->headers->get('X-Debug-Token'),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'start_time' => $startTime * 1000,
             'events' => [],
             'stopwatch_installed' => class_exists(Stopwatch::class, false),

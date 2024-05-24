@@ -3,7 +3,10 @@
 namespace Illuminate\View\Concerns;
 
 use Illuminate\Contracts\View\View;
+<<<<<<< HEAD
 use Illuminate\Support\Str;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use InvalidArgumentException;
 
 trait ManagesLayouts
@@ -30,6 +33,7 @@ trait ManagesLayouts
     protected static $parentPlaceholder = [];
 
     /**
+<<<<<<< HEAD
      * The parent placeholder salt for the request.
      *
      * @var string
@@ -37,6 +41,8 @@ trait ManagesLayouts
     protected static $parentPlaceholderSalt;
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Start injecting content into a section.
      *
      * @param  string  $section
@@ -176,15 +182,20 @@ trait ManagesLayouts
     public static function parentPlaceholder($section = '')
     {
         if (! isset(static::$parentPlaceholder[$section])) {
+<<<<<<< HEAD
             $salt = static::parentPlaceholderSalt();
 
             static::$parentPlaceholder[$section] = '##parent-placeholder-'.sha1($salt.$section).'##';
+=======
+            static::$parentPlaceholder[$section] = '##parent-placeholder-'.sha1($section).'##';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return static::$parentPlaceholder[$section];
     }
 
     /**
+<<<<<<< HEAD
      * Get the parent placeholder salt.
      *
      * @return string
@@ -199,6 +210,8 @@ trait ManagesLayouts
     }
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Check if section exists.
      *
      * @param  string  $name

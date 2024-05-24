@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,9 +23,12 @@ use Psy\Util\Str;
  * This is largely the same as the Readline implementation, but it emulates
  * support for `readline_list_history` since PHP decided it was a good idea to
  * ship a fake Readline implementation that is missing history support.
+<<<<<<< HEAD
  *
  * NOTE: As of PHP 7.4, PHP sometimes has history support in the Libedit
  * wrapper, so it will use the GNUReadline implementation rather than this one.
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 class Libedit extends GNUReadline
 {
@@ -29,8 +36,15 @@ class Libedit extends GNUReadline
 
     /**
      * Let's emulate GNU Readline by manually reading and parsing the history file!
+<<<<<<< HEAD
      */
     public static function isSupported(): bool
+=======
+     *
+     * @return bool
+     */
+    public static function isSupported()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return \function_exists('readline') && !\function_exists('readline_list_history');
     }
@@ -38,6 +52,7 @@ class Libedit extends GNUReadline
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public static function supportsBracketedPaste(): bool
     {
         return false;
@@ -47,6 +62,9 @@ class Libedit extends GNUReadline
      * {@inheritdoc}
      */
     public function listHistory(): array
+=======
+    public function listHistory()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $history = \file_get_contents($this->historyFile);
         if (!$history) {
@@ -56,14 +74,23 @@ class Libedit extends GNUReadline
         // libedit doesn't seem to support non-unix line separators.
         $history = \explode("\n", $history);
 
+<<<<<<< HEAD
         // remove history signature if it exists
         if ($history[0] === '_HiStOrY_V2_') {
             \array_shift($history);
+=======
+        // shift the history signature, ensure it's valid
+        if (\array_shift($history) !== '_HiStOrY_V2_') {
+            return [];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         // decode the line
         $history = \array_map([$this, 'parseHistoryLine'], $history);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         // filter empty lines & comments
         return \array_values(\array_filter($history));
     }
@@ -71,7 +98,11 @@ class Libedit extends GNUReadline
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     public function writeHistory(): bool
+=======
+    public function writeHistory()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $res = parent::writeHistory();
 
@@ -83,7 +114,11 @@ class Libedit extends GNUReadline
             if (\is_file($this->historyFile) && \is_writable($this->historyFile)) {
                 $this->hasWarnedOwnership = true;
                 $msg = \sprintf('Error writing history file, check file ownership: %s', $this->historyFile);
+<<<<<<< HEAD
                 \trigger_error($msg, \E_USER_NOTICE);
+=======
+                \trigger_error($msg, E_USER_NOTICE);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
 
@@ -98,9 +133,15 @@ class Libedit extends GNUReadline
      *
      * @param string $line The history line to parse
      *
+<<<<<<< HEAD
      * @return string|null
      */
     protected function parseHistoryLine(string $line)
+=======
+     * @return string | null
+     */
+    protected function parseHistoryLine($line)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // empty line, comment or timestamp
         if (!$line || $line[0] === "\0") {

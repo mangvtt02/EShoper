@@ -18,6 +18,7 @@ namespace Symfony\Component\Finder\Iterator;
  */
 class SortableIterator implements \IteratorAggregate
 {
+<<<<<<< HEAD
     public const SORT_BY_NONE = 0;
     public const SORT_BY_NAME = 1;
     public const SORT_BY_TYPE = 2;
@@ -25,12 +26,26 @@ class SortableIterator implements \IteratorAggregate
     public const SORT_BY_CHANGED_TIME = 4;
     public const SORT_BY_MODIFIED_TIME = 5;
     public const SORT_BY_NAME_NATURAL = 6;
+=======
+    const SORT_BY_NONE = 0;
+    const SORT_BY_NAME = 1;
+    const SORT_BY_TYPE = 2;
+    const SORT_BY_ACCESSED_TIME = 3;
+    const SORT_BY_CHANGED_TIME = 4;
+    const SORT_BY_MODIFIED_TIME = 5;
+    const SORT_BY_NAME_NATURAL = 6;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     private $iterator;
     private $sort;
 
     /**
+<<<<<<< HEAD
      * @param int|callable $sort The sort type (SORT_BY_NAME, SORT_BY_TYPE, or a PHP callback)
+=======
+     * @param \Traversable $iterator The Iterator to filter
+     * @param int|callable $sort     The sort type (SORT_BY_NAME, SORT_BY_TYPE, or a PHP callback)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @throws \InvalidArgumentException
      */
@@ -81,7 +96,10 @@ class SortableIterator implements \IteratorAggregate
     /**
      * @return \Traversable
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function getIterator()
     {
         if (1 === $this->sort) {

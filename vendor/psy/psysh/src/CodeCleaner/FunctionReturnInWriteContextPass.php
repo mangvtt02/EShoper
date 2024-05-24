@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,7 +23,10 @@ use PhpParser\Node\Expr\Isset_;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Stmt\Unset_;
+<<<<<<< HEAD
 use PhpParser\Node\VariadicPlaceholder;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Psy\Exception\FatalErrorException;
 
 /**
@@ -40,20 +47,28 @@ class FunctionReturnInWriteContextPass extends CodeCleanerPass
      * @throws FatalErrorException if a value is assigned to a function
      *
      * @param Node $node
+<<<<<<< HEAD
      *
      * @return int|Node|null Replacement node (or special return value)
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function enterNode(Node $node)
     {
         if ($node instanceof Array_ || $this->isCallNode($node)) {
             $items = $node instanceof Array_ ? $node->items : $node->args;
             foreach ($items as $item) {
+<<<<<<< HEAD
                 if ($item instanceof VariadicPlaceholder) {
                     continue;
                 }
 
                 if ($item && $item->byRef && $this->isCallNode($item->value)) {
                     throw new FatalErrorException(self::EXCEPTION_MESSAGE, 0, \E_ERROR, null, $node->getStartLine());
+=======
+                if ($item && $item->byRef && $this->isCallNode($item->value)) {
+                    throw new FatalErrorException(self::EXCEPTION_MESSAGE, 0, E_ERROR, null, $node->getLine());
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
             }
         } elseif ($node instanceof Isset_ || $node instanceof Unset_) {
@@ -63,6 +78,7 @@ class FunctionReturnInWriteContextPass extends CodeCleanerPass
                 }
 
                 $msg = $node instanceof Isset_ ? self::ISSET_MESSAGE : self::EXCEPTION_MESSAGE;
+<<<<<<< HEAD
                 throw new FatalErrorException($msg, 0, \E_ERROR, null, $node->getStartLine());
             }
         } elseif ($node instanceof Assign && $this->isCallNode($node->var)) {
@@ -71,6 +87,16 @@ class FunctionReturnInWriteContextPass extends CodeCleanerPass
     }
 
     private function isCallNode(Node $node): bool
+=======
+                throw new FatalErrorException($msg, 0, E_ERROR, null, $node->getLine());
+            }
+        } elseif ($node instanceof Assign && $this->isCallNode($node->var)) {
+            throw new FatalErrorException(self::EXCEPTION_MESSAGE, 0, E_ERROR, null, $node->getLine());
+        }
+    }
+
+    private function isCallNode(Node $node)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $node instanceof FuncCall || $node instanceof MethodCall || $node instanceof StaticCall;
     }

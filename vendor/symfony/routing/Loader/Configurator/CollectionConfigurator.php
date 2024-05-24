@@ -36,6 +36,7 @@ class CollectionConfigurator
         $this->parentPrefixes = $parentPrefixes;
     }
 
+<<<<<<< HEAD
     /**
      * @return array
      */
@@ -49,6 +50,8 @@ class CollectionConfigurator
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __destruct()
     {
         if (null === $this->prefixes) {

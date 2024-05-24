@@ -82,6 +82,7 @@ class TinkerCaster
     }
 
     /**
+<<<<<<< HEAD
      * Get an array representing the properties of a fluent string.
      *
      * @param  \Illuminate\Support\Stringable  $stringable
@@ -111,6 +112,8 @@ class TinkerCaster
     }
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Get an array representing the properties of a model.
      *
      * @param  \Illuminate\Database\Eloquent\Model  $model
@@ -126,6 +129,7 @@ class TinkerCaster
             $model->getVisible() ?: array_diff(array_keys($attributes), $model->getHidden())
         );
 
+<<<<<<< HEAD
         $hidden = array_flip($model->getHidden());
 
         $appends = (function () {
@@ -150,6 +154,12 @@ class TinkerCaster
             }
 
             $results[$prefix.$key] = $value;
+=======
+        $results = [];
+
+        foreach (array_intersect_key($attributes, $visible) as $key => $value) {
+            $results[(isset($visible[$key]) ? Caster::PREFIX_VIRTUAL : Caster::PREFIX_PROTECTED).$key] = $value;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $results;

@@ -1,12 +1,19 @@
+<<<<<<< HEAD
 <?php declare(strict_types=1);
+=======
+<?php
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 namespace PhpParser;
 
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
 
+<<<<<<< HEAD
 use function array_merge;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * Evaluates constant expressions.
  *
@@ -26,8 +33,13 @@ use function array_merge;
  * point to string conversions are affected by the precision ini setting. Secondly, they are also
  * affected by the LC_NUMERIC locale.
  */
+<<<<<<< HEAD
 class ConstExprEvaluator {
     /** @var callable|null */
+=======
+class ConstExprEvaluator
+{
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private $fallbackEvaluator;
 
     /**
@@ -38,8 +50,13 @@ class ConstExprEvaluator {
      *
      * @param callable|null $fallbackEvaluator To call if subexpression cannot be evaluated
      */
+<<<<<<< HEAD
     public function __construct(?callable $fallbackEvaluator = null) {
         $this->fallbackEvaluator = $fallbackEvaluator ?? function (Expr $expr) {
+=======
+    public function __construct(callable $fallbackEvaluator = null) {
+        $this->fallbackEvaluator = $fallbackEvaluator ?? function(Expr $expr) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new ConstExprEvaluationException(
                 "Expression of type {$expr->getType()} cannot be evaluated"
             );
@@ -64,7 +81,11 @@ class ConstExprEvaluator {
      * @throws ConstExprEvaluationException if the expression cannot be evaluated or an error occurred
      */
     public function evaluateSilently(Expr $expr) {
+<<<<<<< HEAD
         set_error_handler(function ($num, $str, $file, $line) {
+=======
+        set_error_handler(function($num, $str, $file, $line) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new \ErrorException($str, 0, $num, $file, $line);
         });
 
@@ -102,10 +123,16 @@ class ConstExprEvaluator {
         return $this->evaluate($expr);
     }
 
+<<<<<<< HEAD
     /** @return mixed */
     private function evaluate(Expr $expr) {
         if ($expr instanceof Scalar\Int_
             || $expr instanceof Scalar\Float_
+=======
+    private function evaluate(Expr $expr) {
+        if ($expr instanceof Scalar\LNumber
+            || $expr instanceof Scalar\DNumber
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             || $expr instanceof Scalar\String_
         ) {
             return $expr->value;
@@ -148,13 +175,20 @@ class ConstExprEvaluator {
         return ($this->fallbackEvaluator)($expr);
     }
 
+<<<<<<< HEAD
     private function evaluateArray(Expr\Array_ $expr): array {
+=======
+    private function evaluateArray(Expr\Array_ $expr) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $array = [];
         foreach ($expr->items as $item) {
             if (null !== $item->key) {
                 $array[$this->evaluate($item->key)] = $this->evaluate($item->value);
+<<<<<<< HEAD
             } elseif ($item->unpack) {
                 $array = array_merge($array, $this->evaluate($item->value));
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             } else {
                 $array[] = $this->evaluate($item->value);
             }
@@ -162,7 +196,10 @@ class ConstExprEvaluator {
         return $array;
     }
 
+<<<<<<< HEAD
     /** @return mixed */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private function evaluateTernary(Expr\Ternary $expr) {
         if (null === $expr->if) {
             return $this->evaluate($expr->cond) ?: $this->evaluate($expr->else);
@@ -173,7 +210,10 @@ class ConstExprEvaluator {
             : $this->evaluate($expr->else);
     }
 
+<<<<<<< HEAD
     /** @return mixed */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private function evaluateBinaryOp(Expr\BinaryOp $expr) {
         if ($expr instanceof Expr\BinaryOp\Coalesce
             && $expr->left instanceof Expr\ArrayDimFetch
@@ -220,7 +260,10 @@ class ConstExprEvaluator {
         throw new \Exception('Should not happen');
     }
 
+<<<<<<< HEAD
     /** @return mixed */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private function evaluateConstFetch(Expr\ConstFetch $expr) {
         $name = $expr->name->toLowerString();
         switch ($name) {

@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -29,8 +33,11 @@ class RequirePass extends CodeCleanerPass
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      *
      * @return int|Node|null Replacement node (or special return value)
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function enterNode(Node $origNode)
     {
@@ -49,11 +56,18 @@ class RequirePass extends CodeCleanerPass
          *
          *   $foo = require \Psy\CodeCleaner\RequirePass::resolve($bar)
          */
+<<<<<<< HEAD
         // @todo Rename LNumber to Int_ once we drop support for PHP-Parser 4.x
         $node->expr = new StaticCall(
             new FullyQualifiedName(self::class),
             'resolve',
             [new Arg($origNode->expr), new Arg(new LNumber($origNode->getStartLine()))],
+=======
+        $node->expr = new StaticCall(
+            new FullyQualifiedName(self::class),
+            'resolve',
+            [new Arg($origNode->expr), new Arg(new LNumber($origNode->getLine()))],
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $origNode->getAttributes()
         );
 
@@ -65,18 +79,29 @@ class RequirePass extends CodeCleanerPass
      *
      * If $file can be resolved, return $file. Otherwise throw a fatal error exception.
      *
+<<<<<<< HEAD
      * If $file collides with a path in the currently running PsySH phar, it will be resolved
      * relative to the include path, to prevent PHP from grabbing the phar version of the file.
      *
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @throws FatalErrorException when unable to resolve include path for $file
      * @throws ErrorException      if $file is empty and E_WARNING is included in error_reporting level
      *
      * @param string $file
+<<<<<<< HEAD
      * @param int    $startLine Line number of the original require expression
      *
      * @return string Exactly the same as $file, unless $file collides with a path in the currently running phar
      */
     public static function resolve($file, $startLine = null): string
+=======
+     * @param int    $lineNumber Line number of the original require expression
+     *
+     * @return string Exactly the same as $file
+     */
+    public static function resolve($file, $lineNumber = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $file = (string) $file;
 
@@ -84,13 +109,19 @@ class RequirePass extends CodeCleanerPass
             // @todo Shell::handleError would be better here, because we could
             // fake the file and line number, but we can't call it statically.
             // So we're duplicating some of the logics here.
+<<<<<<< HEAD
             if (\E_WARNING & \error_reporting()) {
                 ErrorException::throwException(\E_WARNING, 'Filename cannot be empty', null, $startLine);
+=======
+            if (E_WARNING & \error_reporting()) {
+                ErrorException::throwException(E_WARNING, 'Filename cannot be empty', null, $lineNumber);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
             // @todo trigger an error as fallback? this is pretty ugly…
             // trigger_error('Filename cannot be empty', E_USER_WARNING);
         }
 
+<<<<<<< HEAD
         $resolvedPath = \stream_resolve_include_path($file);
         if ($file === '' || !$resolvedPath) {
             $msg = \sprintf("Failed opening required '%s'", $file);
@@ -113,11 +144,17 @@ class RequirePass extends CodeCleanerPass
                     }
                 }
             }
+=======
+        if ($file === '' || !\stream_resolve_include_path($file)) {
+            $msg = \sprintf("Failed opening required '%s'", $file);
+            throw new FatalErrorException($msg, 0, E_ERROR, null, $lineNumber);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $file;
     }
 
+<<<<<<< HEAD
     private function isRequireNode(Node $node): bool
     {
         return $node instanceof Include_ && \in_array($node->type, self::$requireTypes);
@@ -131,4 +168,10 @@ class RequirePass extends CodeCleanerPass
 
         return \explode(\PATH_SEPARATOR, \get_include_path());
     }
+=======
+    private function isRequireNode(Node $node)
+    {
+        return $node instanceof Include_ && \in_array($node->type, self::$requireTypes);
+    }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

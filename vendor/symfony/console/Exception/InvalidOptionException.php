@@ -12,7 +12,11 @@
 namespace Symfony\Component\Console\Exception;
 
 /**
+<<<<<<< HEAD
  * Represents an incorrect option name or value typed in the console.
+=======
+ * Represents an incorrect option name typed in the console.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * @author Jérôme Tamarelle <jerome@tamarelle.net>
  */

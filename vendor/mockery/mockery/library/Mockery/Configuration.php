@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 /**
  * Mockery (https://docs.mockery.io/)
@@ -6,10 +7,30 @@
  * @copyright https://github.com/mockery/mockery/blob/HEAD/COPYRIGHT.md
  * @license https://github.com/mockery/mockery/blob/HEAD/LICENSE BSD 3-Clause License
  * @link https://github.com/mockery/mockery for the canonical source repository
+=======
+/**
+ * Mockery
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://github.com/padraic/mockery/blob/master/LICENSE
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to padraic@php.net so we can send you a copy immediately.
+ *
+ * @category   Mockery
+ * @package    Mockery
+ * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
+ * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 
 namespace Mockery;
 
+<<<<<<< HEAD
 use Closure;
 use Hamcrest\Matcher;
 use Hamcrest_Matcher;
@@ -32,6 +53,19 @@ use const PHP_MAJOR_VERSION;
 class Configuration
 {
     /**
+=======
+class Configuration
+{
+    /**
+     * Boolean assertion of whether we can mock methods which do not actually
+     * exist for the given class or object (ignored for unreal mocks)
+     *
+     * @var bool
+     */
+    protected $_allowMockingNonExistentMethod = true;
+
+    /**
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Boolean assertion of whether we ignore unnecessary mocking of methods,
      * i.e. when method expectations are made, set using a zeroOrMoreTimes()
      * constraint, and then never called. Essentially such expectations are
@@ -42,6 +76,7 @@ class Configuration
     protected $_allowMockingMethodsUnnecessarily = true;
 
     /**
+<<<<<<< HEAD
      * Boolean assertion of whether we can mock methods which do not actually
      * exist for the given class or object (ignored for unreal mocks)
      *
@@ -66,10 +101,16 @@ class Configuration
      * @var array<class-string,class-string>
      */
     protected $_defaultMatchers = [];
+=======
+     * @var QuickDefinitionsConfiguration
+     */
+    protected $_quickDefinitionsConfiguration;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Parameter map for use with PHP internal classes.
      *
+<<<<<<< HEAD
      *  e.g. ['class' => ['method' => ['param1', 'param2']]]
      *
      * @var array<class-string,array<string,list<string>>>
@@ -89,6 +130,13 @@ class Configuration
      * @var QuickDefinitionsConfiguration
      */
     protected $_quickDefinitionsConfiguration;
+=======
+     * @var array
+     */
+    protected $_internalClassParamMap = array();
+
+    protected $_constantsMap = array();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Boolean assertion is reflection caching enabled or not. It should be
@@ -104,6 +152,7 @@ class Configuration
     }
 
     /**
+<<<<<<< HEAD
      * Set boolean to allow/prevent unnecessary mocking of methods
      *
      * @param bool $flag
@@ -128,6 +177,11 @@ class Configuration
      * @param bool $flag
      *
      * @return void
+=======
+     * Set boolean to allow/prevent mocking of non-existent methods
+     *
+     * @param bool $flag
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function allowMockingNonExistentMethods($flag = true)
     {
@@ -135,6 +189,7 @@ class Configuration
     }
 
     /**
+<<<<<<< HEAD
      * Disable reflection caching
      *
      * It should be always enabled, except when using
@@ -292,6 +347,8 @@ class Configuration
     }
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Return flag indicating whether mocking non-existent methods allowed
      *
      * @return bool
@@ -302,6 +359,7 @@ class Configuration
     }
 
     /**
+<<<<<<< HEAD
      * Is reflection cache enabled?
      *
      * @return bool
@@ -309,10 +367,58 @@ class Configuration
     public function reflectionCacheEnabled()
     {
         return $this->_reflectionCacheEnabled;
+=======
+     * Set boolean to allow/prevent unnecessary mocking of methods
+     *
+     * @param bool $flag
+     *
+     * @deprecated since 1.4.0
+     */
+    public function allowMockingMethodsUnnecessarily($flag = true)
+    {
+        @trigger_error(sprintf("The %s method is deprecated and will be removed in a future version of Mockery", __METHOD__), E_USER_DEPRECATED);
+
+        $this->_allowMockingMethodsUnnecessarily = (bool) $flag;
+    }
+
+    /**
+     * Return flag indicating whether mocking non-existent methods allowed
+     *
+     * @return bool
+     *
+     * @deprecated since 1.4.0
+     */
+    public function mockingMethodsUnnecessarilyAllowed()
+    {
+        @trigger_error(sprintf("The %s method is deprecated and will be removed in a future version of Mockery", __METHOD__), E_USER_DEPRECATED);
+
+        return $this->_allowMockingMethodsUnnecessarily;
+    }
+
+    /**
+     * Set a parameter map (array of param signature strings) for the method
+     * of an internal PHP class.
+     *
+     * @param string $class
+     * @param string $method
+     * @param array $map
+     */
+    public function setInternalClassMethodParamMap($class, $method, array $map)
+    {
+        if (\PHP_MAJOR_VERSION > 7) {
+            throw new \LogicException('Internal class parameter overriding is not available in PHP 8. Incompatible signatures have been reclassified as fatal errors.');
+        }
+
+        if (!isset($this->_internalClassParamMap[strtolower($class)])) {
+            $this->_internalClassParamMap[strtolower($class)] = array();
+        }
+        $this->_internalClassParamMap[strtolower($class)][strtolower($method)] = $map;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * Remove all overridden parameter maps from internal PHP classes.
+<<<<<<< HEAD
      *
      * @return void
      */
@@ -330,11 +436,37 @@ class Configuration
      *
      * @return void
      */
+=======
+     */
+    public function resetInternalClassMethodParamMaps()
+    {
+        $this->_internalClassParamMap = array();
+    }
+
+    /**
+     * Get the parameter map of an internal PHP class method
+     *
+     * @return array|null
+     */
+    public function getInternalClassMethodParamMap($class, $method)
+    {
+        if (isset($this->_internalClassParamMap[strtolower($class)][strtolower($method)])) {
+            return $this->_internalClassParamMap[strtolower($class)][strtolower($method)];
+        }
+    }
+
+    public function getInternalClassMethodParamMaps()
+    {
+        return $this->_internalClassParamMap;
+    }
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function setConstantsMap(array $map)
     {
         $this->_constantsMap = $map;
     }
 
+<<<<<<< HEAD
     /**
      * @param class-string $class
      * @param class-string $matcherClass
@@ -402,5 +534,52 @@ class Configuration
     public function setObjectFormatter($class, $formatterCallback)
     {
         $this->_objectFormatters[$class] = $formatterCallback;
+=======
+    public function getConstantsMap()
+    {
+        return $this->_constantsMap;
+    }
+
+    /**
+     * Returns the quick definitions configuration
+     */
+    public function getQuickDefinitions(): QuickDefinitionsConfiguration
+    {
+        return $this->_quickDefinitionsConfiguration;
+    }
+
+    /**
+     * Disable reflection caching
+     *
+     * It should be always enabled, except when using
+     * PHPUnit's --static-backup option.
+     *
+     * @see https://github.com/mockery/mockery/issues/268
+     */
+    public function disableReflectionCache()
+    {
+        $this->_reflectionCacheEnabled = false;
+    }
+
+    /**
+     * Enable reflection caching
+     *
+     * It should be always enabled, except when using
+     * PHPUnit's --static-backup option.
+     *
+     * @see https://github.com/mockery/mockery/issues/268
+     */
+    public function enableReflectionCache()
+    {
+        $this->_reflectionCacheEnabled = true;
+    }
+
+    /**
+     * Is reflection cache enabled?
+     */
+    public function reflectionCacheEnabled()
+    {
+        return $this->_reflectionCacheEnabled;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

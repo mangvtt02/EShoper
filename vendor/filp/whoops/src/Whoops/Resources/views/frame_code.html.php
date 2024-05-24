@@ -29,11 +29,15 @@
             $start = key($range) + 1;
             $code  = join("\n", $range);
         ?>
+<<<<<<< HEAD
             <pre class="code-block line-numbers"
               data-line="<?php echo $line ?>"
               data-line-offset="<?php echo $start ?>"
               data-start="<?php echo $start ?>"
             ><code class="language-php"><?php echo $tpl->escape($code) ?></code></pre>
+=======
+            <pre id="frame-code-linenums-<?=$i?>" class="code-block linenums:<?php echo $start ?>"><?php echo $tpl->escape($code) ?></pre>
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
           <?php endif ?>
         <?php endif ?>

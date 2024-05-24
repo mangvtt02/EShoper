@@ -7,7 +7,10 @@ use Closure;
 use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Concerns\BuildsQueries;
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Pagination\Paginator;
@@ -510,7 +513,11 @@ class Builder
     public function value($column)
     {
         if ($result = $this->first([$column])) {
+<<<<<<< HEAD
             return $result->{Str::afterLast($column, '.')};
+=======
+            return $result->{$column};
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -920,7 +927,11 @@ class Builder
             // messed up when adding scopes. Then we'll return back out the builder.
             $builder = $builder->callScope(
                 [$this->model, 'scope'.ucfirst($scope)],
+<<<<<<< HEAD
                 Arr::wrap($parameters)
+=======
+                (array) $parameters
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             );
         }
 
@@ -1144,6 +1155,7 @@ class Builder
     protected function createSelectWithConstraint($name)
     {
         return [explode(':', $name)[0], static function ($query) use ($name) {
+<<<<<<< HEAD
             $query->select(array_map(static function ($column) use ($query) {
                 if (Str::contains($column, '.')) {
                     return $column;
@@ -1153,6 +1165,9 @@ class Builder
                         ? $query->getRelated()->getTable().'.'.$column
                         : $column;
             }, explode(',', explode(':', $name)[1])));
+=======
+            $query->select(explode(',', explode(':', $name)[1]));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }];
     }
 

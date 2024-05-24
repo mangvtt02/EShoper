@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Framework;
 
+<<<<<<< HEAD
 use const PHP_EOL;
 use function class_exists;
 use function count;
@@ -20,6 +21,8 @@ use function xdebug_get_monitored_functions;
 use function xdebug_is_debugger_active;
 use function xdebug_start_function_monitor;
 use function xdebug_stop_function_monitor;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use AssertionError;
 use Countable;
 use Error;
@@ -28,17 +31,26 @@ use PHPUnit\Util\Blacklist;
 use PHPUnit\Util\ErrorHandler;
 use PHPUnit\Util\Printer;
 use PHPUnit\Util\Test as TestUtil;
+<<<<<<< HEAD
 use ReflectionClass;
 use ReflectionException;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use SebastianBergmann\CodeCoverage\CodeCoverage;
 use SebastianBergmann\CodeCoverage\CoveredCodeNotExecutedException as OriginalCoveredCodeNotExecutedException;
 use SebastianBergmann\CodeCoverage\Exception as OriginalCodeCoverageException;
 use SebastianBergmann\CodeCoverage\MissingCoversAnnotationException as OriginalMissingCoversAnnotationException;
+<<<<<<< HEAD
 use SebastianBergmann\CodeCoverage\RuntimeException;
 use SebastianBergmann\CodeCoverage\UnintentionallyCoveredCodeException;
 use SebastianBergmann\Invoker\Invoker;
 use SebastianBergmann\Invoker\TimeoutException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
+=======
+use SebastianBergmann\CodeCoverage\UnintentionallyCoveredCodeException;
+use SebastianBergmann\Invoker\Invoker;
+use SebastianBergmann\Invoker\TimeoutException;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use SebastianBergmann\ResourceOperations\ResourceOperations;
 use SebastianBergmann\Timer\Timer;
 use Throwable;
@@ -115,7 +127,11 @@ final class TestResult implements Countable
     /**
      * @var bool
      */
+<<<<<<< HEAD
     private $convertDeprecationsToExceptions = false;
+=======
+    private $convertDeprecationsToExceptions = true;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var bool
@@ -316,7 +332,11 @@ final class TestResult implements Countable
         }
 
         foreach ($this->listeners as $listener) {
+<<<<<<< HEAD
             $listener->{$notifyMethod}($test, $t, $time);
+=======
+            $listener->$notifyMethod($test, $t, $time);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $this->lastTestFailed = true;
@@ -383,7 +403,11 @@ final class TestResult implements Countable
         }
 
         foreach ($this->listeners as $listener) {
+<<<<<<< HEAD
             $listener->{$notifyMethod}($test, $e, $time);
+=======
+            $listener->$notifyMethod($test, $e, $time);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $this->lastTestFailed = true;
@@ -420,7 +444,11 @@ final class TestResult implements Countable
     public function startTest(Test $test): void
     {
         $this->lastTestFailed = false;
+<<<<<<< HEAD
         $this->runTests += count($test);
+=======
+        $this->runTests += \count($test);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         foreach ($this->listeners as $listener) {
             $listener->startTest($test);
@@ -430,7 +458,11 @@ final class TestResult implements Countable
     /**
      * Informs the result that a test was completed.
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function endTest(Test $test, float $time): void
     {
@@ -439,12 +471,20 @@ final class TestResult implements Countable
         }
 
         if (!$this->lastTestFailed && $test instanceof TestCase) {
+<<<<<<< HEAD
             $class = get_class($test);
+=======
+            $class = \get_class($test);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $key   = $class . '::' . $test->getName();
 
             $this->passed[$key] = [
                 'result' => $test->getResult(),
+<<<<<<< HEAD
                 'size'   => TestUtil::getSize(
+=======
+                'size'   => \PHPUnit\Util\Test::getSize(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $class,
                     $test->getName(false)
                 ),
@@ -467,7 +507,11 @@ final class TestResult implements Countable
      */
     public function riskyCount(): int
     {
+<<<<<<< HEAD
         return count($this->risky);
+=======
+        return \count($this->risky);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -483,11 +527,19 @@ final class TestResult implements Countable
      */
     public function notImplementedCount(): int
     {
+<<<<<<< HEAD
         return count($this->notImplemented);
     }
 
     /**
      * Returns an array of TestFailure objects for the risky tests.
+=======
+        return \count($this->notImplemented);
+    }
+
+    /**
+     * Returns an array of TestFailure objects for the risky tests
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return TestFailure[]
      */
@@ -497,7 +549,11 @@ final class TestResult implements Countable
     }
 
     /**
+<<<<<<< HEAD
      * Returns an array of TestFailure objects for the incomplete tests.
+=======
+     * Returns an array of TestFailure objects for the incomplete tests
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return TestFailure[]
      */
@@ -519,11 +575,19 @@ final class TestResult implements Countable
      */
     public function skippedCount(): int
     {
+<<<<<<< HEAD
         return count($this->skipped);
     }
 
     /**
      * Returns an array of TestFailure objects for the skipped tests.
+=======
+        return \count($this->skipped);
+    }
+
+    /**
+     * Returns an array of TestFailure objects for the skipped tests
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return TestFailure[]
      */
@@ -537,11 +601,19 @@ final class TestResult implements Countable
      */
     public function errorCount(): int
     {
+<<<<<<< HEAD
         return count($this->errors);
     }
 
     /**
      * Returns an array of TestFailure objects for the errors.
+=======
+        return \count($this->errors);
+    }
+
+    /**
+     * Returns an array of TestFailure objects for the errors
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return TestFailure[]
      */
@@ -555,11 +627,19 @@ final class TestResult implements Countable
      */
     public function failureCount(): int
     {
+<<<<<<< HEAD
         return count($this->failures);
     }
 
     /**
      * Returns an array of TestFailure objects for the failures.
+=======
+        return \count($this->failures);
+    }
+
+    /**
+     * Returns an array of TestFailure objects for the failures
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return TestFailure[]
      */
@@ -573,11 +653,19 @@ final class TestResult implements Countable
      */
     public function warningCount(): int
     {
+<<<<<<< HEAD
         return count($this->warnings);
     }
 
     /**
      * Returns an array of TestFailure objects for the warnings.
+=======
+        return \count($this->warnings);
+    }
+
+    /**
+     * Returns an array of TestFailure objects for the warnings
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return TestFailure[]
      */
@@ -613,6 +701,7 @@ final class TestResult implements Countable
     /**
      * Runs a TestCase.
      *
+<<<<<<< HEAD
      * @throws \SebastianBergmann\CodeCoverage\InvalidArgumentException
      * @throws CodeCoverageException
      * @throws InvalidArgumentException
@@ -620,20 +709,35 @@ final class TestResult implements Countable
      * @throws OriginalMissingCoversAnnotationException
      * @throws RuntimeException
      * @throws UnintentionallyCoveredCodeException
+=======
+     * @throws CodeCoverageException
+     * @throws OriginalCoveredCodeNotExecutedException
+     * @throws OriginalMissingCoversAnnotationException
+     * @throws UnintentionallyCoveredCodeException
+     * @throws \SebastianBergmann\CodeCoverage\InvalidArgumentException
+     * @throws \SebastianBergmann\CodeCoverage\RuntimeException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function run(Test $test): void
     {
         Assert::resetCount();
 
+<<<<<<< HEAD
         $size = TestUtil::UNKNOWN;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($test instanceof TestCase) {
             $test->setRegisterMockObjectsFromTestArgumentsRecursively(
                 $this->registerMockObjectsFromTestArgumentsRecursively
             );
 
             $isAnyCoverageRequired = TestUtil::requiresCodeCoverageDataCollection($test);
+<<<<<<< HEAD
             $size                  = $test->getSize();
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $error      = false;
@@ -666,37 +770,69 @@ final class TestResult implements Countable
 
         $monitorFunctions = $this->beStrictAboutResourceUsageDuringSmallTests &&
             !$test instanceof WarningTestCase &&
+<<<<<<< HEAD
             $size === TestUtil::SMALL &&
             function_exists('xdebug_start_function_monitor');
 
         if ($monitorFunctions) {
             /* @noinspection ForgottenDebugOutputInspection */
             xdebug_start_function_monitor(ResourceOperations::getFunctions());
+=======
+            $test->getSize() == \PHPUnit\Util\Test::SMALL &&
+            \function_exists('xdebug_start_function_monitor');
+
+        if ($monitorFunctions) {
+            /* @noinspection ForgottenDebugOutputInspection */
+            \xdebug_start_function_monitor(ResourceOperations::getFunctions());
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         Timer::start();
 
         try {
             if (!$test instanceof WarningTestCase &&
+<<<<<<< HEAD
                 $this->shouldTimeLimitBeEnforced($size)) {
                 switch ($size) {
                     case TestUtil::SMALL:
+=======
+                $this->enforceTimeLimit &&
+                ($this->defaultTimeLimit || $test->getSize() != \PHPUnit\Util\Test::UNKNOWN) &&
+                \extension_loaded('pcntl') && \class_exists(Invoker::class)) {
+                switch ($test->getSize()) {
+                    case \PHPUnit\Util\Test::SMALL:
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         $_timeout = $this->timeoutForSmallTests;
 
                         break;
 
+<<<<<<< HEAD
                     case TestUtil::MEDIUM:
+=======
+                    case \PHPUnit\Util\Test::MEDIUM:
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         $_timeout = $this->timeoutForMediumTests;
 
                         break;
 
+<<<<<<< HEAD
                     case TestUtil::LARGE:
+=======
+                    case \PHPUnit\Util\Test::LARGE:
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         $_timeout = $this->timeoutForLargeTests;
 
                         break;
 
+<<<<<<< HEAD
                     default:
                         $_timeout = $this->defaultTimeLimit;
+=======
+                    case \PHPUnit\Util\Test::UNKNOWN:
+                        $_timeout = $this->defaultTimeLimit;
+
+                        break;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
 
                 $invoker = new Invoker;
@@ -737,6 +873,7 @@ final class TestResult implements Countable
             $frame   = $e->getTrace()[0];
 
             $e = new AssertionFailedError(
+<<<<<<< HEAD
                 sprintf(
                     '%s in %s:%s',
                     $e->getMessage(),
@@ -745,6 +882,14 @@ final class TestResult implements Countable
                 ),
                 0,
                 $e
+=======
+                \sprintf(
+                    '%s in %s:%s',
+                    $e->getMessage(),
+                    $frame['file'],
+                    $frame['line']
+                )
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             );
         } catch (Warning $e) {
             $warning = true;
@@ -762,17 +907,28 @@ final class TestResult implements Countable
             $blacklist = new Blacklist;
 
             /** @noinspection ForgottenDebugOutputInspection */
+<<<<<<< HEAD
             $functions = xdebug_get_monitored_functions();
 
             /* @noinspection ForgottenDebugOutputInspection */
             xdebug_stop_function_monitor();
+=======
+            $functions = \xdebug_get_monitored_functions();
+
+            /* @noinspection ForgottenDebugOutputInspection */
+            \xdebug_stop_function_monitor();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             foreach ($functions as $function) {
                 if (!$blacklist->isBlacklisted($function['filename'])) {
                     $this->addFailure(
                         $test,
                         new RiskyTestError(
+<<<<<<< HEAD
                             sprintf(
+=======
+                            \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                                 '%s() used in %s:%s',
                                 $function['function'],
                                 $function['filename'],
@@ -797,6 +953,7 @@ final class TestResult implements Countable
 
             if ($append && $test instanceof TestCase) {
                 try {
+<<<<<<< HEAD
                     $linesToBeCovered = TestUtil::getLinesToBeCovered(
                         get_class($test),
                         $test->getName(false)
@@ -804,6 +961,15 @@ final class TestResult implements Countable
 
                     $linesToBeUsed = TestUtil::getLinesToBeUsed(
                         get_class($test),
+=======
+                    $linesToBeCovered = \PHPUnit\Util\Test::getLinesToBeCovered(
+                        \get_class($test),
+                        $test->getName(false)
+                    );
+
+                    $linesToBeUsed = \PHPUnit\Util\Test::getLinesToBeUsed(
+                        \get_class($test),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         $test->getName(false)
                     );
                 } catch (InvalidCoversTargetException $cce) {
@@ -828,7 +994,11 @@ final class TestResult implements Countable
                     $test,
                     new UnintentionallyCoveredCodeError(
                         'This test executed code that is not listed as code to be covered or used:' .
+<<<<<<< HEAD
                         PHP_EOL . $cce->getMessage()
+=======
+                        \PHP_EOL . $cce->getMessage()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     ),
                     $time
                 );
@@ -837,7 +1007,11 @@ final class TestResult implements Countable
                     $test,
                     new CoveredCodeNotExecutedException(
                         'This test did not execute all the code that is listed as code to be covered:' .
+<<<<<<< HEAD
                         PHP_EOL . $cce->getMessage()
+=======
+                        \PHP_EOL . $cce->getMessage()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     ),
                     $time
                 );
@@ -874,12 +1048,21 @@ final class TestResult implements Countable
             !$test->doesNotPerformAssertions() &&
             $test->getNumAssertions() == 0) {
             try {
+<<<<<<< HEAD
                 $reflected = new ReflectionClass($test);
                 // @codeCoverageIgnoreStart
             } catch (ReflectionException $e) {
                 throw new Exception(
                     $e->getMessage(),
                     $e->getCode(),
+=======
+                $reflected = new \ReflectionClass($test);
+                // @codeCoverageIgnoreStart
+            } catch (\ReflectionException $e) {
+                throw new Exception(
+                    $e->getMessage(),
+                    (int) $e->getCode(),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $e
                 );
             }
@@ -891,10 +1074,17 @@ final class TestResult implements Countable
                 try {
                     $reflected = $reflected->getMethod($name);
                     // @codeCoverageIgnoreStart
+<<<<<<< HEAD
                 } catch (ReflectionException $e) {
                     throw new Exception(
                         $e->getMessage(),
                         $e->getCode(),
+=======
+                } catch (\ReflectionException $e) {
+                    throw new Exception(
+                        $e->getMessage(),
+                        (int) $e->getCode(),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         $e
                     );
                 }
@@ -904,7 +1094,11 @@ final class TestResult implements Countable
             $this->addFailure(
                 $test,
                 new RiskyTestError(
+<<<<<<< HEAD
                     sprintf(
+=======
+                    \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         "This test did not perform any assertions\n\n%s:%d",
                         $reflected->getFileName(),
                         $reflected->getStartLine()
@@ -918,7 +1112,11 @@ final class TestResult implements Countable
             $this->addFailure(
                 $test,
                 new RiskyTestError(
+<<<<<<< HEAD
                     sprintf(
+=======
+                    \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         'This test is annotated with "@doesNotPerformAssertions" but performed %d assertions',
                         $test->getNumAssertions()
                     )
@@ -929,7 +1127,11 @@ final class TestResult implements Countable
             $this->addFailure(
                 $test,
                 new OutputError(
+<<<<<<< HEAD
                     sprintf(
+=======
+                    \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         'This test printed output: %s',
                         $test->getActualOutput()
                     )
@@ -1156,7 +1358,11 @@ final class TestResult implements Countable
     }
 
     /**
+<<<<<<< HEAD
      * Enables or disables the stopping for defects: error, failure, warning.
+=======
+     * Enables or disables the stopping for defects: error, failure, warning
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function stopOnDefect(bool $flag): void
     {
@@ -1190,7 +1396,11 @@ final class TestResult implements Countable
     }
 
     /**
+<<<<<<< HEAD
      * Sets the default timeout for tests.
+=======
+     * Sets the default timeout for tests
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setDefaultTimeLimit(int $timeout): void
     {
@@ -1233,6 +1443,7 @@ final class TestResult implements Countable
     {
         $this->registerMockObjectsFromTestArgumentsRecursively = $flag;
     }
+<<<<<<< HEAD
 
     private function shouldTimeLimitBeEnforced(int $size): bool
     {
@@ -1258,4 +1469,6 @@ final class TestResult implements Countable
 
         return true;
     }
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

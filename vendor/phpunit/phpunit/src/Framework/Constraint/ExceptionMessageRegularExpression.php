@@ -9,8 +9,11 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
 use function sprintf;
 use Exception;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Util\RegularExpression as RegularExpressionUtil;
 
 final class ExceptionMessageRegularExpression extends Constraint
@@ -36,8 +39,13 @@ final class ExceptionMessageRegularExpression extends Constraint
      *
      * @param \PHPUnit\Framework\Exception $other
      *
+<<<<<<< HEAD
      * @throws \PHPUnit\Framework\Exception
      * @throws Exception
+=======
+     * @throws \Exception
+     * @throws \PHPUnit\Framework\Exception
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function matches($other): bool
     {
@@ -53,7 +61,11 @@ final class ExceptionMessageRegularExpression extends Constraint
     }
 
     /**
+<<<<<<< HEAD
      * Returns the description of the failure.
+=======
+     * Returns the description of the failure
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -62,7 +74,11 @@ final class ExceptionMessageRegularExpression extends Constraint
      */
     protected function failureDescription($other): string
     {
+<<<<<<< HEAD
         return sprintf(
+=======
+        return \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             "exception message '%s' matches '%s'",
             $other->getMessage(),
             $this->expectedMessageRegExp

@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
 use function is_string;
 use function sprintf;
 use function strpos;
@@ -17,6 +18,11 @@ use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\Comparator\ComparisonFailure;
 use SebastianBergmann\Comparator\Factory as ComparatorFactory;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
+=======
+use PHPUnit\Framework\ExpectationFailedException;
+use SebastianBergmann\Comparator\ComparisonFailure;
+use SebastianBergmann\Comparator\Factory as ComparatorFactory;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Constraint that checks if one value is equal to another.
@@ -58,7 +64,11 @@ final class IsEqual extends Constraint
     }
 
     /**
+<<<<<<< HEAD
      * Evaluates the constraint for parameter $other.
+=======
+     * Evaluates the constraint for parameter $other
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -99,7 +109,11 @@ final class IsEqual extends Constraint
             }
 
             throw new ExpectationFailedException(
+<<<<<<< HEAD
                 trim($description . "\n" . $f->getMessage()),
+=======
+                \trim($description . "\n" . $f->getMessage()),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $f
             );
         }
@@ -110,31 +124,52 @@ final class IsEqual extends Constraint
     /**
      * Returns a string representation of the constraint.
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function toString(): string
     {
         $delta = '';
 
+<<<<<<< HEAD
         if (is_string($this->value)) {
             if (strpos($this->value, "\n") !== false) {
                 return 'is equal to <text>';
             }
 
             return sprintf(
+=======
+        if (\is_string($this->value)) {
+            if (\strpos($this->value, "\n") !== false) {
+                return 'is equal to <text>';
+            }
+
+            return \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 "is equal to '%s'",
                 $this->value
             );
         }
 
         if ($this->delta != 0) {
+<<<<<<< HEAD
             $delta = sprintf(
+=======
+            $delta = \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 ' with delta <%F>',
                 $this->delta
             );
         }
 
+<<<<<<< HEAD
         return sprintf(
+=======
+        return \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'is equal to %s%s',
             $this->exporter()->export($this->value),
             $delta

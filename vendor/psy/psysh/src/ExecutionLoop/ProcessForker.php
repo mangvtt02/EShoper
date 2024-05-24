@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -41,8 +45,15 @@ class ProcessForker extends AbstractListener
 
     /**
      * Process forker is supported if pcntl and posix extensions are available.
+<<<<<<< HEAD
      */
     public static function isSupported(): bool
+=======
+     *
+     * @return bool
+     */
+    public static function isSupported()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return self::isPcntlSupported() && !self::disabledPcntlFunctions() && self::isPosixSupported() && !self::disabledPosixFunctions();
     }
@@ -50,7 +61,11 @@ class ProcessForker extends AbstractListener
     /**
      * Verify that all required pcntl functions are, in fact, available.
      */
+<<<<<<< HEAD
     public static function isPcntlSupported(): bool
+=======
+    public static function isPcntlSupported()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         foreach (self::$pcntlFunctions as $func) {
             if (!\function_exists($func)) {
@@ -72,7 +87,11 @@ class ProcessForker extends AbstractListener
     /**
      * Verify that all required posix functions are, in fact, available.
      */
+<<<<<<< HEAD
     public static function isPosixSupported(): bool
+=======
+    public static function isPosixSupported()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         foreach (self::$posixFunctions as $func) {
             if (!\function_exists($func)) {
@@ -91,13 +110,21 @@ class ProcessForker extends AbstractListener
         return self::checkDisabledFunctions(self::$posixFunctions);
     }
 
+<<<<<<< HEAD
     private static function checkDisabledFunctions(array $functions): array
+=======
+    private static function checkDisabledFunctions(array $functions)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return \array_values(\array_intersect($functions, \array_map('strtolower', \array_map('trim', \explode(',', \ini_get('disable_functions'))))));
     }
 
     /**
+<<<<<<< HEAD
      * Forks into a main and a loop process.
+=======
+     * Forks into a master and a loop process.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The loop process will handle the evaluation of all instructions, then
      * return its state via a socket upon completion.
@@ -106,7 +133,11 @@ class ProcessForker extends AbstractListener
      */
     public function beforeRun(Shell $shell)
     {
+<<<<<<< HEAD
         list($up, $down) = \stream_socket_pair(\STREAM_PF_UNIX, \STREAM_SOCK_STREAM, \STREAM_IPPROTO_IP);
+=======
+        list($up, $down) = \stream_socket_pair(STREAM_PF_UNIX, STREAM_SOCK_STREAM, STREAM_IPPROTO_IP);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if (!$up) {
             throw new \RuntimeException('Unable to create socket pair');
@@ -122,8 +153,13 @@ class ProcessForker extends AbstractListener
             \fclose($up);
 
             // Wait for a return value from the loop process.
+<<<<<<< HEAD
             $read = [$down];
             $write = null;
+=======
+            $read   = [$down];
+            $write  = null;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $except = null;
 
             do {
@@ -188,7 +224,11 @@ class ProcessForker extends AbstractListener
     {
         // if there's an old savegame hanging around, let's kill it.
         if (isset($this->savegame)) {
+<<<<<<< HEAD
             \posix_kill($this->savegame, \SIGKILL);
+=======
+            \posix_kill($this->savegame, SIGKILL);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             \pcntl_signal_dispatch();
         }
     }
@@ -206,7 +246,11 @@ class ProcessForker extends AbstractListener
             \fwrite($this->up, $this->serializeReturn($shell->getScopeVariables(false)));
             \fclose($this->up);
 
+<<<<<<< HEAD
             \posix_kill(\posix_getpid(), \SIGKILL);
+=======
+            \posix_kill(\posix_getpid(), SIGKILL);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -231,7 +275,11 @@ class ProcessForker extends AbstractListener
 
             // worker exited cleanly, let's bail
             if (!\pcntl_wexitstatus($status)) {
+<<<<<<< HEAD
                 \posix_kill(\posix_getpid(), \SIGKILL);
+=======
+                \posix_kill(\posix_getpid(), SIGKILL);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
 
             // worker didn't exit cleanly, we'll need to have another go
@@ -248,8 +296,15 @@ class ProcessForker extends AbstractListener
      * we can.
      *
      * @param array $return
+<<<<<<< HEAD
      */
     private function serializeReturn(array $return): string
+=======
+     *
+     * @return string
+     */
+    private function serializeReturn(array $return)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $serializable = [];
 
@@ -264,6 +319,7 @@ class ProcessForker extends AbstractListener
                 continue;
             }
 
+<<<<<<< HEAD
             if (\version_compare(\PHP_VERSION, '8.1', '>=') && $value instanceof \UnitEnum) {
                 // Enums defined in the REPL session can't be unserialized.
                 $ref = new \ReflectionObject($value);
@@ -272,11 +328,19 @@ class ProcessForker extends AbstractListener
                 }
             }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             try {
                 @\serialize($value);
                 $serializable[$key] = $value;
             } catch (\Throwable $e) {
                 // we'll just ignore this one...
+<<<<<<< HEAD
+=======
+            } catch (\Exception $e) {
+                // and this one too...
+                // @todo remove this once we don't support PHP 5.x anymore :)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
 

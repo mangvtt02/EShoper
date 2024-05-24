@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -31,10 +35,17 @@ class DocblockFormatter implements ReflectorFormatter
      *
      * @return string Formatted docblock
      */
+<<<<<<< HEAD
     public static function format(\Reflector $reflector): string
     {
         $docblock = new Docblock($reflector);
         $chunks = [];
+=======
+    public static function format(\Reflector $reflector)
+    {
+        $docblock = new Docblock($reflector);
+        $chunks   = [];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if (!empty($docblock->desc)) {
             $chunks[] = '<comment>Description:</comment>';
@@ -68,8 +79,15 @@ class DocblockFormatter implements ReflectorFormatter
      *
      * @param array $vector
      * @param array $lines
+<<<<<<< HEAD
      */
     private static function formatVector(array $vector, array $lines): string
+=======
+     *
+     * @return string
+     */
+    private static function formatVector(array $vector, array $lines)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $template = [' '];
         foreach ($vector as $type) {
@@ -107,7 +125,11 @@ class DocblockFormatter implements ReflectorFormatter
      *
      * @return string formatted tags
      */
+<<<<<<< HEAD
     private static function formatTags(array $skip, array $tags): string
+=======
+    private static function formatTags(array $skip, array $tags)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $chunks = [];
 
@@ -131,8 +153,15 @@ class DocblockFormatter implements ReflectorFormatter
      *
      * @param string $type Vector type
      * @param int    $max  Pad width
+<<<<<<< HEAD
      */
     private static function getVectorParamTemplate(string $type, int $max): string
+=======
+     *
+     * @return string
+     */
+    private static function getVectorParamTemplate($type, $max)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!isset(self::$vectorParamTemplates[$type])) {
             return \sprintf('%%-%ds', $max);
@@ -146,18 +175,34 @@ class DocblockFormatter implements ReflectorFormatter
      *
      * @param string $text   String to indent
      * @param string $indent (default: '  ')
+<<<<<<< HEAD
      */
     private static function indent(string $text, string $indent = '  '): string
     {
         return $indent.\str_replace("\n", "\n".$indent, $text);
+=======
+     *
+     * @return string
+     */
+    private static function indent($text, $indent = '  ')
+    {
+        return $indent . \str_replace("\n", "\n" . $indent, $text);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * Convert underscored or whitespace separated words into sentence case.
      *
      * @param string $text
+<<<<<<< HEAD
      */
     private static function inflect(string $text): string
+=======
+     *
+     * @return string
+     */
+    private static function inflect($text)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $words = \trim(\preg_replace('/[\s_-]+/', ' ', \preg_replace('/([a-z])([A-Z])/', '$1 $2', $text)));
 

@@ -100,7 +100,11 @@ return [
         'raw'       => ['action'],
 
         /*
+<<<<<<< HEAD
          * List of columns are forbidden from being searched/sorted.
+=======
+         * List of columns are are forbidden from being searched/sorted.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
          */
         'blacklist' => ['password', 'remember_token'],
 

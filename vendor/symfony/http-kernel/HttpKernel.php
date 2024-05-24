@@ -61,7 +61,11 @@ class HttpKernel implements HttpKernelInterface, TerminableInterface
     {
         $this->dispatcher = LegacyEventDispatcherProxy::decorate($dispatcher);
         $this->resolver = $resolver;
+<<<<<<< HEAD
         $this->requestStack = $requestStack ?? new RequestStack();
+=======
+        $this->requestStack = $requestStack ?: new RequestStack();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->argumentResolver = $argumentResolver;
 
         if (null === $this->argumentResolver) {
@@ -76,7 +80,10 @@ class HttpKernel implements HttpKernelInterface, TerminableInterface
     {
         $request->headers->set('X-Php-Ob-Level', (string) ob_get_level());
 
+<<<<<<< HEAD
         $this->requestStack->push($request);
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         try {
             return $this->handleRaw($request, $type);
         } catch (\Exception $e) {
@@ -90,8 +97,11 @@ class HttpKernel implements HttpKernelInterface, TerminableInterface
             }
 
             return $this->handleThrowable($e, $request, $type);
+<<<<<<< HEAD
         } finally {
             $this->requestStack->pop();
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -112,6 +122,7 @@ class HttpKernel implements HttpKernelInterface, TerminableInterface
             throw $exception;
         }
 
+<<<<<<< HEAD
         if ($pop = $request !== $this->requestStack->getMasterRequest()) {
             $this->requestStack->push($request);
         }
@@ -123,6 +134,9 @@ class HttpKernel implements HttpKernelInterface, TerminableInterface
                 $this->requestStack->pop();
             }
         }
+=======
+        $response = $this->handleThrowable($exception, $request, self::MASTER_REQUEST);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $response->sendHeaders();
         $response->sendContent();
@@ -140,6 +154,11 @@ class HttpKernel implements HttpKernelInterface, TerminableInterface
      */
     private function handleRaw(Request $request, int $type = self::MASTER_REQUEST): Response
     {
+<<<<<<< HEAD
+=======
+        $this->requestStack->push($request);
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         // request
         $event = new RequestEvent($this, $request, $type);
         $this->dispatcher->dispatch($event, KernelEvents::REQUEST);
@@ -216,6 +235,10 @@ class HttpKernel implements HttpKernelInterface, TerminableInterface
     private function finishRequest(Request $request, int $type)
     {
         $this->dispatcher->dispatch(new FinishRequestEvent($this, $request, $type), KernelEvents::FINISH_REQUEST);
+<<<<<<< HEAD
+=======
+        $this->requestStack->pop();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**

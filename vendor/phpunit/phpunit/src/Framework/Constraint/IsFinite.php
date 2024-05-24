@@ -9,8 +9,11 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
 use function is_finite;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * Constraint that accepts finite.
  */
@@ -32,6 +35,10 @@ final class IsFinite extends Constraint
      */
     protected function matches($other): bool
     {
+<<<<<<< HEAD
         return is_finite($other);
+=======
+        return \is_finite($other);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

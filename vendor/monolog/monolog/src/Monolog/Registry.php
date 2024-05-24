@@ -51,7 +51,10 @@ class Registry
      * @param  string|null               $name      Name of the logging channel ($logger->getName() by default)
      * @param  bool                      $overwrite Overwrite instance in the registry if the given name already exists?
      * @throws \InvalidArgumentException If $overwrite set to false and named Logger instance already exists
+<<<<<<< HEAD
      * @return void
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public static function addLogger(Logger $logger, ?string $name = null, bool $overwrite = false)
     {
@@ -123,7 +126,11 @@ class Registry
      * Gets Logger instance from the registry via static method call
      *
      * @param  string                    $name      Name of the requested Logger instance
+<<<<<<< HEAD
      * @param  mixed[]                   $arguments Arguments passed to static method call
+=======
+     * @param  array                     $arguments Arguments passed to static method call
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @throws \InvalidArgumentException If named Logger instance is not in the registry
      * @return Logger                    Requested instance of Logger
      */

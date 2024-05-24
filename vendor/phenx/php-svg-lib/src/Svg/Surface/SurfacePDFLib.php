@@ -2,7 +2,11 @@
 /**
  * @package php-svg-lib
  * @link    http://github.com/PhenX/php-svg-lib
+<<<<<<< HEAD
  * @author  Fabien Ménager <fabien.menager@gmail.com>
+=======
+ * @author  Fabien M�nager <fabien.menager@gmail.com>
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @license GNU LGPLv3+ http://www.gnu.org/copyleft/lesser.html
  */
 
@@ -159,7 +163,11 @@ class SurfacePDFLib implements SurfaceInterface
             $data = file_get_contents($image);
         }
 
+<<<<<<< HEAD
         $image = tempnam(sys_get_temp_dir(), "svg");
+=======
+        $image = tempnam("", "svg");
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         file_put_contents($image, $data);
 
         $img = $this->canvas->load_image("auto", $image, "");
@@ -419,4 +427,8 @@ class SurfacePDFLib implements SurfaceInterface
     {
         // TODO: Implement setFont() method.
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

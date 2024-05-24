@@ -90,8 +90,13 @@ class DebugClassLoader
     public static function enable()
     {
         // Ensures we don't hit https://bugs.php.net/42098
+<<<<<<< HEAD
         class_exists(\Symfony\Component\Debug\ErrorHandler::class);
         class_exists(\Psr\Log\LogLevel::class);
+=======
+        class_exists('Symfony\Component\Debug\ErrorHandler');
+        class_exists('Psr\Log\LogLevel');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if (!\is_array($functions = spl_autoload_functions())) {
             return;
@@ -300,7 +305,11 @@ class DebugClassLoader
                     $hasCall = $refl->hasMethod('__call');
                     $hasStaticCall = $refl->hasMethod('__callStatic');
                     foreach (self::$method[$use] as $method) {
+<<<<<<< HEAD
                         [$interface, $name, $static, $description] = $method;
+=======
+                        list($interface, $name, $static, $description) = $method;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         if ($static ? $hasStaticCall : $hasCall) {
                             continue;
                         }
@@ -335,12 +344,20 @@ class DebugClassLoader
             }
 
             if ($parent && isset(self::$finalMethods[$parent][$method->name])) {
+<<<<<<< HEAD
                 [$declaringClass, $message] = self::$finalMethods[$parent][$method->name];
+=======
+                list($declaringClass, $message) = self::$finalMethods[$parent][$method->name];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $deprecations[] = sprintf('The "%s::%s()" method is considered final%s. It may change without further notice as of its next major version. You should not extend it from "%s".', $declaringClass, $method->name, $message, $class);
             }
 
             if (isset(self::$internalMethods[$class][$method->name])) {
+<<<<<<< HEAD
                 [$declaringClass, $message] = self::$internalMethods[$class][$method->name];
+=======
+                list($declaringClass, $message) = self::$internalMethods[$class][$method->name];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 if (strncmp($ns, $declaringClass, $len)) {
                     $deprecations[] = sprintf('The "%s::%s()" method is considered internal%s. It may change without further notice. You should not extend it from "%s".', $declaringClass, $method->name, $message, $class);
                 }
@@ -388,7 +405,11 @@ class DebugClassLoader
                     $definedParameters[$parameter->name] = true;
                 }
             }
+<<<<<<< HEAD
             foreach ($matches as [, $parameterType, $parameterName]) {
+=======
+            foreach ($matches as list(, $parameterType, $parameterName)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 if (!isset($definedParameters[$parameterName])) {
                     $parameterType = trim($parameterType);
                     self::$annotatedParameters[$class][$method->name][$parameterName] = sprintf('The "%%s::%s()" method will require a new "%s$%s" argument in the next major version of its %s "%s", not defining it is deprecated.', $method->name, $parameterType ? $parameterType.' ' : '', $parameterName, interface_exists($class) ? 'interface' : 'parent class', $method->class);

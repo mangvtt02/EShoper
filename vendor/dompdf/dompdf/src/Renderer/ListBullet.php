@@ -10,8 +10,13 @@ namespace Dompdf\Renderer;
 
 use Dompdf\Helpers;
 use Dompdf\Frame;
+<<<<<<< HEAD
 use Dompdf\FrameDecorator\ListBullet as ListBulletFrameDecorator;
 use Dompdf\Image\Cache;
+=======
+use Dompdf\Image\Cache;
+use Dompdf\FrameDecorator\ListBullet as ListBulletFrameDecorator;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Renders list bullets
@@ -75,9 +80,15 @@ class ListBullet extends AbstractRenderer
     }
 
     /**
+<<<<<<< HEAD
      * @param int $n
      * @param string $type
      * @param int|null $pad
+=======
+     * @param integer $n
+     * @param string $type
+     * @param integer $pad
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return string
      */
@@ -105,7 +116,11 @@ class ListBullet extends AbstractRenderer
             case "lower-alpha":
             case "lower-latin":
             case "a":
+<<<<<<< HEAD
                 $text = chr((($n - 1) % 26) + ord('a'));
+=======
+                $text = chr(($n % 26) + ord('a') - 1);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 break;
 
             case "upper-roman":
@@ -129,6 +144,7 @@ class ListBullet extends AbstractRenderer
     }
 
     /**
+<<<<<<< HEAD
      * @param ListBulletFrameDecorator $frame
      */
     function render(Frame $frame)
@@ -139,10 +155,26 @@ class ListBullet extends AbstractRenderer
         $this->_set_opacity($frame->get_opacity($style->opacity));
 
         // Don't render bullets twice if the list item was split
+=======
+     * @param Frame $frame
+     */
+    function render(Frame $frame)
+    {
+        $style = $frame->get_style();
+        $font_size = $style->font_size;
+        $line_height = $style->line_height;
+
+        $this->_set_opacity($frame->get_opacity($style->opacity));
+
+        $li = $frame->get_parent();
+
+        // Don't render bullets twice if if was split
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($li->_splitted) {
             return;
         }
 
+<<<<<<< HEAD
         $font_family = $style->font_family;
         $font_size = $style->font_size;
         $baseline = $this->_canvas->get_font_baseline($font_family, $font_size);
@@ -154,11 +186,32 @@ class ListBullet extends AbstractRenderer
             $w = $frame->get_width();
             $h = $frame->get_height();
             $y += $baseline - $h;
+=======
+        // Handle list-style-image
+        // If list style image is requested but missing, fall back to predefined types
+        if ($style->list_style_image !== "none" && !Cache::is_broken($img = $frame->get_image_url())) {
+            list($x, $y) = $frame->get_position();
+
+            //For expected size and aspect, instead of box size, use image natural size scaled to DPI.
+            // Resample the bullet image to be consistent with 'auto' sized images
+            // See also Image::get_min_max_width
+            // Tested php ver: value measured in px, suffix "px" not in value: rtrim unnecessary.
+            //$w = $frame->get_width();
+            //$h = $frame->get_height();
+            list($width, $height) = Helpers::dompdf_getimagesize($img, $this->_dompdf->getHttpContext());
+            $dpi = $this->_dompdf->getOptions()->getDpi();
+            $w = ((float)rtrim($width, "px") * 72) / $dpi;
+            $h = ((float)rtrim($height, "px") * 72) / $dpi;
+
+            $x -= $w;
+            $y -= ($line_height - $font_size) / 2; //Reverse hinting of list_bullet_positioner
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             $this->_canvas->image($img, $x, $y, $w, $h);
         } else {
             $bullet_style = $style->list_style_type;
 
+<<<<<<< HEAD
             switch ($bullet_style) {
                 default:
                 case "disc":
@@ -177,6 +230,30 @@ class ListBullet extends AbstractRenderer
                     $offset = $font_size * ListBulletFrameDecorator::BULLET_OFFSET;
                     $w = $font_size * ListBulletFrameDecorator::BULLET_SIZE;
                     $y += $baseline - $w - $offset;
+=======
+            $fill = false;
+
+            switch ($bullet_style) {
+                default:
+                /** @noinspection PhpMissingBreakStatementInspection */
+                case "disc":
+                    $fill = true;
+
+                case "circle":
+                    list($x, $y) = $frame->get_position();
+                    $r = ($font_size * (ListBulletFrameDecorator::BULLET_SIZE /*-ListBulletFrameDecorator::BULLET_THICKNESS*/)) / 2;
+                    $x -= $font_size * (ListBulletFrameDecorator::BULLET_SIZE / 2);
+                    $y += ($font_size * (1 - ListBulletFrameDecorator::BULLET_DESCENT)) / 2;
+                    $o = $font_size * ListBulletFrameDecorator::BULLET_THICKNESS;
+                    $this->_canvas->circle($x, $y, $r, $style->color, $o, null, $fill);
+                    break;
+
+                case "square":
+                    list($x, $y) = $frame->get_position();
+                    $w = $font_size * ListBulletFrameDecorator::BULLET_SIZE;
+                    $x -= $w;
+                    $y += ($font_size * (1 - ListBulletFrameDecorator::BULLET_DESCENT - ListBulletFrameDecorator::BULLET_SIZE)) / 2;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $this->_canvas->filled_rectangle($x, $y, $w, $w, $style->color);
                     break;
 
@@ -208,6 +285,7 @@ class ListBullet extends AbstractRenderer
                     $index = $node->getAttribute("dompdf-counter");
                     $text = $this->make_counter($index, $bullet_style, $pad);
 
+<<<<<<< HEAD
                     if (trim($text) === "") {
                         return;
                     }
@@ -223,6 +301,29 @@ class ListBullet extends AbstractRenderer
                     $this->_canvas->text($x, $y, $text,
                         $font_family, $font_size,
                         $style->color, $word_spacing, $letter_spacing);
+=======
+                    if (trim($text) == "") {
+                        return;
+                    }
+
+                    $spacing = 0;
+                    $font_family = $style->font_family;
+
+                    $line = $li->get_containing_line();
+                    list($x, $y) = [$frame->get_position("x"), $line->y];
+
+                    $x -= $this->_dompdf->getFontMetrics()->getTextWidth($text, $font_family, $font_size, $spacing);
+
+                    // Take line-height into account
+                    // TODO: should the line height take into account the line height of the containing block (per previous logic)
+                    // $line_height = (float)$style->length_in_pt($style->line_height, $frame->get_containing_block("h"));
+                    $line_height = $style->line_height;
+                    $y += ($line_height - $font_size) / 4; // FIXME I thought it should be 2, but 4 gives better results
+
+                    $this->_canvas->text($x, $y, $text,
+                        $font_family, $font_size,
+                        $style->color, $spacing);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                 case "none":
                     break;
@@ -230,7 +331,11 @@ class ListBullet extends AbstractRenderer
         }
 
         $id = $frame->get_node()->getAttribute("id");
+<<<<<<< HEAD
         if (strlen($id) > 0) {
+=======
+        if (strlen($id) > 0)  {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->_canvas->add_named_dest($id);
         }
     }

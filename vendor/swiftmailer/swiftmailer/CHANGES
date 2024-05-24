@@ -1,6 +1,7 @@
 Changelog
 =========
 
+<<<<<<< HEAD
 **Swiftmailer will stop being maintained at the end of November 2021.**
 
 Please, move to Symfony Mailer at your earliest convenience.
@@ -39,6 +40,9 @@ See https://symfony.com/doc/current/mailer.html for more information.
  * Code cleanups
 
 6.2.3 (2019-11-12)
+=======
+6.2.2 (2019-11-12)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ------------------
 
  * no changes
@@ -46,7 +50,11 @@ See https://symfony.com/doc/current/mailer.html for more information.
 6.2.2 (2019-11-12)
 ------------------
 
+<<<<<<< HEAD
  * fixed compat with PHP 7.4
+=======
+ * fixed cmopat with PHP 7.4
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * fixed error message when connecting to a stream raises an error before connect()
 
 6.2.1 (2019-04-21)

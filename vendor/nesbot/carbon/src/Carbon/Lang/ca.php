@@ -21,9 +21,12 @@
  * - Xavi
  * - qcardona
  */
+<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 return [
     'year' => ':count any|:count anys',
     'a_year' => 'un any|:count anys',
@@ -72,6 +75,7 @@ return [
         'LLLL' => 'dddd D MMMM [de] YYYY [a les] H:mm',
     ],
     'calendar' => [
+<<<<<<< HEAD
         'sameDay' => function (CarbonInterface $current) {
             return '[avui a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
         },
@@ -85,6 +89,21 @@ return [
             return '[ahir a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
         },
         'lastWeek' => function (CarbonInterface $current) {
+=======
+        'sameDay' => function (\Carbon\CarbonInterface $current) {
+            return '[avui a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
+        },
+        'nextDay' => function (\Carbon\CarbonInterface $current) {
+            return '[demà a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
+        },
+        'nextWeek' => function (\Carbon\CarbonInterface $current) {
+            return 'dddd [a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
+        },
+        'lastDay' => function (\Carbon\CarbonInterface $current) {
+            return '[ahir a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
+        },
+        'lastWeek' => function (\Carbon\CarbonInterface $current) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return '[el] dddd [passat a '.($current->hour !== 1 ? 'les' : 'la').'] LT';
         },
         'sameElse' => 'L',

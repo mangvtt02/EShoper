@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Framework;
 
+<<<<<<< HEAD
 use function assert;
 use function count;
 use RecursiveIterator;
@@ -19,6 +20,12 @@ use RecursiveIterator;
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
 final class TestSuiteIterator implements RecursiveIterator
+=======
+/**
+ * @internal This class is not covered by the backward compatibility promise for PHPUnit
+ */
+final class TestSuiteIterator implements \RecursiveIterator
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 {
     /**
      * @var int
@@ -42,7 +49,11 @@ final class TestSuiteIterator implements RecursiveIterator
 
     public function valid(): bool
     {
+<<<<<<< HEAD
         return $this->position < count($this->tests);
+=======
+        return $this->position < \count($this->tests);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function key(): int
@@ -73,7 +84,11 @@ final class TestSuiteIterator implements RecursiveIterator
 
         $current = $this->current();
 
+<<<<<<< HEAD
         assert($current instanceof TestSuite);
+=======
+        \assert($current instanceof TestSuite);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return new self($current);
     }

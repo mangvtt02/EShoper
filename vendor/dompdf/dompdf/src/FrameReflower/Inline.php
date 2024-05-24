@@ -7,8 +7,13 @@
  */
 namespace Dompdf\FrameReflower;
 
+<<<<<<< HEAD
 use Dompdf\FrameDecorator\Block as BlockFrameDecorator;
 use Dompdf\FrameDecorator\Inline as InlineFrameDecorator;
+=======
+use Dompdf\Frame;
+use Dompdf\FrameDecorator\Block as BlockFrameDecorator;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Dompdf\FrameDecorator\Text as TextFrameDecorator;
 
 /**
@@ -18,16 +23,26 @@ use Dompdf\FrameDecorator\Text as TextFrameDecorator;
  */
 class Inline extends AbstractFrameReflower
 {
+<<<<<<< HEAD
     /**
      * Inline constructor.
      * @param InlineFrameDecorator $frame
      */
     function __construct(InlineFrameDecorator $frame)
+=======
+
+    /**
+     * Inline constructor.
+     * @param Frame $frame
+     */
+    function __construct(Frame $frame)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         parent::__construct($frame);
     }
 
     /**
+<<<<<<< HEAD
      * Handle reflow of empty inline frames.
      *
      * Regular inline frames are positioned together with their text (or inline)
@@ -73,11 +88,16 @@ class Inline extends AbstractFrameReflower
     }
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param BlockFrameDecorator|null $block
      */
     function reflow(BlockFrameDecorator $block = null)
     {
+<<<<<<< HEAD
         /** @var InlineFrameDecorator */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $frame = $this->_frame;
 
         // Check if a page break is forced
@@ -88,6 +108,7 @@ class Inline extends AbstractFrameReflower
             return;
         }
 
+<<<<<<< HEAD
         // Counters and generated content
         $this->_set_content();
 
@@ -134,6 +155,16 @@ class Inline extends AbstractFrameReflower
             }
             return;
         }
+=======
+        $style = $frame->get_style();
+
+        // Generated content
+        $this->_set_content();
+
+        $frame->position();
+
+        $cb = $frame->get_containing_block();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         // Add our margin, padding & border to the first and last children
         if (($f = $frame->get_first_child()) && $f instanceof TextFrameDecorator) {
@@ -150,13 +181,20 @@ class Inline extends AbstractFrameReflower
             $l_style->border_right = $style->border_right;
         }
 
+<<<<<<< HEAD
         $cb = $frame->get_containing_block();
+=======
+        if ($block) {
+            $block->add_frame_to_line($this->_frame);
+        }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         // Set the containing blocks and reflow each child.  The containing
         // block is not changed by line boxes.
         foreach ($frame->get_children() as $child) {
             $child->set_containing_block($cb);
             $child->reflow($block);
+<<<<<<< HEAD
 
             // Stop reflow if the frame has been reset by a line or page break
             // due to child reflow
@@ -181,5 +219,30 @@ class Inline extends AbstractFrameReflower
         if ($block) {
             $block->add_frame_to_line($frame);
         }
+=======
+        }
+    }
+
+    /**
+     * Determine current frame width based on contents
+     *
+     * @return float
+     */
+    public function calculate_auto_width()
+    {
+        $width = 0;
+
+        foreach ($this->_frame->get_children() as $child) {
+            if ($child->get_original_style()->width == 'auto') {
+                $width += $child->calculate_auto_width();
+            } else {
+                $width += $child->get_margin_width();
+            }
+        }
+
+        $this->_frame->get_style()->width = $width;
+
+        return $this->_frame->get_margin_width();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

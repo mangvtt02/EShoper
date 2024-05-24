@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,7 +16,12 @@
 namespace Psy\Util;
 
 use Psy\Exception\RuntimeException;
+<<<<<<< HEAD
 use Psy\Reflection\ReflectionConstant;
+=======
+use Psy\Reflection\ReflectionClassConstant;
+use Psy\Reflection\ReflectionConstant_;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Psy\Reflection\ReflectionNamespace;
 
 /**
@@ -20,10 +29,17 @@ use Psy\Reflection\ReflectionNamespace;
  */
 class Mirror
 {
+<<<<<<< HEAD
     const CONSTANT = 1;
     const METHOD = 2;
     const STATIC_PROPERTY = 4;
     const PROPERTY = 8;
+=======
+    const CONSTANT        = 1;
+    const METHOD          = 2;
+    const STATIC_PROPERTY = 4;
+    const PROPERTY        = 8;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Get a Reflector for a function, class or instance, constant, method or property.
@@ -42,13 +58,22 @@ class Mirror
      *
      * @return \Reflector
      */
+<<<<<<< HEAD
     public static function get($value, ?string $member = null, int $filter = 15): \Reflector
+=======
+    public static function get($value, $member = null, $filter = 15)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if ($member === null && \is_string($value)) {
             if (\function_exists($value)) {
                 return new \ReflectionFunction($value);
+<<<<<<< HEAD
             } elseif (\defined($value) || ReflectionConstant::isMagicConstant($value)) {
                 return new ReflectionConstant($value);
+=======
+            } elseif (\defined($value) || ReflectionConstant_::isMagicConstant($value)) {
+                return new ReflectionConstant_($value);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
 
@@ -57,7 +82,11 @@ class Mirror
         if ($member === null) {
             return $class;
         } elseif ($filter & self::CONSTANT && $class->hasConstant($member)) {
+<<<<<<< HEAD
             return new \ReflectionClassConstant($value, $member);
+=======
+            return ReflectionClassConstant::create($value, $member);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } elseif ($filter & self::METHOD && $class->hasMethod($member)) {
             return $class->getMethod($member);
         } elseif ($filter & self::PROPERTY && $class->hasProperty($member)) {
@@ -97,13 +126,21 @@ class Mirror
             return new ReflectionNamespace($namespace);
         }
 
+<<<<<<< HEAD
         throw new \InvalidArgumentException('Unknown namespace, class or function: '.$value);
+=======
+        throw new \InvalidArgumentException('Unknown namespace, class or function: ' . $value);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * Check declared namespaces for a given namespace.
      */
+<<<<<<< HEAD
     private static function namespaceExists(string $value): bool
+=======
+    private static function namespaceExists($value)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return \in_array(\strtolower($value), self::getDeclaredNamespaces());
     }
@@ -114,7 +151,11 @@ class Mirror
      * Note that this relies on at least one function, class, interface, trait
      * or constant to have been declared in that namespace.
      */
+<<<<<<< HEAD
     private static function getDeclaredNamespaces(): array
+=======
+    private static function getDeclaredNamespaces()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $functions = \get_defined_functions();
 

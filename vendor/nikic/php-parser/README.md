@@ -1,6 +1,7 @@
 PHP Parser
 ==========
 
+<<<<<<< HEAD
 [![Coverage Status](https://coveralls.io/repos/github/nikic/PHP-Parser/badge.svg?branch=master)](https://coveralls.io/github/nikic/PHP-Parser?branch=master)
 
 This is a PHP parser written in PHP. Its purpose is to simplify static code analysis and
@@ -9,18 +10,36 @@ manipulation.
 [**Documentation for version 5.x**][doc_master] (current; for running on PHP >= 7.4; for parsing PHP 7.0 to PHP 8.3, with limited support for parsing PHP 5.x).
 
 [Documentation for version 4.x][doc_4_x] (supported; for running on PHP >= 7.0; for parsing PHP 5.2 to PHP 8.3).
+=======
+[![Build Status](https://travis-ci.org/nikic/PHP-Parser.svg?branch=master)](https://travis-ci.org/nikic/PHP-Parser) [![Coverage Status](https://coveralls.io/repos/github/nikic/PHP-Parser/badge.svg?branch=master)](https://coveralls.io/github/nikic/PHP-Parser?branch=master)
+
+This is a PHP 5.2 to PHP 7.4 parser written in PHP. Its purpose is to simplify static code analysis and
+manipulation.
+
+[**Documentation for version 4.x**][doc_master] (stable; for running on PHP >= 7.0; for parsing PHP 5.2 to PHP 7.4).
+
+[Documentation for version 3.x][doc_3_x] (unsupported; for running on PHP >= 5.5; for parsing PHP 5.2 to PHP 7.2).
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 Features
 --------
 
 The main features provided by this library are:
 
+<<<<<<< HEAD
  * Parsing PHP 7, and PHP 8 code into an abstract syntax tree (AST).
+=======
+ * Parsing PHP 5 and PHP 7 code into an abstract syntax tree (AST).
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
    * Invalid code can be parsed into a partial AST.
    * The AST contains accurate location information.
  * Dumping the AST in human-readable form.
  * Converting an AST back to PHP code.
+<<<<<<< HEAD
    * Formatting can be preserved for partially changed ASTs.
+=======
+   * Experimental: Formatting can be preserved for partially changed ASTs.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * Infrastructure to traverse and modify ASTs.
  * Resolution of namespaced names.
  * Evaluation of constant expressions.
@@ -51,7 +70,11 @@ function test($foo)
 }
 CODE;
 
+<<<<<<< HEAD
 $parser = (new ParserFactory())->createForNewestSupportedVersion();
+=======
+$parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 try {
     $ast = $parser->parse($code);
 } catch (Error $error) {
@@ -68,17 +91,23 @@ This dumps an AST looking something like this:
 ```
 array(
     0: Stmt_Function(
+<<<<<<< HEAD
         attrGroups: array(
         )
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         byRef: false
         name: Identifier(
             name: test
         )
         params: array(
             0: Param(
+<<<<<<< HEAD
                 attrGroups: array(
                 )
                 flags: 0
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 type: null
                 byRef: false
                 variadic: false
@@ -93,11 +122,20 @@ array(
             0: Stmt_Expression(
                 expr: Expr_FuncCall(
                     name: Name(
+<<<<<<< HEAD
                         name: var_dump
                     )
                     args: array(
                         0: Arg(
                             name: null
+=======
+                        parts: array(
+                            0: var_dump
+                        )
+                    )
+                    args: array(
+                        0: Arg(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                             value: Expr_Variable(
                                 name: foo
                             )
@@ -139,16 +177,22 @@ This gives us an AST where the `Function_::$stmts` are empty:
 ```
 array(
     0: Stmt_Function(
+<<<<<<< HEAD
         attrGroups: array(
         )
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         byRef: false
         name: Identifier(
             name: test
         )
         params: array(
             0: Param(
+<<<<<<< HEAD
                 attrGroups: array(
                 )
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 type: null
                 byRef: false
                 variadic: false
@@ -211,8 +255,14 @@ Component documentation:
  * [AST builders](doc/component/AST_builders.markdown)
    * Fluent builders for AST nodes
  * [Lexer](doc/component/Lexer.markdown)
+<<<<<<< HEAD
    * Emulation
    * Tokens, positions and attributes
+=======
+   * Lexer options
+   * Token and file positions for nodes
+   * Custom attributes
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * [Error handling](doc/component/Error_handling.markdown)
    * Column information for errors
    * Error recovery (parsing of syntactically incorrect code)
@@ -222,12 +272,19 @@ Component documentation:
  * [JSON representation](doc/component/JSON_representation.markdown)
    * JSON encoding and decoding of ASTs
  * [Performance](doc/component/Performance.markdown)
+<<<<<<< HEAD
    * Disabling Xdebug
+=======
+   * Disabling XDebug
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
    * Reusing objects
    * Garbage collection impact
  * [Frequently asked questions](doc/component/FAQ.markdown)
    * Parent and sibling references
 
  [doc_3_x]: https://github.com/nikic/PHP-Parser/tree/3.x/doc
+<<<<<<< HEAD
  [doc_4_x]: https://github.com/nikic/PHP-Parser/tree/4.x/doc
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  [doc_master]: https://github.com/nikic/PHP-Parser/tree/master/doc

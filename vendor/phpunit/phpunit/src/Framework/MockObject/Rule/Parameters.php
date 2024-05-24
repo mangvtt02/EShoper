@@ -9,16 +9,22 @@
  */
 namespace PHPUnit\Framework\MockObject\Rule;
 
+<<<<<<< HEAD
 use function count;
 use function get_class;
 use function sprintf;
 use Exception;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\Constraint\IsAnything;
 use PHPUnit\Framework\Constraint\IsEqual;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\MockObject\Invocation as BaseInvocation;
+<<<<<<< HEAD
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -72,7 +78,11 @@ final class Parameters implements ParametersRule
     }
 
     /**
+<<<<<<< HEAD
      * @throws Exception
+=======
+     * @throws \Exception
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function apply(BaseInvocation $invocation): void
     {
@@ -94,7 +104,11 @@ final class Parameters implements ParametersRule
      * if an expectation is met.
      *
      * @throws ExpectationFailedException
+<<<<<<< HEAD
      * @throws InvalidArgumentException
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function verify(): void
     {
@@ -103,7 +117,11 @@ final class Parameters implements ParametersRule
 
     /**
      * @throws ExpectationFailedException
+<<<<<<< HEAD
      * @throws InvalidArgumentException
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private function doVerify(): bool
     {
@@ -115,27 +133,44 @@ final class Parameters implements ParametersRule
             throw new ExpectationFailedException('Mocked method does not exist.');
         }
 
+<<<<<<< HEAD
         if (count($this->invocation->getParameters()) < count($this->parameters)) {
+=======
+        if (\count($this->invocation->getParameters()) < \count($this->parameters)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $message = 'Parameter count for invocation %s is too low.';
 
             // The user called `->with($this->anything())`, but may have meant
             // `->withAnyParameters()`.
             //
             // @see https://github.com/sebastianbergmann/phpunit-mock-objects/issues/199
+<<<<<<< HEAD
             if (count($this->parameters) === 1 &&
                 get_class($this->parameters[0]) === IsAnything::class) {
+=======
+            if (\count($this->parameters) === 1 &&
+                \get_class($this->parameters[0]) === IsAnything::class) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $message .= "\nTo allow 0 or more parameters with any value, omit ->with() or use ->withAnyParameters() instead.";
             }
 
             throw new ExpectationFailedException(
+<<<<<<< HEAD
                 sprintf($message, $this->invocation->toString())
+=======
+                \sprintf($message, $this->invocation->toString())
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             );
         }
 
         foreach ($this->parameters as $i => $parameter) {
             $parameter->evaluate(
                 $this->invocation->getParameters()[$i],
+<<<<<<< HEAD
                 sprintf(
+=======
+                \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     'Parameter %s for invocation %s does not match expected ' .
                     'value.',
                     $i,

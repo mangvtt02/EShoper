@@ -10,7 +10,11 @@ foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php
 
 ini_set('xdebug.max_nesting_level', 3000);
 
+<<<<<<< HEAD
 // Disable Xdebug var_dump() output truncation
+=======
+// Disable XDebug var_dump() output truncation
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ini_set('xdebug.var_display_max_children', -1);
 ini_set('xdebug.var_display_max_data', -1);
 ini_set('xdebug.var_display_max_depth', -1);
@@ -26,7 +30,17 @@ if (empty($files)) {
     showHelp("Must specify at least one file.");
 }
 
+<<<<<<< HEAD
 $parser = (new PhpParser\ParserFactory())->createForVersion($attributes['version']);
+=======
+$lexer = new PhpParser\Lexer\Emulative(['usedAttributes' => [
+    'startLine', 'endLine', 'startFilePos', 'endFilePos', 'comments'
+]]);
+$parser = (new PhpParser\ParserFactory)->create(
+    PhpParser\ParserFactory::PREFER_PHP7,
+    $lexer
+);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 $dumper = new PhpParser\NodeDumper([
     'dumpComments' => true,
     'dumpPositions' => $attributes['with-positions'],
@@ -37,10 +51,14 @@ $traverser = new PhpParser\NodeTraverser();
 $traverser->addVisitor(new PhpParser\NodeVisitor\NameResolver);
 
 foreach ($files as $file) {
+<<<<<<< HEAD
     if ($file === '-') {
         $code = file_get_contents('php://stdin');
         fwrite(STDERR, "====> Stdin:\n");
     } else if (strpos($file, '<?php') === 0) {
+=======
+    if (strpos($file, '<?php') === 0) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $code = $file;
         fwrite(STDERR, "====> Code $code\n");
     } else {
@@ -105,7 +123,11 @@ function showHelp($error = '') {
     if ($error) {
         fwrite(STDERR, $error . "\n\n");
     }
+<<<<<<< HEAD
     fwrite($error ? STDERR : STDOUT, <<<'OUTPUT'
+=======
+    fwrite($error ? STDERR : STDOUT, <<<OUTPUT
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 Usage: php-parse [operations] file1.php [file2.php ...]
    or: php-parse [operations] "<?php code"
 Turn PHP source code into an abstract syntax tree.
@@ -120,7 +142,10 @@ Operations is a list of the following options (--dump by default):
     -c, --with-column-info  Show column-numbers for errors (if available)
     -P, --with-positions    Show positions in node dumps
     -r, --with-recovery     Use parsing with error recovery
+<<<<<<< HEAD
         --version=VERSION   Target specific PHP version (default: newest)
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     -h, --help              Display this page
 
 Example:
@@ -141,7 +166,10 @@ function parseArgs($args) {
         'with-column-info' => false,
         'with-positions' => false,
         'with-recovery' => false,
+<<<<<<< HEAD
         'version' => PhpParser\PhpVersion::getNewestSupported(),
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     ];
 
     array_shift($args);
@@ -192,9 +220,13 @@ function parseArgs($args) {
                 $parseOptions = false;
                 break;
             default:
+<<<<<<< HEAD
                 if (preg_match('/^--version=(.*)$/', $arg, $matches)) {
                     $attributes['version'] = PhpParser\PhpVersion::fromString($matches[1]);
                 } elseif ($arg[0] === '-' && \strlen($arg[0]) > 1) {
+=======
+                if ($arg[0] === '-') {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     showHelp("Invalid operation $arg.");
                 } else {
                     $files[] = $arg;

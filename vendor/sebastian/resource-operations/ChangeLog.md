@@ -2,6 +2,7 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
 ## [2.0.3] - 2024-03-01
 
 * No code changes, only updated `.gitattributes` to not export non-essential files.
@@ -12,6 +13,8 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Changed PHP version constraint in `composer.json` from `^7.1` to `>=7.1`
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ## [2.0.1] - 2018-10-04
 
 ### Fixed
@@ -32,7 +35,10 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Initial release
 
+<<<<<<< HEAD
 [2.0.3]: https://github.com/sebastianbergmann/comparator/compare/2.0.2...2.0.3
 [2.0.2]: https://github.com/sebastianbergmann/comparator/compare/2.0.1...2.0.2
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 [2.0.1]: https://github.com/sebastianbergmann/comparator/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/sebastianbergmann/comparator/compare/1.0.0...2.0.0

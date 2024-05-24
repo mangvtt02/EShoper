@@ -47,9 +47,13 @@ abstract class AbstractPipes implements PipesInterface
     public function close()
     {
         foreach ($this->pipes as $pipe) {
+<<<<<<< HEAD
             if (\is_resource($pipe)) {
                 fclose($pipe);
             }
+=======
+            fclose($pipe);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
         $this->pipes = [];
     }
@@ -104,7 +108,11 @@ abstract class AbstractPipes implements PipesInterface
                 stream_set_blocking($input, 0);
             } elseif (!isset($this->inputBuffer[0])) {
                 if (!\is_string($input)) {
+<<<<<<< HEAD
                     if (!\is_scalar($input)) {
+=======
+                    if (!is_scalar($input)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         throw new InvalidArgumentException(sprintf('"%s" yielded a value of type "%s", but only scalars and stream resources are supported.', \get_class($this->input), \gettype($input)));
                     }
                     $input = (string) $input;
@@ -135,7 +143,11 @@ abstract class AbstractPipes implements PipesInterface
             }
 
             if ($input) {
+<<<<<<< HEAD
                 while (true) {
+=======
+                for (;;) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $data = fread($input, self::CHUNK_SIZE);
                     if (!isset($data[0])) {
                         break;
@@ -173,7 +185,11 @@ abstract class AbstractPipes implements PipesInterface
     /**
      * @internal
      */
+<<<<<<< HEAD
     public function handleError(int $type, string $msg)
+=======
+    public function handleError($type, $msg)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->lastError = $msg;
     }

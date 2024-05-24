@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 /**
  * This file is part of the Carbon package.
  *
@@ -9,11 +10,17 @@
  * file that was distributed with this source code.
  */
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 namespace Carbon\Cli;
 
 class Invoker
 {
+<<<<<<< HEAD
     public const CLI_CLASS_NAME = 'Carbon\\Cli';
+=======
+    const CLI_CLASS_NAME = 'Carbon\\Cli';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     protected function runWithCli(string $className, array $parameters): bool
     {

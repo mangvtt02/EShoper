@@ -165,7 +165,11 @@
     </xs:group>
     <xs:complexType name="directoryFilterType">
         <xs:simpleContent>
+<<<<<<< HEAD
             <xs:extension base="xs:string">
+=======
+            <xs:extension base="xs:anyURI">
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 <xs:attribute type="xs:string" name="prefix" default=""/>
                 <xs:attribute type="xs:string" name="suffix" default="Test.php"/>
                 <xs:attributeGroup ref="phpVersionGroup"/>
@@ -244,7 +248,11 @@
         <xs:attribute name="cacheTokens" type="xs:boolean" default="false"/>
         <xs:attribute name="colors" type="xs:boolean" default="false"/>
         <xs:attribute name="columns" type="columnsType" default="80"/>
+<<<<<<< HEAD
         <xs:attribute name="convertDeprecationsToExceptions" type="xs:boolean" default="false"/>
+=======
+        <xs:attribute name="convertDeprecationsToExceptions" type="xs:boolean" default="true"/>
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         <xs:attribute name="convertErrorsToExceptions" type="xs:boolean" default="true"/>
         <xs:attribute name="convertNoticesToExceptions" type="xs:boolean" default="true"/>
         <xs:attribute name="convertWarningsToExceptions" type="xs:boolean" default="true"/>
@@ -282,7 +290,11 @@
         <xs:attribute name="stderr" type="xs:boolean" default="false"/>
         <xs:attribute name="reverseDefectList" type="xs:boolean" default="false"/>
         <xs:attribute name="registerMockObjectsFromTestArgumentsRecursively" type="xs:boolean" default="false"/>
+<<<<<<< HEAD
         <xs:attribute name="extensionsDirectory" type="xs:anyURI"/>
+=======
+        <xs:attribute name="extensionsDirectory" type="xs:string"/>
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         <xs:attribute name="executionOrder" type="executionOrderType" default="default"/>
         <xs:attribute name="resolveDependencies" type="xs:boolean" default="true"/>
         <xs:attribute name="noInteraction" type="xs:boolean" default="false"/>
@@ -309,10 +321,15 @@
     </xs:complexType>
     <xs:complexType name="testSuiteType">
         <xs:sequence>
+<<<<<<< HEAD
             <xs:choice minOccurs="0" maxOccurs="unbounded">
                 <xs:group ref="pathGroup"/>
                 <xs:element name="exclude" type="xs:string"/>
             </xs:choice>
+=======
+            <xs:group ref="pathGroup"/>
+            <xs:element name="exclude" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         </xs:sequence>
         <xs:attribute name="name" type="xs:string" use="required"/>
     </xs:complexType>

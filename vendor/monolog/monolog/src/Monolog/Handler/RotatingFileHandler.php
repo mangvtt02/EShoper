@@ -30,6 +30,7 @@ class RotatingFileHandler extends StreamHandler
     public const FILE_PER_MONTH = 'Y-m';
     public const FILE_PER_YEAR = 'Y';
 
+<<<<<<< HEAD
     /** @var string */
     protected $filename;
     /** @var int */
@@ -41,11 +42,23 @@ class RotatingFileHandler extends StreamHandler
     /** @var string */
     protected $filenameFormat;
     /** @var string */
+=======
+    protected $filename;
+    protected $maxFiles;
+    protected $mustRotate;
+    protected $nextRotation;
+    protected $filenameFormat;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     protected $dateFormat;
 
     /**
      * @param string     $filename
      * @param int        $maxFiles       The maximal amount of files to keep (0 means unlimited)
+<<<<<<< HEAD
+=======
+     * @param string|int $level          The minimum logging level at which this handler will be triggered
+     * @param bool       $bubble         Whether the messages that are handled can bubble up the stack or not
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param int|null   $filePermission Optional file permissions (default (0644) are only for owner read/write)
      * @param bool       $useLocking     Try to lock log file before doing any writes
      */
@@ -61,7 +74,11 @@ class RotatingFileHandler extends StreamHandler
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function close(): void
     {
@@ -73,7 +90,11 @@ class RotatingFileHandler extends StreamHandler
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function reset()
     {
@@ -108,13 +129,21 @@ class RotatingFileHandler extends StreamHandler
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function write(array $record): void
     {
         // on the first record written, if the log is new, we should rotate (once per day)
         if (null === $this->mustRotate) {
+<<<<<<< HEAD
             $this->mustRotate = null === $this->url || !file_exists($this->url);
+=======
+            $this->mustRotate = !file_exists($this->url);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if ($this->nextRotation <= $record['datetime']) {
@@ -140,11 +169,14 @@ class RotatingFileHandler extends StreamHandler
         }
 
         $logFiles = glob($this->getGlobPattern());
+<<<<<<< HEAD
         if (false === $logFiles) {
             // failed to glob
             return;
         }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($this->maxFiles >= count($logFiles)) {
             // no files to remove
             return;
@@ -179,7 +211,11 @@ class RotatingFileHandler extends StreamHandler
             $fileInfo['dirname'] . '/' . $this->filenameFormat
         );
 
+<<<<<<< HEAD
         if (isset($fileInfo['extension'])) {
+=======
+        if (!empty($fileInfo['extension'])) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $timedFilename .= '.'.$fileInfo['extension'];
         }
 
@@ -191,6 +227,7 @@ class RotatingFileHandler extends StreamHandler
         $fileInfo = pathinfo($this->filename);
         $glob = str_replace(
             ['{filename}', '{date}'],
+<<<<<<< HEAD
             [$fileInfo['filename'], str_replace(
                 ['Y', 'y', 'm', 'd'],
                 ['[0-9][0-9][0-9][0-9]', '[0-9][0-9]', '[0-9][0-9]', '[0-9][0-9]'],
@@ -199,6 +236,12 @@ class RotatingFileHandler extends StreamHandler
             $fileInfo['dirname'] . '/' . $this->filenameFormat
         );
         if (isset($fileInfo['extension'])) {
+=======
+            [$fileInfo['filename'], '[0-9][0-9][0-9][0-9]*'],
+            $fileInfo['dirname'] . '/' . $this->filenameFormat
+        );
+        if (!empty($fileInfo['extension'])) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $glob .= '.'.$fileInfo['extension'];
         }
 

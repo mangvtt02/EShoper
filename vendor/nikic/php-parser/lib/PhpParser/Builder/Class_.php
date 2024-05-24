@@ -4,6 +4,7 @@ namespace PhpParser\Builder;
 
 use PhpParser;
 use PhpParser\BuilderHelpers;
+<<<<<<< HEAD
 use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Name;
@@ -25,6 +26,23 @@ class Class_ extends Declaration {
     protected array $methods = [];
     /** @var list<Node\AttributeGroup> */
     protected array $attributeGroups = [];
+=======
+use PhpParser\Node\Name;
+use PhpParser\Node\Stmt;
+
+class Class_ extends Declaration
+{
+    protected $name;
+
+    protected $extends = null;
+    protected $implements = [];
+    protected $flags = 0;
+
+    protected $uses = [];
+    protected $constants = [];
+    protected $properties = [];
+    protected $methods = [];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Creates a class builder.
@@ -69,7 +87,11 @@ class Class_ extends Declaration {
      * @return $this The builder instance (for fluid interface)
      */
     public function makeAbstract() {
+<<<<<<< HEAD
         $this->flags = BuilderHelpers::addClassModifier($this->flags, Modifiers::ABSTRACT);
+=======
+        $this->flags = BuilderHelpers::addModifier($this->flags, Stmt\Class_::MODIFIER_ABSTRACT);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $this;
     }
@@ -80,6 +102,7 @@ class Class_ extends Declaration {
      * @return $this The builder instance (for fluid interface)
      */
     public function makeFinal() {
+<<<<<<< HEAD
         $this->flags = BuilderHelpers::addClassModifier($this->flags, Modifiers::FINAL);
 
         return $this;
@@ -92,6 +115,9 @@ class Class_ extends Declaration {
      */
     public function makeReadonly() {
         $this->flags = BuilderHelpers::addClassModifier($this->flags, Modifiers::READONLY);
+=======
+        $this->flags = BuilderHelpers::addModifier($this->flags, Stmt\Class_::MODIFIER_FINAL);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $this;
     }
@@ -106,6 +132,7 @@ class Class_ extends Declaration {
     public function addStmt($stmt) {
         $stmt = BuilderHelpers::normalizeNode($stmt);
 
+<<<<<<< HEAD
         if ($stmt instanceof Stmt\Property) {
             $this->properties[] = $stmt;
         } elseif ($stmt instanceof Stmt\ClassMethod) {
@@ -130,6 +157,21 @@ class Class_ extends Declaration {
      */
     public function addAttribute($attribute) {
         $this->attributeGroups[] = BuilderHelpers::normalizeAttribute($attribute);
+=======
+        $targets = [
+            Stmt\TraitUse::class    => &$this->uses,
+            Stmt\ClassConst::class  => &$this->constants,
+            Stmt\Property::class    => &$this->properties,
+            Stmt\ClassMethod::class => &$this->methods,
+        ];
+
+        $class = \get_class($stmt);
+        if (!isset($targets[$class])) {
+            throw new \LogicException(sprintf('Unexpected node of type "%s"', $stmt->getType()));
+        }
+
+        $targets[$class][] = $stmt;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $this;
     }
@@ -139,13 +181,20 @@ class Class_ extends Declaration {
      *
      * @return Stmt\Class_ The built class node
      */
+<<<<<<< HEAD
     public function getNode(): PhpParser\Node {
+=======
+    public function getNode() : PhpParser\Node {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return new Stmt\Class_($this->name, [
             'flags' => $this->flags,
             'extends' => $this->extends,
             'implements' => $this->implements,
             'stmts' => array_merge($this->uses, $this->constants, $this->properties, $this->methods),
+<<<<<<< HEAD
             'attrGroups' => $this->attributeGroups,
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         ], $this->attributes);
     }
 }

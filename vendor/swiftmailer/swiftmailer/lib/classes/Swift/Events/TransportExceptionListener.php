@@ -17,6 +17,11 @@ interface Swift_Events_TransportExceptionListener extends Swift_Events_EventList
 {
     /**
      * Invoked as a TransportException is thrown in the Transport system.
+<<<<<<< HEAD
+=======
+     *
+     * @param Swift_Events_TransportExceptionEvent $evt
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function exceptionThrown(Swift_Events_TransportExceptionEvent $evt);
 }

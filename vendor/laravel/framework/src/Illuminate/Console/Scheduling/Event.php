@@ -10,8 +10,13 @@ use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Support\Arr;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Reflector;
+=======
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Date;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Illuminate\Support\Traits\Macroable;
 use Psr\Http\Client\ClientExceptionInterface;
 use Symfony\Component\Process\Process;
@@ -319,10 +324,17 @@ class Event
      */
     protected function expressionPasses()
     {
+<<<<<<< HEAD
         $date = Date::now();
 
         if ($this->timezone) {
             $date = $date->setTimezone($this->timezone);
+=======
+        $date = Carbon::now();
+
+        if ($this->timezone) {
+            $date->setTimezone($this->timezone);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return CronExpression::factory($this->expression)->isDue($date->toDateTimeString());
@@ -577,7 +589,11 @@ class Event
         return function (Container $container, HttpClient $http) use ($url) {
             try {
                 $http->get($url);
+<<<<<<< HEAD
             } catch (ClientExceptionInterface|TransferException $e) {
+=======
+            } catch (ClientExceptionInterface | TransferException $e) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $container->make(ExceptionHandler::class)->report($e);
             }
         };
@@ -672,7 +688,11 @@ class Event
      */
     public function when($callback)
     {
+<<<<<<< HEAD
         $this->filters[] = Reflector::isCallable($callback) ? $callback : function () use ($callback) {
+=======
+        $this->filters[] = is_callable($callback) ? $callback : function () use ($callback) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $callback;
         };
 
@@ -687,7 +707,11 @@ class Event
      */
     public function skip($callback)
     {
+<<<<<<< HEAD
         $this->rejects[] = Reflector::isCallable($callback) ? $callback : function () use ($callback) {
+=======
+        $this->rejects[] = is_callable($callback) ? $callback : function () use ($callback) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $callback;
         };
 

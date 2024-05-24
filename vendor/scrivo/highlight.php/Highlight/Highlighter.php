@@ -45,9 +45,12 @@ class Highlighter
      */
     const SPAN_END_TAG = "</span>";
 
+<<<<<<< HEAD
     /** @var bool Disable warnings thrown on PHP installations without multibyte functions available. */
     public static $DISABLE_MULTIBYTE_WARNING = false;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     /** @var bool */
     private $safeMode = true;
 
@@ -82,6 +85,7 @@ class Highlighter
     /** @var string The current code we are highlighting */
     private $codeToHighlight;
 
+<<<<<<< HEAD
     /** @var bool */
     private $needsMultibyteSupport = false;
 
@@ -94,6 +98,8 @@ class Highlighter
     /** @var string[] A list of all the bundled languages */
     private static $bundledLanguages = array();
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     /** @var array<string, Language> A mapping of a language ID to a Language definition */
     private static $classMap = array();
 
@@ -103,6 +109,7 @@ class Highlighter
     /** @var array<string, string> A mapping from alias (key) to main language ID (value) */
     private static $aliases = array();
 
+<<<<<<< HEAD
     /**
      * @param bool $loadAllLanguages If true, will automatically register all languages distributed with this library.
      *                               If false, user must explicitly register languages by calling `registerLanguage()`.
@@ -111,6 +118,9 @@ class Highlighter
      * @see Highlighter::registerLanguage()
      */
     public function __construct($loadAllLanguages = true)
+=======
+    public function __construct()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->lastMatch = new RegExMatch(array());
         $this->lastMatch->type = "";
@@ -126,6 +136,7 @@ class Highlighter
             ),
         );
 
+<<<<<<< HEAD
         if ($loadAllLanguages) {
             self::registerAllLanguages();
         }
@@ -210,6 +221,19 @@ class Highlighter
      * @return void
      */
     public static function registerAllLanguages()
+=======
+        self::registerLanguages();
+    }
+
+    /**
+     * Loop through all of the languages in our `languages` folder and automatically register them all.
+     *
+     * @since 8.3.0.0
+     *
+     * @return void
+     */
+    private static function registerLanguages()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // Languages that take precedence in the classMap array.
         $languagePath = __DIR__ . DIRECTORY_SEPARATOR . "languages" . DIRECTORY_SEPARATOR;
@@ -220,7 +244,10 @@ class Highlighter
             }
         }
 
+<<<<<<< HEAD
         // @TODO In 10.x, call `listBundledLanguages()` instead when it's a generator
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $d = @dir($languagePath);
         if ($d) {
             while (($entry = $d->read()) !== false) {
@@ -234,6 +261,11 @@ class Highlighter
             }
             $d->close();
         }
+<<<<<<< HEAD
+=======
+
+        self::$languages = array_keys(self::$classMap);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -253,9 +285,12 @@ class Highlighter
             $lang = new Language($languageId, $filePath);
             self::$classMap[$languageId] = $lang;
 
+<<<<<<< HEAD
             self::$languages[] = $languageId;
             self::$languages = array_unique(self::$languages);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if ($lang->aliases) {
                 foreach ($lang->aliases as $alias) {
                     self::$aliases[$alias] = $languageId;
@@ -267,6 +302,7 @@ class Highlighter
     }
 
     /**
+<<<<<<< HEAD
      * Clear all registered languages.
      *
      * @since 9.18.1.4
@@ -281,6 +317,8 @@ class Highlighter
     }
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param RegEx|null $re
      * @param string     $lexeme
      *
@@ -340,7 +378,11 @@ class Highlighter
      */
     private function keywordMatch($mode, $match)
     {
+<<<<<<< HEAD
         $kwd = $this->language->case_insensitive ? $this->strToLower($match[0]) : $match[0];
+=======
+        $kwd = $this->language->case_insensitive ? mb_strtolower($match[0], "UTF-8") : $match[0];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return isset($mode->keywords[$kwd]) ? $mode->keywords[$kwd] : null;
     }
@@ -651,6 +693,7 @@ class Highlighter
         return $code;
     }
 
+<<<<<<< HEAD
     private function checkMultibyteNecessity()
     {
         $this->needsMultibyteSupport = preg_match('/[^\x00-\x7F]/', $this->codeToHighlight) === 1;
@@ -699,12 +742,26 @@ class Highlighter
      * @param string[] $set An array of language games to use for autodetection.
      *                      This defaults to a typical set Web development
      *                      languages.
+=======
+    /**
+     * Set the set of languages used for autodetection. When using
+     * autodetection the code to highlight will be probed for every language
+     * in this set. Limiting this set to only the languages you want to use
+     * will greatly improve highlighting speed.
+     *
+     * @param string[] $set An array of language games to use for autodetection. This defaults
+     *                      to a typical set Web development languages.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return void
      */
     public function setAutodetectLanguages(array $set)
     {
         $this->options['languages'] = array_unique($set);
+<<<<<<< HEAD
+=======
+        self::registerLanguages();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -831,8 +888,11 @@ class Highlighter
             throw new \DomainException("Unknown language: \"$languageName\"");
         }
 
+<<<<<<< HEAD
         $this->checkMultibyteNecessity();
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->language->compile($this->safeMode);
         $this->top = $continuation ? $continuation : $this->language;
         $this->continuations = array();
@@ -971,6 +1031,7 @@ class Highlighter
      * setAutodetectLanguages will turn on autodetection for all supported
      * languages.
      *
+<<<<<<< HEAD
      * @deprecated use `Highlighter::listRegisteredLanguages()` or `Highlighter::listBundledLanguages()` instead
      *
      * @param bool $include_aliases specify whether language aliases
@@ -978,6 +1039,11 @@ class Highlighter
      *
      * @since 9.18.1.4 Deprecated in favor of `Highlighter::listRegisteredLanguages()`
      *                 and `Highlighter::listBundledLanguages()`.
+=======
+     * @param bool $include_aliases specify whether language aliases
+     *                              should be included as well
+     *
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @since 9.12.0.3 The `$include_aliases` parameter was added
      * @since 8.3.0.0
      *
@@ -985,6 +1051,7 @@ class Highlighter
      */
     public function listLanguages($include_aliases = false)
     {
+<<<<<<< HEAD
         @trigger_error('This method is deprecated in favor `Highlighter::listRegisteredLanguages()` or `Highlighter::listBundledLanguages()`. This function will be removed in highlight.php 10.', E_USER_DEPRECATED);
 
         if (empty(self::$languages)) {
@@ -993,6 +1060,8 @@ class Highlighter
             return self::listBundledLanguages();
         }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($include_aliases === true) {
             return array_merge(self::$languages, array_keys(self::$aliases));
         }

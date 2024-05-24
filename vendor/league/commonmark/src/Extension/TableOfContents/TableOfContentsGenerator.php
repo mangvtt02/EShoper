@@ -24,7 +24,10 @@ use League\CommonMark\Extension\TableOfContents\Normalizer\AsIsNormalizerStrateg
 use League\CommonMark\Extension\TableOfContents\Normalizer\FlatNormalizerStrategy;
 use League\CommonMark\Extension\TableOfContents\Normalizer\NormalizerStrategyInterface;
 use League\CommonMark\Extension\TableOfContents\Normalizer\RelativeNormalizerStrategy;
+<<<<<<< HEAD
 use League\CommonMark\Inline\Element\AbstractStringContainer;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use League\CommonMark\Inline\Element\Link;
 
 final class TableOfContentsGenerator implements TableOfContentsGeneratorInterface
@@ -81,7 +84,11 @@ final class TableOfContentsGenerator implements TableOfContentsGeneratorInterfac
             $toc->setEndLine($heading->getEndLine());
 
             // Create the new link
+<<<<<<< HEAD
             $link = new Link('#' . $headingLink->getSlug(), self::getHeadingText($heading));
+=======
+            $link = new Link('#' . $headingLink->getSlug(), $heading->getStringContent());
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $paragraph = new Paragraph();
             $paragraph->setStartLine($heading->getStartLine());
             $paragraph->setEndLine($heading->getEndLine());
@@ -152,6 +159,7 @@ final class TableOfContentsGenerator implements TableOfContentsGeneratorInterfac
                 throw new InvalidOptionException(\sprintf('Invalid table of contents normalization strategy "%s"', $this->normalizationStrategy));
         }
     }
+<<<<<<< HEAD
 
     /**
      * @return string
@@ -169,4 +177,6 @@ final class TableOfContentsGenerator implements TableOfContentsGeneratorInterfac
 
         return $text;
     }
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

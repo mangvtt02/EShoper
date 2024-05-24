@@ -9,8 +9,11 @@
  */
 namespace PHPUnit\Util\TestDox;
 
+<<<<<<< HEAD
 use function sprintf;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
@@ -19,7 +22,11 @@ final class HtmlResultPrinter extends ResultPrinter
     /**
      * @var string
      */
+<<<<<<< HEAD
     private const PAGE_HEADER = <<<'EOT'
+=======
+    private const PAGE_HEADER = <<<EOT
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 <!doctype html>
 <html lang="en">
     <head>
@@ -31,8 +38,11 @@ final class HtmlResultPrinter extends ResultPrinter
                 font-variant-ligatures: common-ligatures;
                 font-kerning: normal;
                 margin-left: 2em;
+<<<<<<< HEAD
                 background-color: #ffffff;
                 color: #000000;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
 
             body > ul > li {
@@ -57,7 +67,11 @@ EOT;
     /**
      * @var string
      */
+<<<<<<< HEAD
     private const CLASS_HEADER = <<<'EOT'
+=======
+    private const CLASS_HEADER = <<<EOT
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         <h2 id="%s">%s</h2>
         <ul>
@@ -67,14 +81,22 @@ EOT;
     /**
      * @var string
      */
+<<<<<<< HEAD
     private const CLASS_FOOTER = <<<'EOT'
+=======
+    private const CLASS_FOOTER = <<<EOT
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         </ul>
 EOT;
 
     /**
      * @var string
      */
+<<<<<<< HEAD
     private const PAGE_FOOTER = <<<'EOT'
+=======
+    private const PAGE_FOOTER = <<<EOT
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     </body>
 </html>
@@ -94,7 +116,11 @@ EOT;
     protected function startClass(string $name): void
     {
         $this->write(
+<<<<<<< HEAD
             sprintf(
+=======
+            \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 self::CLASS_HEADER,
                 $name,
                 $this->currentTestClassPrettified
@@ -108,7 +134,11 @@ EOT;
     protected function onTest($name, bool $success = true): void
     {
         $this->write(
+<<<<<<< HEAD
             sprintf(
+=======
+            \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 "            <li style=\"color: %s;\">%s %s</li>\n",
                 $success ? '#555753' : '#ef2929',
                 $success ? '✓' : '❌',

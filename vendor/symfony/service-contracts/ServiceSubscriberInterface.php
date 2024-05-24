@@ -47,7 +47,11 @@ interface ServiceSubscriberInterface
      *  * ['?Psr\Log\LoggerInterface'] is a shortcut for
      *  * ['Psr\Log\LoggerInterface' => '?Psr\Log\LoggerInterface']
      *
+<<<<<<< HEAD
      * @return string[] The required service types, optionally keyed by service names
+=======
+     * @return array The required service types, optionally keyed by service names
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public static function getSubscribedServices();
 }

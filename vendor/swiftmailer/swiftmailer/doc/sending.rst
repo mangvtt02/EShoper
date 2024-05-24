@@ -95,8 +95,12 @@ within your application and adjust the settings accordingly if the code is
 moved or if the SMTP server is changed.
 
 Some SMTP servers -- Google for example -- use encryption for security reasons.
+<<<<<<< HEAD
 Swift Mailer supports using both ``ssl`` (SMTPS = SMTP over TLS) and ``tls``
 (SMTP with STARTTLS) encryption settings.
+=======
+Swift Mailer supports using both SSL and TLS encryption settings.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 Using the SMTP Transport
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -130,6 +134,7 @@ A connection to the SMTP server will be established upon the first call to
 Encrypted SMTP
 ^^^^^^^^^^^^^^
 
+<<<<<<< HEAD
 You can use ``ssl`` (SMTPS) or ``tls`` (STARTTLS) encryption with the SMTP Transport
 by specifying it as a parameter or with a method call::
 
@@ -138,6 +143,13 @@ by specifying it as a parameter or with a method call::
     $transport = new Swift_SmtpTransport('smtp.example.org', 587, 'ssl');
     // Option #2: SMTP with STARTTLS (best effort encryption):
     $transport = new Swift_SmtpTransport('smtp.example.org', 587, 'tls');
+=======
+You can use SSL or TLS encryption with the SMTP Transport by specifying it as a
+parameter or with a method call::
+
+    // Create the Transport
+    $transport = new Swift_SmtpTransport('smtp.example.org', 587, 'ssl');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     // Create the Mailer using your created Transport
     $mailer = new Swift_Mailer($transport);
@@ -147,7 +159,12 @@ A connection to the SMTP server will be established upon the first call to
 settings.
 
 .. note::
+<<<<<<< HEAD
     For SMTPS or STARTTLS encryption to work your PHP installation must have
+=======
+
+    For SSL or TLS encryption to work your PHP installation must have
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     appropriate OpenSSL transports wrappers. You can check if "tls" and/or
     "ssl" are present in your PHP installation by using the PHP function
     ``stream_get_transports()``.
@@ -156,6 +173,7 @@ settings.
     If you are using Mailcatcher_, make sure you do not set the encryption
     for the ``Swift_SmtpTransport``, since Mailcatcher does not support encryption.
 
+<<<<<<< HEAD
 .. note::
     When in doubt, try ``ssl`` first for higher security, since the communication
     is always encrypted.
@@ -164,6 +182,8 @@ settings.
     Usually, port 587 or 465 is used for encrypted SMTP. Check the documentation
     of your mail provider.
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 SMTP with a Username and Password
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

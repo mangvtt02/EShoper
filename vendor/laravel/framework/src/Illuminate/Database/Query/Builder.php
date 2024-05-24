@@ -698,7 +698,11 @@ class Builder
         );
 
         if (! $value instanceof Expression) {
+<<<<<<< HEAD
             $this->addBinding($this->flattenValue($value), 'where');
+=======
+            $this->addBinding($value, 'where');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this;
@@ -1043,7 +1047,11 @@ class Builder
 
         $this->wheres[] = compact('type', 'column', 'values', 'boolean', 'not');
 
+<<<<<<< HEAD
         $this->addBinding(array_slice($this->cleanBindings(Arr::flatten($values)), 0, 2), 'where');
+=======
+        $this->addBinding($this->cleanBindings($values), 'where');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $this;
     }
@@ -1111,8 +1119,11 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
+<<<<<<< HEAD
         $value = $this->flattenValue($value);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('Y-m-d');
         }
@@ -1152,8 +1163,11 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
+<<<<<<< HEAD
         $value = $this->flattenValue($value);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('H:i:s');
         }
@@ -1193,8 +1207,11 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
+<<<<<<< HEAD
         $value = $this->flattenValue($value);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('d');
         }
@@ -1238,8 +1255,11 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
+<<<<<<< HEAD
         $value = $this->flattenValue($value);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('m');
         }
@@ -1283,8 +1303,11 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
+<<<<<<< HEAD
         $value = $this->flattenValue($value);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('Y');
         }
@@ -1593,7 +1616,11 @@ class Builder
         $this->wheres[] = compact('type', 'column', 'operator', 'value', 'boolean');
 
         if (! $value instanceof Expression) {
+<<<<<<< HEAD
             $this->addBinding((int) $this->flattenValue($value));
+=======
+            $this->addBinding($value);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this;
@@ -1742,7 +1769,11 @@ class Builder
         $this->havings[] = compact('type', 'column', 'operator', 'value', 'boolean');
 
         if (! $value instanceof Expression) {
+<<<<<<< HEAD
             $this->addBinding($this->flattenValue($value), 'having');
+=======
+            $this->addBinding($value, 'having');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this;
@@ -1780,7 +1811,11 @@ class Builder
 
         $this->havings[] = compact('type', 'column', 'values', 'boolean', 'not');
 
+<<<<<<< HEAD
         $this->addBinding(array_slice($this->cleanBindings(Arr::flatten($values)), 0, 2), 'having');
+=======
+        $this->addBinding($this->cleanBindings($values), 'having');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $this;
     }
@@ -1932,7 +1967,11 @@ class Builder
     {
         $property = $this->unions ? 'unionOffset' : 'offset';
 
+<<<<<<< HEAD
         $this->$property = max(0, (int) $value);
+=======
+        $this->$property = max(0, $value);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $this;
     }
@@ -1959,7 +1998,11 @@ class Builder
         $property = $this->unions ? 'unionLimit' : 'limit';
 
         if ($value >= 0) {
+<<<<<<< HEAD
             $this->$property = ! is_null($value) ? (int) $value : null;
+=======
+            $this->$property = $value;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this;
@@ -2959,6 +3002,7 @@ class Builder
     }
 
     /**
+<<<<<<< HEAD
      * Get a scalar type value from an unknown type of input.
      *
      * @param  mixed  $value
@@ -2970,6 +3014,8 @@ class Builder
     }
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Get the default key name of the table.
      *
      * @return string

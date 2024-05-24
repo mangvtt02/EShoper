@@ -51,7 +51,11 @@ class MongoDbSessionHandler extends AbstractSessionHandler
      * A TTL collections can be used on MongoDB 2.2+ to cleanup expired sessions
      * automatically. Such an index can for example look like this:
      *
+<<<<<<< HEAD
      *     db.<session-collection>.createIndex(
+=======
+     *     db.<session-collection>.ensureIndex(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *         { "<expiry-field>": 1 },
      *         { "expireAfterSeconds": 0 }
      *     )
@@ -82,7 +86,10 @@ class MongoDbSessionHandler extends AbstractSessionHandler
     /**
      * @return bool
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function close()
     {
         return true;
@@ -101,6 +108,7 @@ class MongoDbSessionHandler extends AbstractSessionHandler
     }
 
     /**
+<<<<<<< HEAD
      * @return int|false
      */
     #[\ReturnTypeWillChange]
@@ -109,6 +117,17 @@ class MongoDbSessionHandler extends AbstractSessionHandler
         return $this->getCollection()->deleteMany([
             $this->options['expiry_field'] => ['$lt' => new \MongoDB\BSON\UTCDateTime()],
         ])->getDeletedCount();
+=======
+     * @return bool
+     */
+    public function gc($maxlifetime)
+    {
+        $this->getCollection()->deleteMany([
+            $this->options['expiry_field'] => ['$lt' => new \MongoDB\BSON\UTCDateTime()],
+        ]);
+
+        return true;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -116,7 +135,11 @@ class MongoDbSessionHandler extends AbstractSessionHandler
      */
     protected function doWrite($sessionId, $data)
     {
+<<<<<<< HEAD
         $expiry = new \MongoDB\BSON\UTCDateTime((time() + (int) \ini_get('session.gc_maxlifetime')) * 1000);
+=======
+        $expiry = new \MongoDB\BSON\UTCDateTime((time() + (int) ini_get('session.gc_maxlifetime')) * 1000);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $fields = [
             $this->options['time_field'] => new \MongoDB\BSON\UTCDateTime(),
@@ -136,10 +159,16 @@ class MongoDbSessionHandler extends AbstractSessionHandler
     /**
      * @return bool
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
     public function updateTimestamp($sessionId, $data)
     {
         $expiry = new \MongoDB\BSON\UTCDateTime((time() + (int) \ini_get('session.gc_maxlifetime')) * 1000);
+=======
+    public function updateTimestamp($sessionId, $data)
+    {
+        $expiry = new \MongoDB\BSON\UTCDateTime((time() + (int) ini_get('session.gc_maxlifetime')) * 1000);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $this->getCollection()->updateOne(
             [$this->options['id_field'] => $sessionId],

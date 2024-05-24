@@ -107,7 +107,11 @@ class Router implements RouterInterface, RequestMatcherInterface
         $this->loader = $loader;
         $this->resource = $resource;
         $this->logger = $logger;
+<<<<<<< HEAD
         $this->context = $context ?? new RequestContext();
+=======
+        $this->context = $context ?: new RequestContext();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->setOptions($options);
         $this->defaultLocale = $defaultLocale;
     }
@@ -439,7 +443,11 @@ class Router implements RouterInterface, RequestMatcherInterface
 
     private static function getCompiledRoutes(string $path): array
     {
+<<<<<<< HEAD
         if ([] === self::$cache && \function_exists('opcache_invalidate') && filter_var(\ini_get('opcache.enable'), \FILTER_VALIDATE_BOOLEAN) && (!\in_array(\PHP_SAPI, ['cli', 'phpdbg'], true) || filter_var(\ini_get('opcache.enable_cli'), \FILTER_VALIDATE_BOOLEAN))) {
+=======
+        if ([] === self::$cache && \function_exists('opcache_invalidate') && filter_var(ini_get('opcache.enable'), \FILTER_VALIDATE_BOOLEAN) && (!\in_array(\PHP_SAPI, ['cli', 'phpdbg'], true) || filter_var(ini_get('opcache.enable_cli'), \FILTER_VALIDATE_BOOLEAN))) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             self::$cache = null;
         }
 

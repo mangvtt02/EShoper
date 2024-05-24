@@ -10,6 +10,7 @@
 namespace PHPUnit\Framework\Constraint;
 
 use PHPUnit\Framework\Assert;
+<<<<<<< HEAD
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
@@ -17,6 +18,12 @@ use SebastianBergmann\RecursionContext\InvalidArgumentException;
 /**
  * @deprecated https://github.com/sebastianbergmann/phpunit/issues/3338
  *
+=======
+use PHPUnit\Framework\ExpectationFailedException;
+
+/**
+ * @deprecated https://github.com/sebastianbergmann/phpunit/issues/3338
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @codeCoverageIgnore
  */
 final class Attribute extends Composite
@@ -34,7 +41,11 @@ final class Attribute extends Composite
     }
 
     /**
+<<<<<<< HEAD
      * Evaluates the constraint for parameter $other.
+=======
+     * Evaluates the constraint for parameter $other
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -43,9 +54,15 @@ final class Attribute extends Composite
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
+<<<<<<< HEAD
      * @throws Exception
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
+=======
+     * @throws ExpectationFailedException
+     * @throws \PHPUnit\Framework\Exception
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
     {
@@ -68,7 +85,11 @@ final class Attribute extends Composite
     }
 
     /**
+<<<<<<< HEAD
      * Returns the description of the failure.
+=======
+     * Returns the description of the failure
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.

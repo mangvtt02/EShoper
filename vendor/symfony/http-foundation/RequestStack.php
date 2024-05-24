@@ -94,6 +94,14 @@ class RequestStack
     {
         $pos = \count($this->requests) - 2;
 
+<<<<<<< HEAD
         return $this->requests[$pos] ?? null;
+=======
+        if (!isset($this->requests[$pos])) {
+            return null;
+        }
+
+        return $this->requests[$pos];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -26,6 +30,10 @@ use Psy\Output\ShellOutput;
 use Psy\VarDumper\Presenter;
 use Psy\VarDumper\PresenterAware;
 use Symfony\Component\Console\Formatter\OutputFormatter;
+<<<<<<< HEAD
+=======
+use Symfony\Component\Console\Helper\TableHelper;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -61,6 +69,7 @@ class ListCommand extends ReflectingCommand implements PresenterAware
             ->setDefinition([
                 new CodeArgument('target', CodeArgument::OPTIONAL, 'A target class or object to list.'),
 
+<<<<<<< HEAD
                 new InputOption('vars', '', InputOption::VALUE_NONE, 'Display variables.'),
                 new InputOption('constants', 'c', InputOption::VALUE_NONE, 'Display defined constants.'),
                 new InputOption('functions', 'f', InputOption::VALUE_NONE, 'Display defined functions.'),
@@ -72,11 +81,25 @@ class ListCommand extends ReflectingCommand implements PresenterAware
 
                 new InputOption('properties', 'p', InputOption::VALUE_NONE, 'Display class or object properties (public properties by default).'),
                 new InputOption('methods', 'm', InputOption::VALUE_NONE, 'Display class or object methods (public methods by default).'),
+=======
+                new InputOption('vars',        '',  InputOption::VALUE_NONE,     'Display variables.'),
+                new InputOption('constants',   'c', InputOption::VALUE_NONE,     'Display defined constants.'),
+                new InputOption('functions',   'f', InputOption::VALUE_NONE,     'Display defined functions.'),
+                new InputOption('classes',     'k', InputOption::VALUE_NONE,     'Display declared classes.'),
+                new InputOption('interfaces',  'I', InputOption::VALUE_NONE,     'Display declared interfaces.'),
+                new InputOption('traits',      't', InputOption::VALUE_NONE,     'Display declared traits.'),
+
+                new InputOption('no-inherit',  '',  InputOption::VALUE_NONE,     'Exclude inherited methods, properties and constants.'),
+
+                new InputOption('properties',  'p', InputOption::VALUE_NONE,     'Display class or object properties (public properties by default).'),
+                new InputOption('methods',     'm', InputOption::VALUE_NONE,     'Display class or object methods (public methods by default).'),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                 $grep,
                 $insensitive,
                 $invert,
 
+<<<<<<< HEAD
                 new InputOption('globals', 'g', InputOption::VALUE_NONE, 'Include global variables.'),
                 new InputOption('internal', 'n', InputOption::VALUE_NONE, 'Limit to internal functions and classes.'),
                 new InputOption('user', 'u', InputOption::VALUE_NONE, 'Limit to user-defined constants, functions and classes.'),
@@ -84,6 +107,15 @@ class ListCommand extends ReflectingCommand implements PresenterAware
 
                 new InputOption('all', 'a', InputOption::VALUE_NONE, 'Include private and protected methods and properties.'),
                 new InputOption('long', 'l', InputOption::VALUE_NONE, 'List in long format: includes class names and method signatures.'),
+=======
+                new InputOption('globals',     'g', InputOption::VALUE_NONE,     'Include global variables.'),
+                new InputOption('internal',    'n', InputOption::VALUE_NONE,     'Limit to internal functions and classes.'),
+                new InputOption('user',        'u', InputOption::VALUE_NONE,     'Limit to user-defined constants, functions and classes.'),
+                new InputOption('category',    'C', InputOption::VALUE_REQUIRED, 'Limit to constants in a specific category (e.g. "date").'),
+
+                new InputOption('all',         'a', InputOption::VALUE_NONE,     'Include private and protected methods and properties.'),
+                new InputOption('long',        'l', InputOption::VALUE_NONE,     'List in long format: includes class names and method signatures.'),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ])
             ->setDescription('List local, instance or class variables, methods and constants.')
             ->setHelp(
@@ -111,10 +143,15 @@ HELP
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      *
      * @return int 0 if everything went fine, or an exit code
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
+=======
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->validateInput($input);
         $this->initEnumerators();
@@ -212,7 +249,15 @@ HELP
                 $table->addRow([$this->formatItemName($item), $item['value']]);
             }
 
+<<<<<<< HEAD
             $table->render();
+=======
+            if ($table instanceof TableHelper) {
+                $table->render($output);
+            } else {
+                $table->render();
+            }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -220,8 +265,15 @@ HELP
      * Format an item name given its visibility.
      *
      * @param array $item
+<<<<<<< HEAD
      */
     private function formatItemName(array $item): string
+=======
+     *
+     * @return string
+     */
+    private function formatItemName($item)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return \sprintf('<%s>%s</%s>', $item['style'], OutputFormatter::escape($item['name']), $item['style']);
     }
@@ -239,7 +291,11 @@ HELP
             // if no target is passed, there can be no properties or methods
             foreach (['properties', 'methods', 'no-inherit'] as $option) {
                 if ($input->getOption($option)) {
+<<<<<<< HEAD
                     throw new RuntimeException('--'.$option.' does not make sense without a specified target');
+=======
+                    throw new RuntimeException('--' . $option . ' does not make sense without a specified target');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
             }
 
@@ -255,7 +311,11 @@ HELP
             // if a target is passed, classes, functions, etc don't make sense
             foreach (['vars', 'globals'] as $option) {
                 if ($input->getOption($option)) {
+<<<<<<< HEAD
                     throw new RuntimeException('--'.$option.' does not make sense with a specified target');
+=======
+                    throw new RuntimeException('--' . $option . ' does not make sense with a specified target');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
             }
 
@@ -267,9 +327,15 @@ HELP
             }
 
             // default to --constants --properties --methods if no other options are passed
+<<<<<<< HEAD
             $input->setOption('constants', true);
             $input->setOption('properties', true);
             $input->setOption('methods', true);
+=======
+            $input->setOption('constants',  true);
+            $input->setOption('properties', true);
+            $input->setOption('methods',    true);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 }

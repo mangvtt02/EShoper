@@ -126,7 +126,11 @@ trait RouteTrait
     /**
      * Adds the "_controller" entry to defaults.
      *
+<<<<<<< HEAD
      * @param callable|string|array $controller a callable or parseable pseudo-callable
+=======
+     * @param callable|string $controller a callable or parseable pseudo-callable
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return $this
      */

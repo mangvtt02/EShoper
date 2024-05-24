@@ -9,29 +9,52 @@
  */
 namespace PHPUnit\Framework;
 
+<<<<<<< HEAD
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
 final class SkippedTestCase extends TestCase
 {
     /**
+<<<<<<< HEAD
      * @var ?bool
+=======
+     * @var bool
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $backupGlobals = false;
 
     /**
+<<<<<<< HEAD
      * @var ?bool
+=======
+     * @var bool
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $backupStaticAttributes = false;
 
     /**
+<<<<<<< HEAD
      * @var ?bool
+=======
+     * @var bool
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $runTestInSeparateProcess = false;
 
     /**
+<<<<<<< HEAD
+=======
+     * @var bool
+     */
+    protected $useErrorHandler = false;
+
+    /**
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @var string
      */
     private $message;
@@ -51,7 +74,11 @@ final class SkippedTestCase extends TestCase
     /**
      * Returns a string representation of the test case.
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function toString(): string
     {

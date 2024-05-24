@@ -97,18 +97,29 @@ class PlainTextHandler extends Handler
      * Set var dumper callback function.
      *
      * @param  callable $dumper
+<<<<<<< HEAD
      * @return static
+=======
+     * @return void
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setDumper(callable $dumper)
     {
         $this->dumper = $dumper;
+<<<<<<< HEAD
         return $this;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * Add error trace to output.
      * @param  bool|null  $addTraceToOutput
+<<<<<<< HEAD
      * @return bool|static
+=======
+     * @return bool|$this
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function addTraceToOutput($addTraceToOutput = null)
     {
@@ -123,7 +134,11 @@ class PlainTextHandler extends Handler
     /**
      * Add previous exceptions to output.
      * @param  bool|null $addPreviousToOutput
+<<<<<<< HEAD
      * @return bool|static
+=======
+     * @return bool|$this
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function addPreviousToOutput($addPreviousToOutput = null)
     {
@@ -139,7 +154,11 @@ class PlainTextHandler extends Handler
      * Add error trace function arguments to output.
      * Set to True for all frame args, or integer for the n first frame args.
      * @param  bool|integer|null $addTraceFunctionArgsToOutput
+<<<<<<< HEAD
      * @return static|bool|integer
+=======
+     * @return null|bool|integer
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function addTraceFunctionArgsToOutput($addTraceFunctionArgsToOutput = null)
     {
@@ -152,7 +171,10 @@ class PlainTextHandler extends Handler
         } else {
             $this->addTraceFunctionArgsToOutput = $addTraceFunctionArgsToOutput;
         }
+<<<<<<< HEAD
         return $this;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -160,12 +182,18 @@ class PlainTextHandler extends Handler
      * If the limit is reached, the var_dump output is discarded.
      * Prevent memory limit errors.
      * @var integer
+<<<<<<< HEAD
      * @return static
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setTraceFunctionArgsOutputLimit($traceFunctionArgsOutputLimit)
     {
         $this->traceFunctionArgsOutputLimit = (integer) $traceFunctionArgsOutputLimit;
+<<<<<<< HEAD
         return $this;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -203,7 +231,11 @@ class PlainTextHandler extends Handler
     /**
      * Only output to logger.
      * @param  bool|null $loggerOnly
+<<<<<<< HEAD
      * @return static|bool
+=======
+     * @return null|bool
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function loggerOnly($loggerOnly = null)
     {
@@ -212,7 +244,10 @@ class PlainTextHandler extends Handler
         }
 
         $this->loggerOnly = (bool) $loggerOnly;
+<<<<<<< HEAD
         return $this;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -282,7 +317,11 @@ class PlainTextHandler extends Handler
             return '';
         }
         $inspector = $this->getInspector();
+<<<<<<< HEAD
         $frames = $inspector->getFrames($this->getRun()->getFrameFilters());
+=======
+        $frames = $inspector->getFrames();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $response = "\nStack trace:";
 

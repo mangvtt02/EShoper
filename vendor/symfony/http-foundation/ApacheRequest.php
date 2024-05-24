@@ -37,7 +37,11 @@ class ApacheRequest extends Request
     {
         $baseUrl = $this->server->get('SCRIPT_NAME');
 
+<<<<<<< HEAD
         if (!str_contains($this->server->get('REQUEST_URI'), $baseUrl)) {
+=======
+        if (false === strpos($this->server->get('REQUEST_URI'), $baseUrl)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             // assume mod_rewrite
             return rtrim(\dirname($baseUrl), '/\\');
         }

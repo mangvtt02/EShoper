@@ -7,6 +7,10 @@
  */
 namespace Dompdf\Frame;
 
+<<<<<<< HEAD
+=======
+use Dompdf\Css\Style;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Dompdf\Dompdf;
 use Dompdf\Exception;
 use Dompdf\Frame;
@@ -59,7 +63,11 @@ class Factory
      *
      * @param Frame $frame   The frame to decorate
      * @param Dompdf $dompdf The dompdf instance
+<<<<<<< HEAD
      * @param Frame $root    The root of the frame
+=======
+     * @param Frame $root    The frame to decorate
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @throws Exception
      * @return AbstractFrameDecorator
@@ -67,17 +75,41 @@ class Factory
      */
     static function decorate_frame(Frame $frame, Dompdf $dompdf, Frame $root = null)
     {
+<<<<<<< HEAD
         $style = $frame->get_style();
+=======
+        if (is_null($dompdf)) {
+            throw new Exception("The DOMPDF argument is required");
+        }
+
+        $style = $frame->get_style();
+
+        // Floating (and more generally out-of-flow) elements are blocks
+        // http://coding.smashingmagazine.com/2007/05/01/css-float-theory-things-you-should-know/
+        if (!$frame->is_in_flow() && in_array($style->display, Style::$INLINE_TYPES)) {
+            $style->display = "block";
+        }
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $display = $style->display;
 
         switch ($display) {
 
+<<<<<<< HEAD
+=======
+            case "flex": //FIXME: display type not yet supported 
+            case "table-caption": //FIXME: display type not yet supported
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             case "block":
                 $positioner = "Block";
                 $decorator = "Block";
                 $reflower = "Block";
                 break;
 
+<<<<<<< HEAD
+=======
+            case "inline-flex": //FIXME: display type not yet supported 
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             case "inline-block":
                 $positioner = "Inline";
                 $decorator = "Block";
@@ -90,8 +122,18 @@ class Factory
                     $decorator = "Text";
                     $reflower = "Text";
                 } else {
+<<<<<<< HEAD
                     $decorator = "Inline";
                     $reflower = "Inline";
+=======
+                    if ($style->float !== "none") {
+                        $decorator = "Block";
+                        $reflower = "Block";
+                    } else {
+                        $decorator = "Inline";
+                        $reflower = "Inline";
+                    }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
                 break;
 
@@ -162,6 +204,10 @@ class Factory
                 break;
 
             default:
+<<<<<<< HEAD
+=======
+                // FIXME: should throw some sort of warning or something?
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             case "none":
                 if ($style->_dompdf_keep !== "yes") {
                     // Remove the node and the frame

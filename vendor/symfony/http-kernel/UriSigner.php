@@ -93,12 +93,21 @@ class UriSigner
         $url['query'] = http_build_query($params, '', '&');
 
         $scheme = isset($url['scheme']) ? $url['scheme'].'://' : '';
+<<<<<<< HEAD
         $host = $url['host'] ?? '';
         $port = isset($url['port']) ? ':'.$url['port'] : '';
         $user = $url['user'] ?? '';
         $pass = isset($url['pass']) ? ':'.$url['pass'] : '';
         $pass = ($user || $pass) ? "$pass@" : '';
         $path = $url['path'] ?? '';
+=======
+        $host = isset($url['host']) ? $url['host'] : '';
+        $port = isset($url['port']) ? ':'.$url['port'] : '';
+        $user = isset($url['user']) ? $url['user'] : '';
+        $pass = isset($url['pass']) ? ':'.$url['pass'] : '';
+        $pass = ($user || $pass) ? "$pass@" : '';
+        $path = isset($url['path']) ? $url['path'] : '';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $query = isset($url['query']) && $url['query'] ? '?'.$url['query'] : '';
         $fragment = isset($url['fragment']) ? '#'.$url['fragment'] : '';
 

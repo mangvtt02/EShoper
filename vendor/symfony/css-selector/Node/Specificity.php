@@ -25,9 +25,15 @@ namespace Symfony\Component\CssSelector\Node;
  */
 class Specificity
 {
+<<<<<<< HEAD
     public const A_FACTOR = 100;
     public const B_FACTOR = 10;
     public const C_FACTOR = 1;
+=======
+    const A_FACTOR = 100;
+    const B_FACTOR = 10;
+    const C_FACTOR = 1;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     private $a;
     private $b;

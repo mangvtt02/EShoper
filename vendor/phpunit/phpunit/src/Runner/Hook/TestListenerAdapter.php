@@ -15,7 +15,10 @@ use PHPUnit\Framework\TestListener;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Framework\Warning;
 use PHPUnit\Util\Test as TestUtil;
+<<<<<<< HEAD
 use Throwable;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -48,7 +51,11 @@ final class TestListenerAdapter implements TestListener
         $this->lastTestWasNotSuccessful = false;
     }
 
+<<<<<<< HEAD
     public function addError(Test $test, Throwable $t, float $time): void
+=======
+    public function addError(Test $test, \Throwable $t, float $time): void
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         foreach ($this->hooks as $hook) {
             if ($hook instanceof AfterTestErrorHook) {
@@ -81,7 +88,11 @@ final class TestListenerAdapter implements TestListener
         $this->lastTestWasNotSuccessful = true;
     }
 
+<<<<<<< HEAD
     public function addIncompleteTest(Test $test, Throwable $t, float $time): void
+=======
+    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         foreach ($this->hooks as $hook) {
             if ($hook instanceof AfterIncompleteTestHook) {
@@ -92,7 +103,11 @@ final class TestListenerAdapter implements TestListener
         $this->lastTestWasNotSuccessful = true;
     }
 
+<<<<<<< HEAD
     public function addRiskyTest(Test $test, Throwable $t, float $time): void
+=======
+    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         foreach ($this->hooks as $hook) {
             if ($hook instanceof AfterRiskyTestHook) {
@@ -103,7 +118,11 @@ final class TestListenerAdapter implements TestListener
         $this->lastTestWasNotSuccessful = true;
     }
 
+<<<<<<< HEAD
     public function addSkippedTest(Test $test, Throwable $t, float $time): void
+=======
+    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         foreach ($this->hooks as $hook) {
             if ($hook instanceof AfterSkippedTestHook) {

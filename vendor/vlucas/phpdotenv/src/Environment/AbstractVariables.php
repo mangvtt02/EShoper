@@ -4,7 +4,10 @@ namespace Dotenv\Environment;
 
 use Dotenv\Environment\Adapter\ArrayAdapter;
 use InvalidArgumentException;
+<<<<<<< HEAD
 use ReturnTypeWillChange;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * This is the abstract variables implementation.
@@ -160,7 +163,10 @@ abstract class AbstractVariables implements VariablesInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     #[ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function offsetExists($offset)
     {
         return $this->has($offset);
@@ -169,7 +175,10 @@ abstract class AbstractVariables implements VariablesInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     #[ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function offsetGet($offset)
     {
         return $this->get($offset);
@@ -178,7 +187,10 @@ abstract class AbstractVariables implements VariablesInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     #[ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function offsetSet($offset, $value)
     {
         $this->set($offset, $value);
@@ -187,7 +199,10 @@ abstract class AbstractVariables implements VariablesInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     #[ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function offsetUnset($offset)
     {
         $this->clear($offset);

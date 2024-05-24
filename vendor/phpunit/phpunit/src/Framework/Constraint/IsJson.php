@@ -9,12 +9,15 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
 use function json_decode;
 
 use function json_last_error;
 use function sprintf;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * Constraint that asserts that a string is valid JSON.
  */
@@ -40,9 +43,15 @@ final class IsJson extends Constraint
             return false;
         }
 
+<<<<<<< HEAD
         json_decode($other);
 
         if (json_last_error()) {
+=======
+        \json_decode($other);
+
+        if (\json_last_error()) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return false;
         }
 
@@ -50,14 +59,22 @@ final class IsJson extends Constraint
     }
 
     /**
+<<<<<<< HEAD
      * Returns the description of the failure.
+=======
+     * Returns the description of the failure
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
      *
      * @param mixed $other evaluated value or object
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function failureDescription($other): string
     {
@@ -65,12 +82,21 @@ final class IsJson extends Constraint
             return 'an empty string is valid JSON';
         }
 
+<<<<<<< HEAD
         json_decode($other);
         $error = JsonMatchesErrorMessageProvider::determineJsonError(
             (string) json_last_error()
         );
 
         return sprintf(
+=======
+        \json_decode($other);
+        $error = JsonMatchesErrorMessageProvider::determineJsonError(
+            (string) \json_last_error()
+        );
+
+        return \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             '%s is valid JSON (%s)',
             $this->exporter()->shortenedExport($other),
             $error

@@ -39,14 +39,21 @@ class Frame
      * Unique identifier for this frame.  Used to reference this frame
      * via the node.
      *
+<<<<<<< HEAD
      * @var int
+=======
+     * @var string
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $_id;
 
     /**
      * Unique id counter
+<<<<<<< HEAD
      *
      * @var int
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public static $ID_COUNTER = 0; /*protected*/
 
@@ -140,7 +147,11 @@ class Frame
     /**
      * This frame's containing line box
      *
+<<<<<<< HEAD
      * @var LineBox|null
+=======
+     * @var LineBox
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $_containing_line;
 
@@ -162,7 +173,11 @@ class Frame
     public $_float_next_line = false;
 
     /**
+<<<<<<< HEAD
      * Whether the frame is a split-off frame
+=======
+     * Tells whether the frame was split
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @var bool
      */
@@ -326,6 +341,17 @@ class Frame
         $this->_style = null;
         unset($this->_style);
         $this->_style = clone $this->_original_style;
+<<<<<<< HEAD
+=======
+
+        // If this represents a generated node then child nodes represent generated content.
+        // Remove the children since the content will be generated next time this frame is reflowed. 
+        if ($this->_node->nodeName === "dompdf_generated" && $this->_style->content != "normal") {
+            foreach ($this->get_children() as $child) {
+                $this->remove_child($child);
+            }
+        }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -337,7 +363,11 @@ class Frame
     }
 
     /**
+<<<<<<< HEAD
      * @return int
+=======
+     * @return string
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function get_id()
     {
@@ -427,7 +457,11 @@ class Frame
     /**
      * Containing block dimensions
      *
+<<<<<<< HEAD
      * @param string|null $i The key of the wanted containing block's dimension (x, y, w, h)
+=======
+     * @param $i string The key of the wanted containing block's dimension (x, y, w, h)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return float[]|float
      */
@@ -443,9 +477,15 @@ class Frame
     /**
      * Block position
      *
+<<<<<<< HEAD
      * @param string|null $i The key of the wanted position value (x, y)
      *
      * @return float[]|float
+=======
+     * @param $i string The key of the wanted position value (x, y)
+     *
+     * @return array|float
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function get_position($i = null)
     {
@@ -459,12 +499,49 @@ class Frame
     //........................................................................
 
     /**
+<<<<<<< HEAD
+=======
+     * Return the height of the margin box of the frame, in pt.  Meaningless
+     * unless the height has been calculated properly.
+     *
+     * @return float
+     */
+    public function get_margin_height()
+    {
+        $style = $this->_style;
+
+        return (
+            (float)$style->length_in_pt(
+                [
+                    $style->height,
+                    (float)$style->length_in_pt(
+                        [
+                            $style->border_top_width,
+                            $style->border_bottom_width,
+                            $style->margin_top,
+                            $style->margin_bottom,
+                            $style->padding_top,
+                            $style->padding_bottom
+                        ], $this->_containing_block["w"]
+                    )
+                ],
+                $this->_containing_block["h"]
+            )
+        );
+    }
+
+    /**
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Return the width of the margin box of the frame, in pt.  Meaningless
      * unless the width has been calculated properly.
      *
      * @return float
      */
+<<<<<<< HEAD
     public function get_margin_width(): float
+=======
+    public function get_margin_width()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $style = $this->_style;
 
@@ -480,6 +557,7 @@ class Frame
     }
 
     /**
+<<<<<<< HEAD
      * Return the height of the margin box of the frame, in pt.  Meaningless
      * unless the height has been calculated properly.
      *
@@ -504,10 +582,36 @@ class Frame
                 )
             ],
             $this->_containing_block["h"]
+=======
+     * @return float
+     */
+    public function get_break_margins()
+    {
+        $style = $this->_style;
+
+        return (
+            (float)$style->length_in_pt(
+                [
+                    //$style->height,
+                    (float)$style->length_in_pt(
+                        [
+                            $style->border_top_width,
+                            $style->border_bottom_width,
+                            $style->margin_top,
+                            $style->margin_bottom,
+                            $style->padding_top,
+                            $style->padding_bottom
+                        ], $this->_containing_block["w"]
+                    )
+                ],
+                $this->_containing_block["h"]
+            )
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         );
     }
 
     /**
+<<<<<<< HEAD
      * Return the content box (x,y,w,h) of the frame.
      *
      * Width and height might be reported as 0 if they have not been resolved
@@ -516,6 +620,13 @@ class Frame
      * @return float[]
      */
     public function get_content_box(): array
+=======
+     * Return the content box (x,y,w,h) of the frame
+     *
+     * @return array
+     */
+    public function get_content_box()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $style = $this->_style;
         $cb = $this->_containing_block;
@@ -536,12 +647,21 @@ class Frame
                     $style->margin_top,
                     $style->border_top_width,
                     $style->padding_top
+<<<<<<< HEAD
                 ], $cb["w"]
             );
 
         $w = (float)$style->length_in_pt($style->width, $cb["w"]);
 
         $h = (float)$style->length_in_pt($style->height, $cb["h"]);
+=======
+                ],
+                $cb["w"]);
+
+        $w = $style->length_in_pt($style->width, $cb["w"]);
+
+        $h = $style->length_in_pt($style->height, $cb["h"]);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return [0 => $x, "x" => $x,
             1 => $y, "y" => $y,
@@ -550,6 +670,7 @@ class Frame
     }
 
     /**
+<<<<<<< HEAD
      * Return the padding box (x,y,w,h) of the frame.
      *
      * Width and height might be reported as 0 if they have not been resolved
@@ -558,6 +679,13 @@ class Frame
      * @return float[]
      */
     public function get_padding_box(): array
+=======
+     * Return the padding box (x,y,w,h) of the frame
+     *
+     * @return array
+     */
+    public function get_padding_box()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $style = $this->_style;
         $cb = $this->_containing_block;
@@ -568,8 +696,12 @@ class Frame
                     $style->margin_left,
                     $style->border_left_width
                 ],
+<<<<<<< HEAD
                 $cb["w"]
             );
+=======
+                $cb["w"]);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $y = $this->_position["y"] +
             (float)$style->length_in_pt(
@@ -580,7 +712,11 @@ class Frame
                 $cb["h"]
             );
 
+<<<<<<< HEAD
         $w = (float)$style->length_in_pt(
+=======
+        $w = $style->length_in_pt(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 [
                     $style->padding_left,
                     $style->width,
@@ -589,7 +725,11 @@ class Frame
                 $cb["w"]
             );
 
+<<<<<<< HEAD
         $h = (float)$style->length_in_pt(
+=======
+        $h = $style->length_in_pt(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 [
                     $style->padding_top,
                     $style->padding_bottom,
@@ -605,6 +745,7 @@ class Frame
     }
 
     /**
+<<<<<<< HEAD
      * Return the border box of the frame.
      *
      * Width and height might be reported as 0 if they have not been resolved
@@ -613,6 +754,13 @@ class Frame
      * @return float[]
      */
     public function get_border_box(): array
+=======
+     * Return the border box of the frame
+     *
+     * @return array
+     */
+    public function get_border_box()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $style = $this->_style;
         $cb = $this->_containing_block;
@@ -621,7 +769,11 @@ class Frame
 
         $y = $this->_position["y"] + (float)$style->length_in_pt($style->margin_top, $cb["w"]);
 
+<<<<<<< HEAD
         $w = (float)$style->length_in_pt(
+=======
+        $w = $style->length_in_pt(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             [
                 $style->border_left_width,
                 $style->padding_left,
@@ -629,10 +781,16 @@ class Frame
                 $style->padding_right,
                 $style->border_right_width
             ],
+<<<<<<< HEAD
             $cb["w"]
         );
 
         $h = (float)$style->length_in_pt(
+=======
+            $cb["w"]);
+
+        $h = $style->length_in_pt(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             [
                 $style->border_top_width,
                 $style->padding_top,
@@ -640,8 +798,12 @@ class Frame
                 $style->border_bottom_width,
                 $style->length_in_pt($style->height, $cb["h"])
             ],
+<<<<<<< HEAD
             $cb["w"]
         );
+=======
+            $cb["w"]);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return [0 => $x, "x" => $x,
             1 => $y, "y" => $y,
@@ -664,7 +826,11 @@ class Frame
     }
 
     /**
+<<<<<<< HEAD
      * @return LineBox|null
+=======
+     * @return LineBox
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function &get_containing_line()
     {
@@ -672,10 +838,17 @@ class Frame
     }
 
     //........................................................................
+<<<<<<< HEAD
     // Set methods
 
     /**
      * @param int $id
+=======
+
+    // Set methods
+    /**
+     * @param $id
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function set_id($id)
     {
@@ -711,10 +884,17 @@ class Frame
     }
 
     /**
+<<<<<<< HEAD
      * @param float|float[]|null $x
      * @param float|null $y
      * @param float|null $w
      * @param float|null $h
+=======
+     * @param null $x
+     * @param null $y
+     * @param null $w
+     * @param null $h
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function set_containing_block($x = null, $y = null, $w = null, $h = null)
     {
@@ -742,8 +922,13 @@ class Frame
     }
 
     /**
+<<<<<<< HEAD
      * @param float|float[]|null $x
      * @param float|null $y
+=======
+     * @param null $x
+     * @param null $y
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function set_position($x = null, $y = null)
     {
@@ -853,7 +1038,11 @@ class Frame
 
         $position = $this->get_style()->position;
 
+<<<<<<< HEAD
         return $this->_is_cache["positionned"] = in_array($position, Style::$POSITIONNED_TYPES, true);
+=======
+        return $this->_is_cache["positionned"] = in_array($position, Style::$POSITIONNED_TYPES);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -865,12 +1054,21 @@ class Frame
             return $this->_is_cache["absolute"];
         }
 
+<<<<<<< HEAD
         return $this->_is_cache["absolute"] = $this->get_style()->is_absolute();
     }
 
     /**
      * Whether the frame is a block container.
      *
+=======
+        $position = $this->get_style()->position;
+
+        return $this->_is_cache["absolute"] = ($position === "absolute" || $position === "fixed");
+    }
+
+    /**
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return bool
      */
     public function is_block()
@@ -879,6 +1077,7 @@ class Frame
             return $this->_is_cache["block"];
         }
 
+<<<<<<< HEAD
         return $this->_is_cache["block"] = in_array($this->get_style()->display, Style::$BLOCK_TYPES, true);
     }
 
@@ -916,6 +1115,12 @@ class Frame
 
     /**
      * @deprecated
+=======
+        return $this->_is_cache["block"] = in_array($this->get_style()->display, Style::$BLOCK_TYPES);
+    }
+
+    /**
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return bool
      */
     public function is_inline_block()
@@ -924,7 +1129,11 @@ class Frame
             return $this->_is_cache["inline_block"];
         }
 
+<<<<<<< HEAD
         return $this->_is_cache["inline_block"] = ($this->get_style()->display === "inline-block");
+=======
+        return $this->_is_cache["inline_block"] = ($this->get_style()->display === 'inline-block');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -935,8 +1144,12 @@ class Frame
         if (isset($this->_is_cache["in_flow"])) {
             return $this->_is_cache["in_flow"];
         }
+<<<<<<< HEAD
 
         return $this->_is_cache["in_flow"] = $this->get_style()->is_in_flow();
+=======
+        return $this->_is_cache["in_flow"] = !($this->get_style()->float !== "none" || $this->is_absolute());
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -950,7 +1163,11 @@ class Frame
 
         $white_space = $this->get_style()->white_space;
 
+<<<<<<< HEAD
         return $this->_is_cache["pre"] = in_array($white_space, ["pre", "pre-wrap"], true);
+=======
+        return $this->_is_cache["pre"] = in_array($white_space, ["pre", "pre-wrap"]);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -964,15 +1181,24 @@ class Frame
 
         $display = $this->get_style()->display;
 
+<<<<<<< HEAD
         return $this->_is_cache["table"] = in_array($display, Style::$TABLE_TYPES, true);
+=======
+        return $this->_is_cache["table"] = in_array($display, Style::$TABLE_TYPES);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
 
     /**
      * Inserts a new child at the beginning of the Frame
      *
+<<<<<<< HEAD
      * @param Frame $child       The new Frame to insert
      * @param bool  $update_node Whether or not to update the DOM
+=======
+     * @param $child       Frame The new Frame to insert
+     * @param $update_node boolean Whether or not to update the DOM
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function prepend_child(Frame $child, $update_node = true)
     {
@@ -1003,8 +1229,13 @@ class Frame
     /**
      * Inserts a new child at the end of the Frame
      *
+<<<<<<< HEAD
      * @param Frame $child       The new Frame to insert
      * @param bool  $update_node Whether or not to update the DOM
+=======
+     * @param $child       Frame The new Frame to insert
+     * @param $update_node boolean Whether or not to update the DOM
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function append_child(Frame $child, $update_node = true)
     {
@@ -1040,9 +1271,15 @@ class Frame
     /**
      * Inserts a new child immediately before the specified frame
      *
+<<<<<<< HEAD
      * @param Frame $new_child   The new Frame to insert
      * @param Frame $ref         The Frame after the new Frame
      * @param bool  $update_node Whether or not to update the DOM
+=======
+     * @param $new_child   Frame The new Frame to insert
+     * @param $ref         Frame The Frame after the new Frame
+     * @param $update_node boolean Whether or not to update the DOM
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @throws Exception
      */
@@ -1088,9 +1325,15 @@ class Frame
     /**
      * Inserts a new child immediately after the specified frame
      *
+<<<<<<< HEAD
      * @param Frame $new_child   The new Frame to insert
      * @param Frame $ref         The Frame before the new Frame
      * @param bool  $update_node Whether or not to update the DOM
+=======
+     * @param $new_child   Frame The new Frame to insert
+     * @param $ref         Frame The Frame before the new Frame
+     * @param $update_node boolean Whether or not to update the DOM
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @throws Exception
      */
@@ -1142,7 +1385,11 @@ class Frame
      * Remove a child frame
      *
      * @param Frame $child
+<<<<<<< HEAD
      * @param bool  $update_node Whether or not to remove the DOM node
+=======
+     * @param boolean $update_node Whether or not to remove the DOM node
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @throws Exception
      * @return Frame The removed child frame
@@ -1269,4 +1516,8 @@ class Frame
 
         return $str;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

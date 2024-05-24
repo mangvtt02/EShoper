@@ -12,7 +12,10 @@
 namespace Monolog\Processor;
 
 use Monolog\Logger;
+<<<<<<< HEAD
 use Psr\Log\LogLevel;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Injects line/file:class/function where the log message came from
@@ -24,6 +27,7 @@ use Psr\Log\LogLevel;
  * triggered the FingersCrossedHandler.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
+<<<<<<< HEAD
  *
  * @phpstan-import-type Level from \Monolog\Logger
  * @phpstan-import-type LevelName from \Monolog\Logger
@@ -37,16 +41,31 @@ class IntrospectionProcessor implements ProcessorInterface
     /** @var int */
     private $skipStackFramesCount;
     /** @var string[] */
+=======
+ */
+class IntrospectionProcessor implements ProcessorInterface
+{
+    private $level;
+
+    private $skipClassesPartials;
+
+    private $skipStackFramesCount;
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private $skipFunctions = [
         'call_user_func',
         'call_user_func_array',
     ];
 
     /**
+<<<<<<< HEAD
      * @param string|int $level               The minimum logging level at which this Processor will be triggered
      * @param string[]   $skipClassesPartials
      *
      * @phpstan-param Level|LevelName|LogLevel::* $level
+=======
+     * @param string|int $level The minimum logging level at which this Processor will be triggered
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct($level = Logger::DEBUG, array $skipClassesPartials = [], int $skipStackFramesCount = 0)
     {
@@ -55,9 +74,12 @@ class IntrospectionProcessor implements ProcessorInterface
         $this->skipStackFramesCount = $skipStackFramesCount;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritDoc}
      */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __invoke(array $record): array
     {
         // return if the level is not high enough
@@ -101,7 +123,10 @@ class IntrospectionProcessor implements ProcessorInterface
                 'file'      => isset($trace[$i - 1]['file']) ? $trace[$i - 1]['file'] : null,
                 'line'      => isset($trace[$i - 1]['line']) ? $trace[$i - 1]['line'] : null,
                 'class'     => isset($trace[$i]['class']) ? $trace[$i]['class'] : null,
+<<<<<<< HEAD
                 'callType'  => isset($trace[$i]['type']) ? $trace[$i]['type'] : null,
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 'function'  => isset($trace[$i]['function']) ? $trace[$i]['function'] : null,
             ]
         );
@@ -109,10 +134,14 @@ class IntrospectionProcessor implements ProcessorInterface
         return $record;
     }
 
+<<<<<<< HEAD
     /**
      * @param array[] $trace
      */
     private function isTraceClassOrSkippedFunction(array $trace, int $index): bool
+=======
+    private function isTraceClassOrSkippedFunction(array $trace, int $index)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!isset($trace[$index])) {
             return false;

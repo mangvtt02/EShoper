@@ -29,8 +29,13 @@ abstract class AbstractPositioner
 
     /**
      * @param AbstractFrameDecorator $frame
+<<<<<<< HEAD
      * @param float $offset_x
      * @param float $offset_y
+=======
+     * @param $offset_x
+     * @param $offset_y
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param bool $ignore_self
      */
     function move(AbstractFrameDecorator $frame, $offset_x, $offset_y, $ignore_self = false)

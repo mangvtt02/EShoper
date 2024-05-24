@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -45,7 +49,11 @@ class VariableEnumerator extends Enumerator
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
     protected function listItems(InputInterface $input, ?\Reflector $reflector = null, $target = null): array
+=======
+    protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // only list variables when no Reflector is present.
         if ($reflector !== null || $target !== null) {
@@ -57,7 +65,11 @@ class VariableEnumerator extends Enumerator
             return [];
         }
 
+<<<<<<< HEAD
         $showAll = $input->getOption('all');
+=======
+        $showAll   = $input->getOption('all');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $variables = $this->prepareVariables($this->getVariables($showAll));
 
         if (empty($variables)) {
@@ -76,7 +88,11 @@ class VariableEnumerator extends Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
     protected function getVariables(bool $showAll): array
+=======
+    protected function getVariables($showAll)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $scopeVars = $this->context->getAll();
         \uksort($scopeVars, function ($a, $b) {
@@ -117,13 +133,21 @@ class VariableEnumerator extends Enumerator
      *
      * @return array
      */
+<<<<<<< HEAD
     protected function prepareVariables(array $variables): array
+=======
+    protected function prepareVariables(array $variables)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // My kingdom for a generator.
         $ret = [];
         foreach ($variables as $name => $val) {
             if ($this->showItem($name)) {
+<<<<<<< HEAD
                 $fname = '$'.$name;
+=======
+                $fname = '$' . $name;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $ret[$fname] = [
                     'name'  => $fname,
                     'style' => \in_array($name, self::$specialNames) ? self::IS_PRIVATE : self::IS_PUBLIC,

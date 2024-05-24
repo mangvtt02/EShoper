@@ -22,7 +22,11 @@
     "source":     "https://github.com/paragonie/random_compat"
   },
   "require": {
+<<<<<<< HEAD
     "php": ">= 7"
+=======
+    "php": "^7"
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   },
   "require-dev": {
     "vimeo/psalm": "^1",

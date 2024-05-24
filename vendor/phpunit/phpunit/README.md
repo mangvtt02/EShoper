@@ -1,5 +1,6 @@
 # PHPUnit
 
+<<<<<<< HEAD
 [![Latest Stable Version](https://poser.pugx.org/phpunit/phpunit/v/stable.png)](https://packagist.org/packages/phpunit/phpunit)
 [![CI Status](https://github.com/sebastianbergmann/phpunit/workflows/CI/badge.svg)](https://github.com/sebastianbergmann/phpunit/actions)
 [![Type Coverage](https://shepherd.dev/github/sebastianbergmann/phpunit/coverage.svg)](https://shepherd.dev/github/sebastianbergmann/phpunit)
@@ -24,6 +25,30 @@ Alternatively, you may use [Composer](https://getcomposer.org/) to download and 
 ## Contribute
 
 Please refer to [CONTRIBUTING.md](https://github.com/sebastianbergmann/phpunit/blob/main/.github/CONTRIBUTING.md) for information on how to contribute to PHPUnit and its related projects.
+=======
+PHPUnit is a programmer-oriented testing framework for PHP. It is an instance of the xUnit architecture for unit testing frameworks.
+
+[![Latest Stable Version](https://img.shields.io/packagist/v/phpunit/phpunit.svg?style=flat-square)](https://packagist.org/packages/phpunit/phpunit)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg?style=flat-square)](https://php.net/)
+[![CI Status](https://github.com/sebastianbergmann/phpunit/workflows/CI/badge.svg?branch=8.5&event=push)](https://phpunit.de/build-status.html)
+[![Type Coverage](https://shepherd.dev/github/sebastianbergmann/phpunit/coverage.svg)](https://shepherd.dev/github/sebastianbergmann/phpunit)
+
+## Installation
+
+We distribute a [PHP Archive (PHAR)](https://php.net/phar) that has all required (as well as some optional) dependencies of PHPUnit 8.5 bundled in a single file:
+
+```bash
+$ wget https://phar.phpunit.de/phpunit-8.5.phar
+
+$ php phpunit-8.5.phar --version
+```
+
+Alternatively, you may use [Composer](https://getcomposer.org/) to download and install PHPUnit as well as its dependencies. Please refer to the "[Getting Started](https://phpunit.de/getting-started-with-phpunit.html)" guide for details on how to install PHPUnit.
+
+## Contribute
+
+Please refer to [CONTRIBUTING.md](https://github.com/sebastianbergmann/phpunit/blob/master/.github/CONTRIBUTING.md) for information on how to contribute to PHPUnit and its related projects.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## List of Contributors
 
@@ -32,5 +57,16 @@ Thanks to everyone who has contributed to PHPUnit! You can find a detailed list 
 * [PHPUnit](https://github.com/sebastianbergmann/phpunit/graphs/contributors)
 * [php-code-coverage](https://github.com/sebastianbergmann/php-code-coverage/graphs/contributors)
 
+<<<<<<< HEAD
 A very special thanks to everyone who has contributed to the [documentation](https://github.com/sebastianbergmann/phpunit-documentation-english/graphs/contributors).
+=======
+A very special thanks to everyone who has contributed to the documentation and helps maintain the translations:
+
+* [English](https://github.com/sebastianbergmann/phpunit-documentation-english/graphs/contributors)
+* [Spanish](https://github.com/sebastianbergmann/phpunit-documentation-spanish/graphs/contributors)
+* [French](https://github.com/sebastianbergmann/phpunit-documentation-french/graphs/contributors)
+* [Japanese](https://github.com/sebastianbergmann/phpunit-documentation-japanese/graphs/contributors)
+* [Brazilian Portuguese](https://github.com/sebastianbergmann/phpunit-documentation-brazilian-portuguese/graphs/contributors)
+* [Simplified Chinese](https://github.com/sebastianbergmann/phpunit-documentation-chinese/graphs/contributors)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 

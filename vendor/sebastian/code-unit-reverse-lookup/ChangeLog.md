@@ -2,6 +2,7 @@
 
 All notable changes to `sebastianbergmann/code-unit-reverse-lookup` are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
 ## [1.0.3] - 2024-03-01
 
 * No code changes, only updated `.gitattributes` to not export non-essential files.
@@ -18,3 +19,11 @@ All notable changes to `sebastianbergmann/code-unit-reverse-lookup` are document
 
 [1.0.3]: https://github.com/sebastianbergmann/code-unit-reverse-lookup/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/sebastianbergmann/code-unit-reverse-lookup/compare/1.0.1...1.0.2
+=======
+## 1.0.0 - 2016-02-13
+
+### Added
+
+* Initial release
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

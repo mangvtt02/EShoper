@@ -36,8 +36,11 @@ class RateLimiter
      */
     public function tooManyAttempts($key, $maxAttempts)
     {
+<<<<<<< HEAD
         $key = $this->cleanRateLimiterKey($key);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($this->attempts($key) >= $maxAttempts) {
             if ($this->cache->has($key.':timer')) {
                 return true;
@@ -58,8 +61,11 @@ class RateLimiter
      */
     public function hit($key, $decaySeconds = 60)
     {
+<<<<<<< HEAD
         $key = $this->cleanRateLimiterKey($key);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->cache->add(
             $key.':timer', $this->availableAt($decaySeconds), $decaySeconds
         );
@@ -83,8 +89,11 @@ class RateLimiter
      */
     public function attempts($key)
     {
+<<<<<<< HEAD
         $key = $this->cleanRateLimiterKey($key);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->cache->get($key, 0);
     }
 
@@ -96,8 +105,11 @@ class RateLimiter
      */
     public function resetAttempts($key)
     {
+<<<<<<< HEAD
         $key = $this->cleanRateLimiterKey($key);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->cache->forget($key);
     }
 
@@ -110,8 +122,11 @@ class RateLimiter
      */
     public function retriesLeft($key, $maxAttempts)
     {
+<<<<<<< HEAD
         $key = $this->cleanRateLimiterKey($key);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $attempts = $this->attempts($key);
 
         return $maxAttempts - $attempts;
@@ -125,8 +140,11 @@ class RateLimiter
      */
     public function clear($key)
     {
+<<<<<<< HEAD
         $key = $this->cleanRateLimiterKey($key);
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->resetAttempts($key);
 
         $this->cache->forget($key.':timer');
@@ -140,6 +158,7 @@ class RateLimiter
      */
     public function availableIn($key)
     {
+<<<<<<< HEAD
         $key = $this->cleanRateLimiterKey($key);
 
         return $this->cache->get($key.':timer') - $this->currentTime();
@@ -155,4 +174,8 @@ class RateLimiter
     {
         return preg_replace('/&([a-z])[a-z]+;/i', '$1', htmlentities($key));
     }
+=======
+        return $this->cache->get($key.':timer') - $this->currentTime();
+    }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

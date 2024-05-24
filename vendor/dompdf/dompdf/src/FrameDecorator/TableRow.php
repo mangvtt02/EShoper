@@ -33,8 +33,11 @@ class TableRow extends AbstractFrameDecorator
     /**
      * Remove all non table-cell frames from this row and move them after
      * the table.
+<<<<<<< HEAD
      *
      * @deprecated
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     function normalise()
     {
@@ -55,4 +58,19 @@ class TableRow extends AbstractFrameDecorator
             $p->move_after($frame);
         }
     }
+<<<<<<< HEAD
+=======
+
+    function split(Frame $child = null, $force_pagebreak = false)
+    {
+        $this->_already_pushed = true;
+        
+        if (is_null($child)) {
+            parent::split();
+            return;
+        }
+
+        parent::split($child, $force_pagebreak);
+    }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

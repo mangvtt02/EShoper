@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Runner;
 
+<<<<<<< HEAD
 /**
  * This interface, as well as the associated mechanism for extending PHPUnit,
  * will be removed in PHPUnit 10. There is no alternative available in this
@@ -16,6 +17,8 @@ namespace PHPUnit\Runner;
  *
  * @see https://github.com/sebastianbergmann/phpunit/issues/4676
  */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 interface Hook
 {
 }

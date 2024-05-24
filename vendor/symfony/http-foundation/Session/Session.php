@@ -38,6 +38,7 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
 
     public function __construct(SessionStorageInterface $storage = null, AttributeBagInterface $attributes = null, FlashBagInterface $flashes = null)
     {
+<<<<<<< HEAD
         $this->storage = $storage ?? new NativeSessionStorage();
 
         $attributes = $attributes ?? new AttributeBag();
@@ -45,6 +46,15 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
         $this->registerBag($attributes);
 
         $flashes = $flashes ?? new FlashBag();
+=======
+        $this->storage = $storage ?: new NativeSessionStorage();
+
+        $attributes = $attributes ?: new AttributeBag();
+        $this->attributeName = $attributes->getName();
+        $this->registerBag($attributes);
+
+        $flashes = $flashes ?: new FlashBag();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->flashName = $flashes->getName();
         $this->registerBag($flashes);
     }
@@ -126,7 +136,10 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
      *
      * @return \ArrayIterator An \ArrayIterator instance
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function getIterator()
     {
         return new \ArrayIterator($this->getAttributeBag()->all());
@@ -137,7 +150,10 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
      *
      * @return int
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function count()
     {
         return \count($this->getAttributeBag()->all());

@@ -14,7 +14,11 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": "^7.2.5|^8.0",
+=======
+        "php": "^7.2",
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         "illuminate/contracts": "^6.0",
         "psr/container": "^1.0"
     },

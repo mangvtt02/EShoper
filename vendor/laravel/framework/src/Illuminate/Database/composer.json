@@ -15,7 +15,11 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": "^7.2.5|^8.0",
+=======
+        "php": "^7.2",
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         "ext-json": "*",
         "illuminate/container": "^6.0",
         "illuminate/contracts": "^6.0",
@@ -33,7 +37,11 @@
     },
     "suggest": {
         "doctrine/dbal": "Required to rename columns and drop SQLite columns (^2.6).",
+<<<<<<< HEAD
         "fakerphp/faker": "Required to use the eloquent factory builder (^1.9.1).",
+=======
+        "fzaninotto/faker": "Required to use the eloquent factory builder (^1.9.1).",
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         "illuminate/console": "Required to use the database commands (^6.0).",
         "illuminate/events": "Required to use the observers with Eloquent (^6.0).",
         "illuminate/filesystem": "Required to use the migrations (^6.0).",

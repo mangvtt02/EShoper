@@ -28,7 +28,11 @@ class FileLocator extends BaseFileLocator
      */
     private $path;
 
+<<<<<<< HEAD
     public function __construct(KernelInterface $kernel/* , string $path = null, array $paths = [], bool $triggerDeprecation = true */)
+=======
+    public function __construct(KernelInterface $kernel/*, string $path = null, array $paths = [], bool $triggerDeprecation = true*/)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->kernel = $kernel;
 
@@ -70,11 +74,19 @@ class FileLocator extends BaseFileLocator
             // no need to trigger deprecations when the loaded file is given as absolute path
             foreach ($this->paths as $deprecatedPath) {
                 foreach ((array) $locations as $location) {
+<<<<<<< HEAD
                     if (null !== $currentPath && str_starts_with($location, $currentPath)) {
                         return $locations;
                     }
 
                     if (str_starts_with($location, $deprecatedPath) && (null === $currentPath || !str_contains($location, $currentPath))) {
+=======
+                    if (null !== $currentPath && 0 === strpos($location, $currentPath)) {
+                        return $locations;
+                    }
+
+                    if (0 === strpos($location, $deprecatedPath) && (null === $currentPath || false === strpos($location, $currentPath))) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         $deprecation = sprintf('Loading the file "%s" from the global resource directory "%s" is deprecated since Symfony 4.4 and will be removed in 5.0.', $file, $deprecatedPath);
                     }
                 }

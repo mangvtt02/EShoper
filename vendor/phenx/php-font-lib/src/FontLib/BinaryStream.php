@@ -1,7 +1,11 @@
 <?php
 /**
  * @package php-font-lib
+<<<<<<< HEAD
  * @link    https://github.com/dompdf/php-font-lib
+=======
+ * @link    https://github.com/PhenX/php-font-lib
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
@@ -63,7 +67,11 @@ class BinaryStream {
    */
   public function open($filename, $mode = self::modeRead) {
     if (!in_array($mode, array(self::modeRead, self::modeWrite, self::modeReadWrite))) {
+<<<<<<< HEAD
       throw new \Exception("Unknown file open mode");
+=======
+      throw new \Exception("Unkown file open mode");
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     $this->f = fopen($filename, $mode);
@@ -137,17 +145,24 @@ class BinaryStream {
     fseek($this->f, $n, SEEK_CUR);
   }
 
+<<<<<<< HEAD
   /**
    * @param int $n The number of bytes to read
    *
    * @return string
    */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   public function read($n) {
     if ($n < 1) {
       return "";
     }
 
+<<<<<<< HEAD
     return (string) fread($this->f, $n);
+=======
+    return fread($this->f, $n);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   }
 
   public function write($data, $length = null) {
@@ -287,7 +302,11 @@ class BinaryStream {
       $date = 0;
     }
 
+<<<<<<< HEAD
     return date("Y-m-d H:i:s", $date);
+=======
+    return strftime("%Y-%m-%d %H:%M:%S", $date);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   }
 
   public function writeLongDateTime($data) {

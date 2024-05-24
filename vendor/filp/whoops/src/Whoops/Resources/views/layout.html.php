@@ -12,7 +12,10 @@
     <title><?php echo $tpl->escape($page_title) ?></title>
 
     <style><?php echo $stylesheet ?></style>
+<<<<<<< HEAD
     <style><?php echo $prismCss ?></style>
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   </head>
   <body>
 
@@ -26,7 +29,11 @@
       </div>
     </div>
 
+<<<<<<< HEAD
     <script data-manual><?php echo $prismJs ?></script>
+=======
+    <script><?php echo $prettify ?></script>
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     <script><?php echo $zepto ?></script>
     <script><?php echo $clipboard ?></script>
     <script><?php echo $javascript ?></script>

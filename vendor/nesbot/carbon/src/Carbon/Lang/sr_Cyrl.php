@@ -20,6 +20,7 @@
  * - Nikola Zeravcic
  * - Milos Sakovic
  */
+<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
@@ -37,15 +38,38 @@ return [
     'minute' => ':count минут|:count минута|:count минута',
     'min' => ':count мин.',
     'second' => ':count секунд|:count секунде|:count секунди',
+=======
+return [
+    'year' => '{2,3,4,22,23,24,32,33,34,42,43,44,52,53,54}:count године|[0,Inf[:count година',
+    'y' => ':count г.',
+    'month' => '{1}:count месец|{2,3,4}:count месеца|[0,Inf[:count месеци',
+    'm' => ':count м.',
+    'week' => '{1}:count недеља|{2,3,4}:count недеље|[0,Inf[:count недеља',
+    'w' => ':count нед.',
+    'day' => '{1,21,31}:count дан|[0,Inf[:count дана',
+    'd' => ':count д.',
+    'hour' => '{1,21}:count сат|{2,3,4,22,23,24}:count сата|[0,Inf[:count сати',
+    'h' => ':count ч.',
+    'minute' => '{1,21,31,41,51}:count минут|[0,Inf[:count минута',
+    'min' => ':count мин.',
+    'second' => '{1,21,31,41,51}:count секунд|{2,3,4,22,23,24,32,33,34,42,43,44,52,53,54}:count секунде|[0,Inf[:count секунди',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     's' => ':count сек.',
     'ago' => 'пре :time',
     'from_now' => 'за :time',
     'after' => ':time након',
     'before' => ':time пре',
+<<<<<<< HEAD
     'year_from_now' => ':count годину|:count године|:count година',
     'year_ago' => ':count годину|:count године|:count година',
     'week_from_now' => ':count недељу|:count недеље|:count недеља',
     'week_ago' => ':count недељу|:count недеље|:count недеља',
+=======
+    'year_from_now' => '{1,21,31,41,51}:count годину|{2,3,4,22,23,24,32,33,34,42,43,44,52,53,54}:count године|[0,Inf[:count година',
+    'year_ago' => '{1,21,31,41,51}:count годину|{2,3,4,22,23,24,32,33,34,42,43,44,52,53,54}:count године|[0,Inf[:count година',
+    'week_from_now' => '{1}:count недељу|{2,3,4}:count недеље|[0,Inf[:count недеља',
+    'week_ago' => '{1}:count недељу|{2,3,4}:count недеље|[0,Inf[:count недеља',
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     'diff_now' => 'управо сада',
     'diff_today' => 'данас',
     'diff_today_regexp' => 'данас(?:\\s+у)?',
@@ -66,7 +90,11 @@ return [
     'calendar' => [
         'sameDay' => '[данас у] LT',
         'nextDay' => '[сутра у] LT',
+<<<<<<< HEAD
         'nextWeek' => function (CarbonInterface $date) {
+=======
+        'nextWeek' => function (\Carbon\CarbonInterface $date) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             switch ($date->dayOfWeek) {
                 case 0:
                     return '[у недељу у] LT';
@@ -79,7 +107,11 @@ return [
             }
         },
         'lastDay' => '[јуче у] LT',
+<<<<<<< HEAD
         'lastWeek' => function (CarbonInterface $date) {
+=======
+        'lastWeek' => function (\Carbon\CarbonInterface $date) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             switch ($date->dayOfWeek) {
                 case 0:
                     return '[прошле недеље у] LT';

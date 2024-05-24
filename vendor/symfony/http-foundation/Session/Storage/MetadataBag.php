@@ -22,9 +22,15 @@ use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
  */
 class MetadataBag implements SessionBagInterface
 {
+<<<<<<< HEAD
     public const CREATED = 'c';
     public const UPDATED = 'u';
     public const LIFETIME = 'l';
+=======
+    const CREATED = 'c';
+    const UPDATED = 'u';
+    const LIFETIME = 'l';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var string
@@ -163,6 +169,10 @@ class MetadataBag implements SessionBagInterface
     {
         $timeStamp = time();
         $this->meta[self::CREATED] = $this->meta[self::UPDATED] = $this->lastUsed = $timeStamp;
+<<<<<<< HEAD
         $this->meta[self::LIFETIME] = $lifetime ?? (int) \ini_get('session.cookie_lifetime');
+=======
+        $this->meta[self::LIFETIME] = (null === $lifetime) ? ini_get('session.cookie_lifetime') : $lifetime;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

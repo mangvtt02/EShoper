@@ -33,7 +33,11 @@ final class SetExtHeadingParser implements BlockParserInterface
             return false;
         }
 
+<<<<<<< HEAD
         $match = RegexHelper::matchFirst('/^(?:=+|-+)[ \t]*$/', $cursor->getLine(), $cursor->getNextNonSpacePosition());
+=======
+        $match = RegexHelper::matchAll('/^(?:=+|-+)[ \t]*$/', $cursor->getLine(), $cursor->getNextNonSpacePosition());
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($match === null) {
             return false;
         }

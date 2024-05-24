@@ -18,6 +18,11 @@ interface Swift_Signers_BodySigner extends Swift_Signer
     /**
      * Change the Swift_Signed_Message to apply the singing.
      *
+<<<<<<< HEAD
+=======
+     * @param Swift_Message $message
+     *
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return self
      */
     public function signMessage(Swift_Message $message);

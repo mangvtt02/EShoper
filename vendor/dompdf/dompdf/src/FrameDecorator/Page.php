@@ -7,6 +7,10 @@
  */
 namespace Dompdf\FrameDecorator;
 
+<<<<<<< HEAD
+=======
+use Dompdf\Css\Style;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Dompdf\Dompdf;
 use Dompdf\Helpers;
 use Dompdf\Frame;
@@ -20,6 +24,7 @@ use Dompdf\Renderer;
  */
 class Page extends AbstractFrameDecorator
 {
+<<<<<<< HEAD
     /**
      * The y value of the bottom edge of the page area.
      *
@@ -28,6 +33,15 @@ class Page extends AbstractFrameDecorator
      * @var float
      */
     protected $bottom_page_edge;
+=======
+
+    /**
+     * y value of bottom page margin
+     *
+     * @var float
+     */
+    protected $_bottom_page_margin;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Flag indicating page is full.
@@ -70,7 +84,11 @@ class Page extends AbstractFrameDecorator
         parent::__construct($frame, $dompdf);
         $this->_page_full = false;
         $this->_in_table = 0;
+<<<<<<< HEAD
         $this->bottom_page_edge = null;
+=======
+        $this->_bottom_page_margin = null;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -94,6 +112,7 @@ class Page extends AbstractFrameDecorator
     }
 
     /**
+<<<<<<< HEAD
      * Calculate the bottom edge of the page area after margins have been
      * applied for the current page.
      */
@@ -104,6 +123,22 @@ class Page extends AbstractFrameDecorator
         $margin_bottom = (float) $style->length_in_pt($style->margin_bottom, $cbh);
 
         $this->bottom_page_edge = $cbh - $margin_bottom;
+=======
+     * Set the frame's containing block.  Overridden to set $this->_bottom_page_margin.
+     *
+     * @param float $x
+     * @param float $y
+     * @param float $w
+     * @param float $h
+     */
+    function set_containing_block($x = null, $y = null, $w = null, $h = null)
+    {
+        parent::set_containing_block($x, $y, $w, $h);
+        //$w = $this->get_containing_block("w");
+        if (isset($h)) {
+            $this->_bottom_page_margin = $h;
+        } // - $this->_frame->get_style()->length_in_pt($this->_frame->get_style()->margin_bottom, $w);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -154,11 +189,16 @@ class Page extends AbstractFrameDecorator
 
     /**
      * Check if a forced page break is required before $frame.  This uses the
+<<<<<<< HEAD
      * frame's page_break_before property as well as the preceding frame's
+=======
+     * frame's page_break_before property as well as the preceeding frame's
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * page_break_after property.
      *
      * @link http://www.w3.org/TR/CSS21/page.html#forced
      *
+<<<<<<< HEAD
      * @param AbstractFrameDecorator $frame the frame to check
      *
      * @return bool true if a page break occurred
@@ -178,6 +218,38 @@ class Page extends AbstractFrameDecorator
         ) {
             // Prevent cascading splits
             $frame->split(null, true, true);
+=======
+     * @param Frame $frame the frame to check
+     *
+     * @return bool true if a page break occured
+     */
+    function check_forced_page_break(Frame $frame)
+    {
+        // Skip check if page is already split
+        if ($this->_page_full) {
+            return null;
+        }
+
+        $block_types = ["block", "list-item", "table", "inline"];
+        $page_breaks = ["always", "left", "right"];
+
+        $style = $frame->get_style();
+
+        if (!in_array($style->display, $block_types)) {
+            return false;
+        }
+
+        // Find the previous block-level sibling
+        $prev = $frame->get_prev_sibling();
+
+        while ($prev && !in_array($prev->get_style()->display, $block_types)) {
+            $prev = $prev->get_prev_sibling();
+        }
+
+        if (in_array($style->page_break_before, $page_breaks)) {
+            // Prevent cascading splits
+            $frame->split(null, true);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             // We have to grab the style again here because split() resets
             // $frame->style to the frame's original style.
             $frame->get_style()->page_break_before = "auto";
@@ -187,6 +259,7 @@ class Page extends AbstractFrameDecorator
             return true;
         }
 
+<<<<<<< HEAD
         // Find the preceding block-level sibling (or table row). Inline
         // elements are treated as if wrapped in an anonymous block container
         // here. See https://www.w3.org/TR/CSS21/visuren.html#anonymous-block-level
@@ -220,6 +293,22 @@ class Page extends AbstractFrameDecorator
                 && in_array($prev_last_child->get_style()->page_break_after, $page_breaks, true)
             ) {
                 $frame->split(null, true, true);
+=======
+        if ($prev && in_array($prev->get_style()->page_break_after, $page_breaks)) {
+            // Prevent cascading splits
+            $frame->split(null, true);
+            $prev->get_style()->page_break_after = "auto";
+            $this->_page_full = true;
+            $frame->_already_pushed = true;
+
+            return true;
+        }
+
+        if ($prev && $prev->get_last_child() && $frame->get_node()->nodeName != "body") {
+            $prev_last_child = $prev->get_last_child();
+            if (in_array($prev_last_child->get_style()->page_break_after, $page_breaks)) {
+                $frame->split(null, true);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $prev_last_child->get_style()->page_break_after = "auto";
                 $this->_page_full = true;
                 $frame->_already_pushed = true;
@@ -232,6 +321,7 @@ class Page extends AbstractFrameDecorator
     }
 
     /**
+<<<<<<< HEAD
      * Check for a gap between the top content edge of a frame and its child
      * content.
      *
@@ -257,11 +347,14 @@ class Page extends AbstractFrameDecorator
     }
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Determine if a page break is allowed before $frame
      * http://www.w3.org/TR/CSS21/page.html#allowed-page-breaks
      *
      * In the normal flow, page breaks can occur at the following places:
      *
+<<<<<<< HEAD
      *    1. In the vertical margin between block boxes. When an
      *    unforced page break occurs here, the used values of the
      *    relevant 'margin-top' and 'margin-bottom' properties are set
@@ -270,6 +363,12 @@ class Page extends AbstractFrameDecorator
      *    relevant 'margin-top' used value may either be set to '0' or
      *    retained.
      *    2. Between line boxes inside a block container box.
+=======
+     *    1. In the vertical margin between block boxes. When a page
+     *    break occurs here, the used values of the relevant
+     *    'margin-top' and 'margin-bottom' properties are set to '0'.
+     *    2. Between line boxes inside a block box.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *    3. Between the content edge of a block container box and the
      *    outer edges of its child content (margin edges of block-level
      *    children or line box edges for inline-level children) if there
@@ -278,6 +377,7 @@ class Page extends AbstractFrameDecorator
      * These breaks are subject to the following rules:
      *
      *   * Rule A: Breaking at (1) is allowed only if the
+<<<<<<< HEAD
      *     'page-break-after' and 'page-break-before' properties of all
      *     the elements generating boxes that meet at this margin allow
      *     it, which is when at least one of them has the value
@@ -307,16 +407,58 @@ class Page extends AbstractFrameDecorator
      * We also allow breaks between table rows.
      *
      * @param AbstractFrameDecorator $frame the frame to check
+=======
+     *     'page-break-after' and 'page-break-before' properties of
+     *     all the elements generating boxes that meet at this margin
+     *     allow it, which is when at least one of them has the value
+     *     'always', 'left', or 'right', or when all of them are
+     *     'auto'.
+     *
+     *   * Rule B: However, if all of them are 'auto' and the
+     *     nearest common ancestor of all the elements has a
+     *     'page-break-inside' value of 'avoid', then breaking here is
+     *     not allowed.
+     *
+     *   * Rule C: Breaking at (2) is allowed only if the number of
+     *     line boxes between the break and the start of the enclosing
+     *     block box is the value of 'orphans' or more, and the number
+     *     of line boxes between the break and the end of the box is
+     *     the value of 'widows' or more.
+     *
+     *   * Rule D: In addition, breaking at (2) is allowed only if
+     *     the 'page-break-inside' property is 'auto'.
+     *
+     * If the above doesn't provide enough break points to keep
+     * content from overflowing the page boxes, then rules B and D are
+     * dropped in order to find additional breakpoints.
+     *
+     * If that still does not lead to sufficient break points, rules A
+     * and C are dropped as well, to find still more break points.
+     *
+     * We will also allow breaks between table rows.  However, when
+     * splitting a table, the table headers should carry over to the
+     * next page (but they don't yet).
+     *
+     * @param Frame $frame the frame to check
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool true if a break is allowed, false otherwise
      */
     protected function _page_break_allowed(Frame $frame)
     {
+<<<<<<< HEAD
+=======
+        $block_types = ["block", "list-item", "table", "-dompdf-image"];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         Helpers::dompdf_debug("page-break", "_page_break_allowed(" . $frame->get_node()->nodeName . ")");
         $display = $frame->get_style()->display;
 
         // Block Frames (1):
+<<<<<<< HEAD
         if ($frame->is_block_level() || $display === "-dompdf-image") {
+=======
+        if (in_array($display, $block_types)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             // Avoid breaks within table-cells
             if ($this->_in_table > ($display === "table" ? 1 : 0)) {
@@ -325,13 +467,19 @@ class Page extends AbstractFrameDecorator
                 return false;
             }
 
+<<<<<<< HEAD
             // Rule A
+=======
+            // Rules A & B
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if ($frame->get_style()->page_break_before === "avoid") {
                 Helpers::dompdf_debug("page-break", "before: avoid");
 
                 return false;
             }
 
+<<<<<<< HEAD
             // Find the preceding block-level sibling. Inline elements are
             // treated as if wrapped in an anonymous block container here. See
             // https://www.w3.org/TR/CSS21/visuren.html#anonymous-block-level
@@ -339,18 +487,28 @@ class Page extends AbstractFrameDecorator
             while ($prev && (($prev->is_text_node() && $prev->get_node()->nodeValue === "")
                 || $prev->get_node()->nodeName === "bullet")
             ) {
+=======
+            // Find the preceeding block-level sibling
+            $prev = $frame->get_prev_sibling();
+            while ($prev && !in_array($prev->get_style()->display, $block_types)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $prev = $prev->get_prev_sibling();
             }
 
             // Does the previous element allow a page break after?
+<<<<<<< HEAD
             if ($prev && ($prev->is_block_level() || $prev->get_style()->display === "-dompdf-image")
                 && $prev->get_style()->page_break_after === "avoid"
             ) {
+=======
+            if ($prev && $prev->get_style()->page_break_after === "avoid") {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 Helpers::dompdf_debug("page-break", "after: avoid");
 
                 return false;
             }
 
+<<<<<<< HEAD
             // Rules B & D
             $parent = $frame->get_parent();
             $p = $parent;
@@ -361,6 +519,15 @@ class Page extends AbstractFrameDecorator
                     return false;
                 }
                 $p = $p->find_block_parent();
+=======
+            // If both $prev & $frame have the same parent, check the parent's
+            // page_break_inside property.
+            $parent = $frame->get_parent();
+            if ($prev && $parent && $parent->get_style()->page_break_inside === "avoid") {
+                Helpers::dompdf_debug("page-break", "parent inside: avoid");
+
+                return false;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
 
             // To prevent cascading page breaks when a top-level element has
@@ -373,11 +540,22 @@ class Page extends AbstractFrameDecorator
                 return false;
             }
 
+<<<<<<< HEAD
             // Check for a possible type (3) break
             if (!$prev && $parent && !$this->hasGap($frame->get_position("y"), $parent)) {
                 Helpers::dompdf_debug("page-break", "First block-level frame, no gap");
 
                 return false;
+=======
+            // If the frame is the first block-level frame, only allow a page
+            // break if there is a (non-zero) gap between the frame and its
+            // parent
+            if (!$prev && $parent) {
+                Helpers::dompdf_debug("page-break", "First block level frame, checking gap");
+
+                return $frame->get_style()->length_in_pt($frame->get_style()->margin_top) != 0
+                    || $parent->get_style()->length_in_pt($parent->get_style()->padding_top) != 0;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
 
             Helpers::dompdf_debug("page-break", "block: break allowed");
@@ -386,7 +564,11 @@ class Page extends AbstractFrameDecorator
 
         } // Inline frames (2):
         else {
+<<<<<<< HEAD
             if ($frame->is_inline_level()) {
+=======
+            if (in_array($display, Style::$INLINE_TYPES)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                 // Avoid breaks within table-cells
                 if ($this->_in_table) {
@@ -397,6 +579,7 @@ class Page extends AbstractFrameDecorator
 
                 // Rule C
                 $block_parent = $frame->find_block_parent();
+<<<<<<< HEAD
                 $parent_style = $block_parent->get_style();
                 $line = $block_parent->get_current_line_box();
                 $line_count = count($block_parent->get_line_boxes());
@@ -409,6 +592,9 @@ class Page extends AbstractFrameDecorator
                 // we are not checking for widows yet, just checking against the
                 // number of line boxes is sufficient in most cases, though.
                 if ($line_number <= $parent_style->orphans) {
+=======
+                if (count($block_parent->get_line_boxes()) < $frame->get_style()->orphans) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     Helpers::dompdf_debug("page-break", "orphans");
 
                     return false;
@@ -443,6 +629,14 @@ class Page extends AbstractFrameDecorator
                     return false;
                 }
 
+<<<<<<< HEAD
+=======
+                // Skip breaks on empty text nodes
+                if ($frame->is_text_node() && $frame->get_node()->nodeValue == "") {
+                    return false;
+                }
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 Helpers::dompdf_debug("page-break", "inline: break allowed");
 
                 return true;
@@ -450,6 +644,7 @@ class Page extends AbstractFrameDecorator
             // Table-rows
             } else {
                 if ($display === "table-row") {
+<<<<<<< HEAD
 
                     // If this is a nested table, prevent the page from breaking
                     if ($this->_in_table > 1) {
@@ -495,6 +690,10 @@ class Page extends AbstractFrameDecorator
                     // Rule B (table row)
                     // Check if the page_break_inside property is not 'avoid'
                     // for the parent table or any of its ancestors
+=======
+                    // Simply check if the parent table's page_break_inside property is
+                    // not 'avoid'
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $table = Table::find_parent_table($frame);
 
                     $p = $table;
@@ -507,17 +706,43 @@ class Page extends AbstractFrameDecorator
                         $p = $p->find_block_parent();
                     }
 
+<<<<<<< HEAD
                     Helpers::dompdf_debug("page-break", "table-row: break allowed");
 
                     return true;
                 } else {
                     if (in_array($display, Table::$ROW_GROUPS, true)) {
+=======
+                    // Avoid breaking before the first row of a table
+                    if ($table && $table->get_first_child() === $frame || $table->get_first_child()->get_first_child() === $frame) {
+                        Helpers::dompdf_debug("page-break", "table: first-row");
+
+                        return false;
+                    }
+
+                    // If this is a nested table, prevent the page from breaking
+                    if ($this->_in_table > 1) {
+                        Helpers::dompdf_debug("page-break", "table: nested table");
+
+                        return false;
+                    }
+
+                    Helpers::dompdf_debug("page-break", "table-row/row-groups: break allowed");
+
+                    return true;
+                } else {
+                    if (in_array($display, Table::$ROW_GROUPS)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                         // Disallow breaks at row-groups: only split at row boundaries
                         return false;
 
                     } else {
+<<<<<<< HEAD
                         Helpers::dompdf_debug("page-break", "? " . $display);
+=======
+                        Helpers::dompdf_debug("page-break", "? " . $frame->get_style()->display . "");
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                         return false;
                     }
@@ -531,16 +756,24 @@ class Page extends AbstractFrameDecorator
      * the frame tree is modified so that a page break occurs in the
      * correct location.
      *
+<<<<<<< HEAD
      * @param AbstractFrameDecorator $frame the frame to check
+=======
+     * @param Frame $frame the frame to check
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool
      */
     function check_page_break(Frame $frame)
     {
+<<<<<<< HEAD
         if ($this->_page_full || $frame->_already_pushed
             // Never check for breaks on empty text nodes
             || ($frame->is_text_node() && $frame->get_node()->nodeValue === "")
         ) {
+=======
+        if ($this->_page_full || $frame->_already_pushed) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return false;
         }
 
@@ -568,14 +801,23 @@ class Page extends AbstractFrameDecorator
         // If a split is to occur here, then the bottom margins & paddings of all
         // parents of $frame must fit on the page as well:
         $p = $frame->get_parent();
+<<<<<<< HEAD
         while ($p && $p !== $this) {
             $cbw = $p->get_containing_block("w");
             $max_y += (float) $p->get_style()->computed_bottom_spacing($cbw);
+=======
+        while ($p) {
+            $max_y += (float) $p->get_style()->computed_bottom_spacing();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $p = $p->get_parent();
         }
 
         // Check if $frame flows off the page
+<<<<<<< HEAD
         if (Helpers::lengthLessOrEqual($max_y, $this->bottom_page_edge)) {
+=======
+        if ($max_y <= $this->_bottom_page_margin) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             // no: do nothing
             return false;
         }
@@ -629,6 +871,7 @@ class Page extends AbstractFrameDecorator
                 break;
             }
 
+<<<<<<< HEAD
             $next = $iter->get_prev_sibling();
             // Skip empty text nodes
             while ($next && $next->is_text_node() && $next->get_node()->nodeValue === "") {
@@ -636,6 +879,9 @@ class Page extends AbstractFrameDecorator
             }
 
             if ($next) {
+=======
+            if ($next = $iter->get_prev_sibling()) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 Helpers::dompdf_debug("page-break", "following prev sibling.");
 
                 if ($next->is_table() && !$iter->is_table()) {
@@ -694,7 +940,15 @@ class Page extends AbstractFrameDecorator
 
     //........................................................................
 
+<<<<<<< HEAD
     public function split(?Frame $child = null, bool $page_break = false, bool $forced = false): void
+=======
+    /**
+     * @param Frame|null $frame
+     * @param bool $force_pagebreak
+     */
+    function split(Frame $frame = null, $force_pagebreak = false)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // Do nothing
     }

@@ -8,14 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 
 namespace Carbon\Exceptions;
 
 use Throwable;
+=======
+namespace Carbon\Exceptions;
+
+use Exception;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 class BadComparisonUnitException extends UnitException
 {
     /**
+<<<<<<< HEAD
      * The unit.
      *
      * @var string
@@ -23,10 +30,13 @@ class BadComparisonUnitException extends UnitException
     protected $unit;
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Constructor.
      *
      * @param string         $unit
      * @param int            $code
+<<<<<<< HEAD
      * @param Throwable|null $previous
      */
     public function __construct($unit, $code = 0, Throwable $previous = null)
@@ -45,4 +55,12 @@ class BadComparisonUnitException extends UnitException
     {
         return $this->unit;
     }
+=======
+     * @param Exception|null $previous
+     */
+    public function __construct($unit, $code = 0, Exception $previous = null)
+    {
+        parent::__construct("Bad comparison unit: '$unit'", $code, $previous);
+    }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

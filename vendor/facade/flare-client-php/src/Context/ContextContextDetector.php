@@ -19,10 +19,13 @@ class ContextContextDetector implements ContextDetectorInterface
             return $_ENV['APP_RUNNING_IN_CONSOLE'] === 'true';
         }
 
+<<<<<<< HEAD
         if (isset($_ENV['FLARE_FAKE_WEB_REQUEST'])) {
             return false;
         }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return in_array(php_sapi_name(), ['cli', 'phpdb']);
     }
 }

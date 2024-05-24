@@ -22,7 +22,11 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  */
 class DOMCaster
 {
+<<<<<<< HEAD
     private const ERROR_CODES = [
+=======
+    private static $errorCodes = [
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         \DOM_PHP_ERR => 'DOM_PHP_ERR',
         \DOM_INDEX_SIZE_ERR => 'DOM_INDEX_SIZE_ERR',
         \DOMSTRING_SIZE_ERR => 'DOMSTRING_SIZE_ERR',
@@ -42,7 +46,11 @@ class DOMCaster
         \DOM_VALIDATION_ERR => 'DOM_VALIDATION_ERR',
     ];
 
+<<<<<<< HEAD
     private const NODE_TYPES = [
+=======
+    private static $nodeTypes = [
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         \XML_ELEMENT_NODE => 'XML_ELEMENT_NODE',
         \XML_ATTRIBUTE_NODE => 'XML_ATTRIBUTE_NODE',
         \XML_TEXT_NODE => 'XML_TEXT_NODE',
@@ -66,8 +74,13 @@ class DOMCaster
     public static function castException(\DOMException $e, array $a, Stub $stub, $isNested)
     {
         $k = Caster::PREFIX_PROTECTED.'code';
+<<<<<<< HEAD
         if (isset($a[$k], self::ERROR_CODES[$a[$k]])) {
             $a[$k] = new ConstStub(self::ERROR_CODES[$a[$k]], $a[$k]);
+=======
+        if (isset($a[$k], self::$errorCodes[$a[$k]])) {
+            $a[$k] = new ConstStub(self::$errorCodes[$a[$k]], $a[$k]);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $a;
@@ -97,7 +110,11 @@ class DOMCaster
         $a += [
             'nodeName' => $dom->nodeName,
             'nodeValue' => new CutStub($dom->nodeValue),
+<<<<<<< HEAD
             'nodeType' => new ConstStub(self::NODE_TYPES[$dom->nodeType], $dom->nodeType),
+=======
+            'nodeType' => new ConstStub(self::$nodeTypes[$dom->nodeType], $dom->nodeType),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'parentNode' => new CutStub($dom->parentNode),
             'childNodes' => $dom->childNodes,
             'firstChild' => new CutStub($dom->firstChild),
@@ -121,7 +138,11 @@ class DOMCaster
         $a += [
             'nodeName' => $dom->nodeName,
             'nodeValue' => new CutStub($dom->nodeValue),
+<<<<<<< HEAD
             'nodeType' => new ConstStub(self::NODE_TYPES[$dom->nodeType], $dom->nodeType),
+=======
+            'nodeType' => new ConstStub(self::$nodeTypes[$dom->nodeType], $dom->nodeType),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'prefix' => $dom->prefix,
             'localName' => $dom->localName,
             'namespaceURI' => $dom->namespaceURI,

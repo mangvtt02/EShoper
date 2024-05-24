@@ -119,6 +119,7 @@ class TrustProxies
             case Request::HEADER_FORWARDED:
                 return Request::HEADER_FORWARDED;
                 break;
+<<<<<<< HEAD
             case 'HEADER_X_FORWARDED_FOR':
             case Request::HEADER_X_FORWARDED_FOR:
                 return Request::HEADER_X_FORWARDED_FOR;
@@ -137,6 +138,12 @@ class TrustProxies
                 break;
             default:
                 return Request::HEADER_X_FORWARDED_FOR | Request::HEADER_X_FORWARDED_HOST | Request::HEADER_X_FORWARDED_PORT | Request::HEADER_X_FORWARDED_PROTO | Request::HEADER_X_FORWARDED_AWS_ELB;
+=======
+            case 'HEADER_X_FORWARDED_ALL':
+            case Request::HEADER_X_FORWARDED_ALL:
+                return Request::HEADER_X_FORWARDED_ALL;
+                break;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $headers;

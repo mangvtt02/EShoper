@@ -9,9 +9,12 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
+<<<<<<< HEAD
 use function is_string;
 use function sprintf;
 use function strtolower;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\Constraint\Constraint;
 
 /**
@@ -31,7 +34,11 @@ final class MethodNameConstraint extends Constraint
 
     public function toString(): string
     {
+<<<<<<< HEAD
         return sprintf(
+=======
+        return \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'is "%s"',
             $this->methodName
         );
@@ -39,10 +46,18 @@ final class MethodNameConstraint extends Constraint
 
     protected function matches($other): bool
     {
+<<<<<<< HEAD
         if (!is_string($other)) {
             return false;
         }
 
         return strtolower($this->methodName) === strtolower($other);
+=======
+        if (!\is_string($other)) {
+            return false;
+        }
+
+        return \strtolower($this->methodName) === \strtolower($other);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

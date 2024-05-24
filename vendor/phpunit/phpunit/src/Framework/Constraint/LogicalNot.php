@@ -9,12 +9,16 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
 use function count;
 use function get_class;
 use function preg_match;
 use function str_replace;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
+=======
+use PHPUnit\Framework\ExpectationFailedException;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Logical NOT.
@@ -54,6 +58,7 @@ final class LogicalNot extends Constraint
             'not ',
         ];
 
+<<<<<<< HEAD
         preg_match('/(\'[\w\W]*\')([\w\W]*)("[\w\W]*")/i', $string, $matches);
 
         if (count($matches) > 0) {
@@ -62,6 +67,16 @@ final class LogicalNot extends Constraint
             $negatedString = str_replace(
                 $nonInput,
                 str_replace(
+=======
+        \preg_match('/(\'[\w\W]*\')([\w\W]*)("[\w\W]*")/i', $string, $matches);
+
+        if (\count($matches) > 0) {
+            $nonInput = $matches[2];
+
+            $negatedString = \str_replace(
+                $nonInput,
+                \str_replace(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $positives,
                     $negatives,
                     $nonInput
@@ -69,7 +84,11 @@ final class LogicalNot extends Constraint
                 $string
             );
         } else {
+<<<<<<< HEAD
             $negatedString = str_replace(
+=======
+            $negatedString = \str_replace(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $positives,
                 $negatives,
                 $string
@@ -92,7 +111,11 @@ final class LogicalNot extends Constraint
     }
 
     /**
+<<<<<<< HEAD
      * Evaluates the constraint for parameter $other.
+=======
+     * Evaluates the constraint for parameter $other
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -102,7 +125,11 @@ final class LogicalNot extends Constraint
      * failure.
      *
      * @throws ExpectationFailedException
+<<<<<<< HEAD
      * @throws InvalidArgumentException
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
     {
@@ -122,7 +149,11 @@ final class LogicalNot extends Constraint
      */
     public function toString(): string
     {
+<<<<<<< HEAD
         switch (get_class($this->constraint)) {
+=======
+        switch (\get_class($this->constraint)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             case LogicalAnd::class:
             case self::class:
             case LogicalOr::class:
@@ -140,22 +171,38 @@ final class LogicalNot extends Constraint
      */
     public function count(): int
     {
+<<<<<<< HEAD
         return count($this->constraint);
     }
 
     /**
      * Returns the description of the failure.
+=======
+        return \count($this->constraint);
+    }
+
+    /**
+     * Returns the description of the failure
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
      *
      * @param mixed $other evaluated value or object
      *
+<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     protected function failureDescription($other): string
     {
         switch (get_class($this->constraint)) {
+=======
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     */
+    protected function failureDescription($other): string
+    {
+        switch (\get_class($this->constraint)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             case LogicalAnd::class:
             case self::class:
             case LogicalOr::class:

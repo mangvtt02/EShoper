@@ -11,8 +11,11 @@ namespace SebastianBergmann\Comparator;
 
 /**
  * Compares doubles for equality.
+<<<<<<< HEAD
  *
  * @deprecated since v3.0.5 and v4.0.8
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 class DoubleComparator extends NumericComparator
 {

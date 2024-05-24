@@ -63,7 +63,11 @@ class JsonDescriptor extends Descriptor
      */
     protected function describeApplication(Application $application, array $options = [])
     {
+<<<<<<< HEAD
         $describedNamespace = $options['namespace'] ?? null;
+=======
+        $describedNamespace = isset($options['namespace']) ? $options['namespace'] : null;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $description = new ApplicationDescription($application, $describedNamespace, true);
         $commands = [];
 
@@ -95,7 +99,11 @@ class JsonDescriptor extends Descriptor
      */
     private function writeData(array $data, array $options)
     {
+<<<<<<< HEAD
         $flags = $options['json_encoding'] ?? 0;
+=======
+        $flags = isset($options['json_encoding']) ? $options['json_encoding'] : 0;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $this->write(json_encode($data, $flags));
     }

@@ -50,6 +50,7 @@ interface RunInterface
     public function clearHandlers();
 
     /**
+<<<<<<< HEAD
      * @return array<callable>
      */
     public function getFrameFilters();
@@ -60,6 +61,8 @@ interface RunInterface
     public function clearFrameFilters();
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Registers this instance as an error handler.
      *
      * @return Run
@@ -101,6 +104,7 @@ interface RunInterface
     public function sendHttpCode($code = null);
 
     /**
+<<<<<<< HEAD
      * Should Whoops exit with a specific code on the CLI if possible?
      * Whoops will exit with 1 by default, but you can specify something else.
      *
@@ -110,6 +114,8 @@ interface RunInterface
     public function sendExitCode($code = null);
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Should Whoops push output directly to the client?
      * If this is false, output will be returned by handleException
      *
@@ -147,6 +153,7 @@ interface RunInterface
      * Special case to deal with Fatal errors and the like.
      */
     public function handleShutdown();
+<<<<<<< HEAD
 
     /**
      * Registers a filter callback in the frame filters stack.
@@ -155,4 +162,6 @@ interface RunInterface
      * @return \Whoops\Run
      */
     public function addFrameFilter($filterCallback);
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

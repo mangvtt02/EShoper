@@ -52,10 +52,13 @@ class Iterator extends \FilterIterator
         parent::__construct($iterator);
     }
 
+<<<<<<< HEAD
     /**
      * @return bool
      */
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function accept()
     {
         $current  = $this->getInnerIterator()->current();

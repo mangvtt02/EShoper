@@ -28,7 +28,11 @@ class JsonResponseHandler extends Handler
     /**
      * Returns errors[[]] instead of error[] to be in compliance with the json:api spec
      * @param bool $jsonApi Default is false
+<<<<<<< HEAD
      * @return static
+=======
+     * @return $this
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setJsonApi($jsonApi = false)
     {
@@ -38,7 +42,11 @@ class JsonResponseHandler extends Handler
 
     /**
      * @param  bool|null  $returnFrames
+<<<<<<< HEAD
      * @return bool|static
+=======
+     * @return bool|$this
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function addTraceToOutput($returnFrames = null)
     {
@@ -60,8 +68,12 @@ class JsonResponseHandler extends Handler
                 'errors' => [
                     Formatter::formatExceptionAsDataArray(
                         $this->getInspector(),
+<<<<<<< HEAD
                         $this->addTraceToOutput(),
                         $this->getRun()->getFrameFilters()
+=======
+                        $this->addTraceToOutput()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     ),
                 ]
             ];
@@ -69,8 +81,12 @@ class JsonResponseHandler extends Handler
             $response = [
                 'error' => Formatter::formatExceptionAsDataArray(
                     $this->getInspector(),
+<<<<<<< HEAD
                     $this->addTraceToOutput(),
                     $this->getRun()->getFrameFilters()
+=======
+                    $this->addTraceToOutput()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 ),
             ];
         }

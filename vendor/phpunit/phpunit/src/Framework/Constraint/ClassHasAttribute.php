@@ -9,12 +9,16 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+<<<<<<< HEAD
 use function get_class;
 use function is_object;
 use function sprintf;
 use PHPUnit\Framework\Exception;
 use ReflectionClass;
 use ReflectionException;
+=======
+use PHPUnit\Framework\Exception;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Constraint that asserts that the class it is evaluated for has a given
@@ -39,7 +43,11 @@ class ClassHasAttribute extends Constraint
      */
     public function toString(): string
     {
+<<<<<<< HEAD
         return sprintf(
+=======
+        return \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'has attribute "%s"',
             $this->attributeName
         );
@@ -54,12 +62,21 @@ class ClassHasAttribute extends Constraint
     protected function matches($other): bool
     {
         try {
+<<<<<<< HEAD
             return (new ReflectionClass($other))->hasProperty($this->attributeName);
             // @codeCoverageIgnoreStart
         } catch (ReflectionException $e) {
             throw new Exception(
                 $e->getMessage(),
                 $e->getCode(),
+=======
+            return (new \ReflectionClass($other))->hasProperty($this->attributeName);
+            // @codeCoverageIgnoreStart
+        } catch (\ReflectionException $e) {
+            throw new Exception(
+                $e->getMessage(),
+                (int) $e->getCode(),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $e
             );
         }
@@ -67,7 +84,11 @@ class ClassHasAttribute extends Constraint
     }
 
     /**
+<<<<<<< HEAD
      * Returns the description of the failure.
+=======
+     * Returns the description of the failure
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -76,10 +97,17 @@ class ClassHasAttribute extends Constraint
      */
     protected function failureDescription($other): string
     {
+<<<<<<< HEAD
         return sprintf(
             '%sclass "%s" %s',
             is_object($other) ? 'object of ' : '',
             is_object($other) ? get_class($other) : $other,
+=======
+        return \sprintf(
+            '%sclass "%s" %s',
+            \is_object($other) ? 'object of ' : '',
+            \is_object($other) ? \get_class($other) : $other,
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->toString()
         );
     }

@@ -1,7 +1,11 @@
 <?php
 /**
  * @package php-font-lib
+<<<<<<< HEAD
  * @link    https://github.com/dompdf/php-font-lib
+=======
+ * @link    https://github.com/PhenX/php-font-lib
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
@@ -33,9 +37,15 @@ class AdobeFontMetrics {
 
     if ($encoding) {
       $encoding = preg_replace("/[^a-z0-9-_]/", "", $encoding);
+<<<<<<< HEAD
       $map_file = dirname(__FILE__) . "/../../maps/$encoding.map";
       if (!file_exists($map_file)) {
         throw new \Exception("Unknown encoding ($encoding)");
+=======
+      $map_file = dirname(__FILE__) . "/../maps/$encoding.map";
+      if (!file_exists($map_file)) {
+        throw new \Exception("Unkown encoding ($encoding)");
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
       }
 
       $map      = new EncodingMap($map_file);
@@ -48,7 +58,11 @@ class AdobeFontMetrics {
 
     $this->startSection("FontMetrics", 4.1);
     $this->addPair("Notice", "Converted by PHP-font-lib");
+<<<<<<< HEAD
     $this->addPair("Comment", "https://github.com/dompdf/php-font-lib");
+=======
+    $this->addPair("Comment", "https://github.com/PhenX/php-font-lib");
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     $encoding_scheme = ($encoding ? $encoding : "FontSpecific");
     $this->addPair("EncodingScheme", $encoding_scheme);
@@ -75,6 +89,7 @@ class AdobeFontMetrics {
 
     if (isset($hhea["ascent"])) {
       $this->addPair("FontHeightOffset", $font->normalizeFUnit($hhea["lineGap"]));
+<<<<<<< HEAD
     }
     else {
       $this->addPair("FontHeightOffset", $font->normalizeFUnit($os2["typoLineGap"]));
@@ -119,6 +134,14 @@ class AdobeFontMetrics {
       $this->addPair("Descender", $font->normalizeFUnit($hhea["descent"]));
     }
     else {
+=======
+      $this->addPair("Ascender", $font->normalizeFUnit($hhea["ascent"]));
+      $this->addPair("Descender", $font->normalizeFUnit($hhea["descent"]));
+    }
+    else {
+      $this->addPair("FontHeightOffset", $font->normalizeFUnit($os2["typoLineGap"]));
+      $this->addPair("Ascender", $font->normalizeFUnit($os2["typoAscender"]));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
       $this->addPair("Descender", -abs($font->normalizeFUnit($os2["typoDescender"])));
     }
 
@@ -130,6 +153,11 @@ class AdobeFontMetrics {
       $font->normalizeFUnit($head["yMax"]),
     ));
 
+<<<<<<< HEAD
+=======
+    $glyphIndexArray = $font->getUnicodeCharMap();
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     if ($glyphIndexArray) {
       $hmtx  = $font->getData("hmtx");
       $names = $font->getData("post", "names");

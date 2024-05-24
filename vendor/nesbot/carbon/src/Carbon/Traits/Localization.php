@@ -8,7 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 namespace Carbon\Traits;
 
 use Carbon\CarbonInterface;
@@ -16,23 +19,33 @@ use Carbon\Exceptions\InvalidTypeException;
 use Carbon\Exceptions\NotLocaleAwareException;
 use Carbon\Language;
 use Carbon\Translator;
+<<<<<<< HEAD
 use Carbon\TranslatorStrongTypeInterface;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Closure;
 use Symfony\Component\Translation\TranslatorBagInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Contracts\Translation\LocaleAwareInterface;
 use Symfony\Contracts\Translation\TranslatorInterface as ContractsTranslatorInterface;
 
+<<<<<<< HEAD
 // @codeCoverageIgnoreStart
 if (interface_exists('Symfony\\Contracts\\Translation\\TranslatorInterface') &&
     !interface_exists('Symfony\\Component\\Translation\\TranslatorInterface')
 ) {
+=======
+if (!interface_exists('Symfony\\Component\\Translation\\TranslatorInterface')) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     class_alias(
         'Symfony\\Contracts\\Translation\\TranslatorInterface',
         'Symfony\\Component\\Translation\\TranslatorInterface'
     );
 }
+<<<<<<< HEAD
 // @codeCoverageIgnoreEnd
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Trait Localization.
@@ -174,12 +187,20 @@ trait Localization
      *
      * @return string
      */
+<<<<<<< HEAD
     public static function getTranslationMessageWith($translator, string $key, ?string $locale = null, ?string $default = null)
+=======
+    public static function getTranslationMessageWith($translator, string $key, string $locale = null, string $default = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!($translator instanceof TranslatorBagInterface && $translator instanceof TranslatorInterface)) {
             throw new InvalidTypeException(
                 'Translator does not implement '.TranslatorInterface::class.' and '.TranslatorBagInterface::class.'. '.
+<<<<<<< HEAD
                 (\is_object($translator) ? \get_class($translator) : \gettype($translator)).' has been given.'
+=======
+                (is_object($translator) ? get_class($translator) : gettype($translator)).' has been given.'
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             );
         }
 
@@ -187,7 +208,11 @@ trait Localization
             $locale = $translator->getLocale();
         }
 
+<<<<<<< HEAD
         $result = self::getFromCatalogue($translator, $translator->getCatalogue($locale), $key);
+=======
+        $result = $translator->getCatalogue($locale)->get($key);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $result === $key ? $default : $result;
     }
@@ -202,7 +227,11 @@ trait Localization
      *
      * @return string
      */
+<<<<<<< HEAD
     public function getTranslationMessage(string $key, ?string $locale = null, ?string $default = null, $translator = null)
+=======
+    public function getTranslationMessage(string $key, string $locale = null, string $default = null, $translator = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return static::getTranslationMessageWith($translator ?: $this->getLocalTranslator(), $key, $locale, $default);
     }
@@ -243,6 +272,7 @@ trait Localization
     /**
      * Translate using translation string or callback available.
      *
+<<<<<<< HEAD
      * @param string                                                  $key
      * @param array                                                   $parameters
      * @param string|int|float|null                                   $number
@@ -252,6 +282,16 @@ trait Localization
      * @return string
      */
     public function translate(string $key, array $parameters = [], $number = null, ?TranslatorInterface $translator = null, bool $altNumbers = false): string
+=======
+     * @param string                                             $key
+     * @param array                                              $parameters
+     * @param null                                               $number
+     * @param \Symfony\Component\Translation\TranslatorInterface $translator
+     *
+     * @return string
+     */
+    public function translate(string $key, array $parameters = [], $number = null, TranslatorInterface $translator = null, bool $altNumbers = false): string
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $translation = static::translateWith($translator ?: $this->getLocalTranslator(), $key, $parameters, $number);
 
@@ -309,7 +349,11 @@ trait Localization
             return $result;
         }
 
+<<<<<<< HEAD
         return (string) $number;
+=======
+        return "$number";
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -359,6 +403,7 @@ trait Localization
             $weekdays = $messages['weekdays'] ?? [];
             $meridiem = $messages['meridiem'] ?? ['AM', 'PM'];
 
+<<<<<<< HEAD
             if (isset($messages['ordinal_words'])) {
                 $timeString = self::replaceOrdinalWords(
                     $timeString,
@@ -366,6 +411,8 @@ trait Localization
                 );
             }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if ($key === 'from') {
                 foreach (['months', 'weekdays'] as $variable) {
                     $list = $messages[$variable.'_standalone'] ?? null;
@@ -401,7 +448,11 @@ trait Localization
                     'second',
                 ], $messages, $key) : [],
                 $mode & CarbonInterface::TRANSLATE_MERIDIEM ? array_map(function ($hour) use ($meridiem) {
+<<<<<<< HEAD
                     if (\is_array($meridiem)) {
+=======
+                    if (is_array($meridiem)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         return $meridiem[$hour < 12 ? 0 : 1];
                     }
 
@@ -410,11 +461,19 @@ trait Localization
             );
         }
 
+<<<<<<< HEAD
         return substr(preg_replace_callback('/(?<=[\d\s+.\/,_-])('.implode('|', $fromTranslations).')(?=[\d\s+.\/,_-])/iu', function ($match) use ($fromTranslations, $toTranslations) {
             [$chunk] = $match;
 
             foreach ($fromTranslations as $index => $word) {
                 if (preg_match("/^$word\$/iu", $chunk)) {
+=======
+        return substr(preg_replace_callback('/(?<=[\d\s+.\/,_-])('.implode('|', $fromTranslations).')(?=[\d\s+.\/,_-])/i', function ($match) use ($fromTranslations, $toTranslations) {
+            [$chunk] = $match;
+
+            foreach ($fromTranslations as $index => $word) {
+                if (preg_match("/^$word\$/i", $chunk)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     return $toTranslations[$index] ?? '';
                 }
             }
@@ -465,7 +524,11 @@ trait Localization
                 }
             }
 
+<<<<<<< HEAD
             $this->localTranslator = $translator;
+=======
+            $this->setLocalTranslator($translator);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this;
@@ -549,7 +612,11 @@ trait Localization
     public static function executeWithLocale($locale, $func)
     {
         $currentLocale = static::getLocale();
+<<<<<<< HEAD
         $result = $func(static::setLocale($locale) ? static::getLocale() : false, static::translator());
+=======
+        $result = call_user_func($func, static::setLocale($locale) ? static::getLocale() : false, static::translator());
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         static::setLocale($currentLocale);
 
         return $result;
@@ -566,6 +633,7 @@ trait Localization
     public static function localeHasShortUnits($locale)
     {
         return static::executeWithLocale($locale, function ($newLocale, TranslatorInterface $translator) {
+<<<<<<< HEAD
             return ($newLocale && (($y = static::translateWith($translator, 'y')) !== 'y' && $y !== static::translateWith($translator, 'year'))) || (
                 ($y = static::translateWith($translator, 'd')) !== 'd' &&
                     $y !== static::translateWith($translator, 'day')
@@ -573,6 +641,19 @@ trait Localization
                 ($y = static::translateWith($translator, 'h')) !== 'h' &&
                     $y !== static::translateWith($translator, 'hour')
             );
+=======
+            return $newLocale &&
+                (
+                    ($y = static::translateWith($translator, 'y')) !== 'y' &&
+                    $y !== static::translateWith($translator, 'year')
+                ) || (
+                    ($y = static::translateWith($translator, 'd')) !== 'd' &&
+                    $y !== static::translateWith($translator, 'day')
+                ) || (
+                    ($y = static::translateWith($translator, 'h')) !== 'h' &&
+                    $y !== static::translateWith($translator, 'hour')
+                );
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         });
     }
 
@@ -592,9 +673,13 @@ trait Localization
             }
 
             foreach (['ago', 'from_now', 'before', 'after'] as $key) {
+<<<<<<< HEAD
                 if ($translator instanceof TranslatorBagInterface &&
                     self::getFromCatalogue($translator, $translator->getCatalogue($newLocale), $key) instanceof Closure
                 ) {
+=======
+                if ($translator instanceof TranslatorBagInterface && $translator->getCatalogue($newLocale)->get($key) instanceof Closure) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     continue;
                 }
 
@@ -718,7 +803,11 @@ trait Localization
      */
     protected function getTranslatorLocale($translator = null): ?string
     {
+<<<<<<< HEAD
         if (\func_num_args() === 0) {
+=======
+        if (func_num_args() === 0) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $translator = $this->getLocalTranslator();
         }
 
@@ -736,18 +825,27 @@ trait Localization
      */
     protected static function getLocaleAwareTranslator($translator = null)
     {
+<<<<<<< HEAD
         if (\func_num_args() === 0) {
+=======
+        if (func_num_args() === 0) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $translator = static::translator();
         }
 
         if ($translator && !($translator instanceof LocaleAwareInterface || method_exists($translator, 'getLocale'))) {
+<<<<<<< HEAD
             throw new NotLocaleAwareException($translator); // @codeCoverageIgnore
+=======
+            throw new NotLocaleAwareException($translator);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $translator;
     }
 
     /**
+<<<<<<< HEAD
      * @param mixed                                                    $translator
      * @param \Symfony\Component\Translation\MessageCatalogueInterface $catalogue
      *
@@ -761,6 +859,8 @@ trait Localization
     }
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Return the word cleaned from its translation codes.
      *
      * @param string $word
@@ -799,7 +899,11 @@ trait Localization
             $parts = explode('|', $message);
 
             return $key === 'to'
+<<<<<<< HEAD
                 ? self::cleanWordFromTranslationString(end($parts))
+=======
+                ? static::cleanWordFromTranslationString(end($parts))
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 : '(?:'.implode('|', array_map([static::class, 'cleanWordFromTranslationString'], $parts)).')';
         }, $keys);
     }
@@ -817,7 +921,11 @@ trait Localization
     {
         $filler = '>>DO NOT REPLACE<<';
 
+<<<<<<< HEAD
         if (\is_array($translation)) {
+=======
+        if (is_array($translation)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return array_pad($translation, $length, $filler);
         }
 
@@ -830,6 +938,7 @@ trait Localization
 
         return $list;
     }
+<<<<<<< HEAD
 
     private static function replaceOrdinalWords(string $timeString, array $ordinalWords): string
     {
@@ -837,4 +946,6 @@ trait Localization
             return $ordinalWords[mb_strtolower($match[0])] ?? $match[0];
         }, $timeString);
     }
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

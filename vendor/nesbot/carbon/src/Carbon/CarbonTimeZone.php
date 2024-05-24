@@ -8,14 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 namespace Carbon;
 
 use Carbon\Exceptions\InvalidCastException;
 use Carbon\Exceptions\InvalidTimeZoneException;
 use DateTimeInterface;
 use DateTimeZone;
+<<<<<<< HEAD
 use Throwable;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 class CarbonTimeZone extends DateTimeZone
 {
@@ -30,16 +36,28 @@ class CarbonTimeZone extends DateTimeZone
             throw new InvalidTimeZoneException('Absolute timezone offset cannot be greater than 100.');
         }
 
+<<<<<<< HEAD
         return ($timezone >= 0 ? '+' : '').ltrim($timezone, '+').':00';
+=======
+        return ($timezone >= 0 ? '+' : '').$timezone.':00';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     protected static function getDateTimeZoneNameFromMixed($timezone)
     {
+<<<<<<< HEAD
         if ($timezone === null) {
             return date_default_timezone_get();
         }
 
         if (\is_string($timezone)) {
+=======
+        if (is_null($timezone)) {
+            return date_default_timezone_get();
+        }
+
+        if (is_string($timezone)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $timezone = preg_replace('/^\s*([+-]\d+)(\d{2})\s*$/', '$1:$2', $timezone);
         }
 
@@ -101,6 +119,7 @@ class CarbonTimeZone extends DateTimeZone
             $tz = static::getDateTimeZoneFromName($object);
         }
 
+<<<<<<< HEAD
         if ($tz !== false) {
             return new static($tz->getName());
         }
@@ -110,6 +129,17 @@ class CarbonTimeZone extends DateTimeZone
         }
 
         return false;
+=======
+        if ($tz === false) {
+            if (Carbon::isStrictModeEnabled()) {
+                throw new InvalidTimeZoneException('Unknown or bad timezone ('.($objectDump ?: $object).')');
+            }
+
+            return false;
+        }
+
+        return new static($tz->getName());
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -200,7 +230,11 @@ class CarbonTimeZone extends DateTimeZone
         // @codeCoverageIgnoreStart
         try {
             $offset = @$this->getOffset($date) ?: 0;
+<<<<<<< HEAD
         } catch (Throwable $e) {
+=======
+        } catch (\Throwable $e) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $offset = 0;
         }
         // @codeCoverageIgnoreEnd
@@ -231,6 +265,7 @@ class CarbonTimeZone extends DateTimeZone
     {
         $tz = $this->toRegionName($date);
 
+<<<<<<< HEAD
         if ($tz !== false) {
             return new static($tz);
         }
@@ -240,6 +275,17 @@ class CarbonTimeZone extends DateTimeZone
         }
 
         return false;
+=======
+        if ($tz === false) {
+            if (Carbon::isStrictModeEnabled()) {
+                throw new InvalidTimeZoneException('Unknown timezone for offset '.$this->getOffset($date ?: Carbon::now($this)).' seconds.');
+            }
+
+            return false;
+        }
+
+        return new static($tz);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -253,6 +299,7 @@ class CarbonTimeZone extends DateTimeZone
     }
 
     /**
+<<<<<<< HEAD
      * Return the type number:
      *
      * Type 1; A UTC offset, such as -0300
@@ -265,6 +312,8 @@ class CarbonTimeZone extends DateTimeZone
     }
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Create a CarbonTimeZone from mixed input.
      *
      * @param DateTimeZone|string|int|null $object

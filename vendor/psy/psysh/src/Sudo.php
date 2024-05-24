@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -25,9 +29,17 @@ class Sudo
      *
      * @return mixed Value of $object->property
      */
+<<<<<<< HEAD
     public static function fetchProperty($object, string $property)
     {
         $prop = self::getProperty(new \ReflectionObject($object), $property);
+=======
+    public static function fetchProperty($object, $property)
+    {
+        $refl = new \ReflectionObject($object);
+        $prop = $refl->getProperty($property);
+        $prop->setAccessible(true);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $prop->getValue($object);
     }
@@ -41,9 +53,17 @@ class Sudo
      *
      * @return mixed Value of $object->property
      */
+<<<<<<< HEAD
     public static function assignProperty($object, string $property, $value)
     {
         $prop = self::getProperty(new \ReflectionObject($object), $property);
+=======
+    public static function assignProperty($object, $property, $value)
+    {
+        $refl = new \ReflectionObject($object);
+        $prop = $refl->getProperty($property);
+        $prop->setAccessible(true);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $prop->setValue($object, $value);
 
         return $value;
@@ -58,8 +78,17 @@ class Sudo
      *
      * @return mixed
      */
+<<<<<<< HEAD
     public static function callMethod($object, string $method, ...$args)
     {
+=======
+    public static function callMethod($object, $method, $args = null)
+    {
+        $args   = \func_get_args();
+        $object = \array_shift($args);
+        $method = \array_shift($args);
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $refl = new \ReflectionObject($object);
         $reflMethod = $refl->getMethod($method);
         $reflMethod->setAccessible(true);
@@ -75,9 +104,16 @@ class Sudo
      *
      * @return mixed Value of $class::$property
      */
+<<<<<<< HEAD
     public static function fetchStaticProperty($class, string $property)
     {
         $prop = self::getProperty(new \ReflectionClass($class), $property);
+=======
+    public static function fetchStaticProperty($class, $property)
+    {
+        $refl = new \ReflectionClass($class);
+        $prop = $refl->getProperty($property);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $prop->setAccessible(true);
 
         return $prop->getValue();
@@ -92,6 +128,7 @@ class Sudo
      *
      * @return mixed Value of $class::$property
      */
+<<<<<<< HEAD
     public static function assignStaticProperty($class, string $property, $value)
     {
         $prop = self::getProperty(new \ReflectionClass($class), $property);
@@ -102,6 +139,14 @@ class Sudo
         } else {
             $prop->setValue($value);
         }
+=======
+    public static function assignStaticProperty($class, $property, $value)
+    {
+        $refl = new \ReflectionClass($class);
+        $prop = $refl->getProperty($property);
+        $prop->setAccessible(true);
+        $prop->setValue($value);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $value;
     }
@@ -115,8 +160,17 @@ class Sudo
      *
      * @return mixed
      */
+<<<<<<< HEAD
     public static function callStatic($class, string $method, ...$args)
     {
+=======
+    public static function callStatic($class, $method, $args = null)
+    {
+        $args   = \func_get_args();
+        $class  = \array_shift($args);
+        $method = \array_shift($args);
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $refl = new \ReflectionClass($class);
         $reflMethod = $refl->getMethod($method);
         $reflMethod->setAccessible(true);
@@ -132,6 +186,7 @@ class Sudo
      *
      * @return mixed
      */
+<<<<<<< HEAD
     public static function fetchClassConst($class, string $const)
     {
         $refl = new \ReflectionClass($class);
@@ -199,5 +254,12 @@ class Sudo
         } while ($refl !== false);
 
         throw $firstException;
+=======
+    public static function fetchClassConst($class, $const)
+    {
+        $refl = new \ReflectionClass($class);
+
+        return $refl->getConstant($const);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

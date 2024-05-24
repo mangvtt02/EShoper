@@ -8,7 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 return array_replace_recursive(require __DIR__.'/en.php', [
     'meridiem' => ['Tesiran', 'Teipa'],
     'weekdays' => ['Mderot ee are', 'Mderot ee kuni', 'Mderot ee ong’wan', 'Mderot ee inet', 'Mderot ee ile', 'Mderot ee sapa', 'Mderot ee kwe'],

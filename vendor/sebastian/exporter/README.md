@@ -1,6 +1,11 @@
 Exporter
 ========
 
+<<<<<<< HEAD
+=======
+[![Build Status](https://secure.travis-ci.org/sebastianbergmann/exporter.png?branch=master)](https://travis-ci.org/sebastianbergmann/exporter)
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 This component provides the functionality to export PHP variables for visualization.
 
 ## Usage

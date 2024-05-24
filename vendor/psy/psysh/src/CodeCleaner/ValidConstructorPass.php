@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,7 +16,11 @@
 namespace Psy\CodeCleaner;
 
 use PhpParser\Node;
+<<<<<<< HEAD
 use PhpParser\Node\Name;
+=======
+use PhpParser\Node\Identifier;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\Namespace_;
@@ -35,9 +43,12 @@ class ValidConstructorPass extends CodeCleanerPass
 {
     private $namespace;
 
+<<<<<<< HEAD
     /**
      * @return Node[]|null Array of nodes
      */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function beforeTraverse(array $nodes)
     {
         $this->namespace = [];
@@ -50,13 +61,20 @@ class ValidConstructorPass extends CodeCleanerPass
      * @throws FatalErrorException the constructor function has a return type
      *
      * @param Node $node
+<<<<<<< HEAD
      *
      * @return int|Node|null Replacement node (or special return value)
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function enterNode(Node $node)
     {
         if ($node instanceof Namespace_) {
+<<<<<<< HEAD
             $this->namespace = isset($node->name) ? $this->getParts($node->name) : [];
+=======
+            $this->namespace = isset($node->name) ? $node->name->parts : [];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } elseif ($node instanceof Class_) {
             $constructor = null;
             foreach ($node->stmts as $stmt) {
@@ -91,6 +109,7 @@ class ValidConstructorPass extends CodeCleanerPass
     private function validateConstructor(Node $constructor, Node $classNode)
     {
         if ($constructor->isStatic()) {
+<<<<<<< HEAD
             $msg = \sprintf(
                 'Constructor %s::%s() cannot be static',
                 \implode('\\', \array_merge($this->namespace, (array) $classNode->name->toString())),
@@ -118,4 +137,29 @@ class ValidConstructorPass extends CodeCleanerPass
     {
         return \method_exists($name, 'getParts') ? $name->getParts() : $name->parts;
     }
+=======
+            // For PHP Parser 4.x
+            $className = $classNode->name instanceof Identifier ? $classNode->name->toString() : $classNode->name;
+
+            $msg = \sprintf(
+                'Constructor %s::%s() cannot be static',
+                \implode('\\', \array_merge($this->namespace, (array) $className)),
+                $constructor->name
+            );
+            throw new FatalErrorException($msg, 0, E_ERROR, null, $classNode->getLine());
+        }
+
+        if (\method_exists($constructor, 'getReturnType') && $constructor->getReturnType()) {
+            // For PHP Parser 4.x
+            $className = $classNode->name instanceof Identifier ? $classNode->name->toString() : $classNode->name;
+
+            $msg = \sprintf(
+                'Constructor %s::%s() cannot declare a return type',
+                \implode('\\', \array_merge($this->namespace, (array) $className)),
+                $constructor->name
+            );
+            throw new FatalErrorException($msg, 0, E_ERROR, null, $classNode->getLine());
+        }
+    }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

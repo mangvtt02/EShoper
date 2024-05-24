@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 # jQuery DataTables API for Laravel 4|5|6|7|8|9
+=======
+# jQuery DataTables API for Laravel 4|5|6|7|8
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 [![Join the chat at https://gitter.im/yajra/laravel-datatables](https://badges.gitter.im/yajra/laravel-datatables.svg)](https://gitter.im/yajra/laravel-datatables?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.me/yajra)
 [![Donate](https://img.shields.io/badge/donate-patreon-blue.svg)](https://www.patreon.com/bePatron?u=4521203)
 
+<<<<<<< HEAD
 [![Laravel 4.2|5.x|6|7|8|9](https://img.shields.io/badge/Laravel-4.2|5.x|6|7|8|9-orange.svg)](http://laravel.com)
+=======
+[![Laravel 4.2|5.x|6|7|8](https://img.shields.io/badge/Laravel-4.2|5.x|6|7|8-orange.svg)](http://laravel.com)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 [![Latest Stable Version](https://img.shields.io/packagist/v/yajra/laravel-datatables-oracle.svg)](https://packagist.org/packages/yajra/laravel-datatables-oracle)
 [![Latest Unstable Version](https://poser.pugx.org/yajra/laravel-datatables-oracle/v/unstable.svg)](https://packagist.org/packages/yajra/laravel-datatables-oracle)
 ![Build Status](https://github.com/yajra/laravel-datatables-html/workflows/tests/badge.svg)
@@ -29,8 +37,13 @@ return datatables(User::all())->toJson();
 ```
 
 ## Requirements
+<<<<<<< HEAD
 - [PHP >= 7.1](http://php.net/)
 - [Laravel 4.2|5.x|6|7|8|9](https://github.com/laravel/framework)
+=======
+- [PHP >= 7.0](http://php.net/)
+- [Laravel 4.2|5.x|6|7|8](https://github.com/laravel/framework)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 - [jQuery DataTables v1.10.x](http://datatables.net/)
 
 ## Documentations
@@ -61,7 +74,10 @@ return datatables(User::all())->toJson();
  6.x.x    | 9.x
  7.x.x    | 9.x
  8.x.x    | 9.x
+<<<<<<< HEAD
  9.x.x    | 9.x
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## DataTables 8.x Upgrade Guide
 There are breaking changes since DataTables v8.x.

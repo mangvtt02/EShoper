@@ -11,10 +11,13 @@
 
 use Symfony\Polyfill\Ctype as p;
 
+<<<<<<< HEAD
 if (\PHP_VERSION_ID >= 80000) {
     return require __DIR__.'/bootstrap80.php';
 }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 if (!function_exists('ctype_alnum')) {
     function ctype_alnum($text) { return p\Ctype::ctype_alnum($text); }
 }

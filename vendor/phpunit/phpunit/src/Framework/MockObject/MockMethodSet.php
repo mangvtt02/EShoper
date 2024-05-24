@@ -9,10 +9,13 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
+<<<<<<< HEAD
 use function array_key_exists;
 use function array_values;
 use function strtolower;
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
@@ -26,7 +29,11 @@ final class MockMethodSet
     public function addMethods(MockMethod ...$methods): void
     {
         foreach ($methods as $method) {
+<<<<<<< HEAD
             $this->methods[strtolower($method->getName())] = $method;
+=======
+            $this->methods[\strtolower($method->getName())] = $method;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -35,11 +42,19 @@ final class MockMethodSet
      */
     public function asArray(): array
     {
+<<<<<<< HEAD
         return array_values($this->methods);
+=======
+        return \array_values($this->methods);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function hasMethod(string $methodName): bool
     {
+<<<<<<< HEAD
         return array_key_exists(strtolower($methodName), $this->methods);
+=======
+        return \array_key_exists(\strtolower($methodName), $this->methods);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

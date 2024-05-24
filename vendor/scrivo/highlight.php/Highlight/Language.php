@@ -42,7 +42,11 @@ namespace Highlight;
  *
  * // Backward compatibility properties
  *
+<<<<<<< HEAD
  * @property Mode $mode            (DEPRECATED) All properties traditionally inside of $mode are now available directly from this class.
+=======
+ * @property Mode $mode (DEPRECATED) All properties traditionally inside of $mode are now available directly from this class.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @property bool $caseInsensitive (DEPRECATED) Due to compatibility requirements with highlight.js, use `case_insensitive` instead.
  */
 class Language extends Mode

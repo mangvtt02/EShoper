@@ -32,12 +32,17 @@ final class Xdebug implements Driver
     /**
      * @throws RuntimeException
      */
+<<<<<<< HEAD
     public function __construct(?Filter $filter = null)
+=======
+    public function __construct(Filter $filter = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!\extension_loaded('xdebug')) {
             throw new RuntimeException('This driver requires Xdebug');
         }
 
+<<<<<<< HEAD
         if (\version_compare(\phpversion('xdebug'), '3', '>=')) {
             $mode = \getenv('XDEBUG_MODE');
 
@@ -51,6 +56,10 @@ final class Xdebug implements Driver
             }
         } elseif (!\ini_get('xdebug.coverage_enable')) {
             throw new RuntimeException('xdebug.coverage_enable=On has to be set');
+=======
+        if (!\ini_get('xdebug.coverage_enable')) {
+            throw new RuntimeException('xdebug.coverage_enable=On has to be set in php.ini');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if ($filter === null) {

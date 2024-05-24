@@ -33,7 +33,11 @@ class CollectionDataTable extends DataTableAbstract
     /**
      * Can the DataTable engine be created with these parameters.
      *
+<<<<<<< HEAD
      * @param  mixed  $source
+=======
+     * @param mixed $source
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return bool
      */
     public static function canCreate($source)
@@ -44,7 +48,11 @@ class CollectionDataTable extends DataTableAbstract
     /**
      * Factory method, create and return an instance for the DataTable engine.
      *
+<<<<<<< HEAD
      * @param  array|\Illuminate\Support\Collection  $source
+=======
+     * @param array|\Illuminate\Support\Collection $source
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return CollectionDataTable|DataTableAbstract
      */
     public static function create($source)
@@ -59,7 +67,11 @@ class CollectionDataTable extends DataTableAbstract
     /**
      * CollectionEngine constructor.
      *
+<<<<<<< HEAD
      * @param  \Illuminate\Support\Collection  $collection
+=======
+     * @param \Illuminate\Support\Collection $collection
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct(Collection $collection)
     {
@@ -73,7 +85,11 @@ class CollectionDataTable extends DataTableAbstract
     /**
      * Serialize collection.
      *
+<<<<<<< HEAD
      * @param  mixed  $collection
+=======
+     * @param  mixed $collection
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return mixed|null
      */
     protected function serialize($collection)
@@ -100,7 +116,11 @@ class CollectionDataTable extends DataTableAbstract
     {
         $columns = $this->request->get('columns', []);
         for ($i = 0, $c = count($columns); $i < $c; $i++) {
+<<<<<<< HEAD
             $column  = $this->getColumnName($i, 'filter');
+=======
+            $column  = $this->getColumnName($i);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if (! $this->request->isColumnSearchable($i) || $this->isBlacklisted($column)) {
                 continue;
@@ -151,7 +171,11 @@ class CollectionDataTable extends DataTableAbstract
     /**
      * Organizes works.
      *
+<<<<<<< HEAD
      * @param  bool  $mDataSupport
+=======
+     * @param bool $mDataSupport
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return \Illuminate\Http\JsonResponse
      */
     public function make($mDataSupport = true)
@@ -201,7 +225,11 @@ class CollectionDataTable extends DataTableAbstract
     /**
      * Revert transformed DT_RowIndex back to it's original values.
      *
+<<<<<<< HEAD
      * @param  bool  $mDataSupport
+=======
+     * @param bool $mDataSupport
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private function revertIndexColumn($mDataSupport)
     {
@@ -219,7 +247,11 @@ class CollectionDataTable extends DataTableAbstract
     /**
      * Perform global search for the given keyword.
      *
+<<<<<<< HEAD
      * @param  string  $keyword
+=======
+     * @param string $keyword
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function globalSearch($keyword)
     {
@@ -230,8 +262,13 @@ class CollectionDataTable extends DataTableAbstract
 
             $data = $this->serialize($row);
             foreach ($this->request->searchableColumnIndex() as $index) {
+<<<<<<< HEAD
                 $column = $this->getColumnName($index, 'sort');
                 $value  = Arr::get($data, $column);
+=======
+                $column = $this->getColumnName($index);
+                $value = Arr::get($data, $column);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 if (! $value || is_array($value)) {
                     if (! is_numeric($value)) {
                         continue;
@@ -278,14 +315,22 @@ class CollectionDataTable extends DataTableAbstract
     /**
      * Get array sorter closure.
      *
+<<<<<<< HEAD
      * @param  array  $criteria
+=======
+     * @param array $criteria
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return \Closure
      */
     protected function getSorter(array $criteria)
     {
         $sorter = function ($a, $b) use ($criteria) {
             foreach ($criteria as $orderable) {
+<<<<<<< HEAD
                 $column    = $this->getColumnName($orderable['column'], 'sort');
+=======
+                $column    = $this->getColumnName($orderable['column']);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $direction = $orderable['direction'];
                 if ($direction === 'desc') {
                     $first  = $b;
@@ -334,7 +379,11 @@ class CollectionDataTable extends DataTableAbstract
      * the FULL dataset the collection was sliced from. It effectively allows the
      * collection to be "pre-sliced".
      *
+<<<<<<< HEAD
      * @param  int  $offset
+=======
+     * @param int $offset
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return $this
      */
     public function setOffset(int $offset)

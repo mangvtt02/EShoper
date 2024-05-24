@@ -49,7 +49,11 @@ function __phpunit_run_isolated_test()
 
     $test = new {className}('{name}', unserialize('{data}'), '{dataName}');
     $test->setDependencyInput(unserialize('{dependencyInput}'));
+<<<<<<< HEAD
     $test->setInIsolation(true);
+=======
+    $test->setInIsolation(TRUE);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     ob_end_clean();
     $test->run($result);
@@ -59,9 +63,14 @@ function __phpunit_run_isolated_test()
     }
 
     ini_set('xdebug.scream', '0');
+<<<<<<< HEAD
 
     @rewind(STDOUT); /* @ as not every STDOUT target stream is rewindable */
     if ($stdout = @stream_get_contents(STDOUT)) {
+=======
+    @rewind(STDOUT); /* @ as not every STDOUT target stream is rewindable */
+    if ($stdout = stream_get_contents(STDOUT)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $output = $stdout . $output;
         $streamMetaData = stream_get_meta_data(STDOUT);
         if (!empty($streamMetaData['stream_type']) && 'STDIO' === $streamMetaData['stream_type']) {
@@ -70,6 +79,7 @@ function __phpunit_run_isolated_test()
         }
     }
 
+<<<<<<< HEAD
     file_put_contents(
         '{processResultFile}',
         serialize(
@@ -80,6 +90,15 @@ function __phpunit_run_isolated_test()
                 'output'        => $output
             ]
         )
+=======
+    print serialize(
+      [
+        'testResult'    => $test->getResult(),
+        'numAssertions' => $test->getNumAssertions(),
+        'result'        => $result,
+        'output'        => $output
+      ]
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     );
 }
 

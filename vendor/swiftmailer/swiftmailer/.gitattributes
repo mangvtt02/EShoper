@@ -5,7 +5,12 @@
 *.priv -crlf
 *.txt -crlf
 
+<<<<<<< HEAD
 # ignore directories in the git-generated distributed .zip archive
 /doc/notes export-ignore
 /tests export-ignore
 /phpunit.xml.dist export-ignore
+=======
+# ignore /notes in the git-generated distributed .zip archive
+/doc/notes export-ignore
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

@@ -70,6 +70,7 @@ class Tokenizer {
             $line   = $tok[2];
             $values = \preg_split('/\R+/Uu', $tok[1]);
 
+<<<<<<< HEAD
             if (!$values) {
                 $result->addToken(
                     new Token(
@@ -82,6 +83,8 @@ class Tokenizer {
                 continue;
             }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             foreach ($values as $v) {
                 $token = new Token(
                     $line,
@@ -94,7 +97,10 @@ class Tokenizer {
                 if ($v === '') {
                     continue;
                 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $result->addToken($token);
             }
         }
@@ -103,6 +109,7 @@ class Tokenizer {
     }
 
     private function fillBlanks(TokenCollection $tokens, int $maxLine): TokenCollection {
+<<<<<<< HEAD
         $prev = new Token(
             0,
             'Placeholder',
@@ -112,6 +119,20 @@ class Tokenizer {
         $final = new TokenCollection();
 
         foreach ($tokens as $token) {
+=======
+        /** @var Token $prev */
+        $prev  = null;
+        $final = new TokenCollection();
+
+        foreach ($tokens as $token) {
+            if ($prev === null) {
+                $final->addToken($token);
+                $prev = $token;
+
+                continue;
+            }
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $gap = $token->getLine() - $prev->getLine();
 
             while ($gap > 1) {

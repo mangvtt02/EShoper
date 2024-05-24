@@ -119,7 +119,11 @@ class ErrorHandler
     public static function register(self $handler = null, $replace = true)
     {
         if (null === self::$reservedMemory) {
+<<<<<<< HEAD
             self::$reservedMemory = str_repeat('x', 32768);
+=======
+            self::$reservedMemory = str_repeat('x', 10240);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             register_shutdown_function(__CLASS__.'::handleFatalError');
         }
 
@@ -169,7 +173,11 @@ class ErrorHandler
             $this->bootstrappingLogger = $bootstrappingLogger;
             $this->setDefaultLogger($bootstrappingLogger);
         }
+<<<<<<< HEAD
         $this->traceReflector = new \ReflectionProperty(\Exception::class, 'trace');
+=======
+        $this->traceReflector = new \ReflectionProperty('Exception', 'trace');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->traceReflector->setAccessible(true);
     }
 
@@ -354,8 +362,13 @@ class ErrorHandler
      */
     private function reRegister(int $prev)
     {
+<<<<<<< HEAD
         if ($prev !== ($this->thrownErrors | $this->loggedErrors)) {
             $handler = set_error_handler('is_int');
+=======
+        if ($prev !== $this->thrownErrors | $this->loggedErrors) {
+            $handler = set_error_handler('var_dump');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $handler = \is_array($handler) ? $handler[0] : null;
             restore_error_handler();
             if ($handler === $this) {
@@ -490,7 +503,11 @@ class ErrorHandler
             $log = 0;
         } else {
             if (\PHP_VERSION_ID < (\PHP_VERSION_ID < 70400 ? 70316 : 70404)) {
+<<<<<<< HEAD
                 $currentErrorHandler = set_error_handler('is_int');
+=======
+                $currentErrorHandler = set_error_handler('var_dump');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 restore_error_handler();
             }
 
@@ -601,7 +618,11 @@ class ErrorHandler
         $sameHandlerLimit = 10;
 
         while (!\is_array($handler) || !$handler[0] instanceof self) {
+<<<<<<< HEAD
             $handler = set_exception_handler('is_int');
+=======
+            $handler = set_exception_handler('var_dump');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             restore_exception_handler();
 
             if (!$handler) {
@@ -636,7 +657,11 @@ class ErrorHandler
         if ($error && $error['type'] &= \E_PARSE | \E_ERROR | \E_CORE_ERROR | \E_COMPILE_ERROR) {
             // Let's not throw anymore but keep logging
             $handler->throwAt(0, true);
+<<<<<<< HEAD
             $trace = $error['backtrace'] ?? null;
+=======
+            $trace = isset($error['backtrace']) ? $error['backtrace'] : null;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if (0 === strpos($error['message'], 'Allowed memory') || 0 === strpos($error['message'], 'Out of memory')) {
                 $exception = new OutOfMemoryException($handler->levels[$error['type']].': '.$error['message'], 0, $error['type'], $error['file'], $error['line'], 2, false, $trace);

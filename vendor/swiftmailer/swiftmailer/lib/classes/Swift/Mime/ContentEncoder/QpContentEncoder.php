@@ -37,7 +37,11 @@ class Swift_Mime_ContentEncoder_QpContentEncoder extends Swift_Encoder_QpEncoder
 
     protected function getSafeMapShareId()
     {
+<<<<<<< HEAD
         return static::class.($this->dotEscape ? '.dotEscape' : '');
+=======
+        return get_class($this).($this->dotEscape ? '.dotEscape' : '');
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     protected function initSafeMap()
@@ -116,7 +120,11 @@ class Swift_Mime_ContentEncoder_QpContentEncoder extends Swift_Encoder_QpEncoder
                 $lineLen = $size - strrpos($enc, '=0D=0A') - 6;
             }
         }
+<<<<<<< HEAD
         if (\strlen($currentLine)) {
+=======
+        if (strlen($currentLine)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $is->write($prepend.$this->standardize($currentLine));
         }
     }

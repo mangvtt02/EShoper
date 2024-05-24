@@ -12,8 +12,13 @@ class Helper
     /**
      * Places item of extra columns into results by care of their order.
      *
+<<<<<<< HEAD
      * @param  array  $item
      * @param  array  $array
+=======
+     * @param array $item
+     * @param array $array
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     public static function includeInArray($item, $array)
@@ -40,8 +45,13 @@ class Helper
     /**
      * Check if item order is valid.
      *
+<<<<<<< HEAD
      * @param  array  $item
      * @param  array  $array
+=======
+     * @param array $item
+     * @param array $array
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return bool
      */
     protected static function isItemOrderInvalid($item, $array)
@@ -52,15 +62,22 @@ class Helper
     /**
      * Determines if content is callable or blade string, processes and returns.
      *
+<<<<<<< HEAD
      * @param  mixed  $content  Pre-processed content
      * @param  array  $data  data to use with blade template
      * @param  mixed  $param  parameter to call with callable
+=======
+     * @param mixed $content Pre-processed content
+     * @param array $data    data to use with blade template
+     * @param mixed $param   parameter to call with callable
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return mixed
      */
     public static function compileContent($content, array $data, $param)
     {
         if (is_string($content)) {
             return static::compileBlade($content, static::getMixedValue($data, $param));
+<<<<<<< HEAD
         }
 
         if (is_callable($content)) {
@@ -71,6 +88,9 @@ class Helper
                 return app()->call($content, [$arguments[0]->name => $param]);
             }
 
+=======
+        } elseif (is_callable($content)) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $content($param);
         }
 
@@ -80,10 +100,16 @@ class Helper
     /**
      * Parses and compiles strings by using Blade Template System.
      *
+<<<<<<< HEAD
      * @param  string  $str
      * @param  array  $data
      * @return mixed
      *
+=======
+     * @param string $str
+     * @param array  $data
+     * @return mixed
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @throws \Exception
      */
     public static function compileBlade($str, $data = [])
@@ -103,8 +129,13 @@ class Helper
     /**
      * Get a mixed value of custom data and the parameters.
      *
+<<<<<<< HEAD
      * @param  array  $data
      * @param  mixed  $param
+=======
+     * @param  array $data
+     * @param  mixed $param
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     public static function getMixedValue(array $data, $param)
@@ -125,7 +156,11 @@ class Helper
     /**
      * Cast the parameter into an array.
      *
+<<<<<<< HEAD
      * @param  mixed  $param
+=======
+     * @param mixed $param
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     public static function castToArray($param)
@@ -146,7 +181,11 @@ class Helper
     /**
      * Get equivalent or method of query builder.
      *
+<<<<<<< HEAD
      * @param  string  $method
+=======
+     * @param string $method
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return string
      */
     public static function getOrMethod($method)
@@ -161,8 +200,13 @@ class Helper
     /**
      * Converts array object values to associative array.
      *
+<<<<<<< HEAD
      * @param  mixed  $row
      * @param  array  $filters
+=======
+     * @param mixed $row
+     * @param array $filters
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     public static function convertToArray($row, $filters = [])
@@ -183,7 +227,11 @@ class Helper
     }
 
     /**
+<<<<<<< HEAD
      * @param  array  $data
+=======
+     * @param array $data
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     public static function transform(array $data)
@@ -196,7 +244,11 @@ class Helper
     /**
      * Transform row data into an array.
      *
+<<<<<<< HEAD
      * @param  mixed  $row
+=======
+     * @param mixed $row
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     protected static function transformRow($row)
@@ -219,7 +271,11 @@ class Helper
     /**
      * Build parameters depending on # of arguments passed.
      *
+<<<<<<< HEAD
      * @param  array  $args
+=======
+     * @param array $args
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     public static function buildParameters(array $args)
@@ -243,9 +299,15 @@ class Helper
     /**
      * Replace all pattern occurrences with keyword.
      *
+<<<<<<< HEAD
      * @param  array  $subject
      * @param  string  $keyword
      * @param  string  $pattern
+=======
+     * @param array  $subject
+     * @param string $keyword
+     * @param string $pattern
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     public static function replacePatternWithKeyword(array $subject, $keyword, $pattern = '$1')
@@ -265,8 +327,13 @@ class Helper
     /**
      * Get column name from string.
      *
+<<<<<<< HEAD
      * @param  string  $str
      * @param  bool  $wantsAlias
+=======
+     * @param string $str
+     * @param bool   $wantsAlias
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return string
      */
     public static function extractColumnName($str, $wantsAlias)
@@ -291,8 +358,13 @@ class Helper
     /**
      * Adds % wildcards to the given string.
      *
+<<<<<<< HEAD
      * @param  string  $str
      * @param  bool  $lowercase
+=======
+     * @param string $str
+     * @param bool   $lowercase
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return string
      */
     public static function wildcardLikeString($str, $lowercase = true)
@@ -303,9 +375,15 @@ class Helper
     /**
      * Adds wildcards to the given string.
      *
+<<<<<<< HEAD
      * @param  string  $str
      * @param  string  $wildcard
      * @param  bool  $lowercase
+=======
+     * @param string $str
+     * @param string $wildcard
+     * @param bool   $lowercase
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return string
      */
     public static function wildcardString($str, $wildcard, $lowercase = true)

@@ -114,6 +114,10 @@ class PendingMail
      * Send a new mailable message instance.
      *
      * @param  \Illuminate\Contracts\Mail\Mailable  $mailable
+<<<<<<< HEAD
+=======
+     *
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return mixed
      */
     public function send(MailableContract $mailable)
@@ -126,7 +130,10 @@ class PendingMail
      *
      * @param  \Illuminate\Contracts\Mail\Mailable  $mailable
      * @return mixed
+<<<<<<< HEAD
      *
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @deprecated Use send() instead.
      */
     public function sendNow(MailableContract $mailable)

@@ -19,6 +19,7 @@ use Symfony\Component\Translation\Exception\InvalidResourceException;
 class MoFileLoader extends FileLoader
 {
     /**
+<<<<<<< HEAD
      * Magic used for validating the format of an MO file as well as
      * detecting if the machine used to create that file was little endian.
      */
@@ -34,6 +35,23 @@ class MoFileLoader extends FileLoader
      * The size of the header of an MO file in bytes.
      */
     public const MO_HEADER_SIZE = 28;
+=======
+     * Magic used for validating the format of a MO file as well as
+     * detecting if the machine used to create that file was little endian.
+     */
+    const MO_LITTLE_ENDIAN_MAGIC = 0x950412de;
+
+    /**
+     * Magic used for validating the format of a MO file as well as
+     * detecting if the machine used to create that file was big endian.
+     */
+    const MO_BIG_ENDIAN_MAGIC = 0xde120495;
+
+    /**
+     * The size of the header of a MO file in bytes.
+     */
+    const MO_HEADER_SIZE = 28;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Parses machine object (MO) format, independent of the machine's endian it
@@ -89,8 +107,13 @@ class MoFileLoader extends FileLoader
             fseek($stream, $offset);
             $singularId = fread($stream, $length);
 
+<<<<<<< HEAD
             if (str_contains($singularId, "\000")) {
                 [$singularId, $pluralId] = explode("\000", $singularId);
+=======
+            if (false !== strpos($singularId, "\000")) {
+                list($singularId, $pluralId) = explode("\000", $singularId);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
 
             fseek($stream, $offsetTranslated + $i * 8);
@@ -104,7 +127,11 @@ class MoFileLoader extends FileLoader
             fseek($stream, $offset);
             $translated = fread($stream, $length);
 
+<<<<<<< HEAD
             if (str_contains($translated, "\000")) {
+=======
+            if (false !== strpos($translated, "\000")) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $translated = explode("\000", $translated);
             }
 

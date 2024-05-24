@@ -34,7 +34,10 @@ class BinaryFileResponse extends Response
     protected $offset = 0;
     protected $maxlen = -1;
     protected $deleteFileAfterSend = false;
+<<<<<<< HEAD
     protected $chunkSize = 8 * 1024;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @param \SplFileInfo|string $file               The file to stream
@@ -126,6 +129,7 @@ class BinaryFileResponse extends Response
     }
 
     /**
+<<<<<<< HEAD
      * Sets the response stream chunk size.
      *
      * @return $this
@@ -142,6 +146,8 @@ class BinaryFileResponse extends Response
     }
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Automatically sets the Last-Modified header according the file modification date.
      */
     public function setAutoLastModified()
@@ -176,7 +182,11 @@ class BinaryFileResponse extends Response
             $filename = $this->file->getFilename();
         }
 
+<<<<<<< HEAD
         if ('' === $filenameFallback && (!preg_match('/^[\x20-\x7e]*$/', $filename) || str_contains($filename, '%'))) {
+=======
+        if ('' === $filenameFallback && (!preg_match('/^[\x20-\x7e]*$/', $filename) || false !== strpos($filename, '%'))) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $encoding = mb_detect_encoding($filename, null, true) ?: '8bit';
 
             for ($i = 0, $filenameLength = mb_strlen($filename, $encoding); $i < $filenameLength; ++$i) {
@@ -201,6 +211,7 @@ class BinaryFileResponse extends Response
      */
     public function prepare(Request $request)
     {
+<<<<<<< HEAD
         if ($this->isInformational() || $this->isEmpty()) {
             parent::prepare($request);
 
@@ -209,11 +220,21 @@ class BinaryFileResponse extends Response
             return $this;
         }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (!$this->headers->has('Content-Type')) {
             $this->headers->set('Content-Type', $this->file->getMimeType() ?: 'application/octet-stream');
         }
 
+<<<<<<< HEAD
         parent::prepare($request);
+=======
+        if ('HTTP/1.0' !== $request->server->get('SERVER_PROTOCOL')) {
+            $this->setProtocolVersion('1.1');
+        }
+
+        $this->ensureIEOverSSLCompatibility($request);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $this->offset = 0;
         $this->maxlen = -1;
@@ -221,7 +242,10 @@ class BinaryFileResponse extends Response
         if (false === $fileSize = $this->file->getSize()) {
             return $this;
         }
+<<<<<<< HEAD
         $this->headers->remove('Transfer-Encoding');
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->headers->set('Content-Length', $fileSize);
 
         if (!$this->headers->has('Accept-Ranges')) {
@@ -242,7 +266,11 @@ class BinaryFileResponse extends Response
                 // @link https://www.nginx.com/resources/wiki/start/topics/examples/x-accel/#x-accel-redirect
                 $parts = HeaderUtils::split($request->headers->get('X-Accel-Mapping', ''), ',=');
                 foreach ($parts as $part) {
+<<<<<<< HEAD
                     [$pathPrefix, $location] = $part;
+=======
+                    list($pathPrefix, $location) = $part;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     if (substr($path, 0, \strlen($pathPrefix)) === $pathPrefix) {
                         $path = $location.substr($path, \strlen($pathPrefix));
                         // Only set X-Accel-Redirect header if a valid URI can be produced
@@ -256,11 +284,16 @@ class BinaryFileResponse extends Response
                 $this->headers->set($type, $path);
                 $this->maxlen = 0;
             }
+<<<<<<< HEAD
         } elseif ($request->headers->has('Range') && $request->isMethod('GET')) {
+=======
+        } elseif ($request->headers->has('Range')) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             // Process the range headers.
             if (!$request->headers->has('If-Range') || $this->hasValidIfRangeHeader($request->headers->get('If-Range'))) {
                 $range = $request->headers->get('Range');
 
+<<<<<<< HEAD
                 if (str_starts_with($range, 'bytes=')) {
                     [$start, $end] = explode('-', substr($range, 6), 2) + [0];
 
@@ -286,15 +319,42 @@ class BinaryFileResponse extends Response
                             $this->headers->set('Content-Range', sprintf('bytes %s-%s/%s', $start, $end, $fileSize));
                             $this->headers->set('Content-Length', $end - $start + 1);
                         }
+=======
+                list($start, $end) = explode('-', substr($range, 6), 2) + [0];
+
+                $end = ('' === $end) ? $fileSize - 1 : (int) $end;
+
+                if ('' === $start) {
+                    $start = $fileSize - $end;
+                    $end = $fileSize - 1;
+                } else {
+                    $start = (int) $start;
+                }
+
+                if ($start <= $end) {
+                    if ($start < 0 || $end > $fileSize - 1) {
+                        $this->setStatusCode(416);
+                        $this->headers->set('Content-Range', sprintf('bytes */%s', $fileSize));
+                    } elseif (0 !== $start || $end !== $fileSize - 1) {
+                        $this->maxlen = $end < $fileSize ? $end - $start + 1 : -1;
+                        $this->offset = $start;
+
+                        $this->setStatusCode(206);
+                        $this->headers->set('Content-Range', sprintf('bytes %s-%s/%s', $start, $end, $fileSize));
+                        $this->headers->set('Content-Length', $end - $start + 1);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     }
                 }
             }
         }
 
+<<<<<<< HEAD
         if ($request->isMethod('HEAD')) {
             $this->maxlen = 0;
         }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this;
     }
 
@@ -318,6 +378,7 @@ class BinaryFileResponse extends Response
      */
     public function sendContent()
     {
+<<<<<<< HEAD
         try {
             if (!$this->isSuccessful()) {
                 return parent::sendContent();
@@ -354,6 +415,26 @@ class BinaryFileResponse extends Response
             if ($this->deleteFileAfterSend && file_exists($this->file->getPathname())) {
                 unlink($this->file->getPathname());
             }
+=======
+        if (!$this->isSuccessful()) {
+            return parent::sendContent();
+        }
+
+        if (0 === $this->maxlen) {
+            return $this;
+        }
+
+        $out = fopen('php://output', 'wb');
+        $file = fopen($this->file->getPathname(), 'rb');
+
+        stream_copy_to_stream($file, $out, $this->maxlen, $this->offset);
+
+        fclose($out);
+        fclose($file);
+
+        if ($this->deleteFileAfterSend && file_exists($this->file->getPathname())) {
+            unlink($this->file->getPathname());
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this;

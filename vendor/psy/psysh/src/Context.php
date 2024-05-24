@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,7 +25,11 @@ class Context
 {
     private static $specialNames = ['_', '_e', '__out', '__psysh__', 'this'];
 
+<<<<<<< HEAD
     // Include a very limited number of command-scope magic variable names.
+=======
+    // Whitelist a very limited number of command-scope magic variable names.
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     // This might be a bad idea, but future me can sort it out.
     private static $commandScopeNames = [
         '__function', '__method', '__class', '__namespace', '__file', '__line', '__dir',
@@ -44,7 +52,11 @@ class Context
      *
      * @return mixed
      */
+<<<<<<< HEAD
     public function get(string $name)
+=======
+    public function get($name)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         switch ($name) {
             case '_':
@@ -87,21 +99,39 @@ class Context
                 break;
         }
 
+<<<<<<< HEAD
         throw new \InvalidArgumentException('Unknown variable: $'.$name);
+=======
+        throw new \InvalidArgumentException('Unknown variable: $' . $name);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * Get all defined variables.
+<<<<<<< HEAD
      */
     public function getAll(): array
+=======
+     *
+     * @return array
+     */
+    public function getAll()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return \array_merge($this->scopeVariables, $this->getSpecialVariables());
     }
 
     /**
      * Get all defined magic variables: $_, $_e, $__out, $__class, $__file, etc.
+<<<<<<< HEAD
      */
     public function getSpecialVariables(): array
+=======
+     *
+     * @return array
+     */
+    public function getSpecialVariables()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $vars = [
             '_' => $this->returnValue,
@@ -164,21 +194,37 @@ class Context
     }
 
     /**
+<<<<<<< HEAD
      * Set the most recent Exception or Error.
      *
      * @param \Throwable $e
      */
     public function setLastException(\Throwable $e)
+=======
+     * Set the most recent Exception.
+     *
+     * @param \Exception $e
+     */
+    public function setLastException(\Exception $e)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->lastException = $e;
     }
 
     /**
+<<<<<<< HEAD
      * Get the most recent Exception or Error.
      *
      * @throws \InvalidArgumentException If no Exception has been caught
      *
      * @return \Throwable|null
+=======
+     * Get the most recent Exception.
+     *
+     * @throws \InvalidArgumentException If no Exception has been caught
+     *
+     * @return \Exception|null
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getLastException()
     {
@@ -194,7 +240,11 @@ class Context
      *
      * @param string $lastStdout
      */
+<<<<<<< HEAD
     public function setLastStdout(string $lastStdout)
+=======
+    public function setLastStdout($lastStdout)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->lastStdout = $lastStdout;
     }
@@ -281,8 +331,15 @@ class Context
 
     /**
      * Get command-scope magic variables: $__class, $__file, etc.
+<<<<<<< HEAD
      */
     public function getCommandScopeVariables(): array
+=======
+     *
+     * @return array
+     */
+    public function getCommandScopeVariables()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->commandScopeVariables;
     }
@@ -295,7 +352,11 @@ class Context
      *
      * @return array Array of unused variable names
      */
+<<<<<<< HEAD
     public function getUnusedCommandScopeVariableNames(): array
+=======
+    public function getUnusedCommandScopeVariableNames()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return \array_diff(self::$commandScopeNames, \array_keys($this->commandScopeVariables));
     }
@@ -304,8 +365,15 @@ class Context
      * Check whether a variable name is a magic variable.
      *
      * @param string $name
+<<<<<<< HEAD
      */
     public static function isSpecialVariableName(string $name): bool
+=======
+     *
+     * @return bool
+     */
+    public static function isSpecialVariableName($name)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return \in_array($name, self::$specialNames) || \in_array($name, self::$commandScopeNames);
     }

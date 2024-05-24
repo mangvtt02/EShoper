@@ -9,7 +9,10 @@
  */
 namespace PHPUnit\Framework\MockObject\Stub;
 
+<<<<<<< HEAD
 use function sprintf;
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\MockObject\Invocation;
 use SebastianBergmann\Exporter\Exporter;
 
@@ -37,7 +40,11 @@ final class ReturnReference implements Stub
     {
         $exporter = new Exporter;
 
+<<<<<<< HEAD
         return sprintf(
+=======
+        return \sprintf(
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'return user-specified reference %s',
             $exporter->export($this->reference)
         );

@@ -41,10 +41,13 @@ class ArrayCollection implements \IteratorAggregate, \Countable, \ArrayAccess
     public function __construct(array $elements = [])
     {
         $this->elements = $elements;
+<<<<<<< HEAD
 
         if (self::class !== static::class) {
             @\trigger_error('Extending the ArrayCollection class is deprecated in league/commonmark 1.6 and will not be allowed in 2.0', \E_USER_DEPRECATED);
         }
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -71,8 +74,14 @@ class ArrayCollection implements \IteratorAggregate, \Countable, \ArrayAccess
      * Retrieve an external iterator
      *
      * @return \ArrayIterator<int|string, mixed>
+<<<<<<< HEAD
      */
     #[\ReturnTypeWillChange]
+=======
+     *
+     * @phpstan-return \ArrayIterator<TKey, TValue>
+     */
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function getIterator()
     {
         return new \ArrayIterator($this->elements);
@@ -252,7 +261,10 @@ class ArrayCollection implements \IteratorAggregate, \Countable, \ArrayAccess
      *
      * @phpstan-return TValue|null
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function offsetGet($offset)
     {
         return $this->elements[$offset] ?? null;
@@ -269,7 +281,10 @@ class ArrayCollection implements \IteratorAggregate, \Countable, \ArrayAccess
      * @phpstan-param TKey|null $offset
      * @phpstan-param TValue    $value
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function offsetSet($offset, $value)
     {
         if ($offset === null) {
@@ -288,7 +303,10 @@ class ArrayCollection implements \IteratorAggregate, \Countable, \ArrayAccess
      *
      * @phpstan-param TKey $offset
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function offsetUnset($offset)
     {
         if (!\array_key_exists($offset, $this->elements)) {

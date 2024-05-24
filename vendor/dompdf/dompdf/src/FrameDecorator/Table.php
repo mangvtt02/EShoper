@@ -9,9 +9,15 @@ namespace Dompdf\FrameDecorator;
 
 use Dompdf\Cellmap;
 use DOMNode;
+<<<<<<< HEAD
 use Dompdf\Css\Style;
 use Dompdf\Dompdf;
 use Dompdf\Frame;
+=======
+use Dompdf\Dompdf;
+use Dompdf\Frame;
+use Dompdf\Frame\Factory;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Decorates Frames for table layout
@@ -20,19 +26,41 @@ use Dompdf\Frame;
  */
 class Table extends AbstractFrameDecorator
 {
+<<<<<<< HEAD
     public static $VALID_CHILDREN = Style::TABLE_INTERNAL_TYPES;
 
     public static $ROW_GROUPS = [
         "table-row-group",
         "table-header-group",
         "table-footer-group"
+=======
+    public static $VALID_CHILDREN = [
+        "table-row-group",
+        "table-row",
+        "table-header-group",
+        "table-footer-group",
+        "table-column",
+        "table-column-group",
+        "table-caption",
+        "table-cell"
+    ];
+
+    public static $ROW_GROUPS = [
+        'table-row-group',
+        'table-header-group',
+        'table-footer-group'
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     ];
 
     /**
      * The Cellmap object for this table.  The cellmap maps table cells
      * to rows and columns, and aids in calculating column widths.
      *
+<<<<<<< HEAD
      * @var Cellmap
+=======
+     * @var \Dompdf\Cellmap
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $_cellmap;
 
@@ -54,7 +82,11 @@ class Table extends AbstractFrameDecorator
      * Table header rows.  Each table header is duplicated when a table
      * spans pages.
      *
+<<<<<<< HEAD
      * @var TableRowGroup[]
+=======
+     * @var array
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $_headers;
 
@@ -62,7 +94,11 @@ class Table extends AbstractFrameDecorator
      * Table footer rows.  Each table footer is duplicated when a table
      * spans pages.
      *
+<<<<<<< HEAD
      * @var TableRowGroup[]
+=======
+     * @var array
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $_footers;
 
@@ -101,6 +137,7 @@ class Table extends AbstractFrameDecorator
     //........................................................................
 
     /**
+<<<<<<< HEAD
      * Split the table at $row.  $row and all subsequent rows will be
      * added to the clone.  This method is overridden in order to remove
      * frames from the cellmap properly.
@@ -109,14 +146,35 @@ class Table extends AbstractFrameDecorator
     {
         if (is_null($child)) {
             parent::split($child, $page_break, $forced);
+=======
+     * split the table at $row.  $row and all subsequent rows will be
+     * added to the clone.  This method is overidden in order to remove
+     * frames from the cellmap properly.
+     *
+     * @param Frame $child
+     * @param bool $force_pagebreak
+     *
+     * @return void
+     */
+    public function split(Frame $child = null, $force_pagebreak = false)
+    {
+        if (is_null($child)) {
+            parent::split();
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return;
         }
 
         // If $child is a header or if it is the first non-header row, do
         // not duplicate headers, simply move the table to the next page.
+<<<<<<< HEAD
         if (count($this->_headers)
             && !in_array($child, $this->_headers, true)
             && !in_array($child->get_prev_sibling(), $this->_headers, true)
+=======
+        if (count($this->_headers) && !in_array($child, $this->_headers, true) &&
+            !in_array($child->get_prev_sibling(), $this->_headers, true)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         ) {
             $first_header = null;
 
@@ -132,12 +190,21 @@ class Table extends AbstractFrameDecorator
                 $this->insert_child_before($new_header, $child);
             }
 
+<<<<<<< HEAD
             parent::split($first_header, $page_break, $forced);
 
         } elseif (in_array($child->get_style()->display, self::$ROW_GROUPS, true)) {
 
             // Individual rows should have already been handled
             parent::split($child, $page_break, $forced);
+=======
+            parent::split($first_header);
+
+        } elseif (in_array($child->get_style()->display, self::$ROW_GROUPS)) {
+
+            // Individual rows should have already been handled
+            parent::split($child);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         } else {
 
@@ -148,10 +215,24 @@ class Table extends AbstractFrameDecorator
                 $iter = $iter->get_next_sibling();
             }
 
+<<<<<<< HEAD
             parent::split($child, $page_break, $forced);
         }
     }
 
+=======
+            parent::split($child);
+        }
+    }
+
+    /**
+     * Return a copy of this frame with $node as its node
+     *
+     * @param DOMNode $node
+     *
+     * @return Frame
+     */
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function copy(DOMNode $node)
     {
         $deco = parent::copy($node);
@@ -184,7 +265,11 @@ class Table extends AbstractFrameDecorator
     /**
      * Return this table's Cellmap
      *
+<<<<<<< HEAD
      * @return Cellmap
+=======
+     * @return \Dompdf\Cellmap
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function get_cellmap()
     {
@@ -231,6 +316,7 @@ class Table extends AbstractFrameDecorator
         $this->_max_width = $width;
     }
 
+<<<<<<< HEAD
     //........................................................................
 
     /**
@@ -276,6 +362,118 @@ class Table extends AbstractFrameDecorator
             if (in_array($display, self::$ROW_GROUPS, true)) {
                 // Reset anonymous tbody
                 $tbody = null;
+=======
+    /**
+     * Restructure tree so that the table has the correct structure.
+     * Invalid children (i.e. all non-table-rows) are moved below the
+     * table.
+     *
+     * @fixme #1363 Method has some bugs. $table_row has not been initialized and lookup most likely could return an
+     * array of Style instead a Style Object
+     */
+    public function normalise()
+    {
+        // Store frames generated by invalid tags and move them outside the table
+        $erroneous_frames = [];
+        $anon_row = false;
+        $iter = $this->get_first_child();
+        while ($iter) {
+            $child = $iter;
+            $iter = $iter->get_next_sibling();
+
+            $display = $child->get_style()->display;
+
+            if ($anon_row) {
+
+                if ($display === "table-row") {
+                    // Add the previous anonymous row
+                    $this->insert_child_before($table_row, $child);
+
+                    $table_row->normalise();
+                    $child->normalise();
+                    $this->_cellmap->add_row();
+                    $anon_row = false;
+                    continue;
+                }
+
+                // add the child to the anonymous row
+                $table_row->append_child($child);
+                continue;
+
+            } else {
+
+                if ($display === "table-row") {
+                    $child->normalise();
+                    continue;
+                }
+
+                if ($display === "table-cell") {
+                    $css = $this->get_style()->get_stylesheet();
+
+                    // Create an anonymous table row group
+                    $tbody = $this->get_node()->ownerDocument->createElement("tbody");
+
+                    $frame = new Frame($tbody);
+
+                    $style = $css->create_style();
+                    $style->inherit($this->get_style());
+
+                    // Lookup styles for tbody tags.  If the user wants styles to work
+                    // better, they should make the tbody explicit... I'm not going to
+                    // try to guess what they intended.
+                    if ($tbody_style = $css->lookup("tbody")) {
+                        $style->merge($tbody_style);
+                    }
+                    $style->display = 'table-row-group';
+
+                    // Okay, I have absolutely no idea why I need this clone here, but
+                    // if it's omitted, php (as of 2004-07-28) segfaults.
+                    $frame->set_style($style);
+                    $table_row_group = Factory::decorate_frame($frame, $this->_dompdf, $this->_root);
+
+                    // Create an anonymous table row
+                    $tr = $this->get_node()->ownerDocument->createElement("tr");
+
+                    $frame = new Frame($tr);
+
+                    $style = $css->create_style();
+                    $style->inherit($this->get_style());
+
+                    // Lookup styles for tr tags.  If the user wants styles to work
+                    // better, they should make the tr explicit... I'm not going to
+                    // try to guess what they intended.
+                    if ($tr_style = $css->lookup("tr")) {
+                        $style->merge($tr_style);
+                    }
+                    $style->display = 'table-row';
+
+                    // Okay, I have absolutely no idea why I need this clone here, but
+                    // if it's omitted, php (as of 2004-07-28) segfaults.
+                    $frame->set_style(clone $style);
+                    $table_row = Factory::decorate_frame($frame, $this->_dompdf, $this->_root);
+
+                    // Add the cell to the row
+                    $table_row->append_child($child, true);
+
+                    // Add the tr to the tbody
+                    $table_row_group->append_child($table_row, true);
+
+                    $anon_row = true;
+                    continue;
+                }
+
+                if (!in_array($display, self::$VALID_CHILDREN)) {
+                    $erroneous_frames[] = $child;
+                    continue;
+                }
+
+                // Normalise other table parts (i.e. row groups)
+                foreach ($child->get_children() as $grandchild) {
+                    if ($grandchild->get_style()->display === "table-row") {
+                        $grandchild->normalise();
+                    }
+                }
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                 // Add headers and footers
                 if ($display === "table-header-group") {
@@ -283,6 +481,7 @@ class Table extends AbstractFrameDecorator
                 } elseif ($display === "table-footer-group") {
                     $this->_footers[] = $child;
                 }
+<<<<<<< HEAD
                 continue;
             }
 
@@ -393,12 +592,26 @@ class Table extends AbstractFrameDecorator
         if (!$frame->get_first_child()) {
             $td = $frame->create_anonymous_child("td", "table-cell");
             $frame->append_child($td);
+=======
+            }
+        }
+
+        if ($anon_row && $table_row_group instanceof AbstractFrameDecorator) {
+            // Add the row to the table
+            $this->_frame->append_child($table_row_group->_frame);
+            $table_row->normalise();
+        }
+
+        foreach ($erroneous_frames as $frame) {
+            $this->move_after($frame);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
     //........................................................................
 
     /**
+<<<<<<< HEAD
      * @deprecated
      */
     public function normalise()
@@ -411,10 +624,19 @@ class Table extends AbstractFrameDecorator
      * the table.
      *
      * @deprecated
+=======
+     * Moves the specified frame and it's corresponding node outside of
+     * the table.
+     *
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param Frame $frame the frame to move
      */
     public function move_after(Frame $frame)
     {
         $this->get_parent()->insert_child_after($frame, $this);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

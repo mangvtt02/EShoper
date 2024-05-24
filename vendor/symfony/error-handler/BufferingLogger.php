@@ -35,6 +35,7 @@ class BufferingLogger extends AbstractLogger
         return $logs;
     }
 
+<<<<<<< HEAD
     /**
      * @return array
      */
@@ -48,12 +49,18 @@ class BufferingLogger extends AbstractLogger
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __destruct()
     {
         foreach ($this->logs as [$level, $message, $context]) {
             if (false !== strpos($message, '{')) {
                 foreach ($context as $key => $val) {
+<<<<<<< HEAD
                     if (null === $val || \is_scalar($val) || (\is_object($val) && \is_callable([$val, '__toString']))) {
+=======
+                    if (null === $val || is_scalar($val) || (\is_object($val) && \is_callable([$val, '__toString']))) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         $message = str_replace("{{$key}}", $val, $message);
                     } elseif ($val instanceof \DateTimeInterface) {
                         $message = str_replace("{{$key}}", $val->format(\DateTime::RFC3339), $message);

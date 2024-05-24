@@ -69,6 +69,7 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js
 
                               <table class="row table table-responsive">
                                 <tr>
+<<<<<<< HEAD
                                   <td>STT</td>
                                   <th>Sản phẩm</th>
                                   <th>Size</th>
@@ -80,6 +81,16 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js
                                 @foreach ($or->order_detail as $item)
                                 <tr>
                                     <td>{{$count++}}</td>
+=======
+                                  <th>Sản phẩm</th>
+                                  <th>Size</th>
+                                  <th>Topping</th>
+                                  <th>Số lượng</th>
+                                  <th>Giá bán</th>
+                                </tr>
+                                @foreach ($or->order_detail as $item)
+                                <tr>
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                                     <td>{{$item->product->name}}</td>
                                     <td>{{$item->size->name}}</td>
                                     @if ($item->topping != null)

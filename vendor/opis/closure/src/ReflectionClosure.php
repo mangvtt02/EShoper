@@ -1,6 +1,10 @@
 <?php
 /* ===========================================================================
+<<<<<<< HEAD
  * Copyright (c) 2018-2021 Zindex Software
+=======
+ * Copyright (c) 2018-2019 Zindex Software
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * Licensed under the MIT License
  * =========================================================================== */
@@ -35,11 +39,19 @@ class ReflectionClosure extends ReflectionFunction
     /**
      * ReflectionClosure constructor.
      * @param Closure $closure
+<<<<<<< HEAD
      * @param string|null $code This is ignored. Do not use it
+=======
+     * @param string|null $code
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @throws \ReflectionException
      */
     public function __construct(Closure $closure, $code = null)
     {
+<<<<<<< HEAD
+=======
+        $this->code = $code;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         parent::__construct($closure);
     }
 
@@ -80,6 +92,15 @@ class ReflectionClosure extends ReflectionFunction
         $fileName = $this->getFileName();
         $line = $this->getStartLine() - 1;
 
+<<<<<<< HEAD
+=======
+        $match = ClosureStream::STREAM_PROTO . '://';
+
+        if ($line === 1 && substr($fileName, 0, strlen($match)) === $match) {
+            return $this->code = substr($fileName, strlen($match));
+        }
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $className = null;
 
         if (null !== $className = $this->getClosureScopeClass()) {
@@ -271,7 +292,11 @@ class ReflectionClosure extends ReflectionFunction
                         case T_CURLY_OPEN:
                         case T_DOLLAR_OPEN_CURLY_BRACES:
                         case '{':
+<<<<<<< HEAD
                             $code .= is_array($token) ? $token[1] : $token;
+=======
+                            $code .= '{';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                             $open++;
                             break;
                         case '}':

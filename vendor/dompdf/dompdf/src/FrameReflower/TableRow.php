@@ -33,6 +33,7 @@ class TableRow extends AbstractFrameReflower
      */
     function reflow(BlockFrameDecorator $block = null)
     {
+<<<<<<< HEAD
         /** @var TableRowFrameDecorator */
         $frame = $this->_frame;
 
@@ -41,24 +42,40 @@ class TableRow extends AbstractFrameReflower
         $page->check_forced_page_break($frame);
 
         // Bail if the page is full
+=======
+        $page = $this->_frame->get_root();
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($page->is_full()) {
             return;
         }
 
+<<<<<<< HEAD
         // Counters and generated content
         $this->_set_content();
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->_frame->position();
         $style = $this->_frame->get_style();
         $cb = $this->_frame->get_containing_block();
 
         foreach ($this->_frame->get_children() as $child) {
+<<<<<<< HEAD
             $child->set_containing_block($cb);
             $child->reflow();
 
             if ($page->is_full()) {
                 break;
             }
+=======
+            if ($page->is_full()) {
+                return;
+            }
+
+            $child->set_containing_block($cb);
+            $child->reflow();
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if ($page->is_full()) {
@@ -76,7 +93,11 @@ class TableRow extends AbstractFrameReflower
     /**
      * @throws Exception
      */
+<<<<<<< HEAD
     public function get_min_max_width(): array
+=======
+    function get_min_max_width()
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         throw new Exception("Min/max width is undefined for table rows");
     }

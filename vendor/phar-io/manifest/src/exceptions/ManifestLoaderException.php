@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php declare(strict_types = 1);
 /*
  * This file is part of PharIo\Manifest.
@@ -8,6 +9,10 @@
  * file that was distributed with this source code.
  *
  */
+=======
+<?php
+
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 namespace PharIo\Manifest;
 
 class ManifestLoaderException extends \Exception implements Exception {

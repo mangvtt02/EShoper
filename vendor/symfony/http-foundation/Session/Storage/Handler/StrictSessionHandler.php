@@ -31,6 +31,7 @@ class StrictSessionHandler extends AbstractSessionHandler
     }
 
     /**
+<<<<<<< HEAD
      * Returns true if this handler wraps an internal PHP session save handler using \SessionHandler.
      *
      * @internal
@@ -44,6 +45,10 @@ class StrictSessionHandler extends AbstractSessionHandler
      * @return bool
      */
     #[\ReturnTypeWillChange]
+=======
+     * @return bool
+     */
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function open($savePath, $sessionName)
     {
         parent::open($savePath, $sessionName);
@@ -62,7 +67,10 @@ class StrictSessionHandler extends AbstractSessionHandler
     /**
      * @return bool
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function updateTimestamp($sessionId, $data)
     {
         return $this->write($sessionId, $data);
@@ -79,7 +87,10 @@ class StrictSessionHandler extends AbstractSessionHandler
     /**
      * @return bool
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function destroy($sessionId)
     {
         $this->doDestroy = true;
@@ -101,16 +112,24 @@ class StrictSessionHandler extends AbstractSessionHandler
     /**
      * @return bool
      */
+<<<<<<< HEAD
     #[\ReturnTypeWillChange]
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function close()
     {
         return $this->handler->close();
     }
 
     /**
+<<<<<<< HEAD
      * @return int|false
      */
     #[\ReturnTypeWillChange]
+=======
+     * @return bool
+     */
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function gc($maxlifetime)
     {
         return $this->handler->gc($maxlifetime);

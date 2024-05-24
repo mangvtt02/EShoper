@@ -239,22 +239,36 @@ class UploadedFile extends File
     /**
      * Returns the maximum size of an uploaded file as configured in php.ini.
      *
+<<<<<<< HEAD
      * @return int|float The maximum size of an uploaded file in bytes (returns float if size > PHP_INT_MAX)
      */
     public static function getMaxFilesize()
     {
         $sizePostMax = self::parseFilesize(\ini_get('post_max_size'));
         $sizeUploadMax = self::parseFilesize(\ini_get('upload_max_filesize'));
+=======
+     * @return int The maximum size of an uploaded file in bytes
+     */
+    public static function getMaxFilesize()
+    {
+        $sizePostMax = self::parseFilesize(ini_get('post_max_size'));
+        $sizeUploadMax = self::parseFilesize(ini_get('upload_max_filesize'));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return min($sizePostMax ?: \PHP_INT_MAX, $sizeUploadMax ?: \PHP_INT_MAX);
     }
 
     /**
      * Returns the given size from an ini value in bytes.
+<<<<<<< HEAD
      *
      * @return int|float Returns float if size > PHP_INT_MAX
      */
     private static function parseFilesize(string $size)
+=======
+     */
+    private static function parseFilesize($size): int
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if ('' === $size) {
             return 0;
@@ -263,9 +277,15 @@ class UploadedFile extends File
         $size = strtolower($size);
 
         $max = ltrim($size, '+');
+<<<<<<< HEAD
         if (str_starts_with($max, '0x')) {
             $max = \intval($max, 16);
         } elseif (str_starts_with($max, '0')) {
+=======
+        if (0 === strpos($max, '0x')) {
+            $max = \intval($max, 16);
+        } elseif (0 === strpos($max, '0')) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $max = \intval($max, 8);
         } else {
             $max = (int) $max;
@@ -303,7 +323,11 @@ class UploadedFile extends File
 
         $errorCode = $this->error;
         $maxFilesize = \UPLOAD_ERR_INI_SIZE === $errorCode ? self::getMaxFilesize() / 1024 : 0;
+<<<<<<< HEAD
         $message = $errors[$errorCode] ?? 'The file "%s" was not uploaded due to an unknown error.';
+=======
+        $message = isset($errors[$errorCode]) ? $errors[$errorCode] : 'The file "%s" was not uploaded due to an unknown error.';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return sprintf($message, $this->getClientOriginalName(), $maxFilesize);
     }

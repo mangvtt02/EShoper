@@ -12,6 +12,10 @@
     "en_BS": "en_001",
     "en_BW": "en_001",
     "en_BZ": "en_001",
+<<<<<<< HEAD
+=======
+    "en_CA": "en_001",
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     "en_CC": "en_001",
     "en_CH": "en_150",
     "en_CK": "en_001",
@@ -54,7 +58,10 @@
     "en_MS": "en_001",
     "en_MT": "en_001",
     "en_MU": "en_001",
+<<<<<<< HEAD
     "en_MV": "en_001",
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     "en_MW": "en_001",
     "en_MY": "en_001",
     "en_NA": "en_001",
@@ -65,6 +72,10 @@
     "en_NU": "en_001",
     "en_NZ": "en_001",
     "en_PG": "en_001",
+<<<<<<< HEAD
+=======
+    "en_PH": "en_001",
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     "en_PK": "en_001",
     "en_PN": "en_001",
     "en_PW": "en_001",
@@ -117,10 +128,13 @@
     "es_UY": "es_419",
     "es_VE": "es_419",
     "ff_Adlm": "root",
+<<<<<<< HEAD
     "hi_Latn": "en_IN",
     "ks_Deva": "root",
     "nb": "no",
     "nn": "no",
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     "pa_Arab": "root",
     "pt_AO": "pt_PT",
     "pt_CH": "pt_PT",

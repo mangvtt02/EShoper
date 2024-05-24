@@ -27,12 +27,20 @@ class ResponseCacheStrategy implements ResponseCacheStrategyInterface
     /**
      * Cache-Control headers that are sent to the final response if they appear in ANY of the responses.
      */
+<<<<<<< HEAD
     private const OVERRIDE_DIRECTIVES = ['private', 'no-cache', 'no-store', 'no-transform', 'must-revalidate', 'proxy-revalidate'];
+=======
+    private static $overrideDirectives = ['private', 'no-cache', 'no-store', 'no-transform', 'must-revalidate', 'proxy-revalidate'];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Cache-Control headers that are sent to the final response if they appear in ALL of the responses.
      */
+<<<<<<< HEAD
     private const INHERIT_DIRECTIVES = ['public', 'immutable'];
+=======
+    private static $inheritDirectives = ['public', 'immutable'];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     private $embeddedResponses = 0;
     private $isNotCacheableResponseEmbedded = false;
@@ -60,13 +68,21 @@ class ResponseCacheStrategy implements ResponseCacheStrategyInterface
     {
         ++$this->embeddedResponses;
 
+<<<<<<< HEAD
         foreach (self::OVERRIDE_DIRECTIVES as $directive) {
+=======
+        foreach (self::$overrideDirectives as $directive) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if ($response->headers->hasCacheControlDirective($directive)) {
                 $this->flagDirectives[$directive] = true;
             }
         }
 
+<<<<<<< HEAD
         foreach (self::INHERIT_DIRECTIVES as $directive) {
+=======
+        foreach (self::$inheritDirectives as $directive) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if (false !== $this->flagDirectives[$directive]) {
                 $this->flagDirectives[$directive] = $response->headers->hasCacheControlDirective($directive);
             }
@@ -81,6 +97,7 @@ class ResponseCacheStrategy implements ResponseCacheStrategyInterface
             return;
         }
 
+<<<<<<< HEAD
         $isHeuristicallyCacheable = $response->headers->hasCacheControlDirective('public');
         $maxAge = $response->headers->hasCacheControlDirective('max-age') ? (int) $response->headers->getCacheControlDirective('max-age') : null;
         $this->storeRelativeAgeDirective('max-age', $maxAge, $age, $isHeuristicallyCacheable);
@@ -90,6 +107,14 @@ class ResponseCacheStrategy implements ResponseCacheStrategyInterface
         $expires = $response->getExpires();
         $expires = null !== $expires ? (int) $expires->format('U') - (int) $response->getDate()->format('U') : null;
         $this->storeRelativeAgeDirective('expires', $expires >= 0 ? $expires : null, 0, $isHeuristicallyCacheable);
+=======
+        $this->storeRelativeAgeDirective('max-age', $response->headers->getCacheControlDirective('max-age'), $age);
+        $this->storeRelativeAgeDirective('s-maxage', $response->headers->getCacheControlDirective('s-maxage') ?: $response->headers->getCacheControlDirective('max-age'), $age);
+
+        $expires = $response->getExpires();
+        $expires = null !== $expires ? (int) $expires->format('U') - (int) $response->getDate()->format('U') : null;
+        $this->storeRelativeAgeDirective('expires', $expires >= 0 ? $expires : null, 0);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -200,6 +225,7 @@ class ResponseCacheStrategy implements ResponseCacheStrategyInterface
      * we have to subtract the age so that the value is normalized for an age of 0.
      *
      * If the value is lower than the currently stored value, we update the value, to keep a rolling
+<<<<<<< HEAD
      * minimal value of each instruction.
      *
      * If the value is NULL and the isHeuristicallyCacheable parameter is false, the directive will
@@ -223,6 +249,13 @@ class ResponseCacheStrategy implements ResponseCacheStrategyInterface
                  */
                 return;
             }
+=======
+     * minimal value of each instruction. If the value is NULL, the directive will not be set on the final response.
+     */
+    private function storeRelativeAgeDirective(string $directive, ?int $value, int $age)
+    {
+        if (null === $value) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->ageDirectives[$directive] = false;
         }
 

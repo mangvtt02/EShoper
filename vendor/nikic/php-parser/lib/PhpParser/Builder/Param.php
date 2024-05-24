@@ -4,6 +4,7 @@ namespace PhpParser\Builder;
 
 use PhpParser;
 use PhpParser\BuilderHelpers;
+<<<<<<< HEAD
 use PhpParser\Modifiers;
 use PhpParser\Node;
 
@@ -17,6 +18,22 @@ class Param implements PhpParser\Builder {
     protected bool $variadic = false;
     /** @var list<Node\AttributeGroup> */
     protected array $attributeGroups = [];
+=======
+use PhpParser\Node;
+
+class Param implements PhpParser\Builder
+{
+    protected $name;
+
+    protected $default = null;
+
+    /** @var Node\Identifier|Node\Name|Node\NullableType|null */
+    protected $type = null;
+
+    protected $byRef = false;
+
+    protected $variadic = false;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Creates a parameter builder.
@@ -43,7 +60,11 @@ class Param implements PhpParser\Builder {
     /**
      * Sets type for the parameter.
      *
+<<<<<<< HEAD
      * @param string|Node\Name|Node\Identifier|Node\ComplexType $type Parameter type
+=======
+     * @param string|Node\Name|Node\NullableType|Node\UnionType $type Parameter type
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return $this The builder instance (for fluid interface)
      */
@@ -57,6 +78,22 @@ class Param implements PhpParser\Builder {
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Sets type for the parameter.
+     *
+     * @param string|Node\Name|Node\NullableType|Node\UnionType $type Parameter type
+     *
+     * @return $this The builder instance (for fluid interface)
+     *
+     * @deprecated Use setType() instead
+     */
+    public function setTypeHint($type) {
+        return $this->setType($type);
+    }
+
+    /**
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Make the parameter accept the value by reference.
      *
      * @return $this The builder instance (for fluid interface)
@@ -79,6 +116,7 @@ class Param implements PhpParser\Builder {
     }
 
     /**
+<<<<<<< HEAD
      * Makes the (promoted) parameter public.
      *
      * @return $this The builder instance (for fluid interface)
@@ -136,14 +174,23 @@ class Param implements PhpParser\Builder {
     }
 
     /**
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Returns the built parameter node.
      *
      * @return Node\Param The built parameter node
      */
+<<<<<<< HEAD
     public function getNode(): Node {
         return new Node\Param(
             new Node\Expr\Variable($this->name),
             $this->default, $this->type, $this->byRef, $this->variadic, [], $this->flags, $this->attributeGroups
+=======
+    public function getNode() : Node {
+        return new Node\Param(
+            new Node\Expr\Variable($this->name),
+            $this->default, $this->type, $this->byRef, $this->variadic
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         );
     }
 }

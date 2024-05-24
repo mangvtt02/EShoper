@@ -2,6 +2,7 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
 ## [3.1.6] - 2024-03-02
 
 ### Changed
@@ -30,18 +31,27 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Changed PHP version constraint in `composer.json` from `^7.0` to `>=7.0`
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ## [3.1.2] - 2019-09-14
 
 ### Fixed
 
+<<<<<<< HEAD
 * [#29](https://github.com/sebastianbergmann/exporter/pull/29): Second parameter for `str_repeat()` must be an integer
+=======
+* Fixed [#29](https://github.com/sebastianbergmann/exporter/pull/29): Second parameter for `str_repeat()` must be an integer
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ### Removed
 
 * Remove HHVM-specific code that is no longer needed
 
+<<<<<<< HEAD
 [3.1.6]: https://github.com/sebastianbergmann/exporter/compare/3.1.5...3.1.6
 [3.1.5]: https://github.com/sebastianbergmann/exporter/compare/3.1.4...3.1.5
 [3.1.4]: https://github.com/sebastianbergmann/exporter/compare/3.1.3...3.1.4
 [3.1.3]: https://github.com/sebastianbergmann/exporter/compare/3.1.2...3.1.3
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 [3.1.2]: https://github.com/sebastianbergmann/exporter/compare/3.1.1...3.1.2

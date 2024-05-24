@@ -3,7 +3,11 @@
 /*
  * This file is part of Psy Shell.
  *
+<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
+=======
+ * (c) 2012-2020 Justin Hileman
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -60,19 +64,33 @@ class HistoryCommand extends Command
             ->setName('history')
             ->setAliases(['hist'])
             ->setDefinition([
+<<<<<<< HEAD
                 new InputOption('show', 's', InputOption::VALUE_REQUIRED, 'Show the given range of lines.'),
                 new InputOption('head', 'H', InputOption::VALUE_REQUIRED, 'Display the first N items.'),
                 new InputOption('tail', 'T', InputOption::VALUE_REQUIRED, 'Display the last N items.'),
+=======
+                new InputOption('show',        's', InputOption::VALUE_REQUIRED, 'Show the given range of lines.'),
+                new InputOption('head',        'H', InputOption::VALUE_REQUIRED, 'Display the first N items.'),
+                new InputOption('tail',        'T', InputOption::VALUE_REQUIRED, 'Display the last N items.'),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                 $grep,
                 $insensitive,
                 $invert,
 
+<<<<<<< HEAD
                 new InputOption('no-numbers', 'N', InputOption::VALUE_NONE, 'Omit line numbers.'),
 
                 new InputOption('save', '', InputOption::VALUE_REQUIRED, 'Save history to a file.'),
                 new InputOption('replay', '', InputOption::VALUE_NONE, 'Replay.'),
                 new InputOption('clear', '', InputOption::VALUE_NONE, 'Clear the history.'),
+=======
+                new InputOption('no-numbers',  'N', InputOption::VALUE_NONE,     'Omit line numbers.'),
+
+                new InputOption('save',        '',  InputOption::VALUE_REQUIRED, 'Save history to a file.'),
+                new InputOption('replay',      '',  InputOption::VALUE_NONE,     'Replay.'),
+                new InputOption('clear',       '',  InputOption::VALUE_NONE,     'Clear the history.'),
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ])
             ->setDescription('Show the Psy Shell history.')
             ->setHelp(
@@ -90,10 +108,15 @@ HELP
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      *
      * @return int 0 if everything went fine, or an exit code
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
+=======
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->validateOnlyOne($input, ['show', 'head', 'tail']);
         $this->validateOnlyOne($input, ['save', 'replay', 'clear']);
@@ -107,14 +130,22 @@ HELP
 
         $this->filter->bind($input);
         if ($this->filter->hasFilter()) {
+<<<<<<< HEAD
             $matches = [];
+=======
+            $matches     = [];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $highlighted = [];
             foreach ($history as $i => $line) {
                 if ($this->filter->match($line, $matches)) {
                     if (isset($matches[0])) {
                         $chunks = \explode($matches[0], $history[$i]);
                         $chunks = \array_map([__CLASS__, 'escape'], $chunks);
+<<<<<<< HEAD
                         $glue = \sprintf('<urgent>%s</urgent>', self::escape($matches[0]));
+=======
+                        $glue   = \sprintf('<urgent>%s</urgent>', self::escape($matches[0]));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                         $highlighted[$i] = \implode($glue, $chunks);
                     }
@@ -126,7 +157,11 @@ HELP
 
         if ($save = $input->getOption('save')) {
             $output->writeln(\sprintf('Saving history in %s...', $save));
+<<<<<<< HEAD
             \file_put_contents($save, \implode(\PHP_EOL, $history).\PHP_EOL);
+=======
+            \file_put_contents($save, \implode(PHP_EOL, $history) . PHP_EOL);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $output->writeln('<info>History saved.</info>');
         } elseif ($input->getOption('replay')) {
             if (!($input->getOption('show') || $input->getOption('head') || $input->getOption('tail'))) {
@@ -158,7 +193,11 @@ HELP
      *
      * @return array [ start, end ]
      */
+<<<<<<< HEAD
     private function extractRange(string $range): array
+=======
+    private function extractRange($range)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (\preg_match('/^\d+$/', $range)) {
             return [$range, $range + 1];
@@ -166,18 +205,28 @@ HELP
 
         $matches = [];
         if ($range !== '..' && \preg_match('/^(\d*)\.\.(\d*)$/', $range, $matches)) {
+<<<<<<< HEAD
             $start = $matches[1] ? (int) $matches[1] : 0;
             $end = $matches[2] ? (int) $matches[2] + 1 : \PHP_INT_MAX;
+=======
+            $start = $matches[1] ? \intval($matches[1]) : 0;
+            $end   = $matches[2] ? \intval($matches[2]) + 1 : PHP_INT_MAX;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             return [$start, $end];
         }
 
+<<<<<<< HEAD
         throw new \InvalidArgumentException('Unexpected range: '.$range);
+=======
+        throw new \InvalidArgumentException('Unexpected range: ' . $range);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * Retrieve a slice of the readline history.
      *
+<<<<<<< HEAD
      * @param string|null $show
      * @param string|null $head
      * @param string|null $tail
@@ -185,6 +234,15 @@ HELP
      * @return array A slice of history
      */
     private function getHistorySlice($show, $head, $tail): array
+=======
+     * @param string $show
+     * @param string $head
+     * @param string $tail
+     *
+     * @return array A slilce of history
+     */
+    private function getHistorySlice($show, $head, $tail)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $history = $this->readline->listHistory();
 
@@ -199,15 +257,25 @@ HELP
                 throw new \InvalidArgumentException('Please specify an integer argument for --head');
             }
 
+<<<<<<< HEAD
             $start = 0;
             $length = (int) $head;
+=======
+            $start  = 0;
+            $length = \intval($head);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } elseif ($tail) {
             if (!\preg_match('/^\d+$/', $tail)) {
                 throw new \InvalidArgumentException('Please specify an integer argument for --tail');
             }
 
+<<<<<<< HEAD
             $start = \count($history) - $tail;
             $length = (int) $tail + 1;
+=======
+            $start  = \count($history) - $tail;
+            $length = \intval($tail) + 1;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } else {
             return $history;
         }
@@ -231,7 +299,11 @@ HELP
         }
 
         if ($count > 1) {
+<<<<<<< HEAD
             throw new \InvalidArgumentException('Please specify only one of --'.\implode(', --', $options));
+=======
+            throw new \InvalidArgumentException('Please specify only one of --' . \implode(', --', $options));
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -243,7 +315,11 @@ HELP
         $this->readline->clearHistory();
     }
 
+<<<<<<< HEAD
     public static function escape(string $string): string
+=======
+    public static function escape($string)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return OutputFormatter::escape($string);
     }

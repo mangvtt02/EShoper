@@ -23,6 +23,7 @@ namespace Symfony\Component\CssSelector\Parser;
  */
 class Token
 {
+<<<<<<< HEAD
     public const TYPE_FILE_END = 'eof';
     public const TYPE_DELIMITER = 'delimiter';
     public const TYPE_WHITESPACE = 'whitespace';
@@ -30,6 +31,15 @@ class Token
     public const TYPE_HASH = 'hash';
     public const TYPE_NUMBER = 'number';
     public const TYPE_STRING = 'string';
+=======
+    const TYPE_FILE_END = 'eof';
+    const TYPE_DELIMITER = 'delimiter';
+    const TYPE_WHITESPACE = 'whitespace';
+    const TYPE_IDENTIFIER = 'identifier';
+    const TYPE_HASH = 'hash';
+    const TYPE_NUMBER = 'number';
+    const TYPE_STRING = 'string';
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     private $type;
     private $value;

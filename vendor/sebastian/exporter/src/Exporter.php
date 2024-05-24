@@ -52,7 +52,11 @@ class Exporter
      *
      * @return string
      */
+<<<<<<< HEAD
     public function shortenedRecursiveExport(&$data, ?Context $context = null)
+=======
+    public function shortenedRecursiveExport(&$data, Context $context = null)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $result   = [];
         $exporter = new self();
@@ -209,6 +213,7 @@ class Exporter
             return 'false';
         }
 
+<<<<<<< HEAD
         if (\is_float($value)) {
             $precisionBackup = \ini_get('precision');
 
@@ -229,6 +234,10 @@ class Exporter
 
         if ($this->isClosedResource($value)) {
             return 'resource (closed)';
+=======
+        if (\is_float($value) && (float) ((int) $value) === $value) {
+            return "$value.0";
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if (\is_resource($value)) {
@@ -318,6 +327,7 @@ class Exporter
 
         return \var_export($value, true);
     }
+<<<<<<< HEAD
 
     /**
      * Determines whether a variable represents a resource, either open or closed.
@@ -377,4 +387,6 @@ class Exporter
 
         return false;
     }
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

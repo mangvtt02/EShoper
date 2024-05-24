@@ -25,6 +25,7 @@ class LineFormatter extends NormalizerFormatter
 {
     public const SIMPLE_FORMAT = "[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n";
 
+<<<<<<< HEAD
     /** @var string */
     protected $format;
     /** @var bool */
@@ -35,6 +36,12 @@ class LineFormatter extends NormalizerFormatter
     protected $includeStacktraces;
     /** @var ?callable */
     protected $stacktracesParser;
+=======
+    protected $format;
+    protected $allowInlineLineBreaks;
+    protected $ignoreEmptyContextAndExtra;
+    protected $includeStacktraces;
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @param string|null $format                     The format of the message
@@ -42,20 +49,32 @@ class LineFormatter extends NormalizerFormatter
      * @param bool        $allowInlineLineBreaks      Whether to allow inline line breaks in log entries
      * @param bool        $ignoreEmptyContextAndExtra
      */
+<<<<<<< HEAD
     public function __construct(?string $format = null, ?string $dateFormat = null, bool $allowInlineLineBreaks = false, bool $ignoreEmptyContextAndExtra = false, bool $includeStacktraces = false)
+=======
+    public function __construct(?string $format = null, ?string $dateFormat = null, bool $allowInlineLineBreaks = false, bool $ignoreEmptyContextAndExtra = false)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->format = $format === null ? static::SIMPLE_FORMAT : $format;
         $this->allowInlineLineBreaks = $allowInlineLineBreaks;
         $this->ignoreEmptyContextAndExtra = $ignoreEmptyContextAndExtra;
+<<<<<<< HEAD
         $this->includeStacktraces($includeStacktraces);
         parent::__construct($dateFormat);
     }
 
     public function includeStacktraces(bool $include = true, ?callable $parser = null): self
+=======
+        parent::__construct($dateFormat);
+    }
+
+    public function includeStacktraces(bool $include = true)
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->includeStacktraces = $include;
         if ($this->includeStacktraces) {
             $this->allowInlineLineBreaks = true;
+<<<<<<< HEAD
             $this->stacktracesParser = $parser;
         }
 
@@ -78,6 +97,23 @@ class LineFormatter extends NormalizerFormatter
 
     /**
      * {@inheritDoc}
+=======
+        }
+    }
+
+    public function allowInlineLineBreaks(bool $allow = true)
+    {
+        $this->allowInlineLineBreaks = $allow;
+    }
+
+    public function ignoreEmptyContextAndExtra(bool $ignore = true)
+    {
+        $this->ignoreEmptyContextAndExtra = $ignore;
+    }
+
+    /**
+     * {@inheritdoc}
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function format(array $record): string
     {
@@ -120,10 +156,13 @@ class LineFormatter extends NormalizerFormatter
         // remove leftover %extra.xxx% and %context.xxx% if any
         if (false !== strpos($output, '%')) {
             $output = preg_replace('/%(?:extra|context)\..+?%/', '', $output);
+<<<<<<< HEAD
             if (null === $output) {
                 $pcreErrorCode = preg_last_error();
                 throw new \RuntimeException('Failed to run preg_replace: ' . $pcreErrorCode . ' / ' . Utils::pcreLastErrorMessage($pcreErrorCode));
             }
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $output;
@@ -139,26 +178,38 @@ class LineFormatter extends NormalizerFormatter
         return $message;
     }
 
+<<<<<<< HEAD
     /**
      * @param mixed $value
      */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function stringify($value): string
     {
         return $this->replaceNewlines($this->convertToString($value));
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @suppress PhanParamSignatureMismatch
+     */
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     protected function normalizeException(\Throwable $e, int $depth = 0): string
     {
         $str = $this->formatException($e);
 
         if ($previous = $e->getPrevious()) {
             do {
+<<<<<<< HEAD
                 $depth++;
                 if ($depth > $this->maxNormalizeDepth) {
                     $str .= "\n[previous exception] Over " . $this->maxNormalizeDepth . ' levels deep, aborting normalization';
                     break;
                 }
 
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $str .= "\n[previous exception] " . $this->formatException($previous);
             } while ($previous = $previous->getPrevious());
         }
@@ -166,9 +217,12 @@ class LineFormatter extends NormalizerFormatter
         return $str;
     }
 
+<<<<<<< HEAD
     /**
      * @param mixed $data
      */
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     protected function convertToString($data): string
     {
         if (null === $data || is_bool($data)) {
@@ -186,11 +240,15 @@ class LineFormatter extends NormalizerFormatter
     {
         if ($this->allowInlineLineBreaks) {
             if (0 === strpos($str, '{')) {
+<<<<<<< HEAD
                 $str = preg_replace('/(?<!\\\\)\\\\[rn]/', "\n", $str);
                 if (null === $str) {
                     $pcreErrorCode = preg_last_error();
                     throw new \RuntimeException('Failed to run preg_replace: ' . $pcreErrorCode . ' / ' . Utils::pcreLastErrorMessage($pcreErrorCode));
                 }
+=======
+                return str_replace(array('\r', '\n'), array("\r", "\n"), $str);
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
 
             return $str;
@@ -222,11 +280,16 @@ class LineFormatter extends NormalizerFormatter
         $str .= '): ' . $e->getMessage() . ' at ' . $e->getFile() . ':' . $e->getLine() . ')';
 
         if ($this->includeStacktraces) {
+<<<<<<< HEAD
             $str .= $this->stacktracesParser($e);
+=======
+            $str .= "\n[stacktrace]\n" . $e->getTraceAsString() . "\n";
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $str;
     }
+<<<<<<< HEAD
 
     private function stacktracesParser(\Throwable $e): string
     {
@@ -243,4 +306,6 @@ class LineFormatter extends NormalizerFormatter
     {
         return implode("\n", array_filter(array_map($this->stacktracesParser, explode("\n", $trace))));
     }
+=======
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

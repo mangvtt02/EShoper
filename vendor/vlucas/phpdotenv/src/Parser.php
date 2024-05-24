@@ -106,7 +106,11 @@ class Parser
             return $value;
         }
 
+<<<<<<< HEAD
         $result = array_reduce(str_split($value), function ($data, $char) use ($value) {
+=======
+        return array_reduce(str_split($value), function ($data, $char) use ($value) {
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             switch ($data[1]) {
                 case self::INITIAL_STATE:
                     if ($char === '"' || $char === '\'') {
@@ -155,6 +159,7 @@ class Parser
                 case self::COMMENT_STATE:
                     return [$data[0], self::COMMENT_STATE];
             }
+<<<<<<< HEAD
         }, ['', self::INITIAL_STATE]);
 
         if ($result[1] === self::QUOTED_STATE || $result[1] === self::ESCAPE_STATE) {
@@ -164,6 +169,9 @@ class Parser
         }
 
         return $result[0];
+=======
+        }, ['', self::INITIAL_STATE])[0];
+>>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
