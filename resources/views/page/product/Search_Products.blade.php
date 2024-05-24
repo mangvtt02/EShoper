@@ -62,7 +62,7 @@
                                                     <div class="row-left">
                                                         <a href="{{route('page.Product_detail',[$s->id])}}" class="hoverBorder container_item">
                                                             <div class="hoverBorderWrapper">
-                                                                <img src="assets/images/product/{{$s->image}}" class="img-responsive front" alt="{{$s->image}}">
+                                                                <img src="assets/images/product/{{$s->image}}" style="width: 200px; height: 300px;" class="img-responsive front" alt="{{$s->image}}">
                                                                 <div class="mask"></div>
                                                             </div>
                                                         </a>

@@ -416,7 +416,6 @@ class PageController extends Controller
     public function Logout(Cart $cart)
     {
         Auth::guard('emp')->logout();
-        $cart->clear_cart();
         return redirect()->route('page.Home');
     }
     public function Register(Request $request)
@@ -477,7 +476,7 @@ class PageController extends Controller
             $reset->status = 1;
             $reset->save();
 
-        return redirect()->to('http://localhost/Graduation-Project/Account/info');
+        return redirect()->to('http://localhost:81/Shopper/Account/info');
 
     }
 
@@ -610,8 +609,8 @@ class PageController extends Controller
                 $orderInfo = "Thanh toán qua MoMo";
                 $amount = $total;
                 $orderId = time() . "";
-                $redirectUrl = "http://localhost/Graduation-Project/check_out/payment-success";
-                $ipnUrl = "http://localhost/Graduation-Project/check_out/payment-success";
+                $redirectUrl = "http://localhost:81/Shopper/check_out/payment-success";
+                $ipnUrl = "http://localhost:81/Shopper/check_out/payment-success";
                 //$redirectUrl = "http://localhost/BroadWay/check_out/payment-success";
                 //$ipnUrl = "http://localhost/BroadWay/check_out/payment-success";
 

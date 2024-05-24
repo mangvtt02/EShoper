@@ -150,7 +150,7 @@
                         <div class="row-left" >
                             <a href="{{route('page.Product_detail',[$pr->id])}}" class="hoverBorder container_item" >
                                 <div class="hoverBorderWrapper" >
-                                    <img src="assets/images/product/{{$pr->image}}" style="width: 200px;" class="img-responsive front" alt="{{$pr->image}}">
+                                    <img src="assets/images/product/{{$pr->image}}" style="width: 200px; height: 300px;" class="img-responsive front" alt="{{$pr->image}}">
                                 </div>
                             </a>
                             <div class="product-label">

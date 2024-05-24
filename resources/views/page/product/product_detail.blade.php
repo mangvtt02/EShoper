@@ -16,7 +16,7 @@
         border-radius: 5px;
     }
     .list_star .rating_active{
-        color: #8b8b89 !important;
+        color: #f3d24a !important;
     }
     
 </style>
@@ -207,32 +207,56 @@
                                 </div>
                             </div>
                         </div>
-                        <br><br>
-                        <br><br>
-                        <br><br>
                     </div>
-                    <div class="product-price">
-                        <meta itemprop="price" content="{{number_format($pr_detail->unit_price -($pr_detail->unit_price * $pr_detail->discount / 100)) }}">
-                        @if ($pr_detail->discount != 0)
-                        <h2 class="price_sale" id="price-preview"><span class="money" data-currency-usd="{{number_format($pr_detail->unit_price -($pr_detail->unit_price * $pr_detail->discount / 100)) }}" data-currency="VND">{{number_format($pr_detail->unit_price -($pr_detail->unit_price * $pr_detail->discount / 100)) }}đ</span></h2>
-                            <del class="price_compare"> <span class="money" data-currency-usd="{{number_format($pr_detail->unit_price)}}" data-currency="VND">{{number_format($pr_detail->unit_price)}}đ</span></del>
-                            
-                        @else
-                        <h2 class="price_sale" id="price-preview"><span class="money" data-currency-usd="{{number_format($pr_detail->unit_price -($pr_detail->unit_price * $pr_detail->discount / 100)) }}" data-currency="VND">{{number_format($pr_detail->unit_price -($pr_detail->unit_price * $pr_detail->discount / 100)) }}đ</span></h2>
+                    @if (isset($pr_detail->storage_quantity))
+                            <div class="product-quantity">
+                                Số lượng hàng trong kho: {{ $pr_detail->storage_quantity }}
+                            </div>
                         @endif
-                        
+                    <div class="product-price">
+                        <meta itemprop="price" content="{{ number_format($pr_detail->unit_price - ($pr_detail->unit_price * $pr_detail->discount / 100)) }}">
+                        @if ($pr_detail->discount != 0)
+                            <h2 class="price_sale" id="price-preview">
+                                <span class="money" data-currency-usd="{{ number_format($pr_detail->unit_price - ($pr_detail->unit_price * $pr_detail->discount / 100)) }}" data-currency="VND">
+                                    {{ number_format($pr_detail->unit_price - ($pr_detail->unit_price * $pr_detail->discount / 100)) }}đ
+                                </span>
+                            </h2>
+                            <del class="price_compare">
+                                <span class="money" data-currency-usd="{{ number_format($pr_detail->unit_price) }}" data-currency="VND">
+                                    {{ number_format($pr_detail->unit_price) }}đ
+                                </span>
+                            </del>
+                        @else
+                            <h2 class="price_sale" id="price-preview">
+                                <span class="money" data-currency-usd="{{ number_format($pr_detail->unit_price - ($pr_detail->unit_price * $pr_detail->discount / 100)) }}" data-currency="VND">
+                                    {{ number_format($pr_detail->unit_price - ($pr_detail->unit_price * $pr_detail->discount / 100)) }}đ
+                                </span>
+                            </h2>
+                        @endif
                     </div>
+
                     <div class="purchase-section multiple">
                         <div class="purchase">
-                            {{-- <a class="_btn add-to-cart" id="add-to-cart" href="{{route('page.Add_cart',[$pr_detail->id])}}" title="Thêm vào giỏ hàng"><span class="cs-icon icon-menu"></span>Thêm vào giỏ hàng</a> --}}
-                            
+                            @php
+                                $outOfStock = isset($pr_detail->storage_quantity) && $pr_detail->storage_quantity <= 0;
+                            @endphp
                             @if (!Auth::guard('emp')->check())
-                            <a class="_btn add-to-cart"
-                                href="{{route('page.Get_Login')}}" 
-                               >Thêm vào giỏ hàng </a>
+                                <a class="_btn add-to-cart" href="{{ route('page.Get_Login') }}">
+                                    @if ($outOfStock)
+                                        Hết hàng!
+                                    @else
+                                        Thêm vào giỏ hàng
+                                    @endif
+                                </a>
                             @else
-                            <button id="add-to-cart" class="_btn add-to-cart" type="submit" name="add"><span><i class="cs-icon icon-cart"></i> Thêm vào giỏ hàng</a></span></button>
-                            <div id="cart-animation" style="display:none">1</div>
+                                @if ($outOfStock)
+                                    <button class="_btn add-to-cart" disabled>Hết hàng!</button>
+                                @else
+                                    <button id="add-to-cart" class="_btn add-to-cart" type="submit" name="add">
+                                        <span><i class="cs-icon icon-cart"></i> Thêm vào giỏ hàng</span>
+                                    </button>
+                                    <div id="cart-animation" style="display:none">1</div>
+                                @endif
                             @endif
                         </div>
                     </div>
@@ -272,7 +296,7 @@
                         <div class="row-left">
                         <a href="{{route('page.Product_detail',[$pr_r->id])}}" class="hoverBorder container_item">
                                 <div class="hoverBorderWrapper">
-                                <img src="assets/images/product/{{$pr_r->image}}" class="img-responsive front" alt="{{$pr_r->image}}">
+                                <img src="assets/images/product/{{$pr_r->image}}" style="width: 200px; height: 300px;" class="img-responsive front" style="height: 300px; width:200px" alt="{{$pr_r->image}}">
                                     <div class="mask"></div>
                                 </div>
                         </a>
