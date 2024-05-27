@@ -9,14 +9,10 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function array_key_exists;
 use function is_array;
 use ArrayAccess;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
-=======
-use ArrayAccess;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Constraint that asserts that the array it is evaluated for has a given key.
@@ -44,11 +40,7 @@ final class ArrayHasKey extends Constraint
     /**
      * Returns a string representation of the constraint.
      *
-<<<<<<< HEAD
      * @throws InvalidArgumentException
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function toString(): string
     {
@@ -63,13 +55,8 @@ final class ArrayHasKey extends Constraint
      */
     protected function matches($other): bool
     {
-<<<<<<< HEAD
         if (is_array($other)) {
             return array_key_exists($this->key, $other);
-=======
-        if (\is_array($other)) {
-            return \array_key_exists($this->key, $other);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if ($other instanceof ArrayAccess) {
@@ -80,22 +67,14 @@ final class ArrayHasKey extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Returns the description of the failure.
-=======
-     * Returns the description of the failure
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
      *
      * @param mixed $other evaluated value or object
      *
-<<<<<<< HEAD
      * @throws InvalidArgumentException
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function failureDescription($other): string
     {

@@ -11,11 +11,7 @@
 
 /*
  * Authors:
-<<<<<<< HEAD
  * - Ankur Group, Taneem Ahmed, Jamil Ahmed
-=======
- * - Ankur Group, http://www.ankurbangla.org, http://www.bengalinux.org Taneem Ahmed, Jamil Ahmed taneem@bengalinux.org, jamil@bengalinux.org
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 return array_replace_recursive(require __DIR__.'/bn.php', [
     'formats' => [

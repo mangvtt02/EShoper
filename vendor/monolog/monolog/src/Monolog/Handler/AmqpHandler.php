@@ -18,19 +18,15 @@ use PhpAmqpLib\Message\AMQPMessage;
 use PhpAmqpLib\Channel\AMQPChannel;
 use AMQPExchange;
 
-<<<<<<< HEAD
 /**
  * @phpstan-import-type Record from \Monolog\Logger
  */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 class AmqpHandler extends AbstractProcessingHandler
 {
     /**
      * @var AMQPExchange|AMQPChannel $exchange
      */
     protected $exchange;
-<<<<<<< HEAD
     /** @var array<string, mixed> */
     private $extraAttributes = [];
 
@@ -56,8 +52,6 @@ class AmqpHandler extends AbstractProcessingHandler
         $this->extraAttributes = $extraAttributes;
         return $this;
     }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var string
@@ -67,11 +61,6 @@ class AmqpHandler extends AbstractProcessingHandler
     /**
      * @param AMQPExchange|AMQPChannel $exchange     AMQPExchange (php AMQP ext) or PHP AMQP lib channel, ready for use
      * @param string|null              $exchangeName Optional exchange name, for AMQPChannel (PhpAmqpLib) only
-<<<<<<< HEAD
-=======
-     * @param string|int               $level        The minimum logging level at which this handler will be triggered
-     * @param bool                     $bubble       Whether the messages that are handled can bubble up the stack or not
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct($exchange, ?string $exchangeName = null, $level = Logger::DEBUG, bool $bubble = true)
     {
@@ -96,7 +85,6 @@ class AmqpHandler extends AbstractProcessingHandler
         $routingKey = $this->getRoutingKey($record);
 
         if ($this->exchange instanceof AMQPExchange) {
-<<<<<<< HEAD
             $attributes = [
                 'delivery_mode' => 2,
                 'content_type'  => 'application/json',
@@ -104,20 +92,11 @@ class AmqpHandler extends AbstractProcessingHandler
             if ($this->extraAttributes) {
                 $attributes = array_merge($attributes, $this->extraAttributes);
             }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->exchange->publish(
                 $data,
                 $routingKey,
                 0,
-<<<<<<< HEAD
                 $attributes
-=======
-                [
-                    'delivery_mode' => 2,
-                    'content_type' => 'application/json',
-                ]
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             );
         } else {
             $this->exchange->basic_publish(
@@ -144,10 +123,7 @@ class AmqpHandler extends AbstractProcessingHandler
                 continue;
             }
 
-<<<<<<< HEAD
             /** @var Record $record */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $record = $this->processRecord($record);
             $data = $this->getFormatter()->format($record);
 
@@ -163,11 +139,8 @@ class AmqpHandler extends AbstractProcessingHandler
 
     /**
      * Gets the routing key for the AMQP exchange
-<<<<<<< HEAD
      *
      * @phpstan-param Record $record
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function getRoutingKey(array $record): string
     {
@@ -178,7 +151,6 @@ class AmqpHandler extends AbstractProcessingHandler
 
     private function createAmqpMessage(string $data): AMQPMessage
     {
-<<<<<<< HEAD
         $attributes = [
             'delivery_mode' => 2,
             'content_type' => 'application/json',
@@ -187,15 +159,6 @@ class AmqpHandler extends AbstractProcessingHandler
             $attributes = array_merge($attributes, $this->extraAttributes);
         }
         return new AMQPMessage($data, $attributes);
-=======
-        return new AMQPMessage(
-            $data,
-            [
-                'delivery_mode' => 2,
-                'content_type' => 'application/json',
-            ]
-        );
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**

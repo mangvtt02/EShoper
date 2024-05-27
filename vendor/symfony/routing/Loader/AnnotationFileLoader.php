@@ -26,12 +26,6 @@ class AnnotationFileLoader extends FileLoader
 {
     protected $loader;
 
-<<<<<<< HEAD
-=======
-    /**
-     * @throws \RuntimeException
-     */
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __construct(FileLocatorInterface $locator, AnnotationClassLoader $loader)
     {
         if (!\function_exists('token_get_all')) {
@@ -100,19 +94,10 @@ class AnnotationFileLoader extends FileLoader
 
         $nsTokens = [\T_NS_SEPARATOR => true, \T_STRING => true];
         if (\defined('T_NAME_QUALIFIED')) {
-<<<<<<< HEAD
             $nsTokens[\T_NAME_QUALIFIED] = true;
         }
         for ($i = 0; isset($tokens[$i]); ++$i) {
             $token = $tokens[$i];
-=======
-            $nsTokens[T_NAME_QUALIFIED] = true;
-        }
-
-        for ($i = 0; isset($tokens[$i]); ++$i) {
-            $token = $tokens[$i];
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if (!isset($token[1])) {
                 continue;
             }
@@ -134,12 +119,9 @@ class AnnotationFileLoader extends FileLoader
                 $skipClassToken = false;
                 for ($j = $i - 1; $j > 0; --$j) {
                     if (!isset($tokens[$j][1])) {
-<<<<<<< HEAD
                         if ('(' === $tokens[$j] || ',' === $tokens[$j]) {
                             $skipClassToken = true;
                         }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         break;
                     }
 

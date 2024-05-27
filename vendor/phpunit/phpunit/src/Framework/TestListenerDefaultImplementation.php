@@ -9,21 +9,14 @@
  */
 namespace PHPUnit\Framework;
 
-<<<<<<< HEAD
 use Throwable;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * @deprecated The `TestListener` interface is deprecated
  */
 trait TestListenerDefaultImplementation
 {
-<<<<<<< HEAD
     public function addError(Test $test, Throwable $t, float $time): void
-=======
-    public function addError(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
     }
 
@@ -35,7 +28,6 @@ trait TestListenerDefaultImplementation
     {
     }
 
-<<<<<<< HEAD
     public function addIncompleteTest(Test $test, Throwable $t, float $time): void
     {
     }
@@ -45,17 +37,6 @@ trait TestListenerDefaultImplementation
     }
 
     public function addSkippedTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
-    {
-    }
-
-    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
-    {
-    }
-
-    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
     }
 

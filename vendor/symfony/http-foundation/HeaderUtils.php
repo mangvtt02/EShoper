@@ -146,11 +146,7 @@ class HeaderUtils
     }
 
     /**
-<<<<<<< HEAD
      * Generates an HTTP Content-Disposition field-value.
-=======
-     * Generates a HTTP Content-Disposition field-value.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @param string $disposition      One of "inline" or "attachment"
      * @param string $filename         A unicode string
@@ -180,20 +176,12 @@ class HeaderUtils
         }
 
         // percent characters aren't safe in fallback.
-<<<<<<< HEAD
         if (str_contains($filenameFallback, '%')) {
-=======
-        if (false !== strpos($filenameFallback, '%')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new \InvalidArgumentException('The filename fallback cannot contain the "%" character.');
         }
 
         // path separators aren't allowed in either.
-<<<<<<< HEAD
         if (str_contains($filename, '/') || str_contains($filename, '\\') || str_contains($filenameFallback, '/') || str_contains($filenameFallback, '\\')) {
-=======
-        if (false !== strpos($filename, '/') || false !== strpos($filename, '\\') || false !== strpos($filenameFallback, '/') || false !== strpos($filenameFallback, '\\')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new \InvalidArgumentException('The filename and the fallback cannot contain the "/" and "\\" characters.');
         }
 
@@ -205,18 +193,13 @@ class HeaderUtils
         return $disposition.'; '.self::toString($params, ';');
     }
 
-<<<<<<< HEAD
     private static function groupParts(array $matches, string $separators, bool $first = true): array
-=======
-    private static function groupParts(array $matches, string $separators): array
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $separator = $separators[0];
         $partSeparators = substr($separators, 1);
 
         $i = 0;
         $partMatches = [];
-<<<<<<< HEAD
         $previousMatchWasSeparator = false;
         foreach ($matches as $match) {
             if (!$first && $previousMatchWasSeparator && isset($match['separator']) && $match['separator'] === $separator) {
@@ -227,12 +210,6 @@ class HeaderUtils
                 ++$i;
             } else {
                 $previousMatchWasSeparator = false;
-=======
-        foreach ($matches as $match) {
-            if (isset($match['separator']) && $match['separator'] === $separator) {
-                ++$i;
-            } else {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $partMatches[$i][] = $match;
             }
         }
@@ -240,17 +217,12 @@ class HeaderUtils
         $parts = [];
         if ($partSeparators) {
             foreach ($partMatches as $matches) {
-<<<<<<< HEAD
                 $parts[] = self::groupParts($matches, $partSeparators, false);
-=======
-                $parts[] = self::groupParts($matches, $partSeparators);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         } else {
             foreach ($partMatches as $matches) {
                 $parts[] = self::unquote($matches[0][0]);
             }
-<<<<<<< HEAD
 
             if (!$first && 2 < \count($parts)) {
                 $parts = [
@@ -258,8 +230,6 @@ class HeaderUtils
                     implode($separator, \array_slice($parts, 1)),
                 ];
             }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $parts;

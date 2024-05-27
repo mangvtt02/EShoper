@@ -8,18 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
 namespace Carbon\Exceptions;
 
 use InvalidArgumentException as BaseInvalidArgumentException;
 use Throwable;
-=======
-namespace Carbon\Exceptions;
-
-use Exception;
-use InvalidArgumentException as BaseInvalidArgumentException;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 // This will extends OutOfRangeException instead of InvalidArgumentException since 3.0.0
 // use OutOfRangeException as BaseOutOfRangeException;
@@ -62,15 +55,9 @@ class OutOfRangeException extends BaseInvalidArgumentException implements Invali
      * @param mixed          $max
      * @param mixed          $value
      * @param int            $code
-<<<<<<< HEAD
      * @param Throwable|null $previous
      */
     public function __construct($unit, $min, $max, $value, $code = 0, Throwable $previous = null)
-=======
-     * @param Exception|null $previous
-     */
-    public function __construct($unit, $min, $max, $value, $code = 0, Exception $previous = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->unit = $unit;
         $this->min = $min;

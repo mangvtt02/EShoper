@@ -6,11 +6,7 @@
 
 namespace Whoops\Handler;
 
-<<<<<<< HEAD
 use Whoops\Inspector\InspectorInterface;
-=======
-use Whoops\Exception\Inspector;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Whoops\RunInterface;
 
 /**
@@ -40,11 +36,7 @@ abstract class Handler implements HandlerInterface
     private $run;
 
     /**
-<<<<<<< HEAD
      * @var InspectorInterface $inspector
-=======
-     * @var Inspector $inspector
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private $inspector;
 
@@ -70,25 +62,15 @@ abstract class Handler implements HandlerInterface
     }
 
     /**
-<<<<<<< HEAD
      * @param InspectorInterface $inspector
      */
     public function setInspector(InspectorInterface $inspector)
-=======
-     * @param Inspector $inspector
-     */
-    public function setInspector(Inspector $inspector)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->inspector = $inspector;
     }
 
     /**
-<<<<<<< HEAD
      * @return InspectorInterface
-=======
-     * @return Inspector
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function getInspector()
     {

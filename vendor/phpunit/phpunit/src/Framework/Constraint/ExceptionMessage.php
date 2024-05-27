@@ -9,13 +9,10 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function sprintf;
 use function strpos;
 use Throwable;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 final class ExceptionMessage extends Constraint
 {
     /**
@@ -41,11 +38,7 @@ final class ExceptionMessage extends Constraint
      * Evaluates the constraint for parameter $other. Returns true if the
      * constraint is met, false otherwise.
      *
-<<<<<<< HEAD
      * @param Throwable $other
-=======
-     * @param \Throwable $other
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function matches($other): bool
     {
@@ -53,19 +46,11 @@ final class ExceptionMessage extends Constraint
             return $other->getMessage() === '';
         }
 
-<<<<<<< HEAD
         return strpos((string) $other->getMessage(), $this->expectedMessage) !== false;
     }
 
     /**
      * Returns the description of the failure.
-=======
-        return \strpos((string) $other->getMessage(), $this->expectedMessage) !== false;
-    }
-
-    /**
-     * Returns the description of the failure
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -75,21 +60,13 @@ final class ExceptionMessage extends Constraint
     protected function failureDescription($other): string
     {
         if ($this->expectedMessage === '') {
-<<<<<<< HEAD
             return sprintf(
-=======
-            return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 "exception message is empty but is '%s'",
                 $other->getMessage()
             );
         }
 
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             "exception message '%s' contains '%s'",
             $other->getMessage(),
             $this->expectedMessage

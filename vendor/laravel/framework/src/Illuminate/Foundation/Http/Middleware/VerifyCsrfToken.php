@@ -3,10 +3,7 @@
 namespace Illuminate\Foundation\Http\Middleware;
 
 use Closure;
-<<<<<<< HEAD
 use Illuminate\Contracts\Encryption\DecryptException;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Illuminate\Contracts\Encryption\Encrypter;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Responsable;
@@ -156,15 +153,11 @@ class VerifyCsrfToken
         $token = $request->input('_token') ?: $request->header('X-CSRF-TOKEN');
 
         if (! $token && $header = $request->header('X-XSRF-TOKEN')) {
-<<<<<<< HEAD
             try {
                 $token = CookieValuePrefix::remove($this->encrypter->decrypt($header, static::serialized()));
             } catch (DecryptException $e) {
                 $token = '';
             }
-=======
-            $token = CookieValuePrefix::remove($this->encrypter->decrypt($header, static::serialized()));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $token;

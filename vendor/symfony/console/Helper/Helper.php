@@ -47,11 +47,8 @@ abstract class Helper implements HelperInterface
      */
     public static function strlen($string)
     {
-<<<<<<< HEAD
         $string = (string) $string;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (false === $encoding = mb_detect_encoding($string, null, true)) {
             return \strlen($string);
         }
@@ -70,11 +67,8 @@ abstract class Helper implements HelperInterface
      */
     public static function substr($string, $from, $length = null)
     {
-<<<<<<< HEAD
         $string = (string) $string;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (false === $encoding = mb_detect_encoding($string, null, true)) {
             return substr($string, $from, $length);
         }
@@ -141,11 +135,8 @@ abstract class Helper implements HelperInterface
         $string = $formatter->format($string);
         // remove already formatted characters
         $string = preg_replace("/\033\[[^m]*m/", '', $string);
-<<<<<<< HEAD
         // remove terminal hyperlinks
         $string = preg_replace('/\\033]8;[^;]*;[^\\033]*\\033\\\\/', '', $string);
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $formatter->setDecorated($isDecorated);
 
         return $string;

@@ -32,11 +32,7 @@ if (interface_exists(PsrEventDispatcherInterface::class)) {
          *
          * @return object The passed $event MUST be returned
          */
-<<<<<<< HEAD
         public function dispatch($event/* , string $eventName = null */);
-=======
-        public function dispatch($event/*, string $eventName = null*/);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 } else {
     /**
@@ -57,10 +53,6 @@ if (interface_exists(PsrEventDispatcherInterface::class)) {
          *
          * @return object The passed $event MUST be returned
          */
-<<<<<<< HEAD
         public function dispatch($event/* , string $eventName = null */);
-=======
-        public function dispatch($event/*, string $eventName = null*/);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

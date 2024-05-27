@@ -3,11 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
-<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
-=======
- * (c) 2012-2020 Justin Hileman
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -53,11 +49,7 @@ class ConstantEnumerator extends Enumerator
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     protected function listItems(InputInterface $input, ?\Reflector $reflector = null, $target = null): array
-=======
-    protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // if we have a reflector, ensure that it's a namespace reflector
         if (($target !== null || $reflector !== null) && !$reflector instanceof ReflectionNamespace) {
@@ -69,11 +61,7 @@ class ConstantEnumerator extends Enumerator
             return [];
         }
 
-<<<<<<< HEAD
         $user = $input->getOption('user');
-=======
-        $user     = $input->getOption('user');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $internal = $input->getOption('internal');
         $category = $input->getOption('category');
 
@@ -101,11 +89,7 @@ class ConstantEnumerator extends Enumerator
 
         if ($category) {
             $caseCategory = \array_key_exists($category, self::$categoryLabels) ? self::$categoryLabels[$category] : \ucfirst($category);
-<<<<<<< HEAD
             $label = $caseCategory.' Constants';
-=======
-            $label = $caseCategory . ' Constants';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $ret[$label] = $this->getConstants($category);
         }
 
@@ -114,11 +98,7 @@ class ConstantEnumerator extends Enumerator
         }
 
         if ($reflector !== null) {
-<<<<<<< HEAD
             $prefix = \strtolower($reflector->getName()).'\\';
-=======
-            $prefix = \strtolower($reflector->getName()) . '\\';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             foreach ($ret as $key => $names) {
                 foreach (\array_keys($names) as $name) {
@@ -142,11 +122,7 @@ class ConstantEnumerator extends Enumerator
      *
      * @return array
      */
-<<<<<<< HEAD
     protected function getConstants(?string $category = null): array
-=======
-    protected function getConstants($category = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!$category) {
             return \get_defined_constants();
@@ -157,11 +133,7 @@ class ConstantEnumerator extends Enumerator
         if ($category === 'internal') {
             unset($consts['user']);
 
-<<<<<<< HEAD
             return \array_merge(...\array_values($consts));
-=======
-            return \call_user_func_array('array_merge', $consts);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         foreach ($consts as $key => $value) {
@@ -180,11 +152,7 @@ class ConstantEnumerator extends Enumerator
      *
      * @return array
      */
-<<<<<<< HEAD
     protected function prepareConstants(array $constants): array
-=======
-    protected function prepareConstants(array $constants)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // My kingdom for a generator.
         $ret = [];

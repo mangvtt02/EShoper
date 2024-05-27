@@ -48,15 +48,12 @@ class RegExMatch implements \ArrayAccess, \Countable, \IteratorAggregate
     /** @var string */
     public $input;
 
-<<<<<<< HEAD
     /** @var string */
     public $type;
 
     /** @var Mode|string */
     public $rule;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     /**
      * @param array<int, string|null> $results
      */
@@ -68,10 +65,7 @@ class RegExMatch implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function getIterator()
     {
         return new \ArrayIterator($this->data);
@@ -80,10 +74,7 @@ class RegExMatch implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function offsetExists($offset)
     {
         return isset($this->data[$offset]);
@@ -92,10 +83,7 @@ class RegExMatch implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function offsetGet($offset)
     {
         return $this->data[$offset];
@@ -104,10 +92,7 @@ class RegExMatch implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function offsetSet($offset, $value)
     {
         throw new \LogicException(__CLASS__ . ' instances are read-only.');
@@ -116,10 +101,7 @@ class RegExMatch implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function offsetUnset($offset)
     {
         throw new \LogicException(__CLASS__ . ' instances are read-only.');
@@ -130,10 +112,7 @@ class RegExMatch implements \ArrayAccess, \Countable, \IteratorAggregate
      *
      * @return int
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function count()
     {
         return count($this->data);

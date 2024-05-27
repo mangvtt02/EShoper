@@ -1073,10 +1073,6 @@ class Container implements ArrayAccess, ContainerContract
      * @param  string  $abstract
      * @param  object  $object
      * @param  array  $callbacksPerType
-<<<<<<< HEAD
-=======
-     *
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     protected function getCallbacksForType($abstract, $object, array $callbacksPerType)

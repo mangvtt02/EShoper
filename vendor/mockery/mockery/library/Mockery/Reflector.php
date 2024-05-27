@@ -1,35 +1,15 @@
 <?php
 
 /**
-<<<<<<< HEAD
  * Mockery (https://docs.mockery.io/)
  *
  * @copyright https://github.com/mockery/mockery/blob/HEAD/COPYRIGHT.md
  * @license https://github.com/mockery/mockery/blob/HEAD/LICENSE BSD 3-Clause License
  * @link https://github.com/mockery/mockery for the canonical source repository
-=======
- * Mockery
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://github.com/padraic/mockery/blob/master/LICENSE
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to padraic@php.net so we can send you a copy immediately.
- *
- * @category   Mockery
- * @package    Mockery
- * @copyright  Copyright (c) 2017 Dave Marshall https://github.com/davedevelopment
- * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 
 namespace Mockery;
 
-<<<<<<< HEAD
 use InvalidArgumentException;
 use ReflectionClass;
 use ReflectionIntersectionType;
@@ -52,15 +32,12 @@ use function strpos;
 
 use const PHP_VERSION_ID;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * @internal
  */
 class Reflector
 {
     /**
-<<<<<<< HEAD
      * List of built-in types.
      *
      * @var list<string>
@@ -144,25 +121,11 @@ class Reflector
         }
 
         return null;
-=======
-     * Determine if the parameter is typed as an array.
-     *
-     * @param \ReflectionParameter $param
-     *
-     * @return bool
-     */
-    public static function isArray(\ReflectionParameter $param)
-    {
-        $type = $param->getType();
-
-        return $type instanceof \ReflectionNamedType && $type->getName();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * Compute the string representation for the paramater type.
      *
-<<<<<<< HEAD
      * @param bool $withoutNullable
      *
      * @return null|string
@@ -170,22 +133,11 @@ class Reflector
     public static function getTypeHint(ReflectionParameter $param, $withoutNullable = false)
     {
         if (! $param->hasType()) {
-=======
-     * @param \ReflectionParameter $param
-     * @param bool $withoutNullable
-     *
-     * @return string|null
-     */
-    public static function getTypeHint(\ReflectionParameter $param, $withoutNullable = false)
-    {
-        if (!$param->hasType()) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return null;
         }
 
         $type = $param->getType();
         $declaringClass = $param->getDeclaringClass();
-<<<<<<< HEAD
         $typeHint = self::getTypeFromReflectionType($type, $declaringClass);
 
         return (! $withoutNullable && $type->allowsNull()) ? self::formatNullableType($typeHint) : $typeHint;
@@ -294,38 +246,11 @@ class Reflector
         }
 
         throw new InvalidArgumentException('Unknown ReflectionType: ' . get_debug_type($type));
-=======
-        $typeHint = self::typeToString($type, $declaringClass);
-
-        return (!$withoutNullable && $type->allowsNull()) ? self::formatNullableType($typeHint) : $typeHint;
-    }
-
-    /**
-     * Compute the string representation for the return type.
-     *
-     * @param \ReflectionParameter $param
-     * @param bool $withoutNullable
-     *
-     * @return string|null
-     */
-    public static function getReturnType(\ReflectionMethod $method, $withoutNullable = false)
-    {
-        if (!$method->hasReturnType()) {
-            return null;
-        }
-
-        $type = $method->getReturnType();
-        $declaringClass = $method->getDeclaringClass();
-        $typeHint = self::typeToString($type, $declaringClass);
-
-        return (!$withoutNullable && $type->allowsNull()) ? self::formatNullableType($typeHint) : $typeHint;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * Get the string representation of the given type.
      *
-<<<<<<< HEAD
      * @return list<array{typeHint:string,isPrimitive:bool}>
      */
     private static function getTypeInformation(ReflectionType $type, ReflectionClass $declaringClass): array
@@ -345,26 +270,11 @@ class Reflector
             }
 
             return $types;
-=======
-     * @param \ReflectionType $type
-     * @param string $declaringClass
-     *
-     * @return string|null
-     */
-    private static function typeToString(\ReflectionType $type, \ReflectionClass $declaringClass)
-    {
-        // PHP 8 union types can be recursively processed
-        if ($type instanceof \ReflectionUnionType) {
-            return \implode('|', \array_map(function (\ReflectionType $type) use ($declaringClass) {
-                return self::typeToString($type, $declaringClass);
-            }, $type->getTypes()));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         // $type must be an instance of \ReflectionNamedType
         $typeHint = $type->getName();
 
-<<<<<<< HEAD
         // builtins can be returned as is
         if ($type->isBuiltin()) {
             return [
@@ -383,11 +293,6 @@ class Reflector
                     'isPrimitive' => false,
                 ],
             ];
-=======
-        // builtins and 'static' can be returned as is
-        if (($type->isBuiltin() || $typeHint === 'static')) {
-            return $typeHint;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         // 'self' needs to be resolved to the name of the declaring class
@@ -401,33 +306,11 @@ class Reflector
         }
 
         // class names need prefixing with a slash
-<<<<<<< HEAD
         return [
             [
                 'typeHint' => sprintf('\\%s', $typeHint),
                 'isPrimitive' => false,
             ],
         ];
-=======
-        return sprintf('\\%s', $typeHint);
-    }
-
-    /**
-     * Format the given type as a nullable type.
-     *
-     * This method MUST only be called on PHP 7.1+.
-     *
-     * @param string $typeHint
-     *
-     * @return string
-     */
-    private static function formatNullableType($typeHint)
-    {
-        if (\PHP_VERSION_ID < 80000) {
-            return sprintf('?%s', $typeHint);
-        }
-
-        return $typeHint === 'mixed' ? 'mixed' : sprintf('%s|null', $typeHint);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

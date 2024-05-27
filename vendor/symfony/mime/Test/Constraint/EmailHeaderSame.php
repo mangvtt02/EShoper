@@ -55,7 +55,6 @@ final class EmailHeaderSame extends Constraint
      */
     protected function failureDescription($message): string
     {
-<<<<<<< HEAD
         return sprintf('the Email %s (value is %s)', $this->toString(), $this->getHeaderValue($message) ?? 'null');
     }
 
@@ -64,14 +63,6 @@ final class EmailHeaderSame extends Constraint
         if (null === $header = $message->getHeaders()->get($this->headerName)) {
             return null;
         }
-=======
-        return sprintf('the Email %s (value is %s)', $this->toString(), $this->getHeaderValue($message));
-    }
-
-    private function getHeaderValue($message): string
-    {
-        $header = $message->getHeaders()->get($this->headerName);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $header instanceof UnstructuredHeader ? $header->getValue() : $header->getBodyAsString();
     }

@@ -12,10 +12,7 @@
 namespace Monolog\Handler;
 
 use Monolog\Logger;
-<<<<<<< HEAD
 use Psr\Log\LogLevel;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Blackhole
@@ -24,12 +21,9 @@ use Psr\Log\LogLevel;
  * to put on top of an existing stack to override it temporarily.
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
-<<<<<<< HEAD
  *
  * @phpstan-import-type Level from \Monolog\Logger
  * @phpstan-import-type LevelName from \Monolog\Logger
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 class NullHandler extends Handler
 {
@@ -40,11 +34,8 @@ class NullHandler extends Handler
 
     /**
      * @param string|int $level The minimum logging level at which this handler will be triggered
-<<<<<<< HEAD
      *
      * @phpstan-param Level|LevelName|LogLevel::* $level
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct($level = Logger::DEBUG)
     {
@@ -52,11 +43,7 @@ class NullHandler extends Handler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function isHandling(array $record): bool
     {
@@ -64,11 +51,7 @@ class NullHandler extends Handler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function handle(array $record): bool
     {

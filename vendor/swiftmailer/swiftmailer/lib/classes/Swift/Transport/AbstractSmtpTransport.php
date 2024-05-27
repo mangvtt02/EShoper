@@ -197,32 +197,19 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
 
         $to = (array) $message->getTo();
         $cc = (array) $message->getCc();
-<<<<<<< HEAD
         $bcc = (array) $message->getBcc();
         $tos = array_merge($to, $cc, $bcc);
-=======
-        $tos = array_merge($to, $cc);
-        $bcc = (array) $message->getBcc();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $message->setBcc([]);
 
         try {
             $sent += $this->sendTo($message, $reversePath, $tos, $failedRecipients);
-<<<<<<< HEAD
-=======
-            $sent += $this->sendBcc($message, $reversePath, $bcc, $failedRecipients);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } finally {
             $message->setBcc($bcc);
         }
 
         if ($evt) {
-<<<<<<< HEAD
             if ($sent == \count($to) + \count($cc) + \count($bcc)) {
-=======
-            if ($sent == count($to) + count($cc) + count($bcc)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $evt->setResult(Swift_Events_SendEvent::RESULT_SUCCESS);
             } elseif ($sent > 0) {
                 $evt->setResult(Swift_Events_SendEvent::RESULT_TENTATIVE);
@@ -330,11 +317,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
      * @param int[]    $codes
      * @param string[] $failures An array of failures by-reference
      * @param bool     $pipeline Do not wait for response
-<<<<<<< HEAD
      * @param string   $address  the address, if command is RCPT TO
-=======
-     * @param string   $address  The address, if command is RCPT TO.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return string|null The server response, or null if pipelining is enabled
      */
@@ -347,7 +330,6 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
         }
 
         $this->pipeline[] = [$command, $seq, $codes, $address];
-<<<<<<< HEAD
 
         if ($pipeline && $this->pipelining) {
             return null;
@@ -365,22 +347,6 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
                     $failures[] = $address;
                 } else {
                     $this->throwException($e);
-=======
-        if ($pipeline && $this->pipelining) {
-            $response = null;
-        } else {
-            while ($this->pipeline) {
-                list($command, $seq, $codes, $address) = array_shift($this->pipeline);
-                $response = $this->getFullResponse($seq);
-                try {
-                    $this->assertResponseCode($response, $codes);
-                } catch (Swift_TransportException $e) {
-                    if ($this->pipeline && $address) {
-                        $failures[] = $address;
-                    } else {
-                        $this->throwException($e);
-                    }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
             }
         }
@@ -482,11 +448,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
         }
 
         list($code) = sscanf($response, '%3d');
-<<<<<<< HEAD
         $valid = (empty($wanted) || \in_array($code, $wanted));
-=======
-        $valid = (empty($wanted) || in_array($code, $wanted));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($evt = $this->eventDispatcher->createResponseEvent($this, $response,
             $valid)) {
@@ -533,15 +495,9 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
         }
 
         if (0 != $sent) {
-<<<<<<< HEAD
             $sent += \count($failedRecipients);
             $this->doDataCommand($failedRecipients);
             $sent -= \count($failedRecipients);
-=======
-            $sent += count($failedRecipients);
-            $this->doDataCommand($failedRecipients);
-            $sent -= count($failedRecipients);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             $this->streamMessage($message);
         } else {
@@ -562,23 +518,6 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
             $failedRecipients);
     }
 
-<<<<<<< HEAD
-=======
-    /** Send a message to all Bcc: recipients */
-    private function sendBcc(Swift_Mime_SimpleMessage $message, $reversePath, array $bcc, array &$failedRecipients)
-    {
-        $sent = 0;
-        foreach ($bcc as $forwardPath => $name) {
-            $message->setBcc([$forwardPath => $name]);
-            $sent += $this->doMailTransaction(
-                $message, $reversePath, [$forwardPath], $failedRecipients
-                );
-        }
-
-        return $sent;
-    }
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     /**
      * Destructor.
      */
@@ -589,7 +528,6 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
         } catch (Exception $e) {
         }
     }
-<<<<<<< HEAD
 
     public function __sleep()
     {
@@ -600,6 +538,4 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
     {
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

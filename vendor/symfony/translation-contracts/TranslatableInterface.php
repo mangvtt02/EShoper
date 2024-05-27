@@ -16,9 +16,5 @@ namespace Symfony\Contracts\Translation;
  */
 interface TranslatableInterface
 {
-<<<<<<< HEAD
     public function trans(TranslatorInterface $translator, ?string $locale = null): string;
-=======
-    public function trans(TranslatorInterface $translator, string $locale = null): string;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

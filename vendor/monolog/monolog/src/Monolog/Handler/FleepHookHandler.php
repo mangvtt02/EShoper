@@ -22,11 +22,8 @@ use Monolog\Logger;
  *
  * @see https://fleep.io/integrations/webhooks/ Fleep Webhooks Documentation
  * @author Ando Roots <ando@sqroot.eu>
-<<<<<<< HEAD
  *
  * @phpstan-import-type FormattedRecord from AbstractProcessingHandler
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 class FleepHookHandler extends SocketHandler
 {
@@ -46,7 +43,6 @@ class FleepHookHandler extends SocketHandler
      * see https://fleep.io/integrations/webhooks/
      *
      * @param  string                    $token  Webhook token
-<<<<<<< HEAD
      * @throws MissingExtensionException
      */
     public function __construct(
@@ -59,14 +55,6 @@ class FleepHookHandler extends SocketHandler
         ?float $connectionTimeout = null,
         ?int $chunkSize = null
     ) {
-=======
-     * @param  string|int                $level  The minimum logging level at which this handler will be triggered
-     * @param  bool                      $bubble Whether the messages that are handled can bubble up the stack or not
-     * @throws MissingExtensionException
-     */
-    public function __construct(string $token, $level = Logger::DEBUG, bool $bubble = true)
-    {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (!extension_loaded('openssl')) {
             throw new MissingExtensionException('The OpenSSL PHP extension is required to use the FleepHookHandler');
         }
@@ -74,7 +62,6 @@ class FleepHookHandler extends SocketHandler
         $this->token = $token;
 
         $connectionString = 'ssl://' . static::FLEEP_HOST . ':443';
-<<<<<<< HEAD
         parent::__construct(
             $connectionString,
             $level,
@@ -85,9 +72,6 @@ class FleepHookHandler extends SocketHandler
             $connectionTimeout,
             $chunkSize
         );
-=======
-        parent::__construct($connectionString, $level, $bubble);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -112,11 +96,7 @@ class FleepHookHandler extends SocketHandler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function generateDataStream(array $record): string
     {
@@ -141,11 +121,8 @@ class FleepHookHandler extends SocketHandler
 
     /**
      * Builds the body of API call
-<<<<<<< HEAD
      *
      * @phpstan-param FormattedRecord $record
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private function buildContent(array $record): string
     {

@@ -47,13 +47,10 @@ class PhpExecutableFinder
                 }
             }
 
-<<<<<<< HEAD
             if (@is_dir($php)) {
                 return false;
             }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $php;
         }
 
@@ -66,11 +63,7 @@ class PhpExecutableFinder
         }
 
         if ($php = getenv('PHP_PATH')) {
-<<<<<<< HEAD
             if (!@is_executable($php) || @is_dir($php)) {
-=======
-            if (!@is_executable($php)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 return false;
             }
 
@@ -78,20 +71,12 @@ class PhpExecutableFinder
         }
 
         if ($php = getenv('PHP_PEAR_PHP_BIN')) {
-<<<<<<< HEAD
             if (@is_executable($php) && !@is_dir($php)) {
-=======
-            if (@is_executable($php)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 return $php;
             }
         }
 
-<<<<<<< HEAD
         if (@is_executable($php = \PHP_BINDIR.('\\' === \DIRECTORY_SEPARATOR ? '\\php.exe' : '/php')) && !@is_dir($php)) {
-=======
-        if (@is_executable($php = \PHP_BINDIR.('\\' === \DIRECTORY_SEPARATOR ? '\\php.exe' : '/php'))) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $php;
         }
 

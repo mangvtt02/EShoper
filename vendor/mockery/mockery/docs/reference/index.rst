@@ -9,10 +9,7 @@ Reference
     argument_validation
     alternative_should_receive_syntax
     spies
-<<<<<<< HEAD
     instance_mocking
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     partial_mocks
     protected_methods
     public_properties

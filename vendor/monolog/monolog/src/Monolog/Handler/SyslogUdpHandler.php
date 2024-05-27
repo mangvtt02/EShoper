@@ -14,10 +14,7 @@ namespace Monolog\Handler;
 use DateTimeInterface;
 use Monolog\Logger;
 use Monolog\Handler\SyslogUdp\UdpSocket;
-<<<<<<< HEAD
 use Monolog\Utils;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * A Handler for logging to a remote syslogd server.
@@ -29,7 +26,6 @@ class SyslogUdpHandler extends AbstractSyslogHandler
 {
     const RFC3164 = 0;
     const RFC5424 = 1;
-<<<<<<< HEAD
     const RFC5424e = 2;
 
     /** @var array<self::RFC*, string> */
@@ -63,39 +59,12 @@ class SyslogUdpHandler extends AbstractSyslogHandler
             throw new MissingExtensionException('The sockets extension is required to use the SyslogUdpHandler');
         }
 
-=======
-
-    private $dateFormats = array(
-        self::RFC3164 => 'M d H:i:s',
-        self::RFC5424 => \DateTime::RFC3339,
-    );
-
-    protected $socket;
-    protected $ident;
-    protected $rfc;
-
-    /**
-     * @param string     $host
-     * @param int        $port
-     * @param string|int $facility Either one of the names of the keys in $this->facilities, or a LOG_* facility constant
-     * @param string|int $level    The minimum logging level at which this handler will be triggered
-     * @param bool       $bubble   Whether the messages that are handled can bubble up the stack or not
-     * @param string     $ident    Program name or tag for each log message.
-     * @param int        $rfc      RFC to format the message for.
-     */
-    public function __construct(string $host, int $port = 514, $facility = LOG_USER, $level = Logger::DEBUG, bool $bubble = true, string $ident = 'php', int $rfc = self::RFC5424)
-    {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         parent::__construct($facility, $level, $bubble);
 
         $this->ident = $ident;
         $this->rfc = $rfc;
 
-<<<<<<< HEAD
         $this->socket = new UdpSocket($host, $port);
-=======
-        $this->socket = new UdpSocket($host, $port ?: 514);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     protected function write(array $record): void
@@ -114,20 +83,16 @@ class SyslogUdpHandler extends AbstractSyslogHandler
         $this->socket->close();
     }
 
-<<<<<<< HEAD
     /**
      * @param  string|string[] $message
      * @return string[]
      */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private function splitMessageIntoLines($message): array
     {
         if (is_array($message)) {
             $message = implode("\n", $message);
         }
 
-<<<<<<< HEAD
         $lines = preg_split('/$\R?^/m', (string) $message, -1, PREG_SPLIT_NO_EMPTY);
         if (false === $lines) {
             $pcreErrorCode = preg_last_error();
@@ -135,9 +100,6 @@ class SyslogUdpHandler extends AbstractSyslogHandler
         }
 
         return $lines;
-=======
-        return preg_split('/$\R?^/m', (string) $message, -1, PREG_SPLIT_NO_EMPTY);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -156,24 +118,15 @@ class SyslogUdpHandler extends AbstractSyslogHandler
         }
 
         if ($this->rfc === self::RFC3164) {
-<<<<<<< HEAD
             // see https://github.com/phpstan/phpstan/issues/5348
             // @phpstan-ignore-next-line
             $dateNew = $datetime->setTimezone(new \DateTimeZone('UTC'));
             $date = $dateNew->format($this->dateFormats[$this->rfc]);
 
-=======
-            $datetime->setTimezone(new \DateTimeZone('UTC'));
-        }
-        $date = $datetime->format($this->dateFormats[$this->rfc]);
-
-        if ($this->rfc === self::RFC3164) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return "<$priority>" .
                 $date . " " .
                 $hostname . " " .
                 $this->ident . "[" . $pid . "]: ";
-<<<<<<< HEAD
         }
 
         $date = $datetime->format($this->dateFormats[$this->rfc]);
@@ -183,15 +136,6 @@ class SyslogUdpHandler extends AbstractSyslogHandler
             $hostname . " " .
             $this->ident . " " .
             $pid . " - - ";
-=======
-        } else {
-            return "<$priority>1 " .
-                $date . " " .
-                $hostname . " " .
-                $this->ident . " " .
-                $pid . " - - ";
-        }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**

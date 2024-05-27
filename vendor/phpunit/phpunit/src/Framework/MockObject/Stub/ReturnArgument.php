@@ -9,10 +9,7 @@
  */
 namespace PHPUnit\Framework\MockObject\Stub;
 
-<<<<<<< HEAD
 use function sprintf;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\MockObject\Invocation;
 
 /**
@@ -39,10 +36,6 @@ final class ReturnArgument implements Stub
 
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf('return argument #%d', $this->argumentIndex);
-=======
-        return \sprintf('return argument #%d', $this->argumentIndex);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

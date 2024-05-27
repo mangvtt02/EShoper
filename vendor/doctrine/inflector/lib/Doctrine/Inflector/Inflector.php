@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace Doctrine\Inflector;
 
 use RuntimeException;
-<<<<<<< HEAD
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use function chr;
 use function function_exists;
 use function lcfirst;
@@ -232,11 +229,7 @@ class Inflector
     /**
      * Converts a word into the format for a Doctrine table name. Converts 'ModelName' to 'model_name'.
      */
-<<<<<<< HEAD
     public function tableize(string $word): string
-=======
-    public function tableize(string $word) : string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $tableized = preg_replace('~(?<=\\w)([A-Z])~u', '_$1', $word);
 
@@ -253,11 +246,7 @@ class Inflector
     /**
      * Converts a word into the format for a Doctrine class name. Converts 'table_name' to 'TableName'.
      */
-<<<<<<< HEAD
     public function classify(string $word): string
-=======
-    public function classify(string $word) : string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return str_replace([' ', '_', '-'], '', ucwords($word, ' _-'));
     }
@@ -265,11 +254,7 @@ class Inflector
     /**
      * Camelizes a word. This uses the classify() method and turns the first character to lowercase.
      */
-<<<<<<< HEAD
     public function camelize(string $word): string
-=======
-    public function camelize(string $word) : string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return lcfirst($this->classify($word));
     }
@@ -299,11 +284,7 @@ class Inflector
      *
      * @return string The string with all delimiter-separated words capitalized.
      */
-<<<<<<< HEAD
     public function capitalize(string $string, string $delimiters = " \n\t\r\0\x0B-"): string
-=======
-    public function capitalize(string $string, string $delimiters = " \n\t\r\0\x0B-") : string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return ucwords($string, $delimiters);
     }
@@ -313,11 +294,7 @@ class Inflector
      *
      * @param string $string The string to check for utf8 characters in.
      */
-<<<<<<< HEAD
     public function seemsUtf8(string $string): bool
-=======
-    public function seemsUtf8(string $string) : bool
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         for ($i = 0; $i < strlen($string); $i++) {
             if (ord($string[$i]) < 0x80) {
@@ -355,11 +332,7 @@ class Inflector
      *
      * @return string Unaccented string
      */
-<<<<<<< HEAD
     public function unaccent(string $string): string
-=======
-    public function unaccent(string $string) : string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (preg_match('/[\x80-\xff]/', $string) === false) {
             return $string;
@@ -472,11 +445,7 @@ class Inflector
      *
      * @return string Urlized string.
      */
-<<<<<<< HEAD
     public function urlize(string $string): string
-=======
-    public function urlize(string $string) : string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // Remove all non url friendly characters with the unaccent function
         $unaccented = $this->unaccent($string);
@@ -519,11 +488,7 @@ class Inflector
      *
      * @return string The word in singular form.
      */
-<<<<<<< HEAD
     public function singularize(string $word): string
-=======
-    public function singularize(string $word) : string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->singularizer->inflect($word);
     }
@@ -535,11 +500,7 @@ class Inflector
      *
      * @return string The word in plural form.
      */
-<<<<<<< HEAD
     public function pluralize(string $word): string
-=======
-    public function pluralize(string $word) : string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->pluralizer->inflect($word);
     }

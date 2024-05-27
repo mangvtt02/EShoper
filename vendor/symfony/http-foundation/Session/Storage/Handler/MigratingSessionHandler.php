@@ -41,10 +41,7 @@ class MigratingSessionHandler implements \SessionHandlerInterface, \SessionUpdat
     /**
      * @return bool
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function close()
     {
         $result = $this->currentHandler->close();
@@ -56,10 +53,7 @@ class MigratingSessionHandler implements \SessionHandlerInterface, \SessionUpdat
     /**
      * @return bool
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function destroy($sessionId)
     {
         $result = $this->currentHandler->destroy($sessionId);
@@ -69,14 +63,9 @@ class MigratingSessionHandler implements \SessionHandlerInterface, \SessionUpdat
     }
 
     /**
-<<<<<<< HEAD
      * @return int|false
      */
     #[\ReturnTypeWillChange]
-=======
-     * @return bool
-     */
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function gc($maxlifetime)
     {
         $result = $this->currentHandler->gc($maxlifetime);
@@ -88,10 +77,7 @@ class MigratingSessionHandler implements \SessionHandlerInterface, \SessionUpdat
     /**
      * @return bool
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function open($savePath, $sessionName)
     {
         $result = $this->currentHandler->open($savePath, $sessionName);
@@ -103,10 +89,7 @@ class MigratingSessionHandler implements \SessionHandlerInterface, \SessionUpdat
     /**
      * @return string
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function read($sessionId)
     {
         // No reading from new handler until switch-over
@@ -116,10 +99,7 @@ class MigratingSessionHandler implements \SessionHandlerInterface, \SessionUpdat
     /**
      * @return bool
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function write($sessionId, $sessionData)
     {
         $result = $this->currentHandler->write($sessionId, $sessionData);
@@ -131,10 +111,7 @@ class MigratingSessionHandler implements \SessionHandlerInterface, \SessionUpdat
     /**
      * @return bool
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function validateId($sessionId)
     {
         // No reading from new handler until switch-over
@@ -144,10 +121,7 @@ class MigratingSessionHandler implements \SessionHandlerInterface, \SessionUpdat
     /**
      * @return bool
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function updateTimestamp($sessionId, $sessionData)
     {
         $result = $this->currentHandler->updateTimestamp($sessionId, $sessionData);

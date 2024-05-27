@@ -24,11 +24,7 @@ class Client
     public function __construct(
         ?string $apiToken,
         ?string $apiSecret,
-<<<<<<< HEAD
         string $baseUrl = 'https://reporting.flareapp.io/api',
-=======
-        string $baseUrl = 'https://flareapp.io/api',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         int $timeout = 10
     ) {
         $this->apiToken = $apiToken;
@@ -152,11 +148,7 @@ class Client
                 break;
 
             case 'get':
-<<<<<<< HEAD
                 curl_setopt($curlHandle, CURLOPT_URL, $fullUrl.'&'.http_build_query($arguments));
-=======
-                curl_setopt($curlHandle, CURLOPT_URL, $fullUrl.'?'.http_build_query($arguments));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                 break;
 
@@ -217,11 +209,8 @@ class Client
         curl_setopt($curlHandle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
         curl_setopt($curlHandle, CURLOPT_ENCODING, '');
         curl_setopt($curlHandle, CURLINFO_HEADER_OUT, true);
-<<<<<<< HEAD
         curl_setopt($curlHandle, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curlHandle, CURLOPT_MAXREDIRS, 1);
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $curlHandle;
     }

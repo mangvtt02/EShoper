@@ -110,11 +110,7 @@ final class ProgressBar
             self::$formatters = self::initPlaceholderFormatters();
         }
 
-<<<<<<< HEAD
         return self::$formatters[$name] ?? null;
-=======
-        return isset(self::$formatters[$name]) ? self::$formatters[$name] : null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -147,11 +143,7 @@ final class ProgressBar
             self::$formats = self::initFormats();
         }
 
-<<<<<<< HEAD
         return self::$formats[$name] ?? null;
-=======
-        return isset(self::$formats[$name]) ? self::$formats[$name] : null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -201,11 +193,7 @@ final class ProgressBar
 
     public function getBarOffset(): int
     {
-<<<<<<< HEAD
         return floor($this->max ? $this->percent * $this->barWidth : (null === $this->redrawFreq ? (int) (min(5, $this->barWidth / 15) * $this->writeCount) : $this->step) % $this->barWidth);
-=======
-        return floor($this->max ? $this->percent * $this->barWidth : (null === $this->redrawFreq ? min(5, $this->barWidth / 15) * $this->writeCount : $this->step) % $this->barWidth);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function setBarWidth(int $size)
@@ -261,11 +249,7 @@ final class ProgressBar
     /**
      * Sets the redraw frequency.
      *
-<<<<<<< HEAD
      * @param int|null $freq The frequency in steps
-=======
-     * @param int|float $freq The frequency in steps
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setRedrawFrequency(?int $freq)
     {
@@ -457,7 +441,6 @@ final class ProgressBar
         if ($this->overwrite) {
             if (null !== $this->previousMessage) {
                 if ($this->output instanceof ConsoleSectionOutput) {
-<<<<<<< HEAD
                     $messageLines = explode("\n", $message);
                     $lineCount = \count($messageLines);
                     foreach ($messageLines as $messageLine) {
@@ -467,10 +450,6 @@ final class ProgressBar
                         }
                     }
                     $this->output->clear($lineCount);
-=======
-                    $lines = floor(Helper::strlen($message) / $this->terminal->getWidth()) + $this->formatLineCount + 1;
-                    $this->output->clear($lines);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 } else {
                     // Erase previous lines
                     if ($this->formatLineCount > 0) {

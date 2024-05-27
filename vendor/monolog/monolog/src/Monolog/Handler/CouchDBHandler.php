@@ -22,17 +22,12 @@ use Monolog\Logger;
  */
 class CouchDBHandler extends AbstractProcessingHandler
 {
-<<<<<<< HEAD
     /** @var mixed[] */
     private $options;
 
     /**
      * @param mixed[] $options
      */
-=======
-    private $options;
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __construct(array $options = [], $level = Logger::DEBUG, bool $bubble = true)
     {
         $this->options = array_merge([

@@ -33,10 +33,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
  */
 class DebugHandlersListener implements EventSubscriberInterface
 {
-<<<<<<< HEAD
     private $earlyHandler;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private $exceptionHandler;
     private $logger;
     private $levels;
@@ -57,7 +54,6 @@ class DebugHandlersListener implements EventSubscriberInterface
      */
     public function __construct(callable $exceptionHandler = null, LoggerInterface $logger = null, $levels = \E_ALL, ?int $throwAt = \E_ALL, bool $scream = true, $fileLinkFormat = null, bool $scope = true)
     {
-<<<<<<< HEAD
         $handler = set_exception_handler('is_int');
         $this->earlyHandler = \is_array($handler) ? $handler[0] : null;
         restore_exception_handler();
@@ -65,11 +61,6 @@ class DebugHandlersListener implements EventSubscriberInterface
         $this->exceptionHandler = $exceptionHandler;
         $this->logger = $logger;
         $this->levels = $levels ?? \E_ALL;
-=======
-        $this->exceptionHandler = $exceptionHandler;
-        $this->logger = $logger;
-        $this->levels = null === $levels ? \E_ALL : $levels;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->throwAt = \is_int($throwAt) ? $throwAt : (null === $throwAt ? null : ($throwAt ? \E_ALL : null));
         $this->scream = $scream;
         $this->fileLinkFormat = $fileLinkFormat;
@@ -89,7 +80,6 @@ class DebugHandlersListener implements EventSubscriberInterface
         }
         $this->firstCall = $this->hasTerminatedWithException = false;
 
-<<<<<<< HEAD
         $handler = set_exception_handler('is_int');
         $handler = \is_array($handler) ? $handler[0] : null;
         restore_exception_handler();
@@ -98,12 +88,6 @@ class DebugHandlersListener implements EventSubscriberInterface
             $handler = $this->earlyHandler;
         }
 
-=======
-        $handler = set_exception_handler('var_dump');
-        $handler = \is_array($handler) ? $handler[0] : null;
-        restore_exception_handler();
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($this->logger || null !== $this->throwAt) {
             if ($handler instanceof ErrorHandler || $handler instanceof LegacyErrorHandler) {
                 if ($this->logger) {

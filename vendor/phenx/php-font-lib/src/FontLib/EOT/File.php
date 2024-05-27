@@ -1,11 +1,7 @@
 <?php
 /**
  * @package php-font-lib
-<<<<<<< HEAD
  * @link    https://github.com/dompdf/php-font-lib
-=======
- * @link    https://github.com/PhenX/php-font-lib
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
@@ -65,7 +61,6 @@ class File extends \FontLib\TrueType\File {
     // TODO Read font data ...
   }
 
-<<<<<<< HEAD
   /**
    * Little endian version of the read method
    *
@@ -73,30 +68,14 @@ class File extends \FontLib\TrueType\File {
    *
    * @return string
    */
-=======
-    /**
-     * Little endian version of the read method
-     *
-     * @param int $n The number of bytes to read
-     *
-     * @return string
-     */
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   public function read($n) {
     if ($n < 1) {
       return "";
     }
 
-<<<<<<< HEAD
     $string = (string) fread($this->f, $n);
     $chunks = mb_str_split($string, 2, '8bit');
     $chunks = array_map("strrev", $chunks);
-=======
-    $string = fread($this->f, $n);
-    $chunks = str_split($string, 2);
-    $chunks = array_map("strrev", $chunks);
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     return implode("", $chunks);
   }
 

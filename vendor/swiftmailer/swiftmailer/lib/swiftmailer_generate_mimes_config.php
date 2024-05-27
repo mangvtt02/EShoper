@@ -1,13 +1,8 @@
 #!/usr/bin/php
 
 <?php
-<<<<<<< HEAD
 \define('APACHE_MIME_TYPES_URL', 'https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types');
 \define('FREEDESKTOP_XML_URL', 'https://raw.github.com/minad/mimemagic/master/script/freedesktop.org.xml');
-=======
-define('APACHE_MIME_TYPES_URL', 'https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types');
-define('FREEDESKTOP_XML_URL', 'https://raw.github.com/minad/mimemagic/master/script/freedesktop.org.xml');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 function generateUpToDateMimeArray()
 {
@@ -111,17 +106,10 @@ function generateUpToDateMimeArray()
         // all extensions from second match
         foreach ($matches[2] as $i => $extensions) {
             // explode multiple extensions from string
-<<<<<<< HEAD
             $extensions = explode(' ', strtolower($extensions ?? ''));
 
             // force array for foreach
             if (!\is_array($extensions)) {
-=======
-            $extensions = explode(' ', strtolower($extensions));
-
-            // force array for foreach
-            if (!is_array($extensions)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $extensions = [$extensions];
             }
 
@@ -130,11 +118,7 @@ function generateUpToDateMimeArray()
                 $mime_type = $matches[1][$i];
 
                 // check if string length lower than 10
-<<<<<<< HEAD
                 if (\strlen($extension) < 10) {
-=======
-                if (strlen($extension) < 10) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     if (!isset($valid_mime_types[$mime_type])) {
                         // generate array for mimetype to extension resolver (only first match)
                         $valid_mime_types[$extension] = "'{$extension}' => '{$mime_type}'";
@@ -155,26 +139,17 @@ function generateUpToDateMimeArray()
         // get all matching extensions from match
         foreach ((array) $node->glob['pattern'] as $extension) {
             // skip none glob extensions
-<<<<<<< HEAD
             if (false === strpos($extension ?? '', '.')) {
-=======
-            if (false === strpos($extension, '.')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 continue;
             }
 
             // remove get only last part
-<<<<<<< HEAD
             $extension = explode('.', strtolower($extension ?? ''));
-=======
-            $extension = explode('.', strtolower($extension));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $extension = end($extension);
         }
 
         if (isset($node->glob['pattern'][0])) {
             // mime type
-<<<<<<< HEAD
             $mime_type = strtolower((string) $node['type'] ?? '');
 
             // get first extension
@@ -182,15 +157,6 @@ function generateUpToDateMimeArray()
 
             // skip none glob extensions and check if string length between 1 and 10
             if (false !== strpos($extension, '.') || \strlen($extension) < 1 || \strlen($extension) > 9) {
-=======
-            $mime_type = strtolower((string) $node['type']);
-
-            // get first extension
-            $extension = strtolower(trim($node->glob['ddpattern'][0], '*.'));
-
-            // skip none glob extensions and check if string length between 1 and 10
-            if (false !== strpos($extension, '.') || strlen($extension) < 1 || strlen($extension) > 9) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 continue;
             }
 

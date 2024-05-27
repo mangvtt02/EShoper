@@ -124,7 +124,6 @@ class SystemFacade
      */
     public function setHttpResponseCode($httpCode)
     {
-<<<<<<< HEAD
         if (!headers_sent()) {
             // Ensure that no 'location' header is present as otherwise this
             // will override the HTTP code being set here, and mask the
@@ -132,8 +131,6 @@ class SystemFacade
             header_remove('location');
         }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return http_response_code($httpCode);
     }
 

@@ -18,23 +18,16 @@ use Monolog\ResettableInterface;
  * Forwards records to multiple handlers
  *
  * @author Lenar Lõhmus <lenar@city.ee>
-<<<<<<< HEAD
  *
  * @phpstan-import-type Record from \Monolog\Logger
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 class GroupHandler extends Handler implements ProcessableHandlerInterface, ResettableInterface
 {
     use ProcessableHandlerTrait;
 
-<<<<<<< HEAD
     /** @var HandlerInterface[] */
     protected $handlers;
     /** @var bool */
-=======
-    protected $handlers;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     protected $bubble;
 
     /**
@@ -54,11 +47,7 @@ class GroupHandler extends Handler implements ProcessableHandlerInterface, Reset
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function isHandling(array $record): bool
     {
@@ -72,19 +61,12 @@ class GroupHandler extends Handler implements ProcessableHandlerInterface, Reset
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function handle(array $record): bool
     {
         if ($this->processors) {
-<<<<<<< HEAD
             /** @var Record $record */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $record = $this->processRecord($record);
         }
 
@@ -96,11 +78,7 @@ class GroupHandler extends Handler implements ProcessableHandlerInterface, Reset
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function handleBatch(array $records): void
     {
@@ -109,10 +87,7 @@ class GroupHandler extends Handler implements ProcessableHandlerInterface, Reset
             foreach ($records as $record) {
                 $processed[] = $this->processRecord($record);
             }
-<<<<<<< HEAD
             /** @var Record[] $records */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $records = $processed;
         }
 
@@ -142,22 +117,14 @@ class GroupHandler extends Handler implements ProcessableHandlerInterface, Reset
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setFormatter(FormatterInterface $formatter): HandlerInterface
     {
         foreach ($this->handlers as $handler) {
-<<<<<<< HEAD
             if ($handler instanceof FormattableHandlerInterface) {
                 $handler->setFormatter($formatter);
             }
-=======
-            $handler->setFormatter($formatter);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this;

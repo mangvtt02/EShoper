@@ -9,14 +9,10 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function array_values;
 use function count;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
-=======
-use PHPUnit\Framework\ExpectationFailedException;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Logical OR.
@@ -32,11 +28,7 @@ final class LogicalOr extends Constraint
     {
         $constraint = new self;
 
-<<<<<<< HEAD
         $constraint->constraints = array_values($constraints);
-=======
-        $constraint->constraints = \array_values($constraints);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $constraint;
     }
@@ -60,11 +52,7 @@ final class LogicalOr extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Evaluates the constraint for parameter $other.
-=======
-     * Evaluates the constraint for parameter $other
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -74,11 +62,7 @@ final class LogicalOr extends Constraint
      * failure.
      *
      * @throws ExpectationFailedException
-<<<<<<< HEAD
      * @throws InvalidArgumentException
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
     {
@@ -127,11 +111,7 @@ final class LogicalOr extends Constraint
         $count = 0;
 
         foreach ($this->constraints as $constraint) {
-<<<<<<< HEAD
             $count += count($constraint);
-=======
-            $count += \count($constraint);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $count;

@@ -28,15 +28,9 @@ use Symfony\Component\Routing\RouteCollection;
  */
 class UrlMatcher implements UrlMatcherInterface, RequestMatcherInterface
 {
-<<<<<<< HEAD
     public const REQUIREMENT_MATCH = 0;
     public const REQUIREMENT_MISMATCH = 1;
     public const ROUTE_MATCH = 2;
-=======
-    const REQUIREMENT_MATCH = 0;
-    const REQUIREMENT_MISMATCH = 1;
-    const ROUTE_MATCH = 2;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /** @var RequestContext */
     protected $context;
@@ -147,11 +141,7 @@ class UrlMatcher implements UrlMatcherInterface, RequestMatcherInterface
             $requiredMethods = $route->getMethods();
 
             // check the static prefix of the URL first. Only use the more expensive preg_match when it matches
-<<<<<<< HEAD
             if ('' !== $staticPrefix && !str_starts_with($trimmedPathinfo, $staticPrefix)) {
-=======
-            if ('' !== $staticPrefix && 0 !== strpos($trimmedPathinfo, $staticPrefix)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 continue;
             }
             $regex = $compiledRoute->getRegex();
@@ -202,11 +192,7 @@ class UrlMatcher implements UrlMatcherInterface, RequestMatcherInterface
                 continue;
             }
 
-<<<<<<< HEAD
             return $this->getAttributes($route, $name, array_replace($matches, $hostMatches, $status[1] ?? []));
-=======
-            return $this->getAttributes($route, $name, array_replace($matches, $hostMatches, isset($status[1]) ? $status[1] : []));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return [];
@@ -276,11 +262,7 @@ class UrlMatcher implements UrlMatcherInterface, RequestMatcherInterface
     protected function getExpressionLanguage()
     {
         if (null === $this->expressionLanguage) {
-<<<<<<< HEAD
             if (!class_exists(ExpressionLanguage::class)) {
-=======
-            if (!class_exists('Symfony\Component\ExpressionLanguage\ExpressionLanguage')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 throw new \LogicException('Unable to use expressions as the Symfony ExpressionLanguage component is not installed.');
             }
             $this->expressionLanguage = new ExpressionLanguage(null, $this->expressionLanguageProviders);
@@ -294,11 +276,7 @@ class UrlMatcher implements UrlMatcherInterface, RequestMatcherInterface
      */
     protected function createRequest(string $pathinfo): ?Request
     {
-<<<<<<< HEAD
         if (!class_exists(Request::class)) {
-=======
-        if (!class_exists('Symfony\Component\HttpFoundation\Request')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return null;
         }
 

@@ -138,17 +138,10 @@ class ExceptionCaster
 
             $frame = new FrameStub(
                 [
-<<<<<<< HEAD
                     'object' => $f['object'] ?? null,
                     'class' => $f['class'] ?? null,
                     'type' => $f['type'] ?? null,
                     'function' => $f['function'] ?? null,
-=======
-                    'object' => isset($f['object']) ? $f['object'] : null,
-                    'class' => isset($f['class']) ? $f['class'] : null,
-                    'type' => isset($f['type']) ? $f['type'] : null,
-                    'function' => isset($f['function']) ? $f['function'] : null,
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 ] + $frames[$i - 1],
                 false,
                 true
@@ -156,11 +149,7 @@ class ExceptionCaster
             $f = self::castFrameStub($frame, [], $frame, true);
             if (isset($f[$prefix.'src'])) {
                 foreach ($f[$prefix.'src']->value as $label => $frame) {
-<<<<<<< HEAD
                     if (str_starts_with($label, "\0~collapse=0")) {
-=======
-                    if (0 === strpos($label, "\0~collapse=0")) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         if ($collapse) {
                             $label = substr_replace($label, '1', 11, 1);
                         } else {
@@ -171,11 +160,7 @@ class ExceptionCaster
                 }
                 $f = $frames[$i - 1];
                 if ($trace->keepArgs && !empty($f['args']) && $frame instanceof EnumStub) {
-<<<<<<< HEAD
                     $frame->value['arguments'] = new ArgsStub($f['args'], $f['function'] ?? null, $f['class'] ?? null);
-=======
-                    $frame->value['arguments'] = new ArgsStub($f['args'], isset($f['function']) ? $f['function'] : null, isset($f['class']) ? $f['class'] : null);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
             } elseif ('???' !== $lastCall) {
                 $label = new ClassStub($lastCall);
@@ -224,7 +209,6 @@ class ExceptionCaster
                 $srcKey = $f['file'];
                 $ellipsis = new LinkStub($srcKey, 0);
                 $srcAttr = 'collapse='.(int) $ellipsis->inVendor;
-<<<<<<< HEAD
                 $ellipsisTail = $ellipsis->attr['ellipsis-tail'] ?? 0;
                 $ellipsis = $ellipsis->attr['ellipsis'] ?? 0;
 
@@ -248,25 +232,6 @@ class ExceptionCaster
                                     $src = self::extractSource($templateSrc, $templateInfo[$f['line']], self::$srcContext, 'twig', $templatePath, $f);
                                     $srcKey = ($templatePath ?: $template->getTemplateName()).':'.$templateInfo[$f['line']];
                                 }
-=======
-                $ellipsisTail = isset($ellipsis->attr['ellipsis-tail']) ? $ellipsis->attr['ellipsis-tail'] : 0;
-                $ellipsis = isset($ellipsis->attr['ellipsis']) ? $ellipsis->attr['ellipsis'] : 0;
-
-                if (file_exists($f['file']) && 0 <= self::$srcContext) {
-                    if (!empty($f['class']) && (is_subclass_of($f['class'], 'Twig\Template') || is_subclass_of($f['class'], 'Twig_Template')) && method_exists($f['class'], 'getDebugInfo')) {
-                        $template = isset($f['object']) ? $f['object'] : unserialize(sprintf('O:%d:"%s":0:{}', \strlen($f['class']), $f['class']));
-
-                        $ellipsis = 0;
-                        $templateSrc = method_exists($template, 'getSourceContext') ? $template->getSourceContext()->getCode() : (method_exists($template, 'getSource') ? $template->getSource() : '');
-                        $templateInfo = $template->getDebugInfo();
-                        if (isset($templateInfo[$f['line']])) {
-                            if (!method_exists($template, 'getSourceContext') || !file_exists($templatePath = $template->getSourceContext()->getPath())) {
-                                $templatePath = null;
-                            }
-                            if ($templateSrc) {
-                                $src = self::extractSource($templateSrc, $templateInfo[$f['line']], self::$srcContext, 'twig', $templatePath, $f);
-                                $srcKey = ($templatePath ?: $template->getTemplateName()).':'.$templateInfo[$f['line']];
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                             }
                         }
                     }
@@ -322,11 +287,7 @@ class ExceptionCaster
         }
         unset($a[$xPrefix.'string'], $a[Caster::PREFIX_DYNAMIC.'xdebug_message'], $a[Caster::PREFIX_DYNAMIC.'__destructorException']);
 
-<<<<<<< HEAD
         if (isset($a[Caster::PREFIX_PROTECTED.'message']) && str_contains($a[Caster::PREFIX_PROTECTED.'message'], "@anonymous\0")) {
-=======
-        if (isset($a[Caster::PREFIX_PROTECTED.'message']) && false !== strpos($a[Caster::PREFIX_PROTECTED.'message'], "@anonymous\0")) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $a[Caster::PREFIX_PROTECTED.'message'] = preg_replace_callback('/[a-zA-Z_\x7f-\xff][\\\\a-zA-Z0-9_\x7f-\xff]*+@anonymous\x00.*?\.php(?:0x?|:[0-9]++\$)[0-9a-fA-F]++/', function ($m) {
                 return class_exists($m[0], false) ? (get_parent_class($m[0]) ?: key(class_implements($m[0])) ?: 'class').'@anonymous' : $m[0];
             }, $a[Caster::PREFIX_PROTECTED.'message']);
@@ -357,11 +318,7 @@ class ExceptionCaster
         $src = [];
 
         for ($i = $line - 1 - $srcContext; $i <= $line - 1 + $srcContext; ++$i) {
-<<<<<<< HEAD
             $src[] = ($srcLines[$i] ?? '')."\n";
-=======
-            $src[] = (isset($srcLines[$i]) ? $srcLines[$i] : '')."\n";
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if ($frame['function'] ?? false) {

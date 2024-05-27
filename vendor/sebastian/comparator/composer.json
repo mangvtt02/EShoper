@@ -24,20 +24,12 @@
     ],
     "prefer-stable": true,
     "require": {
-<<<<<<< HEAD
         "php": ">=7.1",
-=======
-        "php": "^7.1",
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         "sebastian/diff": "^3.0",
         "sebastian/exporter": "^3.1"
     },
     "require-dev": {
-<<<<<<< HEAD
         "phpunit/phpunit": "^8.5"
-=======
-        "phpunit/phpunit": "^7.1"
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     },
     "config": {
         "optimize-autoloader": true,

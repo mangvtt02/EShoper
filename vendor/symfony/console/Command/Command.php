@@ -195,11 +195,7 @@ class Command
      *
      * @return int The command exit code
      *
-<<<<<<< HEAD
      * @throws ExceptionInterface When input binding fails. Bypass this by calling {@link ignoreValidationErrors()}.
-=======
-     * @throws \Exception When binding input fails. Bypass this by calling {@link ignoreValidationErrors()}.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @see setCode()
      * @see execute()
@@ -285,7 +281,6 @@ class Command
         if ($code instanceof \Closure) {
             $r = new \ReflectionFunction($code);
             if (null === $r->getClosureThis()) {
-<<<<<<< HEAD
                 set_error_handler(static function () {});
                 try {
                     if ($c = \Closure::bind($code, $this)) {
@@ -294,9 +289,6 @@ class Command
                 } finally {
                     restore_error_handler();
                 }
-=======
-                $code = \Closure::bind($code, $this);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
 
@@ -383,17 +375,10 @@ class Command
     /**
      * Adds an argument.
      *
-<<<<<<< HEAD
      * @param string   $name        The argument name
      * @param int|null $mode        The argument mode: InputArgument::REQUIRED or InputArgument::OPTIONAL
      * @param string   $description A description text
      * @param mixed    $default     The default value (for InputArgument::OPTIONAL mode only)
-=======
-     * @param string               $name        The argument name
-     * @param int|null             $mode        The argument mode: InputArgument::REQUIRED or InputArgument::OPTIONAL
-     * @param string               $description A description text
-     * @param string|string[]|null $default     The default value (for InputArgument::OPTIONAL mode only)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @throws InvalidArgumentException When argument mode is not valid
      *
@@ -409,19 +394,11 @@ class Command
     /**
      * Adds an option.
      *
-<<<<<<< HEAD
      * @param string            $name        The option name
      * @param string|array|null $shortcut    The shortcuts, can be null, a string of shortcuts delimited by | or an array of shortcuts
      * @param int|null          $mode        The option mode: One of the InputOption::VALUE_* constants
      * @param string            $description A description text
      * @param mixed             $default     The default value (must be null for InputOption::VALUE_NONE)
-=======
-     * @param string                        $name        The option name
-     * @param string|array|null             $shortcut    The shortcuts, can be null, a string of shortcuts delimited by | or an array of shortcuts
-     * @param int|null                      $mode        The option mode: One of the InputOption::VALUE_* constants
-     * @param string                        $description A description text
-     * @param string|string[]|int|bool|null $default     The default value (must be null for InputOption::VALUE_NONE)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @throws InvalidArgumentException If option mode is invalid or incompatible
      *
@@ -487,11 +464,7 @@ class Command
     /**
      * @param bool $hidden Whether or not the command should be hidden from the list of commands
      *
-<<<<<<< HEAD
      * @return $this
-=======
-     * @return Command The current instance
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setHidden($hidden)
     {
@@ -640,11 +613,7 @@ class Command
      */
     public function addUsage($usage)
     {
-<<<<<<< HEAD
         if (!str_starts_with($usage, $this->name)) {
-=======
-        if (0 !== strpos($usage, $this->name)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $usage = sprintf('%s %s', $this->name, $usage);
         }
 

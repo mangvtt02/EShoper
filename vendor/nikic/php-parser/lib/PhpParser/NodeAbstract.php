@@ -2,24 +2,14 @@
 
 namespace PhpParser;
 
-<<<<<<< HEAD
 abstract class NodeAbstract implements Node, \JsonSerializable {
     /** @var array<string, mixed> Attributes */
     protected array $attributes;
-=======
-abstract class NodeAbstract implements Node, \JsonSerializable
-{
-    protected $attributes;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Creates a Node.
      *
-<<<<<<< HEAD
      * @param array<string, mixed> $attributes Array of attributes
-=======
-     * @param array $attributes Array of attributes
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct(array $attributes = []) {
         $this->attributes = $attributes;
@@ -30,11 +20,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
      *
      * @return int Start line (or -1 if not available)
      */
-<<<<<<< HEAD
     public function getLine(): int {
-=======
-    public function getLine() : int {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->attributes['startLine'] ?? -1;
     }
 
@@ -45,11 +31,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
      *
      * @return int Start line (or -1 if not available)
      */
-<<<<<<< HEAD
     public function getStartLine(): int {
-=======
-    public function getStartLine() : int {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->attributes['startLine'] ?? -1;
     }
 
@@ -60,11 +42,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
      *
      * @return int End line (or -1 if not available)
      */
-<<<<<<< HEAD
     public function getEndLine(): int {
-=======
-    public function getEndLine() : int {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->attributes['endLine'] ?? -1;
     }
 
@@ -77,11 +55,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
      *
      * @return int Token start position (or -1 if not available)
      */
-<<<<<<< HEAD
     public function getStartTokenPos(): int {
-=======
-    public function getStartTokenPos() : int {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->attributes['startTokenPos'] ?? -1;
     }
 
@@ -94,11 +68,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
      *
      * @return int Token end position (or -1 if not available)
      */
-<<<<<<< HEAD
     public function getEndTokenPos(): int {
-=======
-    public function getEndTokenPos() : int {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->attributes['endTokenPos'] ?? -1;
     }
 
@@ -109,11 +79,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
      *
      * @return int File start position (or -1 if not available)
      */
-<<<<<<< HEAD
     public function getStartFilePos(): int {
-=======
-    public function getStartFilePos() : int {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->attributes['startFilePos'] ?? -1;
     }
 
@@ -124,11 +90,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
      *
      * @return int File end position (or -1 if not available)
      */
-<<<<<<< HEAD
     public function getEndFilePos(): int {
-=======
-    public function getEndFilePos() : int {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->attributes['endFilePos'] ?? -1;
     }
 
@@ -139,11 +101,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
      *
      * @return Comment[]
      */
-<<<<<<< HEAD
     public function getComments(): array {
-=======
-    public function getComments() : array {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->attributes['comments'] ?? [];
     }
 
@@ -152,11 +110,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
      *
      * @return null|Comment\Doc Doc comment object or null
      */
-<<<<<<< HEAD
     public function getDocComment(): ?Comment\Doc {
-=======
-    public function getDocComment() {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $comments = $this->getComments();
         for ($i = count($comments) - 1; $i >= 0; $i--) {
             $comment = $comments[$i];
@@ -175,11 +129,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
      *
      * @param Comment\Doc $docComment Doc comment to set
      */
-<<<<<<< HEAD
     public function setDocComment(Comment\Doc $docComment): void {
-=======
-    public function setDocComment(Comment\Doc $docComment) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $comments = $this->getComments();
         for ($i = count($comments) - 1; $i >= 0; $i--) {
             if ($comments[$i] instanceof Comment\Doc) {
@@ -195,19 +145,11 @@ abstract class NodeAbstract implements Node, \JsonSerializable
         $this->setAttribute('comments', $comments);
     }
 
-<<<<<<< HEAD
     public function setAttribute(string $key, $value): void {
         $this->attributes[$key] = $value;
     }
 
     public function hasAttribute(string $key): bool {
-=======
-    public function setAttribute(string $key, $value) {
-        $this->attributes[$key] = $value;
-    }
-
-    public function hasAttribute(string $key) : bool {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return array_key_exists($key, $this->attributes);
     }
 
@@ -219,32 +161,18 @@ abstract class NodeAbstract implements Node, \JsonSerializable
         return $default;
     }
 
-<<<<<<< HEAD
     public function getAttributes(): array {
         return $this->attributes;
     }
 
     public function setAttributes(array $attributes): void {
-=======
-    public function getAttributes() : array {
-        return $this->attributes;
-    }
-
-    public function setAttributes(array $attributes) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->attributes = $attributes;
     }
 
     /**
-<<<<<<< HEAD
      * @return array<string, mixed>
      */
     public function jsonSerialize(): array {
-=======
-     * @return array
-     */
-    public function jsonSerialize() : array {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return ['nodeType' => $this->getType()] + get_object_vars($this);
     }
 }

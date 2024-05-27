@@ -2,7 +2,6 @@
 
 All notable changes of the PHPUnit 8.5 release series are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
-<<<<<<< HEAD
 ## [8.5.38] - 2024-04-05
 
 ### Changed
@@ -227,8 +226,6 @@ All notable changes of the PHPUnit 8.5 release series are documented in this fil
 * [#3965](https://github.com/sebastianbergmann/phpunit/issues/3965): Process Isolation throws exceptions when PHPDBG is used
 * [#4470](https://github.com/sebastianbergmann/phpunit/pull/4470): Infinite recursion when `--static-backup --strict-global-state` is used
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ## [8.5.8] - 2020-06-22
 
 ### Fixed
@@ -304,7 +301,6 @@ All notable changes of the PHPUnit 8.5 release series are documented in this fil
 * [#3967](https://github.com/sebastianbergmann/phpunit/issues/3967): Cannot double interface that extends interface that extends `\Throwable`
 * [#3968](https://github.com/sebastianbergmann/phpunit/pull/3968): Test class run in a separate PHP process are passing when `exit` called inside
 
-<<<<<<< HEAD
 [8.5.38]: https://github.com/sebastianbergmann/phpunit/compare/8.5.37...8.5.38
 [8.5.37]: https://github.com/sebastianbergmann/phpunit/compare/8.5.36...8.5.37
 [8.5.36]: https://github.com/sebastianbergmann/phpunit/compare/8.5.35...8.5.36
@@ -335,8 +331,6 @@ All notable changes of the PHPUnit 8.5 release series are documented in this fil
 [8.5.11]: https://github.com/sebastianbergmann/phpunit/compare/8.5.10...8.5.11
 [8.5.10]: https://github.com/sebastianbergmann/phpunit/compare/8.5.9...8.5.10
 [8.5.9]: https://github.com/sebastianbergmann/phpunit/compare/8.5.8...8.5.9
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 [8.5.8]: https://github.com/sebastianbergmann/phpunit/compare/8.5.7...8.5.8
 [8.5.7]: https://github.com/sebastianbergmann/phpunit/compare/8.5.6...8.5.7
 [8.5.6]: https://github.com/sebastianbergmann/phpunit/compare/8.5.5...8.5.6

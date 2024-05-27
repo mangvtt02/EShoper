@@ -1,11 +1,7 @@
 {
     "name": "symfony/css-selector",
     "type": "library",
-<<<<<<< HEAD
     "description": "Converts CSS selectors to XPath expressions",
-=======
-    "description": "Symfony CssSelector Component",
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     "keywords": [],
     "homepage": "https://symfony.com",
     "license": "MIT",
@@ -24,12 +20,8 @@
         }
     ],
     "require": {
-<<<<<<< HEAD
         "php": ">=7.2.5",
         "symfony/polyfill-php80": "^1.16"
-=======
-        "php": ">=7.2.5"
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     },
     "autoload": {
         "psr-4": { "Symfony\\Component\\CssSelector\\": "" },
@@ -37,14 +29,5 @@
             "/Tests/"
         ]
     },
-<<<<<<< HEAD
     "minimum-stability": "dev"
-=======
-    "minimum-stability": "dev",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "5.1-dev"
-        }
-    }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

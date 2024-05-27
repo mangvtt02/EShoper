@@ -70,11 +70,7 @@ return [
         $lastDigit = $number % 10;
 
         return $number.(
-<<<<<<< HEAD
             ((int) ($number % 100 / 10) === 1) ? 'e' : (
-=======
-            (~~($number % 100 / 10) === 1) ? 'e' : (
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 ($lastDigit === 1 || $lastDigit === 2) ? 'a' : 'e'
             )
         );

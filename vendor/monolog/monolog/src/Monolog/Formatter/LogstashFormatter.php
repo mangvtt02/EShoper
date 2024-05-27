@@ -52,22 +52,14 @@ class LogstashFormatter extends NormalizerFormatter
         // logstash requires a ISO 8601 format date with optional millisecond precision.
         parent::__construct('Y-m-d\TH:i:s.uP');
 
-<<<<<<< HEAD
         $this->systemName = $systemName === null ? (string) gethostname() : $systemName;
-=======
-        $this->systemName = $systemName === null ? gethostname() : $systemName;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->applicationName = $applicationName;
         $this->extraKey = $extraKey;
         $this->contextKey = $contextKey;
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function format(array $record): string
     {

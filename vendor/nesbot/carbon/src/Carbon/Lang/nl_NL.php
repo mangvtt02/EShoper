@@ -14,12 +14,6 @@
  * - RAP    bug-glibc-locales@gnu.org
  */
 return array_replace_recursive(require __DIR__.'/nl.php', [
-<<<<<<< HEAD
-=======
-    'formats' => [
-        'L' => 'DD-MM-YY',
-    ],
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     'months' => ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
     'months_short' => ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
     'weekdays' => ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],

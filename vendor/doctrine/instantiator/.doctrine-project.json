@@ -6,7 +6,6 @@
     "codePath": "/src",
     "versions": [
         {
-<<<<<<< HEAD
             "name": "1.5",
             "branchName": "1.5.x",
             "slug": "latest",
@@ -16,11 +15,6 @@
             "name": "1.4",
             "branchName": "1.4.x",
             "slug": "1.4",
-=======
-            "name": "1.1",
-            "branchName": "master",
-            "slug": "latest",
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             "aliases": [
                 "current",
                 "stable"
@@ -29,7 +23,6 @@
             "current": true
         },
         {
-<<<<<<< HEAD
             "name": "1.3",
             "branchName": "1.3.x",
             "slug": "1.3",
@@ -46,15 +39,9 @@
             "slug": "1.1"
         },
         {
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             "name": "1.0",
             "branchName": "1.0.x",
             "slug": "1.0"
         }
     ]
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

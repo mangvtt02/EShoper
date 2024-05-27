@@ -3,11 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
-<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
-=======
- * (c) 2012-2020 Justin Hileman
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -23,7 +19,6 @@ class GitHubChecker implements Checker
 
     private $latest;
 
-<<<<<<< HEAD
     public function isLatest(): bool
     {
         // version_compare doesn't handle semver completely;
@@ -34,20 +29,6 @@ class GitHubChecker implements Checker
     }
 
     public function getLatest(): string
-=======
-    /**
-     * @return bool
-     */
-    public function isLatest()
-    {
-        return \version_compare(Shell::VERSION, $this->getLatest(), '>=');
-    }
-
-    /**
-     * @return string
-     */
-    public function getLatest()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!isset($this->latest)) {
             $this->setLatest($this->getVersionFromTag());
@@ -59,11 +40,7 @@ class GitHubChecker implements Checker
     /**
      * @param string $version
      */
-<<<<<<< HEAD
     public function setLatest(string $version)
-=======
-    public function setLatest($version)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->latest = $version;
     }
@@ -91,13 +68,8 @@ class GitHubChecker implements Checker
     {
         $context = \stream_context_create([
             'http' => [
-<<<<<<< HEAD
                 'user_agent' => 'PsySH/'.Shell::VERSION,
                 'timeout'    => 1.0,
-=======
-                'user_agent' => 'PsySH/' . Shell::VERSION,
-                'timeout'    => 3,
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ],
         ]);
 

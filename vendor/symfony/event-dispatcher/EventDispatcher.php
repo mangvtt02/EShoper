@@ -48,11 +48,7 @@ class EventDispatcher implements EventDispatcherInterface
      *
      * @param string|null $eventName
      */
-<<<<<<< HEAD
     public function dispatch($event/* , string $eventName = null */)
-=======
-    public function dispatch($event/*, string $eventName = null*/)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $eventName = 1 < \func_num_args() ? func_get_arg(1) : null;
 
@@ -126,11 +122,7 @@ class EventDispatcher implements EventDispatcherInterface
                     $v[0] = $v[0]();
                     $v[1] = $v[1] ?? '__invoke';
                 }
-<<<<<<< HEAD
                 if ($v === $listener || ($listener instanceof \Closure && $v == $listener)) {
-=======
-                if ($v === $listener) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     return $priority;
                 }
             }
@@ -186,11 +178,7 @@ class EventDispatcher implements EventDispatcherInterface
                     $v[0] = $v[0]();
                     $v[1] = $v[1] ?? '__invoke';
                 }
-<<<<<<< HEAD
                 if ($v === $listener || ($listener instanceof \Closure && $v == $listener)) {
-=======
-                if ($v === $listener) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     unset($listeners[$k], $this->sorted[$eventName], $this->optimized[$eventName]);
                 }
             }
@@ -210,17 +198,10 @@ class EventDispatcher implements EventDispatcherInterface
             if (\is_string($params)) {
                 $this->addListener($eventName, [$subscriber, $params]);
             } elseif (\is_string($params[0])) {
-<<<<<<< HEAD
                 $this->addListener($eventName, [$subscriber, $params[0]], $params[1] ?? 0);
             } else {
                 foreach ($params as $listener) {
                     $this->addListener($eventName, [$subscriber, $listener[0]], $listener[1] ?? 0);
-=======
-                $this->addListener($eventName, [$subscriber, $params[0]], isset($params[1]) ? $params[1] : 0);
-            } else {
-                foreach ($params as $listener) {
-                    $this->addListener($eventName, [$subscriber, $listener[0]], isset($listener[1]) ? $listener[1] : 0);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
             }
         }

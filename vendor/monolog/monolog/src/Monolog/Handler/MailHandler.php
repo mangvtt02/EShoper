@@ -18,20 +18,13 @@ use Monolog\Formatter\HtmlFormatter;
  * Base class for all mail handlers
  *
  * @author Gyula Sallai
-<<<<<<< HEAD
  *
  * @phpstan-import-type Record from \Monolog\Logger
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 abstract class MailHandler extends AbstractProcessingHandler
 {
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function handleBatch(array $records): void
     {
@@ -41,13 +34,9 @@ abstract class MailHandler extends AbstractProcessingHandler
             if ($record['level'] < $this->level) {
                 continue;
             }
-<<<<<<< HEAD
             /** @var Record $message */
             $message = $this->processRecord($record);
             $messages[] = $message;
-=======
-            $messages[] = $this->processRecord($record);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if (!empty($messages)) {
@@ -60,33 +49,23 @@ abstract class MailHandler extends AbstractProcessingHandler
      *
      * @param string $content formatted email body to be sent
      * @param array  $records the array of log records that formed this content
-<<<<<<< HEAD
      *
      * @phpstan-param Record[] $records
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     abstract protected function send(string $content, array $records): void;
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function write(array $record): void
     {
         $this->send((string) $record['formatted'], [$record]);
     }
 
-<<<<<<< HEAD
     /**
      * @phpstan-param non-empty-array<Record> $records
      * @phpstan-return Record
      */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     protected function getHighestRecord(array $records): array
     {
         $highestRecord = null;
@@ -101,11 +80,7 @@ abstract class MailHandler extends AbstractProcessingHandler
 
     protected function isHtmlBody(string $body): bool
     {
-<<<<<<< HEAD
         return ($body[0] ?? null) === '<';
-=======
-        return substr($body, 0, 1) === '<';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**

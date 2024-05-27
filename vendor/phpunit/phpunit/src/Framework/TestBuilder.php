@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Framework;
 
-<<<<<<< HEAD
 use function assert;
 use function count;
 use function get_class;
@@ -20,32 +19,19 @@ use PHPUnit\Util\InvalidDataSetException;
 use PHPUnit\Util\Test as TestUtil;
 use ReflectionClass;
 use Throwable;
-=======
-use PHPUnit\Util\Filter;
-use PHPUnit\Util\InvalidDataSetException;
-use PHPUnit\Util\Test as TestUtil;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
 final class TestBuilder
 {
-<<<<<<< HEAD
     public function build(ReflectionClass $theClass, string $methodName): Test
-=======
-    public function build(\ReflectionClass $theClass, string $methodName): Test
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $className = $theClass->getName();
 
         if (!$theClass->isInstantiable()) {
             return new WarningTestCase(
-<<<<<<< HEAD
                 sprintf('Cannot instantiate class "%s".', $className)
-=======
-                \sprintf('Cannot instantiate class "%s".', $className)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             );
         }
 
@@ -78,11 +64,7 @@ final class TestBuilder
         $parameters = $constructor->getParameters();
 
         // TestCase() or TestCase($name)
-<<<<<<< HEAD
         if (count($parameters) < 2) {
-=======
-        if (\count($parameters) < 2) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $test = $this->buildTestWithoutData($className);
         } // TestCase($name, $data)
         else {
@@ -92,11 +74,7 @@ final class TestBuilder
                     $methodName
                 );
             } catch (IncompleteTestError $e) {
-<<<<<<< HEAD
                 $message = sprintf(
-=======
-                $message = \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     "Test for %s::%s marked incomplete by data provider\n%s",
                     $className,
                     $methodName,
@@ -105,11 +83,7 @@ final class TestBuilder
 
                 $data = new IncompleteTestCase($className, $methodName, $message);
             } catch (SkippedTestError $e) {
-<<<<<<< HEAD
                 $message = sprintf(
-=======
-                $message = \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     "Test for %s::%s skipped by data provider\n%s",
                     $className,
                     $methodName,
@@ -117,13 +91,8 @@ final class TestBuilder
                 );
 
                 $data = new SkippedTestCase($className, $methodName, $message);
-<<<<<<< HEAD
             } catch (Throwable $t) {
                 $message = sprintf(
-=======
-            } catch (\Throwable $t) {
-                $message = \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     "The data provider specified for %s::%s is invalid.\n%s",
                     $className,
                     $methodName,
@@ -193,11 +162,7 @@ final class TestBuilder
             foreach ($data as $_dataName => $_data) {
                 $_test = new $className($methodName, $_data, $_dataName);
 
-<<<<<<< HEAD
                 assert($_test instanceof TestCase);
-=======
-                \assert($_test instanceof TestCase);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                 $this->configureTestCase(
                     $_test,
@@ -248,43 +213,25 @@ final class TestBuilder
         }
     }
 
-<<<<<<< HEAD
     private function throwableToString(Throwable $t): string
     {
         $message = $t->getMessage();
 
         if (empty(trim($message))) {
-=======
-    private function throwableToString(\Throwable $t): string
-    {
-        $message = $t->getMessage();
-
-        if (empty(\trim($message))) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $message = '<no message>';
         }
 
         if ($t instanceof InvalidDataSetException) {
-<<<<<<< HEAD
             return sprintf(
-=======
-            return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 "%s\n%s",
                 $message,
                 Filter::getFilteredStacktrace($t)
             );
         }
 
-<<<<<<< HEAD
         return sprintf(
             "%s: %s\n%s",
             get_class($t),
-=======
-        return \sprintf(
-            "%s: %s\n%s",
-            \get_class($t),
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $message,
             Filter::getFilteredStacktrace($t)
         );

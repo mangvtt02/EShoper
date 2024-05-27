@@ -1,11 +1,7 @@
 <?php
 /**
  * @package php-font-lib
-<<<<<<< HEAD
  * @link    https://github.com/dompdf/php-font-lib
-=======
- * @link    https://github.com/PhenX/php-font-lib
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
@@ -40,7 +36,6 @@ class DirectoryEntry extends BinaryStream {
 
   protected $origF;
 
-<<<<<<< HEAD
   /**
    * @param string $data
    *
@@ -48,35 +43,14 @@ class DirectoryEntry extends BinaryStream {
    */
   static function computeChecksum($data) {
     $len = mb_strlen($data, '8bit');
-=======
-  static function computeChecksum($data) {
-    $len = strlen($data);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     $mod = $len % 4;
 
     if ($mod) {
       $data = str_pad($data, $len + (4 - $mod), "\0");
     }
 
-<<<<<<< HEAD
     $table = unpack("N*", $data);
     return array_sum($table);
-=======
-    $len = strlen($data);
-
-    $hi = 0x0000;
-    $lo = 0x0000;
-
-    for ($i = 0; $i < $len; $i += 4) {
-      $hi += (ord($data[$i]) << 8) + ord($data[$i + 1]);
-      $lo += (ord($data[$i + 2]) << 8) + ord($data[$i + 3]);
-      $hi += $lo >> 16;
-      $lo = $lo & 0xFFFF;
-      $hi = $hi & 0xFFFF;
-    }
-
-    return ($hi << 8) + $lo;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   }
 
   function __construct(File $font) {
@@ -107,7 +81,6 @@ class DirectoryEntry extends BinaryStream {
     $this->offset = $table_offset;
     $table_length = $data->encode();
 
-<<<<<<< HEAD
     $font->seek($table_offset + $table_length);
     $pad = 0;
     $mod = $table_length % 4;
@@ -116,8 +89,6 @@ class DirectoryEntry extends BinaryStream {
       $font->write(str_pad("", $pad, "\0"), $pad);
     }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     $font->seek($table_offset);
     $table_data = $font->read($table_length);
 
@@ -130,11 +101,7 @@ class DirectoryEntry extends BinaryStream {
 
     Font::d("Bytes written = $table_length");
 
-<<<<<<< HEAD
     $font->seek($table_offset + $table_length + $pad);
-=======
-    $font->seek($table_offset + $table_length);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   }
 
   /**

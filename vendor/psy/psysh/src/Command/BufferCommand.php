@@ -3,11 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
-<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
-=======
- * (c) 2012-2020 Justin Hileman
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -15,10 +11,7 @@
 
 namespace Psy\Command;
 
-<<<<<<< HEAD
 use Psy\Exception\RuntimeException;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Psy\Output\ShellOutput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -54,7 +47,6 @@ HELP
 
     /**
      * {@inheritdoc}
-<<<<<<< HEAD
      *
      * @return int 0 if everything went fine, or an exit code
      */
@@ -68,14 +60,6 @@ HELP
         $buf = $app->getCodeBuffer();
         if ($input->getOption('clear')) {
             $app->resetCodeBuffer();
-=======
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $buf = $this->getApplication()->getCodeBuffer();
-        if ($input->getOption('clear')) {
-            $this->getApplication()->resetCodeBuffer();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $output->writeln($this->formatLines($buf, 'urgent'), ShellOutput::NUMBER_LINES);
         } else {
             $output->writeln($this->formatLines($buf), ShellOutput::NUMBER_LINES);
@@ -92,11 +76,7 @@ HELP
      *
      * @return array Formatted strings
      */
-<<<<<<< HEAD
     protected function formatLines(array $lines, string $type = 'return'): array
-=======
-    protected function formatLines(array $lines, $type = 'return')
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $template = \sprintf('<%s>%%s</%s>', $type, $type);
 

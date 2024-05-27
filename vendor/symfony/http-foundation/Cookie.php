@@ -18,15 +18,9 @@ namespace Symfony\Component\HttpFoundation;
  */
 class Cookie
 {
-<<<<<<< HEAD
     public const SAMESITE_NONE = 'none';
     public const SAMESITE_LAX = 'lax';
     public const SAMESITE_STRICT = 'strict';
-=======
-    const SAMESITE_NONE = 'none';
-    const SAMESITE_LAX = 'lax';
-    const SAMESITE_STRICT = 'strict';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     protected $name;
     protected $value;
@@ -41,13 +35,8 @@ class Cookie
     private $secureDefault = false;
 
     private static $reservedCharsList = "=,; \t\r\n\v\f";
-<<<<<<< HEAD
     private const RESERVED_CHARS_FROM = ['=', ',', ';', ' ', "\t", "\r", "\n", "\v", "\f"];
     private const RESERVED_CHARS_TO = ['%3D', '%2C', '%3B', '%20', '%09', '%0D', '%0A', '%0B', '%0C'];
-=======
-    private static $reservedCharsFrom = ['=', ',', ';', ' ', "\t", "\r", "\n", "\v", "\f"];
-    private static $reservedCharsTo = ['%3D', '%2C', '%3B', '%20', '%09', '%0D', '%0A', '%0B', '%0C'];
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Creates cookie from raw header string.
@@ -160,11 +149,7 @@ class Cookie
         if ($this->isRaw()) {
             $str = $this->getName();
         } else {
-<<<<<<< HEAD
             $str = str_replace(self::RESERVED_CHARS_FROM, self::RESERVED_CHARS_TO, $this->getName());
-=======
-            $str = str_replace(self::$reservedCharsFrom, self::$reservedCharsTo, $this->getName());
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $str .= '=';

@@ -5,7 +5,6 @@ namespace PhpParser\Node;
 use PhpParser\Node;
 use PhpParser\NodeAbstract;
 
-<<<<<<< HEAD
 class Attribute extends NodeAbstract {
     /** @var Name Attribute name */
     public Name $name;
@@ -17,20 +16,6 @@ class Attribute extends NodeAbstract {
      * @param Node\Name $name Attribute name
      * @param list<Arg> $args Attribute arguments
      * @param array<string, mixed> $attributes Additional node attributes
-=======
-class Attribute extends NodeAbstract
-{
-    /** @var Name Attribute name */
-    public $name;
-
-    /** @var Arg[] Attribute arguments */
-    public $args;
-
-    /**
-     * @param Node\Name $name       Attribute name
-     * @param Arg[]     $args       Attribute arguments
-     * @param array     $attributes Additional node attributes
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct(Name $name, array $args = [], array $attributes = []) {
         $this->attributes = $attributes;
@@ -38,19 +23,11 @@ class Attribute extends NodeAbstract
         $this->args = $args;
     }
 
-<<<<<<< HEAD
     public function getSubNodeNames(): array {
         return ['name', 'args'];
     }
 
     public function getType(): string {
-=======
-    public function getSubNodeNames() : array {
-        return ['name', 'args'];
-    }
-
-    public function getType() : string {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return 'Attribute';
     }
 }

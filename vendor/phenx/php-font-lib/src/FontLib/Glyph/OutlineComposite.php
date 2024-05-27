@@ -1,11 +1,7 @@
 <?php
 /**
  * @package php-font-lib
-<<<<<<< HEAD
  * @link    https://github.com/dompdf/php-font-lib
-=======
- * @link    https://github.com/PhenX/php-font-lib
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  * @version $Id: Font_Table_glyf.php 46 2012-04-02 20:22:38Z fabien.menager $
@@ -133,14 +129,11 @@ class OutlineComposite extends Outline {
 
       $this->components[] = $component;
     } while ($flags & self::MORE_COMPONENTS);
-<<<<<<< HEAD
     if ($flags & self::WE_HAVE_INSTRUCTIONS) {
       $numInstr = $font->readUInt16();
       $instr = $font->read($numInstr);
       $this->components[count($this->components) - 1]->instructions = pack('n', $numInstr) . $instr;
     }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   }
 
   function encode() {
@@ -183,11 +176,8 @@ class OutlineComposite extends Outline {
 
       if ($_i < count($this->components) - 1) {
         $flags |= self::MORE_COMPONENTS;
-<<<<<<< HEAD
       } elseif($_component->instructions !== null) {
         $flags |= self::WE_HAVE_INSTRUCTIONS;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
       }
 
       $size += $font->writeUInt16($flags);
@@ -231,13 +221,10 @@ class OutlineComposite extends Outline {
       }
     }
 
-<<<<<<< HEAD
     if($_component->instructions !== null) {
       $size += $font->write($_component->instructions, strlen($_component->instructions));
     }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     return $size;
   }
 

@@ -83,7 +83,6 @@ abstract class MultiplePcreFilterIterator extends \FilterIterator
      */
     protected function isRegex($str)
     {
-<<<<<<< HEAD
         $availableModifiers = 'imsxuADU';
 
         if (\PHP_VERSION_ID >= 80200) {
@@ -91,9 +90,6 @@ abstract class MultiplePcreFilterIterator extends \FilterIterator
         }
 
         if (preg_match('/^(.{3,}?)['.$availableModifiers.']*$/', $str, $m)) {
-=======
-        if (preg_match('/^(.{3,}?)[imsxuADU]*$/', $str, $m)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $start = substr($m[1], 0, 1);
             $end = substr($m[1], -1);
 

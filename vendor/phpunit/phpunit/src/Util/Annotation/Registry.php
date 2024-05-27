@@ -9,15 +9,11 @@
  */
 namespace PHPUnit\Util\Annotation;
 
-<<<<<<< HEAD
 use function array_key_exists;
 use PHPUnit\Util\Exception;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
-=======
-use PHPUnit\Util\Exception;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Reflection information, and therefore DocBlock information, is static within
@@ -47,38 +43,22 @@ final class Registry
 
     /**
      * @throws Exception
-<<<<<<< HEAD
      *
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @psalm-param class-string $class
      */
     public function forClassName(string $class): DocBlock
     {
-<<<<<<< HEAD
         if (array_key_exists($class, $this->classDocBlocks)) {
-=======
-        if (\array_key_exists($class, $this->classDocBlocks)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $this->classDocBlocks[$class];
         }
 
         try {
-<<<<<<< HEAD
             $reflection = new ReflectionClass($class);
             // @codeCoverageIgnoreStart
         } catch (ReflectionException $e) {
             throw new Exception(
                 $e->getMessage(),
                 $e->getCode(),
-=======
-            $reflection = new \ReflectionClass($class);
-            // @codeCoverageIgnoreStart
-        } catch (\ReflectionException $e) {
-            throw new Exception(
-                $e->getMessage(),
-                (int) $e->getCode(),
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $e
             );
         }
@@ -89,10 +69,7 @@ final class Registry
 
     /**
      * @throws Exception
-<<<<<<< HEAD
      *
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @psalm-param class-string $classInHierarchy
      */
     public function forMethod(string $classInHierarchy, string $method): DocBlock
@@ -102,21 +79,12 @@ final class Registry
         }
 
         try {
-<<<<<<< HEAD
             $reflection = new ReflectionMethod($classInHierarchy, $method);
             // @codeCoverageIgnoreStart
         } catch (ReflectionException $e) {
             throw new Exception(
                 $e->getMessage(),
                 $e->getCode(),
-=======
-            $reflection = new \ReflectionMethod($classInHierarchy, $method);
-            // @codeCoverageIgnoreStart
-        } catch (\ReflectionException $e) {
-            throw new Exception(
-                $e->getMessage(),
-                (int) $e->getCode(),
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $e
             );
         }

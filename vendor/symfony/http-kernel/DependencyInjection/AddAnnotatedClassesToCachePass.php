@@ -62,11 +62,7 @@ class AddAnnotatedClassesToCachePass implements CompilerPassInterface
 
         // Explicit classes declared in the patterns are returned directly
         foreach ($patterns as $key => $pattern) {
-<<<<<<< HEAD
             if (!str_ends_with($pattern, '\\') && !str_contains($pattern, '*')) {
-=======
-            if ('\\' !== substr($pattern, -1) && false === strpos($pattern, '*')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 unset($patterns[$key]);
                 $expanded[] = ltrim($pattern, '\\');
             }
@@ -131,17 +127,10 @@ class AddAnnotatedClassesToCachePass implements CompilerPassInterface
 
     private function matchAnyRegexps(string $class, array $regexps): bool
     {
-<<<<<<< HEAD
         $isTest = str_contains($class, 'Test');
 
         foreach ($regexps as $regex) {
             if ($isTest && !str_contains($regex, 'Test')) {
-=======
-        $isTest = false !== strpos($class, 'Test');
-
-        foreach ($regexps as $regex) {
-            if ($isTest && false === strpos($regex, 'Test')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 continue;
             }
 

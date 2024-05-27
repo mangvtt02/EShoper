@@ -60,13 +60,8 @@ class SqlServerGrammar extends Grammar
         // If there is a limit on the query, but not an offset, we will add the top
         // clause to the query, which serves as a "limit" type clause within the
         // SQL Server system similar to the limit keywords available in MySQL.
-<<<<<<< HEAD
         if (is_numeric($query->limit) && $query->limit > 0 && $query->offset <= 0) {
             $select .= 'top '.((int) $query->limit).' ';
-=======
-        if ($query->limit > 0 && $query->offset <= 0) {
-            $select .= 'top '.$query->limit.' ';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $select.$this->columnize($columns);
@@ -226,17 +221,10 @@ class SqlServerGrammar extends Grammar
      */
     protected function compileRowConstraint($query)
     {
-<<<<<<< HEAD
         $start = (int) $query->offset + 1;
 
         if ($query->limit > 0) {
             $finish = (int) $query->offset + (int) $query->limit;
-=======
-        $start = $query->offset + 1;
-
-        if ($query->limit > 0) {
-            $finish = $query->offset + $query->limit;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             return "between {$start} and {$finish}";
         }

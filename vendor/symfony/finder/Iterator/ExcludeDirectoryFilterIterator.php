@@ -34,11 +34,7 @@ class ExcludeDirectoryFilterIterator extends \FilterIterator implements \Recursi
         $patterns = [];
         foreach ($directories as $directory) {
             $directory = rtrim($directory, '/');
-<<<<<<< HEAD
             if (!$this->isRecursive || str_contains($directory, '/')) {
-=======
-            if (!$this->isRecursive || false !== strpos($directory, '/')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $patterns[] = preg_quote($directory, '#');
             } else {
                 $this->excludedDirs[$directory] = true;
@@ -56,10 +52,7 @@ class ExcludeDirectoryFilterIterator extends \FilterIterator implements \Recursi
      *
      * @return bool True if the value should be kept, false otherwise
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function accept()
     {
         if ($this->isRecursive && isset($this->excludedDirs[$this->getFilename()]) && $this->isDir()) {
@@ -79,22 +72,16 @@ class ExcludeDirectoryFilterIterator extends \FilterIterator implements \Recursi
     /**
      * @return bool
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function hasChildren()
     {
         return $this->isRecursive && $this->iterator->hasChildren();
     }
 
-<<<<<<< HEAD
     /**
      * @return self
      */
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function getChildren()
     {
         $children = new self($this->iterator->getChildren(), []);

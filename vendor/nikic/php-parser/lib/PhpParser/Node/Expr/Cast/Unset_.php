@@ -4,14 +4,8 @@ namespace PhpParser\Node\Expr\Cast;
 
 use PhpParser\Node\Expr\Cast;
 
-<<<<<<< HEAD
 class Unset_ extends Cast {
     public function getType(): string {
-=======
-class Unset_ extends Cast
-{
-    public function getType() : string {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return 'Expr_Cast_Unset';
     }
 }

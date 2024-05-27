@@ -12,10 +12,7 @@
 namespace Monolog\Handler\SyslogUdp;
 
 use Monolog\Utils;
-<<<<<<< HEAD
 use Socket;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 class UdpSocket
 {
@@ -25,19 +22,13 @@ class UdpSocket
     protected $ip;
     /** @var int */
     protected $port;
-<<<<<<< HEAD
     /** @var resource|Socket|null */
     protected $socket = null;
-=======
-    /** @var resource|null */
-    protected $socket;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     public function __construct(string $ip, int $port = 514)
     {
         $this->ip = $ip;
         $this->port = $port;
-<<<<<<< HEAD
     }
 
     /**
@@ -45,11 +36,6 @@ class UdpSocket
      * @param  string $header
      * @return void
      */
-=======
-        $this->socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
-    }
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function write($line, $header = "")
     {
         $this->send($this->assembleMessage($line, $header));
@@ -57,17 +43,12 @@ class UdpSocket
 
     public function close(): void
     {
-<<<<<<< HEAD
         if (is_resource($this->socket) || $this->socket instanceof Socket) {
-=======
-        if (is_resource($this->socket)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             socket_close($this->socket);
             $this->socket = null;
         }
     }
 
-<<<<<<< HEAD
     /**
      * @return resource|Socket
      */
@@ -96,14 +77,6 @@ class UdpSocket
     protected function send(string $chunk): void
     {
         socket_sendto($this->getSocket(), $chunk, strlen($chunk), $flags = 0, $this->ip, $this->port);
-=======
-    protected function send(string $chunk): void
-    {
-        if (!is_resource($this->socket)) {
-            throw new \RuntimeException('The UdpSocket to '.$this->ip.':'.$this->port.' has been closed and can not be written to anymore');
-        }
-        socket_sendto($this->socket, $chunk, strlen($chunk), $flags = 0, $this->ip, $this->port);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     protected function assembleMessage(string $line, string $header): string

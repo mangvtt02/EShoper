@@ -8,10 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 namespace Carbon\Traits;
 
 use Carbon\Carbon;
@@ -23,10 +20,7 @@ use Carbon\Translator;
 use Closure;
 use DateInterval;
 use DateTimeInterface;
-<<<<<<< HEAD
 use ReturnTypeWillChange;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Trait Difference.
@@ -89,15 +83,9 @@ trait Difference
      *
      * @return CarbonInterval
      */
-<<<<<<< HEAD
     protected static function fixDiffInterval(DateInterval $diff, $absolute, array $skip = [])
     {
         $diff = CarbonInterval::instance($diff, $skip);
-=======
-    protected static function fixDiffInterval(DateInterval $diff, $absolute)
-    {
-        $diff = CarbonInterval::instance($diff);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         // Work-around for https://bugs.php.net/bug.php?id=77145
         // @codeCoverageIgnoreStart
@@ -124,19 +112,14 @@ trait Difference
 
     /**
      * Get the difference as a DateInterval instance.
-<<<<<<< HEAD
      * Return relative interval (negative if $absolute flag is not set to true and the given date is before
      * current one).
-=======
-     * Return relative interval (negative if
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @param \Carbon\CarbonInterface|\DateTimeInterface|string|null $date
      * @param bool                                                   $absolute Get the absolute of the difference
      *
      * @return DateInterval
      */
-<<<<<<< HEAD
     #[ReturnTypeWillChange]
     public function diff($date = null, $absolute = false)
     {
@@ -153,36 +136,21 @@ trait Difference
         // @codeCoverageIgnoreEnd
 
         return parent::diff($other, (bool) $absolute);
-=======
-    public function diff($date = null, $absolute = false)
-    {
-        return parent::diff($this->resolveCarbon($date), (bool) $absolute);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * Get the difference as a CarbonInterval instance.
-<<<<<<< HEAD
      * Return relative interval (negative if $absolute flag is not set to true and the given date is before
      * current one).
-=======
-     * Return absolute interval (always positive) unless you pass false to the second argument.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @param \Carbon\CarbonInterface|\DateTimeInterface|string|null $date
      * @param bool                                                   $absolute Get the absolute of the difference
      *
      * @return CarbonInterval
      */
-<<<<<<< HEAD
     public function diffAsCarbonInterval($date = null, $absolute = true, array $skip = [])
     {
         return static::fixDiffInterval($this->diff($this->resolveCarbon($date), $absolute), $absolute, $skip);
-=======
-    public function diffAsCarbonInterval($date = null, $absolute = true)
-    {
-        return static::fixDiffInterval($this->diff($this->resolveCarbon($date), $absolute), $absolute);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -221,7 +189,6 @@ trait Difference
      */
     public function diffInMonths($date = null, $absolute = true)
     {
-<<<<<<< HEAD
         $date = $this->resolveCarbon($date)->avoidMutation()->tz($this->tz);
 
         [$yearStart, $monthStart, $dayStart] = explode('-', $this->format('Y-m-dHisu'));
@@ -237,11 +204,6 @@ trait Difference
         }
 
         return $absolute ? abs($diff) : $diff;
-=======
-        $date = $this->resolveCarbon($date);
-
-        return $this->diffInYears($date, $absolute) * static::MONTHS_PER_YEAR + (int) $this->diff($date, $absolute)->format('%r%m');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -267,11 +229,7 @@ trait Difference
      */
     public function diffInDays($date = null, $absolute = true)
     {
-<<<<<<< HEAD
         return $this->getIntervalDayDiff($this->diff($this->resolveCarbon($date), $absolute));
-=======
-        return (int) $this->diff($this->resolveCarbon($date), $absolute)->format('%r%a');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -340,15 +298,9 @@ trait Difference
      */
     public function diffInWeekdays($date = null, $absolute = true)
     {
-<<<<<<< HEAD
         return $this->diffInDaysFiltered(static function (CarbonInterface $date) {
             return $date->isWeekday();
         }, $this->resolveCarbon($date)->avoidMutation()->modify($this->format('H:i:s.u')), $absolute);
-=======
-        return $this->diffInDaysFiltered(function (CarbonInterface $date) {
-            return $date->isWeekday();
-        }, $date, $absolute);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -361,15 +313,9 @@ trait Difference
      */
     public function diffInWeekendDays($date = null, $absolute = true)
     {
-<<<<<<< HEAD
         return $this->diffInDaysFiltered(static function (CarbonInterface $date) {
             return $date->isWeekend();
         }, $this->resolveCarbon($date)->avoidMutation()->modify($this->format('H:i:s.u')), $absolute);
-=======
-        return $this->diffInDaysFiltered(function (CarbonInterface $date) {
-            return $date->isWeekend();
-        }, $date, $absolute);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -538,11 +484,7 @@ trait Difference
      */
     public function floatDiffInSeconds($date = null, $absolute = true)
     {
-<<<<<<< HEAD
         return (float) ($this->diffInMicroseconds($date, $absolute) / static::MICROSECONDS_PER_SECOND);
-=======
-        return $this->diffInMicroseconds($date, $absolute) / static::MICROSECONDS_PER_SECOND;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -582,7 +524,6 @@ trait Difference
     public function floatDiffInDays($date = null, $absolute = true)
     {
         $hoursDiff = $this->floatDiffInHours($date, $absolute);
-<<<<<<< HEAD
         $interval = $this->diff($date, $absolute);
 
         if ($interval->y === 0 && $interval->m === 0 && $interval->d === 0) {
@@ -592,10 +533,6 @@ trait Difference
         $daysDiff = $this->getIntervalDayDiff($interval);
 
         return $daysDiff + fmod($hoursDiff, static::HOURS_PER_DAY) / static::HOURS_PER_DAY;
-=======
-
-        return ($hoursDiff < 0 ? -1 : 1) * $this->diffInDays($date) + fmod($hoursDiff, static::HOURS_PER_DAY) / static::HOURS_PER_DAY;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -630,22 +567,14 @@ trait Difference
         }
         $monthsDiff = $start->diffInMonths($end);
         /** @var Carbon|CarbonImmutable $floorEnd */
-<<<<<<< HEAD
         $floorEnd = $start->avoidMutation()->addMonths($monthsDiff);
-=======
-        $floorEnd = $start->copy()->addMonths($monthsDiff);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($floorEnd >= $end) {
             return $sign * $monthsDiff;
         }
 
         /** @var Carbon|CarbonImmutable $startOfMonthAfterFloorEnd */
-<<<<<<< HEAD
         $startOfMonthAfterFloorEnd = $floorEnd->avoidMutation()->addMonth()->startOfMonth();
-=======
-        $startOfMonthAfterFloorEnd = $floorEnd->copy()->addMonth()->startOfMonth();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($startOfMonthAfterFloorEnd > $end) {
             return $sign * ($monthsDiff + $floorEnd->floatDiffInDays($end) / $floorEnd->daysInMonth);
@@ -673,22 +602,14 @@ trait Difference
         }
         $yearsDiff = $start->diffInYears($end);
         /** @var Carbon|CarbonImmutable $floorEnd */
-<<<<<<< HEAD
         $floorEnd = $start->avoidMutation()->addYears($yearsDiff);
-=======
-        $floorEnd = $start->copy()->addYears($yearsDiff);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($floorEnd >= $end) {
             return $sign * $yearsDiff;
         }
 
         /** @var Carbon|CarbonImmutable $startOfYearAfterFloorEnd */
-<<<<<<< HEAD
         $startOfYearAfterFloorEnd = $floorEnd->avoidMutation()->addYear()->startOfYear();
-=======
-        $startOfYearAfterFloorEnd = $floorEnd->copy()->addYear()->startOfYear();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($startOfYearAfterFloorEnd > $end) {
             return $sign * ($yearsDiff + $floorEnd->floatDiffInDays($end) / $floorEnd->daysInYear);
@@ -746,17 +667,11 @@ trait Difference
      */
     public function floatDiffInRealDays($date = null, $absolute = true)
     {
-<<<<<<< HEAD
         $date = $this->resolveUTC($date);
         $utc = $this->avoidMutation()->utc();
         $hoursDiff = $utc->floatDiffInRealHours($date, $absolute);
 
         return ($hoursDiff < 0 ? -1 : 1) * $utc->diffInDays($date) + fmod($hoursDiff, static::HOURS_PER_DAY) / static::HOURS_PER_DAY;
-=======
-        $hoursDiff = $this->floatDiffInRealHours($date, $absolute);
-
-        return ($hoursDiff < 0 ? -1 : 1) * $this->diffInDays($date) + fmod($hoursDiff, static::HOURS_PER_DAY) / static::HOURS_PER_DAY;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -791,22 +706,14 @@ trait Difference
         }
         $monthsDiff = $start->diffInMonths($end);
         /** @var Carbon|CarbonImmutable $floorEnd */
-<<<<<<< HEAD
         $floorEnd = $start->avoidMutation()->addMonths($monthsDiff);
-=======
-        $floorEnd = $start->copy()->addMonths($monthsDiff);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($floorEnd >= $end) {
             return $sign * $monthsDiff;
         }
 
         /** @var Carbon|CarbonImmutable $startOfMonthAfterFloorEnd */
-<<<<<<< HEAD
         $startOfMonthAfterFloorEnd = $floorEnd->avoidMutation()->addMonth()->startOfMonth();
-=======
-        $startOfMonthAfterFloorEnd = $floorEnd->copy()->addMonth()->startOfMonth();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($startOfMonthAfterFloorEnd > $end) {
             return $sign * ($monthsDiff + $floorEnd->floatDiffInRealDays($end) / $floorEnd->daysInMonth);
@@ -834,22 +741,14 @@ trait Difference
         }
         $yearsDiff = $start->diffInYears($end);
         /** @var Carbon|CarbonImmutable $floorEnd */
-<<<<<<< HEAD
         $floorEnd = $start->avoidMutation()->addYears($yearsDiff);
-=======
-        $floorEnd = $start->copy()->addYears($yearsDiff);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($floorEnd >= $end) {
             return $sign * $yearsDiff;
         }
 
         /** @var Carbon|CarbonImmutable $startOfYearAfterFloorEnd */
-<<<<<<< HEAD
         $startOfYearAfterFloorEnd = $floorEnd->avoidMutation()->addYear()->startOfYear();
-=======
-        $startOfYearAfterFloorEnd = $floorEnd->copy()->addYear()->startOfYear();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($startOfYearAfterFloorEnd > $end) {
             return $sign * ($yearsDiff + $floorEnd->floatDiffInRealDays($end) / $floorEnd->daysInYear);
@@ -865,11 +764,7 @@ trait Difference
      */
     public function secondsSinceMidnight()
     {
-<<<<<<< HEAD
         return $this->diffInSeconds($this->avoidMutation()->startOfDay());
-=======
-        return $this->diffInSeconds($this->copy()->startOfDay());
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -879,11 +774,7 @@ trait Difference
      */
     public function secondsUntilEndOfDay()
     {
-<<<<<<< HEAD
         return $this->diffInSeconds($this->avoidMutation()->endOfDay());
-=======
-        return $this->diffInSeconds($this->copy()->endOfDay());
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -907,13 +798,10 @@ trait Difference
      *                                                             - 'short' entry (see below)
      *                                                             - 'parts' entry (see below)
      *                                                             - 'options' entry (see below)
-<<<<<<< HEAD
      *                                                             - 'skip' entry, list of units to skip (array of strings or a single string,
      *                                                             ` it can be the unit name (singular or plural) or its shortcut
      *                                                             ` (y, m, w, d, h, min, s, ms, µs).
      *                                                             - 'aUnit' entry, prefer "an hour" over "1 hour" if true
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *                                                             - 'join' entry determines how to join multiple parts of the string
      *                                                             `  - if $join is a string, it's used as a joiner glue
      *                                                             `  - if $join is a callable/closure, it get the list of string and should return a string
@@ -922,11 +810,8 @@ trait Difference
      *                                                             `  - if $join is true, it will be guessed from the locale ('list' translation file entry)
      *                                                             `  - if $join is missing, a space will be used as glue
      *                                                             - 'other' entry (see above)
-<<<<<<< HEAD
      *                                                             - 'minimumUnit' entry determines the smallest unit of time to display can be long or
      *                                                             `  short form of the units, e.g. 'hour' or 'h' (default value: s)
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *                                                             if int passed, it add modifiers:
      *                                                             Possible values:
      *                                                             - CarbonInterface::DIFF_ABSOLUTE          no modifiers
@@ -942,19 +827,13 @@ trait Difference
     public function diffForHumans($other = null, $syntax = null, $short = false, $parts = 1, $options = null)
     {
         /* @var CarbonInterface $this */
-<<<<<<< HEAD
         if (\is_array($other)) {
             $other['syntax'] = \array_key_exists('syntax', $other) ? $other['syntax'] : $syntax;
-=======
-        if (is_array($other)) {
-            $other['syntax'] = array_key_exists('syntax', $other) ? $other['syntax'] : $syntax;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $syntax = $other;
             $other = $syntax['other'] ?? null;
         }
 
         $intSyntax = &$syntax;
-<<<<<<< HEAD
         if (\is_array($syntax)) {
             $syntax['syntax'] = $syntax['syntax'] ?? null;
             $intSyntax = &$syntax['syntax'];
@@ -966,18 +845,6 @@ trait Difference
         $skip = \is_array($syntax) ? ($syntax['skip'] ?? []) : [];
 
         return $this->diffAsCarbonInterval($other, false, (array) $skip)
-=======
-        if (is_array($syntax)) {
-            $syntax['syntax'] = $syntax['syntax'] ?? null;
-            $intSyntax = &$syntax['syntax'];
-        }
-        $intSyntax = (int) ($intSyntax === null ? static::DIFF_RELATIVE_AUTO : $intSyntax);
-        $intSyntax = $intSyntax === static::DIFF_RELATIVE_AUTO && $other === null ? static::DIFF_RELATIVE_TO_NOW : $intSyntax;
-
-        $parts = min(7, max(1, (int) $parts));
-
-        return $this->diffAsCarbonInterval($other, false)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ->setLocalTranslator($this->getLocalTranslator())
             ->forHumans($syntax, (bool) $short, $parts, $options ?? $this->localHumanDiffOptions ?? static::getHumanDiffOptions());
     }
@@ -1161,11 +1028,7 @@ trait Difference
         $other = null;
 
         if ($syntax instanceof DateTimeInterface) {
-<<<<<<< HEAD
             [$other, $syntax, $short, $parts, $options] = array_pad(\func_get_args(), 5, null);
-=======
-            [$other, $syntax, $short, $parts, $options] = array_pad(func_get_args(), 5, null);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this->from($other, $syntax, $short, $parts, $options);
@@ -1237,11 +1100,7 @@ trait Difference
         $other = null;
 
         if ($syntax instanceof DateTimeInterface) {
-<<<<<<< HEAD
             [$other, $syntax, $short, $parts, $options] = array_pad(\func_get_args(), 5, null);
-=======
-            [$other, $syntax, $short, $parts, $options] = array_pad(func_get_args(), 5, null);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this->from($other, $syntax, $short, $parts, $options);
@@ -1268,14 +1127,10 @@ trait Difference
     }
 
     /**
-<<<<<<< HEAD
      * Returns either day of week + time (e.g. "Last Friday at 3:30 PM") if reference time is within 7 days,
      * or a calendar date (e.g. "10/29/2017") otherwise.
      *
      * Language, date and time formats will change according to the current locale.
-=======
-     * Returns either the close date "Friday 15h30", or a calendar date "10/09/2017" is farthest than 7 days from now.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @param Carbon|\DateTimeInterface|string|null $referenceTime
      * @param array                                 $formats
@@ -1285,15 +1140,9 @@ trait Difference
     public function calendar($referenceTime = null, array $formats = [])
     {
         /** @var CarbonInterface $current */
-<<<<<<< HEAD
         $current = $this->avoidMutation()->startOfDay();
         /** @var CarbonInterface $other */
         $other = $this->resolveCarbon($referenceTime)->avoidMutation()->setTimezone($this->getTimezone())->startOfDay();
-=======
-        $current = $this->copy()->startOfDay();
-        /** @var CarbonInterface $other */
-        $other = $this->resolveCarbon($referenceTime)->copy()->setTimezone($this->getTimezone())->startOfDay();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $diff = $other->diffInDays($current, false);
         $format = $diff < -6 ? 'sameElse' : (
             $diff < -1 ? 'lastWeek' : (
@@ -1311,7 +1160,6 @@ trait Difference
             $format = $format($current, $other) ?? '';
         }
 
-<<<<<<< HEAD
         return $this->isoFormat((string) $format);
     }
 
@@ -1330,8 +1178,5 @@ trait Difference
         }
 
         return $daysDiff * $sign;
-=======
-        return $this->isoFormat(strval($format));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

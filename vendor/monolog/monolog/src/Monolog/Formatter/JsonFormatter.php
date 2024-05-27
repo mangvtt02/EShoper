@@ -19,18 +19,14 @@ use Throwable;
  * This can be useful to log to databases or remote APIs
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
-<<<<<<< HEAD
  *
  * @phpstan-import-type Record from \Monolog\Logger
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 class JsonFormatter extends NormalizerFormatter
 {
     public const BATCH_MODE_JSON = 1;
     public const BATCH_MODE_NEWLINES = 2;
 
-<<<<<<< HEAD
     /** @var self::BATCH_MODE_* */
     protected $batchMode;
     /** @var bool */
@@ -44,28 +40,13 @@ class JsonFormatter extends NormalizerFormatter
      * @param self::BATCH_MODE_* $batchMode
      */
     public function __construct(int $batchMode = self::BATCH_MODE_JSON, bool $appendNewline = true, bool $ignoreEmptyContextAndExtra = false, bool $includeStacktraces = false)
-=======
-    protected $batchMode;
-    protected $appendNewline;
-    protected $ignoreEmptyContextAndExtra;
-
-    /**
-     * @var bool
-     */
-    protected $includeStacktraces = false;
-
-    public function __construct(int $batchMode = self::BATCH_MODE_JSON, bool $appendNewline = true, bool $ignoreEmptyContextAndExtra = false)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->batchMode = $batchMode;
         $this->appendNewline = $appendNewline;
         $this->ignoreEmptyContextAndExtra = $ignoreEmptyContextAndExtra;
-<<<<<<< HEAD
         $this->includeStacktraces = $includeStacktraces;
 
         parent::__construct();
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -89,13 +70,7 @@ class JsonFormatter extends NormalizerFormatter
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
-     *
-     * @suppress PhanTypeComparisonToArray
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function format(array $record): string
     {
@@ -120,11 +95,7 @@ class JsonFormatter extends NormalizerFormatter
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function formatBatch(array $records): string
     {
@@ -138,7 +109,6 @@ class JsonFormatter extends NormalizerFormatter
         }
     }
 
-<<<<<<< HEAD
     /**
      * @return self
      */
@@ -147,20 +117,12 @@ class JsonFormatter extends NormalizerFormatter
         $this->includeStacktraces = $include;
 
         return $this;
-=======
-    public function includeStacktraces(bool $include = true)
-    {
-        $this->includeStacktraces = $include;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * Return a JSON-encoded array of records.
-<<<<<<< HEAD
      *
      * @phpstan-param Record[] $records
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function formatBatchJson(array $records): string
     {
@@ -170,11 +132,8 @@ class JsonFormatter extends NormalizerFormatter
     /**
      * Use new lines to separate records instead of a
      * JSON-encoded array.
-<<<<<<< HEAD
      *
      * @phpstan-param Record[] $records
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function formatBatchNewlines(array $records): string
     {
@@ -219,7 +178,6 @@ class JsonFormatter extends NormalizerFormatter
             return $normalized;
         }
 
-<<<<<<< HEAD
         if (is_object($data)) {
             if ($data instanceof \DateTimeInterface) {
                 return $this->formatDate($data);
@@ -239,10 +197,6 @@ class JsonFormatter extends NormalizerFormatter
             }
 
             return $data;
-=======
-        if ($data instanceof Throwable) {
-            return $this->normalizeException($data, $depth);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if (is_resource($data)) {
@@ -255,11 +209,8 @@ class JsonFormatter extends NormalizerFormatter
     /**
      * Normalizes given exception with or without its own stack trace based on
      * `includeStacktraces` property.
-<<<<<<< HEAD
      *
      * {@inheritDoc}
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function normalizeException(Throwable $e, int $depth = 0): array
     {

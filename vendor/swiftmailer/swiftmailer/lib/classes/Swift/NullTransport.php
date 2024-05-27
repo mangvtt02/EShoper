@@ -17,11 +17,7 @@ class Swift_NullTransport extends Swift_Transport_NullTransport
 {
     public function __construct()
     {
-<<<<<<< HEAD
         \call_user_func_array(
-=======
-        call_user_func_array(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             [$this, 'Swift_Transport_NullTransport::__construct'],
             Swift_DependencyContainer::getInstance()
                 ->createDependenciesFor('transport.null')

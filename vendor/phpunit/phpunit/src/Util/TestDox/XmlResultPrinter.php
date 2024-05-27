@@ -9,12 +9,9 @@
  */
 namespace PHPUnit\Util\TestDox;
 
-<<<<<<< HEAD
 use function array_filter;
 use function get_class;
 use function implode;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use DOMDocument;
 use DOMElement;
 use PHPUnit\Framework\AssertionFailedError;
@@ -25,13 +22,10 @@ use PHPUnit\Framework\TestListener;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Framework\Warning;
 use PHPUnit\Util\Printer;
-<<<<<<< HEAD
 use ReflectionClass;
 use ReflectionException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use Throwable;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -54,11 +48,7 @@ final class XmlResultPrinter extends Printer implements TestListener
     private $prettifier;
 
     /**
-<<<<<<< HEAD
      * @var null|Throwable
-=======
-     * @var null|\Throwable
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private $exception;
 
@@ -93,11 +83,7 @@ final class XmlResultPrinter extends Printer implements TestListener
     /**
      * An error occurred.
      */
-<<<<<<< HEAD
     public function addError(Test $test, Throwable $t, float $time): void
-=======
-    public function addError(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->exception = $t;
     }
@@ -120,33 +106,21 @@ final class XmlResultPrinter extends Printer implements TestListener
     /**
      * Incomplete test.
      */
-<<<<<<< HEAD
     public function addIncompleteTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
     }
 
     /**
      * Risky test.
      */
-<<<<<<< HEAD
     public function addRiskyTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
     }
 
     /**
      * Skipped test.
      */
-<<<<<<< HEAD
     public function addSkippedTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
     }
 
@@ -175,11 +149,7 @@ final class XmlResultPrinter extends Printer implements TestListener
     /**
      * A test ended.
      *
-<<<<<<< HEAD
      * @throws InvalidArgumentException
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function endTest(Test $test, float $time): void
     {
@@ -187,40 +157,24 @@ final class XmlResultPrinter extends Printer implements TestListener
             return;
         }
 
-<<<<<<< HEAD
         $groups = array_filter(
             $test->getGroups(),
             static function ($group)
             {
-=======
-        $groups = \array_filter(
-            $test->getGroups(),
-            static function ($group) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 return !($group === 'small' || $group === 'medium' || $group === 'large');
             }
         );
 
         $testNode = $this->document->createElement('test');
 
-<<<<<<< HEAD
         $testNode->setAttribute('className', get_class($test));
         $testNode->setAttribute('methodName', $test->getName());
         $testNode->setAttribute('prettifiedClassName', $this->prettifier->prettifyTestClass(get_class($test)));
-=======
-        $testNode->setAttribute('className', \get_class($test));
-        $testNode->setAttribute('methodName', $test->getName());
-        $testNode->setAttribute('prettifiedClassName', $this->prettifier->prettifyTestClass(\get_class($test)));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $testNode->setAttribute('prettifiedMethodName', $this->prettifier->prettifyTestCase($test));
         $testNode->setAttribute('status', (string) $test->getStatus());
         $testNode->setAttribute('time', (string) $time);
         $testNode->setAttribute('size', (string) $test->getSize());
-<<<<<<< HEAD
         $testNode->setAttribute('groups', implode(',', $groups));
-=======
-        $testNode->setAttribute('groups', \implode(',', $groups));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         foreach ($groups as $group) {
             $groupNode = $this->document->createElement('group');
@@ -256,11 +210,7 @@ final class XmlResultPrinter extends Printer implements TestListener
             $testNode->appendChild($testDoubleNode);
         }
 
-<<<<<<< HEAD
         $inlineAnnotations = \PHPUnit\Util\Test::getInlineAnnotations(get_class($test), $test->getName(false));
-=======
-        $inlineAnnotations = \PHPUnit\Util\Test::getInlineAnnotations(\get_class($test), $test->getName(false));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if (isset($inlineAnnotations['given'], $inlineAnnotations['when'], $inlineAnnotations['then'])) {
             $testNode->setAttribute('given', $inlineAnnotations['given']['value']);
@@ -279,21 +229,12 @@ final class XmlResultPrinter extends Printer implements TestListener
             }
 
             try {
-<<<<<<< HEAD
                 $file = (new ReflectionClass($test))->getFileName();
                 // @codeCoverageIgnoreStart
             } catch (ReflectionException $e) {
                 throw new Exception(
                     $e->getMessage(),
                     $e->getCode(),
-=======
-                $file = (new \ReflectionClass($test))->getFileName();
-                // @codeCoverageIgnoreStart
-            } catch (\ReflectionException $e) {
-                throw new Exception(
-                    $e->getMessage(),
-                    (int) $e->getCode(),
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $e
                 );
             }

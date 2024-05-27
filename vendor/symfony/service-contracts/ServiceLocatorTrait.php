@@ -43,26 +43,17 @@ trait ServiceLocatorTrait
      *
      * @return bool
      */
-<<<<<<< HEAD
     public function has(string $id)
-=======
-    public function has($id)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return isset($this->factories[$id]);
     }
 
     /**
      * {@inheritdoc}
-<<<<<<< HEAD
      *
      * @return mixed
      */
     public function get(string $id)
-=======
-     */
-    public function get($id)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!isset($this->factories[$id])) {
             throw $this->createNotFoundException($id);

@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Util;
 
-<<<<<<< HEAD
 use const E_DEPRECATED;
 use const E_NOTICE;
 use const E_STRICT;
@@ -20,8 +19,6 @@ use const E_WARNING;
 use function error_reporting;
 use function restore_error_handler;
 use function set_error_handler;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\Error\Deprecated;
 use PHPUnit\Framework\Error\Error;
 use PHPUnit\Framework\Error\Notice;
@@ -59,16 +56,10 @@ final class ErrorHandler
 
     public static function invokeIgnoringWarnings(callable $callable)
     {
-<<<<<<< HEAD
         set_error_handler(
             static function ($errorNumber, $errorString)
             {
                 if ($errorNumber === E_WARNING) {
-=======
-        \set_error_handler(
-            static function ($errorNumber, $errorString) {
-                if ($errorNumber === \E_WARNING) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     return;
                 }
 
@@ -78,11 +69,7 @@ final class ErrorHandler
 
         $result = $callable();
 
-<<<<<<< HEAD
         restore_error_handler();
-=======
-        \restore_error_handler();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $result;
     }
@@ -102,50 +89,30 @@ final class ErrorHandler
          *
          * @see https://github.com/sebastianbergmann/phpunit/issues/3739
          */
-<<<<<<< HEAD
         if (!($errorNumber & error_reporting())) {
-=======
-        if (!($errorNumber & \error_reporting())) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return false;
         }
 
         switch ($errorNumber) {
-<<<<<<< HEAD
             case E_NOTICE:
             case E_USER_NOTICE:
             case E_STRICT:
-=======
-            case \E_NOTICE:
-            case \E_USER_NOTICE:
-            case \E_STRICT:
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 if (!$this->convertNoticesToExceptions) {
                     return false;
                 }
 
                 throw new Notice($errorString, $errorNumber, $errorFile, $errorLine);
 
-<<<<<<< HEAD
             case E_WARNING:
             case E_USER_WARNING:
-=======
-            case \E_WARNING:
-            case \E_USER_WARNING:
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 if (!$this->convertWarningsToExceptions) {
                     return false;
                 }
 
                 throw new Warning($errorString, $errorNumber, $errorFile, $errorLine);
 
-<<<<<<< HEAD
             case E_DEPRECATED:
             case E_USER_DEPRECATED:
-=======
-            case \E_DEPRECATED:
-            case \E_USER_DEPRECATED:
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 if (!$this->convertDeprecationsToExceptions) {
                     return false;
                 }
@@ -167,17 +134,10 @@ final class ErrorHandler
             return;
         }
 
-<<<<<<< HEAD
         $oldErrorHandler = set_error_handler($this);
 
         if ($oldErrorHandler !== null) {
             restore_error_handler();
-=======
-        $oldErrorHandler = \set_error_handler($this);
-
-        if ($oldErrorHandler !== null) {
-            \restore_error_handler();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             return;
         }
@@ -191,10 +151,6 @@ final class ErrorHandler
             return;
         }
 
-<<<<<<< HEAD
         restore_error_handler();
-=======
-        \restore_error_handler();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

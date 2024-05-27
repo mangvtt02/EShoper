@@ -216,11 +216,7 @@ abstract class Swift_Mime_Headers_AbstractHeader implements Swift_Mime_Header
                 // ... otherwise it needs encoding
                 // Determine space remaining on line if first line
                 if ($shorten) {
-<<<<<<< HEAD
                     $usedLength = \strlen($header->getFieldName().': ');
-=======
-                    $usedLength = strlen($header->getFieldName().': ');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 } else {
                     $usedLength = 0;
                 }
@@ -275,11 +271,7 @@ abstract class Swift_Mime_Headers_AbstractHeader implements Swift_Mime_Header
                 }
 
                 if (-1 == $usedLength) {
-<<<<<<< HEAD
                     $usedLength = \strlen($header->getFieldName().': ') + \strlen($value);
-=======
-                    $usedLength = strlen($header->getFieldName().': ') + strlen($value);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
                 $value .= $this->getTokenAsEncodedWord($token, $usedLength);
 
@@ -317,30 +309,18 @@ abstract class Swift_Mime_Headers_AbstractHeader implements Swift_Mime_Header
 
         $encodedToken = '';
         // Split at all whitespace boundaries
-<<<<<<< HEAD
         foreach (preg_split('~(?=[\t ])~', $string ?? '') as $token) {
             if ($this->tokenNeedsEncoding($token)) {
                 $encodedToken .= $token;
             } else {
                 if (\strlen($encodedToken) > 0) {
-=======
-        foreach (preg_split('~(?=[\t ])~', $string) as $token) {
-            if ($this->tokenNeedsEncoding($token)) {
-                $encodedToken .= $token;
-            } else {
-                if (strlen($encodedToken) > 0) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $tokens[] = $encodedToken;
                     $encodedToken = '';
                 }
                 $tokens[] = $token;
             }
         }
-<<<<<<< HEAD
         if (\strlen($encodedToken)) {
-=======
-        if (strlen($encodedToken)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $tokens[] = $encodedToken;
         }
 
@@ -362,11 +342,7 @@ abstract class Swift_Mime_Headers_AbstractHeader implements Swift_Mime_Header
         if (isset($this->lang)) {
             $charsetDecl .= '*'.$this->lang;
         }
-<<<<<<< HEAD
         $encodingWrapperLength = \strlen(
-=======
-        $encodingWrapperLength = strlen(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             '=?'.$charsetDecl.'?'.$this->encoder->getName().'??='
             );
 
@@ -378,17 +354,10 @@ abstract class Swift_Mime_Headers_AbstractHeader implements Swift_Mime_Header
         $encodedTextLines = explode("\r\n",
             $this->encoder->encodeString(
                 $token, $firstLineOffset, 75 - $encodingWrapperLength, $this->charset
-<<<<<<< HEAD
             ) ?? ''
         );
 
         if ('iso-2022-jp' !== strtolower($this->charset ?? '')) {
-=======
-                )
-        );
-
-        if ('iso-2022-jp' !== strtolower($this->charset)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             // special encoding for iso-2022-jp using mb_encode_mimeheader
             foreach ($encodedTextLines as $lineNum => $line) {
                 $encodedTextLines[$lineNum] = '=?'.$charsetDecl.
@@ -409,11 +378,7 @@ abstract class Swift_Mime_Headers_AbstractHeader implements Swift_Mime_Header
      */
     protected function generateTokenLines($token)
     {
-<<<<<<< HEAD
         return preg_split('~(\r\n)~', $token ?? '', -1, PREG_SPLIT_DELIM_CAPTURE);
-=======
-        return preg_split('~(\r\n)~', $token, -1, PREG_SPLIT_DELIM_CAPTURE);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -464,11 +429,7 @@ abstract class Swift_Mime_Headers_AbstractHeader implements Swift_Mime_Header
         $tokens = [];
 
         // Generate atoms; split at all invisible boundaries followed by WSP
-<<<<<<< HEAD
         foreach (preg_split('~(?=[ \t])~', $string ?? '') as $token) {
-=======
-        foreach (preg_split('~(?=[ \t])~', $string) as $token) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $newTokens = $this->generateTokenLines($token);
             foreach ($newTokens as $newToken) {
                 $tokens[] = $newToken;
@@ -497,13 +458,8 @@ abstract class Swift_Mime_Headers_AbstractHeader implements Swift_Mime_Header
         foreach ($tokens as $i => $token) {
             // Line longer than specified maximum or token was just a new line
             if (("\r\n" == $token) ||
-<<<<<<< HEAD
                 ($i > 0 && \strlen($currentLine.$token) > $this->lineLength)
                 && 0 < \strlen($currentLine)) {
-=======
-                ($i > 0 && strlen($currentLine.$token) > $this->lineLength)
-                && 0 < strlen($currentLine)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $headerLines[] = '';
                 $currentLine = &$headerLines[$lineCount++];
             }
@@ -517,7 +473,6 @@ abstract class Swift_Mime_Headers_AbstractHeader implements Swift_Mime_Header
         // Implode with FWS (RFC 2822, 2.2.3)
         return implode("\r\n", $headerLines)."\r\n";
     }
-<<<<<<< HEAD
 
     /**
      * Make a deep copy of object.
@@ -528,6 +483,4 @@ abstract class Swift_Mime_Headers_AbstractHeader implements Swift_Mime_Header
             $this->encoder = clone $this->encoder;
         }
     }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

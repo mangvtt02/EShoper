@@ -9,15 +9,11 @@
  */
 namespace PHPUnit\Framework;
 
-<<<<<<< HEAD
 use function array_keys;
 use function get_object_vars;
 use PHPUnit\Util\Filter;
 use RuntimeException;
 use Throwable;
-=======
-use PHPUnit\Util\Filter;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Base class for all PHPUnit Framework exceptions.
@@ -41,32 +37,20 @@ use PHPUnit\Util\Filter;
  *
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
-<<<<<<< HEAD
 class Exception extends RuntimeException implements \PHPUnit\Exception
-=======
-class Exception extends \RuntimeException implements \PHPUnit\Exception
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 {
     /**
      * @var array
      */
     protected $serializableTrace;
 
-<<<<<<< HEAD
     public function __construct($message = '', $code = 0, ?Throwable $previous = null)
-=======
-    public function __construct($message = '', $code = 0, \Throwable $previous = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         parent::__construct($message, $code, $previous);
 
         $this->serializableTrace = $this->getTrace();
 
-<<<<<<< HEAD
         foreach (array_keys($this->serializableTrace) as $key) {
-=======
-        foreach (\array_keys($this->serializableTrace) as $key) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             unset($this->serializableTrace[$key]['args']);
         }
     }
@@ -84,11 +68,7 @@ class Exception extends \RuntimeException implements \PHPUnit\Exception
 
     public function __sleep(): array
     {
-<<<<<<< HEAD
         return array_keys(get_object_vars($this));
-=======
-        return \array_keys(\get_object_vars($this));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**

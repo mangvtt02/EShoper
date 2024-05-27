@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\TextUI;
 
-<<<<<<< HEAD
 use const PHP_EOL;
 use function array_map;
 use function array_reverse;
@@ -26,8 +25,6 @@ use function str_repeat;
 use function strlen;
 use function trim;
 use function vsprintf;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\InvalidArgumentException;
@@ -42,13 +39,9 @@ use PHPUnit\Runner\PhptTestCase;
 use PHPUnit\Util\Color;
 use PHPUnit\Util\Printer;
 use SebastianBergmann\Environment\Console;
-<<<<<<< HEAD
 use SebastianBergmann\Timer\RuntimeException;
 use SebastianBergmann\Timer\Timer;
 use Throwable;
-=======
-use SebastianBergmann\Timer\Timer;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -56,7 +49,6 @@ use SebastianBergmann\Timer\Timer;
 class ResultPrinter extends Printer implements TestListener
 {
     public const EVENT_TEST_START      = 0;
-<<<<<<< HEAD
     public const EVENT_TEST_END        = 1;
     public const EVENT_TESTSUITE_START = 2;
     public const EVENT_TESTSUITE_END   = 3;
@@ -65,24 +57,6 @@ class ResultPrinter extends Printer implements TestListener
     public const COLOR_ALWAYS          = 'always';
     public const COLOR_DEFAULT         = self::COLOR_NEVER;
     private const AVAILABLE_COLORS     = [self::COLOR_NEVER, self::COLOR_AUTO, self::COLOR_ALWAYS];
-=======
-
-    public const EVENT_TEST_END        = 1;
-
-    public const EVENT_TESTSUITE_START = 2;
-
-    public const EVENT_TESTSUITE_END   = 3;
-
-    public const COLOR_NEVER   = 'never';
-
-    public const COLOR_AUTO    = 'auto';
-
-    public const COLOR_ALWAYS  = 'always';
-
-    public const COLOR_DEFAULT = self::COLOR_NEVER;
-
-    private const AVAILABLE_COLORS = [self::COLOR_NEVER, self::COLOR_AUTO, self::COLOR_ALWAYS];
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var int
@@ -161,7 +135,6 @@ class ResultPrinter extends Printer implements TestListener
     {
         parent::__construct($out);
 
-<<<<<<< HEAD
         if (!in_array($colors, self::AVAILABLE_COLORS, true)) {
             throw InvalidArgumentException::create(
                 3,
@@ -170,16 +143,6 @@ class ResultPrinter extends Printer implements TestListener
         }
 
         if (!is_int($numberOfColumns) && $numberOfColumns !== 'max') {
-=======
-        if (!\in_array($colors, self::AVAILABLE_COLORS, true)) {
-            throw InvalidArgumentException::create(
-                3,
-                \vsprintf('value from "%s", "%s" or "%s"', self::AVAILABLE_COLORS)
-            );
-        }
-
-        if (!\is_int($numberOfColumns) && $numberOfColumns !== 'max') {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw InvalidArgumentException::create(5, 'integer or "max"');
         }
 
@@ -203,11 +166,7 @@ class ResultPrinter extends Printer implements TestListener
     }
 
     /**
-<<<<<<< HEAD
      * @throws RuntimeException
-=======
-     * @throws \SebastianBergmann\Timer\RuntimeException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function printResult(TestResult $result): void
     {
@@ -228,11 +187,7 @@ class ResultPrinter extends Printer implements TestListener
     /**
      * An error occurred.
      */
-<<<<<<< HEAD
     public function addError(Test $test, Throwable $t, float $time): void
-=======
-    public function addError(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->writeProgressWithColor('fg-red, bold', 'E');
         $this->lastTestFailed = true;
@@ -259,11 +214,7 @@ class ResultPrinter extends Printer implements TestListener
     /**
      * Incomplete test.
      */
-<<<<<<< HEAD
     public function addIncompleteTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->writeProgressWithColor('fg-yellow, bold', 'I');
         $this->lastTestFailed = true;
@@ -272,11 +223,7 @@ class ResultPrinter extends Printer implements TestListener
     /**
      * Risky test.
      */
-<<<<<<< HEAD
     public function addRiskyTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->writeProgressWithColor('fg-yellow, bold', 'R');
         $this->lastTestFailed = true;
@@ -285,11 +232,7 @@ class ResultPrinter extends Printer implements TestListener
     /**
      * Skipped test.
      */
-<<<<<<< HEAD
     public function addSkippedTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->writeProgressWithColor('fg-cyan, bold', 'S');
         $this->lastTestFailed = true;
@@ -301,15 +244,9 @@ class ResultPrinter extends Printer implements TestListener
     public function startTestSuite(TestSuite $suite): void
     {
         if ($this->numTests == -1) {
-<<<<<<< HEAD
             $this->numTests      = count($suite);
             $this->numTestsWidth = strlen((string) $this->numTests);
             $this->maxColumn     = $this->numberOfColumns - strlen('  /  (XXX%)') - (2 * $this->numTestsWidth);
-=======
-            $this->numTests      = \count($suite);
-            $this->numTestsWidth = \strlen((string) $this->numTests);
-            $this->maxColumn     = $this->numberOfColumns - \strlen('  /  (XXX%)') - (2 * $this->numTestsWidth);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -327,11 +264,7 @@ class ResultPrinter extends Printer implements TestListener
     {
         if ($this->debug) {
             $this->write(
-<<<<<<< HEAD
                 sprintf(
-=======
-                \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     "Test '%s' started\n",
                     \PHPUnit\Util\Test::describeAsString($test)
                 )
@@ -346,11 +279,7 @@ class ResultPrinter extends Printer implements TestListener
     {
         if ($this->debug) {
             $this->write(
-<<<<<<< HEAD
                 sprintf(
-=======
-                \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     "Test '%s' ended\n",
                     \PHPUnit\Util\Test::describeAsString($test)
                 )
@@ -376,11 +305,7 @@ class ResultPrinter extends Printer implements TestListener
 
     protected function printDefects(array $defects, string $type): void
     {
-<<<<<<< HEAD
         $count = count($defects);
-=======
-        $count = \count($defects);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($count == 0) {
             return;
@@ -391,11 +316,7 @@ class ResultPrinter extends Printer implements TestListener
         }
 
         $this->write(
-<<<<<<< HEAD
             sprintf(
-=======
-            \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 "There %s %d %s%s:\n",
                 ($count == 1) ? 'was' : 'were',
                 $count,
@@ -407,11 +328,7 @@ class ResultPrinter extends Printer implements TestListener
         $i = 1;
 
         if ($this->reverse) {
-<<<<<<< HEAD
             $defects = array_reverse($defects);
-=======
-            $defects = \array_reverse($defects);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         foreach ($defects as $defect) {
@@ -430,11 +347,7 @@ class ResultPrinter extends Printer implements TestListener
     protected function printDefectHeader(TestFailure $defect, int $count): void
     {
         $this->write(
-<<<<<<< HEAD
             sprintf(
-=======
-            \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 "\n%d) %s\n",
                 $count,
                 $defect->getTestName()
@@ -448,11 +361,7 @@ class ResultPrinter extends Printer implements TestListener
         $this->write((string) $e);
 
         while ($e = $e->getPrevious()) {
-<<<<<<< HEAD
             $this->write("\nCaused by\n" . trim((string) $e) . "\n");
-=======
-            $this->write("\nCaused by\n" . $e);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -487,31 +396,18 @@ class ResultPrinter extends Printer implements TestListener
     }
 
     /**
-<<<<<<< HEAD
      * @throws RuntimeException
      */
     protected function printHeader(TestResult $result): void
     {
         if (count($result) > 0) {
             $this->write(PHP_EOL . PHP_EOL . Timer::resourceUsage() . PHP_EOL . PHP_EOL);
-=======
-     * @throws \SebastianBergmann\Timer\RuntimeException
-     */
-    protected function printHeader(TestResult $result): void
-    {
-        if (\count($result) > 0) {
-            $this->write(\PHP_EOL . \PHP_EOL . Timer::resourceUsage() . \PHP_EOL . \PHP_EOL);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
     protected function printFooter(TestResult $result): void
     {
-<<<<<<< HEAD
         if (count($result) === 0) {
-=======
-        if (\count($result) === 0) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->writeWithColor(
                 'fg-black, bg-yellow',
                 'No tests executed!'
@@ -523,17 +419,10 @@ class ResultPrinter extends Printer implements TestListener
         if ($result->wasSuccessfulAndNoTestIsRiskyOrSkippedOrIncomplete()) {
             $this->writeWithColor(
                 'fg-black, bg-green',
-<<<<<<< HEAD
                 sprintf(
                     'OK (%d test%s, %d assertion%s)',
                     count($result),
                     (count($result) == 1) ? '' : 's',
-=======
-                \sprintf(
-                    'OK (%d test%s, %d assertion%s)',
-                    \count($result),
-                    (\count($result) == 1) ? '' : 's',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $this->numAssertions,
                     ($this->numAssertions == 1) ? '' : 's'
                 )
@@ -580,11 +469,7 @@ class ResultPrinter extends Printer implements TestListener
             }
         }
 
-<<<<<<< HEAD
         $this->writeCountString(count($result), 'Tests', $color, true);
-=======
-        $this->writeCountString(\count($result), 'Tests', $color, true);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->writeCountString($this->numAssertions, 'Assertions', $color, true);
         $this->writeCountString($result->errorCount(), 'Errors', $color);
         $this->writeCountString($result->failureCount(), 'Failures', $color);
@@ -607,28 +492,16 @@ class ResultPrinter extends Printer implements TestListener
 
         if ($this->column == $this->maxColumn || $this->numTestsRun == $this->numTests) {
             if ($this->numTestsRun == $this->numTests) {
-<<<<<<< HEAD
                 $this->write(str_repeat(' ', $this->maxColumn - $this->column));
             }
 
             $this->write(
                 sprintf(
-=======
-                $this->write(\str_repeat(' ', $this->maxColumn - $this->column));
-            }
-
-            $this->write(
-                \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     ' %' . $this->numTestsWidth . 'd / %' .
                     $this->numTestsWidth . 'd (%3s%%)',
                     $this->numTestsRun,
                     $this->numTests,
-<<<<<<< HEAD
                     floor(($this->numTestsRun / $this->numTests) * 100)
-=======
-                    \floor(($this->numTestsRun / $this->numTests) * 100)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 )
             );
 
@@ -654,28 +527,16 @@ class ResultPrinter extends Printer implements TestListener
             return $buffer;
         }
 
-<<<<<<< HEAD
         $lines   = preg_split('/\r\n|\r|\n/', $buffer);
         $padding = max(array_map('\strlen', $lines));
-=======
-        $lines   = \preg_split('/\r\n|\r|\n/', $buffer);
-        $padding = \max(\array_map('\strlen', $lines));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $styledLines = [];
 
         foreach ($lines as $line) {
-<<<<<<< HEAD
             $styledLines[] = Color::colorize($color, str_pad($line, $padding));
         }
 
         return implode(PHP_EOL, $styledLines);
-=======
-            $styledLines[] = Color::colorize($color, \str_pad($line, $padding));
-        }
-
-        return \implode(\PHP_EOL, $styledLines);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -686,11 +547,7 @@ class ResultPrinter extends Printer implements TestListener
         $this->write($this->colorizeTextBox($color, $buffer));
 
         if ($lf) {
-<<<<<<< HEAD
             $this->write(PHP_EOL);
-=======
-            $this->write(\PHP_EOL);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -710,11 +567,7 @@ class ResultPrinter extends Printer implements TestListener
         if ($always || $count > 0) {
             $this->writeWithColor(
                 $color,
-<<<<<<< HEAD
                 sprintf(
-=======
-                \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     '%s%s: %d',
                     !$first ? ', ' : '',
                     $name,

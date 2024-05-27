@@ -33,12 +33,7 @@ class FatalError extends \Error
                 }
             }
         } elseif (null !== $traceOffset) {
-<<<<<<< HEAD
             if (\function_exists('xdebug_get_function_stack') && $trace = @xdebug_get_function_stack()) {
-=======
-            if (\function_exists('xdebug_get_function_stack')) {
-                $trace = xdebug_get_function_stack();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 if (0 < $traceOffset) {
                     array_splice($trace, -$traceOffset);
                 }

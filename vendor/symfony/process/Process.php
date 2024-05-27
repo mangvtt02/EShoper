@@ -30,7 +30,6 @@ use Symfony\Component\Process\Pipes\WindowsPipes;
  */
 class Process implements \IteratorAggregate
 {
-<<<<<<< HEAD
     public const ERR = 'err';
     public const OUT = 'out';
 
@@ -49,36 +48,12 @@ class Process implements \IteratorAggregate
     public const ITER_KEEP_OUTPUT = 2;  // By default, outputs are cleared while iterating, use this flag to keep them in memory
     public const ITER_SKIP_OUT = 4;     // Use this flag to skip STDOUT while iterating
     public const ITER_SKIP_ERR = 8;     // Use this flag to skip STDERR while iterating
-=======
-    const ERR = 'err';
-    const OUT = 'out';
-
-    const STATUS_READY = 'ready';
-    const STATUS_STARTED = 'started';
-    const STATUS_TERMINATED = 'terminated';
-
-    const STDIN = 0;
-    const STDOUT = 1;
-    const STDERR = 2;
-
-    // Timeout Precision in seconds.
-    const TIMEOUT_PRECISION = 0.2;
-
-    const ITER_NON_BLOCKING = 1; // By default, iterating over outputs is a blocking call, use this flag to make it non-blocking
-    const ITER_KEEP_OUTPUT = 2;  // By default, outputs are cleared while iterating, use this flag to keep them in memory
-    const ITER_SKIP_OUT = 4;     // Use this flag to skip STDOUT while iterating
-    const ITER_SKIP_ERR = 8;     // Use this flag to skip STDERR while iterating
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     private $callback;
     private $hasCallback = false;
     private $commandline;
     private $cwd;
-<<<<<<< HEAD
     private $env = [];
-=======
-    private $env;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private $input;
     private $starttime;
     private $lastOutputTime;
@@ -157,11 +132,7 @@ class Process implements \IteratorAggregate
      * @param array          $command The command to run and its arguments listed as separate entries
      * @param string|null    $cwd     The working directory or null to use the working dir of the current PHP process
      * @param array|null     $env     The environment variables or null to use the same environment as the current PHP process
-<<<<<<< HEAD
      * @param mixed          $input   The input as stream resource, scalar or \Traversable, or null for no input
-=======
-     * @param mixed|null     $input   The input as stream resource, scalar or \Traversable, or null for no input
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param int|float|null $timeout The timeout in seconds or null to disable
      *
      * @throws LogicException When proc_open is not installed
@@ -206,21 +177,13 @@ class Process implements \IteratorAggregate
      * In order to inject dynamic values into command-lines, we strongly recommend using placeholders.
      * This will save escaping values, which is not portable nor secure anyway:
      *
-<<<<<<< HEAD
      *   $process = Process::fromShellCommandline('my_command "${:MY_VAR}"');
-=======
-     *   $process = Process::fromShellCommandline('my_command "$MY_VAR"');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *   $process->run(null, ['MY_VAR' => $theValue]);
      *
      * @param string         $command The command line to pass to the shell of the OS
      * @param string|null    $cwd     The working directory or null to use the working dir of the current PHP process
      * @param array|null     $env     The environment variables or null to use the same environment as the current PHP process
-<<<<<<< HEAD
      * @param mixed          $input   The input as stream resource, scalar or \Traversable, or null for no input
-=======
-     * @param mixed|null     $input   The input as stream resource, scalar or \Traversable, or null for no input
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param int|float|null $timeout The timeout in seconds or null to disable
      *
      * @return static
@@ -235,7 +198,6 @@ class Process implements \IteratorAggregate
         return $process;
     }
 
-<<<<<<< HEAD
     /**
      * @return array
      */
@@ -249,8 +211,6 @@ class Process implements \IteratorAggregate
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __destruct()
     {
         $this->stop(0);
@@ -344,17 +304,10 @@ class Process implements \IteratorAggregate
         $descriptors = $this->getDescriptors();
 
         if ($this->env) {
-<<<<<<< HEAD
             $env += '\\' === \DIRECTORY_SEPARATOR ? array_diff_ukey($this->env, $env, 'strcasecmp') : $this->env;
         }
 
         $env += '\\' === \DIRECTORY_SEPARATOR ? array_diff_ukey($this->getDefaultEnv(), $env, 'strcasecmp') : $this->getDefaultEnv();
-=======
-            $env += $this->env;
-        }
-
-        $env += $this->getDefaultEnv();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if (\is_array($commandline = $this->commandline)) {
             $commandline = implode(' ', array_map([$this, 'escapeArgument'], $commandline));
@@ -387,11 +340,7 @@ class Process implements \IteratorAggregate
 
         $envPairs = [];
         foreach ($env as $k => $v) {
-<<<<<<< HEAD
             if (false !== $v && false === \in_array($k, ['argc', 'argv', 'ARGC', 'ARGV'], true)) {
-=======
-            if (false !== $v) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $envPairs[] = $k.'='.$v;
             }
         }
@@ -673,10 +622,7 @@ class Process implements \IteratorAggregate
      *
      * @return \Generator
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function getIterator($flags = 0)
     {
         $this->readPipesForOutput(__FUNCTION__, false);
@@ -826,11 +772,7 @@ class Process implements \IteratorAggregate
             return null;
         }
 
-<<<<<<< HEAD
         return self::$exitCodes[$exitcode] ?? 'Unknown error';
-=======
-        return isset(self::$exitCodes[$exitcode]) ? self::$exitCodes[$exitcode] : 'Unknown error';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -1031,11 +973,6 @@ class Process implements \IteratorAggregate
 
     /**
      * Gets the last output time in seconds.
-<<<<<<< HEAD
-=======
-     *
-     * @return float|null The last output time in seconds or null if it isn't started
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getLastOutputTime(): ?float
     {
@@ -1232,32 +1169,12 @@ class Process implements \IteratorAggregate
     /**
      * Sets the environment variables.
      *
-<<<<<<< HEAD
      * @param array<string|\Stringable> $env The new environment variables
-=======
-     * Each environment variable value should be a string.
-     * If it is an array, the variable is ignored.
-     * If it is false or null, it will be removed when
-     * env vars are otherwise inherited.
-     *
-     * That happens in PHP when 'argv' is registered into
-     * the $_ENV array for instance.
-     *
-     * @param array $env The new environment variables
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return $this
      */
     public function setEnv(array $env)
     {
-<<<<<<< HEAD
-=======
-        // Process can not handle env values that are arrays
-        $env = array_filter($env, function ($value) {
-            return !\is_array($value);
-        });
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->env = $env;
 
         return $this;
@@ -1467,11 +1384,7 @@ class Process implements \IteratorAggregate
         ob_start();
         phpinfo(\INFO_GENERAL);
 
-<<<<<<< HEAD
         return self::$sigchild = str_contains(ob_get_clean(), '--enable-sigchild');
-=======
-        return self::$sigchild = false !== strpos(ob_get_clean(), '--enable-sigchild');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -1573,13 +1486,8 @@ class Process implements \IteratorAggregate
         $this->exitcode = null;
         $this->fallbackStatus = [];
         $this->processInformation = null;
-<<<<<<< HEAD
         $this->stdout = fopen('php://temp/maxmemory:'.(1024 * 1024), 'w+');
         $this->stderr = fopen('php://temp/maxmemory:'.(1024 * 1024), 'w+');
-=======
-        $this->stdout = fopen('php://temp/maxmemory:'.(1024 * 1024), 'w+b');
-        $this->stderr = fopen('php://temp/maxmemory:'.(1024 * 1024), 'w+b');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->process = null;
         $this->latestSignal = null;
         $this->status = self::STATUS_READY;
@@ -1593,11 +1501,6 @@ class Process implements \IteratorAggregate
      * @param int  $signal         A valid POSIX signal (see https://php.net/pcntl.constants)
      * @param bool $throwException Whether to throw exception in case signal failed
      *
-<<<<<<< HEAD
-=======
-     * @return bool True if the signal was sent successfully, false otherwise
-     *
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @throws LogicException   In case the process is not running
      * @throws RuntimeException In case --enable-sigchild is activated and the process can't be killed
      * @throws RuntimeException In case of failure
@@ -1666,11 +1569,7 @@ class Process implements \IteratorAggregate
                 if (isset($varCache[$m[0]])) {
                     return $varCache[$m[0]];
                 }
-<<<<<<< HEAD
                 if (str_contains($value = $m[1], "\0")) {
-=======
-                if (false !== strpos($value = $m[1], "\0")) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $value = str_replace("\0", '?', $value);
                 }
                 if (false === strpbrk($value, "\"%!\n")) {
@@ -1731,11 +1630,7 @@ class Process implements \IteratorAggregate
         if ('\\' !== \DIRECTORY_SEPARATOR) {
             return "'".str_replace("'", "'\\''", $argument)."'";
         }
-<<<<<<< HEAD
         if (str_contains($argument, "\0")) {
-=======
-        if (false !== strpos($argument, "\0")) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $argument = str_replace("\0", '?', $argument);
         }
         if (!preg_match('/[\/()%!^"<>&|\s]/', $argument)) {
@@ -1759,27 +1654,9 @@ class Process implements \IteratorAggregate
 
     private function getDefaultEnv(): array
     {
-<<<<<<< HEAD
         $env = getenv();
         $env = ('\\' === \DIRECTORY_SEPARATOR ? array_intersect_ukey($env, $_SERVER, 'strcasecmp') : array_intersect_key($env, $_SERVER)) ?: $env;
 
         return $_ENV + ('\\' === \DIRECTORY_SEPARATOR ? array_diff_ukey($env, $_ENV, 'strcasecmp') : $env);
-=======
-        $env = [];
-
-        foreach ($_SERVER as $k => $v) {
-            if (\is_string($v) && false !== $v = getenv($k)) {
-                $env[$k] = $v;
-            }
-        }
-
-        foreach ($_ENV as $k => $v) {
-            if (\is_string($v)) {
-                $env[$k] = $v;
-            }
-        }
-
-        return $env;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

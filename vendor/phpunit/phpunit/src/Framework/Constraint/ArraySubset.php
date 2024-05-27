@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function array_replace_recursive;
 use function is_array;
 use function iterator_to_array;
@@ -19,10 +18,6 @@ use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\Comparator\ComparisonFailure;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use Traversable;
-=======
-use PHPUnit\Framework\ExpectationFailedException;
-use SebastianBergmann\Comparator\ComparisonFailure;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Constraint that asserts that the array it is evaluated for has a specified subset.
@@ -53,11 +48,7 @@ final class ArraySubset extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Evaluates the constraint for parameter $other.
-=======
-     * Evaluates the constraint for parameter $other
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * If $returnResult is set to false (the default), an exception is thrown
      * in case of a failure. null is returned otherwise.
@@ -67,7 +58,6 @@ final class ArraySubset extends Constraint
      * failure.
      *
      * @throws ExpectationFailedException
-<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     public function evaluate($other, string $description = '', bool $returnResult = false)
@@ -78,18 +68,6 @@ final class ArraySubset extends Constraint
         $this->subset = $this->toArray($this->subset);
 
         $patched = array_replace_recursive($other, $this->subset);
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     */
-    public function evaluate($other, string $description = '', bool $returnResult = false)
-    {
-        //type cast $other & $this->subset as an array to allow
-        //support in standard array functions.
-        $other        = $this->toArray($other);
-        $this->subset = $this->toArray($this->subset);
-
-        $patched = \array_replace_recursive($other, $this->subset);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($this->strict) {
             $result = $other === $patched;
@@ -105,13 +83,8 @@ final class ArraySubset extends Constraint
             $f = new ComparisonFailure(
                 $patched,
                 $other,
-<<<<<<< HEAD
                 var_export($patched, true),
                 var_export($other, true)
-=======
-                \var_export($patched, true),
-                \var_export($other, true)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             );
 
             $this->fail($other, $description, $f);
@@ -121,11 +94,7 @@ final class ArraySubset extends Constraint
     /**
      * Returns a string representation of the constraint.
      *
-<<<<<<< HEAD
      * @throws InvalidArgumentException
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function toString(): string
     {
@@ -133,22 +102,14 @@ final class ArraySubset extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Returns the description of the failure.
-=======
-     * Returns the description of the failure
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
      *
      * @param mixed $other evaluated value or object
      *
-<<<<<<< HEAD
      * @throws InvalidArgumentException
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function failureDescription($other): string
     {
@@ -157,7 +118,6 @@ final class ArraySubset extends Constraint
 
     private function toArray(iterable $other): array
     {
-<<<<<<< HEAD
         if (is_array($other)) {
             return $other;
         }
@@ -168,18 +128,6 @@ final class ArraySubset extends Constraint
 
         if ($other instanceof Traversable) {
             return iterator_to_array($other);
-=======
-        if (\is_array($other)) {
-            return $other;
-        }
-
-        if ($other instanceof \ArrayObject) {
-            return $other->getArrayCopy();
-        }
-
-        if ($other instanceof \Traversable) {
-            return \iterator_to_array($other);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         // Keep BC even if we know that array would not be the expected one

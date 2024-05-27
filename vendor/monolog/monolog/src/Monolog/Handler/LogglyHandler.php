@@ -15,10 +15,7 @@ use Monolog\Logger;
 use Monolog\Formatter\FormatterInterface;
 use Monolog\Formatter\LogglyFormatter;
 use function array_key_exists;
-<<<<<<< HEAD
 use CurlHandle;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Sends errors to Loggly.
@@ -36,7 +33,6 @@ class LogglyHandler extends AbstractProcessingHandler
     /**
      * Caches the curl handlers for every given endpoint.
      *
-<<<<<<< HEAD
      * @var resource[]|CurlHandle[]
      */
     protected $curlHandlers = [];
@@ -49,20 +45,6 @@ class LogglyHandler extends AbstractProcessingHandler
 
     /**
      * @param string $token API token supplied by Loggly
-=======
-     * @var array
-     */
-    protected $curlHandlers = [];
-
-    protected $token;
-
-    protected $tag = [];
-
-    /**
-     * @param string     $token  API token supplied by Loggly
-     * @param string|int $level  The minimum logging level to trigger this handler
-     * @param bool       $bubble Whether or not messages that are handled should bubble up the stack.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @throws MissingExtensionException If the curl extension is missing
      */
@@ -82,20 +64,12 @@ class LogglyHandler extends AbstractProcessingHandler
      *
      * @param string $endpoint
      *
-<<<<<<< HEAD
      * @return resource|CurlHandle
-=======
-     * @return resource
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function getCurlHandler(string $endpoint)
     {
         if (!array_key_exists($endpoint, $this->curlHandlers)) {
-<<<<<<< HEAD
             $this->curlHandlers[$endpoint] = $this->loadCurlHandle($endpoint);
-=======
-            $this->curlHandlers[$endpoint] = $this->loadCurlHandler($endpoint);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this->curlHandlers[$endpoint];
@@ -106,15 +80,9 @@ class LogglyHandler extends AbstractProcessingHandler
      *
      * @param string $endpoint
      *
-<<<<<<< HEAD
      * @return resource|CurlHandle
      */
     private function loadCurlHandle(string $endpoint)
-=======
-     * @return resource
-     */
-    private function loadCurlHandler(string $endpoint)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $url = sprintf("https://%s/%s/%s/", static::HOST, $endpoint, $this->token);
 

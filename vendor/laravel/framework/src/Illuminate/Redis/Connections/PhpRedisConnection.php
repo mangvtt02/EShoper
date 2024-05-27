@@ -197,11 +197,7 @@ class PhpRedisConnection extends Connection implements ConnectionContract
      */
     public function spop($key, $count = 1)
     {
-<<<<<<< HEAD
         return $this->command('spop', func_get_args());
-=======
-        return $this->command('spop', [$key, $count]);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -310,13 +306,8 @@ class PhpRedisConnection extends Connection implements ConnectionContract
     /**
      * Scans the all keys based on options.
      *
-<<<<<<< HEAD
      * @param  mixed  $cursor
      * @param  array  $options
-=======
-     * @param mixed $cursor
-     * @param array $options
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return mixed
      */
     public function scan($cursor, $options = [])
@@ -332,15 +323,9 @@ class PhpRedisConnection extends Connection implements ConnectionContract
     /**
      * Scans the given set for all values based on options.
      *
-<<<<<<< HEAD
      * @param  string  $key
      * @param  mixed  $cursor
      * @param  array  $options
-=======
-     * @param string $key
-     * @param mixed $cursor
-     * @param array $options
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return mixed
      */
     public function zscan($key, $cursor, $options = [])
@@ -356,15 +341,9 @@ class PhpRedisConnection extends Connection implements ConnectionContract
     /**
      * Scans the given set for all values based on options.
      *
-<<<<<<< HEAD
      * @param  string  $key
      * @param  mixed  $cursor
      * @param  array  $options
-=======
-     * @param string $key
-     * @param mixed $cursor
-     * @param array $options
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return mixed
      */
     public function hscan($key, $cursor, $options = [])
@@ -380,15 +359,9 @@ class PhpRedisConnection extends Connection implements ConnectionContract
     /**
      * Scans the given set for all values based on options.
      *
-<<<<<<< HEAD
      * @param  string  $key
      * @param  mixed  $cursor
      * @param  array  $options
-=======
-     * @param string $key
-     * @param mixed $cursor
-     * @param array $options
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return mixed
      */
     public function sscan($key, $cursor, $options = [])
@@ -511,19 +484,8 @@ class PhpRedisConnection extends Connection implements ConnectionContract
             return $this->command('flushdb');
         }
 
-<<<<<<< HEAD
         foreach ($this->client->_masters() as $master) {
             $this->client->flushDb($master);
-=======
-        foreach ($this->client->_masters() as [$host, $port]) {
-            $redis = tap(new Redis)->connect($host, $port);
-
-            if (isset($this->config['password']) && ! empty($this->config['password'])) {
-                $redis->auth($this->config['password']);
-            }
-
-            $redis->flushDb();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 

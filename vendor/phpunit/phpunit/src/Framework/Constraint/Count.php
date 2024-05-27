@@ -9,16 +9,12 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function count;
 use function is_array;
 use function iterator_count;
 use function sprintf;
 use Countable;
 use EmptyIterator;
-=======
-use Countable;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Generator;
 use Iterator;
 use IteratorAggregate;
@@ -38,11 +34,7 @@ class Count extends Constraint
 
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'count matches %d',
             $this->expectedCount
         );
@@ -62,19 +54,11 @@ class Count extends Constraint
      */
     protected function getCountOf($other): ?int
     {
-<<<<<<< HEAD
         if ($other instanceof Countable || is_array($other)) {
             return count($other);
         }
 
         if ($other instanceof EmptyIterator) {
-=======
-        if ($other instanceof Countable || \is_array($other)) {
-            return \count($other);
-        }
-
-        if ($other instanceof \EmptyIterator) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return 0;
         }
 
@@ -90,19 +74,11 @@ class Count extends Constraint
             }
 
             if (!$iterator instanceof Iterator) {
-<<<<<<< HEAD
                 return iterator_count($iterator);
             }
 
             $key   = $iterator->key();
             $count = iterator_count($iterator);
-=======
-                return \iterator_count($iterator);
-            }
-
-            $key   = $iterator->key();
-            $count = \iterator_count($iterator);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             // Manually rewind $iterator to previous key, since iterator_count
             // moves pointer.
@@ -127,11 +103,7 @@ class Count extends Constraint
     protected function getCountOfGenerator(Generator $generator): int
     {
         for ($count = 0; $generator->valid(); $generator->next()) {
-<<<<<<< HEAD
             $count++;
-=======
-            ++$count;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $count;
@@ -147,11 +119,7 @@ class Count extends Constraint
      */
     protected function failureDescription($other): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'actual size %d matches expected size %d',
             $this->getCountOf($other),
             $this->expectedCount

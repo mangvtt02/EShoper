@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace Doctrine\Inflector;
 
 use Doctrine\Inflector\Rules\Ruleset;
-<<<<<<< HEAD
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use function array_merge;
 
 /**
@@ -30,11 +27,7 @@ class RulesetInflector implements WordInflector
         $this->rulesets = array_merge([$ruleset], $rulesets);
     }
 
-<<<<<<< HEAD
     public function inflect(string $word): string
-=======
-    public function inflect(string $word) : string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if ($word === '') {
             return '';

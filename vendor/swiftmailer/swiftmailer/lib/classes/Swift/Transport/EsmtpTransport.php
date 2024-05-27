@@ -141,11 +141,7 @@ class Swift_Transport_EsmtpTransport extends Swift_Transport_AbstractSmtpTranspo
      */
     public function setEncryption($encryption)
     {
-<<<<<<< HEAD
         $encryption = strtolower($encryption ?? '');
-=======
-        $encryption = strtolower($encryption);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ('tls' == $encryption) {
             $this->params['protocol'] = 'tcp';
             $this->params['tls'] = true;
@@ -239,11 +235,7 @@ class Swift_Transport_EsmtpTransport extends Swift_Transport_AbstractSmtpTranspo
      * Returns whether SMTP pipelining is enabled.
      *
      * @return bool|null a boolean if pipelining is explicitly enabled or disabled,
-<<<<<<< HEAD
      *                   or null if support is auto-detected
-=======
-     *                   or null if support is auto-detected.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getPipelining()
     {
@@ -292,11 +284,7 @@ class Swift_Transport_EsmtpTransport extends Swift_Transport_AbstractSmtpTranspo
      * @param int[]    $codes
      * @param string[] $failures An array of failures by-reference
      * @param bool     $pipeline Do not wait for response
-<<<<<<< HEAD
      * @param string   $address  the address, if command is RCPT TO
-=======
-     * @param string   $address  The address, if command is RCPT TO.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return string|null The server response, or null if pipelining is enabled
      */
@@ -321,17 +309,10 @@ class Swift_Transport_EsmtpTransport extends Swift_Transport_AbstractSmtpTranspo
     public function __call($method, $args)
     {
         foreach ($this->handlers as $handler) {
-<<<<<<< HEAD
             if (\in_array(strtolower($method),
                 array_map('strtolower', (array) $handler->exposeMixinMethods())
                 )) {
                 $return = \call_user_func_array([$handler, $method], $args);
-=======
-            if (in_array(strtolower($method),
-                array_map('strtolower', (array) $handler->exposeMixinMethods())
-                )) {
-                $return = call_user_func_array([$handler, $method], $args);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 // Allow fluid method calls
                 if (null === $return && 'set' == substr($method, 0, 3)) {
                     return $this;
@@ -425,11 +406,7 @@ class Swift_Transport_EsmtpTransport extends Swift_Transport_AbstractSmtpTranspo
     private function getCapabilities($ehloResponse)
     {
         $capabilities = [];
-<<<<<<< HEAD
         $ehloResponse = trim($ehloResponse ?? '');
-=======
-        $ehloResponse = trim($ehloResponse);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $lines = explode("\r\n", $ehloResponse);
         array_shift($lines);
         foreach ($lines as $line) {
@@ -448,11 +425,7 @@ class Swift_Transport_EsmtpTransport extends Swift_Transport_AbstractSmtpTranspo
     private function setHandlerParams()
     {
         foreach ($this->handlers as $keyword => $handler) {
-<<<<<<< HEAD
             if (\array_key_exists($keyword, $this->capabilities)) {
-=======
-            if (array_key_exists($keyword, $this->capabilities)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $handler->setKeywordParams($this->capabilities[$keyword]);
             }
         }
@@ -463,11 +436,7 @@ class Swift_Transport_EsmtpTransport extends Swift_Transport_AbstractSmtpTranspo
     {
         $handlers = [];
         foreach ($this->handlers as $keyword => $handler) {
-<<<<<<< HEAD
             if (\array_key_exists($keyword, $this->capabilities)) {
-=======
-            if (array_key_exists($keyword, $this->capabilities)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $handlers[] = $handler;
             }
         }

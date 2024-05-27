@@ -8,10 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 namespace Carbon\Traits;
 
 use BadMethodCallException;
@@ -35,15 +32,12 @@ use InvalidArgumentException;
  */
 trait Comparison
 {
-<<<<<<< HEAD
     /** @var bool */
     protected $endOfTime = false;
 
     /** @var bool */
     protected $startOfTime = false;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     /**
      * Determines if the instance is equal to another
      *
@@ -81,14 +75,10 @@ trait Comparison
      */
     public function equalTo($date): bool
     {
-<<<<<<< HEAD
         $this->discourageNull($date);
         $this->discourageBoolean($date);
 
         return $this == $this->resolveCarbon($date);
-=======
-        return $this == $date;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -168,14 +158,10 @@ trait Comparison
      */
     public function greaterThan($date): bool
     {
-<<<<<<< HEAD
         $this->discourageNull($date);
         $this->discourageBoolean($date);
 
         return $this > $this->resolveCarbon($date);
-=======
-        return $this > $date;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -236,14 +222,10 @@ trait Comparison
      */
     public function greaterThanOrEqualTo($date): bool
     {
-<<<<<<< HEAD
         $this->discourageNull($date);
         $this->discourageBoolean($date);
 
         return $this >= $this->resolveCarbon($date);
-=======
-        return $this >= $date;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -283,14 +265,10 @@ trait Comparison
      */
     public function lessThan($date): bool
     {
-<<<<<<< HEAD
         $this->discourageNull($date);
         $this->discourageBoolean($date);
 
         return $this < $this->resolveCarbon($date);
-=======
-        return $this < $date;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -351,14 +329,10 @@ trait Comparison
      */
     public function lessThanOrEqualTo($date): bool
     {
-<<<<<<< HEAD
         $this->discourageNull($date);
         $this->discourageBoolean($date);
 
         return $this <= $this->resolveCarbon($date);
-=======
-        return $this <= $date;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -392,17 +366,10 @@ trait Comparison
         }
 
         if ($equal) {
-<<<<<<< HEAD
             return $this >= $date1 && $this <= $date2;
         }
 
         return $this > $date1 && $this < $date2;
-=======
-            return $this->greaterThanOrEqualTo($date1) && $this->lessThanOrEqualTo($date2);
-        }
-
-        return $this->greaterThan($date1) && $this->lessThan($date2);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -496,11 +463,7 @@ trait Comparison
      */
     public function isWeekend()
     {
-<<<<<<< HEAD
         return \in_array($this->dayOfWeek, static::$weekendDays, true);
-=======
-        return in_array($this->dayOfWeek, static::$weekendDays);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -600,7 +563,6 @@ trait Comparison
     }
 
     /**
-<<<<<<< HEAD
      * Determines if the instance is a long year (using calendar year).
      *
      * ⚠️ This method completely ignores month and day to use the numeric year number,
@@ -612,14 +574,6 @@ trait Comparison
      * ```
      * Carbon::create(2015)->isLongYear(); // true
      * Carbon::create(2016)->isLongYear(); // false
-=======
-     * Determines if the instance is a long year
-     *
-     * @example
-     * ```
-     * Carbon::parse('2015-01-01')->isLongYear(); // true
-     * Carbon::parse('2016-01-01')->isLongYear(); // false
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * ```
      *
      * @see https://en.wikipedia.org/wiki/ISO_8601#Week_dates
@@ -632,7 +586,6 @@ trait Comparison
     }
 
     /**
-<<<<<<< HEAD
      * Determines if the instance is a long year (using ISO 8601 year).
      *
      * @example
@@ -654,8 +607,6 @@ trait Comparison
     }
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Compares the formatted values of the two dates.
      *
      * @example
@@ -711,7 +662,6 @@ trait Comparison
             'microsecond' => 'Y-m-d H:i:s.u',
         ];
 
-<<<<<<< HEAD
         if (isset($units[$unit])) {
             return $this->isSameAs($units[$unit], $date);
         }
@@ -725,21 +675,6 @@ trait Comparison
         }
 
         return false;
-=======
-        if (!isset($units[$unit])) {
-            if (isset($this->$unit)) {
-                return $this->$unit === $this->resolveCarbon($date)->$unit;
-            }
-
-            if ($this->localStrictModeEnabled ?? static::isStrictModeEnabled()) {
-                throw new BadComparisonUnitException($unit);
-            }
-
-            return false;
-        }
-
-        return $this->isSameAs($units[$unit], $date);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -823,13 +758,8 @@ trait Comparison
      */
     public function isDayOfWeek($dayOfWeek)
     {
-<<<<<<< HEAD
         if (\is_string($dayOfWeek) && \defined($constant = static::class.'::'.strtoupper($dayOfWeek))) {
             $dayOfWeek = \constant($constant);
-=======
-        if (is_string($dayOfWeek) && defined($constant = static::class.'::'.strtoupper($dayOfWeek))) {
-            $dayOfWeek = constant($constant);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this->dayOfWeek === $dayOfWeek;
@@ -1061,11 +991,7 @@ trait Comparison
         $tester = trim($tester);
 
         if (preg_match('/^\d+$/', $tester)) {
-<<<<<<< HEAD
             return $this->year === (int) $tester;
-=======
-            return $this->year === intval($tester);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if (preg_match('/^\d{3,}-\d{1,2}$/', $tester)) {
@@ -1080,15 +1006,9 @@ trait Comparison
 
         /* @var CarbonInterface $max */
         $median = static::parse('5555-06-15 12:30:30.555555')->modify($modifier);
-<<<<<<< HEAD
         $current = $this->avoidMutation();
         /* @var CarbonInterface $other */
         $other = $this->avoidMutation()->modify($modifier);
-=======
-        $current = $this->copy();
-        /* @var CarbonInterface $other */
-        $other = $this->copy()->modify($modifier);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($current->eq($other)) {
             return true;
@@ -1102,20 +1022,12 @@ trait Comparison
             return $current->startOfMinute()->eq($other);
         }
 
-<<<<<<< HEAD
         if (preg_match('/\d(?:h|am|pm)$/', $tester)) {
-=======
-        if (preg_match('/\d(h|am|pm)$/', $tester)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $current->startOfHour()->eq($other);
         }
 
         if (preg_match(
-<<<<<<< HEAD
             '/^(?:january|february|march|april|may|june|july|august|september|october|november|december)(?:\s+\d+)?$/i',
-=======
-            '/^(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d+$/i',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $tester
         )) {
             return $current->startOfMonth()->eq($other->startOfMonth());
@@ -1131,11 +1043,7 @@ trait Comparison
         ];
 
         foreach ($units as $unit => [$minimum, $startUnit]) {
-<<<<<<< HEAD
             if ($minimum === $median->$unit) {
-=======
-            if ($median->$unit === $minimum) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $current = $current->startOf($startUnit);
 
                 break;
@@ -1180,7 +1088,6 @@ trait Comparison
 
         return (bool) @preg_match('/^'.$regex.'$/', $date);
     }
-<<<<<<< HEAD
 
     /**
      * Returns true if the date was created using CarbonImmutable::startOfTime()
@@ -1215,6 +1122,4 @@ trait Comparison
             @trigger_error("Since 2.61.0, it's deprecated to compare a date to true or false, meaning of such comparison is ambiguous and will no longer be possible in 3.0.0, you should explicitly pass 'now' or make an other check to eliminate boolean values.", \E_USER_DEPRECATED);
         }
     }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

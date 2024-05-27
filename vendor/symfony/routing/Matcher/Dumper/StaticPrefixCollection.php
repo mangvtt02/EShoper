@@ -65,20 +65,12 @@ class StaticPrefixCollection
      */
     public function addRoute(string $prefix, $route)
     {
-<<<<<<< HEAD
         [$prefix, $staticPrefix] = $this->getCommonPrefix($prefix, $prefix);
-=======
-        list($prefix, $staticPrefix) = $this->getCommonPrefix($prefix, $prefix);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         for ($i = \count($this->items) - 1; 0 <= $i; --$i) {
             $item = $this->items[$i];
 
-<<<<<<< HEAD
             [$commonPrefix, $commonStaticPrefix] = $this->getCommonPrefix($prefix, $this->prefixes[$i]);
-=======
-            list($commonPrefix, $commonStaticPrefix) = $this->getCommonPrefix($prefix, $this->prefixes[$i]);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if ($this->prefix === $commonPrefix) {
                 // the new route and a previous one have no common prefix, let's see if they are exclusive to each others
@@ -112,13 +104,8 @@ class StaticPrefixCollection
             } else {
                 // the new route and a previous one have a common prefix, let's merge them
                 $child = new self($commonPrefix);
-<<<<<<< HEAD
                 [$child->prefixes[0], $child->staticPrefixes[0]] = $child->getCommonPrefix($this->prefixes[$i], $this->prefixes[$i]);
                 [$child->prefixes[1], $child->staticPrefixes[1]] = $child->getCommonPrefix($prefix, $prefix);
-=======
-                list($child->prefixes[0], $child->staticPrefixes[0]) = $child->getCommonPrefix($this->prefixes[$i], $this->prefixes[$i]);
-                list($child->prefixes[1], $child->staticPrefixes[1]) = $child->getCommonPrefix($prefix, $prefix);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $child->items = [$this->items[$i], $route];
 
                 $this->staticPrefixes[$i] = $commonStaticPrefix;
@@ -208,14 +195,8 @@ class StaticPrefixCollection
         return [substr($prefix, 0, $i), substr($prefix, 0, $staticLength ?? $i)];
     }
 
-<<<<<<< HEAD
     public static function handleError(int $type, string $msg)
     {
         return str_contains($msg, 'Compilation failed: lookbehind assertion is not fixed length');
-=======
-    public static function handleError($type, $msg)
-    {
-        return false !== strpos($msg, 'Compilation failed: lookbehind assertion is not fixed length');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

@@ -19,10 +19,7 @@ namespace Illuminate\Support\Facades;
  * @method static \Illuminate\Support\ServiceProvider register(\Illuminate\Support\ServiceProvider|string $provider, bool $force = false)
  * @method static void registerDeferredProvider(string $provider, string $service = null)
  * @method static \Illuminate\Support\ServiceProvider resolveProvider(string $provider)
-<<<<<<< HEAD
  * @method static mixed make($abstract, array $parameters = [])
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @method static void boot()
  * @method static void booting(callable $callback)
  * @method static void booted(callable $callback)

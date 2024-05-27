@@ -39,11 +39,7 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
      *
      * @param \Throwable|null $exception
      */
-<<<<<<< HEAD
     public function collect(Request $request, Response $response/* , \Throwable $exception = null */)
-=======
-    public function collect(Request $request, Response $response/*, \Throwable $exception = null*/)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // attributes are serialized and as they can be anything, they need to be converted to strings.
         $attributes = [];
@@ -57,16 +53,7 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
             }
         }
 
-<<<<<<< HEAD
         $content = $request->getContent();
-=======
-        try {
-            $content = $request->getContent();
-        } catch (\LogicException $e) {
-            // the user already got the request content as a resource
-            $content = false;
-        }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $sessionMetadata = [];
         $sessionAttributes = [];
@@ -101,11 +88,7 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
             'format' => $request->getRequestFormat(),
             'content' => $content,
             'content_type' => $response->headers->get('Content-Type', 'text/html'),
-<<<<<<< HEAD
             'status_text' => Response::$statusTexts[$statusCode] ?? '',
-=======
-            'status_text' => isset(Response::$statusTexts[$statusCode]) ? Response::$statusTexts[$statusCode] : '',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'status_code' => $statusCode,
             'request_query' => $request->query->all(),
             'request_request' => $request->request->all(),
@@ -167,11 +150,7 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
                     'method' => $request->getMethod(),
                     'controller' => $this->parseController($request->attributes->get('_controller')),
                     'status_code' => $statusCode,
-<<<<<<< HEAD
                     'status_text' => Response::$statusTexts[$statusCode],
-=======
-                    'status_text' => Response::$statusTexts[(int) $statusCode],
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 ]),
                 0, '/', null, $request->isSecure(), true, false, 'lax'
             ));
@@ -360,20 +339,12 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
      */
     public function getRedirect()
     {
-<<<<<<< HEAD
         return $this->data['redirect'] ?? false;
-=======
-        return isset($this->data['redirect']) ? $this->data['redirect'] : false;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function getForwardToken()
     {
-<<<<<<< HEAD
         return $this->data['forward_token'] ?? null;
-=======
-        return isset($this->data['forward_token']) ? $this->data['forward_token'] : null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -417,21 +388,13 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
     /**
      * Parse a controller.
      *
-<<<<<<< HEAD
      * @param string|object|array|null $controller The controller to parse
-=======
-     * @param mixed $controller The controller to parse
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return array|string An array of controller data or a simple string
      */
     protected function parseController($controller)
     {
-<<<<<<< HEAD
         if (\is_string($controller) && str_contains($controller, '::')) {
-=======
-        if (\is_string($controller) && false !== strpos($controller, '::')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $controller = explode('::', $controller);
         }
 
@@ -468,11 +431,7 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
                 'line' => $r->getStartLine(),
             ];
 
-<<<<<<< HEAD
             if (str_contains($r->name, '{closure}')) {
-=======
-            if (false !== strpos($r->name, '{closure}')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 return $controller;
             }
             $controller['method'] = $r->name;

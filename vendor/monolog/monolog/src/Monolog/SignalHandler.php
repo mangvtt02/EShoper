@@ -19,7 +19,6 @@ use ReflectionExtension;
  * Monolog POSIX signal handler
  *
  * @author Robert Gust-Bardon <robert@gust-bardon.org>
-<<<<<<< HEAD
  *
  * @phpstan-import-type Level from \Monolog\Logger
  * @phpstan-import-type LevelName from \Monolog\Logger
@@ -34,15 +33,6 @@ class SignalHandler
     /** @var array<int, int> */
     private $signalLevelMap = [];
     /** @var array<int, bool> */
-=======
- */
-class SignalHandler
-{
-    private $logger;
-
-    private $previousSignalHandler = [];
-    private $signalLevelMap = [];
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private $signalRestartSyscalls = [];
 
     public function __construct(LoggerInterface $logger)
@@ -50,7 +40,6 @@ class SignalHandler
         $this->logger = $logger;
     }
 
-<<<<<<< HEAD
     /**
      * @param  int|string $level           Level or level name
      * @param  bool       $callPrevious
@@ -61,26 +50,15 @@ class SignalHandler
      * @phpstan-param Level|LevelName|LogLevel::* $level
      */
     public function registerSignalHandler(int $signo, $level = LogLevel::CRITICAL, bool $callPrevious = true, bool $restartSyscalls = true, ?bool $async = true): self
-=======
-    public function registerSignalHandler($signo, $level = LogLevel::CRITICAL, bool $callPrevious = true, bool $restartSyscalls = true, ?bool $async = true): self
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!extension_loaded('pcntl') || !function_exists('pcntl_signal')) {
             return $this;
         }
 
-<<<<<<< HEAD
         $level = Logger::toMonologLevel($level);
 
         if ($callPrevious) {
             $handler = pcntl_signal_get_handler($signo);
-=======
-        if ($callPrevious) {
-            $handler = pcntl_signal_get_handler($signo);
-            if ($handler === false) {
-                return $this;
-            }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->previousSignalHandler[$signo] = $handler;
         } else {
             unset($this->previousSignalHandler[$signo]);
@@ -97,14 +75,10 @@ class SignalHandler
         return $this;
     }
 
-<<<<<<< HEAD
     /**
      * @param mixed $siginfo
      */
     public function handleSignal(int $signo, $siginfo = null): void
-=======
-    public function handleSignal($signo, array $siginfo = null): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         static $signals = [];
 
@@ -127,11 +101,7 @@ class SignalHandler
             return;
         }
 
-<<<<<<< HEAD
         if ($this->previousSignalHandler[$signo] === SIG_DFL) {
-=======
-        if ($this->previousSignalHandler[$signo] === true || $this->previousSignalHandler[$signo] === SIG_DFL) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if (extension_loaded('pcntl') && function_exists('pcntl_signal') && function_exists('pcntl_sigprocmask') && function_exists('pcntl_signal_dispatch')
                 && extension_loaded('posix') && function_exists('posix_getpid') && function_exists('posix_kill')
             ) {

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Container interface
 ==============
 
@@ -12,10 +11,3 @@ The installable [package][package-url] and [implementations][implementation-url]
 [package-url]: https://packagist.org/packages/psr/container
 [implementation-url]: https://packagist.org/providers/psr/container-implementation
 
-=======
-# PSR Container
-
-This repository holds all interfaces/classes/traits related to [PSR-11](https://github.com/container-interop/fig-standards/blob/master/proposed/container.md).
-
-Note that this is not a container implementation of its own. See the specification for more details.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

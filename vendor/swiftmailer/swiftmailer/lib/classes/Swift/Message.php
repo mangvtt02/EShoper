@@ -42,11 +42,7 @@ class Swift_Message extends Swift_Mime_SimpleMessage
      */
     public function __construct($subject = null, $body = null, $contentType = null, $charset = null)
     {
-<<<<<<< HEAD
         \call_user_func_array(
-=======
-        call_user_func_array(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             [$this, 'Swift_Mime_SimpleMessage::__construct'],
             Swift_DependencyContainer::getInstance()
                 ->createDependenciesFor('mime.message')
@@ -216,11 +212,7 @@ class Swift_Message extends Swift_Mime_SimpleMessage
         $this->savedMessage = ['headers' => []];
         $this->savedMessage['body'] = $this->getBody();
         $this->savedMessage['children'] = $this->getChildren();
-<<<<<<< HEAD
         if (\count($this->savedMessage['children']) > 0 && '' != $this->getBody()) {
-=======
-        if (count($this->savedMessage['children']) > 0 && '' != $this->getBody()) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->setChildren(array_merge([$this->becomeMimePart()], $this->savedMessage['children']));
             $this->setBody('');
         }
@@ -232,11 +224,7 @@ class Swift_Message extends Swift_Mime_SimpleMessage
     protected function saveHeaders(array $altered)
     {
         foreach ($altered as $head) {
-<<<<<<< HEAD
             $lc = strtolower($head ?? '');
-=======
-            $lc = strtolower($head);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if (!isset($this->savedMessage['headers'][$lc])) {
                 $this->savedMessage['headers'][$lc] = $this->getHeaders()->getAll($head);

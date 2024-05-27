@@ -50,13 +50,8 @@ class ExecutableFinder
      */
     public function find($name, $default = null, array $extraDirs = [])
     {
-<<<<<<< HEAD
         if (\ini_get('open_basedir')) {
             $searchPath = array_merge(explode(\PATH_SEPARATOR, \ini_get('open_basedir')), $extraDirs);
-=======
-        if (ini_get('open_basedir')) {
-            $searchPath = array_merge(explode(\PATH_SEPARATOR, ini_get('open_basedir')), $extraDirs);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $dirs = [];
             foreach ($searchPath as $path) {
                 // Silencing against https://bugs.php.net/69240

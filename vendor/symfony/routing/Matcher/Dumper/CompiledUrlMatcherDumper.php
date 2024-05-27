@@ -83,11 +83,7 @@ EOF;
             $routes = $this->getRoutes();
         }
 
-<<<<<<< HEAD
         [$staticRoutes, $dynamicRoutes] = $this->groupStaticRoutes($routes);
-=======
-        list($staticRoutes, $dynamicRoutes) = $this->groupStaticRoutes($routes);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $conditions = [null];
         $compiledRoutes[] = $this->compileStaticRoutes($staticRoutes, $conditions);
@@ -135,11 +131,7 @@ EOF;
 
     private function generateCompiledRoutes(): string
     {
-<<<<<<< HEAD
         [$matchHost, $staticRoutes, $regexpCode, $dynamicRoutes, $checkConditionCode] = $this->getCompiledRoutes(true);
-=======
-        list($matchHost, $staticRoutes, $regexpCode, $dynamicRoutes, $checkConditionCode) = $this->getCompiledRoutes(true);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $code = self::export($matchHost).', // $matchHost'."\n";
 
@@ -194,13 +186,8 @@ EOF;
                 if ($hasTrailingSlash) {
                     $url = substr($url, 0, -1);
                 }
-<<<<<<< HEAD
                 foreach ($dynamicRegex as [$hostRx, $rx, $prefix]) {
                     if (('' === $prefix || str_starts_with($url, $prefix)) && (preg_match($rx, $url) || preg_match($rx, $url.'/')) && (!$host || !$hostRx || preg_match($hostRx, $host))) {
-=======
-                foreach ($dynamicRegex as list($hostRx, $rx, $prefix)) {
-                    if (('' === $prefix || 0 === strpos($url, $prefix)) && (preg_match($rx, $url) || preg_match($rx, $url.'/')) && (!$host || !$hostRx || preg_match($hostRx, $host))) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         $dynamicRegex[] = [$hostRegex, $regex, $staticPrefix];
                         $dynamicRoutes->add($name, $route);
                         continue 2;
@@ -234,11 +221,7 @@ EOF;
 
         foreach ($staticRoutes as $url => $routes) {
             $compiledRoutes[$url] = [];
-<<<<<<< HEAD
             foreach ($routes as $name => [$route, $hasTrailingSlash]) {
-=======
-            foreach ($routes as $name => list($route, $hasTrailingSlash)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $compiledRoutes[$url][] = $this->compileRoute($route, $name, (!$route->compile()->getHostVariables() ? $route->getHost() : $route->compile()->getHostRegex()) ?: null, $hasTrailingSlash, false, $conditions);
             }
         }
@@ -259,11 +242,7 @@ EOF;
      * Paths that can match two or more routes, or have user-specified conditions are put in separate switch's cases.
      *
      * Last but not least:
-<<<<<<< HEAD
      *  - Because it is not possible to mix unicode/non-unicode patterns in a single regexp, several of them can be generated.
-=======
-     *  - Because it is not possibe to mix unicode/non-unicode patterns in a single regexp, several of them can be generated.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *  - The same regexp can be used several times when the logic in the switch rejects the match. When this happens, the
      *    matching-but-failing subpattern is excluded by replacing its name by "(*F)", which forces a failure-to-match.
      *    To ease this backlisting operation, the name of subpatterns is also the string offset where the replacement should occur.
@@ -308,11 +287,7 @@ EOF;
             $routes->add($name, $route);
         }
 
-<<<<<<< HEAD
         foreach ($perModifiers as [$modifiers, $routes]) {
-=======
-        foreach ($perModifiers as list($modifiers, $routes)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $prev = false;
             $perHost = [];
             foreach ($routes->all() as $name => $route) {
@@ -331,11 +306,7 @@ EOF;
             $state->mark += \strlen($rx);
             $state->regex = $rx;
 
-<<<<<<< HEAD
             foreach ($perHost as [$hostRegex, $routes]) {
-=======
-            foreach ($perHost as list($hostRegex, $routes)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 if ($matchHost) {
                     if ($hostRegex) {
                         preg_match('#^.\^(.*)\$.[a-zA-Z]*$#', $hostRegex, $rx);
@@ -378,11 +349,7 @@ EOF;
             $state->markTail = 0;
 
             // if the regex is too large, throw a signaling exception to recompute with smaller chunk size
-<<<<<<< HEAD
             set_error_handler(function ($type, $message) { throw str_contains($message, $this->signalingException->getMessage()) ? $this->signalingException : new \ErrorException($message); });
-=======
-            set_error_handler(function ($type, $message) { throw false !== strpos($message, $this->signalingException->getMessage()) ? $this->signalingException : new \ErrorException($message); });
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             try {
                 preg_match($state->regex, '');
             } finally {
@@ -424,11 +391,7 @@ EOF;
                 continue;
             }
 
-<<<<<<< HEAD
             [$name, $regex, $vars, $route, $hasTrailingSlash, $hasTrailingVar] = $route;
-=======
-            list($name, $regex, $vars, $route, $hasTrailingSlash, $hasTrailingVar) = $route;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $compiledRoute = $route->compile();
             $vars = array_merge($state->hostVars, $vars);
 
@@ -464,11 +427,7 @@ EOF;
 
         if ($condition = $route->getCondition()) {
             $condition = $this->getExpressionLanguage()->compile($condition, ['context', 'request']);
-<<<<<<< HEAD
             $condition = $conditions[$condition] ?? $conditions[$condition] = (str_contains($condition, '$request') ? 1 : -1) * \count($conditions);
-=======
-            $condition = $conditions[$condition] ?? $conditions[$condition] = (false !== strpos($condition, '$request') ? 1 : -1) * \count($conditions);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } else {
             $condition = null;
         }
@@ -487,11 +446,7 @@ EOF;
     private function getExpressionLanguage(): ExpressionLanguage
     {
         if (null === $this->expressionLanguage) {
-<<<<<<< HEAD
             if (!class_exists(ExpressionLanguage::class)) {
-=======
-            if (!class_exists('Symfony\Component\ExpressionLanguage\ExpressionLanguage')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 throw new \LogicException('Unable to use expressions as the Symfony ExpressionLanguage component is not installed.');
             }
             $this->expressionLanguage = new ExpressionLanguage(null, $this->expressionLanguageProviders);

@@ -11,15 +11,8 @@ use Doctrine\Inflector\Rules\Word;
 
 class Inflectible
 {
-<<<<<<< HEAD
     /** @return Transformation[] */
     public static function getSingular(): iterable
-=======
-    /**
-     * @return Transformation[]
-     */
-    public static function getSingular() : iterable
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         yield new Transformation(new Pattern('/^(g|)ases$/i'), '\1ás');
         yield new Transformation(new Pattern('/(japon|escoc|ingl|dinamarqu|fregu|portugu)eses$/i'), '\1ês');
@@ -39,15 +32,8 @@ class Inflectible
         yield new Transformation(new Pattern('/([^ê])s$/i'), '\1');
     }
 
-<<<<<<< HEAD
     /** @return Transformation[] */
     public static function getPlural(): iterable
-=======
-    /**
-     * @return Transformation[]
-     */
-    public static function getPlural() : iterable
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         yield new Transformation(new Pattern('/^(alem|c|p)ao$/i'), '\1aes');
         yield new Transformation(new Pattern('/^(irm|m)ao$/i'), '\1aos');
@@ -68,15 +54,8 @@ class Inflectible
         yield new Transformation(new Pattern('/$/'), 's');
     }
 
-<<<<<<< HEAD
     /** @return Substitution[] */
     public static function getIrregular(): iterable
-=======
-    /**
-     * @return Substitution[]
-     */
-    public static function getIrregular() : iterable
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         yield new Substitution(new Word('abdomen'), new Word('abdomens'));
         yield new Substitution(new Word('alemão'), new Word('alemães'));

@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 /**
  * Mockery (https://docs.mockery.io/)
  *
@@ -14,18 +13,12 @@ namespace Mockery\Exception;
 use Throwable;
 
 class BadMethodCallException extends \BadMethodCallException implements MockeryExceptionInterface
-=======
-namespace Mockery\Exception;
-
-class BadMethodCallException extends \BadMethodCallException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 {
     private $dismissed = false;
 
     public function dismiss()
     {
         $this->dismissed = true;
-<<<<<<< HEAD
         // we sometimes stack them
         $previous = $this->getPrevious();
         if (! $previous instanceof self) {
@@ -33,13 +26,6 @@ class BadMethodCallException extends \BadMethodCallException
         }
 
         $previous->dismiss();
-=======
-
-        // we sometimes stack them
-        if ($this->getPrevious() && $this->getPrevious() instanceof BadMethodCallException) {
-            $this->getPrevious()->dismiss();
-        }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function dismissed()

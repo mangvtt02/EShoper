@@ -9,12 +9,9 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function preg_match;
 use function sprintf;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * Constraint that asserts that the string it is evaluated for matches
  * a regular expression.
@@ -41,11 +38,7 @@ class RegularExpression extends Constraint
      */
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'matches PCRE pattern "%s"',
             $this->pattern
         );
@@ -59,10 +52,6 @@ class RegularExpression extends Constraint
      */
     protected function matches($other): bool
     {
-<<<<<<< HEAD
         return preg_match($this->pattern, $other) > 0;
-=======
-        return \preg_match($this->pattern, $other) > 0;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

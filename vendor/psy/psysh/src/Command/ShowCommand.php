@@ -3,11 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
-<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
-=======
- * (c) 2012-2020 Justin Hileman
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -34,17 +30,6 @@ class ShowCommand extends ReflectingCommand
     private $lastExceptionIndex;
 
     /**
-<<<<<<< HEAD
-=======
-     * @param string|null $colorMode (deprecated and ignored)
-     */
-    public function __construct($colorMode = null)
-    {
-        parent::__construct();
-    }
-
-    /**
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * {@inheritdoc}
      */
     protected function configure()
@@ -53,11 +38,7 @@ class ShowCommand extends ReflectingCommand
             ->setName('show')
             ->setDefinition([
                 new CodeArgument('target', CodeArgument::OPTIONAL, 'Function, class, instance, constant, method or property to show.'),
-<<<<<<< HEAD
                 new InputOption('ex', null, InputOption::VALUE_OPTIONAL, 'Show last exception context. Optionally specify a stack index.', 1),
-=======
-                new InputOption('ex', null,  InputOption::VALUE_OPTIONAL, 'Show last exception context. Optionally specify a stack index.', 1),
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ])
             ->setDescription('Show the code for an object, class, constant, method or property.')
             ->setHelp(
@@ -80,15 +61,10 @@ HELP
 
     /**
      * {@inheritdoc}
-<<<<<<< HEAD
      *
      * @return int 0 if everything went fine, or an exit code
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
-=======
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // n.b. As far as I can tell, InputInterface doesn't want to tell me
         // whether an option with an optional value was actually passed. If you
@@ -132,7 +108,6 @@ HELP
             // If we didn't get a target and Reflector, maybe we got a filename?
             $target = $e->getTarget();
             if (\is_string($target) && \is_file($target) && $code = @\file_get_contents($target)) {
-<<<<<<< HEAD
                 $file = \realpath($target);
                 if ($file !== $this->context->get('__file')) {
                     $this->context->setCommandScopeVariables([
@@ -144,10 +119,6 @@ HELP
                 $output->page(CodeFormatter::formatCode($code));
 
                 return;
-=======
-                // @todo maybe set $__file to $target?
-                return $output->page(CodeFormatter::formatCode($code));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             } else {
                 throw $e;
             }
@@ -180,11 +151,7 @@ HELP
                 $index = 0;
             }
         } else {
-<<<<<<< HEAD
             $index = \max(0, (int) $input->getOption('ex') - 1);
-=======
-            $index = \max(0, \intval($input->getOption('ex')) - 1);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $trace = $exception->getTrace();
@@ -222,27 +189,16 @@ HELP
         ));
     }
 
-<<<<<<< HEAD
     private function replaceCwd(string $file): string
     {
         if ($cwd = \getcwd()) {
             $cwd = \rtrim($cwd, \DIRECTORY_SEPARATOR).\DIRECTORY_SEPARATOR;
-=======
-    private function replaceCwd($file)
-    {
-        if ($cwd = \getcwd()) {
-            $cwd = \rtrim($cwd, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if ($cwd === false) {
             return $file;
         } else {
-<<<<<<< HEAD
             return \preg_replace('/^'.\preg_quote($cwd, '/').'/', '', $file);
-=======
-            return \preg_replace('/^' . \preg_quote($cwd, '/') . '/', '', $file);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -292,11 +248,7 @@ HELP
                 if ($namespace = $refl->getNamespaceName()) {
                     $vars['__namespace'] = $namespace;
                 }
-<<<<<<< HEAD
             } catch (\Throwable $e) {
-=======
-            } catch (\Exception $e) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 // oh well
             }
         } elseif (isset($context['function'])) {
@@ -307,11 +259,7 @@ HELP
                 if ($namespace = $refl->getNamespaceName()) {
                     $vars['__namespace'] = $namespace;
                 }
-<<<<<<< HEAD
             } catch (\Throwable $e) {
-=======
-            } catch (\Exception $e) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 // oh well
             }
         }
@@ -336,11 +284,7 @@ HELP
         $this->context->setCommandScopeVariables($vars);
     }
 
-<<<<<<< HEAD
     private function extractEvalFileAndLine(string $file)
-=======
-    private function extractEvalFileAndLine($file)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (\preg_match('/(.*)\\((\\d+)\\) : eval\\(\\)\'d code$/', $file, $matches)) {
             return [$matches[1], $matches[2]];

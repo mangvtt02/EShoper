@@ -182,11 +182,7 @@ class FencedCode extends AbstractStringContainerBlock
 
         // check for closing code fence
         if ($cursor->getIndent() <= 3 && $cursor->getNextNonSpaceCharacter() === $container->getChar()) {
-<<<<<<< HEAD
             $match = RegexHelper::matchFirst('/^(?:`{3,}|~{3,})(?= *$)/', $cursor->getLine(), $cursor->getNextNonSpacePosition());
-=======
-            $match = RegexHelper::matchAll('/^(?:`{3,}|~{3,})(?= *$)/', $cursor->getLine(), $cursor->getNextNonSpacePosition());
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if ($match !== null && \strlen($match[0]) >= $container->getLength()) {
                 // don't add closing fence to container; instead, close it:
                 $this->setLength(-1); // -1 means we've passed closer

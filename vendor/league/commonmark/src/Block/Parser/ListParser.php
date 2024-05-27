@@ -59,11 +59,7 @@ final class ListParser implements BlockParserInterface, ConfigurationAwareInterf
             $data->delimiter = null;
             $data->bulletChar = $rest[0];
             $markerLength = 1;
-<<<<<<< HEAD
         } elseif (($matches = RegexHelper::matchFirst('/^(\d{1,9})([.)])/', $rest)) && (!($context->getContainer() instanceof Paragraph) || $matches[1] === '1')) {
-=======
-        } elseif (($matches = RegexHelper::matchAll('/^(\d{1,9})([.)])/', $rest)) && (!($context->getContainer() instanceof Paragraph) || $matches[1] === '1')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $data = new ListData();
             $data->markerOffset = $indent;
             $data->type = ListBlock::TYPE_ORDERED;
@@ -140,7 +136,6 @@ final class ListParser implements BlockParserInterface, ConfigurationAwareInterf
             return $this->listMarkerRegex = '/^[*+-]/';
         }
 
-<<<<<<< HEAD
         $deprecatedMarkers = $this->config->get('unordered_list_markers', ConfigurationInterface::MISSING);
         if ($deprecatedMarkers !== ConfigurationInterface::MISSING) {
             @\trigger_error('The "unordered_list_markers" configuration option is deprecated in league/commonmark 1.6 and will be replaced with "commonmark > unordered_list_markers" in 2.0', \E_USER_DEPRECATED);
@@ -151,11 +146,6 @@ final class ListParser implements BlockParserInterface, ConfigurationAwareInterf
         $markers = $this->config->get('commonmark/unordered_list_markers', $deprecatedMarkers);
 
         if (!\is_array($markers) || $markers === []) {
-=======
-        $markers = $this->config->get('unordered_list_markers', ['*', '+', '-']);
-
-        if (!\is_array($markers)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new \RuntimeException('Invalid configuration option "unordered_list_markers": value must be an array of strings');
         }
 

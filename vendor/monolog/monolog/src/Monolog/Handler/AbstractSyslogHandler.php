@@ -17,27 +17,18 @@ use Monolog\Formatter\LineFormatter;
 
 /**
  * Common syslog functionality
-<<<<<<< HEAD
  *
  * @phpstan-import-type Level from \Monolog\Logger
  */
 abstract class AbstractSyslogHandler extends AbstractProcessingHandler
 {
     /** @var int */
-=======
- */
-abstract class AbstractSyslogHandler extends AbstractProcessingHandler
-{
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     protected $facility;
 
     /**
      * Translates Monolog log levels to syslog log priorities.
-<<<<<<< HEAD
      * @var array
      * @phpstan-var array<Level, int>
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $logLevels = [
         Logger::DEBUG     => LOG_DEBUG,
@@ -52,10 +43,7 @@ abstract class AbstractSyslogHandler extends AbstractProcessingHandler
 
     /**
      * List of valid log facility names.
-<<<<<<< HEAD
      * @var array<string, int>
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $facilities = [
         'auth'     => LOG_AUTH,
@@ -73,11 +61,6 @@ abstract class AbstractSyslogHandler extends AbstractProcessingHandler
 
     /**
      * @param string|int $facility Either one of the names of the keys in $this->facilities, or a LOG_* facility constant
-<<<<<<< HEAD
-=======
-     * @param string|int $level    The minimum logging level at which this handler will be triggered
-     * @param bool       $bubble   Whether the messages that are handled can bubble up the stack or not
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct($facility = LOG_USER, $level = Logger::DEBUG, bool $bubble = true)
     {
@@ -114,11 +97,7 @@ abstract class AbstractSyslogHandler extends AbstractProcessingHandler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function getDefaultFormatter(): FormatterInterface
     {

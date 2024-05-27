@@ -37,11 +37,7 @@ final class Rfc2231Encoder implements EncoderInterface
 
         while (null !== $char = $charStream->read(4)) {
             $encodedChar = rawurlencode($char);
-<<<<<<< HEAD
             if ('' !== $currentLine && \strlen($currentLine.$encodedChar) > $thisLineLength) {
-=======
-            if (0 !== \strlen($currentLine) && \strlen($currentLine.$encodedChar) > $thisLineLength) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $lines[] = '';
                 $currentLine = &$lines[$lineCount++];
                 $thisLineLength = $maxLineLength;

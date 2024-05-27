@@ -9,10 +9,7 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function strpos;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\InvalidArgumentException;
 
 /**
@@ -28,11 +25,7 @@ final class StringStartsWith extends Constraint
 
     public function __construct(string $prefix)
     {
-<<<<<<< HEAD
         if ($prefix === '') {
-=======
-        if (\strlen($prefix) === 0) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw InvalidArgumentException::create(1, 'non-empty string');
         }
 
@@ -55,10 +48,6 @@ final class StringStartsWith extends Constraint
      */
     protected function matches($other): bool
     {
-<<<<<<< HEAD
         return strpos((string) $other, $this->prefix) === 0;
-=======
-        return \strpos((string) $other, $this->prefix) === 0;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

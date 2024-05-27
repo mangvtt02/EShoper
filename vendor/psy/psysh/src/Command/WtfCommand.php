@@ -3,11 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
-<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
-=======
- * (c) 2012-2020 Justin Hileman
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -58,11 +54,7 @@ class WtfCommand extends TraceCommand implements ContextAware
             ->setAliases(['last-exception', 'wtf?'])
             ->setDefinition([
                 new InputArgument('incredulity', InputArgument::OPTIONAL | InputArgument::IS_ARRAY, 'Number of lines to show.'),
-<<<<<<< HEAD
                 new InputOption('all', 'a', InputOption::VALUE_NONE, 'Show entire backtrace.'),
-=======
-                new InputOption('all', 'a',  InputOption::VALUE_NONE, 'Show entire backtrace.'),
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                 $grep,
                 $insensitive,
@@ -89,15 +81,10 @@ HELP
 
     /**
      * {@inheritdoc}
-<<<<<<< HEAD
      *
      * @return int 0 if everything went fine, or an exit code
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
-=======
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->filter->bind($input);
 
@@ -107,11 +94,7 @@ HELP
         }
 
         $exception = $this->context->getLastException();
-<<<<<<< HEAD
         $count = $input->getOption('all') ? \PHP_INT_MAX : \max(3, \pow(2, \strlen($incredulity) + 1));
-=======
-        $count     = $input->getOption('all') ? PHP_INT_MAX : \max(3, \pow(2, \strlen($incredulity) + 1));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $shell = $this->getApplication();
 
@@ -121,7 +104,6 @@ HELP
 
         do {
             $traceCount = \count($exception->getTrace());
-<<<<<<< HEAD
             $showLines = $count;
             // Show the whole trace if we'd only be hiding a few lines
             if ($traceCount < \max($count * 1.2, $count + 2)) {
@@ -129,15 +111,6 @@ HELP
             }
 
             $trace = $this->getBacktrace($exception, $showLines);
-=======
-            $showLines  = $count;
-            // Show the whole trace if we'd only be hiding a few lines
-            if ($traceCount < \max($count * 1.2, $count + 2)) {
-                $showLines = PHP_INT_MAX;
-            }
-
-            $trace     = $this->getBacktrace($exception, $showLines);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $moreLines = $traceCount - \count($trace);
 
             $output->writeln($shell->formatException($exception));

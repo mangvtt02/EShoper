@@ -29,15 +29,9 @@ class Parser implements ParserInterface
 {
     private $tokenizer;
 
-<<<<<<< HEAD
     public function __construct(?Tokenizer $tokenizer = null)
     {
         $this->tokenizer = $tokenizer ?? new Tokenizer();
-=======
-    public function __construct(Tokenizer $tokenizer = null)
-    {
-        $this->tokenizer = $tokenizer ?: new Tokenizer();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -85,20 +79,12 @@ class Parser implements ParserInterface
                 return [2, 0];
             case 'n' === $joined:
                 return [1, 0];
-<<<<<<< HEAD
             case !str_contains($joined, 'n'):
-=======
-            case false === strpos($joined, 'n'):
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 return [0, $int($joined)];
         }
 
         $split = explode('n', $joined);
-<<<<<<< HEAD
         $first = $split[0] ?? null;
-=======
-        $first = isset($split[0]) ? $split[0] : null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return [
             $first ? ('-' === $first || '+' === $first ? $int($first.'1') : $int($first)) : 1,
@@ -127,11 +113,7 @@ class Parser implements ParserInterface
 
     private function parserSelectorNode(TokenStream $stream): Node\SelectorNode
     {
-<<<<<<< HEAD
         [$result, $pseudoElement] = $this->parseSimpleSelector($stream);
-=======
-        list($result, $pseudoElement) = $this->parseSimpleSelector($stream);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         while (true) {
             $stream->skipWhitespace();
@@ -152,11 +134,7 @@ class Parser implements ParserInterface
                 $combinator = ' ';
             }
 
-<<<<<<< HEAD
             [$nextSelector, $pseudoElement] = $this->parseSimpleSelector($stream);
-=======
-            list($nextSelector, $pseudoElement) = $this->parseSimpleSelector($stream);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $result = new Node\CombinedSelectorNode($result, $combinator, $nextSelector);
         }
 
@@ -231,11 +209,7 @@ class Parser implements ParserInterface
                         throw SyntaxErrorException::nestedNot();
                     }
 
-<<<<<<< HEAD
                     [$argument, $argumentPseudoElement] = $this->parseSimpleSelector($stream, true);
-=======
-                    list($argument, $argumentPseudoElement) = $this->parseSimpleSelector($stream, true);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $next = $stream->getNext();
 
                     if (null !== $argumentPseudoElement) {

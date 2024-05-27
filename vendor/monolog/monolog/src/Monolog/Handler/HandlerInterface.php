@@ -15,12 +15,9 @@ namespace Monolog\Handler;
  * Interface that all Monolog Handlers must implement
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
-<<<<<<< HEAD
  *
  * @phpstan-import-type Record from \Monolog\Logger
  * @phpstan-import-type Level from \Monolog\Logger
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 interface HandlerInterface
 {
@@ -36,11 +33,8 @@ interface HandlerInterface
      * @param array $record Partial log record containing only a level key
      *
      * @return bool
-<<<<<<< HEAD
      *
      * @phpstan-param array{level: Level} $record
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function isHandling(array $record): bool;
 
@@ -57,11 +51,8 @@ interface HandlerInterface
      * @param  array $record The record to handle
      * @return bool  true means that this handler handled the record, and that bubbling is not permitted.
      *                      false means the record was either not processed or that this handler allows bubbling.
-<<<<<<< HEAD
      *
      * @phpstan-param Record $record
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function handle(array $record): bool;
 
@@ -69,11 +60,8 @@ interface HandlerInterface
      * Handles a set of records at once.
      *
      * @param array $records The records to handle (an array of record arrays)
-<<<<<<< HEAD
      *
      * @phpstan-param Record[] $records
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function handleBatch(array $records): void;
 

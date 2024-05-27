@@ -69,17 +69,10 @@ class DataProcessor
     protected $exceptions = ['DT_RowId', 'DT_RowClass', 'DT_RowData', 'DT_RowAttr'];
 
     /**
-<<<<<<< HEAD
      * @param  mixed  $results
      * @param  array  $columnDef
      * @param  array  $templates
      * @param  int  $start
-=======
-     * @param mixed $results
-     * @param array $columnDef
-     * @param array $templates
-     * @param int   $start
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct($results, array $columnDef, array $templates, $start)
     {
@@ -100,11 +93,7 @@ class DataProcessor
     /**
      * Process data to output on browser.
      *
-<<<<<<< HEAD
      * @param  bool  $object
-=======
-     * @param bool $object
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     public function process($object = false)
@@ -133,13 +122,8 @@ class DataProcessor
     /**
      * Process add columns.
      *
-<<<<<<< HEAD
      * @param  mixed  $data
      * @param  mixed  $row
-=======
-     * @param mixed $data
-     * @param mixed $row
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     protected function addColumns($data, $row)
@@ -162,13 +146,8 @@ class DataProcessor
     /**
      * Process edit columns.
      *
-<<<<<<< HEAD
      * @param  mixed  $data
      * @param  mixed  $row
-=======
-     * @param mixed $data
-     * @param mixed $row
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     protected function editColumns($data, $row)
@@ -184,13 +163,8 @@ class DataProcessor
     /**
      * Setup additional DT row variables.
      *
-<<<<<<< HEAD
      * @param  mixed  $data
      * @param  mixed  $row
-=======
-     * @param mixed $data
-     * @param mixed $row
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     protected function setupRowVariables($data, $row)
@@ -208,18 +182,13 @@ class DataProcessor
     /**
      * Get only needed columns.
      *
-<<<<<<< HEAD
      * @param  array  $data
-=======
-     * @param array $data
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     protected function selectOnlyNeededColumns(array $data)
     {
         if (is_null($this->onlyColumns)) {
             return $data;
-<<<<<<< HEAD
         }
         $results = [];
         foreach ($this->onlyColumns as $onlyColumn) {
@@ -232,31 +201,12 @@ class DataProcessor
         }
 
         return $results;
-=======
-        } else {
-            $results = [];
-            foreach ($this->onlyColumns as $onlyColumn) {
-                Arr::set($results, $onlyColumn, Arr::get($data, $onlyColumn));
-            }
-            foreach ($this->exceptions as $exception) {
-                if ($column = Arr::get($data, $exception)) {
-                    Arr::set($results, $exception, $column);
-                }
-            }
-
-            return $results;
-        }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * Remove declared hidden columns.
      *
-<<<<<<< HEAD
      * @param  array  $data
-=======
-     * @param array $data
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     protected function removeExcessColumns(array $data)
@@ -271,11 +221,7 @@ class DataProcessor
     /**
      * Flatten array with exceptions.
      *
-<<<<<<< HEAD
      * @param  array  $array
-=======
-     * @param array $array
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     public function flatten(array $array)
@@ -295,11 +241,7 @@ class DataProcessor
     /**
      * Escape column values as declared.
      *
-<<<<<<< HEAD
      * @param  array  $output
-=======
-     * @param array $output
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     protected function escapeColumns(array $output)
@@ -321,11 +263,7 @@ class DataProcessor
     /**
      * Escape all string or Htmlable values of row.
      *
-<<<<<<< HEAD
      * @param  array  $row
-=======
-     * @param array $row
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     protected function escapeRow(array $row)

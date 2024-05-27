@@ -1,11 +1,7 @@
 {
     "name": "symfony/finder",
     "type": "library",
-<<<<<<< HEAD
     "description": "Finds files and directories via an intuitive fluent interface",
-=======
-    "description": "Symfony Finder Component",
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     "keywords": [],
     "homepage": "https://symfony.com",
     "license": "MIT",
@@ -20,12 +16,8 @@
         }
     ],
     "require": {
-<<<<<<< HEAD
         "php": ">=7.1.3",
         "symfony/polyfill-php80": "^1.16"
-=======
-        "php": ">=7.1.3"
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     },
     "autoload": {
         "psr-4": { "Symfony\\Component\\Finder\\": "" },
@@ -33,14 +25,5 @@
             "/Tests/"
         ]
     },
-<<<<<<< HEAD
     "minimum-stability": "dev"
-=======
-    "minimum-stability": "dev",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "4.4-dev"
-        }
-    }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

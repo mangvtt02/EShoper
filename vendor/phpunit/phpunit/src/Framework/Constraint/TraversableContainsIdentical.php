@@ -9,14 +9,11 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function is_array;
 use function is_string;
 use function sprintf;
 use function strpos;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use SplObjectStorage;
 
 /**
@@ -38,19 +35,11 @@ final class TraversableContainsIdentical extends Constraint
     /**
      * Returns a string representation of the constraint.
      *
-<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     public function toString(): string
     {
         if (is_string($this->value) && strpos($this->value, "\n") !== false) {
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     */
-    public function toString(): string
-    {
-        if (\is_string($this->value) && \strpos($this->value, "\n") !== false) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return 'contains "' . $this->value . '"';
         }
 
@@ -79,18 +68,13 @@ final class TraversableContainsIdentical extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Returns the description of the failure.
-=======
-     * Returns the description of the failure
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
      *
      * @param mixed $other evaluated value or object
      *
-<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     protected function failureDescription($other): string
@@ -98,15 +82,6 @@ final class TraversableContainsIdentical extends Constraint
         return sprintf(
             '%s %s',
             is_array($other) ? 'an array' : 'a traversable',
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     */
-    protected function failureDescription($other): string
-    {
-        return \sprintf(
-            '%s %s',
-            \is_array($other) ? 'an array' : 'a traversable',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->toString()
         );
     }

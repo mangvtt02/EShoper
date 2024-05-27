@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Util;
 
-<<<<<<< HEAD
 use const ENT_SUBSTITUTE;
 use const PHP_SAPI;
 use function assert;
@@ -29,8 +28,6 @@ use function sprintf;
 use function str_replace;
 use function strncmp;
 use function strpos;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\Exception;
 
 /**
@@ -68,17 +65,12 @@ class Printer
             return;
         }
 
-<<<<<<< HEAD
         if (is_string($out) === false) {
-=======
-        if (\is_string($out) === false) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->out = $out;
 
             return;
         }
 
-<<<<<<< HEAD
         if (strpos($out, 'socket://') === 0) {
             $out = explode(':', str_replace('socket://', '', $out));
 
@@ -93,29 +85,12 @@ class Printer
             }
 
             $this->out = fopen($out, 'wt');
-=======
-        if (\strpos($out, 'socket://') === 0) {
-            $out = \explode(':', \str_replace('socket://', '', $out));
-
-            if (\count($out) !== 2) {
-                throw new Exception;
-            }
-
-            $this->out = \fsockopen($out[0], $out[1]);
-        } else {
-            if (\strpos($out, 'php://') === false && !Filesystem::createDirectory(\dirname($out))) {
-                throw new Exception(\sprintf('Directory "%s" was not created', \dirname($out)));
-            }
-
-            $this->out = \fopen($out, 'wt');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $this->outTarget = $out;
     }
 
     /**
-<<<<<<< HEAD
      * Flush buffer and close output if it's not to a PHP stream.
      */
     public function flush(): void
@@ -124,16 +99,6 @@ class Printer
             assert(is_resource($this->out));
 
             fclose($this->out);
-=======
-     * Flush buffer and close output if it's not to a PHP stream
-     */
-    public function flush(): void
-    {
-        if ($this->out && \strncmp($this->outTarget, 'php://', 6) !== 0) {
-            \assert(\is_resource($this->out));
-
-            \fclose($this->out);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -147,46 +112,27 @@ class Printer
     public function incrementalFlush(): void
     {
         if ($this->out) {
-<<<<<<< HEAD
             assert(is_resource($this->out));
 
             fflush($this->out);
         } else {
             flush();
-=======
-            \assert(\is_resource($this->out));
-
-            \fflush($this->out);
-        } else {
-            \flush();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
     public function write(string $buffer): void
     {
         if ($this->out) {
-<<<<<<< HEAD
             assert(is_resource($this->out));
 
             fwrite($this->out, $buffer);
-=======
-            \assert(\is_resource($this->out));
-
-            \fwrite($this->out, $buffer);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if ($this->autoFlush) {
                 $this->incrementalFlush();
             }
         } else {
-<<<<<<< HEAD
             if (PHP_SAPI !== 'cli' && PHP_SAPI !== 'phpdbg') {
                 $buffer = htmlspecialchars($buffer, ENT_SUBSTITUTE);
-=======
-            if (\PHP_SAPI !== 'cli' && \PHP_SAPI !== 'phpdbg') {
-                $buffer = \htmlspecialchars($buffer, \ENT_SUBSTITUTE);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
 
             print $buffer;

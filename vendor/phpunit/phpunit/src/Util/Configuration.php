@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Util;
 
-<<<<<<< HEAD
 use const DIRECTORY_SEPARATOR;
 use const PATH_SEPARATOR;
 use const PHP_VERSION;
@@ -49,10 +48,6 @@ use DOMNode;
 use DOMNodeList;
 use DOMXPath;
 use LibXMLError;
-=======
-use DOMElement;
-use DOMXPath;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Runner\TestSuiteSorter;
@@ -71,11 +66,7 @@ final class Configuration
     private static $instances = [];
 
     /**
-<<<<<<< HEAD
      * @var DOMDocument
-=======
-     * @var \DOMDocument
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private $document;
 
@@ -90,11 +81,7 @@ final class Configuration
     private $filename;
 
     /**
-<<<<<<< HEAD
      * @var LibXMLError[]
-=======
-     * @var \LibXMLError[]
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private $errors = [];
 
@@ -105,19 +92,11 @@ final class Configuration
      */
     public static function getInstance(string $filename): self
     {
-<<<<<<< HEAD
         $realPath = realpath($filename);
 
         if ($realPath === false) {
             throw new Exception(
                 sprintf(
-=======
-        $realPath = \realpath($filename);
-
-        if ($realPath === false) {
-            throw new Exception(
-                \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     'Could not read "%s".',
                     $filename
                 )
@@ -154,11 +133,7 @@ final class Configuration
 
     public function hasValidationErrors(): bool
     {
-<<<<<<< HEAD
         return count($this->errors) > 0;
-=======
-        return \count($this->errors) > 0;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function getValidationErrors(): array
@@ -169,11 +144,7 @@ final class Configuration
             if (!isset($result[$error->line])) {
                 $result[$error->line] = [];
             }
-<<<<<<< HEAD
             $result[$error->line][] = trim($error->message);
-=======
-            $result[$error->line][] = \trim($error->message);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $result;
@@ -302,11 +273,7 @@ final class Configuration
         $result = [];
 
         foreach ($this->xpath->query('logging/log') as $log) {
-<<<<<<< HEAD
             assert($log instanceof DOMElement);
-=======
-            \assert($log instanceof DOMElement);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             $type   = (string) $log->getAttribute('type');
             $target = (string) $log->getAttribute('target');
@@ -380,11 +347,8 @@ final class Configuration
         ];
 
         foreach ($this->xpath->query('php/includePath') as $includePath) {
-<<<<<<< HEAD
             assert($includePath instanceof DOMNode);
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $path = (string) $includePath->textContent;
 
             if ($path) {
@@ -393,11 +357,7 @@ final class Configuration
         }
 
         foreach ($this->xpath->query('php/ini') as $ini) {
-<<<<<<< HEAD
             assert($ini instanceof DOMElement);
-=======
-            \assert($ini instanceof DOMElement);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             $name  = (string) $ini->getAttribute('name');
             $value = (string) $ini->getAttribute('value');
@@ -406,11 +366,7 @@ final class Configuration
         }
 
         foreach ($this->xpath->query('php/const') as $const) {
-<<<<<<< HEAD
             assert($const instanceof DOMElement);
-=======
-            \assert($const instanceof  DOMElement);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             $name  = (string) $const->getAttribute('name');
             $value = (string) $const->getAttribute('value');
@@ -420,11 +376,7 @@ final class Configuration
 
         foreach (['var', 'env', 'post', 'get', 'cookie', 'server', 'files', 'request'] as $array) {
             foreach ($this->xpath->query('php/' . $array) as $var) {
-<<<<<<< HEAD
                 assert($var instanceof DOMElement);
-=======
-                \assert($var instanceof DOMElement);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                 $name     = (string) $var->getAttribute('name');
                 $value    = (string) $var->getAttribute('value');
@@ -459,44 +411,27 @@ final class Configuration
         $configuration = $this->getPHPConfiguration();
 
         if (!empty($configuration['include_path'])) {
-<<<<<<< HEAD
             ini_set(
                 'include_path',
                 implode(PATH_SEPARATOR, $configuration['include_path']) .
                 PATH_SEPARATOR .
                 ini_get('include_path')
-=======
-            \ini_set(
-                'include_path',
-                \implode(\PATH_SEPARATOR, $configuration['include_path']) .
-                \PATH_SEPARATOR .
-                \ini_get('include_path')
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             );
         }
 
         foreach ($configuration['ini'] as $name => $data) {
             $value = $data['value'];
 
-<<<<<<< HEAD
             if (defined($value)) {
                 $value = (string) constant($value);
             }
 
             ini_set($name, $value);
-=======
-            if (\defined($value)) {
-                $value = (string) \constant($value);
-            }
-
-            \ini_set($name, $value);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         foreach ($configuration['const'] as $name => $data) {
             $value = $data['value'];
 
-<<<<<<< HEAD
             if (!defined($name)) {
                 define($name, $value);
             }
@@ -512,33 +447,6 @@ final class Configuration
 
         foreach (['post', 'get', 'cookie', 'files', 'request'] as $array) {
             $target = &$GLOBALS['_' . strtoupper($array)];
-=======
-            if (!\defined($name)) {
-                \define($name, $value);
-            }
-        }
-
-        foreach (['var', 'post', 'get', 'cookie', 'server', 'files', 'request'] as $array) {
-            /*
-             * @see https://github.com/sebastianbergmann/phpunit/issues/277
-             */
-            switch ($array) {
-                case 'var':
-                    $target = &$GLOBALS;
-
-                    break;
-
-                case 'server':
-                    $target = &$_SERVER;
-
-                    break;
-
-                default:
-                    $target = &$GLOBALS['_' . \strtoupper($array)];
-
-                    break;
-            }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             foreach ($configuration[$array] as $name => $data) {
                 $target[$name] = $data['value'];
@@ -549,19 +457,11 @@ final class Configuration
             $value = $data['value'];
             $force = $data['force'] ?? false;
 
-<<<<<<< HEAD
             if ($force || getenv($name) === false) {
                 putenv("{$name}={$value}");
             }
 
             $value = getenv($name);
-=======
-            if ($force || \getenv($name) === false) {
-                \putenv("{$name}={$value}");
-            }
-
-            $value = \getenv($name);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if (!isset($_ENV[$name])) {
                 $_ENV[$name] = $value;
@@ -641,11 +541,7 @@ final class Configuration
         if ($root->hasAttribute('convertDeprecationsToExceptions')) {
             $result['convertDeprecationsToExceptions'] = $this->getBoolean(
                 (string) $root->getAttribute('convertDeprecationsToExceptions'),
-<<<<<<< HEAD
                 false
-=======
-                true
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             );
         }
 
@@ -926,11 +822,7 @@ final class Configuration
         }
 
         if ($root->hasAttribute('executionOrder')) {
-<<<<<<< HEAD
             foreach (explode(',', $root->getAttribute('executionOrder')) as $order) {
-=======
-            foreach (\explode(',', $root->getAttribute('executionOrder')) as $order) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 switch ($order) {
                     case 'default':
                         $result['executionOrder']        = TestSuiteSorter::ORDER_DEFAULT;
@@ -1039,7 +931,6 @@ final class Configuration
 
     private function validateConfigurationAgainstSchema(): void
     {
-<<<<<<< HEAD
         $original    = libxml_use_internal_errors(true);
         $xsdFilename = __DIR__ . '/../../phpunit.xsd';
 
@@ -1051,32 +942,13 @@ final class Configuration
         $this->errors = libxml_get_errors();
         libxml_clear_errors();
         libxml_use_internal_errors($original);
-=======
-        $original    = \libxml_use_internal_errors(true);
-        $xsdFilename = __DIR__ . '/../../phpunit.xsd';
-
-        if (\defined('__PHPUNIT_PHAR_ROOT__')) {
-            $xsdFilename =  __PHPUNIT_PHAR_ROOT__ . '/phpunit.xsd';
-        }
-
-        $this->document->schemaValidate($xsdFilename);
-        $this->errors = \libxml_get_errors();
-        \libxml_clear_errors();
-        \libxml_use_internal_errors($original);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * Collects and returns the configuration arguments from the PHPUnit
-<<<<<<< HEAD
      * XML configuration.
      */
     private function getConfigurationArguments(DOMNodeList $nodes): array
-=======
-     * XML configuration
-     */
-    private function getConfigurationArguments(\DOMNodeList $nodes): array
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $arguments = [];
 
@@ -1110,11 +982,7 @@ final class Configuration
     }
 
     /**
-<<<<<<< HEAD
      * @throws Exception
-=======
-     * @throws \PHPUnit\Framework\Exception
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private function getTestSuite(DOMElement $testSuiteNode, string $testSuiteFilter = ''): TestSuite
     {
@@ -1137,21 +1005,12 @@ final class Configuration
         }
 
         $fileIteratorFacade = new FileIteratorFacade;
-<<<<<<< HEAD
         $testSuiteFilter    = $testSuiteFilter ? explode(',', $testSuiteFilter) : [];
 
         foreach ($testSuiteNode->getElementsByTagName('directory') as $directoryNode) {
             assert($directoryNode instanceof DOMElement);
 
             if (!empty($testSuiteFilter) && !in_array($directoryNode->parentNode->getAttribute('name'), $testSuiteFilter, true)) {
-=======
-        $testSuiteFilter    = $testSuiteFilter ? \explode(',', $testSuiteFilter) : [];
-
-        foreach ($testSuiteNode->getElementsByTagName('directory') as $directoryNode) {
-            \assert($directoryNode instanceof DOMElement);
-
-            if (!empty($testSuiteFilter) && !\in_array($directoryNode->parentNode->getAttribute('name'), $testSuiteFilter)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 continue;
             }
 
@@ -1176,15 +1035,9 @@ final class Configuration
         }
 
         foreach ($testSuiteNode->getElementsByTagName('file') as $fileNode) {
-<<<<<<< HEAD
             assert($fileNode instanceof DOMElement);
 
             if (!empty($testSuiteFilter) && !in_array($fileNode->parentNode->getAttribute('name'), $testSuiteFilter, true)) {
-=======
-            \assert($fileNode instanceof DOMElement);
-
-            if (!empty($testSuiteFilter) && !\in_array($fileNode->parentNode->getAttribute('name'), $testSuiteFilter)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 continue;
             }
 
@@ -1216,11 +1069,7 @@ final class Configuration
 
     private function satisfiesPhpVersion(DOMElement $node): bool
     {
-<<<<<<< HEAD
         $phpVersion         = PHP_VERSION;
-=======
-        $phpVersion         = \PHP_VERSION;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $phpVersionOperator = '>=';
 
         if ($node->hasAttribute('phpVersion')) {
@@ -1231,21 +1080,13 @@ final class Configuration
             $phpVersionOperator = (string) $node->getAttribute('phpVersionOperator');
         }
 
-<<<<<<< HEAD
         return version_compare(PHP_VERSION, $phpVersion, (new VersionComparisonOperator($phpVersionOperator))->asString());
-=======
-        return \version_compare(\PHP_VERSION, $phpVersion, (new VersionComparisonOperator($phpVersionOperator))->asString());
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * if $value is 'false' or 'true', this returns the value that $value represents.
      * Otherwise, returns $default, which may be a string in rare cases.
-<<<<<<< HEAD
      * See PHPUnit\Util\ConfigurationTest::testPHPConfigurationIsReadCorrectly.
-=======
-     * See PHPUnit\Util\ConfigurationTest::testPHPConfigurationIsReadCorrectly
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @param bool|string $default
      *
@@ -1253,19 +1094,11 @@ final class Configuration
      */
     private function getBoolean(string $value, $default)
     {
-<<<<<<< HEAD
         if (strtolower($value) === 'false') {
             return false;
         }
 
         if (strtolower($value) === 'true') {
-=======
-        if (\strtolower($value) === 'false') {
-            return false;
-        }
-
-        if (\strtolower($value) === 'true') {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return true;
         }
 
@@ -1274,11 +1107,7 @@ final class Configuration
 
     private function getInteger(string $value, int $default): int
     {
-<<<<<<< HEAD
         if (is_numeric($value)) {
-=======
-        if (\is_numeric($value)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return (int) $value;
         }
 
@@ -1290,11 +1119,7 @@ final class Configuration
         $directories = [];
 
         foreach ($this->xpath->query($query) as $directoryNode) {
-<<<<<<< HEAD
             assert($directoryNode instanceof DOMElement);
-=======
-            \assert($directoryNode instanceof DOMElement);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             $directoryPath = (string) $directoryNode->textContent;
 
@@ -1321,11 +1146,8 @@ final class Configuration
         $files = [];
 
         foreach ($this->xpath->query($query) as $file) {
-<<<<<<< HEAD
             assert($file instanceof DOMNode);
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $filePath = (string) $file->textContent;
 
             if ($filePath) {
@@ -1338,15 +1160,9 @@ final class Configuration
 
     private function toAbsolutePath(string $path, bool $useIncludePath = false): string
     {
-<<<<<<< HEAD
         $path = trim($path);
 
         if (strpos($path, '/') === 0) {
-=======
-        $path = \trim($path);
-
-        if (\strpos($path, '/') === 0) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $path;
         }
 
@@ -1358,7 +1174,6 @@ final class Configuration
         //  - C:\windows
         //  - C:/windows
         //  - c:/windows
-<<<<<<< HEAD
         if (defined('PHP_WINDOWS_VERSION_BUILD') &&
             ($path[0] === '\\' || (strlen($path) >= 3 && preg_match('#^[A-Z]\:[/\\\]#i', substr($path, 0, 3))))) {
             return $path;
@@ -1372,21 +1187,6 @@ final class Configuration
 
         if ($useIncludePath && !file_exists($file)) {
             $includePathFile = stream_resolve_include_path($path);
-=======
-        if (\defined('PHP_WINDOWS_VERSION_BUILD') &&
-            ($path[0] === '\\' || (\strlen($path) >= 3 && \preg_match('#^[A-Z]\:[/\\\]#i', \substr($path, 0, 3))))) {
-            return $path;
-        }
-
-        if (\strpos($path, '://') !== false) {
-            return $path;
-        }
-
-        $file = \dirname($this->filename) . \DIRECTORY_SEPARATOR . $path;
-
-        if ($useIncludePath && !\file_exists($file)) {
-            $includePathFile = \stream_resolve_include_path($path);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if ($includePathFile) {
                 $file = $includePathFile;
@@ -1404,20 +1204,14 @@ final class Configuration
         ];
 
         foreach ($this->xpath->query($root . '/include/group') as $group) {
-<<<<<<< HEAD
             assert($group instanceof DOMNode);
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $groups['include'][] = (string) $group->textContent;
         }
 
         foreach ($this->xpath->query($root . '/exclude/group') as $group) {
-<<<<<<< HEAD
             assert($group instanceof DOMNode);
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $groups['exclude'][] = (string) $group->textContent;
         }
 

@@ -29,11 +29,7 @@ foreach ($_SERVER as $k => $v) {
     }
 }
 
-<<<<<<< HEAD
 $json = json_encode($vars, \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE);
-=======
-$json = json_encode($vars, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 switch ($vars['REQUEST_URI']) {
     default:
@@ -90,15 +86,12 @@ switch ($vars['REQUEST_URI']) {
         header('Location: //?foo=bar', true, 301);
         break;
 
-<<<<<<< HEAD
     case '/301/proxy':
     case 'http://localhost:8057/301/proxy':
     case 'http://127.0.0.1:8057/301/proxy':
         header('Location: http://localhost:8057/', true, 301);
         break;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     case '/302':
         if (!isset($vars['HTTP_AUTHORIZATION'])) {
             header('Location: http://localhost:8057/', true, 302);
@@ -124,11 +117,7 @@ switch ($vars['REQUEST_URI']) {
         break;
 
     case '/post':
-<<<<<<< HEAD
         $output = json_encode($_POST + ['REQUEST_METHOD' => $vars['REQUEST_METHOD']], \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE);
-=======
-        $output = json_encode($_POST + ['REQUEST_METHOD' => $vars['REQUEST_METHOD']], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         header('Content-Type: application/json', true);
         header('Content-Length: '.strlen($output));
         echo $output;

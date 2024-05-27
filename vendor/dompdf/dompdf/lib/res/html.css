@@ -148,7 +148,6 @@ table {
 }
 
 table[border] {
-<<<<<<< HEAD
   border: outset gray;
 }
 
@@ -165,27 +164,6 @@ table[border="0"] th {
 /* make sure backgrounds are inherited in tables  -- see bug 4510 */
 td, th, tr {
   background: inherit;
-=======
-  border-style: outset;
-  border-color: gray;
-}
-
-/* This won't work (???) */
-/*
-table[border] td,
-table[border] th {
-  border: 1pt solid grey;
-}*/
-
-/* make sure backgrounds are inherited in tables  -- see bug 4510 */
-td, th, tr {
-  background-color: inherit;
-  background-image: inherit;
-  background-image-resolution: inherit;
-  background-position: inherit;
-  background-repeat: inherit;
-  background-size: inherit;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }
 
 /* caption inherits from table not table-outer */
@@ -243,12 +221,6 @@ th {
 }
 
 /* inlines */
-<<<<<<< HEAD
-=======
-q {
-  quotes: '"' '"' "'" "'"; /* FIXME only the first level is used */
-}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 q:before {
   content: open-quote;

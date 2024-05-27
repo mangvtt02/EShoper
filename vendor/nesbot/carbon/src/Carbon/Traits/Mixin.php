@@ -8,7 +8,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
 namespace Carbon\Traits;
 
@@ -17,11 +16,6 @@ use Carbon\CarbonInterval;
 use Carbon\CarbonPeriod;
 use Closure;
 use Generator;
-=======
-namespace Carbon\Traits;
-
-use Closure;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
@@ -74,7 +68,6 @@ trait Mixin
      */
     public static function mixin($mixin)
     {
-<<<<<<< HEAD
         \is_string($mixin) && trait_exists($mixin)
             ? self::loadMixinTrait($mixin)
             : self::loadMixinClass($mixin);
@@ -82,15 +75,6 @@ trait Mixin
 
     /**
      * @param object|string $mixin
-=======
-        is_string($mixin) && trait_exists($mixin)
-            ? static::loadMixinTrait($mixin)
-            : static::loadMixinClass($mixin);
-    }
-
-    /**
-     * @param string $mixin
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @throws ReflectionException
      */
@@ -116,7 +100,6 @@ trait Mixin
      */
     private static function loadMixinTrait($trait)
     {
-<<<<<<< HEAD
         $context = eval(self::getAnonymousClassCodeForTrait($trait));
         $className = \get_class($context);
         $baseClass = static::class;
@@ -197,30 +180,6 @@ trait Mixin
             }
 
             yield $name;
-=======
-        $baseClass = static::class;
-        $context = eval('return new class() extends '.$baseClass.' {use '.$trait.';};');
-        $className = get_class($context);
-
-        foreach (get_class_methods($context) as $name) {
-            if (method_exists($baseClass, $name)) {
-                continue;
-            }
-
-            $closureBase = Closure::fromCallable([$context, $name]);
-
-            static::macro($name, function () use ($closureBase, $className) {
-                $context = isset($this) ? $this->cast($className) : new $className();
-
-                try {
-                    $closure = $closureBase->bindTo($context);
-                } catch (Throwable $throwable) {
-                    $closure = $closureBase;
-                }
-
-                return $closure(...func_get_args());
-            });
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -237,7 +196,6 @@ trait Mixin
     protected static function bindMacroContext($context, callable $callable)
     {
         static::$macroContextStack[] = $context;
-<<<<<<< HEAD
 
         try {
             return $callable();
@@ -254,24 +212,6 @@ trait Mixin
     protected static function context()
     {
         return end(static::$macroContextStack) ?: null;
-=======
-        $exception = null;
-        $result = null;
-
-        try {
-            $result = $callable();
-        } catch (Throwable $throwable) {
-            $exception = $throwable;
-        }
-
-        array_pop(static::$macroContextStack);
-
-        if ($exception) {
-            throw $exception;
-        }
-
-        return $result;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**

@@ -9,12 +9,9 @@
  */
 namespace PHPUnit\Framework;
 
-<<<<<<< HEAD
 use function get_class;
 use function sprintf;
 use function trim;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\Error\Error;
 use Throwable;
 
@@ -55,11 +52,7 @@ final class TestFailure
             }
 
             if (!empty($buffer)) {
-<<<<<<< HEAD
                 $buffer = trim($buffer) . "\n";
-=======
-                $buffer = \trim($buffer) . "\n";
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
 
             return $buffer;
@@ -73,11 +66,7 @@ final class TestFailure
             return $e->getClassName() . ': ' . $e->getMessage() . "\n";
         }
 
-<<<<<<< HEAD
         return get_class($e) . ': ' . $e->getMessage() . "\n";
-=======
-        return \get_class($e) . ': ' . $e->getMessage() . "\n";
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -90,11 +79,7 @@ final class TestFailure
         if ($failedTest instanceof SelfDescribing) {
             $this->testName = $failedTest->toString();
         } else {
-<<<<<<< HEAD
             $this->testName = get_class($failedTest);
-=======
-            $this->testName = \get_class($failedTest);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if (!$failedTest instanceof TestCase || !$failedTest->isInIsolation()) {
@@ -109,11 +94,7 @@ final class TestFailure
      */
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             '%s: %s',
             $this->testName,
             $this->thrownException->getMessage()

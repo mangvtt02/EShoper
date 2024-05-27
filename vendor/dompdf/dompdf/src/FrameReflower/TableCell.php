@@ -9,10 +9,7 @@ namespace Dompdf\FrameReflower;
 
 use Dompdf\FrameDecorator\Block as BlockFrameDecorator;
 use Dompdf\FrameDecorator\Table as TableFrameDecorator;
-<<<<<<< HEAD
 use Dompdf\Helpers;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Reflows table cells
@@ -35,12 +32,9 @@ class TableCell extends Block
      */
     function reflow(BlockFrameDecorator $block = null)
     {
-<<<<<<< HEAD
         // Counters and generated content
         $this->_set_content();
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $style = $this->_frame->get_style();
 
         $table = TableFrameDecorator::find_parent_table($this->_frame);
@@ -96,7 +90,6 @@ class TableCell extends Block
 
         // Set the containing blocks and reflow each child
         foreach ($this->_frame->get_children() as $child) {
-<<<<<<< HEAD
             $child->set_containing_block($content_x, $content_y, $cb_w, $h);
             $this->process_clear($child);
             $child->reflow($this->_frame);
@@ -105,16 +98,6 @@ class TableCell extends Block
             if ($page->is_full()) {
                 break;
             }
-=======
-            if ($page->is_full()) {
-                break;
-            }
-
-            $child->set_containing_block($content_x, $content_y, $cb_w, $h);
-            $this->process_clear($child);
-            $child->reflow($this->_frame);
-            $this->process_float($child, $x + $left_space, $w - $right_space - $left_space);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         // Determine our height
@@ -138,7 +121,6 @@ class TableCell extends Block
         $style->height = $height;
         $this->_text_align();
         $this->vertical_align();
-<<<<<<< HEAD
 
         // Handle relative positioning
         foreach ($this->_frame->get_children() as $child) {
@@ -171,7 +153,5 @@ class TableCell extends Block
         $max = Helpers::clamp($max, $min_width, $max_width);
 
         return [$min, $max];
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

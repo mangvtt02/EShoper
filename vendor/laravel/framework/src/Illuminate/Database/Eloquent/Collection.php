@@ -159,11 +159,7 @@ class Collection extends BaseCollection implements QueueableCollection
             return;
         }
 
-<<<<<<< HEAD
         $models = $models->pluck($name)->whereNotNull();
-=======
-        $models = $models->pluck($name);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($models->first() instanceof BaseCollection) {
             $models = $models->collapse();
@@ -263,7 +259,6 @@ class Collection extends BaseCollection implements QueueableCollection
     }
 
     /**
-<<<<<<< HEAD
      * Run an associative map over each of the items.
      *
      * The callback should return an associative array with a single key / value pair.
@@ -281,8 +276,6 @@ class Collection extends BaseCollection implements QueueableCollection
     }
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Reload a fresh model instance from the database for all the entities.
      *
      * @param  array|string  $with
@@ -470,11 +463,7 @@ class Collection extends BaseCollection implements QueueableCollection
     /**
      * Zip the collection together with one or more arrays.
      *
-<<<<<<< HEAD
      * @param  mixed  ...$items
-=======
-     * @param  mixed ...$items
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return \Illuminate\Support\Collection
      */
     public function zip($items)

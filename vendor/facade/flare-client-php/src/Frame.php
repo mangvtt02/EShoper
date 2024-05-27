@@ -7,7 +7,6 @@ use Facade\FlareClient\Stacktrace\Codesnippet;
 class Frame
 {
     /** @var string */
-<<<<<<< HEAD
     protected $file;
 
     /** @var int */
@@ -18,18 +17,6 @@ class Frame
 
     /** @var string */
     protected $class;
-=======
-    private $file;
-
-    /** @var int */
-    private $lineNumber;
-
-    /** @var string */
-    private $method;
-
-    /** @var string */
-    private $class;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     public function __construct(
         string $file,

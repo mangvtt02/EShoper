@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Util\TestDox;
 
-<<<<<<< HEAD
 use const PHP_EOL;
 use function array_map;
 use function get_class;
@@ -21,11 +20,6 @@ use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestFailure;
-=======
-use PHPUnit\Framework\AssertionFailedError;
-use PHPUnit\Framework\Test;
-use PHPUnit\Framework\TestCase;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\TestResult;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Framework\Warning;
@@ -33,12 +27,9 @@ use PHPUnit\Runner\BaseTestRunner;
 use PHPUnit\Runner\PhptTestCase;
 use PHPUnit\Runner\TestSuiteSorter;
 use PHPUnit\TextUI\ResultPrinter;
-<<<<<<< HEAD
 use PHPUnit\Util\Filter;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use Throwable;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -93,11 +84,7 @@ class TestDoxPrinter extends ResultPrinter
     /**
      * @param null|resource|string $out
      *
-<<<<<<< HEAD
      * @throws Exception
-=======
-     * @throws \PHPUnit\Framework\Exception
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct($out = null, bool $verbose = false, string $colors = self::COLOR_DEFAULT, bool $debug = false, $numberOfColumns = 80, bool $reverse = false)
     {
@@ -122,11 +109,7 @@ class TestDoxPrinter extends ResultPrinter
     }
 
     /**
-<<<<<<< HEAD
      * @throws InvalidArgumentException
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function endTest(Test $test, float $time): void
     {
@@ -146,25 +129,15 @@ class TestDoxPrinter extends ResultPrinter
     }
 
     /**
-<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     public function addError(Test $test, Throwable $t, float $time): void
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     */
-    public function addError(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->registerTestResult($test, $t, BaseTestRunner::STATUS_ERROR, $time, true);
     }
 
     /**
-<<<<<<< HEAD
      * @throws InvalidArgumentException
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function addWarning(Test $test, Warning $e, float $time): void
     {
@@ -172,11 +145,7 @@ class TestDoxPrinter extends ResultPrinter
     }
 
     /**
-<<<<<<< HEAD
      * @throws InvalidArgumentException
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function addFailure(Test $test, AssertionFailedError $e, float $time): void
     {
@@ -184,43 +153,25 @@ class TestDoxPrinter extends ResultPrinter
     }
 
     /**
-<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     public function addIncompleteTest(Test $test, Throwable $t, float $time): void
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     */
-    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->registerTestResult($test, $t, BaseTestRunner::STATUS_INCOMPLETE, $time, false);
     }
 
     /**
-<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     public function addRiskyTest(Test $test, Throwable $t, float $time): void
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     */
-    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->registerTestResult($test, $t, BaseTestRunner::STATUS_RISKY, $time, false);
     }
 
     /**
-<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     public function addSkippedTest(Test $test, Throwable $t, float $time): void
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     */
-    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->registerTestResult($test, $t, BaseTestRunner::STATUS_SKIPPED, $time, false);
     }
@@ -236,15 +187,9 @@ class TestDoxPrinter extends ResultPrinter
     }
 
     /**
-<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     protected function registerTestResult(Test $test, ?Throwable $t, int $status, float $time, bool $verbose): void
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     */
-    protected function registerTestResult(Test $test, ?\Throwable $t, int $status, float $time, bool $verbose): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $testName = TestSuiteSorter::getTestSorterUID($test);
 
@@ -273,11 +218,7 @@ class TestDoxPrinter extends ResultPrinter
 
     protected function formatClassName(Test $test): string
     {
-<<<<<<< HEAD
         return get_class($test);
-=======
-        return \get_class($test);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     protected function testHasPassed(): bool
@@ -316,11 +257,7 @@ class TestDoxPrinter extends ResultPrinter
                 $flushed = false;
 
                 if (!$forceFlush && isset($this->originalExecutionOrder[$this->testFlushIndex])) {
-<<<<<<< HEAD
                     $result = $this->getTestResultByName($this->originalExecutionOrder[$this->testFlushIndex]);
-=======
-                    $result  = $this->getTestResultByName($this->originalExecutionOrder[$this->testFlushIndex]);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 } else {
                     // This test(name) cannot found in original execution order,
                     // flush result to output stream right away
@@ -401,21 +338,12 @@ class TestDoxPrinter extends ResultPrinter
         return [];
     }
 
-<<<<<<< HEAD
     protected function formatThrowable(Throwable $t, ?int $status = null): string
     {
         $message = trim(TestFailure::exceptionToString($t));
 
         if ($message) {
             $message .= PHP_EOL . PHP_EOL . $this->formatStacktrace($t);
-=======
-    protected function formatThrowable(\Throwable $t, ?int $status = null): string
-    {
-        $message = \trim(\PHPUnit\Framework\TestFailure::exceptionToString($t));
-
-        if ($message) {
-            $message .= \PHP_EOL . \PHP_EOL . $this->formatStacktrace($t);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } else {
             $message = $this->formatStacktrace($t);
         }
@@ -423,21 +351,12 @@ class TestDoxPrinter extends ResultPrinter
         return $message;
     }
 
-<<<<<<< HEAD
     protected function formatStacktrace(Throwable $t): string
     {
         return Filter::getFilteredStacktrace($t);
     }
 
     protected function formatTestResultMessage(Throwable $t, array $result, string $prefix = '│'): string
-=======
-    protected function formatStacktrace(\Throwable $t): string
-    {
-        return \PHPUnit\Util\Filter::getFilteredStacktrace($t);
-    }
-
-    protected function formatTestResultMessage(\Throwable $t, array $result, string $prefix = '│'): string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $message = $this->formatThrowable($t, $result['status']);
 
@@ -454,7 +373,6 @@ class TestDoxPrinter extends ResultPrinter
 
     protected function prefixLines(string $prefix, string $message): string
     {
-<<<<<<< HEAD
         $message = trim($message);
 
         return implode(
@@ -465,17 +383,6 @@ class TestDoxPrinter extends ResultPrinter
                     return '   ' . $prefix . ($text ? ' ' . $text : '');
                 },
                 preg_split('/\r\n|\r|\n/', $message)
-=======
-        $message = \trim($message);
-
-        return \implode(
-            \PHP_EOL,
-            \array_map(
-                static function (string $text) use ($prefix) {
-                    return '   ' . $prefix . ($text ? ' ' . $text : '');
-                },
-                \preg_split('/\r\n|\r|\n/', $message)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             )
         );
     }

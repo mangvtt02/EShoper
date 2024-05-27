@@ -9,30 +9,21 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
-<<<<<<< HEAD
 use function assert;
 use function implode;
 use function sprintf;
 use Exception;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\MockObject\Rule\AnyInvokedCount;
 use PHPUnit\Framework\MockObject\Rule\AnyParameters;
 use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
-<<<<<<< HEAD
 use PHPUnit\Framework\MockObject\Rule\InvokedAtMostCount;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\MockObject\Rule\MethodName;
 use PHPUnit\Framework\MockObject\Rule\ParametersRule;
 use PHPUnit\Framework\MockObject\Stub\Stub;
 use PHPUnit\Framework\TestFailure;
-<<<<<<< HEAD
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -115,15 +106,9 @@ final class Matcher
     }
 
     /**
-<<<<<<< HEAD
      * @throws Exception
      * @throws ExpectationFailedException
      * @throws RuntimeException
-=======
-     * @throws \Exception
-     * @throws RuntimeException
-     * @throws ExpectationFailedException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function invoked(Invocation $invocation)
     {
@@ -133,31 +118,18 @@ final class Matcher
 
         if ($this->afterMatchBuilderId !== null) {
             $matcher = $invocation->getObject()
-<<<<<<< HEAD
                 ->__phpunit_getInvocationHandler()
                 ->lookupMatcher($this->afterMatchBuilderId);
 
             if (!$matcher) {
                 throw new RuntimeException(
                     sprintf(
-=======
-                                  ->__phpunit_getInvocationHandler()
-                                  ->lookupMatcher($this->afterMatchBuilderId);
-
-            if (!$matcher) {
-                throw new RuntimeException(
-                    \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         'No builder found for match builder identification <%s>',
                         $this->afterMatchBuilderId
                     )
                 );
             }
-<<<<<<< HEAD
             assert($matcher instanceof self);
-=======
-            \assert($matcher instanceof self);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if ($matcher->invocationRule->hasBeenInvoked()) {
                 $this->afterMatchBuilderIsInvoked = true;
@@ -172,11 +144,7 @@ final class Matcher
             }
         } catch (ExpectationFailedException $e) {
             throw new ExpectationFailedException(
-<<<<<<< HEAD
                 sprintf(
-=======
-                \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     "Expectation failed for %s when %s\n%s",
                     $this->methodNameRule->toString(),
                     $this->invocationRule->toString(),
@@ -194,45 +162,26 @@ final class Matcher
     }
 
     /**
-<<<<<<< HEAD
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
      * @throws RuntimeException
-=======
-     * @throws RuntimeException
-     * @throws ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function matches(Invocation $invocation): bool
     {
         if ($this->afterMatchBuilderId !== null) {
             $matcher = $invocation->getObject()
-<<<<<<< HEAD
                 ->__phpunit_getInvocationHandler()
                 ->lookupMatcher($this->afterMatchBuilderId);
 
             if (!$matcher) {
                 throw new RuntimeException(
                     sprintf(
-=======
-                                  ->__phpunit_getInvocationHandler()
-                                  ->lookupMatcher($this->afterMatchBuilderId);
-
-            if (!$matcher) {
-                throw new RuntimeException(
-                    \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         'No builder found for match builder identification <%s>',
                         $this->afterMatchBuilderId
                     )
                 );
             }
-<<<<<<< HEAD
             assert($matcher instanceof self);
-=======
-            \assert($matcher instanceof self);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if (!$matcher->invocationRule->hasBeenInvoked()) {
                 return false;
@@ -253,11 +202,7 @@ final class Matcher
             }
         } catch (ExpectationFailedException $e) {
             throw new ExpectationFailedException(
-<<<<<<< HEAD
                 sprintf(
-=======
-                \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     "Expectation failed for %s when %s\n%s",
                     $this->methodNameRule->toString(),
                     $this->invocationRule->toString(),
@@ -271,15 +216,9 @@ final class Matcher
     }
 
     /**
-<<<<<<< HEAD
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException
      * @throws RuntimeException
-=======
-     * @throws RuntimeException
-     * @throws ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function verify(): void
     {
@@ -294,27 +233,16 @@ final class Matcher
                 $this->parametersRule = new AnyParameters;
             }
 
-<<<<<<< HEAD
             $invocationIsAny    = $this->invocationRule instanceof AnyInvokedCount;
             $invocationIsNever  = $this->invocationRule instanceof InvokedCount && $this->invocationRule->isNever();
             $invocationIsAtMost = $this->invocationRule instanceof InvokedAtMostCount;
 
             if (!$invocationIsAny && !$invocationIsNever && !$invocationIsAtMost) {
-=======
-            $invocationIsAny   = $this->invocationRule instanceof AnyInvokedCount;
-            $invocationIsNever = $this->invocationRule instanceof InvokedCount && $this->invocationRule->isNever();
-
-            if (!$invocationIsAny && !$invocationIsNever) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $this->parametersRule->verify();
             }
         } catch (ExpectationFailedException $e) {
             throw new ExpectationFailedException(
-<<<<<<< HEAD
                 sprintf(
-=======
-                \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     "Expectation failed for %s when %s.\n%s",
                     $this->methodNameRule->toString(),
                     $this->invocationRule->toString(),
@@ -348,10 +276,6 @@ final class Matcher
             $list[] = 'will ' . $this->stub->toString();
         }
 
-<<<<<<< HEAD
         return implode(' ', $list);
-=======
-        return \implode(' ', $list);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

@@ -20,10 +20,7 @@ use Symfony\Component\Finder\Iterator\DepthRangeFilterIterator;
 use Symfony\Component\Finder\Iterator\ExcludeDirectoryFilterIterator;
 use Symfony\Component\Finder\Iterator\FilecontentFilterIterator;
 use Symfony\Component\Finder\Iterator\FilenameFilterIterator;
-<<<<<<< HEAD
 use Symfony\Component\Finder\Iterator\LazyIterator;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Symfony\Component\Finder\Iterator\SizeRangeFilterIterator;
 use Symfony\Component\Finder\Iterator\SortableIterator;
 
@@ -42,15 +39,9 @@ use Symfony\Component\Finder\Iterator\SortableIterator;
  */
 class Finder implements \IteratorAggregate, \Countable
 {
-<<<<<<< HEAD
     public const IGNORE_VCS_FILES = 1;
     public const IGNORE_DOT_FILES = 2;
     public const IGNORE_VCS_IGNORED_FILES = 4;
-=======
-    const IGNORE_VCS_FILES = 1;
-    const IGNORE_DOT_FILES = 2;
-    const IGNORE_VCS_IGNORED_FILES = 4;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     private $mode = 0;
     private $names = [];
@@ -627,10 +618,7 @@ class Finder implements \IteratorAggregate, \Countable
      *
      * @throws \LogicException if the in() method has not been called
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function getIterator()
     {
         if (0 === \count($this->dirs) && 0 === \count($this->iterators)) {
@@ -638,7 +626,6 @@ class Finder implements \IteratorAggregate, \Countable
         }
 
         if (1 === \count($this->dirs) && 0 === \count($this->iterators)) {
-<<<<<<< HEAD
             $iterator = $this->searchInDirectory($this->dirs[0]);
 
             if ($this->sort || $this->reverseSorting) {
@@ -646,33 +633,23 @@ class Finder implements \IteratorAggregate, \Countable
             }
 
             return $iterator;
-=======
-            return $this->searchInDirectory($this->dirs[0]);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $iterator = new \AppendIterator();
         foreach ($this->dirs as $dir) {
-<<<<<<< HEAD
             $iterator->append(new \IteratorIterator(new LazyIterator(function () use ($dir) {
                 return $this->searchInDirectory($dir);
             })));
-=======
-            $iterator->append($this->searchInDirectory($dir));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         foreach ($this->iterators as $it) {
             $iterator->append($it);
         }
 
-<<<<<<< HEAD
         if ($this->sort || $this->reverseSorting) {
             $iterator = (new Iterator\SortableIterator($iterator, $this->sort, $this->reverseSorting))->getIterator();
         }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $iterator;
     }
 
@@ -693,18 +670,11 @@ class Finder implements \IteratorAggregate, \Countable
             $this->iterators[] = $iterator->getIterator();
         } elseif ($iterator instanceof \Iterator) {
             $this->iterators[] = $iterator;
-<<<<<<< HEAD
         } elseif (is_iterable($iterator)) {
             $it = new \ArrayIterator();
             foreach ($iterator as $file) {
                 $file = $file instanceof \SplFileInfo ? $file : new \SplFileInfo($file);
                 $it[$file->getPathname()] = $file;
-=======
-        } elseif ($iterator instanceof \Traversable || \is_array($iterator)) {
-            $it = new \ArrayIterator();
-            foreach ($iterator as $file) {
-                $it->append($file instanceof \SplFileInfo ? $file : new \SplFileInfo($file));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
             $this->iterators[] = $it;
         } else {
@@ -715,11 +685,7 @@ class Finder implements \IteratorAggregate, \Countable
     }
 
     /**
-<<<<<<< HEAD
      * Check if any results were found.
-=======
-     * Check if the any results were found.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool
      */
@@ -737,10 +703,7 @@ class Finder implements \IteratorAggregate, \Countable
      *
      * @return int
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function count()
     {
         return iterator_count($this->getIterator());
@@ -835,14 +798,6 @@ class Finder implements \IteratorAggregate, \Countable
             $iterator = new Iterator\PathFilterIterator($iterator, $this->paths, $notPaths);
         }
 
-<<<<<<< HEAD
-=======
-        if ($this->sort || $this->reverseSorting) {
-            $iteratorAggregate = new Iterator\SortableIterator($iterator, $this->sort, $this->reverseSorting);
-            $iterator = $iteratorAggregate->getIterator();
-        }
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $iterator;
     }
 

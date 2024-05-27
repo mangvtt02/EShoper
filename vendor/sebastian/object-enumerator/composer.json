@@ -10,11 +10,7 @@
         }
     ],
     "require": {
-<<<<<<< HEAD
         "php": ">=7.0",
-=======
-        "php": "^7.0",
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         "sebastian/object-reflector": "^1.1.1",
         "sebastian/recursion-context": "^3.0"
     },

@@ -14,10 +14,7 @@ namespace Symfony\Component\HttpKernel\EventListener;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
-<<<<<<< HEAD
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Sets the session in the request.
@@ -37,19 +34,12 @@ class SessionListener extends AbstractSessionListener
         $this->container = $container;
     }
 
-<<<<<<< HEAD
     public function onKernelRequest(GetResponseEvent $event)
     {
         parent::onKernelRequest($event);
 
         if (!$event->isMasterRequest() || !$this->container->has('session')) {
             return;
-=======
-    protected function getSession(): ?SessionInterface
-    {
-        if (!$this->container->has('session')) {
-            return null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if ($this->container->has('session_storage')
@@ -59,7 +49,6 @@ class SessionListener extends AbstractSessionListener
         ) {
             $storage->setOptions(['cookie_secure' => true]);
         }
-<<<<<<< HEAD
     }
 
     protected function getSession(): ?SessionInterface
@@ -67,8 +56,6 @@ class SessionListener extends AbstractSessionListener
         if (!$this->container->has('session')) {
             return null;
         }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $this->container->get('session');
     }

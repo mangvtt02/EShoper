@@ -8,10 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 return array_replace_recursive(require __DIR__.'/en.php', [
     'weekdays' => ['Jumapiri', 'Jumatatu', 'Jumanne', 'Jumatano', 'Murwa wa Kanne', 'Murwa wa Katano', 'Jumamosi'],
     'weekdays_short' => ['J2', 'J3', 'J4', 'J5', 'Al', 'Ij', 'J1'],

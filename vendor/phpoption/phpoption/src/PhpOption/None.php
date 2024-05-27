@@ -31,11 +31,7 @@ final class None extends Option
     /**
      * @return None
      */
-<<<<<<< HEAD
     public static function create(): self
-=======
-    public static function create()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (null === self::$instance) {
             self::$instance = new self();
@@ -64,20 +60,12 @@ final class None extends Option
         throw $ex;
     }
 
-<<<<<<< HEAD
     public function isEmpty(): bool
-=======
-    public function isEmpty()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return true;
     }
 
-<<<<<<< HEAD
     public function isDefined(): bool
-=======
-    public function isDefined()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return false;
     }
@@ -127,11 +115,7 @@ final class None extends Option
         return $this;
     }
 
-<<<<<<< HEAD
     public function getIterator(): EmptyIterator
-=======
-    public function getIterator()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return new EmptyIterator();
     }

@@ -24,11 +24,7 @@ class Message extends RawMessage
     private $headers;
     private $body;
 
-<<<<<<< HEAD
     public function __construct(?Headers $headers = null, ?AbstractPart $body = null)
-=======
-    public function __construct(Headers $headers = null, AbstractPart $body = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->headers = $headers ? clone $headers : new Headers();
         $this->body = $body;
@@ -46,11 +42,7 @@ class Message extends RawMessage
     /**
      * @return $this
      */
-<<<<<<< HEAD
     public function setBody(?AbstractPart $body = null)
-=======
-    public function setBody(AbstractPart $body = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->body = $body;
 
@@ -88,13 +80,9 @@ class Message extends RawMessage
             $headers->addMailboxListHeader('From', [$headers->get('Sender')->getAddress()]);
         }
 
-<<<<<<< HEAD
         if (!$headers->has('MIME-Version')) {
             $headers->addTextHeader('MIME-Version', '1.0');
         }
-=======
-        $headers->addTextHeader('MIME-Version', '1.0');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if (!$headers->has('Date')) {
             $headers->addDateHeader('Date', new \DateTimeImmutable());
@@ -152,14 +140,10 @@ class Message extends RawMessage
         if ($this->headers->has('Sender')) {
             $sender = $this->headers->get('Sender')->getAddress();
         } elseif ($this->headers->has('From')) {
-<<<<<<< HEAD
             if (!$froms = $this->headers->get('From')->getAddresses()) {
                 throw new LogicException('A "From" header must have at least one email address.');
             }
             $sender = $froms[0];
-=======
-            $sender = $this->headers->get('From')->getAddresses()[0];
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } else {
             throw new LogicException('An email must have a "From" or a "Sender" header.');
         }

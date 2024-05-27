@@ -102,11 +102,7 @@ class IntlCaster
                     'SIGNIFICANT_DIGIT_SYMBOL' => $c->getSymbol(\NumberFormatter::SIGNIFICANT_DIGIT_SYMBOL),
                     'MONETARY_GROUPING_SEPARATOR_SYMBOL' => $c->getSymbol(\NumberFormatter::MONETARY_GROUPING_SEPARATOR_SYMBOL),
                 ]
-<<<<<<< HEAD
             ),
-=======
-             ),
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         ];
 
         return self::castError($c, $a);

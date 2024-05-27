@@ -9,11 +9,8 @@
  */
 namespace PHPUnit\Util;
 
-<<<<<<< HEAD
 use Throwable;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
@@ -46,11 +43,7 @@ final class Type
     {
         try {
             $clone = clone $object;
-<<<<<<< HEAD
         } catch (Throwable $t) {
-=======
-        } catch (\Throwable $t) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return false;
         }
 

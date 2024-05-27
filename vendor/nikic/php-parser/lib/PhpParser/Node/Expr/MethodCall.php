@@ -2,7 +2,6 @@
 
 namespace PhpParser\Node\Expr;
 
-<<<<<<< HEAD
 use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
@@ -16,35 +15,14 @@ class MethodCall extends CallLike {
     public Node $name;
     /** @var array<Arg|VariadicPlaceholder> Arguments */
     public array $args;
-=======
-use PhpParser\Node\Arg;
-use PhpParser\Node\Expr;
-use PhpParser\Node\Identifier;
-
-class MethodCall extends Expr
-{
-    /** @var Expr Variable holding object */
-    public $var;
-    /** @var Identifier|Expr Method name */
-    public $name;
-    /** @var Arg[] Arguments */
-    public $args;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Constructs a function call node.
      *
-<<<<<<< HEAD
      * @param Expr $var Variable holding object
      * @param string|Identifier|Expr $name Method name
      * @param array<Arg|VariadicPlaceholder> $args Arguments
      * @param array<string, mixed> $attributes Additional attributes
-=======
-     * @param Expr                   $var        Variable holding object
-     * @param string|Identifier|Expr $name       Method name
-     * @param Arg[]                  $args       Arguments
-     * @param array                  $attributes Additional attributes
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct(Expr $var, $name, array $args = [], array $attributes = []) {
         $this->attributes = $attributes;
@@ -53,7 +31,6 @@ class MethodCall extends Expr
         $this->args = $args;
     }
 
-<<<<<<< HEAD
     public function getSubNodeNames(): array {
         return ['var', 'name', 'args'];
     }
@@ -65,13 +42,4 @@ class MethodCall extends Expr
     public function getRawArgs(): array {
         return $this->args;
     }
-=======
-    public function getSubNodeNames() : array {
-        return ['var', 'name', 'args'];
-    }
-    
-    public function getType() : string {
-        return 'Expr_MethodCall';
-    }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

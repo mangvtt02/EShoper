@@ -18,28 +18,20 @@ namespace Monolog\Processor;
  */
 class TagProcessor implements ProcessorInterface
 {
-<<<<<<< HEAD
     /** @var string[] */
     private $tags;
 
     /**
      * @param string[] $tags
      */
-=======
-    private $tags;
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __construct(array $tags = [])
     {
         $this->setTags($tags);
     }
 
-<<<<<<< HEAD
     /**
      * @param string[] $tags
      */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function addTags(array $tags = []): self
     {
         $this->tags = array_merge($this->tags, $tags);
@@ -47,12 +39,9 @@ class TagProcessor implements ProcessorInterface
         return $this;
     }
 
-<<<<<<< HEAD
     /**
      * @param string[] $tags
      */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function setTags(array $tags = []): self
     {
         $this->tags = $tags;
@@ -60,12 +49,9 @@ class TagProcessor implements ProcessorInterface
         return $this;
     }
 
-<<<<<<< HEAD
     /**
      * {@inheritDoc}
      */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __invoke(array $record): array
     {
         $record['extra']['tags'] = $this->tags;

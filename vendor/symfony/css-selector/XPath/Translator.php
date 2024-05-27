@@ -48,15 +48,9 @@ class Translator implements TranslatorInterface
     private $pseudoClassTranslators = [];
     private $attributeMatchingTranslators = [];
 
-<<<<<<< HEAD
     public function __construct(?ParserInterface $parser = null)
     {
         $this->mainParser = $parser ?? new Parser();
-=======
-    public function __construct(ParserInterface $parser = null)
-    {
-        $this->mainParser = $parser ?: new Parser();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $this
             ->registerExtension(new Extension\NodeExtension())
@@ -69,19 +63,11 @@ class Translator implements TranslatorInterface
 
     public static function getXpathLiteral(string $element): string
     {
-<<<<<<< HEAD
         if (!str_contains($element, "'")) {
             return "'".$element."'";
         }
 
         if (!str_contains($element, '"')) {
-=======
-        if (false === strpos($element, "'")) {
-            return "'".$element."'";
-        }
-
-        if (false === strpos($element, '"')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return '"'.$element.'"';
         }
 
@@ -217,11 +203,7 @@ class Translator implements TranslatorInterface
     /**
      * @throws ExpressionErrorException
      */
-<<<<<<< HEAD
     public function addAttributeMatching(XPathExpr $xpath, string $operator, string $attribute, ?string $value): XPathExpr
-=======
-    public function addAttributeMatching(XPathExpr $xpath, string $operator, string $attribute, $value): XPathExpr
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!isset($this->attributeMatchingTranslators[$operator])) {
             throw new ExpressionErrorException(sprintf('Attribute matcher operator "%s" not supported.', $operator));

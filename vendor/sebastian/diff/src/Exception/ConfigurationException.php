@@ -24,11 +24,7 @@ final class ConfigurationException extends InvalidArgumentException
         string $expected,
         $value,
         int $code = 0,
-<<<<<<< HEAD
         ?\Exception $previous = null
-=======
-        \Exception $previous = null
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     ) {
         parent::__construct(
             \sprintf(

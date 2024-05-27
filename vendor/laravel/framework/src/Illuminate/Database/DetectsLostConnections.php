@@ -40,7 +40,6 @@ trait DetectsLostConnections
             'Communication link failure',
             'connection is no longer usable',
             'Login timeout expired',
-<<<<<<< HEAD
             'SQLSTATE[HY000] [2002] Connection refused',
             'running with the --read-only option so it cannot execute this statement',
             'The connection is broken and recovery is not possible. The connection is marked by the client driver as unrecoverable. No attempt was made to restore the connection.',
@@ -58,13 +57,6 @@ trait DetectsLostConnections
             'The client was disconnected by the server because of inactivity. See wait_timeout and interactive_timeout for configuring this behavior.',
             'SQLSTATE[08006] [7] could not translate host name',
             'TCP Provider: Error code 0x274C',
-=======
-            'Connection refused',
-            'running with the --read-only option so it cannot execute this statement',
-            'The connection is broken and recovery is not possible. The connection is marked by the client driver as unrecoverable. No attempt was made to restore the connection.',
-            'SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Try again',
-            'SQLSTATE[HY000]: General error: 7 SSL SYSCALL error: EOF detected',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         ]);
     }
 }

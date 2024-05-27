@@ -3,23 +3,16 @@
 namespace Doctrine\Instantiator;
 
 use ArrayIterator;
-<<<<<<< HEAD
 use Doctrine\Instantiator\Exception\ExceptionInterface;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
 use Doctrine\Instantiator\Exception\UnexpectedValueException;
 use Exception;
 use ReflectionClass;
 use ReflectionException;
 use Serializable;
-<<<<<<< HEAD
 
 use function class_exists;
 use function enum_exists;
-=======
-use function class_exists;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use function is_subclass_of;
 use function restore_error_handler;
 use function set_error_handler;
@@ -27,31 +20,20 @@ use function sprintf;
 use function strlen;
 use function unserialize;
 
-<<<<<<< HEAD
 use const PHP_VERSION_ID;
 
-=======
-/**
- * {@inheritDoc}
- */
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 final class Instantiator implements InstantiatorInterface
 {
     /**
      * Markers used internally by PHP to define whether {@see \unserialize} should invoke
      * the method {@see \Serializable::unserialize()} when dealing with classes implementing
      * the {@see \Serializable} interface.
-<<<<<<< HEAD
      *
      * @deprecated This constant will be private in 2.0
      */
     public const SERIALIZATION_FORMAT_USE_UNSERIALIZER = 'C';
 
     /** @deprecated This constant will be private in 2.0 */
-=======
-     */
-    public const SERIALIZATION_FORMAT_USE_UNSERIALIZER   = 'C';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public const SERIALIZATION_FORMAT_AVOID_UNSERIALIZER = 'O';
 
     /**
@@ -69,7 +51,6 @@ final class Instantiator implements InstantiatorInterface
     private static $cachedCloneables = [];
 
     /**
-<<<<<<< HEAD
      * @param string $className
      * @phpstan-param class-string<T> $className
      *
@@ -79,21 +60,14 @@ final class Instantiator implements InstantiatorInterface
      * @throws ExceptionInterface
      *
      * @template T of object
-=======
-     * {@inheritDoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function instantiate($className)
     {
         if (isset(self::$cachedCloneables[$className])) {
-<<<<<<< HEAD
             /** @phpstan-var T */
             $cachedCloneable = self::$cachedCloneables[$className];
 
             return clone $cachedCloneable;
-=======
-            return clone self::$cachedCloneables[$className];
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if (isset(self::$cachedInstantiators[$className])) {
@@ -108,16 +82,12 @@ final class Instantiator implements InstantiatorInterface
     /**
      * Builds the requested object and caches it in static properties for performance
      *
-<<<<<<< HEAD
      * @phpstan-param class-string<T> $className
      *
      * @return object
      * @phpstan-return T
      *
      * @template T of object
-=======
-     * @return object
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private function buildAndCacheFromFactory(string $className)
     {
@@ -135,7 +105,6 @@ final class Instantiator implements InstantiatorInterface
      * Builds a callable capable of instantiating the given $className without
      * invoking its constructor.
      *
-<<<<<<< HEAD
      * @phpstan-param class-string<T> $className
      *
      * @phpstan-return callable(): T
@@ -147,13 +116,6 @@ final class Instantiator implements InstantiatorInterface
      * @template T of object
      */
     private function buildFactory(string $className): callable
-=======
-     * @throws InvalidArgumentException
-     * @throws UnexpectedValueException
-     * @throws ReflectionException
-     */
-    private function buildFactory(string $className) : callable
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $reflectionClass = $this->getReflectionClass($className);
 
@@ -176,7 +138,6 @@ final class Instantiator implements InstantiatorInterface
     }
 
     /**
-<<<<<<< HEAD
      * @phpstan-param class-string<T> $className
      *
      * @phpstan-return ReflectionClass<T>
@@ -187,24 +148,15 @@ final class Instantiator implements InstantiatorInterface
      * @template T of object
      */
     private function getReflectionClass(string $className): ReflectionClass
-=======
-     * @throws InvalidArgumentException
-     * @throws ReflectionException
-     */
-    private function getReflectionClass(string $className) : ReflectionClass
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (! class_exists($className)) {
             throw InvalidArgumentException::fromNonExistingClass($className);
         }
 
-<<<<<<< HEAD
         if (PHP_VERSION_ID >= 80100 && enum_exists($className, false)) {
             throw InvalidArgumentException::fromEnum($className);
         }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $reflection = new ReflectionClass($className);
 
         if ($reflection->isAbstract()) {
@@ -215,7 +167,6 @@ final class Instantiator implements InstantiatorInterface
     }
 
     /**
-<<<<<<< HEAD
      * @phpstan-param ReflectionClass<T> $reflectionClass
      *
      * @throws UnexpectedValueException
@@ -225,13 +176,6 @@ final class Instantiator implements InstantiatorInterface
     private function checkIfUnSerializationIsSupported(ReflectionClass $reflectionClass, string $serializedString): void
     {
         set_error_handler(static function (int $code, string $message, string $file, int $line) use ($reflectionClass, &$error): bool {
-=======
-     * @throws UnexpectedValueException
-     */
-    private function checkIfUnSerializationIsSupported(ReflectionClass $reflectionClass, string $serializedString) : void
-    {
-        set_error_handler(static function (int $code, string $message, string $file, int $line) use ($reflectionClass, &$error) : bool {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $error = UnexpectedValueException::fromUncleanUnSerialization(
                 $reflectionClass,
                 $message,
@@ -255,7 +199,6 @@ final class Instantiator implements InstantiatorInterface
     }
 
     /**
-<<<<<<< HEAD
      * @phpstan-param ReflectionClass<T> $reflectionClass
      *
      * @throws UnexpectedValueException
@@ -263,11 +206,6 @@ final class Instantiator implements InstantiatorInterface
      * @template T of object
      */
     private function attemptInstantiationViaUnSerialization(ReflectionClass $reflectionClass, string $serializedString): void
-=======
-     * @throws UnexpectedValueException
-     */
-    private function attemptInstantiationViaUnSerialization(ReflectionClass $reflectionClass, string $serializedString) : void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         try {
             unserialize($serializedString);
@@ -276,33 +214,24 @@ final class Instantiator implements InstantiatorInterface
         }
     }
 
-<<<<<<< HEAD
     /**
      * @phpstan-param ReflectionClass<T> $reflectionClass
      *
      * @template T of object
      */
     private function isInstantiableViaReflection(ReflectionClass $reflectionClass): bool
-=======
-    private function isInstantiableViaReflection(ReflectionClass $reflectionClass) : bool
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return ! ($this->hasInternalAncestors($reflectionClass) && $reflectionClass->isFinal());
     }
 
     /**
      * Verifies whether the given class is to be considered internal
-<<<<<<< HEAD
      *
      * @phpstan-param ReflectionClass<T> $reflectionClass
      *
      * @template T of object
      */
     private function hasInternalAncestors(ReflectionClass $reflectionClass): bool
-=======
-     */
-    private function hasInternalAncestors(ReflectionClass $reflectionClass) : bool
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         do {
             if ($reflectionClass->isInternal()) {
@@ -319,7 +248,6 @@ final class Instantiator implements InstantiatorInterface
      * Checks if a class is cloneable
      *
      * Classes implementing `__clone` cannot be safely cloned, as that may cause side-effects.
-<<<<<<< HEAD
      *
      * @phpstan-param ReflectionClass<T> $reflectionClass
      *
@@ -330,13 +258,5 @@ final class Instantiator implements InstantiatorInterface
         return $reflectionClass->isCloneable()
             && ! $reflectionClass->hasMethod('__clone')
             && ! $reflectionClass->isSubclassOf(ArrayIterator::class);
-=======
-     */
-    private function isSafeToClone(ReflectionClass $reflection) : bool
-    {
-        return $reflection->isCloneable()
-            && ! $reflection->hasMethod('__clone')
-            && ! $reflection->isSubclassOf(ArrayIterator::class);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

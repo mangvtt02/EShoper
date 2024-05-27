@@ -21,15 +21,9 @@ use Symfony\Component\Translation\MessageCatalogue;
  */
 class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
 {
-<<<<<<< HEAD
     public const MESSAGE_TOKEN = 300;
     public const METHOD_ARGUMENTS_TOKEN = 1000;
     public const DOMAIN_TOKEN = 1001;
-=======
-    const MESSAGE_TOKEN = 300;
-    const METHOD_ARGUMENTS_TOKEN = 1000;
-    const DOMAIN_TOKEN = 1001;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Prefix for new found message.
@@ -184,7 +178,6 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
                     }
                     break;
                 case \T_END_HEREDOC:
-<<<<<<< HEAD
                     if ($indentation = strspn($t[1], ' ')) {
                         $docPartWithLineBreaks = $docPart;
                         $docPart = '';
@@ -198,8 +191,6 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
                         }
                     }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $message .= PhpStringTokenParser::parseDocString($docToken, $docPart);
                     $docToken = '';
                     $docPart = '';
@@ -220,11 +211,7 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
      * @param array  $tokens
      * @param string $filename
      */
-<<<<<<< HEAD
     protected function parseTokens($tokens, MessageCatalogue $catalog/* , string $filename */)
-=======
-    protected function parseTokens($tokens, MessageCatalogue $catalog/*, string $filename*/)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (\func_num_args() < 3 && __CLASS__ !== static::class && __CLASS__ !== (new \ReflectionMethod($this, __FUNCTION__))->getDeclaringClass()->getName() && !$this instanceof \PHPUnit\Framework\MockObject\MockObject && !$this instanceof \Prophecy\Prophecy\ProphecySubjectInterface && !$this instanceof \Mockery\MockInterface) {
             @trigger_error(sprintf('The "%s()" method will have a new "string $filename" argument in version 5.0, not defining it is deprecated since Symfony 4.3.', __METHOD__), \E_USER_DEPRECATED);

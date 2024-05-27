@@ -22,11 +22,7 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  */
 class SplCaster
 {
-<<<<<<< HEAD
     private const SPL_FILE_OBJECT_FLAGS = [
-=======
-    private static $splFileObjectFlags = [
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         \SplFileObject::DROP_NEW_LINE => 'DROP_NEW_LINE',
         \SplFileObject::READ_AHEAD => 'READ_AHEAD',
         \SplFileObject::SKIP_EMPTY => 'SKIP_EMPTY',
@@ -133,11 +129,7 @@ class SplCaster
             }
         }
 
-<<<<<<< HEAD
         if ($a[$prefix.'realPath'] ?? false) {
-=======
-        if (isset($a[$prefix.'realPath'])) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $a[$prefix.'realPath'] = new LinkStub($a[$prefix.'realPath']);
         }
 
@@ -177,11 +169,7 @@ class SplCaster
 
         if (isset($a[$prefix.'flags'])) {
             $flagsArray = [];
-<<<<<<< HEAD
             foreach (self::SPL_FILE_OBJECT_FLAGS as $value => $name) {
-=======
-            foreach (self::$splFileObjectFlags as $value => $name) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 if ($a[$prefix.'flags'] & $value) {
                     $flagsArray[] = $name;
                 }

@@ -3,11 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
-<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
-=======
- * (c) 2012-2020 Justin Hileman
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -54,11 +50,7 @@ class AutoCompleter
      *
      * @return array
      */
-<<<<<<< HEAD
     public function processCallback(string $input, int $index, array $info = []): array
-=======
-    public function processCallback($input, $index, $info = [])
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // Some (Windows?) systems provide incomplete `readline_info`, so let's
         // try to work around it.
@@ -70,21 +62,14 @@ class AutoCompleter
             $line = $input;
         }
 
-<<<<<<< HEAD
         $tokens = \token_get_all('<?php '.$line);
-=======
-        $tokens = \token_get_all('<?php ' . $line);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         // remove whitespaces
         $tokens = \array_filter($tokens, function ($token) {
             return !AbstractMatcher::tokenIs($token, AbstractMatcher::T_WHITESPACE);
         });
-<<<<<<< HEAD
         // reset index from 0 to remove missing index number
         $tokens = \array_values($tokens);
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $matches = [];
         foreach ($this->matchers as $matcher) {
@@ -108,11 +93,7 @@ class AutoCompleter
      *
      * @return array
      */
-<<<<<<< HEAD
     public function callback(string $input, int $index): array
-=======
-    public function callback($input, $index)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->processCallback($input, $index, \readline_info());
     }

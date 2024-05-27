@@ -135,22 +135,14 @@ class Swift_Encoder_QpEncoder implements Swift_Encoder
 
     protected function getSafeMapShareId()
     {
-<<<<<<< HEAD
         return static::class;
-=======
-        return get_class($this);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     protected function initSafeMap()
     {
         foreach (array_merge(
             [0x09, 0x20], range(0x21, 0x3C), range(0x3E, 0x7E)) as $byte) {
-<<<<<<< HEAD
             $this->safeMap[$byte] = \chr($byte);
-=======
-            $this->safeMap[$byte] = chr($byte);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -289,11 +281,7 @@ class Swift_Encoder_QpEncoder implements Swift_Encoder
         $string = str_replace(["\t=0D=0A", ' =0D=0A', '=0D=0A'],
             ["=09\r\n", "=20\r\n", "\r\n"], $string
             );
-<<<<<<< HEAD
         switch ($end = \ord(substr($string, -1))) {
-=======
-        switch ($end = ord(substr($string, -1))) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             case 0x09:
             case 0x20:
                 $string = substr_replace($string, self::$qpMap[$end], -1);

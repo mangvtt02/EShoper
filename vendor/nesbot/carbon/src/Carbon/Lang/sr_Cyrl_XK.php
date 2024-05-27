@@ -8,7 +8,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
 use Symfony\Component\Translation\PluralizationRules;
 
@@ -20,8 +19,6 @@ if (class_exists(PluralizationRules::class)) {
 }
 // @codeCoverageIgnoreEnd
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 return array_replace_recursive(require __DIR__.'/sr_Cyrl_BA.php', [
     'weekdays' => ['недеља', 'понедељак', 'уторак', 'среда', 'четвртак', 'петак', 'субота'],
 ]);

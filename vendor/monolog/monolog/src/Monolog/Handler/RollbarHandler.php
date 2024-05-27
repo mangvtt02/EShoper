@@ -38,10 +38,7 @@ class RollbarHandler extends AbstractProcessingHandler
      */
     protected $rollbarLogger;
 
-<<<<<<< HEAD
     /** @var string[] */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     protected $levelMap = [
         Logger::DEBUG     => 'debug',
         Logger::INFO      => 'info',
@@ -60,19 +57,11 @@ class RollbarHandler extends AbstractProcessingHandler
      */
     private $hasRecords = false;
 
-<<<<<<< HEAD
     /** @var bool */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     protected $initialized = false;
 
     /**
      * @param RollbarLogger $rollbarLogger RollbarLogger object constructed with valid token
-<<<<<<< HEAD
-=======
-     * @param string|int    $level         The minimum logging level at which this handler will be triggered
-     * @param bool          $bubble        Whether the messages that are handled can bubble up the stack or not
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct(RollbarLogger $rollbarLogger, $level = Logger::ERROR, bool $bubble = true)
     {
@@ -82,11 +71,7 @@ class RollbarHandler extends AbstractProcessingHandler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function write(array $record): void
     {
@@ -112,10 +97,7 @@ class RollbarHandler extends AbstractProcessingHandler
             $toLog = $record['message'];
         }
 
-<<<<<<< HEAD
         // @phpstan-ignore-next-line
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->rollbarLogger->log($context['level'], $toLog, $context);
 
         $this->hasRecords = true;
@@ -130,11 +112,7 @@ class RollbarHandler extends AbstractProcessingHandler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function close(): void
     {
@@ -142,11 +120,7 @@ class RollbarHandler extends AbstractProcessingHandler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function reset()
     {

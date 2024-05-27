@@ -14,7 +14,6 @@ namespace League\CommonMark\Util;
 interface ConfigurationInterface
 {
     /**
-<<<<<<< HEAD
      * @internal
      *
      * @deprecated
@@ -22,8 +21,6 @@ interface ConfigurationInterface
     public const MISSING = '833f2700-af8d-49d4-9171-4b5f12d3bfbc';
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Merge an existing array into the current configuration
      *
      * @param array<string, mixed> $config

@@ -32,11 +32,7 @@ final class FencedCodeParser implements BlockParserInterface
         }
 
         $indent = $cursor->getIndent();
-<<<<<<< HEAD
         $fence = $cursor->match('/^[ \t]*(?:`{3,}(?!.*`)|~{3,})/');
-=======
-        $fence = $cursor->match('/^[ \t]*(?:`{3,}(?!.*`)|^~{3,})/');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($fence === null) {
             return false;
         }

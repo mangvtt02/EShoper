@@ -2,7 +2,6 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-<<<<<<< HEAD
 ## [7.0.17] - 2024-03-02
 
 ### Changed
@@ -43,27 +42,17 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Support for Xdebug 3
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ## [7.0.10] - 2019-11-20
 
 ### Fixed
 
-<<<<<<< HEAD
 * [#710](https://github.com/sebastianbergmann/php-code-coverage/pull/710): Code Coverage does not work in PhpStorm
-=======
-* Fixed [#710](https://github.com/sebastianbergmann/php-code-coverage/pull/710): Code Coverage does not work in PhpStorm
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [7.0.9] - 2019-11-20
 
 ### Changed
 
-<<<<<<< HEAD
 * [#709](https://github.com/sebastianbergmann/php-code-coverage/pull/709): Prioritize PCOV over Xdebug
-=======
-* Implemented [#709](https://github.com/sebastianbergmann/php-code-coverage/pull/709): Prioritize PCOV over Xdebug
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [7.0.8] - 2019-09-17
 
@@ -87,31 +76,19 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Fixed
 
-<<<<<<< HEAD
 * [#681](https://github.com/sebastianbergmann/php-code-coverage/pull/681): `use function` statements are not ignored
-=======
-* Fixed [#681](https://github.com/sebastianbergmann/php-code-coverage/pull/681): `use function` statements are not ignored
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [7.0.4] - 2019-05-29
 
 ### Fixed
 
-<<<<<<< HEAD
 * [#682](https://github.com/sebastianbergmann/php-code-coverage/pull/682): Code that is not executed is reported as being executed when using PCOV
-=======
-* Fixed [#682](https://github.com/sebastianbergmann/php-code-coverage/pull/682): Code that is not executed is reported as being executed when using PCOV
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [7.0.3] - 2019-02-26
 
 ### Fixed
 
-<<<<<<< HEAD
 * [#671](https://github.com/sebastianbergmann/php-code-coverage/issues/671): `TypeError` when directory name is a number
-=======
-* Fixed [#671](https://github.com/sebastianbergmann/php-code-coverage/issues/671): `TypeError` when directory name is a number
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [7.0.2] - 2019-02-15
 
@@ -121,21 +98,13 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Fixed
 
-<<<<<<< HEAD
 * [#667](https://github.com/sebastianbergmann/php-code-coverage/pull/667): `TypeError` in PHP reporter
-=======
-* Fixed [#667](https://github.com/sebastianbergmann/php-code-coverage/pull/667): `TypeError` in PHP reporter
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [7.0.1] - 2019-02-01
 
 ### Fixed
 
-<<<<<<< HEAD
 * [#664](https://github.com/sebastianbergmann/php-code-coverage/issues/664): `TypeError` when whitelisted file does not exist
-=======
-* Fixed [#664](https://github.com/sebastianbergmann/php-code-coverage/issues/664): `TypeError` when whitelisted file does not exist
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [7.0.0] - 2019-02-01
 
@@ -145,13 +114,8 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Fixed
 
-<<<<<<< HEAD
 * [#654](https://github.com/sebastianbergmann/php-code-coverage/issues/654): HTML report fails to load assets
 * [#655](https://github.com/sebastianbergmann/php-code-coverage/issues/655): Popin pops in outside of screen
-=======
-* Fixed [#654](https://github.com/sebastianbergmann/php-code-coverage/issues/654): HTML report fails to load assets
-* Fixed [#655](https://github.com/sebastianbergmann/php-code-coverage/issues/655): Popin pops in outside of screen
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ### Removed
 
@@ -161,11 +125,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Fixed
 
-<<<<<<< HEAD
 * [#650](https://github.com/sebastianbergmann/php-code-coverage/issues/650): Wasted screen space in HTML code coverage report
-=======
-* Fixed [#650](https://github.com/sebastianbergmann/php-code-coverage/issues/650): Wasted screen space in HTML code coverage report
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [6.1.3] - 2018-10-23
 
@@ -177,11 +137,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 ### Fixed
 
-<<<<<<< HEAD
 * [#645](https://github.com/sebastianbergmann/php-code-coverage/pull/645): Crash that can occur when php-token-stream parses invalid files
-=======
-* Fixed [#645](https://github.com/sebastianbergmann/php-code-coverage/pull/645): Crash that can occur when php-token-stream parses invalid files
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## [6.1.1] - 2018-10-18
 
@@ -196,7 +152,6 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 * Class names are now abbreviated (unqualified name shown, fully qualified name shown on hover) in the file view of the HTML report
 * Update HTML report to Bootstrap 4
 
-<<<<<<< HEAD
 [7.0.17]: https://github.com/sebastianbergmann/php-code-coverage/compare/7.0.16...7.0.17
 [7.0.16]: https://github.com/sebastianbergmann/php-code-coverage/compare/7.0.15...7.0.16
 [7.0.15]: https://github.com/sebastianbergmann/php-code-coverage/compare/7.0.14...7.0.15
@@ -204,8 +159,6 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 [7.0.13]: https://github.com/sebastianbergmann/php-code-coverage/compare/7.0.12...7.0.13
 [7.0.12]: https://github.com/sebastianbergmann/php-code-coverage/compare/7.0.11...7.0.12
 [7.0.11]: https://github.com/sebastianbergmann/php-code-coverage/compare/7.0.10...7.0.11
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 [7.0.10]: https://github.com/sebastianbergmann/php-code-coverage/compare/7.0.9...7.0.10
 [7.0.9]: https://github.com/sebastianbergmann/php-code-coverage/compare/7.0.8...7.0.9
 [7.0.8]: https://github.com/sebastianbergmann/php-code-coverage/compare/7.0.7...7.0.8

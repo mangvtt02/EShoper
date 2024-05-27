@@ -6,30 +6,19 @@
 
 namespace Whoops\Exception;
 
-<<<<<<< HEAD
 use Whoops\Inspector\InspectorInterface;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 class Formatter
 {
     /**
      * Returns all basic information about the exception in a simple array
      * for further convertion to other languages
-<<<<<<< HEAD
      * @param  InspectorInterface $inspector
      * @param  bool               $shouldAddTrace
      * @param  array<callable>    $frameFilters
      * @return array
      */
     public static function formatExceptionAsDataArray(InspectorInterface $inspector, $shouldAddTrace, array $frameFilters = [])
-=======
-     * @param  Inspector $inspector
-     * @param  bool      $shouldAddTrace
-     * @return array
-     */
-    public static function formatExceptionAsDataArray(Inspector $inspector, $shouldAddTrace)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $exception = $inspector->getException();
         $response = [
@@ -41,11 +30,7 @@ class Formatter
         ];
 
         if ($shouldAddTrace) {
-<<<<<<< HEAD
             $frames    = $inspector->getFrames($frameFilters);
-=======
-            $frames    = $inspector->getFrames();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $frameData = [];
 
             foreach ($frames as $frame) {
@@ -65,11 +50,7 @@ class Formatter
         return $response;
     }
 
-<<<<<<< HEAD
     public static function formatExceptionPlain(InspectorInterface $inspector)
-=======
-    public static function formatExceptionPlain(Inspector $inspector)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $message = $inspector->getException()->getMessage();
         $frames = $inspector->getFrames();

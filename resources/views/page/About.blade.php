@@ -46,12 +46,7 @@
                                             </div>
                                             @foreach ($about as $item)
                                                 <div class="introduction_content">
-<<<<<<< HEAD
                                                 <img src="assets/images/about/{{$item->image}}" alt="{{$item->image}}">
-=======
-                                                <img src="assets\images\1121.jpg">
-                                                <img  style="display: none" src="assets/images/about/{{$item->image}}" alt="{{$item->image}}">
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                                                     <div class="introduction_description">
                                                         {!!$item->content!!}
                                                     </div>

@@ -55,11 +55,7 @@ class ExceptionHandler
     public function __construct(bool $debug = true, string $charset = null, $fileLinkFormat = null)
     {
         $this->debug = $debug;
-<<<<<<< HEAD
         $this->charset = $charset ?: \ini_get('default_charset') ?: 'UTF-8';
-=======
-        $this->charset = $charset ?: ini_get('default_charset') ?: 'UTF-8';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->fileLinkFormat = $fileLinkFormat;
     }
 
@@ -394,11 +390,7 @@ EOF;
     private function formatPath(string $path, int $line): string
     {
         $file = $this->escapeHtml(preg_match('#[^/\\\\]*+$#', $path, $file) ? $file[0] : $path);
-<<<<<<< HEAD
         $fmt = $this->fileLinkFormat ?: \ini_get('xdebug.file_link_format') ?: get_cfg_var('xdebug.file_link_format');
-=======
-        $fmt = $this->fileLinkFormat ?: ini_get('xdebug.file_link_format') ?: get_cfg_var('xdebug.file_link_format');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if (!$fmt) {
             return sprintf('<span class="block trace-file-path">in <span title="%s%3$s"><strong>%s</strong>%s</span></span>', $this->escapeHtml($path), $file, 0 < $line ? ' line '.$line : '');

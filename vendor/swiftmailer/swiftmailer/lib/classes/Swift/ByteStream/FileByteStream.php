@@ -81,11 +81,7 @@ class Swift_ByteStream_FileByteStream extends Swift_ByteStream_AbstractFilterabl
 
             // If we read one byte after reaching the end of the file
             // feof() will return false and an empty string is returned
-<<<<<<< HEAD
             if ((false === $bytes || '' === $bytes) && feof($fp)) {
-=======
-            if ('' === $bytes && feof($fp)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $this->resetReadHandle();
 
                 return false;
@@ -149,13 +145,7 @@ class Swift_ByteStream_FileByteStream extends Swift_ByteStream_AbstractFilterabl
     {
         if (!isset($this->writer)) {
             if (!$this->writer = fopen($this->path, $this->mode)) {
-<<<<<<< HEAD
                 throw new Swift_IoException('Unable to open file for writing ['.$this->path.']');
-=======
-                throw new Swift_IoException(
-                    'Unable to open file for writing ['.$this->path.']'
-                );
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
 
@@ -202,11 +192,7 @@ class Swift_ByteStream_FileByteStream extends Swift_ByteStream_AbstractFilterabl
     {
         if ($tmpFile = fopen('php://temp/maxmemory:4096', 'w+b')) {
             /* We have opened a php:// Stream Should work without problem */
-<<<<<<< HEAD
         } elseif (\function_exists('sys_get_temp_dir') && is_writable(sys_get_temp_dir()) && ($tmpFile = tmpfile())) {
-=======
-        } elseif (function_exists('sys_get_temp_dir') && is_writable(sys_get_temp_dir()) && ($tmpFile = tmpfile())) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             /* We have opened a tmpfile */
         } else {
             throw new Swift_IoException('Unable to copy the file to make it seekable, sys_temp_dir is not writable, php://memory not available');

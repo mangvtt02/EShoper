@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <p align="center"><img src="/art/logo.svg" alt="Logo Laravel Tinker"></p>
 
 <p align="center">
@@ -6,15 +5,6 @@
 <a href="https://packagist.org/packages/laravel/tinker"><img src="https://img.shields.io/packagist/dt/laravel/tinker" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/laravel/tinker"><img src="https://img.shields.io/packagist/v/laravel/tinker" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/tinker"><img src="https://img.shields.io/packagist/l/laravel/tinker" alt="License"></a>
-=======
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-tinker.svg"></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/tinker"><img src="https://travis-ci.org/laravel/tinker.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/tinker"><img src="https://poser.pugx.org/laravel/tinker/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/tinker"><img src="https://poser.pugx.org/laravel/tinker/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/tinker"><img src="https://poser.pugx.org/laravel/tinker/license.svg" alt="License"></a>
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 </p>
 
 ## Introduction

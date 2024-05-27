@@ -20,7 +20,6 @@ namespace Monolog\Formatter;
 class ScalarFormatter extends NormalizerFormatter
 {
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
      *
      * @phpstan-return array<string, scalar|null> $record
@@ -38,32 +37,12 @@ class ScalarFormatter extends NormalizerFormatter
     /**
      * @param  mixed                      $value
      * @return scalar|null
-=======
-     * {@inheritdoc}
-     */
-    public function format(array $record): array
-    {
-        foreach ($record as $key => $value) {
-            $record[$key] = $this->normalizeValue($value);
-        }
-
-        return $record;
-    }
-
-    /**
-     * @param  mixed $value
-     * @return mixed
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function normalizeValue($value)
     {
         $normalized = $this->normalize($value);
 
-<<<<<<< HEAD
         if (is_array($normalized)) {
-=======
-        if (is_array($normalized) || is_object($normalized)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $this->toJson($normalized, true);
         }
 

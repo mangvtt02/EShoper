@@ -31,11 +31,7 @@ class Swift_Signers_OpenDKIMSigner extends Swift_Signers_DKIMSigner
 
     public function __construct($privateKey, $domainName, $selector)
     {
-<<<<<<< HEAD
         if (!\extension_loaded('opendkim')) {
-=======
-        if (!extension_loaded('opendkim')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new Swift_SwiftException('php-opendkim extension not found');
         }
 
@@ -48,11 +44,7 @@ class Swift_Signers_OpenDKIMSigner extends Swift_Signers_DKIMSigner
     {
         $header = new Swift_Mime_Headers_OpenDKIMHeader('DKIM-Signature');
         $headerVal = $this->dkimHandler->getSignatureHeader();
-<<<<<<< HEAD
         if (false === $headerVal || \is_int($headerVal)) {
-=======
-        if (false === $headerVal || is_int($headerVal)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new Swift_SwiftException('OpenDKIM Error: '.$this->dkimHandler->getError());
         }
         $header->setValue($headerVal);
@@ -83,11 +75,7 @@ class Swift_Signers_OpenDKIMSigner extends Swift_Signers_DKIMSigner
         $listHeaders = $headers->listAll();
         foreach ($listHeaders as $hName) {
             // Check if we need to ignore Header
-<<<<<<< HEAD
             if (!isset($this->ignoredHeaders[strtolower($hName ?? '')])) {
-=======
-            if (!isset($this->ignoredHeaders[strtolower($hName)])) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $tmp = $headers->getAll($hName);
                 if ($headers->has($hName)) {
                     foreach ($tmp as $header) {
@@ -188,11 +176,7 @@ class Swift_Signers_OpenDKIMSigner extends Swift_Signers_DKIMSigner
             }
         }
         $this->dropFirstLF = false;
-<<<<<<< HEAD
         if (\strlen($string)) {
-=======
-        if (strlen($string)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->dkimHandler->body($string);
         }
     }

@@ -39,11 +39,7 @@ class TextDescriptor extends Descriptor
             $default = '';
         }
 
-<<<<<<< HEAD
         $totalWidth = $options['total_width'] ?? Helper::strlen($argument->getName());
-=======
-        $totalWidth = isset($options['total_width']) ? $options['total_width'] : Helper::strlen($argument->getName());
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $spacingWidth = $totalWidth - \strlen($argument->getName());
 
         $this->writeText(sprintf('  <info>%s</info>  %s%s%s',
@@ -75,11 +71,7 @@ class TextDescriptor extends Descriptor
             }
         }
 
-<<<<<<< HEAD
         $totalWidth = $options['total_width'] ?? $this->calculateTotalWidthForOptions([$option]);
-=======
-        $totalWidth = isset($options['total_width']) ? $options['total_width'] : $this->calculateTotalWidthForOptions([$option]);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $synopsis = sprintf('%s%s',
             $option->getShortcut() ? sprintf('-%s, ', $option->getShortcut()) : '    ',
             sprintf('--%s%s', $option->getName(), $value)
@@ -125,11 +117,7 @@ class TextDescriptor extends Descriptor
 
             $this->writeText('<comment>Options:</comment>', $options);
             foreach ($definition->getOptions() as $option) {
-<<<<<<< HEAD
                 if (\strlen($option->getShortcut() ?? '') > 1) {
-=======
-                if (\strlen($option->getShortcut()) > 1) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $laterOptions[] = $option;
                     continue;
                 }
@@ -188,11 +176,7 @@ class TextDescriptor extends Descriptor
      */
     protected function describeApplication(Application $application, array $options = [])
     {
-<<<<<<< HEAD
         $describedNamespace = $options['namespace'] ?? null;
-=======
-        $describedNamespace = isset($options['namespace']) ? $options['namespace'] : null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $description = new ApplicationDescription($application, $describedNamespace);
 
         if (isset($options['raw_text']) && $options['raw_text']) {
@@ -314,11 +298,7 @@ class TextDescriptor extends Descriptor
     }
 
     /**
-<<<<<<< HEAD
      * @param array<Command|string> $commands
-=======
-     * @param (Command|string)[] $commands
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private function getColumnWidth(array $commands): int
     {

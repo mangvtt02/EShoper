@@ -63,11 +63,7 @@ final class RegexHelper
     public const REGEX_WHITESPACE_CHAR = '/^[ \t\n\x0b\x0c\x0d]/';
     public const REGEX_WHITESPACE = '/[ \t\n\x0b\x0c\x0d]+/';
     public const REGEX_UNICODE_WHITESPACE_CHAR = '/^\pZ|\s/u';
-<<<<<<< HEAD
     public const REGEX_THEMATIC_BREAK = '/^(?:\*[ \t]*){3,}$|^(?:_[ \t]*){3,}$|^(?:-[ \t]*){3,}$/';
-=======
-    public const REGEX_THEMATIC_BREAK = '/^(?:(?:\*[ \t]*){3,}|(?:_[ \t]*){3,}|(?:-[ \t]*){3,})[ \t]*$/';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public const REGEX_LINK_DESTINATION_BRACES = '/^(?:<(?:[^<>\\n\\\\\\x00]|\\\\.)*>)/';
 
     public static function isEscapable(string $character): bool
@@ -106,7 +102,6 @@ final class RegexHelper
      * @param int    $offset
      *
      * @return array<string>|null
-<<<<<<< HEAD
      *
      * @deprecated in 1.6; use matchFirst() instead
      */
@@ -114,11 +109,6 @@ final class RegexHelper
     {
         @\trigger_error('RegexHelper::matchAll() is deprecated in league/commonmark 1.6 and will be removed in 2.0; use RegexHelper::matchFirst() instead', \E_USER_DEPRECATED);
 
-=======
-     */
-    public static function matchAll(string $pattern, string $subject, int $offset = 0): ?array
-    {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($offset !== 0) {
             $subject = \substr($subject, $offset);
         }
@@ -140,7 +130,6 @@ final class RegexHelper
     }
 
     /**
-<<<<<<< HEAD
      * Functional wrapper around preg_match_all which only returns the first set of matches
      *
      * @return string[]|null
@@ -163,8 +152,6 @@ final class RegexHelper
     }
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Replace backslash escapes with literal characters
      *
      * @param string $string

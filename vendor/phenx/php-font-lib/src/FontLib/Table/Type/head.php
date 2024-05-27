@@ -1,11 +1,7 @@
 <?php
 /**
  * @package php-font-lib
-<<<<<<< HEAD
  * @link    https://github.com/dompdf/php-font-lib
-=======
- * @link    https://github.com/PhenX/php-font-lib
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
@@ -47,12 +43,9 @@ class head extends Table {
       throw new Exception("Incorrect magic number (" . dechex($this->data["magicNumber"]) . ")");
     }
   }
-<<<<<<< HEAD
 
   function _encode() {
     $this->data["checkSumAdjustment"] = 0;
     return parent::_encode();
   }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

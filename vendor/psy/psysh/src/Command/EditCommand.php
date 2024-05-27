@@ -3,11 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
-<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
-=======
- * (c) 2012-2020 Justin Hileman
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -78,19 +74,12 @@ class EditCommand extends Command implements ContextAware
      * @param InputInterface  $input
      * @param OutputInterface $output
      *
-<<<<<<< HEAD
      * @return int 0 if everything went fine, or an exit code
      *
      * @throws \InvalidArgumentException when both exec and no-exec flags are given or if a given variable is not found in the current context
      * @throws \UnexpectedValueException if file_get_contents on the edited file returns false instead of a string
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
-=======
-     * @throws \InvalidArgumentException when both exec and no-exec flags are given or if a given variable is not found in the current context
-     * @throws \UnexpectedValueException if file_get_contents on the edited file returns false instead of a string
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if ($input->getOption('exec') &&
             $input->getOption('no-exec')) {
@@ -125,15 +114,8 @@ class EditCommand extends Command implements ContextAware
      * @param bool        $execOption
      * @param bool        $noExecOption
      * @param string|null $filePath
-<<<<<<< HEAD
      */
     private function shouldExecuteFile(bool $execOption, bool $noExecOption, ?string $filePath = null): bool
-=======
-     *
-     * @return bool
-     */
-    private function shouldExecuteFile($execOption, $noExecOption, $filePath)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if ($execOption) {
             return true;
@@ -154,19 +136,11 @@ class EditCommand extends Command implements ContextAware
      *
      * @throws \InvalidArgumentException If the variable is not found in the current context
      */
-<<<<<<< HEAD
     private function extractFilePath(?string $fileArgument = null)
     {
         // If the file argument was a variable, get it from the context
         if ($fileArgument !== null &&
             $fileArgument !== '' &&
-=======
-    private function extractFilePath($fileArgument)
-    {
-        // If the file argument was a variable, get it from the context
-        if ($fileArgument !== null &&
-            \strlen($fileArgument) > 0 &&
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $fileArgument[0] === '$') {
             $fileArgument = $this->context->get(\preg_replace('/^\$/', '', $fileArgument));
         }
@@ -178,27 +152,15 @@ class EditCommand extends Command implements ContextAware
      * @param string $filePath
      * @param bool   $shouldRemoveFile
      *
-<<<<<<< HEAD
      * @throws \UnexpectedValueException if file_get_contents on $filePath returns false instead of a string
      */
     private function editFile(string $filePath, bool $shouldRemoveFile): string
-=======
-     * @return string
-     *
-     * @throws \UnexpectedValueException if file_get_contents on $filePath returns false instead of a string
-     */
-    private function editFile($filePath, $shouldRemoveFile)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $escapedFilePath = \escapeshellarg($filePath);
         $editor = (isset($_SERVER['EDITOR']) && $_SERVER['EDITOR']) ? $_SERVER['EDITOR'] : 'nano';
 
         $pipes = [];
-<<<<<<< HEAD
         $proc = \proc_open("{$editor} {$escapedFilePath}", [\STDIN, \STDOUT, \STDERR], $pipes);
-=======
-        $proc = \proc_open("{$editor} {$escapedFilePath}", [STDIN, STDOUT, STDERR], $pipes);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         \proc_close($proc);
 
         $editedContent = @\file_get_contents($filePath);

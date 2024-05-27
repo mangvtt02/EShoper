@@ -59,7 +59,6 @@ class MessagePart extends DataPart
     {
         return $this->message->toIterable();
     }
-<<<<<<< HEAD
 
     /**
      * @return array
@@ -73,6 +72,4 @@ class MessagePart extends DataPart
     {
         $this->__construct($this->message);
     }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

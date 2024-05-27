@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function get_resource_type;
 use function is_array;
 use function is_bool;
@@ -26,8 +25,6 @@ use function sprintf;
 use PHPUnit\Framework\Exception;
 use TypeError;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * Constraint that asserts that the value it is evaluated for is of a
  * specified type.
@@ -124,22 +121,13 @@ final class IsType extends Constraint
     private $type;
 
     /**
-<<<<<<< HEAD
      * @throws Exception
-=======
-     * @throws \PHPUnit\Framework\Exception
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct(string $type)
     {
         if (!isset(self::KNOWN_TYPES[$type])) {
-<<<<<<< HEAD
             throw new Exception(
                 sprintf(
-=======
-            throw new \PHPUnit\Framework\Exception(
-                \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     'Type specified for PHPUnit\Framework\Constraint\IsType <%s> ' .
                     'is not a valid type.',
                     $type
@@ -155,11 +143,7 @@ final class IsType extends Constraint
      */
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'is of type "%s"',
             $this->type
         );
@@ -175,24 +159,15 @@ final class IsType extends Constraint
     {
         switch ($this->type) {
             case 'numeric':
-<<<<<<< HEAD
                 return is_numeric($other);
 
             case 'integer':
             case 'int':
                 return is_int($other);
-=======
-                return \is_numeric($other);
-
-            case 'integer':
-            case 'int':
-                return \is_int($other);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             case 'double':
             case 'float':
             case 'real':
-<<<<<<< HEAD
                 return is_float($other);
 
             case 'string':
@@ -201,22 +176,11 @@ final class IsType extends Constraint
             case 'boolean':
             case 'bool':
                 return is_bool($other);
-=======
-                return \is_float($other);
-
-            case 'string':
-                return \is_string($other);
-
-            case 'boolean':
-            case 'bool':
-                return \is_bool($other);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             case 'null':
                 return null === $other;
 
             case 'array':
-<<<<<<< HEAD
                 return is_array($other);
 
             case 'object':
@@ -224,40 +188,21 @@ final class IsType extends Constraint
 
             case 'resource':
                 if (is_resource($other)) {
-=======
-                return \is_array($other);
-
-            case 'object':
-                return \is_object($other);
-
-            case 'resource':
-                if (\is_resource($other)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     return true;
                 }
 
                 try {
-<<<<<<< HEAD
                     $resource = @get_resource_type($other);
 
                     if (is_string($resource)) {
                         return true;
                     }
                 } catch (TypeError $e) {
-=======
-                    $resource = @\get_resource_type($other);
-
-                    if (\is_string($resource)) {
-                        return true;
-                    }
-                } catch (\TypeError $e) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
 
                 return false;
 
             case 'scalar':
-<<<<<<< HEAD
                 return is_scalar($other);
 
             case 'callable':
@@ -265,15 +210,6 @@ final class IsType extends Constraint
 
             case 'iterable':
                 return is_iterable($other);
-=======
-                return \is_scalar($other);
-
-            case 'callable':
-                return \is_callable($other);
-
-            case 'iterable':
-                return \is_iterable($other);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 }

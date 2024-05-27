@@ -13,11 +13,7 @@ use PHPUnit\Framework\Exception;
 
 class Error extends Exception
 {
-<<<<<<< HEAD
     public function __construct(string $message, int $code, string $file, int $line, ?\Exception $previous = null)
-=======
-    public function __construct(string $message, int $code, string $file, int $line, \Exception $previous = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         parent::__construct($message, $code, $previous);
 

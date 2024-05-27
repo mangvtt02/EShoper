@@ -69,7 +69,6 @@ final class Php80
     public static function preg_last_error_msg(): string
     {
         switch (preg_last_error()) {
-<<<<<<< HEAD
             case \PREG_INTERNAL_ERROR:
                 return 'Internal error';
             case \PREG_BAD_UTF8_ERROR:
@@ -83,21 +82,6 @@ final class Php80
             case \PREG_JIT_STACKLIMIT_ERROR:
                 return 'JIT stack limit exhausted';
             case \PREG_NO_ERROR:
-=======
-            case PREG_INTERNAL_ERROR:
-                return 'Internal error';
-            case PREG_BAD_UTF8_ERROR:
-                return 'Malformed UTF-8 characters, possibly incorrectly encoded';
-            case PREG_BAD_UTF8_OFFSET_ERROR:
-                return 'The offset did not correspond to the beginning of a valid UTF-8 code point';
-            case PREG_BACKTRACK_LIMIT_ERROR:
-                return 'Backtrack limit exhausted';
-            case PREG_RECURSION_LIMIT_ERROR:
-                return 'Recursion limit exhausted';
-            case PREG_JIT_STACKLIMIT_ERROR:
-                return 'JIT stack limit exhausted';
-            case PREG_NO_ERROR:
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 return 'No error';
             default:
                 return 'Unknown error';
@@ -111,16 +95,11 @@ final class Php80
 
     public static function str_starts_with(string $haystack, string $needle): bool
     {
-<<<<<<< HEAD
         return 0 === strncmp($haystack, $needle, \strlen($needle));
-=======
-        return 0 === \strncmp($haystack, $needle, \strlen($needle));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public static function str_ends_with(string $haystack, string $needle): bool
     {
-<<<<<<< HEAD
         if ('' === $needle || $needle === $haystack) {
             return true;
         }
@@ -132,8 +111,5 @@ final class Php80
         $needleLength = \strlen($needle);
 
         return $needleLength <= \strlen($haystack) && 0 === substr_compare($haystack, $needle, -$needleLength);
-=======
-        return '' === $needle || ('' !== $haystack && 0 === \substr_compare($haystack, $needle, -\strlen($needle)));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

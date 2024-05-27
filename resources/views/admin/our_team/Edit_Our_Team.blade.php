@@ -34,10 +34,6 @@
     <div class="col-sm-10">
       <input type="text" class="form-control" name="name" id="name" value="{{$our_team->name}}">
     </div>
-<<<<<<< HEAD
-=======
-    <label for="name" class="col-sm-2 col-form-label">Tên</label>
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   </div>
   <div class="form-group row">
     <label for="position" class="col-sm-2 col-form-label">Chức vụ</label>

@@ -99,11 +99,7 @@ class Inline extends AbstractRenderer
 
         $node = $frame->get_node();
         $id = $node->getAttribute("id");
-<<<<<<< HEAD
         if (strlen($id) > 0) {
-=======
-        if (strlen($id) > 0)  {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->_canvas->add_named_dest($id);
         }
 
@@ -128,17 +124,12 @@ class Inline extends AbstractRenderer
         }
     }
 
-<<<<<<< HEAD
     protected function get_child_size(Frame $frame, bool $do_debug_layout_line): array
     {
-=======
-    protected function get_child_size(Frame $frame, bool $do_debug_layout_line): array {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $w = 0.0;
         $h = 0.0;
 
         foreach ($frame->get_children() as $child) {
-<<<<<<< HEAD
             if ($child->get_node()->nodeValue === " " && $child->get_prev_sibling() && !$child->get_next_sibling()) {
                 break;
             }
@@ -164,41 +155,10 @@ class Inline extends AbstractRenderer
 
                 if ($this->_dompdf->getOptions()->getDebugLayoutPaddingBox()) {
                     $this->_debug_layout($child->get_padding_box(), "blue", [0.5, 0.5]);
-=======
-            if ($child->get_node()->nodeValue === ' ' && $child->get_prev_sibling() && !$child->get_next_sibling()) {
-                break;
-            }
-            list($child_x, $child_y, $child_w, $child_h) = $child->get_padding_box();
-
-            $child_h2 = 0.0;
-
-            if ($child_w === 'auto') {
-                list($child_w, $child_h2) = $this->get_child_size($child, $do_debug_layout_line);
-                $w += (float)$child_w;
-            } else {
-                $w += (float)$child_w;
-            }
-
-            if ($child_h === 'auto') {
-                list($child_w, $child_h2) = $this->get_child_size($child, $do_debug_layout_line);
-            }
-
-            $h = max($h, (float)$child_h, (float)$child_h2);
-            if ($do_debug_layout_line) {
-                $debug_border_box = $child->get_border_box();
-                $this->_debug_layout([$debug_border_box['x'], $debug_border_box['y'], (float)$debug_border_box['w'], (float)$debug_border_box['h']], "blue");
-                if ($this->_dompdf->getOptions()->getDebugLayoutPaddingBox()) {
-                    $debug_padding_box = $child->get_padding_box();
-                    $this->_debug_layout([$debug_padding_box['x'], $debug_padding_box['y'], (float)$debug_padding_box['w'], (float)$debug_padding_box['h']], "blue", [0.5, 0.5]);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 }
             }
         }
 
         return [$w, $h];
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

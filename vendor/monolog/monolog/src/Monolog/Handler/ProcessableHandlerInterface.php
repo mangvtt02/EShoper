@@ -17,22 +17,15 @@ use Monolog\Processor\ProcessorInterface;
  * Interface to describe loggers that have processors
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
-<<<<<<< HEAD
  *
  * @phpstan-import-type Record from \Monolog\Logger
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 interface ProcessableHandlerInterface
 {
     /**
      * Adds a processor in the stack.
      *
-<<<<<<< HEAD
      * @psalm-param ProcessorInterface|callable(Record): Record $callback
-=======
-     * @psalm-param ProcessorInterface|callable(array): array $callback
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @param  ProcessorInterface|callable $callback
      * @return HandlerInterface            self
@@ -42,17 +35,10 @@ interface ProcessableHandlerInterface
     /**
      * Removes the processor on top of the stack and returns it.
      *
-<<<<<<< HEAD
      * @psalm-return ProcessorInterface|callable(Record): Record $callback
      *
      * @throws \LogicException             In case the processor stack is empty
      * @return callable|ProcessorInterface
-=======
-     * @psalm-return callable(array): array
-     *
-     * @throws \LogicException In case the processor stack is empty
-     * @return callable
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function popProcessor(): callable;
 }

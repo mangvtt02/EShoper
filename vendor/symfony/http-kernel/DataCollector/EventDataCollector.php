@@ -43,11 +43,7 @@ class EventDataCollector extends DataCollector implements LateDataCollectorInter
      *
      * @param \Throwable|null $exception
      */
-<<<<<<< HEAD
     public function collect(Request $request, Response $response/* , \Throwable $exception = null */)
-=======
-    public function collect(Request $request, Response $response/*, \Throwable $exception = null*/)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->currentRequest = $this->requestStack && $this->requestStack->getMasterRequest() !== $request ? $request : null;
         $this->data = [

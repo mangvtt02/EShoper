@@ -9,11 +9,8 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
-<<<<<<< HEAD
 use function call_user_func_array;
 use function func_get_args;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\MockObject\Rule\AnyInvokedCount;
 
 /**
@@ -25,15 +22,9 @@ trait Method
     {
         $expects = $this->expects(new AnyInvokedCount);
 
-<<<<<<< HEAD
         return call_user_func_array(
             [$expects, 'method'],
             func_get_args()
-=======
-        return \call_user_func_array(
-            [$expects, 'method'],
-            \func_get_args()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         );
     }
 }

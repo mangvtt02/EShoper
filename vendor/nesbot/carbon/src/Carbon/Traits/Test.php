@@ -8,7 +8,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
 namespace Carbon\Traits;
 
@@ -19,12 +18,6 @@ use DateTimeImmutable;
 use DateTimeInterface;
 use InvalidArgumentException;
 use Throwable;
-=======
-namespace Carbon\Traits;
-
-use Closure;
-use DateTimeImmutable;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 trait Test
 {
@@ -35,16 +28,11 @@ trait Test
     /**
      * A test Carbon instance to be returned when now instances are created.
      *
-<<<<<<< HEAD
      * @var Closure|static|null
-=======
-     * @var static
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected static $testNow;
 
     /**
-<<<<<<< HEAD
      * The timezone to resto to when clearing the time mock.
      *
      * @var string|null
@@ -52,8 +40,6 @@ trait Test
     protected static $testDefaultTimezone;
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Set a Carbon instance (real or mock) to be returned when a "now"
      * instance is created.  The provided instance will be returned
      * specifically under the following conditions:
@@ -65,18 +51,14 @@ trait Test
      * Note the timezone parameter was left out of the examples above and
      * has no affect as the mock value will be returned regardless of its value.
      *
-<<<<<<< HEAD
      * Only the moment is mocked with setTestNow(), the timezone will still be the one passed
      * as parameter of date_default_timezone_get() as a fallback (see setTestNowAndTimezone()).
      *
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * To clear the test instance call this method using the default
      * parameter of null.
      *
      * /!\ Use this method for unit tests only.
      *
-<<<<<<< HEAD
      * @param DateTimeInterface|Closure|static|string|false|null $testNow real or mock Carbon instance
      */
     public static function setTestNow($testNow = null)
@@ -128,17 +110,6 @@ trait Test
         if (!$testNow) {
             self::$testDefaultTimezone = null;
         }
-=======
-     * @param Closure|static|string|false|null $testNow real or mock Carbon instance
-     */
-    public static function setTestNow($testNow = null)
-    {
-        if ($testNow === false) {
-            $testNow = null;
-        }
-
-        static::$testNow = is_string($testNow) ? static::parse($testNow) : $testNow;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -148,7 +119,6 @@ trait Test
      *
      * /!\ Use this method for unit tests only.
      *
-<<<<<<< HEAD
      * @template T
      *
      * @param DateTimeInterface|Closure|static|string|false|null $testNow  real or mock Carbon instance
@@ -167,16 +137,6 @@ trait Test
         }
 
         return $result;
-=======
-     * @param Closure|static|string|false|null $testNow real or mock Carbon instance
-     * @param Closure|null $callback
-     */
-    public static function withTestNow($testNow = null, $callback = null)
-    {
-        static::setTestNow($testNow);
-        $callback();
-        static::setTestNow();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -202,30 +162,6 @@ trait Test
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Return the given timezone and set it to the test instance if not null.
-     * If null, get the timezone from the test instance and return it.
-     *
-     * @param string|\DateTimeZone    $tz
-     * @param \Carbon\CarbonInterface $testInstance
-     *
-     * @return string|\DateTimeZone
-     */
-    protected static function handleMockTimezone($tz, &$testInstance)
-    {
-        //shift the time according to the given time zone
-        if ($tz !== null && $tz !== static::getMockedTestNow($tz)->getTimezone()) {
-            $testInstance = $testInstance->setTimezone($tz);
-
-            return $tz;
-        }
-
-        return $testInstance->getTimezone();
-    }
-
-    /**
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Get the mocked date passed in setTestNow() and if it's a Closure, execute it.
      *
      * @param string|\DateTimeZone $tz
@@ -245,33 +181,20 @@ trait Test
         }
         /* @var \Carbon\CarbonImmutable|\Carbon\Carbon|null $testNow */
 
-<<<<<<< HEAD
         return $testNow instanceof CarbonInterface
             ? $testNow->avoidMutation()->tz($tz)
             : $testNow;
     }
 
     protected static function mockConstructorParameters(&$time, $tz)
-=======
-        return $testNow;
-    }
-
-    protected static function mockConstructorParameters(&$time, &$tz)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         /** @var \Carbon\CarbonImmutable|\Carbon\Carbon $testInstance */
         $testInstance = clone static::getMockedTestNow($tz);
 
-<<<<<<< HEAD
-=======
-        $tz = static::handleMockTimezone($tz, $testInstance);
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (static::hasRelativeKeywords($time)) {
             $testInstance = $testInstance->modify($time);
         }
 
-<<<<<<< HEAD
         $time = $testInstance instanceof self
             ? $testInstance->rawFormat(static::MOCK_DATETIME_FORMAT)
             : $testInstance->format(static::MOCK_DATETIME_FORMAT);
@@ -301,8 +224,5 @@ trait Test
                 $previous
             );
         }
-=======
-        $time = $testInstance instanceof self ? $testInstance->rawFormat(static::MOCK_DATETIME_FORMAT) : $testInstance->format(static::MOCK_DATETIME_FORMAT);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

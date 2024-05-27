@@ -26,11 +26,7 @@ class ElementNode extends AbstractNode
     private $namespace;
     private $element;
 
-<<<<<<< HEAD
     public function __construct(?string $namespace = null, ?string $element = null)
-=======
-    public function __construct(string $namespace = null, string $element = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->namespace = $namespace;
         $this->element = $element;
@@ -54,12 +50,6 @@ class ElementNode extends AbstractNode
         return new Specificity(0, 0, $this->element ? 1 : 0);
     }
 
-<<<<<<< HEAD
-=======
-    /**
-     * {@inheritdoc}
-     */
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __toString(): string
     {
         $element = $this->element ?: '*';

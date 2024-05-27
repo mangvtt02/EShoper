@@ -2,10 +2,7 @@ name: Run tests
 
 on:
   push:
-<<<<<<< HEAD
   pull_request:
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   schedule:
       - cron: '0 0 * * *'
 
@@ -15,11 +12,7 @@ jobs:
 
         strategy:
             matrix:
-<<<<<<< HEAD
                 php: [8.0, 7.4, 7.3, 7.2]
-=======
-                php: [7.4, 7.3, 7.2]
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 laravel: [6.*, 5.8.*, 5.7.*, 5.6.*, 5.5.*]
                 dependency-version: [prefer-lowest, prefer-stable]
                 os: [ubuntu-latest, windows-latest]
@@ -35,7 +28,6 @@ jobs:
                     - laravel: 5.5.*
                       testbench: 3.5.*
                 exclude:
-<<<<<<< HEAD
                     - laravel: 5.8.*
                       php: 8.0
                     - laravel: 5.7.*
@@ -44,8 +36,6 @@ jobs:
                       php: 8.0
                     - laravel: 5.5.*
                       php: 8.0
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     - laravel: 5.7.*
                       php: 7.4
                     - laravel: 5.6.*
@@ -57,7 +47,6 @@ jobs:
 
         steps:
             - name: Checkout code
-<<<<<<< HEAD
               uses: actions/checkout@v2
 
             - name: Setup PHP
@@ -65,15 +54,6 @@ jobs:
               with:
                   php-version: ${{ matrix.php }}
                   extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd, fileinfo
-=======
-              uses: actions/checkout@v1
-
-            - name: Setup PHP
-              uses: shivammathur/setup-php@v1
-              with:
-                  php-version: ${{ matrix.php }}
-                  extension-csv: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                   coverage: none
 
             - name: Install dependencies
@@ -86,11 +66,7 @@ jobs:
 
             - name: Send Slack notification
               uses: 8398a7/action-slack@v2
-<<<<<<< HEAD
               if: ${{ failure() && !! env.SLACK_WEBHOOK }}
-=======
-              if: failure()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
               with:
                   status: ${{ job.status }}
                   author_name: ${{ github.actor }}
@@ -112,17 +88,10 @@ jobs:
 
             -   name: Execute tests
                 run: yarn run jest
-<<<<<<< HEAD
 
             - name: Send Slack notification
               uses: 8398a7/action-slack@v2
               if: ${{ failure() && !! env.SLACK_WEBHOOK }}
-=======
-                
-            - name: Send Slack notification
-              uses: 8398a7/action-slack@v2
-              if: failure()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
               with:
                   status: ${{ job.status }}
                   author_name: ${{ github.actor }}

@@ -276,7 +276,6 @@ class Options
     private $pdflibLicense = "";
 
     /**
-<<<<<<< HEAD
      * HTTP context created with stream_context_create()
      * Will be used for file_get_contents
      *
@@ -287,8 +286,6 @@ class Options
     private $httpContext;
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param array $attributes
      */
     public function __construct(array $attributes = null)
@@ -369,11 +366,8 @@ class Options
                 $this->setPdfBackend($value);
             } elseif ($key === 'pdflibLicense' || $key === 'pdflib_license') {
                 $this->setPdflibLicense($value);
-<<<<<<< HEAD
             } elseif ($key === 'httpContext' || $key === 'http_context') {
                 $this->setHttpContext($value);
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
         return $this;
@@ -437,11 +431,8 @@ class Options
             return $this->getPdfBackend();
         } elseif ($key === 'pdflibLicense' || $key === 'pdflib_license') {
             return $this->getPdflibLicense();
-<<<<<<< HEAD
         } elseif ($key === 'httpContext' || $key === 'http_context') {
             return $this->getHttpContext();
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
         return null;
     }
@@ -658,15 +649,11 @@ class Options
      */
     public function setDefaultFont($defaultFont)
     {
-<<<<<<< HEAD
         if (!($defaultFont === null || trim($defaultFont) === "")) {
             $this->defaultFont = $defaultFont;
         } else {
             $this->defaultFont = "serif";
         }
-=======
-        $this->defaultFont = $defaultFont;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this;
     }
 
@@ -987,7 +974,6 @@ class Options
     {
         return $this->rootDir;
     }
-<<<<<<< HEAD
 
     /**
      * Sets the HTTP context
@@ -1011,6 +997,3 @@ class Options
         return $this->httpContext;
     }
 }
-=======
-}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

@@ -18,13 +18,8 @@ class RowProcessor
     private $row;
 
     /**
-<<<<<<< HEAD
      * @param  mixed  $data
      * @param  mixed  $row
-=======
-     * @param mixed $data
-     * @param mixed $row
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct($data, $row)
     {
@@ -35,13 +30,8 @@ class RowProcessor
     /**
      * Process DT RowId and Class value.
      *
-<<<<<<< HEAD
      * @param  string  $attribute
      * @param  string|callable  $template
-=======
-     * @param string          $attribute
-     * @param string|callable $template
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return $this
      */
     public function rowValue($attribute, $template)
@@ -60,13 +50,8 @@ class RowProcessor
     /**
      * Process DT Row Data and Attr.
      *
-<<<<<<< HEAD
      * @param  string  $attribute
      * @param  array  $template
-=======
-     * @param string $attribute
-     * @param array  $template
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return $this
      */
     public function rowData($attribute, array $template)

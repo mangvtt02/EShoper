@@ -20,11 +20,7 @@ class TinkerServiceProvider extends ServiceProvider implements DeferrableProvide
         $source = realpath($raw = __DIR__.'/../config/tinker.php') ?: $raw;
 
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
-<<<<<<< HEAD
             $this->publishes([$source => $this->app->configPath('tinker.php')]);
-=======
-            $this->publishes([$source => config_path('tinker.php')]);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } elseif ($this->app instanceof LumenApplication) {
             $this->app->configure('tinker');
         }

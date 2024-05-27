@@ -17,11 +17,6 @@ interface Swift_KeyCache_KeyCacheInputStream extends Swift_InputByteStream
 {
     /**
      * Set the KeyCache to wrap.
-<<<<<<< HEAD
-=======
-     *
-     * @param Swift_KeyCache $keyCache
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setKeyCache(Swift_KeyCache $keyCache);
 
@@ -41,11 +36,6 @@ interface Swift_KeyCache_KeyCacheInputStream extends Swift_InputByteStream
 
     /**
      * Specify a stream to write through for each write().
-<<<<<<< HEAD
-=======
-     *
-     * @param Swift_InputByteStream $is
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function setWriteThroughStream(Swift_InputByteStream $is);
 

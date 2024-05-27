@@ -3,11 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
-<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
-=======
- * (c) 2012-2020 Justin Hileman
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -22,10 +18,7 @@ use PhpParser\Node\Identifier;
 use PhpParser\Node\NullableType;
 use PhpParser\Node\Stmt\Function_;
 use PhpParser\Node\Stmt\Return_;
-<<<<<<< HEAD
 use PhpParser\Node\UnionType;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Psy\Exception\FatalErrorException;
 
 /**
@@ -39,7 +32,6 @@ class ReturnTypePass extends CodeCleanerPass
     const VOID_NULL_MESSAGE = 'A void function must not return a value (did you mean "return;" instead of "return null;"?)';
     const NULLABLE_VOID_MESSAGE = 'Void type cannot be nullable';
 
-<<<<<<< HEAD
     private $returnTypeStack = [];
 
     /**
@@ -49,25 +41,6 @@ class ReturnTypePass extends CodeCleanerPass
      */
     public function enterNode(Node $node)
     {
-=======
-    private $atLeastPhp71;
-    private $returnTypeStack = [];
-
-    public function __construct()
-    {
-        $this->atLeastPhp71 = \version_compare(PHP_VERSION, '7.1', '>=');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function enterNode(Node $node)
-    {
-        if (!$this->atLeastPhp71) {
-            return; // @codeCoverageIgnore
-        }
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($this->isFunctionNode($node)) {
             $this->returnTypeStack[] = $node->returnType;
 
@@ -99,57 +72,34 @@ class ReturnTypePass extends CodeCleanerPass
             }
 
             if ($msg !== null) {
-<<<<<<< HEAD
                 throw new FatalErrorException($msg, 0, \E_ERROR, null, $node->getStartLine());
-=======
-                throw new FatalErrorException($msg, 0, E_ERROR, null, $node->getLine());
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
     }
 
     /**
      * {@inheritdoc}
-<<<<<<< HEAD
      *
      * @return int|Node|Node[]|null Replacement node (or special return value)
      */
     public function leaveNode(Node $node)
     {
-=======
-     */
-    public function leaveNode(Node $node)
-    {
-        if (!$this->atLeastPhp71) {
-            return; // @codeCoverageIgnore
-        }
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (!empty($this->returnTypeStack) && $this->isFunctionNode($node)) {
             \array_pop($this->returnTypeStack);
         }
     }
 
-<<<<<<< HEAD
     private function isFunctionNode(Node $node): bool
-=======
-    private function isFunctionNode(Node $node)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $node instanceof Function_ || $node instanceof Closure;
     }
 
-<<<<<<< HEAD
     private function typeName(Node $node): string
     {
         if ($node instanceof UnionType) {
             return \implode('|', \array_map([$this, 'typeName'], $node->types));
         }
 
-=======
-    private function typeName(Node $node)
-    {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($node instanceof NullableType) {
             return \strtolower($node->type->name);
         }

@@ -64,22 +64,14 @@ final class EmphasisDelimiterProcessor implements DelimiterProcessorInterface, C
 
         // Calculate actual number of delimiters used from this closer
         if ($opener->getLength() >= 2 && $closer->getLength() >= 2) {
-<<<<<<< HEAD
             if ($this->enableStrong()) {
-=======
-            if ($this->config && $this->config->get('enable_strong', true)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 return 2;
             }
 
             return 0;
         }
 
-<<<<<<< HEAD
         if ($this->enableEm()) {
-=======
-        if ($this->config && $this->config->get('enable_em', true)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return 1;
         }
 
@@ -110,7 +102,6 @@ final class EmphasisDelimiterProcessor implements DelimiterProcessorInterface, C
     {
         $this->config = $configuration;
     }
-<<<<<<< HEAD
 
     private function enableStrong(): bool
     {
@@ -143,6 +134,4 @@ final class EmphasisDelimiterProcessor implements DelimiterProcessorInterface, C
 
         return $this->config->get('commonmark/enable_em', $deprecatedEnableEm);
     }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

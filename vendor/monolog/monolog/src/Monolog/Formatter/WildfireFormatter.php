@@ -19,21 +19,15 @@ use Monolog\Logger;
  * @author Eric Clemmons (@ericclemmons) <eric@uxdriven.com>
  * @author Christophe Coevoet <stof@notk.org>
  * @author Kirill chEbba Chebunin <iam@chebba.org>
-<<<<<<< HEAD
  *
  * @phpstan-import-type Level from \Monolog\Logger
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 class WildfireFormatter extends NormalizerFormatter
 {
     /**
      * Translates Monolog log levels to Wildfire levels.
-<<<<<<< HEAD
      *
      * @var array<Level, string>
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private $logLevels = [
         Logger::DEBUG     => 'LOG',
@@ -47,7 +41,6 @@ class WildfireFormatter extends NormalizerFormatter
     ];
 
     /**
-<<<<<<< HEAD
      * @param string|null $dateFormat The format of the timestamp: one supported by DateTime::format
      */
     public function __construct(?string $dateFormat = null)
@@ -62,9 +55,6 @@ class WildfireFormatter extends NormalizerFormatter
      * {@inheritDoc}
      *
      * @return string
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function format(array $record): string
     {
@@ -79,10 +69,7 @@ class WildfireFormatter extends NormalizerFormatter
             unset($record['extra']['line']);
         }
 
-<<<<<<< HEAD
         /** @var mixed[] $record */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $record = $this->normalize($record);
         $message = ['message' => $record['message']];
         $handleError = false;
@@ -127,13 +114,9 @@ class WildfireFormatter extends NormalizerFormatter
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
      *
      * @phpstan-return never
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function formatBatch(array $records)
     {
@@ -141,14 +124,9 @@ class WildfireFormatter extends NormalizerFormatter
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
      *
      * @return null|scalar|array<array|scalar|null>|object
-=======
-     * {@inheritdoc}
-     * @suppress PhanTypeMismatchReturn
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function normalize($data, int $depth = 0)
     {

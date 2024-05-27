@@ -18,12 +18,9 @@ class TestHttpServer
 {
     private static $process = [];
 
-<<<<<<< HEAD
     /**
      * @return Process
      */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public static function start(int $port = 8057)
     {
         if (isset(self::$process[$port])) {
@@ -46,7 +43,6 @@ class TestHttpServer
 
         return $process;
     }
-<<<<<<< HEAD
 
     public static function stop(int $port = 8057)
     {
@@ -54,6 +50,4 @@ class TestHttpServer
             self::$process[$port]->stop();
         }
     }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

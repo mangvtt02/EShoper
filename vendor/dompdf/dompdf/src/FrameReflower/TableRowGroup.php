@@ -9,10 +9,7 @@ namespace Dompdf\FrameReflower;
 
 use Dompdf\FrameDecorator\Block as BlockFrameDecorator;
 use Dompdf\FrameDecorator\Table as TableFrameDecorator;
-<<<<<<< HEAD
 use Dompdf\FrameDecorator\TableRowGroup as TableRowGroupFrameDecorator;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Reflows table row groups (e.g. tbody tags)
@@ -24,15 +21,9 @@ class TableRowGroup extends AbstractFrameReflower
 
     /**
      * TableRowGroup constructor.
-<<<<<<< HEAD
      * @param TableRowGroupFrameDecorator $frame
      */
     function __construct(TableRowGroupFrameDecorator $frame)
-=======
-     * @param \Dompdf\Frame $frame
-     */
-    function __construct($frame)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         parent::__construct($frame);
     }
@@ -42,7 +33,6 @@ class TableRowGroup extends AbstractFrameReflower
      */
     function reflow(BlockFrameDecorator $block = null)
     {
-<<<<<<< HEAD
         /** @var TableRowGroupFrameDecorator */
         $frame = $this->_frame;
         $page = $frame->get_root();
@@ -78,43 +68,5 @@ class TableRowGroup extends AbstractFrameReflower
         $style->height = $cellmap->get_frame_height($frame);
 
         $frame->set_position($cellmap->get_frame_position($frame));
-=======
-        $page = $this->_frame->get_root();
-
-        $style = $this->_frame->get_style();
-
-        // Our width is equal to the width of our parent table
-        $table = TableFrameDecorator::find_parent_table($this->_frame);
-
-        $cb = $this->_frame->get_containing_block();
-
-        foreach ($this->_frame->get_children() as $child) {
-            // Bail if the page is full
-            if ($page->is_full()) {
-                return;
-            }
-
-            $child->set_containing_block($cb["x"], $cb["y"], $cb["w"], $cb["h"]);
-            $child->reflow();
-
-            // Check if a split has occured
-            $page->check_page_break($child);
-        }
-
-        if ($page->is_full()) {
-            return;
-        }
-
-        $cellmap = $table->get_cellmap();
-        $style->width = $cellmap->get_frame_width($this->_frame);
-        $style->height = $cellmap->get_frame_height($this->_frame);
-
-        $this->_frame->set_position($cellmap->get_frame_position($this->_frame));
-
-        if ($table->get_style()->border_collapse === "collapse") {
-            // Unset our borders because our cells are now using them
-            $style->border_style = "none";
-        }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

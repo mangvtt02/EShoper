@@ -112,11 +112,7 @@ abstract class AbstractRenderer
         //$img_w = imagesx($src); $img_h = imagesy($src);
 
         list($img_w, $img_h) = Helpers::dompdf_getimagesize($img, $this->_dompdf->getHttpContext());
-<<<<<<< HEAD
         if ($img_w == 0 || $img_h == 0) {
-=======
-        if (!isset($img_w) || $img_w == 0 || !isset($img_h) || $img_h == 0) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return;
         }
 
@@ -250,7 +246,6 @@ abstract class AbstractRenderer
             $repeat = "no-repeat";
         }
 
-<<<<<<< HEAD
         // Avoid rendering identical background-image variants multiple times
         // This is not dependent of background color of box! .'_'.(is_array($bg_color) ? $bg_color["hex"] : $bg_color)
         // Note: Here, bg_* are the start values, not end values after going through the tile loops!
@@ -300,45 +295,6 @@ abstract class AbstractRenderer
 
                 case "bmp":
                     $src = @Helpers::imagecreatefrombmp($img);
-=======
-        //Use filename as indicator only
-        //different names for different variants to have different copies in the pdf
-        //This is not dependent of background color of box! .'_'.(is_array($bg_color) ? $bg_color["hex"] : $bg_color)
-        //Note: Here, bg_* are the start values, not end values after going through the tile loops!
-
-        $filedummy = $img;
-
-        $is_png = false;
-        $filedummy .= '_' . $bg_width . '_' . $bg_height . '_' . $bg_x . '_' . $bg_y . '_' . $repeat;
-
-        //Optimization to avoid multiple times rendering the same image.
-        //If check functions are existing and identical image already cached,
-        //then skip creation of duplicate, because it is not needed by addImagePng
-        if ($this->_canvas instanceof CPDF && $this->_canvas->get_cpdf()->image_iscached($filedummy)) {
-            $bg = null;
-        } else {
-            // Create a new image to fit over the background rectangle
-            $bg = imagecreatetruecolor($bg_width, $bg_height);
-
-            switch (strtolower($type)) {
-                case "png":
-                    $is_png = true;
-                    imagesavealpha($bg, true);
-                    imagealphablending($bg, false);
-                    $src = imagecreatefrompng($img);
-                    break;
-
-                case "jpeg":
-                    $src = imagecreatefromjpeg($img);
-                    break;
-
-                case "gif":
-                    $src = imagecreatefromgif($img);
-                    break;
-
-                case "bmp":
-                    $src = Helpers::imagecreatefrombmp($img);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     break;
 
                 default:
@@ -460,7 +416,6 @@ abstract class AbstractRenderer
 
             imagedestroy($src);
 
-<<<<<<< HEAD
             if ($cpdfFromGd && $this->_canvas instanceof CPDF) {
                 // Skip writing temp file as the GD object is added directly
             } else {
@@ -496,49 +451,6 @@ abstract class AbstractRenderer
             }
         } else {
             $this->_canvas->image($tmpFile, $x, $y, $width, $height);
-=======
-        } /* End optimize away creation of duplicates */
-
-        $this->_canvas->clipping_rectangle($x, $y, $box_width, $box_height);
-
-        //img: image url string
-        //img_w, img_h: original image size in px
-        //width, height: box size in pt
-        //bg_width, bg_height: box size in px
-        //x, y: left/top edge of box on page in pt
-        //start_x, start_y: placement of image relative to pattern
-        //$repeat: repeat mode
-        //$bg: GD object of result image
-        //$src: GD object of original image
-        //When using cpdf and optimization to direct png creation from gd object is available,
-        //don't create temp file, but place gd object directly into the pdf
-        if (!$is_png && $this->_canvas instanceof CPDF) {
-            // Note: CPDF_Adapter image converts y position
-            $this->_canvas->get_cpdf()->addImagePng($bg, $filedummy, $x, $this->_canvas->get_height() - $y - $height, $width, $height);
-        } else {
-            $tmp_dir = $this->_dompdf->getOptions()->getTempDir();
-            $tmp_name = @tempnam($tmp_dir, "bg_dompdf_img_");
-            @unlink($tmp_name);
-            $tmp_file = "$tmp_name.png";
-
-            //debugpng
-            if ($this->_dompdf->getOptions()->getDebugPng()) {
-                print '[_background_image ' . $tmp_file . ']';
-            }
-
-            imagepng($bg, $tmp_file);
-            $this->_canvas->image($tmp_file, $x, $y, $width, $height);
-            imagedestroy($bg);
-
-            //debugpng
-            if ($this->_dompdf->getOptions()->getDebugPng()) {
-                print '[_background_image unlink ' . $tmp_file . ']';
-            }
-
-            if (!$this->_dompdf->getOptions()->getDebugKeepTemp()) {
-                unlink($tmp_file);
-            }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $this->_canvas->clipping_end();
@@ -1027,11 +939,7 @@ abstract class AbstractRenderer
     }
 
     /**
-<<<<<<< HEAD
      * @param array $box
-=======
-     * @param $box
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param string $color
      * @param array $style
      */

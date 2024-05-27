@@ -3,11 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
-<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
-=======
- * (c) 2012-2020 Justin Hileman
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -49,16 +45,6 @@ class ExecutionClosure
                 }
 
                 throw $_e;
-<<<<<<< HEAD
-=======
-            } catch (\Exception $_e) {
-                // Clean up on our way out.
-                if (\ob_get_level() > 0) {
-                    \ob_end_clean();
-                }
-
-                throw $_e;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             } finally {
                 // Won't be needing this anymore
                 \restore_error_handler();

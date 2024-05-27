@@ -4,7 +4,6 @@ namespace PhpParser\Builder;
 
 use PhpParser;
 use PhpParser\BuilderHelpers;
-<<<<<<< HEAD
 use PhpParser\Node;
 use PhpParser\Node\Stmt;
 
@@ -20,16 +19,6 @@ class Trait_ extends Declaration {
     protected array $methods = [];
     /** @var list<Node\AttributeGroup> */
     protected array $attributeGroups = [];
-=======
-use PhpParser\Node\Stmt;
-
-class Trait_ extends Declaration
-{
-    protected $name;
-    protected $uses = [];
-    protected $properties = [];
-    protected $methods = [];
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Creates an interface builder.
@@ -56,11 +45,8 @@ class Trait_ extends Declaration
             $this->methods[] = $stmt;
         } elseif ($stmt instanceof Stmt\TraitUse) {
             $this->uses[] = $stmt;
-<<<<<<< HEAD
         } elseif ($stmt instanceof Stmt\ClassConst) {
             $this->constants[] = $stmt;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } else {
             throw new \LogicException(sprintf('Unexpected node of type "%s"', $stmt->getType()));
         }
@@ -69,7 +55,6 @@ class Trait_ extends Declaration
     }
 
     /**
-<<<<<<< HEAD
      * Adds an attribute group.
      *
      * @param Node\Attribute|Node\AttributeGroup $attribute
@@ -83,24 +68,15 @@ class Trait_ extends Declaration
     }
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Returns the built trait node.
      *
      * @return Stmt\Trait_ The built interface node
      */
-<<<<<<< HEAD
     public function getNode(): PhpParser\Node {
         return new Stmt\Trait_(
             $this->name, [
                 'stmts' => array_merge($this->uses, $this->constants, $this->properties, $this->methods),
                 'attrGroups' => $this->attributeGroups,
-=======
-    public function getNode() : PhpParser\Node {
-        return new Stmt\Trait_(
-            $this->name, [
-                'stmts' => array_merge($this->uses, $this->properties, $this->methods)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ], $this->attributes
         );
     }

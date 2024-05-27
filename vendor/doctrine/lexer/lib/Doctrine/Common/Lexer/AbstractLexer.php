@@ -5,20 +5,13 @@ declare(strict_types=1);
 namespace Doctrine\Common\Lexer;
 
 use ReflectionClass;
-<<<<<<< HEAD
 
-=======
-use const PREG_SPLIT_DELIM_CAPTURE;
-use const PREG_SPLIT_NO_EMPTY;
-use const PREG_SPLIT_OFFSET_CAPTURE;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use function implode;
 use function in_array;
 use function preg_split;
 use function sprintf;
 use function substr;
 
-<<<<<<< HEAD
 use const PREG_SPLIT_DELIM_CAPTURE;
 use const PREG_SPLIT_NO_EMPTY;
 use const PREG_SPLIT_OFFSET_CAPTURE;
@@ -27,10 +20,6 @@ use const PREG_SPLIT_OFFSET_CAPTURE;
  * Base class for writing simple lexers, i.e. for creating small DSLs.
  *
  * @psalm-type Token = array{value: int|string, type:string|int|null, position:int}
-=======
-/**
- * Base class for writing simple lexers, i.e. for creating small DSLs.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 abstract class AbstractLexer
 {
@@ -50,12 +39,8 @@ abstract class AbstractLexer
      *                 parameter, none)
      *  - 'position' : the position of the token in the input string
      *
-<<<<<<< HEAD
      * @var mixed[][]
      * @psalm-var list<Token>
-=======
-     * @var array
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private $tokens = [];
 
@@ -76,35 +61,23 @@ abstract class AbstractLexer
     /**
      * The next token in the input.
      *
-<<<<<<< HEAD
      * @var mixed[]|null
      * @psalm-var Token|null
-=======
-     * @var array|null
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public $lookahead;
 
     /**
      * The last matched/seen token.
      *
-<<<<<<< HEAD
      * @var mixed[]|null
      * @psalm-var Token|null
-=======
-     * @var array|null
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public $token;
 
     /**
      * Composed regex for input parsing.
      *
-<<<<<<< HEAD
      * @var string|null
-=======
-     * @var string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private $regex;
 
@@ -177,7 +150,6 @@ abstract class AbstractLexer
     /**
      * Checks whether a given token matches the current lookahead.
      *
-<<<<<<< HEAD
      * @param int|string $type
      *
      * @return bool
@@ -185,21 +157,11 @@ abstract class AbstractLexer
     public function isNextToken($type)
     {
         return $this->lookahead !== null && $this->lookahead['type'] === $type;
-=======
-     * @param int|string $token
-     *
-     * @return bool
-     */
-    public function isNextToken($token)
-    {
-        return $this->lookahead !== null && $this->lookahead['type'] === $token;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * Checks whether any of the given tokens matches the current lookahead.
      *
-<<<<<<< HEAD
      * @param list<int|string> $types
      *
      * @return bool
@@ -207,15 +169,6 @@ abstract class AbstractLexer
     public function isNextTokenAny(array $types)
     {
         return $this->lookahead !== null && in_array($this->lookahead['type'], $types, true);
-=======
-     * @param array $tokens
-     *
-     * @return bool
-     */
-    public function isNextTokenAny(array $tokens)
-    {
-        return $this->lookahead !== null && in_array($this->lookahead['type'], $tokens, true);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -263,12 +216,8 @@ abstract class AbstractLexer
     /**
      * Moves the lookahead token forward.
      *
-<<<<<<< HEAD
      * @return mixed[]|null The next token or NULL if there are no more tokens ahead.
      * @psalm-return Token|null
-=======
-     * @return array|null The next token or NULL if there are no more tokens ahead.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function peek()
     {
@@ -282,12 +231,8 @@ abstract class AbstractLexer
     /**
      * Peeks at the next token, returns it and immediately resets the peek.
      *
-<<<<<<< HEAD
      * @return mixed[]|null The next token or NULL if there are no more tokens ahead.
      * @psalm-return Token|null
-=======
-     * @return array|null The next token or NULL if there are no more tokens ahead.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function glimpse()
     {
@@ -370,22 +315,14 @@ abstract class AbstractLexer
     /**
      * Lexical catchable patterns.
      *
-<<<<<<< HEAD
      * @return string[]
-=======
-     * @return array
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     abstract protected function getCatchablePatterns();
 
     /**
      * Lexical non-catchable patterns.
      *
-<<<<<<< HEAD
      * @return string[]
-=======
-     * @return array
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     abstract protected function getNonCatchablePatterns();
 

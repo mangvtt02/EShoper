@@ -3,11 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
-<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
-=======
- * (c) 2012-2020 Justin Hileman
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -23,7 +19,6 @@ use Symfony\Component\Console\Formatter\OutputFormatter;
  */
 class CodeFormatter implements ReflectorFormatter
 {
-<<<<<<< HEAD
     const LINE_MARKER = '  <urgent>></urgent> ';
     const NO_LINE_MARKER = '    ';
 
@@ -38,22 +33,6 @@ class CodeFormatter implements ReflectorFormatter
     const HIGHLIGHT_NUMBER = 'number';
     const HIGHLIGHT_STRING = 'string';
     const HIGHLIGHT_COMMENT = 'code_comment';
-=======
-    const LINE_MARKER    = '  <urgent>></urgent> ';
-    const NO_LINE_MARKER = '    ';
-
-    const HIGHLIGHT_DEFAULT     = 'default';
-    const HIGHLIGHT_KEYWORD     = 'keyword';
-
-    const HIGHLIGHT_PUBLIC      = 'public';
-    const HIGHLIGHT_PROTECTED   = 'protected';
-    const HIGHLIGHT_PRIVATE     = 'private';
-
-    const HIGHLIGHT_CONST       = 'const';
-    const HIGHLIGHT_NUMBER      = 'number';
-    const HIGHLIGHT_STRING      = 'string';
-    const HIGHLIGHT_COMMENT     = 'comment';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     const HIGHLIGHT_INLINE_HTML = 'inline_html';
 
     private static $tokenMap = [
@@ -97,20 +76,11 @@ class CodeFormatter implements ReflectorFormatter
     /**
      * Format the code represented by $reflector for shell output.
      *
-<<<<<<< HEAD
      * @param \Reflector $reflector
      *
      * @return string formatted code
      */
     public static function format(\Reflector $reflector): string
-=======
-     * @param \Reflector  $reflector
-     * @param string|null $colorMode (deprecated and ignored)
-     *
-     * @return string formatted code
-     */
-    public static function format(\Reflector $reflector, $colorMode = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (self::isReflectable($reflector)) {
             if ($code = @\file_get_contents($reflector->getFileName())) {
@@ -133,11 +103,7 @@ class CodeFormatter implements ReflectorFormatter
      *
      * @return string formatted code
      */
-<<<<<<< HEAD
     public static function formatCode(string $code, int $startLine = 1, ?int $endLine = null, ?int $markLine = null): string
-=======
-    public static function formatCode($code, $startLine = 1, $endLine = null, $markLine = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $spans = self::tokenizeSpans($code);
         $lines = self::splitLines($spans, $startLine, $endLine);
@@ -155,15 +121,8 @@ class CodeFormatter implements ReflectorFormatter
      * This is typehinted as \Reflector but we've narrowed the input via self::isReflectable already.
      *
      * @param \ReflectionClass|\ReflectionFunctionAbstract $reflector
-<<<<<<< HEAD
      */
     private static function getStartLine(\Reflector $reflector): int
-=======
-     *
-     * @return int
-     */
-    private static function getStartLine(\Reflector $reflector)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $startLine = $reflector->getStartLine();
 
@@ -186,17 +145,10 @@ class CodeFormatter implements ReflectorFormatter
      *
      * @return \Generator [$spanType, $spanText] highlight spans
      */
-<<<<<<< HEAD
     private static function tokenizeSpans(string $code): \Generator
     {
         $spanType = null;
         $buffer = '';
-=======
-    private static function tokenizeSpans($code)
-    {
-        $spanType = null;
-        $buffer   = '';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         foreach (\token_get_all($code) as $token) {
             $nextType = self::nextHighlightType($token, $spanType);
@@ -205,11 +157,7 @@ class CodeFormatter implements ReflectorFormatter
             if ($spanType !== $nextType) {
                 yield [$spanType, $buffer];
                 $spanType = $nextType;
-<<<<<<< HEAD
                 $buffer = '';
-=======
-                $buffer   = '';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
 
             $buffer .= \is_array($token) ? $token[1] : $token;
@@ -258,17 +206,10 @@ class CodeFormatter implements ReflectorFormatter
      *
      * @return \Generator lines, each an array of [$spanType, $spanText] pairs
      */
-<<<<<<< HEAD
     private static function splitLines(\Generator $spans, int $startLine = 1, ?int $endLine = null): \Generator
     {
         $lineNum = 1;
         $buffer = [];
-=======
-    private static function splitLines(\Generator $spans, $startLine = 1, $endLine = null)
-    {
-        $lineNum = 1;
-        $buffer  = [];
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         foreach ($spans as list($spanType, $spanText)) {
             foreach (\preg_split('/(\r\n?|\n)/', $spanText) as $index => $spanLine) {
@@ -303,11 +244,7 @@ class CodeFormatter implements ReflectorFormatter
      *
      * @return \Generator Formatted lines
      */
-<<<<<<< HEAD
     private static function formatLines(\Generator $spanLines): \Generator
-=======
-    private static function formatLines(\Generator $spanLines)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         foreach ($spanLines as $lineNum => $spanLine) {
             $line = '';
@@ -320,11 +257,7 @@ class CodeFormatter implements ReflectorFormatter
                 }
             }
 
-<<<<<<< HEAD
             yield $lineNum => $line.\PHP_EOL;
-=======
-            yield $lineNum => $line . \PHP_EOL;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
@@ -340,11 +273,7 @@ class CodeFormatter implements ReflectorFormatter
      *
      * @return \Generator Numbered, formatted lines
      */
-<<<<<<< HEAD
     private static function numberLines(\Generator $lines, ?int $markLine = null): \Generator
-=======
-    private static function numberLines(\Generator $lines, $markLine = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $lines = \iterator_to_array($lines);
 
@@ -370,30 +299,18 @@ class CodeFormatter implements ReflectorFormatter
                 $mark = ($markLine === $lineNum) ? self::LINE_MARKER : self::NO_LINE_MARKER;
             }
 
-<<<<<<< HEAD
             yield \sprintf("%s<aside>%{$pad}s</aside>: %s", $mark, $lineNum, $line);
-=======
-            yield \sprintf("%s<aside>%${pad}s</aside>: %s", $mark, $lineNum, $line);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 
     /**
      * Check whether a Reflector instance is reflectable by this formatter.
      *
-<<<<<<< HEAD
      * @phpstan-assert-if-true \ReflectionClass|\ReflectionFunctionAbstract $reflector
      *
      * @param \Reflector $reflector
      */
     private static function isReflectable(\Reflector $reflector): bool
-=======
-     * @param \Reflector $reflector
-     *
-     * @return bool
-     */
-    private static function isReflectable(\Reflector $reflector)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return ($reflector instanceof \ReflectionClass || $reflector instanceof \ReflectionFunctionAbstract) && \is_file($reflector->getFileName());
     }

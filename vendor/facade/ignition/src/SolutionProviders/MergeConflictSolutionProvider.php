@@ -17,11 +17,7 @@ class MergeConflictSolutionProvider implements HasSolutionsForThrowable
             return false;
         }
 
-<<<<<<< HEAD
         if (! $this->hasMergeConflictExceptionMessage($throwable)) {
-=======
-        if (! Str::startsWith($throwable->getMessage(), 'syntax error, unexpected \'<<\'')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return false;
         }
 
@@ -62,7 +58,6 @@ class MergeConflictSolutionProvider implements HasSolutionsForThrowable
 
         return $branch;
     }
-<<<<<<< HEAD
 
     protected function hasMergeConflictExceptionMessage(Throwable $throwable): bool
     {
@@ -78,6 +73,4 @@ class MergeConflictSolutionProvider implements HasSolutionsForThrowable
 
         return false;
     }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

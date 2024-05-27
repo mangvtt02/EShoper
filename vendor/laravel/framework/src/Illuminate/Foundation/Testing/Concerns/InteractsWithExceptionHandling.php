@@ -64,12 +64,8 @@ trait InteractsWithExceptionHandling
             $this->originalExceptionHandler = app(ExceptionHandler::class);
         }
 
-<<<<<<< HEAD
         $this->app->instance(ExceptionHandler::class, new class($this->originalExceptionHandler, $except) implements ExceptionHandler
         {
-=======
-        $this->app->instance(ExceptionHandler::class, new class($this->originalExceptionHandler, $except) implements ExceptionHandler {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             protected $except;
             protected $originalHandler;
 

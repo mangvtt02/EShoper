@@ -155,11 +155,7 @@ class Swift_Mime_Headers_ParameterizedHeader extends Swift_Mime_Headers_Unstruct
         foreach ($this->params as $name => $value) {
             if (null !== $value) {
                 // Add the semi-colon separator
-<<<<<<< HEAD
                 $tokens[\count($tokens) - 1] .= ';';
-=======
-                $tokens[count($tokens) - 1] .= ';';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $tokens = array_merge($tokens, $this->generateTokenLines(
                     ' '.$this->createParameter($name, $value)
                     ));
@@ -183,11 +179,7 @@ class Swift_Mime_Headers_ParameterizedHeader extends Swift_Mime_Headers_Unstruct
 
         $encoded = false;
         // Allow room for parameter name, indices, "=" and DQUOTEs
-<<<<<<< HEAD
         $maxValueLength = $this->getMaxLineLength() - \strlen($name.'=*N"";') - 1;
-=======
-        $maxValueLength = $this->getMaxLineLength() - strlen($name.'=*N"";') - 1;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $firstLineOffset = 0;
 
         // If it's not already a valid parameter value...
@@ -197,24 +189,15 @@ class Swift_Mime_Headers_ParameterizedHeader extends Swift_Mime_Headers_Unstruct
             if (!preg_match('/^[\x00-\x08\x0B\x0C\x0E-\x7F]*$/D', $value)) {
                 $encoded = true;
                 // Allow space for the indices, charset and language
-<<<<<<< HEAD
                 $maxValueLength = $this->getMaxLineLength() - \strlen($name.'*N*="";') - 1;
                 $firstLineOffset = \strlen(
-=======
-                $maxValueLength = $this->getMaxLineLength() - strlen($name.'*N*="";') - 1;
-                $firstLineOffset = strlen(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $this->getCharset()."'".$this->getLanguage()."'"
                     );
             }
         }
 
         // Encode if we need to
-<<<<<<< HEAD
         if ($encoded || \strlen($value) > $maxValueLength) {
-=======
-        if ($encoded || strlen($value) > $maxValueLength) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if (isset($this->paramEncoder)) {
                 $value = $this->paramEncoder->encodeString(
                     $origValue, $firstLineOffset, $maxValueLength, $this->getCharset()
@@ -229,11 +212,7 @@ class Swift_Mime_Headers_ParameterizedHeader extends Swift_Mime_Headers_Unstruct
         $valueLines = isset($this->paramEncoder) ? explode("\r\n", $value) : [$value];
 
         // Need to add indices
-<<<<<<< HEAD
         if (\count($valueLines) > 1) {
-=======
-        if (count($valueLines) > 1) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $paramLines = [];
             foreach ($valueLines as $i => $line) {
                 $paramLines[] = $name.'*'.$i.

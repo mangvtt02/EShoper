@@ -171,11 +171,7 @@ class Swift_Transport_Esmtp_AuthHandler implements Swift_Transport_EsmtpHandler
             $count = 0;
             $errors = [];
             foreach ($this->getAuthenticatorsForAgent() as $authenticator) {
-<<<<<<< HEAD
                 if (\in_array(strtolower($authenticator->getAuthKeyword() ?? ''), array_map('strtolower', $this->esmtpParams))) {
-=======
-                if (in_array(strtolower($authenticator->getAuthKeyword()), array_map('strtolower', $this->esmtpParams))) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     ++$count;
                     try {
                         if ($authenticator->authenticate($agent, $this->username, $this->password)) {
@@ -257,20 +253,12 @@ class Swift_Transport_Esmtp_AuthHandler implements Swift_Transport_EsmtpHandler
      */
     protected function getAuthenticatorsForAgent()
     {
-<<<<<<< HEAD
         if (!$mode = strtolower($this->auth_mode ?? '')) {
-=======
-        if (!$mode = strtolower($this->auth_mode)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $this->authenticators;
         }
 
         foreach ($this->authenticators as $authenticator) {
-<<<<<<< HEAD
             if (strtolower($authenticator->getAuthKeyword() ?? '') == $mode) {
-=======
-            if (strtolower($authenticator->getAuthKeyword()) == $mode) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 return [$authenticator];
             }
         }

@@ -15,12 +15,9 @@
  * - Brett Johnson
  * - balping
  */
-<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 $huWeekEndings = ['vasárnap', 'hétfőn', 'kedden', 'szerdán', 'csütörtökön', 'pénteken', 'szombaton'];
 
 return [
@@ -85,11 +82,7 @@ return [
     'second_before' => ':count másodperccel',
     's_before' => ':count másodperccel',
     'months' => ['január', 'február', 'március', 'április', 'május', 'június', 'július', 'augusztus', 'szeptember', 'október', 'november', 'december'],
-<<<<<<< HEAD
     'months_short' => ['jan.', 'febr.', 'márc.', 'ápr.', 'máj.', 'jún.', 'júl.', 'aug.', 'szept.', 'okt.', 'nov.', 'dec.'],
-=======
-    'months_short' => ['jan.', 'feb.', 'márc.', 'ápr.', 'máj.', 'jún.', 'júl.', 'aug.', 'szept.', 'okt.', 'nov.', 'dec.'],
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     'weekdays' => ['vasárnap', 'hétfő', 'kedd', 'szerda', 'csütörtök', 'péntek', 'szombat'],
     'weekdays_short' => ['vas', 'hét', 'kedd', 'sze', 'csüt', 'pén', 'szo'],
     'weekdays_min' => ['v', 'h', 'k', 'sze', 'cs', 'p', 'sz'],
@@ -109,19 +102,11 @@ return [
     'calendar' => [
         'sameDay' => '[ma] LT[-kor]',
         'nextDay' => '[holnap] LT[-kor]',
-<<<<<<< HEAD
         'nextWeek' => function (CarbonInterface $date) use ($huWeekEndings) {
             return '['.$huWeekEndings[$date->dayOfWeek].'] LT[-kor]';
         },
         'lastDay' => '[tegnap] LT[-kor]',
         'lastWeek' => function (CarbonInterface $date) use ($huWeekEndings) {
-=======
-        'nextWeek' => function (\Carbon\CarbonInterface $date) use ($huWeekEndings) {
-            return '['.$huWeekEndings[$date->dayOfWeek].'] LT[-kor]';
-        },
-        'lastDay' => '[tegnap] LT[-kor]',
-        'lastWeek' => function (\Carbon\CarbonInterface $date) use ($huWeekEndings) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return '[múlt '.$huWeekEndings[$date->dayOfWeek].'] LT[-kor]';
         },
         'sameElse' => 'L',

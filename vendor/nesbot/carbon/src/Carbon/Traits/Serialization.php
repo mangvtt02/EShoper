@@ -8,18 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
 namespace Carbon\Traits;
 
 use Carbon\Exceptions\InvalidFormatException;
 use ReturnTypeWillChange;
 use Throwable;
-=======
-namespace Carbon\Traits;
-
-use Carbon\Exceptions\InvalidFormatException;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Trait Serialization.
@@ -61,7 +55,6 @@ trait Serialization
      *
      * @var string|null
      */
-<<<<<<< HEAD
     protected $dumpLocale;
 
     /**
@@ -71,9 +64,6 @@ trait Serialization
      * @var array|null
      */
     protected $dumpDateProperties;
-=======
-    protected $dumpLocale = null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Return a serialized string of the instance.
@@ -96,11 +86,7 @@ trait Serialization
      */
     public static function fromSerialized($value)
     {
-<<<<<<< HEAD
         $instance = @unserialize((string) $value);
-=======
-        $instance = @unserialize("$value");
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if (!$instance instanceof static) {
             throw new InvalidFormatException("Invalid serialized value: $value");
@@ -116,16 +102,10 @@ trait Serialization
      *
      * @return static
      */
-<<<<<<< HEAD
     #[ReturnTypeWillChange]
     public static function __set_state($dump)
     {
         if (\is_string($dump)) {
-=======
-    public static function __set_state($dump)
-    {
-        if (is_string($dump)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return static::parse($dump);
         }
 
@@ -140,20 +120,13 @@ trait Serialization
     /**
      * Returns the list of properties to dump on serialize() called on.
      *
-<<<<<<< HEAD
      * Only used by PHP < 7.4.
      *
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return array
      */
     public function __sleep()
     {
-<<<<<<< HEAD
         $properties = $this->getSleepProperties();
-=======
-        $properties = $this->dumpProperties;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($this->localTranslator ?? null) {
             $properties[] = 'dumpLocale';
@@ -164,7 +137,6 @@ trait Serialization
     }
 
     /**
-<<<<<<< HEAD
      * Returns the values to dump on serialize() called on.
      *
      * Only used by PHP >= 7.4.
@@ -230,14 +202,6 @@ trait Serialization
                 }
             }
             // @codeCoverageIgnoreEnd
-=======
-     * Set locale if specified on unserialize() called.
-     */
-    public function __wakeup()
-    {
-        if (get_parent_class() && method_exists(parent::class, '__wakeup')) {
-            parent::__wakeup();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $this->constructedObjectId = spl_object_hash($this);
@@ -251,7 +215,6 @@ trait Serialization
     }
 
     /**
-<<<<<<< HEAD
      * Set locale if specified on unserialize() called.
      *
      * Only used by PHP >= 7.4.
@@ -284,13 +247,10 @@ trait Serialization
     }
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Prepare the object for JSON serialization.
      *
      * @return array|string
      */
-<<<<<<< HEAD
     #[ReturnTypeWillChange]
     public function jsonSerialize()
     {
@@ -300,15 +260,6 @@ trait Serialization
             return \is_string($serializer)
                 ? $this->rawFormat($serializer)
                 : $serializer($this);
-=======
-    public function jsonSerialize()
-    {
-        $serializer = $this->localSerializer ?? static::$serializer;
-        if ($serializer) {
-            return is_string($serializer)
-                ? $this->rawFormat($serializer)
-                : call_user_func($serializer, $this);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this->toJSON();
@@ -338,7 +289,6 @@ trait Serialization
      */
     public function cleanupDumpProperties()
     {
-<<<<<<< HEAD
         // @codeCoverageIgnoreStart
         if (PHP_VERSION < 8.2) {
             foreach ($this->dumpProperties as $property) {
@@ -373,14 +323,4 @@ trait Serialization
         return $properties;
         // @codeCoverageIgnoreEnd
     }
-=======
-        foreach ($this->dumpProperties as $property) {
-            if (isset($this->$property)) {
-                unset($this->$property);
-            }
-        }
-
-        return $this;
-    }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

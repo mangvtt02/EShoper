@@ -57,47 +57,30 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
      *
      * @param \Throwable|null $exception
      */
-<<<<<<< HEAD
     public function collect(Request $request, Response $response/* , \Throwable $exception = null */)
     {
         $eom = \DateTime::createFromFormat('d/m/Y', '01/'.Kernel::END_OF_MAINTENANCE);
         $eol = \DateTime::createFromFormat('d/m/Y', '01/'.Kernel::END_OF_LIFE);
 
-=======
-    public function collect(Request $request, Response $response/*, \Throwable $exception = null*/)
-    {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->data = [
             'app_name' => $this->name,
             'app_version' => $this->version,
             'token' => $response->headers->get('X-Debug-Token'),
             'symfony_version' => Kernel::VERSION,
-<<<<<<< HEAD
             'symfony_minor_version' => sprintf('%s.%s', Kernel::MAJOR_VERSION, Kernel::MINOR_VERSION),
             'symfony_lts' => 4 === Kernel::MINOR_VERSION,
             'symfony_state' => $this->determineSymfonyState(),
             'symfony_eom' => $eom->format('F Y'),
             'symfony_eol' => $eol->format('F Y'),
-=======
-            'symfony_state' => 'unknown',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'env' => isset($this->kernel) ? $this->kernel->getEnvironment() : 'n/a',
             'debug' => isset($this->kernel) ? $this->kernel->isDebug() : 'n/a',
             'php_version' => \PHP_VERSION,
             'php_architecture' => \PHP_INT_SIZE * 8,
-<<<<<<< HEAD
             'php_intl_locale' => class_exists(\Locale::class, false) && \Locale::getDefault() ? \Locale::getDefault() : 'n/a',
             'php_timezone' => date_default_timezone_get(),
             'xdebug_enabled' => \extension_loaded('xdebug'),
             'apcu_enabled' => \extension_loaded('apcu') && filter_var(\ini_get('apc.enabled'), \FILTER_VALIDATE_BOOLEAN),
             'zend_opcache_enabled' => \extension_loaded('Zend OPcache') && filter_var(\ini_get('opcache.enable'), \FILTER_VALIDATE_BOOLEAN),
-=======
-            'php_intl_locale' => class_exists('Locale', false) && \Locale::getDefault() ? \Locale::getDefault() : 'n/a',
-            'php_timezone' => date_default_timezone_get(),
-            'xdebug_enabled' => \extension_loaded('xdebug'),
-            'apcu_enabled' => \extension_loaded('apcu') && filter_var(ini_get('apc.enabled'), \FILTER_VALIDATE_BOOLEAN),
-            'zend_opcache_enabled' => \extension_loaded('Zend OPcache') && filter_var(ini_get('opcache.enable'), \FILTER_VALIDATE_BOOLEAN),
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'bundles' => [],
             'sapi_name' => \PHP_SAPI,
         ];
@@ -106,17 +89,6 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
             foreach ($this->kernel->getBundles() as $name => $bundle) {
                 $this->data['bundles'][$name] = new ClassStub(\get_class($bundle));
             }
-<<<<<<< HEAD
-=======
-
-            $this->data['symfony_state'] = $this->determineSymfonyState();
-            $this->data['symfony_minor_version'] = sprintf('%s.%s', Kernel::MAJOR_VERSION, Kernel::MINOR_VERSION);
-            $this->data['symfony_lts'] = 4 === Kernel::MINOR_VERSION;
-            $eom = \DateTime::createFromFormat('d/m/Y', '01/'.Kernel::END_OF_MAINTENANCE);
-            $eol = \DateTime::createFromFormat('d/m/Y', '01/'.Kernel::END_OF_LIFE);
-            $this->data['symfony_eom'] = $eom->format('F Y');
-            $this->data['symfony_eol'] = $eol->format('F Y');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if (preg_match('~^(\d+(?:\.\d+)*)(.+)?$~', $this->data['php_version'], $matches) && isset($matches[2])) {
@@ -208,11 +180,7 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
     }
 
     /**
-<<<<<<< HEAD
      * Returns the human readable date when this Symfony version ends its
-=======
-     * Returns the human redable date when this Symfony version ends its
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * maintenance period.
      *
      * @return string
@@ -223,11 +191,7 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
     }
 
     /**
-<<<<<<< HEAD
      * Returns the human readable date when this Symfony version reaches its
-=======
-     * Returns the human redable date when this Symfony version reaches its
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * "end of life" and won't receive bugs or security fixes.
      *
      * @return string
@@ -254,11 +218,7 @@ class ConfigDataCollector extends DataCollector implements LateDataCollectorInte
      */
     public function getPhpVersionExtra()
     {
-<<<<<<< HEAD
         return $this->data['php_version_extra'] ?? null;
-=======
-        return isset($this->data['php_version_extra']) ? $this->data['php_version_extra'] : null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**

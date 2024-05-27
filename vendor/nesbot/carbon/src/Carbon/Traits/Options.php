@@ -8,10 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 namespace Carbon\Traits;
 
 use Carbon\CarbonInterface;
@@ -25,11 +22,7 @@ use Throwable;
  *
  * Depends on the following methods:
  *
-<<<<<<< HEAD
  * @method static shiftTimezone($timezone) Set the timezone
-=======
- * @method \Carbon\Carbon|\Carbon\CarbonImmutable shiftTimezone($timezone) Set the timezone
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 trait Options
 {
@@ -69,11 +62,7 @@ trait Options
     /**
      * Format regex patterns.
      *
-<<<<<<< HEAD
      * @var array<string, string>
-=======
-     * @var array
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected static $regexFormats = [
         'd' => '(3[01]|[12][0-9]|0[1-9])',
@@ -84,11 +73,7 @@ trait Options
         'S' => '(st|nd|rd|th)',
         'w' => '([0-6])',
         'z' => '(36[0-5]|3[0-5][0-9]|[12][0-9]{2}|[1-9]?[0-9])',
-<<<<<<< HEAD
         'W' => '(5[012]|[1-4][0-9]|0?[1-9])',
-=======
-        'W' => '(5[012]|[1-4][0-9]|[1-9])',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'F' => '([a-zA-Z]{2,})',
         'm' => '(1[012]|0[1-9])',
         'M' => '([a-zA-Z]{3})',
@@ -113,10 +98,7 @@ trait Options
         'I' => '(0|1)',
         'O' => '([+-](1[012]|0[0-9])[0134][05])',
         'P' => '([+-](1[012]|0[0-9]):[0134][05])',
-<<<<<<< HEAD
         'p' => '(Z|[+-](1[012]|0[0-9]):[0134][05])',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'T' => '([a-zA-Z]{1,5})',
         'Z' => '(-?[1-5]?[0-9]{1,4})',
         'U' => '([0-9]*)',
@@ -170,33 +152,21 @@ trait Options
      *
      * @var string|callable|null
      */
-<<<<<<< HEAD
     protected static $formatFunction;
-=======
-    protected static $formatFunction = null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Function to call instead of createFromFormat.
      *
      * @var string|callable|null
      */
-<<<<<<< HEAD
     protected static $createFromFormatFunction;
-=======
-    protected static $createFromFormatFunction = null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Function to call instead of parse.
      *
      * @var string|callable|null
      */
-<<<<<<< HEAD
     protected static $parseFunction;
-=======
-    protected static $parseFunction = null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Indicates if months should be calculated with overflow.
@@ -204,11 +174,7 @@ trait Options
      *
      * @var bool|null
      */
-<<<<<<< HEAD
     protected $localMonthsOverflow;
-=======
-    protected $localMonthsOverflow = null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Indicates if years should be calculated with overflow.
@@ -216,11 +182,7 @@ trait Options
      *
      * @var bool|null
      */
-<<<<<<< HEAD
     protected $localYearsOverflow;
-=======
-    protected $localYearsOverflow = null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Indicates if the strict mode is in use.
@@ -228,77 +190,49 @@ trait Options
      *
      * @var bool|null
      */
-<<<<<<< HEAD
     protected $localStrictModeEnabled;
-=======
-    protected $localStrictModeEnabled = null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Options for diffForHumans and forHumans methods.
      *
      * @var bool|null
      */
-<<<<<<< HEAD
     protected $localHumanDiffOptions;
-=======
-    protected $localHumanDiffOptions = null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Format to use on string cast.
      *
      * @var string|null
      */
-<<<<<<< HEAD
     protected $localToStringFormat;
-=======
-    protected $localToStringFormat = null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Format to use on JSON serialization.
      *
      * @var string|null
      */
-<<<<<<< HEAD
     protected $localSerializer;
-=======
-    protected $localSerializer = null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Instance-specific macros.
      *
      * @var array|null
      */
-<<<<<<< HEAD
     protected $localMacros;
-=======
-    protected $localMacros = null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Instance-specific generic macros.
      *
      * @var array|null
      */
-<<<<<<< HEAD
     protected $localGenericMacros;
-=======
-    protected $localGenericMacros = null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Function to call instead of format.
      *
      * @var string|callable|null
      */
-<<<<<<< HEAD
     protected $localFormatFunction;
-=======
-    protected $localFormatFunction = null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @deprecated To avoid conflict between different third-party libraries, static setters should not be used.
@@ -445,24 +379,17 @@ trait Options
         if (isset($settings['locale'])) {
             $locales = $settings['locale'];
 
-<<<<<<< HEAD
             if (!\is_array($locales)) {
-=======
-            if (!is_array($locales)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $locales = [$locales];
             }
 
             $this->locale(...$locales);
         }
 
-<<<<<<< HEAD
         if (isset($settings['innerTimezone'])) {
             return $this->setTimezone($settings['innerTimezone']);
         }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (isset($settings['timezone'])) {
             return $this->shiftTimezone($settings['timezone']);
         }
@@ -491,17 +418,11 @@ trait Options
             'tzName' => 'timezone',
             'localFormatFunction' => 'formatFunction',
         ];
-<<<<<<< HEAD
 
         foreach ($map as $property => $key) {
             $value = $this->$property ?? null;
 
             if ($value !== null && ($key !== 'locale' || $value !== 'en' || $this->localTranslator)) {
-=======
-        foreach ($map as $property => $key) {
-            $value = $this->$property ?? null;
-            if ($value !== null) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $settings[$key] = $value;
             }
         }
@@ -516,19 +437,11 @@ trait Options
      */
     public function __debugInfo()
     {
-<<<<<<< HEAD
         $infos = array_filter(get_object_vars($this), static function ($var) {
             return $var;
         });
 
         foreach (['dumpProperties', 'constructedObjectId', 'constructed'] as $property) {
-=======
-        $infos = array_filter(get_object_vars($this), function ($var) {
-            return $var;
-        });
-
-        foreach (['dumpProperties', 'constructedObjectId'] as $property) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if (isset($infos[$property])) {
                 unset($infos[$property]);
             }
@@ -541,11 +454,7 @@ trait Options
 
     protected function addExtraDebugInfos(&$infos): void
     {
-<<<<<<< HEAD
         if ($this instanceof DateTimeInterface) {
-=======
-        if ($this instanceof CarbonInterface || $this instanceof DateTimeInterface) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             try {
                 if (!isset($infos['date'])) {
                     $infos['date'] = $this->format(CarbonInterface::MOCK_DATETIME_FORMAT);

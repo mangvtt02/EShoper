@@ -1,11 +1,7 @@
 <?php
 /**
  * @package php-font-lib
-<<<<<<< HEAD
  * @link    https://github.com/dompdf/php-font-lib
-=======
- * @link    https://github.com/PhenX/php-font-lib
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
@@ -105,7 +101,6 @@ class File extends BinaryStream {
     "Ccaron", "ccaron", "dmacron"
   );
 
-<<<<<<< HEAD
   private function uniord (string $c, string $encoding = null) {
     if (function_exists("mb_ord")) {
       if (PHP_VERSION_ID < 80000 && $encoding === null) {
@@ -172,8 +167,6 @@ class File extends BinaryStream {
     return $ord;
   }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   function getTable() {
     $this->parseTableEntries();
 
@@ -197,11 +190,7 @@ class File extends BinaryStream {
   }
 
   function utf8toUnicode($str) {
-<<<<<<< HEAD
     $len = mb_strlen($str, '8bit');
-=======
-    $len = strlen($str);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     $out = array();
 
     for ($i = 0; $i < $len; $i++) {
@@ -234,11 +223,7 @@ class File extends BinaryStream {
   function getUnicodeCharMap() {
     $subtable = null;
     foreach ($this->getData("cmap", "subtables") as $_subtable) {
-<<<<<<< HEAD
       if ($_subtable["platformID"] == 0 || ($_subtable["platformID"] == 3 && $_subtable["platformSpecificID"] == 1)) {
-=======
-      if ($_subtable["platformID"] == 0 || $_subtable["platformID"] == 3 && $_subtable["platformSpecificID"] == 1) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $subtable = $_subtable;
         break;
       }
@@ -248,7 +233,6 @@ class File extends BinaryStream {
       return $subtable["glyphIndexArray"];
     }
 
-<<<<<<< HEAD
     $system_encodings = mb_list_encodings();
     $system_encodings = array_change_key_case(array_fill_keys($system_encodings, true), CASE_UPPER);
     foreach ($this->getData("cmap", "subtables") as $_subtable) {
@@ -294,8 +278,6 @@ class File extends BinaryStream {
       }
     }
     
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     return null;
   }
 
@@ -328,19 +310,11 @@ class File extends BinaryStream {
 
     /** @var glyf $glyf */
     $glyf = $this->getTableObject("glyf");
-<<<<<<< HEAD
     if ($glyf) {
       $gids = $glyf->getGlyphIDs($gids);
       sort($gids);
       $this->glyph_subset = $gids;
     }
-=======
-    $gids = $glyf->getGlyphIDs($gids);
-
-    sort($gids);
-
-    $this->glyph_subset = $gids;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     $this->glyph_all    = array_values($glyphIndexArray); // FIXME
   }
 
@@ -354,20 +328,12 @@ class File extends BinaryStream {
 
   function encode($tags = array()) {
     if (!self::$raw) {
-<<<<<<< HEAD
       $tags = array_merge(array("head", "hhea", "cmap", "hmtx", "maxp", "glyf", "loca", "name", "post", "cvt ", "fpgm", "prep"), $tags);
-=======
-      $tags = array_merge(array("head", "hhea", "cmap", "hmtx", "maxp", "glyf", "loca", "name", "post"), $tags);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
     else {
       $tags = array_keys($this->directory);
     }
 
-<<<<<<< HEAD
-=======
-    $num_tables = count($tags);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     $n          = 16; // @todo
 
     Font::d("Tables : " . implode(", ", $tags));
@@ -383,7 +349,6 @@ class File extends BinaryStream {
       $entries[$tag] = $this->directory[$tag];
     }
 
-<<<<<<< HEAD
     $num_tables = count($entries);
     $exponent = floor(log($num_tables, 2));
     $power_of_two = pow(2, $exponent);
@@ -392,9 +357,6 @@ class File extends BinaryStream {
     $this->header->data["searchRange"] = $power_of_two * 16;
     $this->header->data["entrySelector"] = log($power_of_two, 2);
     $this->header->data["rangeShift"] = $num_tables * 16 - $this->header->data["searchRange"];
-=======
-    $this->header->data["numTables"] = $num_tables;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     $this->header->encode();
 
     $directory_offset = $this->pos();
@@ -481,14 +443,10 @@ class File extends BinaryStream {
    * @return Table
    */
   public function getTableObject($name) {
-<<<<<<< HEAD
     if (\array_key_exists($name, $this->data)) {
       return $this->data[$name];
     }
     return null;
-=======
-    return $this->data[$name];
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
   }
 
   public function setTableObject($name, Table $data) {

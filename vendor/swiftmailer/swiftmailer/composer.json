@@ -16,30 +16,17 @@
     ],
     "require": {
         "php": ">=7.0.0",
-<<<<<<< HEAD
         "egulias/email-validator": "^2.0|^3.1",
-=======
-        "egulias/email-validator": "~2.0",
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         "symfony/polyfill-iconv": "^1.0",
         "symfony/polyfill-mbstring": "^1.0",
         "symfony/polyfill-intl-idn": "^1.10"
     },
     "require-dev": {
-<<<<<<< HEAD
         "mockery/mockery": "^1.0",
         "symfony/phpunit-bridge": "^4.4|^5.4"
     },
     "suggest": {
         "ext-intl": "Needed to support internationalized email addresses"
-=======
-        "mockery/mockery": "~0.9.1",
-        "symfony/phpunit-bridge": "^3.4.19|^4.1.8"
-    },
-    "suggest": {
-        "ext-intl": "Needed to support internationalized email addresses",
-        "true/punycode": "Needed to support internationalized email addresses, if ext-intl is not installed"
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     },
     "autoload": {
         "files": ["lib/swift_required.php"]
@@ -51,11 +38,7 @@
         "branch-alias": {
             "dev-master": "6.2-dev"
         }
-<<<<<<< HEAD
     },
     "minimum-stability": "dev",
     "prefer-stable": true
-=======
-    }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

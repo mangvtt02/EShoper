@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 /*
  * This file is part of the Symfony package.
  *
@@ -14,8 +13,4 @@ if (\PHP_VERSION_ID < 80000) {
     class ValueError extends Error
     {
     }
-=======
-class ValueError extends Error
-{
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

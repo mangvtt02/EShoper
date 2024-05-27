@@ -12,40 +12,21 @@
         {
             "name":     "Marco Pivetta",
             "email":    "ocramius@gmail.com",
-<<<<<<< HEAD
             "homepage": "https://ocramius.github.io/"
         }
     ],
-=======
-            "homepage": "http://ocramius.github.com/"
-        }
-    ],
-    "config": {
-        "platform": {
-            "php": "7.1.27"
-        }
-    },
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     "require": {
         "php": "^7.1 || ^8.0"
     },
     "require-dev": {
         "ext-phar":                  "*",
         "ext-pdo":                   "*",
-<<<<<<< HEAD
         "doctrine/coding-standard":  "^9 || ^11",
         "phpbench/phpbench":         "^0.16 || ^1",
         "phpstan/phpstan":           "^1.4",
         "phpstan/phpstan-phpunit":   "^1",
         "phpunit/phpunit":           "^7.5 || ^8.5 || ^9.5",
         "vimeo/psalm": "^4.30 || ^5.4"
-=======
-        "doctrine/coding-standard":  "^6.0",
-        "phpbench/phpbench":         "^0.13",
-        "phpstan/phpstan-phpunit":   "^0.11",
-        "phpstan/phpstan-shim":      "^0.11",
-        "phpunit/phpunit":           "^7.0"
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     },
     "autoload": {
         "psr-4": {
@@ -59,15 +40,9 @@
             "DoctrineTest\\InstantiatorTestAsset\\": "tests"
         }
     },
-<<<<<<< HEAD
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
-=======
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.2.x-dev"
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 }

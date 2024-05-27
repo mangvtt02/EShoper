@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace League\MimeTypeDetection;
 
-<<<<<<< HEAD
 use const FILEINFO_MIME_TYPE;
 
 use const PATHINFO_EXTENSION;
@@ -19,16 +18,6 @@ class FinfoMimeTypeDetector implements MimeTypeDetector, ExtensionLookup
         'application/octet-stream',
         'inode/x-empty',
     ];
-=======
-use finfo;
-
-use const FILEINFO_MIME_TYPE;
-use const PATHINFO_EXTENSION;
-
-class FinfoMimeTypeDetector implements MimeTypeDetector
-{
-    private const INCONCLUSIVE_MIME_TYPES = ['application/x-empty', 'text/plain', 'text/x-asm'];
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var finfo
@@ -40,7 +29,6 @@ class FinfoMimeTypeDetector implements MimeTypeDetector
      */
     private $extensionMap;
 
-<<<<<<< HEAD
     /**
      * @var int|null
      */
@@ -61,28 +49,15 @@ class FinfoMimeTypeDetector implements MimeTypeDetector
         $this->extensionMap = $extensionMap ?: new GeneratedExtensionToMimeTypeMap();
         $this->bufferSampleSize = $bufferSampleSize;
         $this->inconclusiveMimetypes = $inconclusiveMimetypes;
-=======
-    public function __construct(string $magicFile = '', ExtensionToMimeTypeMap $extensionMap = null)
-    {
-        $this->finfo = new finfo(FILEINFO_MIME_TYPE, $magicFile);
-        $this->extensionMap = $extensionMap ?: new GeneratedExtensionToMimeTypeMap();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function detectMimeType(string $path, $contents): ?string
     {
         $mimeType = is_string($contents)
-<<<<<<< HEAD
             ? (@$this->finfo->buffer($this->takeSample($contents)) ?: null)
             : null;
 
         if ($mimeType !== null && ! in_array($mimeType, $this->inconclusiveMimetypes)) {
-=======
-            ? (@$this->finfo->buffer($contents) ?: null)
-            : null;
-
-        if ($mimeType !== null && ! in_array($mimeType, self::INCONCLUSIVE_MIME_TYPES)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $mimeType;
         }
 
@@ -103,7 +78,6 @@ class FinfoMimeTypeDetector implements MimeTypeDetector
 
     public function detectMimeTypeFromBuffer(string $contents): ?string
     {
-<<<<<<< HEAD
         return @$this->finfo->buffer($this->takeSample($contents)) ?: null;
     }
 
@@ -130,9 +104,3 @@ class FinfoMimeTypeDetector implements MimeTypeDetector
             : [];
     }
 }
-=======
-        return @$this->finfo->buffer($contents) ?: null;
-    }
-}
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

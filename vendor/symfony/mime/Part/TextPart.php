@@ -23,23 +23,17 @@ use Symfony\Component\Mime\Header\Headers;
  */
 class TextPart extends AbstractPart
 {
-<<<<<<< HEAD
     /** @internal */
     protected $_headers;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private static $encoders = [];
 
     private $body;
     private $charset;
     private $subtype;
-<<<<<<< HEAD
     /**
      * @var ?string
      */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private $disposition;
     private $name;
     private $encoding;
@@ -48,15 +42,10 @@ class TextPart extends AbstractPart
     /**
      * @param resource|string $body
      */
-<<<<<<< HEAD
     public function __construct($body, ?string $charset = 'utf-8', string $subtype = 'plain', ?string $encoding = null)
     {
         unset($this->_headers);
 
-=======
-    public function __construct($body, ?string $charset = 'utf-8', $subtype = 'plain', string $encoding = null)
-    {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         parent::__construct();
 
         if (!\is_string($body) && !\is_resource($body)) {
@@ -105,11 +94,7 @@ class TextPart extends AbstractPart
      *
      * @return $this
      */
-<<<<<<< HEAD
     public function setName(string $name)
-=======
-    public function setName($name)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->name = $name;
 
@@ -212,10 +197,7 @@ class TextPart extends AbstractPart
         // convert resources to strings for serialization
         if (null !== $this->seekable) {
             $this->body = $this->getBody();
-<<<<<<< HEAD
             $this->seekable = null;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $this->_headers = $this->getHeaders();

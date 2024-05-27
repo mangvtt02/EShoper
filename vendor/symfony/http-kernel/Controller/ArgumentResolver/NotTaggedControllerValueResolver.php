@@ -69,14 +69,9 @@ final class NotTaggedControllerValueResolver implements ArgumentValueResolverInt
         }
 
         if (!$this->container->has($controller)) {
-<<<<<<< HEAD
             $controller = (false !== $i = strrpos($controller, ':'))
                 ? substr($controller, 0, $i).strtolower(substr($controller, $i))
                 : $controller.'::__invoke';
-=======
-            $i = strrpos($controller, ':');
-            $controller = substr($controller, 0, $i).strtolower(substr($controller, $i));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $what = sprintf('argument $%s of "%s()"', $argument->getName(), $controller);

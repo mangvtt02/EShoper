@@ -58,11 +58,7 @@ class ServerDumpCommand extends Command
 
         $this
             ->addOption('format', null, InputOption::VALUE_REQUIRED, sprintf('The output format (%s)', $availableFormats), 'cli')
-<<<<<<< HEAD
             ->setDescription('Start a dump server that collects and displays dumps in a single place')
-=======
-            ->setDescription('Starts a dump server that collects and displays dumps in a single place')
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ->setHelp(<<<'EOF'
 <info>%command.name%</info> starts a dump server that collects and displays
 dumps in a single place for debugging you application:
@@ -99,10 +95,7 @@ EOF
         $this->server->listen(function (Data $data, array $context, int $clientId) use ($descriptor, $io) {
             $descriptor->describe($io, $data, $context, $clientId);
         });
-<<<<<<< HEAD
 
         return 0;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

@@ -40,11 +40,7 @@ abstract class Output implements OutputInterface
     public function __construct(?int $verbosity = self::VERBOSITY_NORMAL, bool $decorated = false, OutputFormatterInterface $formatter = null)
     {
         $this->verbosity = null === $verbosity ? self::VERBOSITY_NORMAL : $verbosity;
-<<<<<<< HEAD
         $this->formatter = $formatter ?? new OutputFormatter();
-=======
-        $this->formatter = $formatter ?: new OutputFormatter();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->formatter->setDecorated($decorated);
     }
 
@@ -167,11 +163,7 @@ abstract class Output implements OutputInterface
                     break;
             }
 
-<<<<<<< HEAD
             $this->doWrite($message ?? '', $newline);
-=======
-            $this->doWrite($message, $newline);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 

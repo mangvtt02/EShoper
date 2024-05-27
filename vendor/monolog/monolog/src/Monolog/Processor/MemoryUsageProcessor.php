@@ -19,12 +19,9 @@ namespace Monolog\Processor;
  */
 class MemoryUsageProcessor extends MemoryProcessor
 {
-<<<<<<< HEAD
     /**
      * {@inheritDoc}
      */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __invoke(array $record): array
     {
         $usage = memory_get_usage($this->realUsage);

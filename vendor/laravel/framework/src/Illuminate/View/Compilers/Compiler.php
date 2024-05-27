@@ -48,11 +48,7 @@ abstract class Compiler
      */
     public function getCompiledPath($path)
     {
-<<<<<<< HEAD
         return $this->cachePath.'/'.sha1('v2'.$path).'.php';
-=======
-        return $this->cachePath.'/'.sha1($path).'.php';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**

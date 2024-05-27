@@ -97,11 +97,7 @@ class QuestionHelper extends Helper
     /**
      * Asks the question to the user.
      *
-<<<<<<< HEAD
      * @return mixed
-=======
-     * @return bool|mixed|string|null
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @throws RuntimeException In case the fallback is deactivated and the response cannot be hidden
      */
@@ -112,14 +108,6 @@ class QuestionHelper extends Helper
         $inputStream = $this->inputStream ?: \STDIN;
         $autocomplete = $question->getAutocompleterCallback();
 
-<<<<<<< HEAD
-=======
-        if (\function_exists('sapi_windows_cp_set')) {
-            // Codepage used by cmd.exe on Windows to allow special characters (éàüñ).
-            @sapi_windows_cp_set(1252);
-        }
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (null === $autocomplete || !self::$stty || !Terminal::hasSttyAvailable()) {
             $ret = false;
             if ($question->isHidden()) {
@@ -134,13 +122,9 @@ class QuestionHelper extends Helper
             }
 
             if (false === $ret) {
-<<<<<<< HEAD
                 $cp = $this->setIOCodepage();
                 $ret = fgets($inputStream, 4096);
                 $ret = $this->resetIOCodepage($cp, $ret);
-=======
-                $ret = fgets($inputStream, 4096);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 if (false === $ret) {
                     throw new MissingInputException('Aborted.');
                 }
@@ -183,21 +167,13 @@ class QuestionHelper extends Helper
             $choices = $question->getChoices();
 
             if (!$question->isMultiselect()) {
-<<<<<<< HEAD
                 return $choices[$default] ?? $default;
-=======
-                return isset($choices[$default]) ? $choices[$default] : $default;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
 
             $default = explode(',', $default);
             foreach ($default as $k => $v) {
                 $v = $question->isTrimmable() ? trim($v) : $v;
-<<<<<<< HEAD
                 $default[$k] = $choices[$v] ?? $v;
-=======
-                $default[$k] = isset($choices[$v]) ? $choices[$v] : $v;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
 
@@ -231,11 +207,7 @@ class QuestionHelper extends Helper
     {
         $messages = [];
 
-<<<<<<< HEAD
         $maxWidth = max(array_map([__CLASS__, 'strlen'], array_keys($choices = $question->getChoices())));
-=======
-        $maxWidth = max(array_map('self::strlen', array_keys($choices = $question->getChoices())));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         foreach ($choices as $key => $value) {
             $padding = str_repeat(' ', $maxWidth - self::strlen($key));
@@ -334,20 +306,12 @@ class QuestionHelper extends Helper
                         $remainingCharacters = substr($ret, \strlen(trim($this->mostRecentlyEnteredValue($fullChoice))));
                         $output->write($remainingCharacters);
                         $fullChoice .= $remainingCharacters;
-<<<<<<< HEAD
                         $i = (false === $encoding = mb_detect_encoding($fullChoice, null, true)) ? \strlen($fullChoice) : mb_strlen($fullChoice, $encoding);
-=======
-                        $i = self::strlen($fullChoice);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                         $matches = array_filter(
                             $autocomplete($ret),
                             function ($match) use ($ret) {
-<<<<<<< HEAD
                                 return '' === $ret || str_starts_with($match, $ret);
-=======
-                                return '' === $ret || 0 === strpos($match, $ret);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                             }
                         );
                         $numMatches = \count($matches);
@@ -384,11 +348,7 @@ class QuestionHelper extends Helper
 
                 foreach ($autocomplete($ret) as $value) {
                     // If typed characters match the beginning chunk of value (e.g. [AcmeDe]moBundle)
-<<<<<<< HEAD
                     if (str_starts_with($value, $tempRet)) {
-=======
-                    if (0 === strpos($value, $tempRet)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         $matches[$numMatches++] = $value;
                     }
                 }
@@ -417,20 +377,12 @@ class QuestionHelper extends Helper
     private function mostRecentlyEnteredValue(string $entered): string
     {
         // Determine the most recent value that the user entered
-<<<<<<< HEAD
         if (!str_contains($entered, ',')) {
-=======
-        if (false === strpos($entered, ',')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $entered;
         }
 
         $choices = explode(',', $entered);
-<<<<<<< HEAD
         if ('' !== $lastChoice = trim($choices[\count($choices) - 1])) {
-=======
-        if (\strlen($lastChoice = trim($choices[\count($choices) - 1])) > 0) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $lastChoice;
         }
 
@@ -457,11 +409,7 @@ class QuestionHelper extends Helper
                 $exe = $tmpExe;
             }
 
-<<<<<<< HEAD
             $sExec = shell_exec('"'.$exe.'"');
-=======
-            $sExec = shell_exec($exe);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $value = $trimmable ? rtrim($sExec) : $sExec;
             $output->writeln('');
 
@@ -537,19 +485,11 @@ class QuestionHelper extends Helper
         }
 
         if (\function_exists('stream_isatty')) {
-<<<<<<< HEAD
             return self::$stdinIsInteractive = @stream_isatty(fopen('php://stdin', 'r'));
         }
 
         if (\function_exists('posix_isatty')) {
             return self::$stdinIsInteractive = @posix_isatty(fopen('php://stdin', 'r'));
-=======
-            return self::$stdinIsInteractive = stream_isatty(fopen('php://stdin', 'r'));
-        }
-
-        if (\function_exists('posix_isatty')) {
-            return self::$stdinIsInteractive = posix_isatty(fopen('php://stdin', 'r'));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if (!\function_exists('exec')) {
@@ -560,7 +500,6 @@ class QuestionHelper extends Helper
 
         return self::$stdinIsInteractive = 1 !== $status;
     }
-<<<<<<< HEAD
 
     /**
      * Sets console I/O to the host code page.
@@ -598,6 +537,4 @@ class QuestionHelper extends Helper
 
         return $input;
     }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

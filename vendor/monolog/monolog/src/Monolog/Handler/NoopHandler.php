@@ -23,11 +23,7 @@ namespace Monolog\Handler;
 class NoopHandler extends Handler
 {
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function isHandling(array $record): bool
     {
@@ -35,11 +31,7 @@ class NoopHandler extends Handler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function handle(array $record): bool
     {

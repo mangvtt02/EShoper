@@ -3,18 +3,7 @@
 namespace Yajra\DataTables\Utilities;
 
 /**
-<<<<<<< HEAD
  * @mixin \Illuminate\Http\Request
-=======
- * @method mixed input($key, $default = null)
- * @method mixed get($key, $default = null)
- * @method mixed query($key, $default = null)
- * @method mixed has($key)
- * @method mixed merge(array $values)
- * @method bool wantsJson()
- * @method bool ajax()
- * @method array all()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 class Request
 {
@@ -34,13 +23,8 @@ class Request
     /**
      * Proxy non existing method calls to request class.
      *
-<<<<<<< HEAD
      * @param  mixed  $name
      * @param  mixed  $arguments
-=======
-     * @param mixed $name
-     * @param mixed $arguments
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return mixed
      */
     public function __call($name, $arguments)
@@ -53,11 +37,7 @@ class Request
     /**
      * Get attributes from request instance.
      *
-<<<<<<< HEAD
      * @param  string  $name
-=======
-     * @param string $name
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return mixed
      */
     public function __get($name)
@@ -88,11 +68,7 @@ class Request
     /**
      * Check if DataTables must uses regular expressions.
      *
-<<<<<<< HEAD
      * @param  int  $index
-=======
-     * @param int $index
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return bool
      */
     public function isRegex($index)
@@ -136,11 +112,7 @@ class Request
     /**
      * Check if a column is orderable.
      *
-<<<<<<< HEAD
      * @param  int  $index
-=======
-     * @param  int $index
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return bool
      */
     public function isColumnOrderable($index)
@@ -168,13 +140,8 @@ class Request
     /**
      * Check if a column is searchable.
      *
-<<<<<<< HEAD
      * @param  int  $i
      * @param  bool  $column_search
-=======
-     * @param int $i
-     * @param bool    $column_search
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return bool
      */
     public function isColumnSearchable($i, $column_search = true)
@@ -198,20 +165,12 @@ class Request
     /**
      * Get column's search value.
      *
-<<<<<<< HEAD
      * @param  int  $index
-=======
-     * @param int $index
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return string
      */
     public function columnKeyword($index)
     {
-<<<<<<< HEAD
         $keyword = $this->request->input("columns.$index.search.value") ?? '';
-=======
-        $keyword = $this->request->input("columns.$index.search.value");
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $this->prepareKeyword($keyword);
     }
@@ -219,11 +178,7 @@ class Request
     /**
      * Prepare keyword string value.
      *
-<<<<<<< HEAD
      * @param  string|array  $keyword
-=======
-     * @param string|array $keyword
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return string
      */
     protected function prepareKeyword($keyword)
@@ -242,11 +197,7 @@ class Request
      */
     public function keyword()
     {
-<<<<<<< HEAD
         $keyword = $this->request->input('search.value') ?? '';
-=======
-        $keyword = $this->request->input('search.value');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return $this->prepareKeyword($keyword);
     }
@@ -254,7 +205,6 @@ class Request
     /**
      * Get column identity from input or database.
      *
-<<<<<<< HEAD
      * @param  int  $i
      * @param  string|null  $type
      * @return string
@@ -279,15 +229,6 @@ class Request
             return $column['name'];
         }
 
-=======
-     * @param int $i
-     * @return string
-     */
-    public function columnName($i)
-    {
-        $column = $this->request->input("columns.$i");
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return isset($column['name']) && $column['name'] != '' ? $column['name'] : $column['data'];
     }
 

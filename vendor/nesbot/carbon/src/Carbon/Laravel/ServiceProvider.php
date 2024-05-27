@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 /**
  * This file is part of the Carbon package.
  *
@@ -10,8 +9,6 @@
  * file that was distributed with this source code.
  */
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 namespace Carbon\Laravel;
 
 use Carbon\Carbon;
@@ -27,7 +24,6 @@ use Throwable;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
-<<<<<<< HEAD
     /** @var callable|null */
     protected $appGetter = null;
 
@@ -44,8 +40,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->localeGetter = $localeGetter;
     }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function boot()
     {
         $this->updateLocale();
@@ -66,17 +60,12 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     public function updateLocale()
     {
-<<<<<<< HEAD
         $locale = $this->getLocale();
 
         if ($locale === null) {
             return;
         }
 
-=======
-        $app = $this->app && method_exists($this->app, 'getLocale') ? $this->app : app('translator');
-        $locale = $app->getLocale();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         Carbon::setLocale($locale);
         CarbonImmutable::setLocale($locale);
         CarbonPeriod::setLocale($locale);
@@ -101,7 +90,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         // Needed for Laravel < 5.3 compatibility
     }
 
-<<<<<<< HEAD
     protected function getLocale()
     {
         if ($this->localeGetter) {
@@ -130,8 +118,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         return \function_exists('app') ? \app(...$args) : null;
     }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     protected function isEventDispatcher($instance)
     {
         return $instance instanceof EventDispatcher

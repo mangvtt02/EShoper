@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function json_decode;
 use function sprintf;
 use PHPUnit\Framework\Exception;
@@ -17,11 +16,6 @@ use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Util\Json;
 use SebastianBergmann\Comparator\ComparisonFailure;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
-=======
-use PHPUnit\Framework\ExpectationFailedException;
-use PHPUnit\Util\Json;
-use SebastianBergmann\Comparator\ComparisonFailure;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Asserts whether or not two JSON objects are equal.
@@ -43,11 +37,7 @@ final class JsonMatches extends Constraint
      */
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'matches JSON string "%s"',
             $this->value
         );
@@ -79,7 +69,6 @@ final class JsonMatches extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Throws an exception for the given compared value and test description.
      *
      * @param mixed  $other       evaluated value or object
@@ -92,21 +81,6 @@ final class JsonMatches extends Constraint
      * @psalm-return never-return
      */
     protected function fail($other, $description, ?ComparisonFailure $comparisonFailure = null): void
-=======
-     * Throws an exception for the given compared value and test description
-     *
-     * @param mixed             $other             evaluated value or object
-     * @param string            $description       Additional information about the test
-     * @param ComparisonFailure $comparisonFailure
-     *
-     * @throws ExpectationFailedException
-     * @throws \PHPUnit\Framework\Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     *
-     * @psalm-return never-return
-     */
-    protected function fail($other, $description, ComparisonFailure $comparisonFailure = null): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if ($comparisonFailure === null) {
             [$error, $recodedOther] = Json::canonicalize($other);
@@ -122,13 +96,8 @@ final class JsonMatches extends Constraint
             }
 
             $comparisonFailure = new ComparisonFailure(
-<<<<<<< HEAD
                 json_decode($this->value),
                 json_decode($other),
-=======
-                \json_decode($this->value),
-                \json_decode($other),
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 Json::prettify($recodedValue),
                 Json::prettify($recodedOther),
                 false,

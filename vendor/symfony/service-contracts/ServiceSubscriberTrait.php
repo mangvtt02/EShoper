@@ -12,18 +12,11 @@
 namespace Symfony\Contracts\Service;
 
 use Psr\Container\ContainerInterface;
-<<<<<<< HEAD
 use Symfony\Contracts\Service\Attribute\SubscribedService;
 
 /**
  * Implementation of ServiceSubscriberInterface that determines subscribed services from
  * method return types. Service ids are available as "ClassName::methodName".
-=======
-
-/**
- * Implementation of ServiceSubscriberInterface that determines subscribed services from
- * private method return types. Service ids are available as "ClassName::methodName".
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * @author Kevin Bond <kevinbond@gmail.com>
  */
@@ -32,7 +25,6 @@ trait ServiceSubscriberTrait
     /** @var ContainerInterface */
     protected $container;
 
-<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
@@ -93,25 +85,6 @@ trait ServiceSubscriberTrait
                 }
 
                 $services[self::class.'::'.$method->name] = '?'.($returnType instanceof \ReflectionNamedType ? $returnType->getName() : $returnType);
-=======
-    public static function getSubscribedServices(): array
-    {
-        static $services;
-
-        if (null !== $services) {
-            return $services;
-        }
-
-        $services = \is_callable(['parent', __FUNCTION__]) ? parent::getSubscribedServices() : [];
-
-        foreach ((new \ReflectionClass(self::class))->getMethods() as $method) {
-            if ($method->isStatic() || $method->isAbstract() || $method->isGenerator() || $method->isInternal() || $method->getNumberOfRequiredParameters()) {
-                continue;
-            }
-
-            if (self::class === $method->getDeclaringClass()->name && ($returnType = $method->getReturnType()) && !$returnType->isBuiltin()) {
-                $services[self::class.'::'.$method->name] = '?'.($returnType instanceof \ReflectionNamedType ? $returnType->getName() : $type);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             }
         }
 
@@ -120,7 +93,6 @@ trait ServiceSubscriberTrait
 
     /**
      * @required
-<<<<<<< HEAD
      *
      * @return ContainerInterface|null
      */
@@ -134,17 +106,5 @@ trait ServiceSubscriberTrait
         $this->container = $container;
 
         return $ret;
-=======
-     */
-    public function setContainer(ContainerInterface $container)
-    {
-        $this->container = $container;
-
-        if (\is_callable(['parent', __FUNCTION__])) {
-            return parent::setContainer($container);
-        }
-
-        return null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

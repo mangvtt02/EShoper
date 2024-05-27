@@ -4,18 +4,11 @@ declare(strict_types=1);
 
 namespace League\MimeTypeDetection;
 
-<<<<<<< HEAD
 class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap, ExtensionLookup
 {
     /**
      * @var array<string, string>
      *
-=======
-class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
-{
-    /**
-     * @var string[]
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @internal
      */
     public const MIME_TYPES_FOR_EXTENSIONS = [
@@ -30,11 +23,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         '7zip' => 'application/x-7z-compressed',
         '123' => 'application/vnd.lotus-1-2-3',
         'aab' => 'application/x-authorware-bin',
-<<<<<<< HEAD
         'aac' => 'audio/acc',
-=======
-        'aac' => 'audio/x-acc',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'aam' => 'application/x-authorware-map',
         'aas' => 'application/x-authorware-seg',
         'abw' => 'application/x-abiword',
@@ -45,17 +34,11 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'acu' => 'application/vnd.acucobol',
         'acutc' => 'application/vnd.acucorp',
         'adp' => 'audio/adpcm',
-<<<<<<< HEAD
         'adts' => 'audio/aac',
         'aep' => 'application/vnd.audiograph',
         'afm' => 'application/x-font-type1',
         'afp' => 'application/vnd.ibm.modcap',
         'age' => 'application/vnd.age',
-=======
-        'aep' => 'application/vnd.audiograph',
-        'afm' => 'application/x-font-type1',
-        'afp' => 'application/vnd.ibm.modcap',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'ahead' => 'application/vnd.ahead.space',
         'ai' => 'application/pdf',
         'aif' => 'audio/x-aiff',
@@ -64,7 +47,6 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'air' => 'application/vnd.adobe.air-application-installer-package+zip',
         'ait' => 'application/vnd.dvb.ait',
         'ami' => 'application/vnd.amiga.ami',
-<<<<<<< HEAD
         'aml' => 'application/automationml-aml+xml',
         'amlx' => 'application/automationml-amlx+zip',
         'amr' => 'audio/amr',
@@ -75,12 +57,6 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'application' => 'application/x-ms-application',
         'appx' => 'application/appx',
         'appxbundle' => 'application/appxbundle',
-=======
-        'apk' => 'application/vnd.android.package-archive',
-        'apng' => 'image/apng',
-        'appcache' => 'text/cache-manifest',
-        'application' => 'application/x-ms-application',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'apr' => 'application/vnd.lotus-approach',
         'arc' => 'application/x-freearc',
         'arj' => 'application/x-arj',
@@ -96,11 +72,8 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'atomsvc' => 'application/atomsvc+xml',
         'atx' => 'application/vnd.antix.game-component',
         'au' => 'audio/x-au',
-<<<<<<< HEAD
         'avci' => 'image/avci',
         'avcs' => 'image/avcs',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'avi' => 'video/x-msvideo',
         'avif' => 'image/avif',
         'aw' => 'application/applixware',
@@ -127,13 +100,9 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'boz' => 'application/x-bzip2',
         'bpk' => 'application/octet-stream',
         'bpmn' => 'application/octet-stream',
-<<<<<<< HEAD
         'brf' => 'application/braille',
         'bsp' => 'model/vnd.valve.source.compiled-map',
         'btf' => 'image/prs.btif',
-=======
-        'bsp' => 'model/vnd.valve.source.compiled-map',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'btif' => 'image/prs.btif',
         'buffer' => 'application/octet-stream',
         'bz' => 'application/x-bzip',
@@ -185,10 +154,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'cjs' => 'application/node',
         'cla' => 'application/vnd.claymore',
         'class' => 'application/octet-stream',
-<<<<<<< HEAD
         'cld' => 'model/vnd.cld',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'clkk' => 'application/vnd.crick.clicker.keyboard',
         'clkp' => 'application/vnd.crick.clicker.palette',
         'clkt' => 'application/vnd.crick.clicker.template',
@@ -205,10 +171,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'com' => 'application/x-msdownload',
         'conf' => 'text/plain',
         'cpio' => 'application/x-cpio',
-<<<<<<< HEAD
         'cpl' => 'application/cpl+xml',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'cpp' => 'text/x-c',
         'cpt' => 'application/mac-compactpro',
         'crd' => 'application/x-mscardfile',
@@ -226,10 +189,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'csv' => 'text/csv',
         'cu' => 'application/cu-seeme',
         'curl' => 'text/vnd.curl',
-<<<<<<< HEAD
         'cwl' => 'application/cwl',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'cww' => 'application/prs.cww',
         'cxt' => 'application/x-director',
         'cxx' => 'text/x-c',
@@ -252,10 +212,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'der' => 'application/x-x509-ca-cert',
         'dfac' => 'application/vnd.dreamfactory',
         'dgc' => 'application/x-dgc-compressed',
-<<<<<<< HEAD
         'dib' => 'image/bmp',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'dic' => 'text/x-c',
         'dir' => 'application/x-director',
         'dis' => 'application/vnd.mobius.dis',
@@ -278,18 +235,12 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'dotx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.template',
         'dp' => 'application/vnd.osgi.dp',
         'dpg' => 'application/vnd.dpgraph',
-<<<<<<< HEAD
         'dpx' => 'image/dpx',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'dra' => 'audio/vnd.dra',
         'drle' => 'image/dicom-rle',
         'dsc' => 'text/prs.lines.tag',
         'dssc' => 'application/dssc+der',
-<<<<<<< HEAD
         'dst' => 'application/octet-stream',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'dtb' => 'application/x-dtbook+xml',
         'dtd' => 'application/xml-dtd',
         'dts' => 'audio/vnd.dts',
@@ -322,10 +273,6 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'eot' => 'application/vnd.ms-fontobject',
         'eps' => 'application/postscript',
         'epub' => 'application/epub+zip',
-<<<<<<< HEAD
-=======
-        'es' => 'application/ecmascript',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'es3' => 'application/vnd.eszigno3+xml',
         'esa' => 'application/vnd.osgi.subsystem',
         'esf' => 'application/vnd.epson.esf',
@@ -335,10 +282,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'evy' => 'application/x-envoy',
         'exe' => 'application/octet-stream',
         'exi' => 'application/exi',
-<<<<<<< HEAD
         'exp' => 'application/express',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'exr' => 'image/aces',
         'ext' => 'application/vnd.novadigm.ext',
         'ez' => 'application/andrew-inset',
@@ -393,10 +337,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'gca' => 'application/x-gca-compressed',
         'gdl' => 'model/vnd.gdl',
         'gdoc' => 'application/vnd.google-apps.document',
-<<<<<<< HEAD
         'ged' => 'text/vnd.familysearch.gedcom',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'geo' => 'application/vnd.dynageo',
         'geojson' => 'application/geo+json',
         'gex' => 'application/vnd.geometry-explorer',
@@ -429,13 +370,8 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'gv' => 'text/vnd.graphviz',
         'gxf' => 'application/gxf',
         'gxt' => 'application/vnd.geonext',
-<<<<<<< HEAD
         'gz' => 'application/gzip',
         'gzip' => 'application/gzip',
-=======
-        'gz' => 'application/x-gzip',
-        'gzip' => 'application/x-gzip',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'h' => 'text/x-c',
         'h261' => 'video/h261',
         'h263' => 'video/h263',
@@ -529,10 +465,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'jsonld' => 'application/ld+json',
         'jsonml' => 'application/jsonml+json',
         'jsx' => 'text/jsx',
-<<<<<<< HEAD
         'jt' => 'model/jt',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'jxr' => 'image/jxr',
         'jxra' => 'image/jxra',
         'jxrs' => 'image/jxrs',
@@ -544,11 +477,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'karbon' => 'application/vnd.kde.karbon',
         'kdb' => 'application/octet-stream',
         'kdbx' => 'application/x-keepass2',
-<<<<<<< HEAD
         'key' => 'application/x-iwork-keynote-sffkey',
-=======
-        'key' => 'application/vnd.apple.keynote',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'kfo' => 'application/vnd.kde.kformula',
         'kia' => 'application/vnd.kidspiration',
         'kml' => 'application/vnd.google-earth.kml+xml',
@@ -598,10 +527,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'm3u8' => 'application/vnd.apple.mpegurl',
         'm4a' => 'audio/x-m4a',
         'm4p' => 'application/mp4',
-<<<<<<< HEAD
         'm4s' => 'video/iso.segment',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'm4u' => 'application/vnd.mpegurl',
         'm4v' => 'video/x-m4v',
         'm13' => 'application/x-msmediaview',
@@ -644,11 +570,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'mime' => 'message/rfc822',
         'mj2' => 'video/mj2',
         'mjp2' => 'video/mj2',
-<<<<<<< HEAD
         'mjs' => 'text/javascript',
-=======
-        'mjs' => 'application/javascript',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'mk3d' => 'video/x-matroska',
         'mka' => 'audio/x-matroska',
         'mkd' => 'text/x-markdown',
@@ -677,10 +599,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'mpd' => 'application/dash+xml',
         'mpe' => 'video/mpeg',
         'mpeg' => 'video/mpeg',
-<<<<<<< HEAD
         'mpf' => 'application/media-policy-dataset+xml',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'mpg' => 'video/mpeg',
         'mpg4' => 'video/mp4',
         'mpga' => 'audio/mpeg',
@@ -701,11 +620,8 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'msg' => 'application/vnd.ms-outlook',
         'msh' => 'model/mesh',
         'msi' => 'application/x-msdownload',
-<<<<<<< HEAD
         'msix' => 'application/msix',
         'msixbundle' => 'application/msixbundle',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'msl' => 'application/vnd.mobius.msl',
         'msm' => 'application/octet-stream',
         'msp' => 'application/octet-stream',
@@ -716,10 +632,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'musd' => 'application/mmt-usd+xml',
         'musicxml' => 'application/vnd.recordare.musicxml+xml',
         'mvb' => 'application/x-msmediaview',
-<<<<<<< HEAD
         'mvt' => 'application/vnd.mapbox-vector-tile',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'mwf' => 'application/vnd.mfer',
         'mxf' => 'application/mxf',
         'mxl' => 'application/vnd.recordare.musicxml',
@@ -733,10 +646,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'nbp' => 'application/vnd.wolfram.player',
         'nc' => 'application/x-netcdf',
         'ncx' => 'application/x-dtbncx+xml',
-<<<<<<< HEAD
         'ndjson' => 'application/x-ndjson',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'nfo' => 'text/x-nfo',
         'ngdat' => 'application/vnd.nokia.n-gage.data',
         'nitf' => 'application/vnd.nitf',
@@ -751,11 +661,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'nsf' => 'application/vnd.lotus-notes',
         'nt' => 'application/n-triples',
         'ntf' => 'application/vnd.nitf',
-<<<<<<< HEAD
         'numbers' => 'application/x-iwork-numbers-sffnumbers',
-=======
-        'numbers' => 'application/vnd.apple.numbers',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'nzb' => 'application/x-nzb',
         'oa2' => 'application/vnd.fujitsu.oasys2',
         'oa3' => 'application/vnd.fujitsu.oasys3',
@@ -787,10 +693,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'opf' => 'application/oebps-package+xml',
         'opml' => 'text/x-opml',
         'oprc' => 'application/vnd.palm',
-<<<<<<< HEAD
         'opus' => 'audio/ogg',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'org' => 'text/x-org',
         'osf' => 'application/vnd.yamaha.openscoreformat',
         'osfpvg' => 'application/vnd.yamaha.openscoreformat.osfpvg+xml',
@@ -819,11 +722,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'p10' => 'application/x-pkcs10',
         'p12' => 'application/x-pkcs12',
         'pac' => 'application/x-ns-proxy-autoconfig',
-<<<<<<< HEAD
         'pages' => 'application/x-iwork-pages-sffpages',
-=======
-        'pages' => 'application/vnd.apple.pages',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'pas' => 'text/x-pascal',
         'paw' => 'application/vnd.pawaafile',
         'pbd' => 'application/vnd.powerbuilder6',
@@ -847,10 +746,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'pgm' => 'image/x-portable-graymap',
         'pgn' => 'application/x-chess-pgn',
         'pgp' => 'application/pgp',
-<<<<<<< HEAD
         'phar' => 'application/octet-stream',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'php' => 'application/x-httpd-php',
         'php3' => 'application/x-httpd-php',
         'php4' => 'application/x-httpd-php',
@@ -885,11 +781,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'pptm' => 'application/vnd.ms-powerpoint.presentation.macroEnabled.12',
         'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
         'pqa' => 'application/vnd.palm',
-<<<<<<< HEAD
         'prc' => 'model/prc',
-=======
-        'prc' => 'application/x-pilot',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'pre' => 'application/vnd.lotus-freelance',
         'prf' => 'application/pics-rules',
         'provx' => 'application/provenance+xml',
@@ -901,7 +793,6 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'pti' => 'image/prs.pti',
         'ptid' => 'application/vnd.pvi.ptid1',
         'pub' => 'application/x-mspublisher',
-<<<<<<< HEAD
         'pv' => 'application/octet-stream',
         'pvb' => 'application/vnd.3gpp.pic-bw-var',
         'pwn' => 'application/vnd.3m.post-it-notes',
@@ -909,11 +800,6 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'pya' => 'audio/vnd.ms-playready.media.pya',
         'pyo' => 'model/vnd.pytha.pyox',
         'pyox' => 'model/vnd.pytha.pyox',
-=======
-        'pvb' => 'application/vnd.3gpp.pic-bw-var',
-        'pwn' => 'application/vnd.3m.post-it-notes',
-        'pya' => 'audio/vnd.ms-playready.media.pya',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'pyv' => 'video/vnd.ms-playready.media.pyv',
         'qam' => 'application/vnd.epson.quickanime',
         'qbo' => 'application/vnd.intu.qbo',
@@ -1062,21 +948,15 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'st' => 'application/vnd.sailingtracker.track',
         'stc' => 'application/vnd.sun.xml.calc.template',
         'std' => 'application/vnd.sun.xml.draw.template',
-<<<<<<< HEAD
         'step' => 'application/STEP',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'stf' => 'application/vnd.wt.stf',
         'sti' => 'application/vnd.sun.xml.impress.template',
         'stk' => 'application/hyperstudio',
         'stl' => 'model/stl',
-<<<<<<< HEAD
         'stp' => 'application/STEP',
         'stpx' => 'model/step+xml',
         'stpxz' => 'model/step-xml+zip',
         'stpz' => 'model/step+zip',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'str' => 'application/vnd.pg.format',
         'stw' => 'application/vnd.sun.xml.writer.template',
         'styl' => 'text/stylus',
@@ -1133,10 +1013,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'tpt' => 'application/vnd.trid.tpt',
         'tr' => 'text/troff',
         'tra' => 'application/vnd.trueapp',
-<<<<<<< HEAD
         'trig' => 'application/trig',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'trm' => 'application/x-msterminal',
         'ts' => 'video/mp2t',
         'tsd' => 'application/timestamped-data',
@@ -1150,10 +1027,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'txd' => 'application/vnd.genomatix.tuxedo',
         'txf' => 'application/vnd.mobius.txf',
         'txt' => 'text/plain',
-<<<<<<< HEAD
         'u3d' => 'model/u3d',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'u8dsn' => 'message/global-delivery-status',
         'u8hdr' => 'message/global-headers',
         'u8mdn' => 'message/global-disposition-notification',
@@ -1166,18 +1040,12 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'ulx' => 'application/x-glulx',
         'umj' => 'application/vnd.umajin',
         'unityweb' => 'application/vnd.unity',
-<<<<<<< HEAD
         'uo' => 'application/vnd.uoml+xml',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'uoml' => 'application/vnd.uoml+xml',
         'uri' => 'text/uri-list',
         'uris' => 'text/uri-list',
         'urls' => 'text/uri-list',
-<<<<<<< HEAD
         'usda' => 'model/vnd.usda',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'usdz' => 'model/vnd.usdz+zip',
         'ustar' => 'application/x-ustar',
         'utz' => 'application/vnd.uiq.theme',
@@ -1219,10 +1087,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'vcs' => 'text/x-vcalendar',
         'vcx' => 'application/vnd.vcx',
         'vdi' => 'application/x-virtualbox-vdi',
-<<<<<<< HEAD
         'vds' => 'model/vnd.sap.vds',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'vhd' => 'application/x-virtualbox-vhd',
         'vis' => 'application/vnd.visionary',
         'viv' => 'video/vnd.vivo',
@@ -1260,13 +1125,9 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'webmanifest' => 'application/manifest+json',
         'webp' => 'image/webp',
         'wg' => 'application/vnd.pmi.widget',
-<<<<<<< HEAD
         'wgsl' => 'text/wgsl',
         'wgt' => 'application/widget',
         'wif' => 'application/watcherinfo+xml',
-=======
-        'wgt' => 'application/widget',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'wks' => 'application/vnd.ms-works',
         'wm' => 'video/x-ms-wm',
         'wma' => 'audio/x-ms-wma',
@@ -1318,18 +1179,11 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'xdw' => 'application/vnd.fujixerox.docuworks',
         'xel' => 'application/xcap-el+xml',
         'xenc' => 'application/xenc+xml',
-<<<<<<< HEAD
         'xer' => 'application/patch-ops-error+xml',
         'xfdf' => 'application/xfdf',
         'xfdl' => 'application/vnd.xfdl',
         'xht' => 'application/xhtml+xml',
         'xhtm' => 'application/vnd.pwg-xhtml-print+xml',
-=======
-        'xer' => 'application/xcap-error+xml',
-        'xfdf' => 'application/vnd.adobe.xfdf',
-        'xfdl' => 'application/vnd.xfdl',
-        'xht' => 'application/xhtml+xml',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'xhtml' => 'application/xhtml+xml',
         'xhvml' => 'application/xv+xml',
         'xif' => 'image/vnd.xiff',
@@ -1360,10 +1214,7 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'xpw' => 'application/vnd.intercon.formnet',
         'xpx' => 'application/vnd.intercon.formnet',
         'xsd' => 'application/xml',
-<<<<<<< HEAD
         'xsf' => 'application/prs.xsf+xml',
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'xsl' => 'application/xml',
         'xslt' => 'application/xslt+xml',
         'xsm' => 'application/vnd.syncml+xml',
@@ -1389,18 +1240,13 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'z7' => 'application/x-zmachine',
         'z8' => 'application/x-zmachine',
         'zaz' => 'application/vnd.zzazz.deck+xml',
-<<<<<<< HEAD
         'zip' => 'application/zip',
-=======
-        'zip' => 'application/x-zip',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         'zir' => 'application/vnd.zul',
         'zirz' => 'application/vnd.zul',
         'zmm' => 'application/vnd.handheld-entertainment+xml',
         'zsh' => 'text/x-scriptzsh',
     ];
 
-<<<<<<< HEAD
     /**
      * @var array<string, string>
      *
@@ -2432,13 +2278,10 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'application/braille' => ['brf'],
     ];
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function lookupMimeType(string $extension): ?string
     {
         return self::MIME_TYPES_FOR_EXTENSIONS[$extension] ?? null;
     }
-<<<<<<< HEAD
 
     public function lookupExtension(string $mimetype): ?string
     {
@@ -2452,6 +2295,4 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
     {
         return self::EXTENSIONS_FOR_MIME_TIMES[$mimetype] ?? [];
     }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

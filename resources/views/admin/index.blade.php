@@ -23,11 +23,7 @@
     <script src="assets/javascripts/jquery.dataTables.min.js" defer></script>
     <style>
       .active_star{
-<<<<<<< HEAD
           color: #f3d24a !important;
-=======
-          color: #8b8b89 !important;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     </style>
 <!-- CKeditor -->

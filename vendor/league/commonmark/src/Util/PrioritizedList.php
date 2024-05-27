@@ -50,10 +50,7 @@ final class PrioritizedList implements \IteratorAggregate
      *
      * @phpstan-return iterable<int, T>
      */
-<<<<<<< HEAD
     #[\ReturnTypeWillChange]
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function getIterator(): iterable
     {
         if ($this->optimized === null) {

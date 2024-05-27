@@ -10,11 +10,7 @@
     "homepage": "https://github.com/facade/flare-client-php",
     "license": "MIT",
     "require": {
-<<<<<<< HEAD
         "php": "^7.1|^8.0",
-=======
-        "php": "^7.1",
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         "facade/ignition-contracts": "~1.0",
         "illuminate/pipeline": "^5.5|^6.0|^7.0|^8.0",
         "symfony/http-foundation": "^3.3|^4.1|^5.0",
@@ -24,11 +20,7 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
         "spatie/phpunit-snapshot-assertions": "^2.0",
-<<<<<<< HEAD
         "phpunit/phpunit": "^7.5"
-=======
-        "phpunit/phpunit": "^7.5.16"
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     },
     "autoload": {
         "psr-4": {

@@ -44,15 +44,9 @@ final class MailboxListHeader extends AbstractHeader
     }
 
     /**
-<<<<<<< HEAD
      * @return Address[]
      *
      * @throws RfcComplianceException
-=======
-     * @throws RfcComplianceException
-     *
-     * @return Address[]
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getBody(): array
     {
@@ -105,15 +99,9 @@ final class MailboxListHeader extends AbstractHeader
     /**
      * Gets the full mailbox list of this Header as an array of valid RFC 2822 strings.
      *
-<<<<<<< HEAD
      * @return string[]
      *
      * @throws RfcComplianceException
-=======
-     * @throws RfcComplianceException
-     *
-     * @return string[]
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getAddressStrings(): array
     {

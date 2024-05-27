@@ -19,10 +19,7 @@ use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
-<<<<<<< HEAD
 use Illuminate\Support\Reflector;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Illuminate\Support\ViewErrorBag;
 use Illuminate\Validation\ValidationException;
 use Psr\Log\LoggerInterface;
@@ -107,15 +104,10 @@ class Handler implements ExceptionHandlerContract
             return;
         }
 
-<<<<<<< HEAD
         if (Reflector::isCallable($reportCallable = [$e, 'report'])) {
             if (($response = $this->container->call($reportCallable)) !== false) {
                 return $response;
             }
-=======
-        if (is_callable($reportCallable = [$e, 'report'])) {
-            return $this->container->call($reportCallable);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         try {
@@ -332,11 +324,7 @@ class Handler implements ExceptionHandlerContract
      */
     protected function convertExceptionToResponse(Exception $e)
     {
-<<<<<<< HEAD
         return new SymfonyResponse(
-=======
-        return SymfonyResponse::create(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $this->renderExceptionContent($e),
             $this->isHttpException($e) ? $e->getStatusCode() : 500,
             $this->isHttpException($e) ? $e->getHeaders() : []

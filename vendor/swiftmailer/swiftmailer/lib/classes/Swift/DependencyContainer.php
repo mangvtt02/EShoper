@@ -83,11 +83,7 @@ class Swift_DependencyContainer
      */
     public function has($itemName)
     {
-<<<<<<< HEAD
         return \array_key_exists($itemName, $this->store)
-=======
-        return array_key_exists($itemName, $this->store)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             && isset($this->store[$itemName]['lookupType']);
     }
 
@@ -105,13 +101,7 @@ class Swift_DependencyContainer
     public function lookup($itemName)
     {
         if (!$this->has($itemName)) {
-<<<<<<< HEAD
             throw new Swift_DependencyException('Cannot lookup dependency "'.$itemName.'" since it is not registered.');
-=======
-            throw new Swift_DependencyException(
-                'Cannot lookup dependency "'.$itemName.'" since it is not registered.'
-                );
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         switch ($this->store[$itemName]['lookupType']) {
@@ -356,13 +346,7 @@ class Swift_DependencyContainer
     private function &getEndPoint()
     {
         if (!isset($this->endPoint)) {
-<<<<<<< HEAD
             throw new BadMethodCallException('Component must first be registered by calling register()');
-=======
-            throw new BadMethodCallException(
-                'Component must first be registered by calling register()'
-                );
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $this->endPoint;
@@ -389,11 +373,7 @@ class Swift_DependencyContainer
     /** Resolve a single dependency with an collections */
     private function lookupRecursive($item)
     {
-<<<<<<< HEAD
         if (\is_array($item)) {
-=======
-        if (is_array($item)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $collection = [];
             foreach ($item as $k => $v) {
                 $collection[$k] = $this->lookupRecursive($v);

@@ -8,14 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
 $processHoursFunction = function (CarbonInterface $date, string $format) {
-=======
-$processHoursFunction = function (\Carbon\CarbonInterface $date, string $format) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     return $format.'о'.($date->hour === 11 ? 'б' : '').'] LT';
 };
 
@@ -59,11 +55,7 @@ $processHoursFunction = function (\Carbon\CarbonInterface $date, string $format)
  */
 return [
     'year' => ':count рік|:count роки|:count років',
-<<<<<<< HEAD
     'y' => ':countр|:countрр|:countрр',
-=======
-    'y' => ':countр',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     'a_year' => '{1}рік|:count рік|:count роки|:count років',
     'month' => ':count місяць|:count місяці|:count місяців',
     'm' => ':countм',
@@ -82,55 +74,35 @@ return [
     'a_minute' => '{1}хвилина|:count хвилина|:count хвилини|:count хвилин',
     'second' => ':count секунда|:count секунди|:count секунд',
     's' => ':countсек',
-<<<<<<< HEAD
     'a_second' => '{1}декілька секунд|:count секунда|:count секунди|:count секунд',
-=======
-    'a_second' => '{1}кілька секунд|:count секунда|:count секунди|:count секунд',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     'hour_ago' => ':count годину|:count години|:count годин',
     'a_hour_ago' => '{1}годину|:count годину|:count години|:count годин',
     'minute_ago' => ':count хвилину|:count хвилини|:count хвилин',
     'a_minute_ago' => '{1}хвилину|:count хвилину|:count хвилини|:count хвилин',
     'second_ago' => ':count секунду|:count секунди|:count секунд',
-<<<<<<< HEAD
     'a_second_ago' => '{1}декілька секунд|:count секунду|:count секунди|:count секунд',
-=======
-    'a_second_ago' => '{1}кілька секунд|:count секунду|:count секунди|:count секунд',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     'hour_from_now' => ':count годину|:count години|:count годин',
     'a_hour_from_now' => '{1}годину|:count годину|:count години|:count годин',
     'minute_from_now' => ':count хвилину|:count хвилини|:count хвилин',
     'a_minute_from_now' => '{1}хвилину|:count хвилину|:count хвилини|:count хвилин',
     'second_from_now' => ':count секунду|:count секунди|:count секунд',
-<<<<<<< HEAD
     'a_second_from_now' => '{1}декілька секунд|:count секунду|:count секунди|:count секунд',
-=======
-    'a_second_from_now' => '{1}кілька секунд|:count секунду|:count секунди|:count секунд',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     'hour_after' => ':count годину|:count години|:count годин',
     'a_hour_after' => '{1}годину|:count годину|:count години|:count годин',
     'minute_after' => ':count хвилину|:count хвилини|:count хвилин',
     'a_minute_after' => '{1}хвилину|:count хвилину|:count хвилини|:count хвилин',
     'second_after' => ':count секунду|:count секунди|:count секунд',
-<<<<<<< HEAD
     'a_second_after' => '{1}декілька секунд|:count секунду|:count секунди|:count секунд',
-=======
-    'a_second_after' => '{1}кілька секунд|:count секунду|:count секунди|:count секунд',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     'hour_before' => ':count годину|:count години|:count годин',
     'a_hour_before' => '{1}годину|:count годину|:count години|:count годин',
     'minute_before' => ':count хвилину|:count хвилини|:count хвилин',
     'a_minute_before' => '{1}хвилину|:count хвилину|:count хвилини|:count хвилин',
     'second_before' => ':count секунду|:count секунди|:count секунд',
-<<<<<<< HEAD
     'a_second_before' => '{1}декілька секунд|:count секунду|:count секунди|:count секунд',
-=======
-    'a_second_before' => '{1}кілька секунд|:count секунду|:count секунди|:count секунд',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     'ago' => ':time тому',
     'from_now' => 'за :time',
@@ -158,7 +130,6 @@ return [
         'LLLL' => 'dddd, D MMMM YYYY, HH:mm',
     ],
     'calendar' => [
-<<<<<<< HEAD
         'sameDay' => function (CarbonInterface $date) use ($processHoursFunction) {
             return $processHoursFunction($date, '[Сьогодні ');
         },
@@ -172,21 +143,6 @@ return [
             return $processHoursFunction($date, '[Вчора ');
         },
         'lastWeek' => function (CarbonInterface $date) use ($processHoursFunction) {
-=======
-        'sameDay' => function (\Carbon\CarbonInterface $date) use ($processHoursFunction) {
-            return $processHoursFunction($date, '[Сьогодні ');
-        },
-        'nextDay' => function (\Carbon\CarbonInterface $date) use ($processHoursFunction) {
-            return $processHoursFunction($date, '[Завтра ');
-        },
-        'nextWeek' => function (\Carbon\CarbonInterface $date) use ($processHoursFunction) {
-            return $processHoursFunction($date, '[У] dddd [');
-        },
-        'lastDay' => function (\Carbon\CarbonInterface $date) use ($processHoursFunction) {
-            return $processHoursFunction($date, '[Вчора ');
-        },
-        'lastWeek' => function (\Carbon\CarbonInterface $date) use ($processHoursFunction) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             switch ($date->dayOfWeek) {
                 case 0:
                 case 3:
@@ -230,29 +186,18 @@ return [
     'months_standalone' => ['січень', 'лютий', 'березень', 'квітень', 'травень', 'червень', 'липень', 'серпень', 'вересень', 'жовтень', 'листопад', 'грудень'],
     'months_short' => ['січ', 'лют', 'бер', 'кві', 'тра', 'чер', 'лип', 'сер', 'вер', 'жов', 'лис', 'гру'],
     'months_regexp' => '/(D[oD]?(\[[^\[\]]*\]|\s)+MMMM?|L{2,4}|l{2,4})/',
-<<<<<<< HEAD
     'weekdays' => function (CarbonInterface $date, $format, $index) {
-=======
-    'weekdays' => function (\Carbon\CarbonInterface $date, $format, $index) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         static $words = [
             'nominative' => ['неділя', 'понеділок', 'вівторок', 'середа', 'четвер', 'п’ятниця', 'субота'],
             'accusative' => ['неділю', 'понеділок', 'вівторок', 'середу', 'четвер', 'п’ятницю', 'суботу'],
             'genitive' => ['неділі', 'понеділка', 'вівторка', 'середи', 'четверга', 'п’ятниці', 'суботи'],
         ];
 
-<<<<<<< HEAD
         $format = $format ?? '';
         $nounCase = preg_match('/(\[(В|в|У|у)\])\s+dddd/u', $format)
             ? 'accusative'
             : (
                 preg_match('/\[?(?:минулої|наступної)?\s*\]\s+dddd/u', $format)
-=======
-        $nounCase = preg_match('/(\[(В|в|У|у)\])\s+dddd/', $format)
-            ? 'accusative'
-            : (
-                preg_match('/\[?(?:минулої|наступної)?\s*\]\s+dddd/', $format)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     ? 'genitive'
                     : 'nominative'
             );

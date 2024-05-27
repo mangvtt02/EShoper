@@ -76,21 +76,13 @@ final class RegEx
     {
         $index = null;
         $results = array();
-<<<<<<< HEAD
         preg_match($this->source, $str, $results, PREG_OFFSET_CAPTURE, $this->lastIndex);
-=======
-        preg_match_all($this->source, $str, $results, PREG_SET_ORDER | PREG_OFFSET_CAPTURE, $this->lastIndex);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($results === null || count($results) === 0) {
             return null;
         }
 
-<<<<<<< HEAD
         foreach ($results as &$result) {
-=======
-        foreach ($results[0] as &$result) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if ($result[1] !== -1) {
                 // Only save the index if it hasn't been set yet
                 if ($index === null) {
@@ -103,14 +95,9 @@ final class RegEx
             }
         }
 
-<<<<<<< HEAD
         unset($result);
 
         $this->lastIndex += strlen($results[0]) + ($index - $this->lastIndex);
-=======
-        $results = $results[0];
-        $this->lastIndex += mb_strlen($results[0]) + ($index - $this->lastIndex);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $matches = new RegExMatch($results);
         $matches->index = isset($index) ? $index : 0;

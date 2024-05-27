@@ -6,7 +6,6 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Stmt;
 
-<<<<<<< HEAD
 class NameContext {
     /** @var null|Name Current namespace */
     protected ?Name $namespace;
@@ -19,21 +18,6 @@ class NameContext {
 
     /** @var ErrorHandler Error handler */
     protected ErrorHandler $errorHandler;
-=======
-class NameContext
-{
-    /** @var null|Name Current namespace */
-    protected $namespace;
-
-    /** @var Name[][] Map of format [aliasType => [aliasName => originalName]] */
-    protected $aliases = [];
-
-    /** @var Name[][] Same as $aliases but preserving original case */
-    protected $origAliases = [];
-
-    /** @var ErrorHandler Error handler */
-    protected $errorHandler;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Create a name context.
@@ -51,11 +35,7 @@ class NameContext
      *
      * @param Name|null $namespace Null is the global namespace
      */
-<<<<<<< HEAD
     public function startNamespace(?Name $namespace = null): void {
-=======
-    public function startNamespace(Name $namespace = null) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->namespace = $namespace;
         $this->origAliases = $this->aliases = [
             Stmt\Use_::TYPE_NORMAL   => [],
@@ -67,21 +47,12 @@ class NameContext
     /**
      * Add an alias / import.
      *
-<<<<<<< HEAD
      * @param Name $name Original name
      * @param string $aliasName Aliased name
      * @param Stmt\Use_::TYPE_* $type One of Stmt\Use_::TYPE_*
      * @param array<string, mixed> $errorAttrs Attributes to use to report an error
      */
     public function addAlias(Name $name, string $aliasName, int $type, array $errorAttrs = []): void {
-=======
-     * @param Name   $name        Original name
-     * @param string $aliasName   Aliased name
-     * @param int    $type        One of Stmt\Use_::TYPE_*
-     * @param array  $errorAttrs Attributes to use to report an error
-     */
-    public function addAlias(Name $name, string $aliasName, int $type, array $errorAttrs = []) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         // Constant names are case sensitive, everything else case insensitive
         if ($type === Stmt\Use_::TYPE_CONSTANT) {
             $aliasLookupName = $aliasName;
@@ -115,11 +86,7 @@ class NameContext
      *
      * @return null|Name Namespace (or null if global namespace)
      */
-<<<<<<< HEAD
     public function getNamespace(): ?Name {
-=======
-    public function getNamespace() {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->namespace;
     }
 
@@ -127,19 +94,11 @@ class NameContext
      * Get resolved name.
      *
      * @param Name $name Name to resolve
-<<<<<<< HEAD
      * @param Stmt\Use_::TYPE_* $type One of Stmt\Use_::TYPE_{FUNCTION|CONSTANT}
      *
      * @return null|Name Resolved name, or null if static resolution is not possible
      */
     public function getResolvedName(Name $name, int $type): ?Name {
-=======
-     * @param int  $type One of Stmt\Use_::TYPE_{FUNCTION|CONSTANT}
-     *
-     * @return null|Name Resolved name, or null if static resolution is not possible
-     */
-    public function getResolvedName(Name $name, int $type) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         // don't resolve special class names
         if ($type === Stmt\Use_::TYPE_NORMAL && $name->isSpecialClassName()) {
             if (!$name->isUnqualified()) {
@@ -182,11 +141,7 @@ class NameContext
      *
      * @return Name Resolved name
      */
-<<<<<<< HEAD
     public function getResolvedClassName(Name $name): Name {
-=======
-    public function getResolvedClassName(Name $name) : Name {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->getResolvedName($name, Stmt\Use_::TYPE_NORMAL);
     }
 
@@ -194,19 +149,11 @@ class NameContext
      * Get possible ways of writing a fully qualified name (e.g., by making use of aliases).
      *
      * @param string $name Fully-qualified name (without leading namespace separator)
-<<<<<<< HEAD
      * @param Stmt\Use_::TYPE_* $type One of Stmt\Use_::TYPE_*
      *
      * @return Name[] Possible representations of the name
      */
     public function getPossibleNames(string $name, int $type): array {
-=======
-     * @param int    $type One of Stmt\Use_::TYPE_*
-     *
-     * @return Name[] Possible representations of the name
-     */
-    public function getPossibleNames(string $name, int $type) : array {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $lcName = strtolower($name);
 
         if ($type === Stmt\Use_::TYPE_NORMAL) {
@@ -258,19 +205,11 @@ class NameContext
      * Get shortest representation of this fully-qualified name.
      *
      * @param string $name Fully-qualified name (without leading namespace separator)
-<<<<<<< HEAD
      * @param Stmt\Use_::TYPE_* $type One of Stmt\Use_::TYPE_*
      *
      * @return Name Shortest representation
      */
     public function getShortName(string $name, int $type): Name {
-=======
-     * @param int    $type One of Stmt\Use_::TYPE_*
-     *
-     * @return Name Shortest representation
-     */
-    public function getShortName(string $name, int $type) : Name {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $possibleNames = $this->getPossibleNames($name, $type);
 
         // Find shortest name
@@ -284,17 +223,10 @@ class NameContext
             }
         }
 
-<<<<<<< HEAD
         return $shortestName;
     }
 
     private function resolveAlias(Name $name, int $type): ?FullyQualified {
-=======
-       return $shortestName;
-    }
-
-    private function resolveAlias(Name $name, $type) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $firstPart = $name->getFirst();
 
         if ($name->isQualified()) {
@@ -317,11 +249,7 @@ class NameContext
         return null;
     }
 
-<<<<<<< HEAD
     private function getNamespaceRelativeName(string $name, string $lcName, int $type): ?Name {
-=======
-    private function getNamespaceRelativeName(string $name, string $lcName, int $type) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if (null === $this->namespace) {
             return new Name($name);
         }
@@ -342,11 +270,7 @@ class NameContext
         return null;
     }
 
-<<<<<<< HEAD
     private function normalizeConstName(string $name): string {
-=======
-    private function normalizeConstName(string $name) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $nsSep = strrpos($name, '\\');
         if (false === $nsSep) {
             return $name;

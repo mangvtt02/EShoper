@@ -69,19 +69,11 @@ return [
     'diff_after_tomorrow' => 'overmorgen',
     'diff_before_yesterday' => 'eergisteren',
     'period_recurrences' => ':count keer',
-<<<<<<< HEAD
     'period_interval' => function (string $interval = '') {
         /** @var string $output */
         $output = preg_replace('/^(een|één|1)\s+/u', '', $interval);
 
         if (preg_match('/^(een|één|1)( jaar|j| uur|u)/u', $interval)) {
-=======
-    'period_interval' => function ($interval) {
-        /** @var string $output */
-        $output = preg_replace('/^(een|één|1)\s+/', '', $interval);
-
-        if (preg_match('/^(een|één|1)( jaar|j| uur|u)/', $interval)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return "elk $output";
         }
 

@@ -38,11 +38,7 @@ class ControllerDoesNotReturnResponseException extends \LogicException
 
     private function parseControllerDefinition(callable $controller): ?array
     {
-<<<<<<< HEAD
         if (\is_string($controller) && str_contains($controller, '::')) {
-=======
-        if (\is_string($controller) && false !== strpos($controller, '::')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $controller = explode('::', $controller);
         }
 

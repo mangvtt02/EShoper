@@ -31,11 +31,7 @@ class Swift_Mime_HeaderEncoder_QpHeaderEncoder extends Swift_Encoder_QpEncoder i
             range(0x61, 0x7A), range(0x41, 0x5A),
             range(0x30, 0x39), [0x20, 0x21, 0x2A, 0x2B, 0x2D, 0x2F]
         ) as $byte) {
-<<<<<<< HEAD
             $this->safeMap[$byte] = \chr($byte);
-=======
-            $this->safeMap[$byte] = chr($byte);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
     }
 

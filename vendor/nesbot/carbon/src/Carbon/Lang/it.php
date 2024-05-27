@@ -22,12 +22,9 @@
  * - Davide Casiraghi (davide-casiraghi)
  * - Pete Scopes (pdscopes)
  */
-<<<<<<< HEAD
 
 use Carbon\CarbonInterface;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 return [
     'year' => ':count anno|:count anni',
     'a_year' => 'un anno|:count anni',
@@ -58,11 +55,7 @@ return [
     'µs' => ':countµs',
     'ago' => ':time fa',
     'from_now' => function ($time) {
-<<<<<<< HEAD
         return (preg_match('/^\d.+$/', $time) ? 'tra' : 'in')." $time";
-=======
-        return (preg_match('/^[0-9].+$/', $time) ? 'tra' : 'in')." $time";
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     },
     'after' => ':time dopo',
     'before' => ':time prima',
@@ -91,11 +84,7 @@ return [
         'nextDay' => '[Domani alle] LT',
         'nextWeek' => 'dddd [alle] LT',
         'lastDay' => '[Ieri alle] LT',
-<<<<<<< HEAD
         'lastWeek' => function (CarbonInterface $date) {
-=======
-        'lastWeek' => function (\Carbon\CarbonInterface $date) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             switch ($date->dayOfWeek) {
                 case 0:
                     return '[la scorsa] dddd [alle] LT';
@@ -114,7 +103,6 @@ return [
     'first_day_of_week' => 1,
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' e '],
-<<<<<<< HEAD
     'ordinal_words' => [
         'of' => 'di',
         'first' => 'primo',
@@ -124,6 +112,4 @@ return [
         'fifth' => 'quinto',
         'last' => 'ultimo',
     ],
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 ];

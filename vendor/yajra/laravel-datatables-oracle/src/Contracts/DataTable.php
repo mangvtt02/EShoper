@@ -29,13 +29,8 @@ interface DataTable
      * Set auto filter off and run your own filter.
      * Overrides global search.
      *
-<<<<<<< HEAD
      * @param  callable  $callback
      * @param  bool  $globalSearch
-=======
-     * @param callable $callback
-     * @param bool     $globalSearch
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return $this
      */
     public function filter(callable $callback, $globalSearch = false);
@@ -71,11 +66,7 @@ interface DataTable
     /**
      * Organizes works.
      *
-<<<<<<< HEAD
      * @param  bool  $mDataSupport
-=======
-     * @param bool $mDataSupport
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @return \Illuminate\Http\JsonResponse
      */
     public function make($mDataSupport = true);

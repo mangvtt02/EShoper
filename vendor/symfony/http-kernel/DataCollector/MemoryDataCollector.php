@@ -33,11 +33,7 @@ class MemoryDataCollector extends DataCollector implements LateDataCollectorInte
      *
      * @param \Throwable|null $exception
      */
-<<<<<<< HEAD
     public function collect(Request $request, Response $response/* , \Throwable $exception = null */)
-=======
-    public function collect(Request $request, Response $response/*, \Throwable $exception = null*/)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->updateMemoryUsage();
     }
@@ -49,11 +45,7 @@ class MemoryDataCollector extends DataCollector implements LateDataCollectorInte
     {
         $this->data = [
             'memory' => 0,
-<<<<<<< HEAD
             'memory_limit' => $this->convertToBytes(\ini_get('memory_limit')),
-=======
-            'memory_limit' => $this->convertToBytes(ini_get('memory_limit')),
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         ];
     }
 
@@ -112,15 +104,9 @@ class MemoryDataCollector extends DataCollector implements LateDataCollectorInte
 
         $memoryLimit = strtolower($memoryLimit);
         $max = strtolower(ltrim($memoryLimit, '+'));
-<<<<<<< HEAD
         if (str_starts_with($max, '0x')) {
             $max = \intval($max, 16);
         } elseif (str_starts_with($max, '0')) {
-=======
-        if (0 === strpos($max, '0x')) {
-            $max = \intval($max, 16);
-        } elseif (0 === strpos($max, '0')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $max = \intval($max, 8);
         } else {
             $max = (int) $max;

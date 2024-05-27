@@ -26,13 +26,8 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ConsoleLogger extends AbstractLogger
 {
-<<<<<<< HEAD
     public const INFO = 'info';
     public const ERROR = 'error';
-=======
-    const INFO = 'info';
-    const ERROR = 'error';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     private $output;
     private $verbosityLevelMap = [
@@ -109,21 +104,13 @@ class ConsoleLogger extends AbstractLogger
      */
     private function interpolate(string $message, array $context): string
     {
-<<<<<<< HEAD
         if (!str_contains($message, '{')) {
-=======
-        if (false === strpos($message, '{')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $message;
         }
 
         $replacements = [];
         foreach ($context as $key => $val) {
-<<<<<<< HEAD
             if (null === $val || \is_scalar($val) || (\is_object($val) && method_exists($val, '__toString'))) {
-=======
-            if (null === $val || is_scalar($val) || (\is_object($val) && method_exists($val, '__toString'))) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $replacements["{{$key}}"] = $val;
             } elseif ($val instanceof \DateTimeInterface) {
                 $replacements["{{$key}}"] = $val->format(\DateTime::RFC3339);

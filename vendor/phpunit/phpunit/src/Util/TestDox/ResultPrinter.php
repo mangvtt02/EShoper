@@ -9,14 +9,10 @@
  */
 namespace PHPUnit\Util\TestDox;
 
-<<<<<<< HEAD
 use function get_class;
 use function in_array;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Exception;
-=======
-use PHPUnit\Framework\AssertionFailedError;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestListener;
@@ -25,11 +21,8 @@ use PHPUnit\Framework\Warning;
 use PHPUnit\Framework\WarningTestCase;
 use PHPUnit\Runner\BaseTestRunner;
 use PHPUnit\Util\Printer;
-<<<<<<< HEAD
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use Throwable;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -109,11 +102,7 @@ abstract class ResultPrinter extends Printer implements TestListener
     /**
      * @param resource $out
      *
-<<<<<<< HEAD
      * @throws Exception
-=======
-     * @throws \PHPUnit\Framework\Exception
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct($out = null, array $groups = [], array $excludeGroups = [])
     {
@@ -140,11 +129,7 @@ abstract class ResultPrinter extends Printer implements TestListener
     /**
      * An error occurred.
      */
-<<<<<<< HEAD
     public function addError(Test $test, Throwable $t, float $time): void
-=======
-    public function addError(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!$this->isOfInterest($test)) {
             return;
@@ -183,11 +168,7 @@ abstract class ResultPrinter extends Printer implements TestListener
     /**
      * Incomplete test.
      */
-<<<<<<< HEAD
     public function addIncompleteTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!$this->isOfInterest($test)) {
             return;
@@ -200,11 +181,7 @@ abstract class ResultPrinter extends Printer implements TestListener
     /**
      * Risky test.
      */
-<<<<<<< HEAD
     public function addRiskyTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!$this->isOfInterest($test)) {
             return;
@@ -217,11 +194,7 @@ abstract class ResultPrinter extends Printer implements TestListener
     /**
      * Skipped test.
      */
-<<<<<<< HEAD
     public function addSkippedTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!$this->isOfInterest($test)) {
             return;
@@ -248,11 +221,7 @@ abstract class ResultPrinter extends Printer implements TestListener
     /**
      * A test started.
      *
-<<<<<<< HEAD
      * @throws InvalidArgumentException
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function startTest(Test $test): void
     {
@@ -260,11 +229,7 @@ abstract class ResultPrinter extends Printer implements TestListener
             return;
         }
 
-<<<<<<< HEAD
         $class = get_class($test);
-=======
-        $class = \get_class($test);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($this->testClass !== $class) {
             if ($this->testClass !== '') {
@@ -356,11 +321,7 @@ abstract class ResultPrinter extends Printer implements TestListener
 
         if (!empty($this->groups)) {
             foreach ($test->getGroups() as $group) {
-<<<<<<< HEAD
                 if (in_array($group, $this->groups, true)) {
-=======
-                if (\in_array($group, $this->groups)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     return true;
                 }
             }
@@ -370,11 +331,7 @@ abstract class ResultPrinter extends Printer implements TestListener
 
         if (!empty($this->excludeGroups)) {
             foreach ($test->getGroups() as $group) {
-<<<<<<< HEAD
                 if (in_array($group, $this->excludeGroups, true)) {
-=======
-                if (\in_array($group, $this->excludeGroups)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     return false;
                 }
             }

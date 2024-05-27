@@ -9,14 +9,11 @@
  */
 namespace PHPUnit\Util;
 
-<<<<<<< HEAD
 use const DIRECTORY_SEPARATOR;
 use function is_dir;
 use function mkdir;
 use function str_replace;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
@@ -25,7 +22,6 @@ final class Filesystem
     /**
      * Maps class names to source file names:
      *   - PEAR CS:   Foo_Bar_Baz -> Foo/Bar/Baz.php
-<<<<<<< HEAD
      *   - Namespace: Foo\Bar\Baz -> Foo/Bar/Baz.php.
      */
     public static function classNameToFilename(string $className): string
@@ -33,25 +29,12 @@ final class Filesystem
         return str_replace(
             ['_', '\\'],
             DIRECTORY_SEPARATOR,
-=======
-     *   - Namespace: Foo\Bar\Baz -> Foo/Bar/Baz.php
-     */
-    public static function classNameToFilename(string $className): string
-    {
-        return \str_replace(
-            ['_', '\\'],
-            \DIRECTORY_SEPARATOR,
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $className
         ) . '.php';
     }
 
     public static function createDirectory(string $directory): bool
     {
-<<<<<<< HEAD
         return !(!is_dir($directory) && !@mkdir($directory, 0777, true) && !is_dir($directory));
-=======
-        return !(!\is_dir($directory) && !@\mkdir($directory, 0777, true) && !\is_dir($directory));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

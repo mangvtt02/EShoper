@@ -20,11 +20,7 @@ class FrameTreeIterator implements Iterator
     protected $_root;
 
     /**
-<<<<<<< HEAD
      * @var Frame[]
-=======
-     * @var array
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $_stack = [];
 
@@ -42,14 +38,7 @@ class FrameTreeIterator implements Iterator
         $this->_num = 0;
     }
 
-<<<<<<< HEAD
     public function rewind(): void
-=======
-    /**
-     *
-     */
-    public function rewind()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->_stack = [$this->_root];
         $this->_num = 0;
@@ -58,11 +47,7 @@ class FrameTreeIterator implements Iterator
     /**
      * @return bool
      */
-<<<<<<< HEAD
     public function valid(): bool
-=======
-    public function valid()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return count($this->_stack) > 0;
     }
@@ -70,11 +55,7 @@ class FrameTreeIterator implements Iterator
     /**
      * @return int
      */
-<<<<<<< HEAD
     public function key(): int
-=======
-    public function key()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->_num;
     }
@@ -82,23 +63,12 @@ class FrameTreeIterator implements Iterator
     /**
      * @return Frame
      */
-<<<<<<< HEAD
     public function current(): Frame
-=======
-    public function current()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return end($this->_stack);
     }
 
-<<<<<<< HEAD
     public function next(): void
-=======
-    /**
-     * @return Frame
-     */
-    public function next()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $b = end($this->_stack);
 
@@ -113,13 +83,5 @@ class FrameTreeIterator implements Iterator
                 $this->_stack[] = $c;
             }
         }
-<<<<<<< HEAD
     }
 }
-=======
-
-        return $b;
-    }
-}
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

@@ -157,11 +157,7 @@ class Application implements ResetInterface
             $exitCode = $e->getCode();
             if (is_numeric($exitCode)) {
                 $exitCode = (int) $exitCode;
-<<<<<<< HEAD
                 if ($exitCode <= 0) {
-=======
-                if (0 === $exitCode) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $exitCode = 1;
                 }
             } else {
@@ -258,13 +254,9 @@ class Application implements ResetInterface
             $alternative = $alternatives[0];
 
             $style = new SymfonyStyle($input, $output);
-<<<<<<< HEAD
             $output->writeln('');
             $formattedBlock = (new FormatterHelper())->formatBlock(sprintf('Command "%s" is not defined.', $name), 'error', true);
             $output->writeln($formattedBlock);
-=======
-            $style->block(sprintf("\nCommand \"%s\" is not defined.\n", $name), null, 'error');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             if (!$style->confirm(sprintf('Do you want to run "%s" instead? ', $alternative), false)) {
                 if (null !== $this->dispatcher) {
                     $event = new ConsoleErrorEvent($input, $output, $e);
@@ -843,11 +835,7 @@ class Application implements ResetInterface
     private function finishRenderThrowableOrException(OutputInterface $output): void
     {
         if (null !== $this->runningCommand) {
-<<<<<<< HEAD
             $output->writeln(sprintf('<info>%s</info>', OutputFormatter::escape(sprintf($this->runningCommand->getSynopsis(), $this->getName()))), OutputInterface::VERBOSITY_QUIET);
-=======
-            $output->writeln(sprintf('<info>%s</info>', sprintf($this->runningCommand->getSynopsis(), $this->getName())), OutputInterface::VERBOSITY_QUIET);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $output->writeln('', OutputInterface::VERBOSITY_QUIET);
         }
     }
@@ -891,11 +879,7 @@ class Application implements ResetInterface
                 $len = 0;
             }
 
-<<<<<<< HEAD
             if (str_contains($message, "@anonymous\0")) {
-=======
-            if (false !== strpos($message, "@anonymous\0")) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $message = preg_replace_callback('/[a-zA-Z_\x7f-\xff][\\\\a-zA-Z0-9_\x7f-\xff]*+@anonymous\x00.*?\.php(?:0x?|:[0-9]++\$)[0-9a-fA-F]++/', function ($m) {
                     return class_exists($m[0], false) ? (get_parent_class($m[0]) ?: key(class_implements($m[0])) ?: 'class').'@anonymous' : $m[0];
                 }, $message);
@@ -943,19 +927,11 @@ class Application implements ResetInterface
                 ]);
 
                 for ($i = 0, $count = \count($trace); $i < $count; ++$i) {
-<<<<<<< HEAD
                     $class = $trace[$i]['class'] ?? '';
                     $type = $trace[$i]['type'] ?? '';
                     $function = $trace[$i]['function'] ?? '';
                     $file = $trace[$i]['file'] ?? 'n/a';
                     $line = $trace[$i]['line'] ?? 'n/a';
-=======
-                    $class = isset($trace[$i]['class']) ? $trace[$i]['class'] : '';
-                    $type = isset($trace[$i]['type']) ? $trace[$i]['type'] : '';
-                    $function = isset($trace[$i]['function']) ? $trace[$i]['function'] : '';
-                    $file = isset($trace[$i]['file']) ? $trace[$i]['file'] : 'n/a';
-                    $line = isset($trace[$i]['line']) ? $trace[$i]['line'] : 'n/a';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
                     $output->writeln(sprintf(' %s%s at <info>%s:%s</info>', $class, $function ? $type.$function.'()' : '', $file, $line), OutputInterface::VERBOSITY_QUIET);
                 }
@@ -981,7 +957,6 @@ class Application implements ResetInterface
         }
 
         switch ($shellVerbosity = (int) getenv('SHELL_VERBOSITY')) {
-<<<<<<< HEAD
             case -1:
                 $output->setVerbosity(OutputInterface::VERBOSITY_QUIET);
                 break;
@@ -997,13 +972,6 @@ class Application implements ResetInterface
             default:
                 $shellVerbosity = 0;
                 break;
-=======
-            case -1: $output->setVerbosity(OutputInterface::VERBOSITY_QUIET); break;
-            case 1: $output->setVerbosity(OutputInterface::VERBOSITY_VERBOSE); break;
-            case 2: $output->setVerbosity(OutputInterface::VERBOSITY_VERY_VERBOSE); break;
-            case 3: $output->setVerbosity(OutputInterface::VERBOSITY_DEBUG); break;
-            default: $shellVerbosity = 0; break;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         if (true === $input->hasParameterOption(['--quiet', '-q'], true)) {
@@ -1199,11 +1167,7 @@ class Application implements ResetInterface
                 }
 
                 $lev = levenshtein($subname, $parts[$i]);
-<<<<<<< HEAD
                 if ($lev <= \strlen($subname) / 3 || '' !== $subname && str_contains($parts[$i], $subname)) {
-=======
-                if ($lev <= \strlen($subname) / 3 || '' !== $subname && false !== strpos($parts[$i], $subname)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     $alternatives[$collectionName] = $exists ? $alternatives[$collectionName] + $lev : $lev;
                 } elseif ($exists) {
                     $alternatives[$collectionName] += $threshold;
@@ -1213,11 +1177,7 @@ class Application implements ResetInterface
 
         foreach ($collection as $item) {
             $lev = levenshtein($name, $item);
-<<<<<<< HEAD
             if ($lev <= \strlen($name) / 3 || str_contains($item, $name)) {
-=======
-            if ($lev <= \strlen($name) / 3 || false !== strpos($item, $name)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $alternatives[$item] = isset($alternatives[$item]) ? $alternatives[$item] - $lev : $lev;
             }
         }

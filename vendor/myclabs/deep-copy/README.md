@@ -2,26 +2,15 @@
 
 DeepCopy helps you create deep copies (clones) of your objects. It is designed to handle cycles in the association graph.
 
-<<<<<<< HEAD
 [![Total Downloads](https://poser.pugx.org/myclabs/deep-copy/downloads.svg)](https://packagist.org/packages/myclabs/deep-copy)
 [![Integrate](https://github.com/myclabs/DeepCopy/workflows/ci/badge.svg?branch=1.x)](https://github.com/myclabs/DeepCopy/actions)
-=======
-[![Build Status](https://travis-ci.org/myclabs/DeepCopy.png?branch=1.x)](https://travis-ci.org/myclabs/DeepCopy)
-[![Coverage Status](https://coveralls.io/repos/myclabs/DeepCopy/badge.png?branch=1.x)](https://coveralls.io/r/myclabs/DeepCopy?branch=1.x)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/myclabs/DeepCopy/badges/quality-score.png?s=2747100c19b275f93a777e3297c6c12d1b68b934)](https://scrutinizer-ci.com/g/myclabs/DeepCopy/)
-[![Total Downloads](https://poser.pugx.org/myclabs/deep-copy/downloads.svg)](https://packagist.org/packages/myclabs/deep-copy)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## Table of Contents
 
 1. [How](#how)
 1. [Why](#why)
     1. [Using simply `clone`](#using-simply-clone)
-<<<<<<< HEAD
     1. [Overriding `__clone()`](#overriding-__clone)
-=======
-    1. [Overridding `__clone()`](#overridding-__clone)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     1. [With `DeepCopy`](#with-deepcopy)
 1. [How it works](#how-it-works)
 1. [Going further](#going-further)
@@ -46,19 +35,11 @@ DeepCopy helps you create deep copies (clones) of your objects. It is designed t
 
 Install with Composer:
 
-<<<<<<< HEAD
 ```
 composer require myclabs/deep-copy
 ```
 
 Use it:
-=======
-```json
-composer require myclabs/deep-copy
-```
-
-Use simply:
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ```php
 use DeepCopy\DeepCopy;
@@ -93,15 +74,9 @@ Now you're in for a big mess :(
 ![Using clone](doc/clone.png)
 
 
-<<<<<<< HEAD
 ### Overriding `__clone()`
 
 ![Overriding __clone](doc/deep-clone.png)
-=======
-### Overridding `__clone()`
-
-![Overridding __clone](doc/deep-clone.png)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 
 ### With `DeepCopy`
@@ -211,12 +186,9 @@ $matcher = new TypeMatcher('Doctrine\Common\Collections\Collection');
 - `DeepCopy\Filter` applies a transformation to the object attribute matched by `DeepCopy\Matcher`
 - `DeepCopy\TypeFilter` applies a transformation to any element matched by `DeepCopy\TypeMatcher`
 
-<<<<<<< HEAD
 By design, matching a filter will stop the chain of filters (i.e. the next ones will not be applied).
 Using the ([`ChainableFilter`](#chainablefilter-filter)) won't stop the chain of filters.
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 #### `SetNullFilter` (filter)
 
@@ -257,7 +229,6 @@ $copy = $copier->copy($object);
 ```
 
 
-<<<<<<< HEAD
 #### `ChainableFilter` (filter)
 
 If you use cloning on proxy classes, you might want to apply two filters for:
@@ -286,8 +257,6 @@ echo $copy->id; // null
 ```
 
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 #### `DoctrineCollectionFilter` (filter)
 
 If you use Doctrine and want to copy an entity, you will need to use the `DoctrineCollectionFilter`:
@@ -330,11 +299,8 @@ Doctrine proxy class (...\\\_\_CG\_\_\Proxy).
 You can use the `DoctrineProxyFilter` to load the actual entity behind the Doctrine proxy class.
 **Make sure, though, to put this as one of your very first filters in the filter chain so that the entity is loaded
 before other filters are applied!**
-<<<<<<< HEAD
 We recommend to decorate the `DoctrineProxyFilter` with the `ChainableFilter` to allow applying other filters to the
 cloned lazy loaded entities.
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ```php
 use DeepCopy\DeepCopy;
@@ -342,11 +308,7 @@ use DeepCopy\Filter\Doctrine\DoctrineProxyFilter;
 use DeepCopy\Matcher\Doctrine\DoctrineProxyMatcher;
 
 $copier = new DeepCopy();
-<<<<<<< HEAD
 $copier->addFilter(new ChainableFilter(new DoctrineProxyFilter()), new DoctrineProxyMatcher());
-=======
-$copier->addFilter(new DoctrineProxyFilter(), new DoctrineProxyMatcher());
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 $copy = $copier->copy($object);
 

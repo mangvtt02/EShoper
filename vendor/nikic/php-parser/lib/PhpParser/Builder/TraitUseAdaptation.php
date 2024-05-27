@@ -4,7 +4,6 @@ namespace PhpParser\Builder;
 
 use PhpParser\Builder;
 use PhpParser\BuilderHelpers;
-<<<<<<< HEAD
 use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Stmt;
@@ -21,58 +20,24 @@ class TraitUseAdaptation implements Builder {
     protected ?Node\Identifier $alias = null;
     /** @var Node\Name[] */
     protected array $insteadof = [];
-=======
-use PhpParser\Node;
-use PhpParser\Node\Stmt;
-
-class TraitUseAdaptation implements Builder
-{
-    const TYPE_UNDEFINED  = 0;
-    const TYPE_ALIAS      = 1;
-    const TYPE_PRECEDENCE = 2;
-
-    /** @var int Type of building adaptation */
-    protected $type;
-
-    protected $trait;
-    protected $method;
-
-    protected $modifier = null;
-    protected $alias = null;
-
-    protected $insteadof = [];
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Creates a trait use adaptation builder.
      *
-<<<<<<< HEAD
      * @param Node\Name|string|null $trait Name of adapted trait
      * @param Node\Identifier|string $method Name of adapted method
-=======
-     * @param Node\Name|string|null  $trait  Name of adaptated trait
-     * @param Node\Identifier|string $method Name of adaptated method
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct($trait, $method) {
         $this->type = self::TYPE_UNDEFINED;
 
-<<<<<<< HEAD
         $this->trait = is_null($trait) ? null : BuilderHelpers::normalizeName($trait);
-=======
-        $this->trait = is_null($trait)? null: BuilderHelpers::normalizeName($trait);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->method = BuilderHelpers::normalizeIdentifier($method);
     }
 
     /**
      * Sets alias of method.
      *
-<<<<<<< HEAD
      * @param Node\Identifier|string $alias Alias for adapted method
-=======
-     * @param Node\Identifier|string $alias Alias for adaptated method
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return $this The builder instance (for fluid interface)
      */
@@ -85,65 +50,37 @@ class TraitUseAdaptation implements Builder
             throw new \LogicException('Cannot set alias for not alias adaptation buider');
         }
 
-<<<<<<< HEAD
         $this->alias = BuilderHelpers::normalizeIdentifier($alias);
-=======
-        $this->alias = $alias;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this;
     }
 
     /**
-<<<<<<< HEAD
      * Sets adapted method public.
-=======
-     * Sets adaptated method public.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return $this The builder instance (for fluid interface)
      */
     public function makePublic() {
-<<<<<<< HEAD
         $this->setModifier(Modifiers::PUBLIC);
-=======
-        $this->setModifier(Stmt\Class_::MODIFIER_PUBLIC);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this;
     }
 
     /**
-<<<<<<< HEAD
      * Sets adapted method protected.
-=======
-     * Sets adaptated method protected.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return $this The builder instance (for fluid interface)
      */
     public function makeProtected() {
-<<<<<<< HEAD
         $this->setModifier(Modifiers::PROTECTED);
-=======
-        $this->setModifier(Stmt\Class_::MODIFIER_PROTECTED);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this;
     }
 
     /**
-<<<<<<< HEAD
      * Sets adapted method private.
-=======
-     * Sets adaptated method private.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return $this The builder instance (for fluid interface)
      */
     public function makePrivate() {
-<<<<<<< HEAD
         $this->setModifier(Modifiers::PRIVATE);
-=======
-        $this->setModifier(Stmt\Class_::MODIFIER_PRIVATE);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this;
     }
 
@@ -174,11 +111,7 @@ class TraitUseAdaptation implements Builder
         return $this;
     }
 
-<<<<<<< HEAD
     protected function setModifier(int $modifier): void {
-=======
-    protected function setModifier(int $modifier) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($this->type === self::TYPE_UNDEFINED) {
             $this->type = self::TYPE_ALIAS;
         }
@@ -199,11 +132,7 @@ class TraitUseAdaptation implements Builder
      *
      * @return Node The built node
      */
-<<<<<<< HEAD
     public function getNode(): Node {
-=======
-    public function getNode() : Node {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         switch ($this->type) {
             case self::TYPE_ALIAS:
                 return new Stmt\TraitUseAdaptation\Alias($this->trait, $this->method, $this->modifier, $this->alias);

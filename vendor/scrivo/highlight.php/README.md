@@ -1,10 +1,6 @@
 # highlight.php
 
-<<<<<<< HEAD
 [![Unit Tests](https://github.com/scrivo/highlight.php/workflows/Unit%20Tests/badge.svg?branch=9.18)](https://github.com/scrivo/highlight.php/actions?query=workflow%3A%22Unit+Tests%22+branch%3A9.18)
-=======
-[![Build Status](https://travis-ci.org/scrivo/highlight.php.svg?branch=master)](https://travis-ci.org/scrivo/highlight.php)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 [![Latest Packagist release](https://img.shields.io/packagist/v/scrivo/highlight.php.svg)](https://packagist.org/packages/scrivo/highlight.php)
 [![Monthly downloads on Packagist](https://img.shields.io/packagist/dm/scrivo/highlight.php.svg)](https://packagist.org/packages/scrivo/highlight.php/stats)
 
@@ -14,7 +10,6 @@
 
 ## Table of Contents
 - [Installation + Setup](#installation--setup)
-<<<<<<< HEAD
   - [Composer Version Constraints](#composer-version-constraints)
 - [Usage](#usage)
   - [Explicit Mode](#explicit-mode)
@@ -23,16 +18,6 @@
 - [Highlighter Utilities](#highlighter-utilities)
 - [Versioning](#versioning)
   - [Backward Compatibility Promise](#backward-compatibility-promise)
-=======
-    - [Composer Version Constraints](#composer-version-constraints)
-- [Usage](#usage)
-    - [Explicit Mode](#explicit-mode)
-    - [Automatic Language Detection Mode](#automatic-language-detection-mode)
-    - [Stylesheets](#stylesheets)
-- [Highlighter Utilities](#highlighter-utilities)
-- [Versioning](#versioning)
-    - [Backward Compatibility Promise](#backward-compatibility-promise)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 - [Some History](#some-history)
 - [License](#license)
 
@@ -127,20 +112,13 @@ The core of the project is loyal port of **highlight.js** and is available under
 Available functions:
 
 - [`getAvailableStyleSheets(bool $filePaths = false): string[]`](HighlightUtilities/functions.php#L35-L48)
-<<<<<<< HEAD
 - [`getLanguagesFolder(): string`](HighlightUtilities/functions.php#L156-L164)
 - [`getLanguageDefinitionPath(string $name): string`](HighlightUtilities/functions.php#L170-L182)
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 - [`getStyleSheet(string $name): false|string`](HighlightUtilities/functions.php#L94-L107)
 - [`getStyleSheetFolder(): string`](HighlightUtilities/functions.php#L115-L123)
 - [`getStyleSheetPath(string $name): string`](HighlightUtilities/functions.php#L131-L143)
 - [`getThemeBackgroundColor(string $name): float[]`](HighlightUtilities/functions.php#L75-L88)
-<<<<<<< HEAD
 - [`splitCodeIntoArray(string $html): false|string[]`](HighlightUtilities/functions.php#L194-L205)
-=======
-- [`splitCodeIntoArray(string $html): false|string[]`](HighlightUtilities/functions.php#L156-L169)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 ## Versioning
 

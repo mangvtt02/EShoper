@@ -3,16 +3,12 @@
 namespace Illuminate\Support;
 
 use ReflectionClass;
-<<<<<<< HEAD
 use ReflectionMethod;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use ReflectionNamedType;
 
 class Reflector
 {
     /**
-<<<<<<< HEAD
      * This is a PHP 7.4 compatible implementation of is_callable.
      *
      * @param  mixed  $var
@@ -60,8 +56,6 @@ class Reflector
     }
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Get the class name of the given parameter's type, if possible.
      *
      * @param  \ReflectionParameter  $parameter

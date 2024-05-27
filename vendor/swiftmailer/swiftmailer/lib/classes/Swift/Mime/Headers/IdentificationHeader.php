@@ -9,10 +9,7 @@
  */
 
 use Egulias\EmailValidator\EmailValidator;
-<<<<<<< HEAD
 use Egulias\EmailValidator\Validation\MessageIDValidation;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Egulias\EmailValidator\Validation\RFCValidation;
 
 /**
@@ -100,11 +97,7 @@ class Swift_Mime_Headers_IdentificationHeader extends Swift_Mime_Headers_Abstrac
      */
     public function setId($id)
     {
-<<<<<<< HEAD
         $this->setIds(\is_array($id) ? $id : [$id]);
-=======
-        $this->setIds(is_array($id) ? $id : [$id]);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -116,11 +109,7 @@ class Swift_Mime_Headers_IdentificationHeader extends Swift_Mime_Headers_Abstrac
      */
     public function getId()
     {
-<<<<<<< HEAD
         if (\count($this->ids) > 0) {
-=======
-        if (count($this->ids) > 0) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return $this->ids[0];
         }
     }
@@ -191,13 +180,9 @@ class Swift_Mime_Headers_IdentificationHeader extends Swift_Mime_Headers_Abstrac
      */
     private function assertValidId($id)
     {
-<<<<<<< HEAD
         $emailValidation = class_exists(MessageIDValidation::class) ? new MessageIDValidation() : new RFCValidation();
 
         if (!$this->emailValidator->isValid($id, $emailValidation)) {
-=======
-        if (!$this->emailValidator->isValid($id, new RFCValidation())) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new Swift_RfcComplianceException('Invalid ID given <'.$id.'>');
         }
     }

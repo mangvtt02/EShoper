@@ -113,11 +113,7 @@ class CPDF implements Canvas
     /**
      * Instance of Cpdf class
      *
-<<<<<<< HEAD
      * @var \Dompdf\Cpdf
-=======
-     * @var Cpdf
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $_pdf;
 
@@ -131,11 +127,7 @@ class CPDF implements Canvas
     /**
      * PDF height, in points
      *
-<<<<<<< HEAD
      * @var float
-=======
-     * @var float;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $_height;
 
@@ -168,16 +160,6 @@ class CPDF implements Canvas
     protected $_pages;
 
     /**
-<<<<<<< HEAD
-=======
-     * Array of temporary cached images to be deleted when processing is complete
-     *
-     * @var array
-     */
-    protected $_image_cache;
-
-    /**
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Currently-applied opacity level (0 - 1)
      *
      * @var float
@@ -214,19 +196,11 @@ class CPDF implements Canvas
         $this->_pdf = new \Dompdf\Cpdf(
             $size,
             true,
-<<<<<<< HEAD
             $this->_dompdf->getOptions()->getFontCache(),
             $this->_dompdf->getOptions()->getTempDir()
         );
 
         $this->_pdf->addInfo("Producer", sprintf("%s + CPDF", $this->_dompdf->version));
-=======
-            $dompdf->getOptions()->getFontCache(),
-            $dompdf->getOptions()->getTempDir()
-        );
-
-        $this->_pdf->addInfo("Producer", sprintf("%s + CPDF", $dompdf->version));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $time = substr_replace(date('YmdHisO'), '\'', -2, 0) . '\'';
         $this->_pdf->addInfo("CreationDate", "D:$time");
         $this->_pdf->addInfo("ModDate", "D:$time");
@@ -238,11 +212,6 @@ class CPDF implements Canvas
         $this->_page_text = [];
 
         $this->_pages = [$this->_pdf->getFirstPageId()];
-<<<<<<< HEAD
-=======
-
-        $this->_image_cache = [];
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -254,34 +223,6 @@ class CPDF implements Canvas
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Class destructor
-     *
-     * Deletes all temporary image files
-     */
-    public function __destruct()
-    {
-        foreach ($this->_image_cache as $img) {
-            // The file might be already deleted by 3rd party tmp cleaner,
-            // the file might not have been created at all
-            // (if image outputting commands failed)
-            // or because the destructor was called twice accidentally.
-            if (!file_exists($img)) {
-                continue;
-            }
-
-            if ($this->_dompdf->getOptions()->getDebugPng()) {
-                print '[__destruct unlink ' . $img . ']';
-            }
-            if (!$this->_dompdf->getOptions()->getDebugKeepTemp()) {
-                unlink($img);
-            }
-        }
-    }
-
-    /**
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Returns the Cpdf instance
      *
      * @return \Dompdf\Cpdf
@@ -631,55 +572,6 @@ class CPDF implements Canvas
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Convert a GIF or BMP image to a PNG image
-     *
-     * @param string $image_url
-     * @param integer $type
-     *
-     * @throws Exception
-     * @return string The url of the newly converted image
-     */
-    protected function _convert_gif_bmp_to_png($image_url, $type)
-    {
-        $func_name = "imagecreatefrom$type";
-
-        if (!function_exists($func_name)) {
-            if (!method_exists(Helpers::class, $func_name)) {
-                throw new Exception("Function $func_name() not found.  Cannot convert $type image: $image_url.  Please install the image PHP extension.");
-            }
-            $func_name = "\\Dompdf\\Helpers::" . $func_name;
-        }
-
-        set_error_handler([Helpers::class, 'record_warnings']);
-
-        try {
-            $im = call_user_func($func_name, $image_url);
-
-            if ($im) {
-                imageinterlace($im, false);
-
-                $tmp_dir = $this->_dompdf->getOptions()->getTempDir();
-                $tmp_name = @tempnam($tmp_dir, "{$type}dompdf_img_");
-                @unlink($tmp_name);
-                $filename = "$tmp_name.png";
-                $this->_image_cache[] = $filename;
-
-                imagepng($im, $filename);
-                imagedestroy($im);
-            } else {
-                $filename = Cache::$broken_image;
-            }
-        } finally {
-            restore_error_handler();
-        }
-
-        return $filename;
-    }
-
-    /**
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param float $x1
      * @param float $y1
      * @param float $w
@@ -862,7 +754,6 @@ class CPDF implements Canvas
     }
 
     /**
-<<<<<<< HEAD
      * Convert image to a PNG image
      *
      * @param string $image_url
@@ -916,8 +807,6 @@ class CPDF implements Canvas
     }
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param string $img
      * @param float $x
      * @param float $y
@@ -943,7 +832,6 @@ class CPDF implements Canvas
                 $this->_pdf->addJpegFromFile($img, $x, $this->y($y) - $h, $w, $h);
                 break;
 
-<<<<<<< HEAD
             case "webp":
             /** @noinspection PhpMissingBreakStatementInspection */
             case "gif":
@@ -951,14 +839,6 @@ class CPDF implements Canvas
             case "bmp":
                 if ($debug_png) print "!!!{$type}!!!";
                 $img = $this->_convert_to_png($img, $type);
-=======
-            case "gif":
-            /** @noinspection PhpMissingBreakStatementInspection */
-            case "bmp":
-                if ($debug_png) print '!!!bmp or gif!!!';
-                // @todo use cache for BMP and GIF
-                $img = $this->_convert_gif_bmp_to_png($img, $type);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             case "png":
                 if ($debug_png) print '!!!png!!!';
@@ -1026,11 +906,7 @@ class CPDF implements Canvas
         $ft = \Dompdf\Cpdf::ACROFORM_FIELD_TEXT;
         $ff = 0;
 
-<<<<<<< HEAD
         switch ($type) {
-=======
-        switch($type) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             case 'text':
                 $ft = \Dompdf\Cpdf::ACROFORM_FIELD_TEXT;
                 break;
@@ -1119,15 +995,9 @@ class CPDF implements Canvas
      * @param string $text
      * @param string $font
      * @param float $size
-<<<<<<< HEAD
      * @param float $word_spacing
      * @param float $char_spacing
      * @return float
-=======
-     * @param int $word_spacing
-     * @param int $char_spacing
-     * @return float|int
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function get_text_width($text, $font, $size, $word_spacing = 0, $char_spacing = 0)
     {
@@ -1136,18 +1006,6 @@ class CPDF implements Canvas
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * @param $font
-     * @param $string
-     */
-    public function register_string_subset($font, $string)
-    {
-        $this->_pdf->registerText($font, $string);
-    }
-
-    /**
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param string $font
      * @param float $size
      * @return float|int
@@ -1203,7 +1061,6 @@ class CPDF implements Canvas
     }
 
     /**
-<<<<<<< HEAD
      * Processes a callback or script on every page
      *
      * The callback function receives the four parameters `$pageNumber`,
@@ -1227,22 +1084,6 @@ class CPDF implements Canvas
             $_t = "script";
             $this->_page_text[] = compact("_t", "code");
         }
-=======
-     * Processes a script on every page
-     *
-     * The variables $pdf, $PAGE_NUM, and $PAGE_COUNT are available.
-     *
-     * This function can be used to add page numbers to all pages
-     * after the first one, for example.
-     *
-     * @param string $code the script code
-     * @param string $type the language type for script
-     */
-    public function page_script($code, $type = "text/php")
-    {
-        $_t = "script";
-        $this->_page_text[] = compact("_t", "code", "type");
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -1283,31 +1124,20 @@ class CPDF implements Canvas
                         $this->text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);
                         break;
 
-<<<<<<< HEAD
                     case "callback":
                         $fontMetrics = $this->get_dompdf()->getFontMetrics();
                         $callback($page_number, $this->_page_count, $this, $fontMetrics);
                         break;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                     case "script":
                         if (!$eval) {
                             $eval = new PhpEvaluator($this);
                         }
-<<<<<<< HEAD
                         $eval->evaluate($code, ["PAGE_NUM" => $page_number, "PAGE_COUNT" => $this->_page_count]);
                         break;
 
                     case "line":
                         $this->line($x1, $y1, $x2, $y2, $color, $width, $style);
-=======
-                        $eval->evaluate($code, ['PAGE_NUM' => $page_number, 'PAGE_COUNT' => $this->_page_count]);
-                        break;
-
-                    case 'line':
-                        $this->line( $x1, $y1, $x2, $y2, $color, $width, $style );
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                         break;
                 }
             }

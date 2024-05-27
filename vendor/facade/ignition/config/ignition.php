@@ -9,14 +9,9 @@ return [
     |
     | Choose your preferred editor to use when clicking any edit button.
     |
-<<<<<<< HEAD
     | Supported: "phpstorm", "vscode", "vscode-insiders", "textmate", "emacs",
     |            "sublime", "atom", "nova", "macvim", "idea", "netbeans",
     |            "xdebug"
-=======
-    | Supported: "phpstorm", "vscode", "vscode-insiders",
-    |            "sublime", "atom"
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     |
     */
 

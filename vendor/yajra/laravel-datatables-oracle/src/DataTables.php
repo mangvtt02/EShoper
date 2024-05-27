@@ -26,14 +26,9 @@ class DataTables
      * Make a DataTable instance from source.
      * Alias of make for backward compatibility.
      *
-<<<<<<< HEAD
      * @param  mixed  $source
      * @return mixed
      *
-=======
-     * @param  mixed $source
-     * @return mixed
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @throws \Exception
      */
     public static function of($source)
@@ -44,14 +39,9 @@ class DataTables
     /**
      * Make a DataTable instance from source.
      *
-<<<<<<< HEAD
      * @param  mixed  $source
      * @return mixed
      *
-=======
-     * @param mixed $source
-     * @return mixed
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @throws \Exception
      */
     public static function make($source)
@@ -97,10 +87,7 @@ class DataTables
 
     /**
      * @deprecated Please use query() instead, this method will be removed in a next version.
-<<<<<<< HEAD
      *
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @param $builder
      * @return QueryDataTable
      */
@@ -112,13 +99,8 @@ class DataTables
     /**
      * DataTables using Query.
      *
-<<<<<<< HEAD
      * @param  \Illuminate\Database\Query\Builder|mixed  $builder
      * @return QueryDataTable|DataTableAbstract
-=======
-     * @param \Illuminate\Database\Query\Builder|mixed $builder
-     * @return DataTableAbstract|QueryDataTable
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function query($builder)
     {
@@ -128,13 +110,8 @@ class DataTables
     /**
      * DataTables using Eloquent Builder.
      *
-<<<<<<< HEAD
      * @param  \Illuminate\Database\Eloquent\Builder|mixed  $builder
      * @return EloquentDataTable|DataTableAbstract
-=======
-     * @param \Illuminate\Database\Eloquent\Builder|mixed $builder
-     * @return DataTableAbstract|EloquentDataTable
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function eloquent($builder)
     {
@@ -144,13 +121,8 @@ class DataTables
     /**
      * DataTables using Collection.
      *
-<<<<<<< HEAD
      * @param  \Illuminate\Support\Collection|array  $collection
      * @return CollectionDataTable|DataTableAbstract
-=======
-     * @param \Illuminate\Support\Collection|array $collection
-     * @return DataTableAbstract|CollectionDataTable
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function collection($collection)
     {
@@ -160,13 +132,8 @@ class DataTables
     /**
      * DataTables using Collection.
      *
-<<<<<<< HEAD
      * @param  \Illuminate\Http\Resources\Json\AnonymousResourceCollection|array  $collection
      * @return ApiResourceDataTable|DataTableAbstract
-=======
-     * @param \Illuminate\Http\Resources\Json\AnonymousResourceCollection|array $collection
-     * @return DataTableAbstract|ApiResourceDataTable
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function resource($resource)
     {
@@ -177,10 +144,7 @@ class DataTables
      * Get html builder instance.
      *
      * @return \Yajra\DataTables\Html\Builder
-<<<<<<< HEAD
      *
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * @throws \Exception
      */
     public function getHtmlBuilder()

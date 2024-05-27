@@ -13,10 +13,7 @@ namespace Monolog\Handler;
 
 use Monolog\Logger;
 use Swift;
-<<<<<<< HEAD
 use Swift_Message;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * MandrillHandler uses cURL to send the emails to the Mandrill API
@@ -25,7 +22,6 @@ use Swift_Message;
  */
 class MandrillHandler extends MailHandler
 {
-<<<<<<< HEAD
     /** @var Swift_Message */
     protected $message;
     /** @var string */
@@ -36,34 +32,15 @@ class MandrillHandler extends MailHandler
      *
      * @param string                 $apiKey  A valid Mandrill API key
      * @param callable|Swift_Message $message An example message for real messages, only the body will be replaced
-=======
-    protected $message;
-    protected $apiKey;
-
-    /**
-     * @psalm-param Swift_Message|callable(string, array): Swift_Message $message
-     *
-     * @param string                  $apiKey  A valid Mandrill API key
-     * @param callable|\Swift_Message $message An example message for real messages, only the body will be replaced
-     * @param string|int              $level   The minimum logging level at which this handler will be triggered
-     * @param bool                    $bubble  Whether the messages that are handled can bubble up the stack or not
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct(string $apiKey, $message, $level = Logger::ERROR, bool $bubble = true)
     {
         parent::__construct($level, $bubble);
 
-<<<<<<< HEAD
         if (!$message instanceof Swift_Message && is_callable($message)) {
             $message = $message();
         }
         if (!$message instanceof Swift_Message) {
-=======
-        if (!$message instanceof \Swift_Message && is_callable($message)) {
-            $message = $message();
-        }
-        if (!$message instanceof \Swift_Message) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new \InvalidArgumentException('You must provide either a Swift_Message instance or a callable returning it');
         }
         $this->message = $message;
@@ -71,11 +48,7 @@ class MandrillHandler extends MailHandler
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected function send(string $content, array $records): void
     {
@@ -86,17 +59,11 @@ class MandrillHandler extends MailHandler
 
         $message = clone $this->message;
         $message->setBody($content, $mime);
-<<<<<<< HEAD
         /** @phpstan-ignore-next-line */
         if (version_compare(Swift::VERSION, '6.0.0', '>=')) {
             $message->setDate(new \DateTimeImmutable());
         } else {
             /** @phpstan-ignore-next-line */
-=======
-        if (version_compare(Swift::VERSION, '6.0.0', '>=')) {
-            $message->setDate(new \DateTimeImmutable());
-        } else {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $message->setDate(time());
         }
 

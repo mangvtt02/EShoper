@@ -19,11 +19,7 @@ namespace Monolog\Handler;
 abstract class Handler implements HandlerInterface
 {
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function handleBatch(array $records): void
     {
@@ -33,11 +29,7 @@ abstract class Handler implements HandlerInterface
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function close(): void
     {
@@ -56,7 +48,6 @@ abstract class Handler implements HandlerInterface
     {
         $this->close();
 
-<<<<<<< HEAD
         $reflClass = new \ReflectionClass($this);
 
         $keys = [];
@@ -67,8 +58,5 @@ abstract class Handler implements HandlerInterface
         }
 
         return $keys;
-=======
-        return array_keys(get_object_vars($this));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

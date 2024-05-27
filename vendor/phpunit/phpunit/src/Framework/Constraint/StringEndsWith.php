@@ -9,12 +9,9 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function strlen;
 use function substr;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * Constraint that asserts that the string it is evaluated for ends with a given
  * suffix.
@@ -47,10 +44,6 @@ final class StringEndsWith extends Constraint
      */
     protected function matches($other): bool
     {
-<<<<<<< HEAD
         return substr($other, 0 - strlen($this->suffix)) === $this->suffix;
-=======
-        return \substr($other, 0 - \strlen($this->suffix)) === $this->suffix;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

@@ -131,7 +131,6 @@ interface Canvas
     function clipping_end();
 
     /**
-<<<<<<< HEAD
      * Processes a callback on every page
      *
      * The callback function receives the four parameters `$pageNumber`,
@@ -146,8 +145,6 @@ interface Canvas
     //public function page_script(callable $callback): void;
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Writes text at the specified x and y coordinates on every page
      *
      * The strings '{PAGE_NUM}' and '{PAGE_COUNT}' are automatically replaced
@@ -168,7 +165,6 @@ interface Canvas
     public function page_text($x, $y, $text, $font, $size, $color = [0, 0, 0], $word_space = 0.0, $char_space = 0.0, $angle = 0.0);
 
     /**
-<<<<<<< HEAD
      * Draw line at the specified coordinates on every page.
      *
      * See {@link Style::munge_color()} for the format of the color array.
@@ -185,8 +181,6 @@ interface Canvas
     //public function page_line($x1, $y1, $x2, $y2, $color, $width, $style = []);
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Save current state
      */
     function save();
@@ -369,11 +363,7 @@ interface Canvas
      * @param string $font the desired font
      * @param float $size the desired font size
      * @param float $word_spacing word spacing, if any
-<<<<<<< HEAD
      * @param float $char_spacing char spacing, if any
-=======
-     * @param float $char_spacing
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return float
      */

@@ -10,10 +10,7 @@ namespace Dompdf\FrameDecorator;
 
 use Dompdf\Dompdf;
 use Dompdf\Frame;
-<<<<<<< HEAD
 use Dompdf\Helpers;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use Dompdf\Image\Cache;
 
 /**
@@ -73,7 +70,6 @@ class Image extends AbstractFrameDecorator
     }
 
     /**
-<<<<<<< HEAD
      * Get the intrinsic pixel dimensions of the image.
      *
      * @return array Width and height as `float|int`.
@@ -98,8 +94,6 @@ class Image extends AbstractFrameDecorator
     }
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Return the image's url
      *
      * @return string The url of this image

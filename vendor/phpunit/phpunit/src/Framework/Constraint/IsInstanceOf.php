@@ -9,14 +9,11 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function sprintf;
 use ReflectionClass;
 use ReflectionException;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * Constraint that asserts that the object it is evaluated for is an instance
  * of a given class.
@@ -40,11 +37,7 @@ final class IsInstanceOf extends Constraint
      */
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'is instance of %s "%s"',
             $this->getType(),
             $this->className
@@ -63,30 +56,18 @@ final class IsInstanceOf extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Returns the description of the failure.
-=======
-     * Returns the description of the failure
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
      *
      * @param mixed $other evaluated value or object
      *
-<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     protected function failureDescription($other): string
     {
         return sprintf(
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     */
-    protected function failureDescription($other): string
-    {
-        return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             '%s is an instance of %s "%s"',
             $this->exporter()->shortenedExport($other),
             $this->getType(),
@@ -97,20 +78,12 @@ final class IsInstanceOf extends Constraint
     private function getType(): string
     {
         try {
-<<<<<<< HEAD
             $reflection = new ReflectionClass($this->className);
-=======
-            $reflection = new \ReflectionClass($this->className);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if ($reflection->isInterface()) {
                 return 'interface';
             }
-<<<<<<< HEAD
         } catch (ReflectionException $e) {
-=======
-        } catch (\ReflectionException $e) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return 'class';

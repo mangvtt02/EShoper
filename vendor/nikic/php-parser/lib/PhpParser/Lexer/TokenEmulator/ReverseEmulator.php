@@ -2,7 +2,6 @@
 
 namespace PhpParser\Lexer\TokenEmulator;
 
-<<<<<<< HEAD
 use PhpParser\PhpVersion;
 
 /**
@@ -11,25 +10,12 @@ use PhpParser\PhpVersion;
 final class ReverseEmulator extends TokenEmulator {
     /** @var TokenEmulator Inner emulator */
     private TokenEmulator $emulator;
-=======
-/**
- * Reverses emulation direction of the inner emulator.
- */
-final class ReverseEmulator extends TokenEmulator
-{
-    /** @var TokenEmulator Inner emulator */
-    private $emulator;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     public function __construct(TokenEmulator $emulator) {
         $this->emulator = $emulator;
     }
 
-<<<<<<< HEAD
     public function getPhpVersion(): PhpVersion {
-=======
-    public function getPhpVersion(): string {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return $this->emulator->getPhpVersion();
     }
 
@@ -48,8 +34,4 @@ final class ReverseEmulator extends TokenEmulator
     public function preprocessCode(string $code, array &$patches): string {
         return $code;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822

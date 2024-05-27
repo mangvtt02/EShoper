@@ -149,11 +149,7 @@ class ProgressIndicator
             self::$formats = self::initFormats();
         }
 
-<<<<<<< HEAD
         return self::$formats[$name] ?? null;
-=======
-        return isset(self::$formats[$name]) ? self::$formats[$name] : null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -186,11 +182,7 @@ class ProgressIndicator
             self::$formatters = self::initPlaceholderFormatters();
         }
 
-<<<<<<< HEAD
         return self::$formatters[$name] ?? null;
-=======
-        return isset(self::$formatters[$name]) ? self::$formatters[$name] : null;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     private function display()
@@ -205,11 +197,7 @@ class ProgressIndicator
             }
 
             return $matches[0];
-<<<<<<< HEAD
         }, $this->format ?? ''));
-=======
-        }, $this->format));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     private function determineBestFormat(): string

@@ -75,15 +75,9 @@ return [
     'second_after' => ':count sekundės|:count sekundžių|:count sekundžių',
 
     'ago' => 'prieš :time',
-<<<<<<< HEAD
     'from_now' => ':time nuo dabar',
     'after' => 'po :time',
     'before' => 'už :time',
-=======
-    'from_now' => 'už :time',
-    'after' => 'po :time',
-    'before' => ':time nuo dabar',
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     'first_day_of_week' => 1,
     'day_of_first_week_of_year' => 4,

@@ -34,11 +34,7 @@ class FileProfilerStorage implements ProfilerStorageInterface
      */
     public function __construct(string $dsn)
     {
-<<<<<<< HEAD
         if (!str_starts_with($dsn, 'file:')) {
-=======
-        if (0 !== strpos($dsn, 'file:')) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new \RuntimeException(sprintf('Please check your configuration. You are trying to use FileStorage with an invalid dsn "%s". The expected format is "file:/path/to/the/storage/folder".', $dsn));
         }
         $this->folder = substr($dsn, 5);
@@ -65,17 +61,10 @@ class FileProfilerStorage implements ProfilerStorageInterface
         $result = [];
         while (\count($result) < $limit && $line = $this->readLineFromFile($file)) {
             $values = str_getcsv($line);
-<<<<<<< HEAD
             [$csvToken, $csvIp, $csvMethod, $csvUrl, $csvTime, $csvParent, $csvStatusCode] = $values;
             $csvTime = (int) $csvTime;
 
             if ($ip && !str_contains($csvIp, $ip) || $url && !str_contains($csvUrl, $url) || $method && !str_contains($csvMethod, $method) || $statusCode && !str_contains($csvStatusCode, $statusCode)) {
-=======
-            list($csvToken, $csvIp, $csvMethod, $csvUrl, $csvTime, $csvParent, $csvStatusCode) = $values;
-            $csvTime = (int) $csvTime;
-
-            if ($ip && false === strpos($csvIp, $ip) || $url && false === strpos($csvUrl, $url) || $method && false === strpos($csvMethod, $method) || $statusCode && false === strpos($csvStatusCode, $statusCode)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 continue;
             }
 
@@ -126,19 +115,7 @@ class FileProfilerStorage implements ProfilerStorageInterface
      */
     public function read($token): ?Profile
     {
-<<<<<<< HEAD
         return $this->doRead($token);
-=======
-        if (!$token || !file_exists($file = $this->getFilename($token))) {
-            return null;
-        }
-
-        if (\function_exists('gzcompress')) {
-            $file = 'compress.zlib://'.$file;
-        }
-
-        return $this->createProfileFromData($token, unserialize(file_get_contents($file)));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -180,7 +157,6 @@ class FileProfilerStorage implements ProfilerStorageInterface
             'status_code' => $profile->getStatusCode(),
         ];
 
-<<<<<<< HEAD
         $data = serialize($data);
 
         if (\function_exists('gzencode')) {
@@ -188,16 +164,6 @@ class FileProfilerStorage implements ProfilerStorageInterface
         }
 
         if (false === file_put_contents($file, $data, \LOCK_EX)) {
-=======
-        $context = stream_context_create();
-
-        if (\function_exists('gzcompress')) {
-            $file = 'compress.zlib://'.$file;
-            stream_context_set_option($context, 'zlib', 'level', 3);
-        }
-
-        if (false === file_put_contents($file, serialize($data), 0, $context)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             return false;
         }
 
@@ -314,26 +280,13 @@ class FileProfilerStorage implements ProfilerStorageInterface
         }
 
         foreach ($data['children'] as $token) {
-<<<<<<< HEAD
             if (null !== $childProfile = $this->doRead($token, $profile)) {
                 $profile->addChild($childProfile);
             }
-=======
-            if (!$token || !file_exists($file = $this->getFilename($token))) {
-                continue;
-            }
-
-            if (\function_exists('gzcompress')) {
-                $file = 'compress.zlib://'.$file;
-            }
-
-            $profile->addChild($this->createProfileFromData($token, unserialize(file_get_contents($file)), $profile));
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return $profile;
     }
-<<<<<<< HEAD
 
     private function doRead($token, Profile $profile = null): ?Profile
     {
@@ -357,6 +310,4 @@ class FileProfilerStorage implements ProfilerStorageInterface
 
         return $this->createProfileFromData($token, $data, $profile);
     }
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

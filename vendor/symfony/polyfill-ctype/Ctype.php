@@ -25,21 +25,13 @@ final class Ctype
      *
      * @see https://php.net/ctype-alnum
      *
-<<<<<<< HEAD
      * @param mixed $text
-=======
-     * @param string|int $text
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool
      */
     public static function ctype_alnum($text)
     {
-<<<<<<< HEAD
         $text = self::convert_int_to_char_for_ctype($text, __FUNCTION__);
-=======
-        $text = self::convert_int_to_char_for_ctype($text);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return \is_string($text) && '' !== $text && !preg_match('/[^A-Za-z0-9]/', $text);
     }
@@ -49,21 +41,13 @@ final class Ctype
      *
      * @see https://php.net/ctype-alpha
      *
-<<<<<<< HEAD
      * @param mixed $text
-=======
-     * @param string|int $text
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool
      */
     public static function ctype_alpha($text)
     {
-<<<<<<< HEAD
         $text = self::convert_int_to_char_for_ctype($text, __FUNCTION__);
-=======
-        $text = self::convert_int_to_char_for_ctype($text);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return \is_string($text) && '' !== $text && !preg_match('/[^A-Za-z]/', $text);
     }
@@ -73,21 +57,13 @@ final class Ctype
      *
      * @see https://php.net/ctype-cntrl
      *
-<<<<<<< HEAD
      * @param mixed $text
-=======
-     * @param string|int $text
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool
      */
     public static function ctype_cntrl($text)
     {
-<<<<<<< HEAD
         $text = self::convert_int_to_char_for_ctype($text, __FUNCTION__);
-=======
-        $text = self::convert_int_to_char_for_ctype($text);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return \is_string($text) && '' !== $text && !preg_match('/[^\x00-\x1f\x7f]/', $text);
     }
@@ -97,21 +73,13 @@ final class Ctype
      *
      * @see https://php.net/ctype-digit
      *
-<<<<<<< HEAD
      * @param mixed $text
-=======
-     * @param string|int $text
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool
      */
     public static function ctype_digit($text)
     {
-<<<<<<< HEAD
         $text = self::convert_int_to_char_for_ctype($text, __FUNCTION__);
-=======
-        $text = self::convert_int_to_char_for_ctype($text);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return \is_string($text) && '' !== $text && !preg_match('/[^0-9]/', $text);
     }
@@ -121,21 +89,13 @@ final class Ctype
      *
      * @see https://php.net/ctype-graph
      *
-<<<<<<< HEAD
      * @param mixed $text
-=======
-     * @param string|int $text
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool
      */
     public static function ctype_graph($text)
     {
-<<<<<<< HEAD
         $text = self::convert_int_to_char_for_ctype($text, __FUNCTION__);
-=======
-        $text = self::convert_int_to_char_for_ctype($text);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return \is_string($text) && '' !== $text && !preg_match('/[^!-~]/', $text);
     }
@@ -145,21 +105,13 @@ final class Ctype
      *
      * @see https://php.net/ctype-lower
      *
-<<<<<<< HEAD
      * @param mixed $text
-=======
-     * @param string|int $text
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool
      */
     public static function ctype_lower($text)
     {
-<<<<<<< HEAD
         $text = self::convert_int_to_char_for_ctype($text, __FUNCTION__);
-=======
-        $text = self::convert_int_to_char_for_ctype($text);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return \is_string($text) && '' !== $text && !preg_match('/[^a-z]/', $text);
     }
@@ -169,21 +121,13 @@ final class Ctype
      *
      * @see https://php.net/ctype-print
      *
-<<<<<<< HEAD
      * @param mixed $text
-=======
-     * @param string|int $text
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool
      */
     public static function ctype_print($text)
     {
-<<<<<<< HEAD
         $text = self::convert_int_to_char_for_ctype($text, __FUNCTION__);
-=======
-        $text = self::convert_int_to_char_for_ctype($text);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return \is_string($text) && '' !== $text && !preg_match('/[^ -~]/', $text);
     }
@@ -193,21 +137,13 @@ final class Ctype
      *
      * @see https://php.net/ctype-punct
      *
-<<<<<<< HEAD
      * @param mixed $text
-=======
-     * @param string|int $text
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool
      */
     public static function ctype_punct($text)
     {
-<<<<<<< HEAD
         $text = self::convert_int_to_char_for_ctype($text, __FUNCTION__);
-=======
-        $text = self::convert_int_to_char_for_ctype($text);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return \is_string($text) && '' !== $text && !preg_match('/[^!-\/\:-@\[-`\{-~]/', $text);
     }
@@ -217,21 +153,13 @@ final class Ctype
      *
      * @see https://php.net/ctype-space
      *
-<<<<<<< HEAD
      * @param mixed $text
-=======
-     * @param string|int $text
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool
      */
     public static function ctype_space($text)
     {
-<<<<<<< HEAD
         $text = self::convert_int_to_char_for_ctype($text, __FUNCTION__);
-=======
-        $text = self::convert_int_to_char_for_ctype($text);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return \is_string($text) && '' !== $text && !preg_match('/[^\s]/', $text);
     }
@@ -241,21 +169,13 @@ final class Ctype
      *
      * @see https://php.net/ctype-upper
      *
-<<<<<<< HEAD
      * @param mixed $text
-=======
-     * @param string|int $text
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool
      */
     public static function ctype_upper($text)
     {
-<<<<<<< HEAD
         $text = self::convert_int_to_char_for_ctype($text, __FUNCTION__);
-=======
-        $text = self::convert_int_to_char_for_ctype($text);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return \is_string($text) && '' !== $text && !preg_match('/[^A-Z]/', $text);
     }
@@ -265,21 +185,13 @@ final class Ctype
      *
      * @see https://php.net/ctype-xdigit
      *
-<<<<<<< HEAD
      * @param mixed $text
-=======
-     * @param string|int $text
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * @return bool
      */
     public static function ctype_xdigit($text)
     {
-<<<<<<< HEAD
         $text = self::convert_int_to_char_for_ctype($text, __FUNCTION__);
-=======
-        $text = self::convert_int_to_char_for_ctype($text);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         return \is_string($text) && '' !== $text && !preg_match('/[^A-Fa-f0-9]/', $text);
     }
@@ -292,20 +204,12 @@ final class Ctype
      * (negative values have 256 added in order to allow characters in the Extended ASCII range).
      * Any other integer is interpreted as a string containing the decimal digits of the integer.
      *
-<<<<<<< HEAD
      * @param mixed  $int
      * @param string $function
      *
      * @return mixed
      */
     private static function convert_int_to_char_for_ctype($int, $function)
-=======
-     * @param string|int $int
-     *
-     * @return mixed
-     */
-    private static function convert_int_to_char_for_ctype($int)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (!\is_int($int)) {
             return $int;
@@ -315,13 +219,10 @@ final class Ctype
             return (string) $int;
         }
 
-<<<<<<< HEAD
         if (\PHP_VERSION_ID >= 80100) {
             @trigger_error($function.'(): Argument of type int will be interpreted as string in the future', \E_USER_DEPRECATED);
         }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         if ($int < 0) {
             $int += 256;
         }

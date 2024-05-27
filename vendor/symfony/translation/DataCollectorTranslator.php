@@ -22,15 +22,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class DataCollectorTranslator implements LegacyTranslatorInterface, TranslatorInterface, TranslatorBagInterface, WarmableInterface
 {
-<<<<<<< HEAD
     public const MESSAGE_DEFINED = 0;
     public const MESSAGE_MISSING = 1;
     public const MESSAGE_EQUALS_FALLBACK = 2;
-=======
-    const MESSAGE_DEFINED = 0;
-    const MESSAGE_MISSING = 1;
-    const MESSAGE_EQUALS_FALLBACK = 2;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * @var TranslatorInterface|TranslatorBagInterface

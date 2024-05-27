@@ -3,11 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
-<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
-=======
- * (c) 2012-2020 Justin Hileman
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -32,17 +28,12 @@ class Transient implements Readline
      *
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public static function isSupported(): bool
-=======
-    public static function isSupported()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return true;
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritdoc}
      */
     public static function supportsBracketedPaste(): bool
@@ -51,32 +42,20 @@ class Transient implements Readline
     }
 
     /**
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      * Transient Readline constructor.
      */
     public function __construct($historyFile = null, $historySize = 0, $eraseDups = false)
     {
         // don't do anything with the history file...
-<<<<<<< HEAD
         $this->history = [];
         $this->historySize = $historySize;
         $this->eraseDups = $eraseDups;
-=======
-        $this->history     = [];
-        $this->historySize = $historySize;
-        $this->eraseDups   = $eraseDups;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function addHistory(string $line): bool
-=======
-    public function addHistory($line)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if ($this->eraseDups) {
             if (($key = \array_search($line, $this->history)) !== false) {
@@ -101,11 +80,7 @@ class Transient implements Readline
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function clearHistory(): bool
-=======
-    public function clearHistory()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->history = [];
 
@@ -115,11 +90,7 @@ class Transient implements Readline
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function listHistory(): array
-=======
-    public function listHistory()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->history;
     }
@@ -127,11 +98,7 @@ class Transient implements Readline
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function readHistory(): bool
-=======
-    public function readHistory()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return true;
     }
@@ -141,15 +108,9 @@ class Transient implements Readline
      *
      * @throws BreakException if user hits Ctrl+D
      *
-<<<<<<< HEAD
      * @return false|string
      */
     public function readline(?string $prompt = null)
-=======
-     * @return string
-     */
-    public function readline($prompt = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         echo $prompt;
 
@@ -167,11 +128,7 @@ class Transient implements Readline
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     public function writeHistory(): bool
-=======
-    public function writeHistory()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return true;
     }

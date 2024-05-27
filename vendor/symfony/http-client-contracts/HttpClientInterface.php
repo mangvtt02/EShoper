@@ -19,11 +19,8 @@ use Symfony\Contracts\HttpClient\Test\HttpClientTestCase;
  *
  * @see HttpClientTestCase for a reference test suite
  *
-<<<<<<< HEAD
  * @method static withOptions(array $options) Returns a new instance of the client with new default options
  *
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  * @author Nicolas Grekas <p@tchwork.com>
  */
 interface HttpClientInterface
@@ -57,13 +54,8 @@ interface HttpClientInterface
         'resolve' => [],        // string[] - a map of host to IP address that SHOULD replace DNS resolution
         'proxy' => null,        // string - by default, the proxy-related env vars handled by curl SHOULD be honored
         'no_proxy' => null,     // string - a comma separated list of hosts that do not require a proxy to be reached
-<<<<<<< HEAD
         'timeout' => null,      // float - the idle timeout (in seconds) - defaults to ini_get('default_socket_timeout')
         'max_duration' => 0,    // float - the maximum execution time (in seconds) for the request+response as a whole;
-=======
-        'timeout' => null,      // float - the idle timeout - defaults to ini_get('default_socket_timeout')
-        'max_duration' => 0,    // float - the maximum execution time for the request+response as a whole;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                                 //   a value lower than or equal to 0 means it is unlimited
         'bindto' => '0',        // string - the interface or the local socket to bind to
         'verify_peer' => true,  // see https://php.net/context.ssl for the following options
@@ -96,15 +88,8 @@ interface HttpClientInterface
     /**
      * Yields responses chunk by chunk as they complete.
      *
-<<<<<<< HEAD
      * @param ResponseInterface|iterable<array-key, ResponseInterface> $responses One or more responses created by the current HTTP client
      * @param float|null                                               $timeout   The idle timeout before yielding timeout chunks
      */
     public function stream($responses, ?float $timeout = null): ResponseStreamInterface;
-=======
-     * @param ResponseInterface|ResponseInterface[]|iterable $responses One or more responses created by the current HTTP client
-     * @param float|null                                     $timeout   The idle timeout before yielding timeout chunks
-     */
-    public function stream($responses, float $timeout = null): ResponseStreamInterface;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

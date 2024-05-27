@@ -14,11 +14,7 @@ class Word
         $this->word = $word;
     }
 
-<<<<<<< HEAD
     public function getWord(): string
-=======
-    public function getWord() : string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->word;
     }

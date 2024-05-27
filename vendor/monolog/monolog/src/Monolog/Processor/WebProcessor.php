@@ -19,11 +19,7 @@ namespace Monolog\Processor;
 class WebProcessor implements ProcessorInterface
 {
     /**
-<<<<<<< HEAD
      * @var array<string, mixed>|\ArrayAccess<string, mixed>
-=======
-     * @var array|\ArrayAccess
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $serverData;
 
@@ -32,11 +28,7 @@ class WebProcessor implements ProcessorInterface
      *
      * Array is structured as [key in record.extra => key in $serverData]
      *
-<<<<<<< HEAD
      * @var array<string, string>
-=======
-     * @var array
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     protected $extraFields = [
         'url'         => 'REQUEST_URI',
@@ -44,7 +36,6 @@ class WebProcessor implements ProcessorInterface
         'http_method' => 'REQUEST_METHOD',
         'server'      => 'SERVER_NAME',
         'referrer'    => 'HTTP_REFERER',
-<<<<<<< HEAD
         'user_agent'  => 'HTTP_USER_AGENT',
     ];
 
@@ -53,15 +44,6 @@ class WebProcessor implements ProcessorInterface
      * @param array<string, string>|array<string>|null              $extraFields Field names and the related key inside $serverData to be added (or just a list of field names to use the default configured $serverData mapping). If not provided it defaults to: [url, ip, http_method, server, referrer] + unique_id if present in server data
      */
     public function __construct($serverData = null, ?array $extraFields = null)
-=======
-    ];
-
-    /**
-     * @param array|\ArrayAccess|null $serverData  Array or object w/ ArrayAccess that provides access to the $_SERVER data
-     * @param array|null              $extraFields Field names and the related key inside $serverData to be added. If not provided it defaults to: url, ip, http_method, server, referrer
-     */
-    public function __construct($serverData = null, array $extraFields = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (null === $serverData) {
             $this->serverData = &$_SERVER;
@@ -71,7 +53,6 @@ class WebProcessor implements ProcessorInterface
             throw new \UnexpectedValueException('$serverData must be an array or object implementing ArrayAccess.');
         }
 
-<<<<<<< HEAD
         $defaultEnabled = ['url', 'ip', 'http_method', 'server', 'referrer'];
         if (isset($this->serverData['UNIQUE_ID'])) {
             $this->extraFields['unique_id'] = 'UNIQUE_ID';
@@ -95,25 +76,6 @@ class WebProcessor implements ProcessorInterface
     /**
      * {@inheritDoc}
      */
-=======
-        if (isset($this->serverData['UNIQUE_ID'])) {
-            $this->extraFields['unique_id'] = 'UNIQUE_ID';
-        }
-
-        if (null !== $extraFields) {
-            if (isset($extraFields[0])) {
-                foreach (array_keys($this->extraFields) as $fieldName) {
-                    if (!in_array($fieldName, $extraFields)) {
-                        unset($this->extraFields[$fieldName]);
-                    }
-                }
-            } else {
-                $this->extraFields = $extraFields;
-            }
-        }
-    }
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __invoke(array $record): array
     {
         // skip processing if for some reason request data
@@ -134,13 +96,10 @@ class WebProcessor implements ProcessorInterface
         return $this;
     }
 
-<<<<<<< HEAD
     /**
      * @param  mixed[] $extra
      * @return mixed[]
      */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private function appendExtraFields(array $extra): array
     {
         foreach ($this->extraFields as $extraName => $serverName) {

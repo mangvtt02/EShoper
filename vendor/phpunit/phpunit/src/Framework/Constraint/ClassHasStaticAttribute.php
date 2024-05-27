@@ -9,14 +9,10 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function sprintf;
 use PHPUnit\Framework\Exception;
 use ReflectionClass;
 use ReflectionException;
-=======
-use PHPUnit\Framework\Exception;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * Constraint that asserts that the class it is evaluated for has a given
@@ -31,11 +27,7 @@ final class ClassHasStaticAttribute extends ClassHasAttribute
      */
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'has static attribute "%s"',
             $this->attributeName()
         );
@@ -50,27 +42,16 @@ final class ClassHasStaticAttribute extends ClassHasAttribute
     protected function matches($other): bool
     {
         try {
-<<<<<<< HEAD
             $class = new ReflectionClass($other);
-=======
-            $class = new \ReflectionClass($other);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
             if ($class->hasProperty($this->attributeName())) {
                 return $class->getProperty($this->attributeName())->isStatic();
             }
             // @codeCoverageIgnoreStart
-<<<<<<< HEAD
         } catch (ReflectionException $e) {
             throw new Exception(
                 $e->getMessage(),
                 $e->getCode(),
-=======
-        } catch (\ReflectionException $e) {
-            throw new Exception(
-                $e->getMessage(),
-                (int) $e->getCode(),
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $e
             );
         }

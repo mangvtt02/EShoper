@@ -18,11 +18,8 @@
 
 namespace PhpOption;
 
-<<<<<<< HEAD
 use Traversable;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 /**
  * @template T
  *
@@ -46,11 +43,7 @@ final class LazyOption extends Option
      *
      * @return LazyOption<S>
      */
-<<<<<<< HEAD
     public static function create($callback, array $arguments = []): self
-=======
-    public static function create($callback, array $arguments = [])
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return new self($callback, $arguments);
     }
@@ -69,20 +62,12 @@ final class LazyOption extends Option
         $this->arguments = $arguments;
     }
 
-<<<<<<< HEAD
     public function isDefined(): bool
-=======
-    public function isDefined()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->option()->isDefined();
     }
 
-<<<<<<< HEAD
     public function isEmpty(): bool
-=======
-    public function isEmpty()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->option()->isEmpty();
     }
@@ -152,14 +137,10 @@ final class LazyOption extends Option
         return $this->option()->reject($value);
     }
 
-<<<<<<< HEAD
     /**
      * @return Traversable<T>
      */
     public function getIterator(): Traversable
-=======
-    public function getIterator()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->option()->getIterator();
     }
@@ -177,11 +158,7 @@ final class LazyOption extends Option
     /**
      * @return Option<T>
      */
-<<<<<<< HEAD
     private function option(): Option
-=======
-    private function option()
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         if (null === $this->option) {
             /** @var mixed */

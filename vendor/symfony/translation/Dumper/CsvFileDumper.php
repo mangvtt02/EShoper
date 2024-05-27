@@ -28,11 +28,7 @@ class CsvFileDumper extends FileDumper
      */
     public function formatCatalogue(MessageCatalogue $messages, $domain, array $options = [])
     {
-<<<<<<< HEAD
         $handle = fopen('php://memory', 'r+');
-=======
-        $handle = fopen('php://memory', 'r+b');
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         foreach ($messages->all($domain) as $source => $target) {
             fputcsv($handle, [$source, $target], $this->delimiter, $this->enclosure);

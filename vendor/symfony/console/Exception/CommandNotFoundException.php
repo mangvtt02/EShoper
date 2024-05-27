@@ -21,17 +21,10 @@ class CommandNotFoundException extends \InvalidArgumentException implements Exce
     private $alternatives;
 
     /**
-<<<<<<< HEAD
      * @param string          $message      Exception message to throw
      * @param string[]        $alternatives List of similar defined names
      * @param int             $code         Exception code
      * @param \Throwable|null $previous     Previous exception used for the exception chaining
-=======
-     * @param string     $message      Exception message to throw
-     * @param array      $alternatives List of similar defined names
-     * @param int        $code         Exception code
-     * @param \Throwable $previous     Previous exception used for the exception chaining
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct(string $message, array $alternatives = [], int $code = 0, \Throwable $previous = null)
     {
@@ -41,11 +34,7 @@ class CommandNotFoundException extends \InvalidArgumentException implements Exce
     }
 
     /**
-<<<<<<< HEAD
      * @return string[] A list of similar defined names
-=======
-     * @return array A list of similar defined names
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function getAlternatives()
     {

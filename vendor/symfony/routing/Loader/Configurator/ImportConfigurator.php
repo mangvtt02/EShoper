@@ -30,7 +30,6 @@ class ImportConfigurator
         $this->route = $route;
     }
 
-<<<<<<< HEAD
     /**
      * @return array
      */
@@ -44,8 +43,6 @@ class ImportConfigurator
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __destruct()
     {
         $this->parent->addCollection($this->route);

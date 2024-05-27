@@ -15,22 +15,16 @@ namespace Monolog\Processor;
  * An optional interface to allow labelling Monolog processors.
  *
  * @author Nicolas Grekas <p@tchwork.com>
-<<<<<<< HEAD
  *
  * @phpstan-import-type Record from \Monolog\Logger
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  */
 interface ProcessorInterface
 {
     /**
      * @return array The processed record
-<<<<<<< HEAD
      *
      * @phpstan-param  Record $record
      * @phpstan-return Record
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __invoke(array $record);
 }

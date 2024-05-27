@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Util;
 
-<<<<<<< HEAD
 use const PHP_EOL;
 use function get_class;
 use function sprintf;
@@ -19,11 +18,6 @@ use PHPUnit\Framework\TestSuite;
 use PHPUnit\Runner\PhptTestCase;
 use RecursiveIteratorIterator;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
-=======
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\TestSuite;
-use PHPUnit\Runner\PhptTestCase;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -31,7 +25,6 @@ use PHPUnit\Runner\PhptTestCase;
 final class TextTestListRenderer
 {
     /**
-<<<<<<< HEAD
      * @throws InvalidArgumentException
      */
     public function render(TestSuite $suite): string
@@ -44,20 +37,6 @@ final class TextTestListRenderer
                     '%s::%s',
                     get_class($test),
                     str_replace(' with data set ', '', $test->getName())
-=======
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     */
-    public function render(TestSuite $suite): string
-    {
-        $buffer = 'Available test(s):' . \PHP_EOL;
-
-        foreach (new \RecursiveIteratorIterator($suite->getIterator()) as $test) {
-            if ($test instanceof TestCase) {
-                $name = \sprintf(
-                    '%s::%s',
-                    \get_class($test),
-                    \str_replace(' with data set ', '', $test->getName())
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 );
             } elseif ($test instanceof PhptTestCase) {
                 $name = $test->getName();
@@ -65,13 +44,8 @@ final class TextTestListRenderer
                 continue;
             }
 
-<<<<<<< HEAD
             $buffer .= sprintf(
                 ' - %s' . PHP_EOL,
-=======
-            $buffer .= \sprintf(
-                ' - %s' . \PHP_EOL,
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $name
             );
         }

@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace Doctrine\Inflector\Rules;
 
 use Doctrine\Inflector\WordInflector;
-<<<<<<< HEAD
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use function strtolower;
 use function strtoupper;
 use function substr;
@@ -25,11 +22,7 @@ class Substitutions implements WordInflector
         }
     }
 
-<<<<<<< HEAD
     public function getFlippedSubstitutions(): Substitutions
-=======
-    public function getFlippedSubstitutions() : Substitutions
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $substitutions = [];
 
@@ -43,11 +36,7 @@ class Substitutions implements WordInflector
         return new Substitutions(...$substitutions);
     }
 
-<<<<<<< HEAD
     public function inflect(string $word): string
-=======
-    public function inflect(string $word) : string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $lowerWord = strtolower($word);
 

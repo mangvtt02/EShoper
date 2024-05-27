@@ -46,11 +46,7 @@ final class MentionParser implements InlineParserInterface
 
         // The symbol must not have any other characters immediately prior
         $previousChar = $cursor->peek(-1);
-<<<<<<< HEAD
         if ($previousChar !== null && \preg_match('/\w/', $previousChar)) {
-=======
-        if ($previousChar !== null && $previousChar !== ' ') {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             // peek() doesn't modify the cursor, so no need to restore state first
             return false;
         }

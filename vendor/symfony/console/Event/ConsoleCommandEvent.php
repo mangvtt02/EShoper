@@ -23,11 +23,7 @@ class ConsoleCommandEvent extends ConsoleEvent
     /**
      * The return code for skipped commands, this will also be passed into the terminate event.
      */
-<<<<<<< HEAD
     public const RETURN_CODE_DISABLED = 113;
-=======
-    const RETURN_CODE_DISABLED = 113;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Indicates if the command should be run or skipped.

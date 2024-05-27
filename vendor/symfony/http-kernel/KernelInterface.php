@@ -87,11 +87,7 @@ interface KernelInterface extends HttpKernelInterface
      * @throws \InvalidArgumentException if the file cannot be found or the name is not valid
      * @throws \RuntimeException         if the name contains invalid/unsafe characters
      */
-<<<<<<< HEAD
     public function locateResource($name/* , $dir = null, $first = true */);
-=======
-    public function locateResource($name/*, $dir = null, $first = true*/);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /**
      * Gets the name of the kernel.

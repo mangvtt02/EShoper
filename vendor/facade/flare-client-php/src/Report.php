@@ -15,12 +15,8 @@ use Throwable;
 
 class Report
 {
-<<<<<<< HEAD
     use UsesTime;
     use HasContext;
-=======
-    use UsesTime, HasContext;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     /** @var \Facade\FlareClient\Stacktrace\Stacktrace */
     private $stacktrace;
@@ -43,12 +39,9 @@ class Report
     /** @var string */
     private $applicationPath;
 
-<<<<<<< HEAD
     /** @var ?string */
     private $applicationVersion;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     /** @var array */
     private $userProvidedContext = [];
 
@@ -71,7 +64,6 @@ class Report
     private $openFrameIndex;
 
     /** @var string */
-<<<<<<< HEAD
     private $groupBy ;
 
     /** @var string */
@@ -86,12 +78,6 @@ class Report
         ?string $applicationPath = null,
         ?string $version = null
     ): self {
-=======
-    private $groupBy;
-
-    public static function createForThrowable(Throwable $throwable, ContextInterface $context, ?string $applicationPath = null): self
-    {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         return (new static())
             ->setApplicationPath($applicationPath)
             ->throwable($throwable)
@@ -99,12 +85,8 @@ class Report
             ->exceptionClass(self::getClassForThrowable($throwable))
             ->message($throwable->getMessage())
             ->stackTrace(Stacktrace::createForThrowable($throwable, $applicationPath))
-<<<<<<< HEAD
             ->exceptionContext($throwable)
             ->setApplicationVersion($version);
-=======
-            ->exceptionContext($throwable);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     protected static function getClassForThrowable(Throwable $throwable): string
@@ -131,7 +113,6 @@ class Report
             ->openFrameIndex($stacktrace->firstApplicationFrameIndex());
     }
 
-<<<<<<< HEAD
     public function __construct()
     {
         $this->trackingUuid = self::$fakeTrackingUuid ?? $this->generateUuid();
@@ -142,8 +123,6 @@ class Report
         return $this->trackingUuid;
     }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function exceptionClass(string $exceptionClass)
     {
         $this->exceptionClass = $exceptionClass;
@@ -239,7 +218,6 @@ class Report
         return $this->applicationPath;
     }
 
-<<<<<<< HEAD
     public function setApplicationVersion(?string $applicationVersion)
     {
         $this->applicationVersion = $applicationVersion;
@@ -252,8 +230,6 @@ class Report
         return $this->applicationVersion;
     }
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function view(?View $view)
     {
         $this->view = $view;
@@ -282,10 +258,7 @@ class Report
         return $this;
     }
 
-<<<<<<< HEAD
     /** @deprecated  */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function groupByTopFrame()
     {
         $this->groupBy = GroupingTypes::TOP_FRAME;
@@ -293,10 +266,7 @@ class Report
         return $this;
     }
 
-<<<<<<< HEAD
     /** @deprecated  */
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function groupByException()
     {
         $this->groupBy = GroupingTypes::EXCEPTION;
@@ -339,7 +309,6 @@ class Report
             'stage' => $this->stage,
             'message_level' => $this->messageLevel,
             'open_frame_index' => $this->openFrameIndex,
-<<<<<<< HEAD
             'application_path' => $this->applicationPath,
             'application_version' => $this->applicationVersion,
             'tracking_uuid' => $this->trackingUuid,
@@ -362,10 +331,4 @@ class Report
         // Output the 36 character UUID.
         return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
     }
-=======
-            'group_by' => $this->groupBy ?? GroupingTypes::TOP_FRAME,
-            'application_path' => $this->applicationPath,
-        ];
-    }
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 }

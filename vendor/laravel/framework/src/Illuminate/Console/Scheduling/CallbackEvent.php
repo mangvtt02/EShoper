@@ -3,10 +3,7 @@
 namespace Illuminate\Console\Scheduling;
 
 use Illuminate\Contracts\Container\Container;
-<<<<<<< HEAD
 use Illuminate\Support\Reflector;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use InvalidArgumentException;
 use LogicException;
 
@@ -39,11 +36,7 @@ class CallbackEvent extends Event
      */
     public function __construct(EventMutex $mutex, $callback, array $parameters = [], $timezone = null)
     {
-<<<<<<< HEAD
         if (! is_string($callback) && ! Reflector::isCallable($callback)) {
-=======
-        if (! is_string($callback) && ! is_callable($callback)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             throw new InvalidArgumentException(
                 'Invalid scheduled callback event. Must be a string or callable.'
             );
@@ -171,10 +164,6 @@ class CallbackEvent extends Event
             return $this->description;
         }
 
-<<<<<<< HEAD
         return is_string($this->callback) ? $this->callback : 'Callback';
-=======
-        return is_string($this->callback) ? $this->callback : 'Closure';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

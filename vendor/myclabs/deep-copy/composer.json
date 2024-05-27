@@ -1,6 +1,5 @@
 {
     "name": "myclabs/deep-copy",
-<<<<<<< HEAD
     "description": "Create deep copies (clones) of your objects",
     "license": "MIT",
     "type": "library",
@@ -23,13 +22,6 @@
         "doctrine/collections": "<1.6.8",
         "doctrine/common": "<2.13.3 || >=3,<3.2.2"
     },
-=======
-    "type": "library",
-    "description": "Create deep copies (clones) of your objects",
-    "keywords": ["clone", "copy", "duplicate", "object", "object graph"],
-    "license": "MIT",
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     "autoload": {
         "psr-4": {
             "DeepCopy\\": "src/DeepCopy/"
@@ -44,22 +36,6 @@
             "DeepCopyTest\\": "tests/DeepCopyTest/"
         }
     },
-<<<<<<< HEAD
-=======
-
-    "require": {
-        "php": "^7.1 || ^8.0"
-    },
-    "require-dev": {
-        "doctrine/collections": "^1.0",
-        "doctrine/common": "^2.6",
-        "phpunit/phpunit": "^7.1"
-    },
-    "replace": {
-        "myclabs/deep-copy": "self.version"
-    },
-
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     "config": {
         "sort-packages": true
     }

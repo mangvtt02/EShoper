@@ -22,11 +22,7 @@ use Symfony\Component\Console\Exception\CommandNotFoundException;
  */
 class ApplicationDescription
 {
-<<<<<<< HEAD
     public const GLOBAL_NAMESPACE = '_global';
-=======
-    const GLOBAL_NAMESPACE = '_global';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
     private $application;
     private $namespace;
@@ -84,11 +80,7 @@ class ApplicationDescription
             throw new CommandNotFoundException(sprintf('Command "%s" does not exist.', $name));
         }
 
-<<<<<<< HEAD
         return $this->commands[$name] ?? $this->aliases[$name];
-=======
-        return isset($this->commands[$name]) ? $this->commands[$name] : $this->aliases[$name];
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     private function inspectApplication()
@@ -139,11 +131,7 @@ class ApplicationDescription
         }
 
         if ($namespacedCommands) {
-<<<<<<< HEAD
             ksort($namespacedCommands, \SORT_STRING);
-=======
-            ksort($namespacedCommands);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             foreach ($namespacedCommands as $key => $commandsSet) {
                 ksort($commandsSet);
                 $sortedCommands[$key] = $commandsSet;

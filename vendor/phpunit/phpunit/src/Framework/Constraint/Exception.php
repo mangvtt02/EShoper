@@ -9,11 +9,8 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-<<<<<<< HEAD
 use function get_class;
 use function sprintf;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Util\Filter;
 use Throwable;
 
@@ -34,11 +31,7 @@ final class Exception extends Constraint
      */
     public function toString(): string
     {
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'exception of type "%s"',
             $this->className
         );
@@ -56,11 +49,7 @@ final class Exception extends Constraint
     }
 
     /**
-<<<<<<< HEAD
      * Returns the description of the failure.
-=======
-     * Returns the description of the failure
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
@@ -77,25 +66,15 @@ final class Exception extends Constraint
                     . "\n" . Filter::getFilteredStacktrace($other);
             }
 
-<<<<<<< HEAD
             return sprintf(
                 'exception of type "%s" matches expected exception "%s"%s',
                 get_class($other),
-=======
-            return \sprintf(
-                'exception of type "%s" matches expected exception "%s"%s',
-                \get_class($other),
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $this->className,
                 $message
             );
         }
 
-<<<<<<< HEAD
         return sprintf(
-=======
-        return \sprintf(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             'exception of type "%s" is thrown',
             $this->className
         );

@@ -18,12 +18,9 @@ use Symfony\Component\Mime\Header\Headers;
  */
 class SMimePart extends AbstractPart
 {
-<<<<<<< HEAD
     /** @internal */
     protected $_headers;
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     private $body;
     private $type;
     private $subtype;
@@ -34,11 +31,8 @@ class SMimePart extends AbstractPart
      */
     public function __construct($body, string $type, string $subtype, array $parameters)
     {
-<<<<<<< HEAD
         unset($this->_headers);
 
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         parent::__construct();
 
         if (!\is_string($body) && !is_iterable($body)) {

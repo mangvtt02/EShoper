@@ -3,11 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
-<<<<<<< HEAD
  * (c) 2012-2023 Justin Hileman
-=======
- * (c) 2012-2020 Justin Hileman
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -26,11 +22,7 @@ class ClassEnumerator extends Enumerator
     /**
      * {@inheritdoc}
      */
-<<<<<<< HEAD
     protected function listItems(InputInterface $input, ?\Reflector $reflector = null, $target = null): array
-=======
-    protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         // if we have a reflector, ensure that it's a namespace reflector
         if (($target !== null || $reflector !== null) && !$reflector instanceof ReflectionNamespace) {
@@ -38,13 +30,8 @@ class ClassEnumerator extends Enumerator
         }
 
         $internal = $input->getOption('internal');
-<<<<<<< HEAD
         $user = $input->getOption('user');
         $prefix = $reflector === null ? null : \strtolower($reflector->getName()).'\\';
-=======
-        $user     = $input->getOption('user');
-        $prefix   = $reflector === null ? null : \strtolower($reflector->getName()) . '\\';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         $ret = [];
 
@@ -79,20 +66,12 @@ class ClassEnumerator extends Enumerator
      *
      * @return array
      */
-<<<<<<< HEAD
     protected function filterClasses(string $key, array $classes, bool $internal, bool $user, ?string $prefix = null): array
-=======
-    protected function filterClasses($key, $classes, $internal, $user, $prefix = null)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $ret = [];
 
         if ($internal) {
-<<<<<<< HEAD
             $ret['Internal '.$key] = \array_filter($classes, function ($class) use ($prefix) {
-=======
-            $ret['Internal ' . $key] = \array_filter($classes, function ($class) use ($prefix) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 if ($prefix !== null && \strpos(\strtolower($class), $prefix) !== 0) {
                     return false;
                 }
@@ -104,11 +83,7 @@ class ClassEnumerator extends Enumerator
         }
 
         if ($user) {
-<<<<<<< HEAD
             $ret['User '.$key] = \array_filter($classes, function ($class) use ($prefix) {
-=======
-            $ret['User ' . $key] = \array_filter($classes, function ($class) use ($prefix) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 if ($prefix !== null && \strpos(\strtolower($class), $prefix) !== 0) {
                     return false;
                 }
@@ -135,11 +110,7 @@ class ClassEnumerator extends Enumerator
      *
      * @return array
      */
-<<<<<<< HEAD
     protected function prepareClasses(array $classes): array
-=======
-    protected function prepareClasses(array $classes)
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         \natcasesort($classes);
 

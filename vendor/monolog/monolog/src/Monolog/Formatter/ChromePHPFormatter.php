@@ -22,11 +22,8 @@ class ChromePHPFormatter implements FormatterInterface
 {
     /**
      * Translates Monolog log levels to Wildfire levels.
-<<<<<<< HEAD
      *
      * @var array<int, 'log'|'info'|'warn'|'error'>
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     private $logLevels = [
         Logger::DEBUG     => 'log',
@@ -40,11 +37,7 @@ class ChromePHPFormatter implements FormatterInterface
     ];
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function format(array $record)
     {
@@ -75,11 +68,7 @@ class ChromePHPFormatter implements FormatterInterface
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * {@inheritdoc}
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function formatBatch(array $records)
     {

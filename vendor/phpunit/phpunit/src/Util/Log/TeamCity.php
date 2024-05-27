@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Util\Log;
 
-<<<<<<< HEAD
 use function class_exists;
 use function count;
 use function explode;
@@ -23,8 +22,6 @@ use function print_r;
 use function round;
 use function str_replace;
 use function stripos;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\ExceptionWrapper;
 use PHPUnit\Framework\ExpectationFailedException;
@@ -37,15 +34,11 @@ use PHPUnit\Framework\Warning;
 use PHPUnit\TextUI\ResultPrinter;
 use PHPUnit\Util\Exception;
 use PHPUnit\Util\Filter;
-<<<<<<< HEAD
 use ReflectionClass;
 use ReflectionException;
 use SebastianBergmann\Comparator\ComparisonFailure;
 use SebastianBergmann\Timer\RuntimeException;
 use Throwable;
-=======
-use SebastianBergmann\Comparator\ComparisonFailure;
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -68,11 +61,7 @@ final class TeamCity extends ResultPrinter
     private $flowId;
 
     /**
-<<<<<<< HEAD
      * @throws RuntimeException
-=======
-     * @throws \SebastianBergmann\Timer\RuntimeException
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function printResult(TestResult $result): void
     {
@@ -83,11 +72,7 @@ final class TeamCity extends ResultPrinter
     /**
      * An error occurred.
      */
-<<<<<<< HEAD
     public function addError(Test $test, Throwable $t, float $time): void
-=======
-    public function addError(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->printEvent(
             'testFailed',
@@ -105,19 +90,7 @@ final class TeamCity extends ResultPrinter
      */
     public function addWarning(Test $test, Warning $e, float $time): void
     {
-<<<<<<< HEAD
         $this->write(self::getMessage($e) . PHP_EOL);
-=======
-        $this->printEvent(
-            'testFailed',
-            [
-                'name'     => $test->getName(),
-                'message'  => self::getMessage($e),
-                'details'  => self::getDetails($e),
-                'duration' => self::toMilliseconds($time),
-            ]
-        );
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     /**
@@ -162,11 +135,7 @@ final class TeamCity extends ResultPrinter
     /**
      * Incomplete test.
      */
-<<<<<<< HEAD
     public function addIncompleteTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->printIgnoredTest($test->getName(), $t, $time);
     }
@@ -174,11 +143,7 @@ final class TeamCity extends ResultPrinter
     /**
      * Risky test.
      */
-<<<<<<< HEAD
     public function addRiskyTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->addError($test, $t, $time);
     }
@@ -186,11 +151,7 @@ final class TeamCity extends ResultPrinter
     /**
      * Skipped test.
      */
-<<<<<<< HEAD
     public function addSkippedTest(Test $test, Throwable $t, float $time): void
-=======
-    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $testName = $test->getName();
 
@@ -203,11 +164,7 @@ final class TeamCity extends ResultPrinter
         }
     }
 
-<<<<<<< HEAD
     public function printIgnoredTest($testName, Throwable $t, float $time): void
-=======
-    public function printIgnoredTest($testName, \Throwable $t, float $time): void
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $this->printEvent(
             'testIgnored',
@@ -225,13 +182,8 @@ final class TeamCity extends ResultPrinter
      */
     public function startTestSuite(TestSuite $suite): void
     {
-<<<<<<< HEAD
         if (stripos(ini_get('disable_functions'), 'getmypid') === false) {
             $this->flowId = getmypid();
-=======
-        if (\stripos(\ini_get('disable_functions'), 'getmypid') === false) {
-            $this->flowId = \getmypid();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         } else {
             $this->flowId = false;
         }
@@ -241,11 +193,7 @@ final class TeamCity extends ResultPrinter
 
             $this->printEvent(
                 'testCount',
-<<<<<<< HEAD
                 ['count' => count($suite)]
-=======
-                ['count' => \count($suite)]
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             );
         }
 
@@ -257,7 +205,6 @@ final class TeamCity extends ResultPrinter
 
         $parameters = ['name' => $suiteName];
 
-<<<<<<< HEAD
         if (class_exists($suiteName, false)) {
             $fileName                   = self::getFileName($suiteName);
             $parameters['locationHint'] = "php_qn://{$fileName}::\\{$suiteName}";
@@ -267,17 +214,6 @@ final class TeamCity extends ResultPrinter
             if (count($split) === 2 && class_exists($split[0]) && method_exists($split[0], $split[1])) {
                 $fileName                   = self::getFileName($split[0]);
                 $parameters['locationHint'] = "php_qn://{$fileName}::\\{$suiteName}";
-=======
-        if (\class_exists($suiteName, false)) {
-            $fileName                   = self::getFileName($suiteName);
-            $parameters['locationHint'] = "php_qn://$fileName::\\$suiteName";
-        } else {
-            $split = \explode('::', $suiteName);
-
-            if (\count($split) === 2 && \class_exists($split[0]) && \method_exists($split[0], $split[1])) {
-                $fileName                   = self::getFileName($split[0]);
-                $parameters['locationHint'] = "php_qn://$fileName::\\$suiteName";
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $parameters['name']         = $split[1];
             }
         }
@@ -298,17 +234,10 @@ final class TeamCity extends ResultPrinter
 
         $parameters = ['name' => $suiteName];
 
-<<<<<<< HEAD
         if (!class_exists($suiteName, false)) {
             $split = explode('::', $suiteName);
 
             if (count($split) === 2 && class_exists($split[0]) && method_exists($split[0], $split[1])) {
-=======
-        if (!\class_exists($suiteName, false)) {
-            $split = \explode('::', $suiteName);
-
-            if (\count($split) === 2 && \class_exists($split[0]) && \method_exists($split[0], $split[1])) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $parameters['name'] = $split[1];
             }
         }
@@ -326,15 +255,9 @@ final class TeamCity extends ResultPrinter
         $params                = ['name' => $testName];
 
         if ($test instanceof TestCase) {
-<<<<<<< HEAD
             $className              = get_class($test);
             $fileName               = self::getFileName($className);
             $params['locationHint'] = "php_qn://{$fileName}::\\{$className}::{$testName}";
-=======
-            $className              = \get_class($test);
-            $fileName               = self::getFileName($className);
-            $params['locationHint'] = "php_qn://$fileName::\\$className::$testName";
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $this->printEvent('testStarted', $params);
@@ -362,11 +285,7 @@ final class TeamCity extends ResultPrinter
 
     private function printEvent(string $eventName, array $params = []): void
     {
-<<<<<<< HEAD
         $this->write("\n##teamcity[{$eventName}");
-=======
-        $this->write("\n##teamcity[$eventName");
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
         if ($this->flowId) {
             $params['flowId'] = $this->flowId;
@@ -374,21 +293,13 @@ final class TeamCity extends ResultPrinter
 
         foreach ($params as $key => $value) {
             $escapedValue = self::escapeValue((string) $value);
-<<<<<<< HEAD
             $this->write(" {$key}='{$escapedValue}'");
-=======
-            $this->write(" $key='$escapedValue'");
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         $this->write("]\n");
     }
 
-<<<<<<< HEAD
     private static function getMessage(Throwable $t): string
-=======
-    private static function getMessage(\Throwable $t): string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $message = '';
 
@@ -405,11 +316,7 @@ final class TeamCity extends ResultPrinter
         return $message . $t->getMessage();
     }
 
-<<<<<<< HEAD
     private static function getDetails(Throwable $t): string
-=======
-    private static function getDetails(\Throwable $t): string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         $stackTrace = Filter::getFilteredStacktrace($t);
         $previous   = $t instanceof ExceptionWrapper ? $t->getPreviousWrapped() : $t->getPrevious();
@@ -423,11 +330,7 @@ final class TeamCity extends ResultPrinter
                 $previous->getPreviousWrapped() : $previous->getPrevious();
         }
 
-<<<<<<< HEAD
         return ' ' . str_replace("\n", "\n ", $stackTrace);
-=======
-        return ' ' . \str_replace("\n", "\n ", $stackTrace);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     private static function getPrimitiveValueAsString($value): ?string
@@ -436,21 +339,12 @@ final class TeamCity extends ResultPrinter
             return 'null';
         }
 
-<<<<<<< HEAD
         if (is_bool($value)) {
             return $value ? 'true' : 'false';
         }
 
         if (is_scalar($value)) {
             return print_r($value, true);
-=======
-        if (\is_bool($value)) {
-            return $value ? 'true' : 'false';
-        }
-
-        if (\is_scalar($value)) {
-            return \print_r($value, true);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         }
 
         return null;
@@ -458,11 +352,7 @@ final class TeamCity extends ResultPrinter
 
     private static function escapeValue(string $text): string
     {
-<<<<<<< HEAD
         return str_replace(
-=======
-        return \str_replace(
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             ['|', "'", "\n", "\r", ']', '['],
             ['||', "|'", '|n', '|r', '|]', '|['],
             $text
@@ -475,21 +365,12 @@ final class TeamCity extends ResultPrinter
     private static function getFileName($className): string
     {
         try {
-<<<<<<< HEAD
             return (new ReflectionClass($className))->getFileName();
             // @codeCoverageIgnoreStart
         } catch (ReflectionException $e) {
             throw new Exception(
                 $e->getMessage(),
                 $e->getCode(),
-=======
-            return (new \ReflectionClass($className))->getFileName();
-            // @codeCoverageIgnoreStart
-        } catch (\ReflectionException $e) {
-            throw new Exception(
-                $e->getMessage(),
-                (int) $e->getCode(),
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
                 $e
             );
         }
@@ -501,10 +382,6 @@ final class TeamCity extends ResultPrinter
      */
     private static function toMilliseconds(float $time): int
     {
-<<<<<<< HEAD
         return (int) round($time * 1000);
-=======
-        return (int) \round($time * 1000);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }

@@ -150,19 +150,11 @@ final class Runtime
     {
         if ($this->isHHVM()) {
             // @codeCoverageIgnoreStart
-<<<<<<< HEAD
             return 'https://hhvm.com/';
             // @codeCoverageIgnoreEnd
         }
 
         return 'https://www.php.net/';
-=======
-            return 'http://hhvm.com/';
-            // @codeCoverageIgnoreEnd
-        }
-
-        return 'https://secure.php.net/';
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 
     public function getVersion(): string

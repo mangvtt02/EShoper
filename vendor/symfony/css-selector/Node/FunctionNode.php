@@ -65,12 +65,6 @@ class FunctionNode extends AbstractNode
         return $this->selector->getSpecificity()->plus(new Specificity(0, 1, 0));
     }
 
-<<<<<<< HEAD
-=======
-    /**
-     * {@inheritdoc}
-     */
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     public function __toString(): string
     {
         $arguments = implode(', ', array_map(function (Token $token) {

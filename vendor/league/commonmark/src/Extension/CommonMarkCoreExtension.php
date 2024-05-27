@@ -22,10 +22,7 @@ use League\CommonMark\Delimiter\Processor\EmphasisDelimiterProcessor;
 use League\CommonMark\Inline\Element as InlineElement;
 use League\CommonMark\Inline\Parser as InlineParser;
 use League\CommonMark\Inline\Renderer as InlineRenderer;
-<<<<<<< HEAD
 use League\CommonMark\Util\ConfigurationInterface;
-=======
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
 
 final class CommonMarkCoreExtension implements ExtensionInterface
 {
@@ -73,7 +70,6 @@ final class CommonMarkCoreExtension implements ExtensionInterface
             ->addInlineRenderer(InlineElement\Text::class,       new InlineRenderer\TextRenderer(),       0)
         ;
 
-<<<<<<< HEAD
         $deprecatedUseAsterisk = $environment->getConfig('use_asterisk', ConfigurationInterface::MISSING);
         if ($deprecatedUseAsterisk !== ConfigurationInterface::MISSING) {
             @\trigger_error('The "use_asterisk" configuration option is deprecated in league/commonmark 1.6 and will be replaced with "commonmark > use_asterisk" in 2.0', \E_USER_DEPRECATED);
@@ -93,13 +89,6 @@ final class CommonMarkCoreExtension implements ExtensionInterface
         }
 
         if ($environment->getConfig('commonmark/use_underscore', $deprecatedUseUnderscore)) {
-=======
-        if ($environment->getConfig('use_asterisk', true)) {
-            $environment->addDelimiterProcessor(new EmphasisDelimiterProcessor('*'));
-        }
-
-        if ($environment->getConfig('use_underscore', true)) {
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
             $environment->addDelimiterProcessor(new EmphasisDelimiterProcessor('_'));
         }
     }

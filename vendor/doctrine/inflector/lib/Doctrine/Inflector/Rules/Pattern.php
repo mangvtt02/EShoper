@@ -25,29 +25,17 @@ final class Pattern
         }
     }
 
-<<<<<<< HEAD
     public function getPattern(): string
-=======
-    public function getPattern() : string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->pattern;
     }
 
-<<<<<<< HEAD
     public function getRegex(): string
-=======
-    public function getRegex() : string
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return $this->regex;
     }
 
-<<<<<<< HEAD
     public function matches(string $word): bool
-=======
-    public function matches(string $word) : bool
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     {
         return preg_match($this->getRegex(), $word) === 1;
     }

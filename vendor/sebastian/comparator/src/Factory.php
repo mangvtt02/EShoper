@@ -123,10 +123,6 @@ class Factory
         $this->registerDefaultComparator(new ObjectComparator);
         $this->registerDefaultComparator(new ResourceComparator);
         $this->registerDefaultComparator(new ArrayComparator);
-<<<<<<< HEAD
-=======
-        $this->registerDefaultComparator(new DoubleComparator);
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
         $this->registerDefaultComparator(new NumericComparator);
         $this->registerDefaultComparator(new ScalarComparator);
         $this->registerDefaultComparator(new TypeComparator);

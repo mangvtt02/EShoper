@@ -61,11 +61,6 @@ class OverflowHandler extends AbstractHandler implements FormattableHandlerInter
     /**
      * @param HandlerInterface $handler
      * @param int[]            $thresholdMap Dictionary of logger level => threshold
-<<<<<<< HEAD
-=======
-     * @param int|string       $level        The minimum logging level at which this handler will be triggered
-     * @param bool             $bubble
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function __construct(
         HandlerInterface $handler,
@@ -90,14 +85,7 @@ class OverflowHandler extends AbstractHandler implements FormattableHandlerInter
      * Unless the bubbling is interrupted (by returning true), the Logger class will keep on
      * calling further handlers in the stack with a given log record.
      *
-<<<<<<< HEAD
      * {@inheritDoc}
-=======
-     * @param array $record The record to handle
-     *
-     * @return Boolean true means that this handler handled the record, and that bubbling is not permitted.
-     *                 false means the record was either not processed or that this handler allows bubbling.
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
      */
     public function handle(array $record): bool
     {
@@ -134,7 +122,6 @@ class OverflowHandler extends AbstractHandler implements FormattableHandlerInter
     }
 
     /**
-<<<<<<< HEAD
      * {@inheritDoc}
      */
     public function setFormatter(FormatterInterface $formatter): HandlerInterface
@@ -158,22 +145,5 @@ class OverflowHandler extends AbstractHandler implements FormattableHandlerInter
         }
 
         throw new \UnexpectedValueException('The nested handler of type '.get_class($this->handler).' does not support formatters.');
-=======
-     * {@inheritdoc}
-     */
-    public function setFormatter(FormatterInterface $formatter): HandlerInterface
-    {
-        $this->handler->setFormatter($formatter);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getFormatter(): FormatterInterface
-    {
-        return $this->handler->getFormatter();
->>>>>>> 4fdc86299b8092f9ff65a6dbe715664179743822
     }
 }
