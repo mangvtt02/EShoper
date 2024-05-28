@@ -69,14 +69,17 @@ https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js
 
                               <table class="row table table-responsive">
                                 <tr>
+                                  <td>STT</td>
                                   <th>Sản phẩm</th>
                                   <th>Size</th>
-                                  <th>Topping</th>
+                                  <th>Màu sắc</th>
                                   <th>Số lượng</th>
                                   <th>Giá bán</th>
                                 </tr>
+                                @php $count = 1; @endphp <!-- Khởi tạo biến đếm -->
                                 @foreach ($or->order_detail as $item)
                                 <tr>
+                                    <td>{{$count++}}</td>
                                     <td>{{$item->product->name}}</td>
                                     <td>{{$item->size->name}}</td>
                                     @if ($item->topping != null)

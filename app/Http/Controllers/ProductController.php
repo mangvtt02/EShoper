@@ -96,29 +96,30 @@ class ProductController extends Controller
     }
     public function post_insert(Request $request){
 
-        $this->validate($request,[
-            'image'=>'required',
-            'name'=>'required|min:3|unique:product,name',
-            'storage_quantity'=>'required|min:0',
-            'unit_price'=>'required|min:0',
-            'discount'=>'required|min:0',
-            'unit'=>'required',
-            'status'=>'required',
-        ],[
-            'image.required'=>'Bạn chưa chọn ảnh sản phẩm!',
-            'name.required'=>'Bạn chưa nhập tên sản phẩm!',
-            'name.min'=>'Tiêu đề tối thiểu 3 ký tự!',
-            'storage_quantity.required'=>'Bạn chưa nhập số lượng hàng!',
-            'storage_quantity.min'=>'Số lượng hàng không được < 0',
-            'name.unique'=>'Tên sản phẩm đã tồn tại!',
-            
-            'unit_price.required'=>"Bạn chưa giá hiệ tại!",
-            'unit_price.min'=>"Giá hiện tại tối thiểu bằng 0!",
-            'discount.required'=>'Bạn chưa nhập phần trăm khuyến mại!',
-            'discount.required'=>'Phần trăm khuyến mại tối thiểu bằng 0!',
-            'unit.required'=>'Bạn chưa nhập đơn vị!',
-            'status.required'=>'Bạn chưa chọn trạng thái!',
-        ]);
+      $this->validate($request, [
+        'image' => 'required',
+        'name' => 'required|min:3|unique:product,name',
+        'storage_quantity' => 'required|numeric|min:0',
+        'unit_price' => 'required|numeric|min:1000',
+        'discount' => 'required|numeric|min:0|max:100',
+        'unit' => 'required',
+        'status' => 'required',
+    ], [
+        'image.required' => 'Bạn chưa chọn ảnh sản phẩm!',
+        'name.required' => 'Bạn chưa nhập tên sản phẩm!',
+        'name.min' => 'Tên sản phẩm tối thiểu 3 ký tự!',
+        'storage_quantity.required' => 'Bạn chưa nhập số lượng hàng!',
+        'storage_quantity.min' => 'Số lượng hàng không được < 0',
+        'name.unique' => 'Tên sản phẩm đã tồn tại!',
+        'unit_price.required' => "Bạn chưa nhập giá hiện tại!",
+        'unit_price.min' => "Giá hiện tại tối thiểu bằng 1000!",
+        'discount.required' => 'Bạn chưa nhập phần trăm khuyến mãi!',
+        'discount.numeric' => 'Phần trăm khuyến mãi phải là số!',
+        'discount.min' => 'Phần trăm khuyến mãi tối thiểu bằng 0!',
+        'discount.max' => 'Phần trăm khuyến mãi tối đa là 100!',
+        'unit.required' => 'Bạn chưa nhập đơn vị!',
+        'status.required' => 'Bạn chưa chọn trạng thái!',
+    ]);
 
         $product = new Product();
 
@@ -163,65 +164,62 @@ class ProductController extends Controller
         return view('admin/product/EditProduct',compact('product','type_product'));
     }
     public function post_edit($id, Request $request){
-        $product = Product::find($id);
-        $this->validate($request,[
-            'image'=>'required',
-            'name'=>'required|min:3',
-            'unit_price'=>'required|min:0',
-            'discount'=>'required|min:0',
-            'unit'=>'required',
-            'status'=>'required',
-        ],[
-            'image.required'=>'Bạn chưa chọn ảnh sản phẩm!',
-            'name.required'=>'Bạn chưa nhập tên sản phẩm!',
-            'name.min'=>'Tiêu đề tối thiểu 3 ký tự!',
-            'storage_quantity.min'=>'Số lượng hàng không được < 0',
-            'unit_price.required'=>"Bạn chưa giá hiệ tại!",
-            'unit_price.min'=>"Giá hiện tại tối thiểu bằng 0!",
-            'discount.required'=>'Bạn chưa nhập phần trăm khuyến mại!',
-            'discount.required'=>'Phần trăm khuyến mại tối thiểu bằng 0!',
-            'unit.required'=>'Bạn chưa nhập đơn vị!',
-            'status.required'=>'Bạn chưa chọn trạng thái!',
-        ]);
-
-        
-        if($request->hasFile('image')){
-            $file_img = $request->file('image');
-            $name = $file_img->getClientOriginalName();
-            $image = Str::random(4)."_".$name;
-            while(file_exists("public/assets/images/product/".$image)){
-                $image = Str::random(4)."_".$name;
-            }
-            
-            if(file_exists("public/assets/images/product/".$product->image)){
-                unlink("public/assets/images/product/".$product->image);
-            }
-            $file_img->move("public/assets/images/product",$image);
-            $product->image = $image;
-
-        }
-        else{
-            $product->image = '';
-        }
-
-        $product->name = $request->name;
-        $product->id_type = $request->type_product;
-        $product->description = $request->description;
-        $product->unit_price = $request->unit_price;
-        $product->storage_quantity = $request->storage_quantity;
-        $product->discount = $request->discount;
-        $product->unit = $request->unit;
-        
-        if($request->status == 1){
-            $product->status = "Hiện";
-        }
-        else{
-            $product->status = "Ẩn";
-        }
-        $product->save();
-        return redirect()->route('admin.edit_product',$id)->with('success',"Cập nhật sản phẩm thành công!");
-        
-    }
+      $product = Product::find($id);
+      $this->validate($request, [
+          'name' => 'required|min:3',
+          'unit_price' => 'required|numeric|min:1000',
+          'discount' => 'required|numeric|min:0|max:100',
+          'storage_quantity' => 'required|numeric|min:0',
+          'unit' => 'required',
+          'status' => 'required',
+      ], [
+          'image.required' => 'Bạn chưa chọn ảnh sản phẩm!',
+          'name.required' => 'Bạn chưa nhập tên sản phẩm!',
+          'name.min' => 'Tên sản phẩm tối thiểu 3 ký tự!',
+          'storage_quantity.min' => 'Số lượng hàng không được âm',
+          'unit_price.required' => "Bạn chưa nhập giá hiện tại!",
+          'unit_price.min' => "Giá hiện tại tối thiểu là 1000!",
+          'discount.required' => 'Bạn chưa nhập phần trăm khuyến mãi!',
+          'discount.min' => 'Phần trăm khuyến mãi tối thiểu là 0!',
+          'discount.max' => 'Phần trăm khuyến mãi tối đa là 100!',
+          'unit.required' => 'Bạn chưa nhập đơn vị!',
+          'status.required' => 'Bạn chưa chọn trạng thái!',
+      ]);
+  
+      if ($request->hasFile('image')) {
+          $file_img = $request->file('image');
+          $name = $file_img->getClientOriginalName();
+          $image = Str::random(4) . "_" . $name;
+          while (file_exists("public/assets/images/product/" . $image)) {
+              $image = Str::random(4) . "_" . $name;
+          }
+  
+          if (file_exists("public/assets/images/product/" . $product->image)) {
+              unlink("public/assets/images/product/" . $product->image);
+          }
+          $file_img->move("public/assets/images/product", $image);
+          $product->image = $image;
+      } else {
+          // Nếu không có ảnh mới được chọn, giữ nguyên ảnh cũ
+          $product->image = $product->image;
+      }
+  
+      $product->name = $request->name;
+      $product->id_type = $request->type_product;
+      $product->description = $request->description;
+      $product->unit_price = $request->unit_price;
+      $product->storage_quantity = $request->storage_quantity;
+      $product->discount = $request->discount;
+      $product->unit = $request->unit;
+  
+      if ($request->status == 1) {
+          $product->status = "Hiện";
+      } else {
+          $product->status = "Ẩn";
+      }
+      $product->save();
+      return redirect()->route('admin.edit_product', $id)->with('success', "Cập nhật sản phẩm thành công!");
+  }
     public function delete($id){
         Product::destroy($id);
         return redirect("admin/product/list");

@@ -46,8 +46,7 @@
                                             </div>
                                             @foreach ($about as $item)
                                                 <div class="introduction_content">
-                                                <img src="assets\images\1121.jpg">
-                                                <img  style="display: none" src="assets/images/about/{{$item->image}}" alt="{{$item->image}}">
+                                                <img src="assets/images/about/{{$item->image}}" alt="{{$item->image}}">
                                                     <div class="introduction_description">
                                                         {!!$item->content!!}
                                                     </div>
