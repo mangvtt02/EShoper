@@ -15,7 +15,7 @@
                             <div class="breadcrumb-group">
                                 <h1 class="hidden">Giỏ hàng của bạn</h1>
                                 <div class="breadcrumb clearfix">
-                                <span ><a href="{{route('page.Home')}}" title="Fast Food" itemprop="url"><span itemprop="title">Trang chủ</i></span></a>
+                                <span ><a href="{{route('page.Home')}}" title="Eshopper" itemprop="url"><span itemprop="title">Trang chủ</i></span></a>
                                     </span>
                                     <span class="arrow-space"></span>
                                     <span >

@@ -18,6 +18,7 @@ class Cart extends Model
         if ($quantity <= 0) {
             return 'Số lượng sản phẩm phải lớn hơn 0';
         }
+
         // Kiểm tra sản phẩm đã tồn tại trong giỏ hàng chưa
         if (isset($this->items[$data['id']])) {
             // Lấy số lượng hiện tại của sản phẩm trong giỏ hàng
@@ -27,23 +28,23 @@ class Cart extends Model
             $newQuantity = $currentQuantity + $quantity;
             
             // Kiểm tra số lượng sản phẩm trong kho
-            if ($data['storage_quantity'] < $quantity) {
+            if ($data['storage_quantity'] < $newQuantity) {
                 // Nếu hết hàng, trả về thông báo
-                return 'Sản phẩm tạm hết hàng.';
+                return 'Số lượng sản phẩm không đủ trong kho.';
             } else {
                 // Cập nhật số lượng trong giỏ hàng
                 $this->items[$data['id']]['quantity'] = $newQuantity;
                 
                 // Cập nhật số lượng trong kho
                 $product = Product::find($data['id']);
-                $product->storage_quantity -= $quantity; // Trừ đi số lượng nhập vào từ storage_quantity
+                $product->storage_quantity -= $quantity;
                 $product->save();
             }
         } else {
             // Kiểm tra số lượng sản phẩm trong kho
-            if ($data['storage_quantity'] == 0) {
+            if ($data['storage_quantity'] < $quantity) {
                 // Nếu hết hàng, trả về thông báo
-                return 'Sản phẩm tạm hết hàng.';
+                return 'Số lượng sản phẩm không đủ trong kho.';
             } else {
                 // Nếu sản phẩm chưa có trong giỏ hàng, thêm vào giỏ hàng
                 $this->items[$data['id']] = $data;
@@ -51,7 +52,7 @@ class Cart extends Model
                 
                 // Cập nhật số lượng trong kho
                 $product = Product::find($data['id']);
-                $product->storage_quantity -= $quantity; // Trừ đi số lượng nhập vào từ storage_quantity
+                $product->storage_quantity -= $quantity;
                 $product->save();
             }
         }
@@ -59,7 +60,6 @@ class Cart extends Model
         // Lưu giỏ hàng vào session
         session(['cart' => $this->items]);
     }
-
     public function delete_cart($id)
     {
         // Kiểm tra sản phẩm có tồn tại trong giỏ hàng không
